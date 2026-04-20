@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<!--
+  AI-Exhibits · Reinforcement Learning & Sliding Puzzles
+  Printable bilingual dictionary — English ↔ Italian.
+
+  © 2026 Dr. Erika Roldán Roa · Max Planck Institute for Mathematics in the Sciences (MPI MiS), Leipzig · Université de Genève, Section de Mathématiques.
+  Licensed: MIT (code) · CC-BY-SA 4.0 (pedagogical documentation) · CC-BY 4.0 (assets). See LICENSE.
+-->
+
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIZIONARIO DI BORDO — Inglese → Italiano</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 1.2cm;
+      }
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      background: #fff;
+      color: #1a1a2e;
+      font-size: 10pt;
+      line-height: 1.5;
+      padding: 15px;
+    }
+
+    .document {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .header {
+      border: 3px solid #2196f3;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      text-align: center;
+      background: #e3f2fd;
+    }
+
+    .header-icon {
+      font-size: 24pt;
+    }
+
+    .header-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16pt;
+      font-weight: 700;
+      color: #1565c0;
+    }
+
+    .header-sub {
+      font-size: 10pt;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .intro-box {
+      background: #fff8e1;
+      border: 2px solid #ffc107;
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+    }
+
+    .intro-text {
+      font-style: italic;
+    }
+
+    h2 {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 8px 15px;
+      font-size: 11pt;
+      margin: 20px 0 0;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .section {
+      border: 2px solid #1a1a2e;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      margin-bottom: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #f5f5f5;
+      font-weight: 700;
+      font-size: 9pt;
+      color: #666;
+    }
+
+    .english {
+      font-family: 'JetBrains Mono', monospace;
+      color: #e91e63;
+      font-weight: 700;
+    }
+
+    .italian {
+      color: #4caf50;
+      font-weight: 600;
+    }
+
+    .context {
+      color: #888;
+      font-size: 9pt;
+    }
+
+    .important-row {
+      background: #fff3e0;
+    }
+
+    .important-row .english {
+      color: #e65100;
+    }
+
+    /* Two column layout for compact sections */
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .mini-section {
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .mini-header {
+      background: #f5f5f5;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 10pt;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .mini-table td {
+      padding: 6px 10px;
+      font-size: 9pt;
+    }
+
+    .params-section {
+      background: #e8f5e9;
+      border: 2px solid #4caf50;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 20px 0;
+    }
+
+    .params-title {
+      font-weight: 700;
+      color: #2e7d32;
+      margin-bottom: 10px;
+      font-size: 11pt;
+    }
+
+    .params-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .param-card {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .param-symbol {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 24pt;
+      font-weight: 700;
+      color: #e91e63;
+    }
+
+    .param-english {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9pt;
+      color: #666;
+      margin: 5px 0;
+    }
+
+    .param-italian {
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .param-range {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10pt;
+      color: #4caf50;
+      margin-top: 5px;
+    }
+
+    .param-desc {
+      font-size: 9pt;
+      color: #666;
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+
+    .tip-box {
+      background: #e3f2fd;
+      border: 2px solid #2196f3;
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin: 15px 0;
+    }
+
+    .tip-title {
+      font-weight: 700;
+      color: #1565c0;
+      margin-bottom: 5px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 8pt;
+      color: #888;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="document">
+
+  <div class="header">
+    <div class="header-icon">📖</div>
+    <div class="header-title">DIZIONARIO DI BORDO</div>
+    <div class="header-sub">Il vocabolario del Q-learning</div>
+  </div>
+
+  <div class="intro-box">
+    <p class="intro-text">📡 <strong>Nota del Comando:</strong> Ecco il vocabolario essenziale per pilotare la nave: i tre parametri da regolare, i pulsanti dell'interfaccia e i termini tecnici che incontrerai. Le parole inglesi sono quelle usate nella ricerca e nell'industria — conoscerle ti sarà utile oltre a questo laboratorio.</p>
+  </div>
+
+  <!-- MOST IMPORTANT: Parameters -->
+  <div class="params-section">
+    <div class="params-title">⚙️ I TRE PARAMETRI (MOLTO IMPORTANTE!)</div>
+    <div class="params-grid">
+      <div class="param-card">
+        <div class="param-symbol">α</div>
+        <div class="param-english">Learning Rate</div>
+        <div class="param-italian">Velocità di Apprendimento</div>
+        <div class="param-range">0,3 → 0,7</div>
+        <div class="param-desc">Più è alto, più in fretta l'agente cambia idea</div>
+      </div>
+      <div class="param-card">
+        <div class="param-symbol">γ</div>
+        <div class="param-english">Discount</div>
+        <div class="param-italian">Importanza del Futuro</div>
+        <div class="param-range">0,9 → 0,99</div>
+        <div class="param-desc">Più è alto, più l'agente pianifica a lungo termine</div>
+      </div>
+      <div class="param-card">
+        <div class="param-symbol">ε</div>
+        <div class="param-english">Epsilon</div>
+        <div class="param-italian">Esplorazione Casuale</div>
+        <div class="param-range">0,2 → 0,4</div>
+        <div class="param-desc">Più è alto, più l'agente prova cose a caso</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <h2>🖱️ PULSANTI DELL'INTERFACCIA</h2>
+  <div class="section">
+    <table>
+      <tr>
+        <th style="width:30%">INGLESE</th>
+        <th style="width:35%">ITALIANO</th>
+        <th style="width:35%">COSA FA</th>
+      </tr>
+      <tr>
+        <td class="english">Launch Training</td>
+        <td class="italian">Avvia l'Addestramento</td>
+        <td class="context">Entrare in una missione</td>
+      </tr>
+      <tr>
+        <td class="english">Shuffle</td>
+        <td class="italian">Mescola</td>
+        <td class="context">Mescolare il puzzle a caso</td>
+      </tr>
+      <tr>
+        <td class="english">Goal</td>
+        <td class="italian">Obiettivo</td>
+        <td class="context">Vedere la soluzione da raggiungere</td>
+      </tr>
+      <tr class="important-row">
+        <td class="english">Train 100</td>
+        <td class="italian">Addestra 100 volte</td>
+        <td class="context">Far imparare l'agente 100 volte</td>
+      </tr>
+      <tr class="important-row">
+        <td class="english">Solve (greedy)</td>
+        <td class="italian">Risolvi</td>
+        <td class="context">L'agente prova a risolvere</td>
+      </tr>
+      <tr>
+        <td class="english">Reset</td>
+        <td class="italian">Reimposta</td>
+        <td class="context">Rimettere tutto a zero</td>
+      </tr>
+      <tr>
+        <td class="english">Step</td>
+        <td class="italian">Un passo</td>
+        <td class="context">Fare un'unica mossa</td>
+      </tr>
+      <tr>
+        <td class="english">Play / Pause</td>
+        <td class="italian">Avvia / Pausa</td>
+        <td class="context">Avviare / Fermare</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Key Concepts -->
+  <h2>🧠 CONCETTI IMPORTANTI</h2>
+  <div class="section">
+    <table>
+      <tr>
+        <th>INGLESE</th>
+        <th>ITALIANO</th>
+        <th>SPIEGAZIONE SEMPLICE</th>
+      </tr>
+      <tr class="important-row">
+        <td class="english">State</td>
+        <td class="italian">Stato</td>
+        <td class="context">Posizione attuale delle tessere</td>
+      </tr>
+      <tr class="important-row">
+        <td class="english">Action</td>
+        <td class="italian">Azione</td>
+        <td class="context">Una mossa (far scorrere una tessera)</td>
+      </tr>
+      <tr class="important-row">
+        <td class="english">Reward</td>
+        <td class="italian">Ricompensa</td>
+        <td class="context">Segnale ricevuto (+1 quando lo stato successivo è l'obiettivo, 0 altrimenti)</td>
+      </tr>
+      <tr>
+        <td class="english">Episode</td>
+        <td class="italian">Episodio</td>
+        <td class="context">Un tentativo completo</td>
+      </tr>
+      <tr>
+        <td class="english">Q-value</td>
+        <td class="italian">Valore Q</td>
+        <td class="context">Ciò che l'agente ha imparato su un'azione</td>
+      </tr>
+      <tr>
+        <td class="english">Q-table</td>
+        <td class="italian">Tabella Q</td>
+        <td class="context">La "memoria" dell'agente</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Statistics -->
+  <div class="two-columns">
+    <div class="mini-section">
+      <div class="mini-header">📊 STATISTICHE</div>
+      <table class="mini-table">
+        <tr>
+          <td class="english">Total steps</td>
+          <td class="italian">Passi totali</td>
+        </tr>
+        <tr>
+          <td class="english">Current state</td>
+          <td class="italian">Stato attuale</td>
+        </tr>
+        <tr>
+          <td class="english">Last solve</td>
+          <td class="italian">Ultima risoluzione</td>
+        </tr>
+        <tr>
+          <td class="english">Best solve</td>
+          <td class="italian">Miglior punteggio</td>
+        </tr>
+        <tr>
+          <td class="english">Best scores</td>
+          <td class="italian">Migliori punteggi</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="mini-section">
+      <div class="mini-header">💬 MESSAGGI</div>
+      <table class="mini-table">
+        <tr>
+          <td class="english">Solved!</td>
+          <td class="italian">Risolto!</td>
+        </tr>
+        <tr>
+          <td class="english">New best!</td>
+          <td class="italian">Nuovo record!</td>
+        </tr>
+        <tr>
+          <td class="english">Goal reached</td>
+          <td class="italian">Obiettivo raggiunto</td>
+        </tr>
+        <tr>
+          <td class="english">Training complete</td>
+          <td class="italian">Addestramento completato</td>
+        </tr>
+        <tr>
+          <td class="english">Max steps reached</td>
+          <td class="italian">Limite raggiunto</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Special Terms -->
+  <div class="tip-box">
+    <div class="tip-title">🏆 TERMINI SPECIALI</div>
+    <table style="width:100%; border:none;">
+      <tr>
+        <td style="border:none;"><span class="english">God's Number</span> = <span class="italian">Numero di Dio</span></td>
+        <td style="border:none; color:#666;">Il minimo di mosse per il puzzle più difficile</td>
+      </tr>
+      <tr>
+        <td style="border:none;"><span class="english">Benchmark</span> = <span class="italian">Punto di controllo</span></td>
+        <td style="border:none; color:#666;">Un test standard (B1, B2, B3…)</td>
+      </tr>
+      <tr>
+        <td style="border:none;"><span class="english">Greedy</span> = <span class="italian">Ingordo</span></td>
+        <td style="border:none; color:#666;">L'agente sceglie sempre ciò che sembra meglio</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    AI-EXHIBITS WORKSHOP • DIZIONARIO DI BORDO • TERRA-7 COMMAND
+  </div>
+
+</div>
+
+</body>
+</html>

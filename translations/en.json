@@ -1,0 +1,527 @@
+{
+  "_meta": {
+    "language": "en",
+    "label": "English",
+    "flag": "🇬🇧",
+    "status": "draft",
+    "version": "0.2.0"
+  },
+  "common": {
+    "backToHub": "Back to Hub",
+    "loading": "Loading…",
+    "shuffle": "Shuffle",
+    "resetQ": "Reset Q",
+    "solve": "Solve",
+    "solveGreedy": "Solve (greedy)",
+    "startTraining": "Start training",
+    "stop": "Stop",
+    "clearLog": "Clear log",
+    "resetBestScores": "Reset best scores",
+    "resetBestScoresTip": "Clear stored best scores for this puzzle",
+    "bestScores": "Best scores",
+    "apply": "Apply",
+    "close": "Close",
+    "role": "Role",
+    "goal": "Goal",
+    "reset": "Reset",
+    "runRandom": "Run random agent",
+    "moves": "moves",
+    "solved": "solved",
+    "running": "running…",
+    "loaded": "Loaded",
+    "returnToStart": "Return to start",
+    "launchTraining": "Launch Training",
+    "goAhead": "Go ahead",
+    "yes": "Yes",
+    "no": "No",
+    "newBest": "New best!",
+    "facilitatorMode": "Facilitator mode"
+  },
+  "hub": {
+    "launchTraining": "🚀 Launch Training",
+    "header": {
+      "title": "AI-Exhibits: Reinforcement Learning — Mission Lobby",
+      "h1": "AI-Exhibits: Reinforcement Learning — Mission Lobby",
+      "yourRole": "YOUR ROLE",
+      "yourChallenge": "YOUR CHALLENGE",
+      "toIntel": "Go To Mission Briefing ↓"
+    },
+    "typing": {
+      "role": "Year 2070 — Human Agent & AI Trainer.",
+      "mission": "You are about to take part in a larger operation involving intelligent agents and sliding puzzles.\n\nThe operation consists of three missions, each based on a different puzzle size.\nDepending on the available time, you may not reach all of them.\n\nIn this Hub, you establish benchmarks:\n• solve fixed puzzles as a human agent\n• observe an untrained (random) agent\n• compare how many moves are required to reach the goal\n\nInside each mission, you will face two episodes:\na Training Episode and a Challenge Episode.",
+      "goal": "Your goal across the operation is simple: train agents that outperform both the human benchmark and the random baseline."
+    },
+    "mission1": {
+      "title": "Mission I: Making learning visible",
+      "bench": {
+        "b1Tooltip": "⭐ 1 move",
+        "b2Tooltip": "⭐⭐ 2 moves",
+        "b3Tooltip": "⭐⭐⭐ 3 moves",
+        "b4Tooltip": "⭐⭐⭐⭐ 4 moves",
+        "b5Tooltip": "⭐⭐⭐⭐⭐ 5 moves",
+        "b6Tooltip": "🏆 6 moves — God's Number!"
+      }
+    },
+    "mission2": {
+      "title": "Mission II: Propagation",
+      "bench": {
+        "b1Tooltip": "⭐ 1 move",
+        "b2Tooltip": "⭐⭐ 3 moves",
+        "b3Tooltip": "⭐⭐⭐ 6 moves",
+        "b4Tooltip": "⭐⭐⭐⭐ 9 moves",
+        "b5Tooltip": "🏆 21 moves — God's Number!"
+      }
+    },
+    "mission3": {
+      "title": "Mission III: Scaling",
+      "bench": {
+        "b1Tooltip": "⭐ 1 move",
+        "b2Tooltip": "⭐⭐ 10 moves",
+        "b3Tooltip": "⭐⭐⭐ 18 moves",
+        "b4Tooltip": "⭐⭐⭐⭐ 26 moves",
+        "b5Tooltip": "🏆 31 moves — God's Number!"
+      }
+    },
+    "stats": {
+      "you": "You",
+      "randomAgent": "Random agent"
+    },
+    "intel": {
+      "title": "Mission Briefing (what you need to know to train your Q-learning agent efficiently)",
+      "showBtn": "Show",
+      "hideBtn": "Hide",
+      "termsLabel": "Glossary terms",
+      "chip": {
+        "agent": "Agent",
+        "state": "State",
+        "action": "Action",
+        "policy": "Policy",
+        "rl": "Reinforcement Learning",
+        "q": "Q-learning"
+      }
+    },
+    "facTools": {
+      "tag": "FACILITATOR",
+      "title": "Quickstart",
+      "desc": "Use the facilitator guide for orchestration, checkpoints, and troubleshooting prompts. The exhibits stay exploration-first; the guide provides structure.",
+      "openBtn": "Open facilitator quickstart"
+    },
+    "glossary": {
+      "agent": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">AGENT</div>\n        <div>\n          An <strong>agent</strong> is the entity making decisions: a person or a system that chooses an <strong>action</strong> in each <strong>state</strong>.\n        </div>\n        <div style=\"margin-top:8px;\">\n          In this exhibit, you will compare three agents:<br>\n          • a <strong>human agent</strong> (you)<br>\n          • an <strong>untrained (random) agent</strong> (legal moves drawn uniformly at random)<br>\n          • a <strong>Q-learning agent</strong> (learned Q-values → policy → actions)\n        </div>\n        <div style=\"margin-top:8px;\">\n          All three are agents. The only difference is <strong>how</strong> they choose their actions in each state.\n        </div>\n      ",
+      "state": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">STATE</div>\n        <div>\n          A <strong>state</strong> is the current situation the agent \"perceives\".\n          For a sliding puzzle, the state is the <strong>entire board configuration</strong>:\n          which tile is in each position (including the empty space).\n        </div>\n      ",
+      "action": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">ACTION</div>\n        <div>\n          An <strong>action</strong> is a move the agent can choose.\n          In a sliding puzzle, an action is a <strong>legal slide</strong>:\n          move a neighbouring tile into the empty space (equivalently: move the empty space up, down, left, or right when allowed).\n        </div>\n      ",
+      "policy": "\n  <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">POLICY</div>\n  <div>\n    A <strong>policy</strong> describes how an agent behaves.\n    It is a rule that tells the agent <strong>which action to choose in each state</strong>.\n  </div>\n  <div style=\"margin-top:8px;\">\n    In this exhibit, the <strong>Q-learning agent</strong> first learns Q-values.\n    The policy is then derived from these values (for example, by picking the action with the highest Q-value).\n  </div>\n  <div style=\"margin-top:8px;\">\n    Different agents follow different policies:\n    a random agent follows a random policy,\n    while a trained agent follows a learned policy.\n  </div>\n",
+      "rl": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">REINFORCEMENT LEARNING</div>\n        <div>\n          <strong>Reinforcement Learning</strong> is a <strong>framework</strong> for training an agent through interaction:\n          the agent tries actions, receives feedback (rewards), and improves its behaviour over time.\n          It is <strong>not</strong> a single algorithm but a family. More advanced examples: DQN on Atari (2015), AlphaZero for Go (2017).\n        </div>\n        <div style=\"margin-top:8px;\">\n          In our puzzles, the reward is simple: <strong>+1 when the next state is the goal, 0 otherwise</strong> (an optional step penalty is available).\n        </div>\n      ",
+      "q": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">Q-LEARNING</div>\n        <div>\n          <strong>Q-learning</strong> is a reinforcement-learning algorithm.\n          It learns values <span class=\"mono\">Q(state, action)</span> that estimate how good each action is in each state.\n          The agent then uses these Q-values to choose its actions (its policy).\n        </div>\n      "
+    }
+  },
+  "glossary": {
+    "state": {
+      "term": "State"
+    },
+    "action": {
+      "term": "Action"
+    },
+    "reward": {
+      "term": "Reward"
+    },
+    "qvalue": {
+      "term": "Q-value"
+    },
+    "episode": {
+      "term": "Episode"
+    },
+    "policy": {
+      "term": "Policy"
+    },
+    "learningRate": {
+      "term": "Learning Rate (α)"
+    },
+    "discount": {
+      "term": "Discount (γ)"
+    },
+    "epsilon": {
+      "term": "Epsilon (ε)"
+    }
+  },
+  "fiche": {
+    "title": "AI-Exhibits — Quick Reference Card",
+    "header": {
+      "title": "🎮 AI-EXHIBITS QUICK REFERENCE",
+      "subtitle": "Reinforcement Learning Workshop — Training Your First AI Agent"
+    },
+    "card1": {
+      "title": "🧠 Key Concepts",
+      "colTerm": "Term",
+      "colMeaning": "What It Means",
+      "state": "Current puzzle configuration (where tiles are)",
+      "action": "A move — sliding a tile into the empty space",
+      "reward": "Feedback: <span class=\"highlight\">+1</span> when next state is goal, <span class=\"warning\">0</span> otherwise (step penalty optional)",
+      "qvalue": "How \"good\" an action is from a state (learned)",
+      "episode": "One complete attempt at solving",
+      "policy": "The agent's strategy: which action to pick in each state",
+      "formulaLabel": "💡 The Q-Learning Formula:"
+    },
+    "card2": {
+      "title": "⚙️ Training Parameters",
+      "colParam": "Parameter",
+      "colEffect": "What It Does",
+      "colValues": "Good Values",
+      "alphaDesc": "How fast to update Q-values",
+      "gammaDesc": "Value of future vs immediate rewards",
+      "epsilonDesc": "Probability of random exploration",
+      "tipsTitle": "Parameter Tips",
+      "tip1": "<strong>High α</strong>: Learns fast but may be unstable",
+      "tip2": "<strong>High γ</strong>: Plans ahead (good for puzzles!)",
+      "tip3": "<strong>High ε</strong>: More exploration, slower convergence",
+      "tip4": "<strong>For testing</strong>: set ε = 0 (pure exploitation — the agent stops exploring)"
+    },
+    "card3": {
+      "title": "🏆 Benchmarks & God's Numbers",
+      "h2x2": "2×2 Puzzle (12 states)",
+      "h2x3": "2×3 Puzzle (360 states)",
+      "h3x3": "3×3 Puzzle (181,440 states)",
+      "tip": "🏆 <strong>God's Number</strong> = diameter of the reachable-state graph: the number of moves to solve the <em>worst</em> starting state if you play perfectly."
+    },
+    "card4": {
+      "title": "🚀 Training Workflow",
+      "stepByStep": "Step-by-Step",
+      "step1": "<strong>Set Parameters</strong>: α=0.5, γ=0.9, ε=0.3",
+      "step2": "<strong>Train</strong>: Click \"Train 100\" several times",
+      "step3": "<strong>Watch Q-table</strong>: Colors appear as the agent learns",
+      "step4": "<strong>Load Benchmark</strong>: Try B1, B2, B3…",
+      "step5": "<strong>Test</strong>: Click \"Solve (greedy)\"",
+      "step6": "<strong>Compare</strong>: Moves vs theoretical minimum",
+      "step7": "<strong>Tune</strong>: Adjust parameters, train more",
+      "step8": "<strong>Challenge</strong>: Can you achieve God's Number?",
+      "troubleshoot": "Troubleshooting",
+      "t1": "<strong>Agent isn't finding the solution?</strong> Train more (1000+ episodes)",
+      "t2": "<strong>Q-table empty?</strong> Check learning rate isn't 0",
+      "t3": "<strong>Too slow?</strong> Reduce epsilon after training"
+    },
+    "footer": "RL Mission Hub · Dr. Erika Roldán · MPI MiS · 2026"
+  },
+  "quickstart": {
+    "title": "🎓 Facilitator Quickstart",
+    "intro": "2-hour workshop on reinforcement learning with sliding puzzles. This guide is the essential summary.",
+    "h": {
+      "before": "Before the workshop",
+      "flow": "Flow (2 h)",
+      "params": "Recommended parameters",
+      "trouble": "Troubleshooting"
+    },
+    "before": {
+      "1": "Test the Hub on the devices you'll use (tablets, computers). No installation.",
+      "2": "Print if needed: mission briefing, team sheet, dictionary (FR versions available).",
+      "3": "Plan a big screen for the collective briefing."
+    },
+    "flow": {
+      "1": "<strong>00:00–00:15</strong> — Hook &amp; mission framing",
+      "2": "<strong>00:15–00:35</strong> — Phase 1: human vs random agent (Mission I, 2×2)",
+      "3": "<strong>00:35–01:05</strong> — Phase 2: train your first agent",
+      "4": "<strong>01:05–01:15</strong> — Break",
+      "5": "<strong>01:15–01:45</strong> — Phase 3: God's Number challenge &amp; scaling (Missions II / III)",
+      "6": "<strong>01:45–02:00</strong> — Reflection &amp; real-world connections"
+    },
+    "params": {
+      "2x2": "<strong>2×2</strong> (12 states): α=0.5, γ=0.9, ε=0.3 · 500–2000 episodes",
+      "2x3": "<strong>2×3</strong> (360 states): α=0.3, γ=0.95, ε=0.4 · 2,000–10,000 episodes",
+      "3x3": "<strong>3×3</strong> (181,440 states): α=0.3, γ=0.99, ε=0.5 · 50,000+ episodes"
+    },
+    "trouble": {
+      "1": "The agent isn't finding the solution → more episodes or higher γ",
+      "2": "Q-table empty → check α ≠ 0 and episodes are running",
+      "3": "Random solves instantly → lucky draw, re-run"
+    }
+  },
+  "nav": {
+    "backMissions": "← Missions",
+    "backMissionsTitle": "Back to Missions",
+    "returnStart": "Return to start",
+    "returnStartTitle": "Return to start"
+  },
+  "ex": {
+    "brand": {
+      "title": "AI-Exhibits: Reinforcement Learning (Q-learning)"
+    },
+    "panel": {
+      "currentPuzzle": "Current puzzle",
+      "trainingParams": "Training parameters"
+    },
+    "bench": {
+      "title": "Benchmarks",
+      "active": "Active",
+      "activeNone": "Active: —",
+      "description": "Load a fixed start state, then click <b>Solve (greedy)</b>. We record your best move count per benchmark in this browser."
+    },
+    "params": {
+      "episodes": "Episodes",
+      "episodesTip": "How many training episodes to run.\nEach episode starts from a shuffled state.",
+      "maxSteps": "Max steps / episode",
+      "maxStepsTip": "Safety cap: stop an episode if it has taken too many moves.\nMore steps lets the agent explore longer trajectories.",
+      "learningRate": "α (learning rate)",
+      "learningRateTip": "How much we overwrite old Q with new information.\nα=1 means replace; smaller α means average slowly.",
+      "discount": "γ (discount)",
+      "discountTip": "How much future rewards matter.\nγ close to 1 values long-term success.",
+      "epsilon": "ε (exploration)",
+      "epsilonTip": "Exploration probability in ε-greedy.\nWith probability ε, pick a random action.",
+      "stepPenalty": "Step penalty",
+      "stepPenaltyTip": "Optional shaping: a small negative reward each move.\nEncourages shorter solutions.",
+      "goalReward": "Goal reward",
+      "goalRewardTip": "Reward when the agent reaches the solved puzzle.\nDefault 1.",
+      "animSpeed": "Animation speed (ms)",
+      "animSpeedTip": "How slowly to show moves while solving.\nIncrease for more time to watch."
+    },
+    "stats": {
+      "currentState": "Current state",
+      "movesLastSolve": "Moves (last solve)",
+      "visitedStates": "Visited states",
+      "qUpdates": "Q updates"
+    },
+    "btn": {
+      "stepOnce": "Step (one update)"
+    },
+    "msg": {
+      "shuffled": "Shuffled.",
+      "resetQ": "Reset Q and counters.",
+      "stopRequested": "Stop requested.",
+      "stopBenchLoad": "Stop requested (benchmark load).",
+      "trainingStarted": "Training started",
+      "trainingFinished": "Training finished. Solved episodes",
+      "episode": "Episode",
+      "solvedSoFar": "solved so far",
+      "cycleDetected": "Solve stopped (cycle detected).",
+      "solvedIn": "Solved in",
+      "movesGreedy": "moves (greedy).",
+      "notReached": "Did not reach goal within",
+      "steps": "steps.",
+      "loaded": "Loaded B{n}.",
+      "newBestFor": "New best for B{n}: {mv} moves.",
+      "ready": "Ready. Click tiles to move; or Train → Solve.",
+      "movesShort": "moves",
+      "jsError": "JavaScript error"
+    },
+    "graph": {
+      "hoverEdges": "Graph (hover edges for details)",
+      "goalLabel": "goal:",
+      "statesLabel": "states:",
+      "zoom": "Zoom",
+      "layout": "Layout",
+      "layoutAria": "Graph layout",
+      "layoutDefault": "default",
+      "layoutRot90": "rotate 90°",
+      "fit": "Fit",
+      "legendCurrent": "current",
+      "legendGoal": "goal",
+      "legendEdgeQ": "edge width ∝ Q",
+      "empty": "empty"
+    }
+  },
+  "ex2x2": {
+    "brand": {
+      "subtitle": "Sliding Puzzle 2×2 · Reachable states (goal component): <strong>12</strong>"
+    },
+    "mechanicsSummary": "Mechanics <span style=\"color:var(--cyan)\">s' = f(s,a)</span>. Learning changes <span style=\"color:var(--lime)\">Q(s,a)</span>. Behavior samples from <span style=\"color:var(--pink)\">π(a|s)</span>.",
+    "missionTrainingChip": "Mission I. Training Episode",
+    "playTrainTitle": "Play + Train",
+    "puzzleAria": "2x2 sliding puzzle",
+    "inspect": {
+      "title": "Inspect",
+      "subtitle": "Hover edges to see (s,a,s′,Q,R). List view glows green for the current state."
+    },
+    "view": {
+      "selectorAria": "Right panel view selector",
+      "graph": "State space graph",
+      "list": "List of states (reward overlay)",
+      "learn": "Ingredients / Explain",
+      "searchPlaceholder": "Search in Ingredients/Explain..."
+    },
+    "rewards": {
+      "title": "Rewards overlay",
+      "intro": "Reward is defined on the <span style=\"color:var(--amber);font-weight:900;\">arrival state</span> <span style=\"font-family:var(--mono)\">s'</span>. Default: only the goal has +1. Edit values below to explore shaping.",
+      "arrivalReward": "Arrival reward",
+      "andHere": "and here",
+      "qUpdate": "Q-learning update"
+    },
+    "explain": {
+      "ariaLabel": "Explanation level",
+      "intuitive": "Intuitive",
+      "math": "Mathematical",
+      "sentence": "One-sentence phrasing",
+      "hint": "Switch the same ingredient between levels."
+    },
+    "params": {
+      "episodesPerRun": "Episodes / run",
+      "episodesTip": "Episodes = number of training attempts.\nTry 50–300 to see learning.\nIf ε is higher, you typically need more episodes.",
+      "maxStepsTip": "Max steps = move budget per episode.\nToo small → never reach reward.\nTry 15–40 for 2×2.",
+      "alphaTip": "α controls how strongly new evidence updates Q.\nQ ← Q + α(target−Q).\n0.05–0.2: stable but slow.\n0.3–0.6: fast for this toy.\n>0.8: noisy.",
+      "gammaTip": "γ controls how much future reward matters.\nFor delayed reward puzzles: γ≈0.9–0.99.\nLow γ makes reward propagation weak.",
+      "epsilonTip": "ε = probability of a random legal move.\nTry 0.05–0.25.\nε=0 early can lock in wrong beliefs.",
+      "speed": "Speed (ms/tick)",
+      "speedTip": "Training runs in ticks.\n0 = very fast.\nTry 10–40 to watch Q propagate."
+    },
+    "status": {
+      "state": "State sₜ",
+      "actions": "Legal actions 𝒜(sₜ)",
+      "policy": "Policy π(a|sₜ) (ε-greedy)",
+      "lastTrans": "Last (sₜ,aₜ,r,sₜ₊₁)",
+      "lastUpdate": "Last Q-update (numeric)",
+      "lastSolve": "Last Solve length"
+    },
+    "bench": {
+      "description": "Load a fixed start state. Then click <b>Solve</b> to evaluate the current agent (greedy, no learning). We record your best move count per benchmark in this browser.",
+      "theoretical": "<strong>Theoretical minimum moves:</strong> B1: 1 | B2: 2 | B3: 3 | B4: 4 | B5: 5 | B6: 6 (God's Number!)",
+      "b1Tip": "⭐ Easy: One Step Away (1 move)",
+      "b2Tip": "⭐⭐ Medium: Value Propagation (2 moves)",
+      "b3Tip": "⭐⭐⭐ Hard: Corner Challenge (3 moves)",
+      "b4Tip": "⭐⭐⭐⭐ Very Hard: Deep Planning (4 moves)",
+      "b5Tip": "⭐⭐⭐⭐⭐ Expert: Maximum Search (5 moves)",
+      "b6Tip": "🏆 God's Number! Ultimate Challenge (6 moves)"
+    },
+    "reachableStatesCount": "12",
+    "godsNumber": "6",
+    "nodeEdit": {
+      "title": "Edit reward for this state",
+      "stateLabel": "State",
+      "note": "Reward is applied on arrival: when you move into this state, you receive"
+    }
+  },
+  "ex2x3": {
+    "brand": {
+      "subtitle": "Sliding Puzzle 2×3 · Reachable states (goal component): <strong>360</strong>"
+    },
+    "header": {
+      "title": "AI-Exhibits: Reinforcement Learning: Sliding Puzzle 2×3",
+      "subtitle": "Reachable states (the connected component containing the goal): 360.",
+      "goal": "Goal: [1 2 3 / 4 5 _]"
+    },
+    "bench": {
+      "theoretical": "<strong>Theoretical minimum moves:</strong> B1: 1 | B2: 3 | B3: 6 | B4: 9 | B5: 21 (God's Number!)",
+      "b1Tip": "⭐ Easy: Quick Win (1 move)",
+      "b2Tip": "⭐⭐ Medium: Value Propagation (3 moves)",
+      "b3Tip": "⭐⭐⭐ Hard: Multi-Step Planning (6 moves)",
+      "b4Tip": "⭐⭐⭐⭐ Very Hard: Deep Search (9 moves)",
+      "b5Tip": "🏆 God's Number! Ultimate Challenge (21 moves)"
+    },
+    "reachableStatesCount": "360",
+    "godsNumber": "21"
+  },
+  "ex3x3": {
+    "brand": {
+      "subtitle": "Sliding Puzzle 3×3 · Reachable states (goal component): <strong>181,440</strong>"
+    },
+    "header": {
+      "title": "Reinforcement Learning: Sliding Puzzle 3×3",
+      "subtitle": "Reachable states (the connected component containing the goal): 181,440.",
+      "goal": "Goal: [1 2 3 / 4 5 6 / 7 8 _]"
+    },
+    "bench": {
+      "theoretical": "<strong>Theoretical minimum moves:</strong> B1: 1 | B2: 10 | B3: 18 | B4: 26 | B5: 31 (God's Number!)",
+      "b1Tip": "⭐ Easy: Warm-up (1 move)",
+      "b2Tip": "⭐⭐ Medium: Growing Challenge (10 moves)",
+      "b3Tip": "⭐⭐⭐ Hard: Deep Planning (18 moves)",
+      "b4Tip": "⭐⭐⭐⭐ Very Hard: Expert Level (26 moves)",
+      "b5Tip": "🏆 God's Number! Ultimate Challenge (31 moves)"
+    },
+    "reachableStatesCount": "181,440",
+    "godsNumber": "31"
+  },
+  "tutorial": {
+    "skip": "Skip Tutorial ✕",
+    "back": "Back",
+    "next": "Next",
+    "finish": "Finish",
+    "startTraining": "Start Training!",
+    "hint": "Press SPACE or ENTER to continue · ESC to skip",
+    "completeTitle": "You're Ready to Train!",
+    "completeText": "You now understand the basics of Q-learning. Start training and watch your agent learn!",
+    "skipConfirm": "Skip all tutorials? You can always reset this in settings.",
+    "tipsButton": "💡 TIPS",
+    "2x2": {
+      "mission": "🎮 Training Mission: 2×2",
+      "title": "Welcome to Q-Learning!",
+      "subtitle": "Learn to train an AI agent to solve sliding puzzles",
+      "step1": {
+        "title": "Understanding the Puzzle",
+        "text": "This is a sliding puzzle. Click tiles adjacent to the empty space to slide them. Your goal: arrange tiles in order (1, 2, 3, blank)."
+      },
+      "step2": {
+        "title": "Training Parameters",
+        "text": "These control how your AI learns. Episodes = practice rounds, Learning rate (α) = how fast it learns, Discount (γ) = how much it values future rewards. Start with the defaults!"
+      },
+      "step3": {
+        "title": "Train Your Agent",
+        "text": "Click Train Agent and watch magic happen! You'll see Q-values update in real-time as your agent learns which moves lead to success."
+      },
+      "step4": {
+        "title": "Test & Compare",
+        "text": "Use Benchmarks to test your trained agent against fixed puzzles. Compare its performance to random moves and human solutions. Can you train an agent that beats both?"
+      }
+    },
+    "2x3": {
+      "mission": "🎮 Training Mission: 2×3",
+      "title": "Scaling Up: Bigger Puzzles",
+      "subtitle": "Watch value propagation in action with more states",
+      "step1": {
+        "title": "More Complex State Space",
+        "text": "A 2×3 puzzle has 360 reachable states (vs 12 for 2×2) — 30× more! Half of the permutations are unreachable due to move parity. Learning takes longer, but the principles are identical."
+      },
+      "step2": {
+        "title": "Adjust Training Time",
+        "text": "You'll need more episodes (try 500-1000) and longer max steps (40-60) because the puzzle is larger. Be patient—good AI takes time to train!"
+      },
+      "step3": {
+        "title": "Value Propagation",
+        "text": "Watch the Q-values spread backwards from the goal! Higher γ (discount) helps values propagate further through the state space."
+      },
+      "step4": {
+        "title": "Benchmark Performance",
+        "text": "Compare your agent against the benchmarks. Notice how much better a trained agent is than random exploration! This is the power of reinforcement learning."
+      }
+    },
+    "3x3": {
+      "mission": "🎮 Training Mission: 3×3",
+      "title": "Expert Mode: Full 8-Puzzle",
+      "subtitle": "The classic AI challenge—can your agent master it?",
+      "step1": {
+        "title": "The Classic Challenge",
+        "text": "The 3×3 eight-puzzle has 181,440 states! This is a real AI benchmark problem. Your agent will need serious training time."
+      },
+      "step2": {
+        "title": "Intensive Training Setup",
+        "text": "For 3×3, use 2000+ episodes and 100+ max steps. Consider increasing learning rate initially. This is where patience pays off!"
+      },
+      "step3": {
+        "title": "Watch Intelligence Emerge",
+        "text": "As training progresses, you'll see your agent go from random moves to intelligent problem-solving. This is emergence—complex behavior from simple rules!"
+      },
+      "step4": {
+        "title": "Achieve Mastery",
+        "text": "A well-trained agent should solve benchmarks in near-optimal moves. Compare to the random baseline—see how far your agent has come! You've trained a real AI."
+      }
+    }
+  },
+  "gate": {
+    "brand": "AI-Exhibits",
+    "title": "Operation Entry",
+    "subtitle": "Enter as a participant, or switch to facilitator mode for orchestration cues.",
+    "mode": "Mode: Agent",
+    "modePrefix": "Mode",
+    "modeAgent": "Agent",
+    "modeFacilitator": "Facilitator",
+    "question": "Do you accept the mission of training an AI agent?",
+    "prompt": "You will test three agents to solve sliding puzzles efficiently: yourself, a random agent, and an AI agent trained by you.",
+    "hint": "Tip: devices are often shared. Use <span class=\"mono\">Return to start</span> anytime.",
+    "facilitatorBtn": "Facilitator mode",
+    "continueBtn": "Go ahead",
+    "author": "Created and developed by Dr. Erika Roldán Roa · MPI MiS"
+  },
+  "hud": {
+    "navLabel": "navigation",
+    "rolePill": "Role: —",
+    "rolePillPrefix": "Role",
+    "rolePillAgent": "Agent",
+    "rolePillFacilitator": "Facilitator"
+  },
+  "footer": {}
+}

@@ -1,0 +1,527 @@
+{
+  "_meta": {
+    "language": "fr",
+    "label": "Français",
+    "flag": "🇫🇷",
+    "status": "live",
+    "version": "0.2.0"
+  },
+  "common": {
+    "backToHub": "Retour au Hall",
+    "loading": "Chargement…",
+    "shuffle": "Mélanger",
+    "resetQ": "Réinitialiser Q",
+    "solve": "Résoudre",
+    "solveGreedy": "Résoudre (glouton)",
+    "startTraining": "Lancer l'entraînement",
+    "stop": "Arrêter",
+    "clearLog": "Effacer le journal",
+    "resetBestScores": "Réinitialiser les meilleurs scores",
+    "resetBestScoresTip": "Effacer les meilleurs scores enregistrés pour ce puzzle",
+    "bestScores": "Meilleurs scores",
+    "apply": "Appliquer",
+    "close": "Fermer",
+    "role": "Rôle",
+    "goal": "Objectif",
+    "reset": "Réinitialiser",
+    "runRandom": "Lancer l'agente aléatoire",
+    "moves": "mouvements",
+    "solved": "résolu",
+    "running": "en cours…",
+    "loaded": "Chargé",
+    "returnToStart": "Retour au départ",
+    "launchTraining": "Lancer l'Entraînement",
+    "goAhead": "Commencer",
+    "yes": "Oui",
+    "no": "Non",
+    "newBest": "Nouveau record !",
+    "facilitatorMode": "Mode animatrice"
+  },
+  "hub": {
+    "launchTraining": "🚀 Lancer l'Entraînement",
+    "header": {
+      "title": "AI-Exhibits : Apprentissage par Renforcement — Hall des Missions",
+      "h1": "AI-Exhibits : Apprentissage par Renforcement — Hall des Missions",
+      "yourRole": "VOTRE RÔLE",
+      "yourChallenge": "VOTRE DÉFI",
+      "toIntel": "Aller aux Infos Mission ↓"
+    },
+    "typing": {
+      "role": "Année 2070 — Agente Humaine & Entraîneuse d'IA.",
+      "mission": "Vous êtes sur le point de participer à une opération impliquant des agentes intelligentes et des puzzles à glissement.\n\nL'opération comprend trois missions, chacune basée sur une taille de puzzle différente.\nSelon le temps disponible, vous ne pourrez peut-être pas toutes les atteindre.\n\nDans ce Hall, vous établissez des références :\n• résoudre des puzzles fixes en tant qu'agente humaine\n• observer une agente non entraînée (aléatoire)\n• comparer le nombre de mouvements nécessaires pour atteindre l'objectif\n\nDans chaque mission, vous affronterez deux épisodes :\nun Épisode d'Entraînement et un Épisode de Défi.",
+      "goal": "Votre objectif tout au long de l'opération est simple : entraîner des agentes qui surpassent à la fois la référence humaine et le score aléatoire de base."
+    },
+    "mission1": {
+      "title": "Mission I : Rendre l'apprentissage visible",
+      "bench": {
+        "b1Tooltip": "⭐ 1 mouvement",
+        "b2Tooltip": "⭐⭐ 2 mouvements",
+        "b3Tooltip": "⭐⭐⭐ 3 mouvements",
+        "b4Tooltip": "⭐⭐⭐⭐ 4 mouvements",
+        "b5Tooltip": "⭐⭐⭐⭐⭐ 5 mouvements",
+        "b6Tooltip": "🏆 6 mouvements — Nombre de Dieu !"
+      }
+    },
+    "mission2": {
+      "title": "Mission II : Propagation",
+      "bench": {
+        "b1Tooltip": "⭐ 1 mouvement",
+        "b2Tooltip": "⭐⭐ 3 mouvements",
+        "b3Tooltip": "⭐⭐⭐ 6 mouvements",
+        "b4Tooltip": "⭐⭐⭐⭐ 9 mouvements",
+        "b5Tooltip": "🏆 21 mouvements — Nombre de Dieu !"
+      }
+    },
+    "mission3": {
+      "title": "Mission III : Mise à l'Échelle",
+      "bench": {
+        "b1Tooltip": "⭐ 1 mouvement",
+        "b2Tooltip": "⭐⭐ 10 mouvements",
+        "b3Tooltip": "⭐⭐⭐ 18 mouvements",
+        "b4Tooltip": "⭐⭐⭐⭐ 26 mouvements",
+        "b5Tooltip": "🏆 31 mouvements — Nombre de Dieu !"
+      }
+    },
+    "stats": {
+      "you": "Vous",
+      "randomAgent": "Agente aléatoire"
+    },
+    "intel": {
+      "title": "Infos Mission (ce qu'il faut savoir pour entraîner efficacement votre agente Q-learning)",
+      "showBtn": "Afficher",
+      "hideBtn": "Masquer",
+      "termsLabel": "Termes du glossaire",
+      "chip": {
+        "agent": "Agente",
+        "state": "État",
+        "action": "Action",
+        "policy": "Politique",
+        "rl": "Apprentissage par Renforcement",
+        "q": "Q-learning"
+      }
+    },
+    "facTools": {
+      "tag": "ANIMATRICE",
+      "title": "Démarrage Rapide",
+      "desc": "Utilisez le guide de l'animatrice pour l'orchestration, les points de contrôle et les pistes de dépannage. Les expositions restent axées sur l'exploration ; le guide apporte la structure.",
+      "openBtn": "Ouvrir le démarrage rapide animatrice"
+    },
+    "glossary": {
+      "agent": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">AGENTE</div>\n        <div>\n          Une <strong>agente</strong> est l'entité qui prend les décisions&#8239;: une personne ou un système qui choisit une <strong>action</strong> dans chaque <strong>état</strong>.\n        </div>\n        <div style=\"margin-top:8px;\">\n          Dans cette exposition, vous comparerez trois agentes&#8239;:<br>\n          • une <strong>agente humaine</strong> (vous)<br>\n          • une <strong>agente non entraînée (aléatoire)</strong> (mouvements légaux tirés uniformément au hasard)<br>\n          • une <strong>agente Q-learning</strong> (valeurs Q apprises → politique → actions)\n        </div>\n        <div style=\"margin-top:8px;\">\n          Toutes sont des agentes. La seule différence réside dans la <strong>manière</strong> dont elles choisissent leurs actions dans chaque état.\n        </div>\n      ",
+      "state": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">ÉTAT</div>\n        <div>\n          Un <strong>état</strong> est la situation actuelle que l'agente «&#8239;perçoit&#8239;».\n          Pour un puzzle à glissement, l'état est la <strong>configuration complète du plateau</strong>&#8239;:\n          quelle tuile se trouve à chaque position (y compris la case vide).\n        </div>\n      ",
+      "action": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">ACTION</div>\n        <div>\n          Une <strong>action</strong> est un mouvement que l'agente peut choisir.\n          Dans un puzzle à glissement, une action est un <strong>glissement légal</strong>&#8239;:\n          déplacer une tuile voisine dans la case vide (de façon équivalente&#8239;: déplacer la case vide vers le haut, le bas, la gauche ou la droite lorsque c'est permis).\n        </div>\n      ",
+      "policy": "\n  <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">POLITIQUE</div>\n  <div>\n    Une <strong>politique</strong> décrit la manière dont une agente se comporte.\n    C'est une règle qui indique à l'agente <strong>quelle action choisir dans chaque état</strong>.\n  </div>\n  <div style=\"margin-top:8px;\">\n    Dans cette exposition, l'<strong>agente Q-learning</strong> apprend d'abord les valeurs Q.\n    La politique est ensuite dérivée de ces valeurs (par exemple, en choisissant l'action ayant la plus haute valeur Q).\n  </div>\n  <div style=\"margin-top:8px;\">\n    Différentes agentes suivent différentes politiques&#8239;:\n    une agente aléatoire suit une politique aléatoire,\n    tandis qu'une agente entraînée suit une politique apprise.\n  </div>\n",
+      "rl": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">APPRENTISSAGE PAR RENFORCEMENT</div>\n        <div>\n          L'<strong>Apprentissage par Renforcement</strong> est un <strong>cadre</strong> pour entraîner une agente par interaction&#8239;:\n          l'agente essaie des actions, reçoit un retour (des récompenses), et améliore son comportement au fil du temps.\n          Ce n'est <strong>pas</strong> un algorithme unique, mais une famille d'algorithmes. Parmi les exemples plus avancés&#8239;: DQN sur Atari (2015), AlphaZero pour le Go (2017).\n        </div>\n        <div style=\"margin-top:8px;\">\n          Dans nos puzzles, la récompense est simple&#8239;: <strong>+1 lorsque l'état suivant est l'objectif, 0 sinon</strong> (une pénalité par pas est optionnelle).\n        </div>\n      ",
+      "q": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">Q-LEARNING</div>\n        <div>\n          Le <strong>Q-learning</strong> est un algorithme d'Apprentissage par Renforcement.\n          Il apprend des valeurs <span class=\"mono\">Q(état, action)</span> qui estiment la qualité de chaque action dans chaque état.\n          L'agente utilise ensuite ces valeurs Q pour choisir ses actions (sa politique).\n        </div>\n      "
+    }
+  },
+  "glossary": {
+    "state": {
+      "term": "État"
+    },
+    "action": {
+      "term": "Action"
+    },
+    "reward": {
+      "term": "Récompense"
+    },
+    "qvalue": {
+      "term": "Valeur Q"
+    },
+    "episode": {
+      "term": "Épisode"
+    },
+    "policy": {
+      "term": "Politique"
+    },
+    "learningRate": {
+      "term": "Taux d'apprentissage (α)"
+    },
+    "discount": {
+      "term": "Escompte (γ)"
+    },
+    "epsilon": {
+      "term": "Epsilon (ε)"
+    }
+  },
+  "fiche": {
+    "title": "AI-Exhibits — Fiche de Référence Rapide",
+    "header": {
+      "title": "🎮 AI-EXHIBITS — FICHE RAPIDE",
+      "subtitle": "Atelier d'Apprentissage par Renforcement — Entraînez votre premier agente IA"
+    },
+    "card1": {
+      "title": "🧠 Concepts-Clés",
+      "colTerm": "Terme",
+      "colMeaning": "Signification",
+      "state": "Configuration actuelle du puzzle (position des tuiles)",
+      "action": "Un mouvement — glisser une tuile dans la case vide",
+      "reward": "Retour : <span class=\"highlight\">+1</span> quand l'état suivant est l'objectif, <span class=\"warning\">0</span> sinon (pénalité par pas optionnelle)",
+      "qvalue": "Qualité estimée d'une action depuis un état (apprise)",
+      "episode": "Une tentative complète de résolution",
+      "policy": "La stratégie de l'agente : quelle action choisir dans chaque état",
+      "formulaLabel": "💡 Formule du Q-learning :"
+    },
+    "card2": {
+      "title": "⚙️ Paramètres d'Entraînement",
+      "colParam": "Paramètre",
+      "colEffect": "Effet",
+      "colValues": "Valeurs utiles",
+      "alphaDesc": "Vitesse de mise à jour des valeurs Q",
+      "gammaDesc": "Importance des récompenses futures vs immédiates",
+      "epsilonDesc": "Probabilité d'exploration aléatoire",
+      "tipsTitle": "Conseils sur les paramètres",
+      "tip1": "<strong>α élevé</strong> : apprend vite mais peut être instable",
+      "tip2": "<strong>γ élevé</strong> : planifie à long terme (idéal pour les puzzles !)",
+      "tip3": "<strong>ε élevé</strong> : plus d'exploration, convergence plus lente",
+      "tip4": "<strong>Pour tester</strong> : régler ε = 0 (stratégie purement gloutonne — l'agente n'explore plus)"
+    },
+    "card3": {
+      "title": "🏆 Références & Nombres de Dieu",
+      "h2x2": "Puzzle 2×2 (12 états)",
+      "h2x3": "Puzzle 2×3 (360 états)",
+      "h3x3": "Puzzle 3×3 (181 440 états)",
+      "tip": "🏆 <strong>Nombre de Dieu</strong> = diamètre du graphe des états accessibles : nombre de coups pour résoudre le <em>pire</em> état de départ si l'on joue parfaitement."
+    },
+    "card4": {
+      "title": "🚀 Déroulé d'Entraînement",
+      "stepByStep": "Pas à pas",
+      "step1": "<strong>Régler les paramètres</strong> : α=0,5, γ=0,9, ε=0,3",
+      "step2": "<strong>Entraîner</strong> : cliquer plusieurs fois sur « Entraîner 100 »",
+      "step3": "<strong>Observer la table Q</strong> : les couleurs apparaissent à mesure que l'agente apprend",
+      "step4": "<strong>Charger une référence</strong> : essayer B1, B2, B3…",
+      "step5": "<strong>Tester</strong> : cliquer « Résoudre (glouton) »",
+      "step6": "<strong>Comparer</strong> : mouvements vs minimum théorique",
+      "step7": "<strong>Ajuster</strong> : modifier les paramètres, entraîner davantage",
+      "step8": "<strong>Défi</strong> : atteindrez-vous le Nombre de Dieu ?",
+      "troubleshoot": "En cas de problème",
+      "t1": "<strong>L'agente ne trouve pas la solution ?</strong> Entraîner davantage (1000+ épisodes)",
+      "t2": "<strong>Table Q vide ?</strong> Vérifier que α ≠ 0",
+      "t3": "<strong>Trop lent ?</strong> Réduire ε après l'entraînement"
+    },
+    "footer": "RL Mission Hub · D<sup>r</sup> Erika Roldán · MPI MiS · 2026"
+  },
+  "quickstart": {
+    "title": "🎓 Démarrage rapide — Facilitatrice·ice",
+    "intro": "Atelier de 2 h sur l'apprentissage par renforcement avec des taquins. Ce guide condense l'essentiel.",
+    "h": {
+      "before": "Avant l'atelier",
+      "flow": "Déroulé (2 h)",
+      "params": "Paramètres recommandés",
+      "trouble": "Si ça coince"
+    },
+    "before": {
+      "1": "Tester le Hub sur le matériel qui sera utilisé (tablettes, ordinateurs). Installation : aucune.",
+      "2": "Imprimer si besoin : <a href=\"print/briefing_mission_fr.html\">briefing mission</a>, <a href=\"print/fiche_equipe_fr.html\">fiche d'équipe</a>, <a href=\"print/dictionnaire_fr.html\">dictionnaire</a>.",
+      "3": "Prévoir un grand écran pour le briefing collectif."
+    },
+    "flow": {
+      "1": "<strong>00:00–00:15</strong> — Accroche &amp; cadrage mission",
+      "2": "<strong>00:15–00:35</strong> — Phase 1 : humain vs agente aléatoire (Mission I, 2×2)",
+      "3": "<strong>00:35–01:05</strong> — Phase 2 : entraînement du premier agent",
+      "4": "<strong>01:05–01:15</strong> — Pause",
+      "5": "<strong>01:15–01:45</strong> — Phase 3 : défi « Nombre de Dieu » &amp; passage à l'échelle (Missions II / III)",
+      "6": "<strong>01:45–02:00</strong> — Réflexion &amp; liens réels"
+    },
+    "params": {
+      "2x2": "<strong>2×2</strong> (12 états) : α=0,5, γ=0,9, ε=0,3 · 500–2000 épisodes",
+      "2x3": "<strong>2×3</strong> (360 états) : α=0,3, γ=0,95, ε=0,4 · 2 000–10 000 épisodes",
+      "3x3": "<strong>3×3</strong> (181 440 états) : α=0,3, γ=0,99, ε=0,5 · 50 000+ épisodes"
+    },
+    "trouble": {
+      "1": "L'agente ne trouve pas la solution → augmenter les épisodes ou le facteur γ",
+      "2": "Table Q vide → vérifier que α ≠ 0 et que les épisodes tournent",
+      "3": "Aléatoire solve instantanément → coup de chance, relancer"
+    }
+  },
+  "nav": {
+    "backMissions": "← Missions",
+    "backMissionsTitle": "Retour aux Missions",
+    "returnStart": "Retour au départ",
+    "returnStartTitle": "Retour au départ"
+  },
+  "ex": {
+    "brand": {
+      "title": "AI-Exhibits : Apprentissage par Renforcement (Q-learning)"
+    },
+    "panel": {
+      "currentPuzzle": "Puzzle actuel",
+      "trainingParams": "Paramètres d'entraînement"
+    },
+    "bench": {
+      "title": "Références",
+      "active": "Active",
+      "activeNone": "Active : —",
+      "description": "Chargez un état de départ fixe, puis cliquez sur <b>Résoudre (glouton)</b>. Nous enregistrons votre meilleur nombre de coups par référence dans ce navigateur."
+    },
+    "params": {
+      "episodes": "Épisodes",
+      "episodesTip": "Nombre d'épisodes d'entraînement à exécuter.\nChaque épisode commence depuis un état mélangé.",
+      "maxSteps": "Étapes max / épisode",
+      "maxStepsTip": "Plafond de sécurité : arrêter un épisode s'il a pris trop de coups.\nPlus d'étapes permet à l'agente d'explorer des trajectoires plus longues.",
+      "learningRate": "α (taux d'apprentissage)",
+      "learningRateTip": "À quel point on remplace l'ancien Q par de nouvelles informations.\nα=1 signifie remplacer ; un α plus petit signifie moyenner lentement.",
+      "discount": "γ (escompte)",
+      "discountTip": "L'importance des récompenses futures.\nγ proche de 1 valorise le succès à long terme.",
+      "epsilon": "ε (exploration)",
+      "epsilonTip": "Probabilité d'exploration en ε-glouton.\nAvec la probabilité ε, choisir une action au hasard.",
+      "stepPenalty": "Pénalité par pas",
+      "stepPenaltyTip": "Modelage optionnel : une petite récompense négative à chaque coup.\nEncourage des solutions plus courtes.",
+      "goalReward": "Récompense objectif",
+      "goalRewardTip": "Récompense lorsque l'agente atteint le puzzle résolu.\nValeur par défaut : 1.",
+      "animSpeed": "Vitesse d'animation (ms)",
+      "animSpeedTip": "À quelle vitesse afficher les coups pendant la résolution.\nAugmentez pour avoir plus de temps à observer."
+    },
+    "stats": {
+      "currentState": "État actuel",
+      "movesLastSolve": "Coups (dernière résolution)",
+      "visitedStates": "États visités",
+      "qUpdates": "Mises à jour Q"
+    },
+    "btn": {
+      "stepOnce": "Pas (une mise à jour)"
+    },
+    "msg": {
+      "shuffled": "Mélangé.",
+      "resetQ": "Q et compteurs réinitialisés.",
+      "stopRequested": "Arrêt demandé.",
+      "stopBenchLoad": "Arrêt demandé (chargement de référence).",
+      "trainingStarted": "Entraînement lancé",
+      "trainingFinished": "Entraînement terminé. Épisodes résolus",
+      "episode": "Épisode",
+      "solvedSoFar": "résolus jusqu'ici",
+      "cycleDetected": "Résolution arrêtée (cycle détecté).",
+      "solvedIn": "Résolu en",
+      "movesGreedy": "coups (glouton).",
+      "notReached": "Objectif non atteint en",
+      "steps": "étapes.",
+      "loaded": "B{n} chargé.",
+      "newBestFor": "Nouveau record pour B{n} : {mv} coups.",
+      "ready": "Prêt. Cliquez sur les tuiles pour jouer ; ou Entraîner → Résoudre.",
+      "movesShort": "coups",
+      "jsError": "Erreur JavaScript"
+    },
+    "graph": {
+      "hoverEdges": "Graphe (survolez les arêtes pour les détails)",
+      "goalLabel": "objectif :",
+      "statesLabel": "états :",
+      "zoom": "Zoom",
+      "layout": "Disposition",
+      "layoutAria": "Disposition du graphe",
+      "layoutDefault": "par défaut",
+      "layoutRot90": "rotation 90°",
+      "fit": "Ajuster",
+      "legendCurrent": "actuel",
+      "legendGoal": "objectif",
+      "legendEdgeQ": "largeur d'arête ∝ Q",
+      "empty": "vide"
+    }
+  },
+  "ex2x2": {
+    "brand": {
+      "subtitle": "Puzzle à Glissement 2×2 · États accessibles (composante de l'objectif) : <strong>12</strong>"
+    },
+    "mechanicsSummary": "Mécanique <span style=\"color:var(--cyan)\">s' = f(s,a)</span>. L'apprentissage modifie <span style=\"color:var(--lime)\">Q(s,a)</span>. Le comportement échantillonne depuis <span style=\"color:var(--pink)\">π(a|s)</span>.",
+    "missionTrainingChip": "Mission I. Épisode d'Entraînement",
+    "playTrainTitle": "Jouer + Entraîner",
+    "puzzleAria": "puzzle à glissement 2×2",
+    "inspect": {
+      "title": "Inspecter",
+      "subtitle": "Survolez les arêtes pour voir (s,a,s′,Q,R). La vue liste brille en vert pour l'état actuel."
+    },
+    "view": {
+      "selectorAria": "Sélecteur de vue du panneau droit",
+      "graph": "Graphe de l'espace d'états",
+      "list": "Liste des états (superposition des récompenses)",
+      "learn": "Ingrédients / Expliquer",
+      "searchPlaceholder": "Rechercher dans Ingrédients/Expliquer…"
+    },
+    "rewards": {
+      "title": "Superposition des récompenses",
+      "intro": "La récompense est définie sur l'<span style=\"color:var(--amber);font-weight:900;\">état d'arrivée</span> <span style=\"font-family:var(--mono)\">s'</span>. Par défaut : seul l'objectif a +1. Modifiez les valeurs ci-dessous pour explorer le modelage.",
+      "arrivalReward": "Récompense d'arrivée",
+      "andHere": "et ici",
+      "qUpdate": "Mise à jour Q-learning"
+    },
+    "explain": {
+      "ariaLabel": "Niveau d'explication",
+      "intuitive": "Intuitif",
+      "math": "Mathématique",
+      "sentence": "Phrase unique",
+      "hint": "Basculez le même ingrédient entre les niveaux."
+    },
+    "params": {
+      "episodesPerRun": "Épisodes / exécution",
+      "episodesTip": "Épisodes = nombre de tentatives d'entraînement.\nEssayez 50–300 pour voir l'apprentissage.\nSi ε est plus élevé, il faut généralement plus d'épisodes.",
+      "maxStepsTip": "Étapes max = budget de coups par épisode.\nTrop petit → jamais de récompense.\nEssayez 15–40 pour 2×2.",
+      "alphaTip": "α contrôle à quel point les nouvelles preuves mettent à jour Q.\nQ ← Q + α(cible−Q).\n0,05–0,2 : stable mais lent.\n0,3–0,6 : rapide pour ce modèle-jouet.\n>0,8 : bruyant.",
+      "gammaTip": "γ contrôle l'importance des récompenses futures.\nPour des puzzles à récompense différée : γ≈0,9–0,99.\nUn γ faible rend la propagation des récompenses faible.",
+      "epsilonTip": "ε = probabilité d'un coup légal aléatoire.\nEssayez 0,05–0,25.\nε=0 trop tôt peut figer de fausses croyances.",
+      "speed": "Vitesse (ms/tic)",
+      "speedTip": "L'entraînement s'exécute par tics.\n0 = très rapide.\nEssayez 10–40 pour voir Q se propager."
+    },
+    "status": {
+      "state": "État sₜ",
+      "actions": "Actions légales 𝒜(sₜ)",
+      "policy": "Politique π(a|sₜ) (ε-glouton)",
+      "lastTrans": "Dernier (sₜ,aₜ,r,sₜ₊₁)",
+      "lastUpdate": "Dernière mise à jour Q (numérique)",
+      "lastSolve": "Longueur dernière résolution"
+    },
+    "bench": {
+      "description": "Chargez un état de départ fixe. Puis cliquez sur <b>Résoudre</b> pour évaluer l'agente actuel (glouton, sans apprentissage). Nous enregistrons votre meilleur nombre de coups par référence dans ce navigateur.",
+      "theoretical": "<strong>Coups minimum théoriques :</strong> B1 : 1 | B2 : 2 | B3 : 3 | B4 : 4 | B5 : 5 | B6 : 6 (Nombre de Dieu !)",
+      "b1Tip": "⭐ Facile : À Un Pas (1 coup)",
+      "b2Tip": "⭐⭐ Moyen : Propagation de Valeur (2 coups)",
+      "b3Tip": "⭐⭐⭐ Difficile : Défi du Coin (3 coups)",
+      "b4Tip": "⭐⭐⭐⭐ Très Difficile : Planification Profonde (4 coups)",
+      "b5Tip": "⭐⭐⭐⭐⭐ Expert : Recherche Maximale (5 coups)",
+      "b6Tip": "🏆 Nombre de Dieu ! Défi Ultime (6 coups)"
+    },
+    "reachableStatesCount": "12",
+    "godsNumber": "6",
+    "nodeEdit": {
+      "title": "Modifier la récompense pour cet état",
+      "stateLabel": "État",
+      "note": "La récompense est appliquée à l'arrivée : lorsque vous entrez dans cet état, vous recevez"
+    }
+  },
+  "ex2x3": {
+    "brand": {
+      "subtitle": "Puzzle à Glissement 2×3 · États accessibles (composante de l'objectif) : <strong>360</strong>"
+    },
+    "header": {
+      "title": "AI-Exhibits : Apprentissage par Renforcement : Puzzle à Glissement 2×3",
+      "subtitle": "États accessibles (la composante connexe contenant l'objectif) : 360.",
+      "goal": "Objectif : [1 2 3 / 4 5 _]"
+    },
+    "bench": {
+      "theoretical": "<strong>Coups minimum théoriques :</strong> B1 : 1 | B2 : 3 | B3 : 6 | B4 : 9 | B5 : 21 (Nombre de Dieu !)",
+      "b1Tip": "⭐ Facile : Victoire Rapide (1 coup)",
+      "b2Tip": "⭐⭐ Moyen : Propagation de Valeur (3 coups)",
+      "b3Tip": "⭐⭐⭐ Difficile : Planification Multi-Étapes (6 coups)",
+      "b4Tip": "⭐⭐⭐⭐ Très Difficile : Recherche Profonde (9 coups)",
+      "b5Tip": "🏆 Nombre de Dieu ! Défi Ultime (21 coups)"
+    },
+    "reachableStatesCount": "360",
+    "godsNumber": "21"
+  },
+  "ex3x3": {
+    "brand": {
+      "subtitle": "Puzzle à Glissement 3×3 · États accessibles (composante de l'objectif) : <strong>181 440</strong>"
+    },
+    "header": {
+      "title": "Apprentissage par Renforcement : Puzzle à Glissement 3×3",
+      "subtitle": "États accessibles (la composante connexe contenant l'objectif) : 181 440.",
+      "goal": "Objectif : [1 2 3 / 4 5 6 / 7 8 _]"
+    },
+    "bench": {
+      "theoretical": "<strong>Coups minimum théoriques :</strong> B1 : 1 | B2 : 10 | B3 : 18 | B4 : 26 | B5 : 31 (Nombre de Dieu !)",
+      "b1Tip": "⭐ Facile : Échauffement (1 coup)",
+      "b2Tip": "⭐⭐ Moyen : Défi Grandissant (10 coups)",
+      "b3Tip": "⭐⭐⭐ Difficile : Planification Profonde (18 coups)",
+      "b4Tip": "⭐⭐⭐⭐ Très Difficile : Niveau Expert (26 coups)",
+      "b5Tip": "🏆 Nombre de Dieu ! Défi Ultime (31 coups)"
+    },
+    "reachableStatesCount": "181 440",
+    "godsNumber": "31"
+  },
+  "tutorial": {
+    "skip": "Passer le tutoriel ✕",
+    "back": "Retour",
+    "next": "Suivant",
+    "finish": "Terminer",
+    "startTraining": "Lancer l'entraînement !",
+    "hint": "Appuie sur ESPACE ou ENTRÉE pour continuer · ÉCHAP pour passer",
+    "completeTitle": "Tu es prête à entraîner !",
+    "completeText": "Tu comprends maintenant les bases du Q-learning. Lance l'entraînement et regarde ton agente apprendre !",
+    "skipConfirm": "Passer tous les tutoriels ? Tu peux toujours le réinitialiser dans les paramètres.",
+    "tipsButton": "💡 ASTUCES",
+    "2x2": {
+      "mission": "🎮 Mission d'entraînement : 2×2",
+      "title": "Bienvenue dans le Q-Learning !",
+      "subtitle": "Apprenez à entraîner un agente IA à résoudre des puzzles à glissement",
+      "step1": {
+        "title": "Comprendre le Puzzle",
+        "text": "Ceci est un puzzle à glissement. Cliquez sur les tuiles adjacentes à la case vide pour les glisser. Ton objectif : arranger les tuiles dans l'ordre (1, 2, 3, case vide)."
+      },
+      "step2": {
+        "title": "Paramètres d'Entraînement",
+        "text": "Ceux-ci contrôlent comment ton IA apprend. Épisodes = tours de pratique, Taux d'apprentissage (α) = à quelle vitesse elle apprend, Escompte (γ) = combien elle valorise les récompenses futures. Commence avec les valeurs par défaut !"
+      },
+      "step3": {
+        "title": "Entraîne ton Agent",
+        "text": "Clique sur Entraîner et regarde la magie opérer ! Tu verras les valeurs Q se mettre à jour en temps réel à mesure que ton agente apprend quels coups mènent au succès."
+      },
+      "step4": {
+        "title": "Tester & Comparer",
+        "text": "Utilise les Références pour tester ton agente entraînée sur des puzzles fixes. Compare sa performance aux coups aléatoires et aux solutions humaines. Peux-tu entraîner une agente qui bat les deux ?"
+      }
+    },
+    "2x3": {
+      "mission": "🎮 Mission d'entraînement : 2×3",
+      "title": "Monter en Échelle : Puzzles plus Grands",
+      "subtitle": "Observe la propagation de valeur en action avec plus d'états",
+      "step1": {
+        "title": "Espace d'États plus Complexe",
+        "text": "Un puzzle 2×3 a 360 états accessibles (contre 12 pour le 2×2) — c'est 30× plus ! La moitié des permutations est inaccessible à cause de la parité des mouvements. L'apprentissage prend plus de temps, mais les principes sont identiques."
+      },
+      "step2": {
+        "title": "Ajuster le Temps d'Entraînement",
+        "text": "Il te faudra plus d'épisodes (essaye 500-1000) et plus d'étapes max (40-60) car le puzzle est plus grand. Sois patiente — une bonne IA prend du temps à entraîner !"
+      },
+      "step3": {
+        "title": "Propagation de Valeur",
+        "text": "Regarde les valeurs Q se diffuser à rebours depuis l'objectif ! Un γ (escompte) plus élevé aide les valeurs à se propager plus loin dans l'espace d'états."
+      },
+      "step4": {
+        "title": "Performance sur les Références",
+        "text": "Compare ton agente aux références. Remarque combien un agente entraînée est meilleur qu'une exploration aléatoire ! C'est la puissance de l'apprentissage par renforcement."
+      }
+    },
+    "3x3": {
+      "mission": "🎮 Mission d'entraînement : 3×3",
+      "title": "Mode Expert : Puzzle-8 Complet",
+      "subtitle": "Le défi IA classique — ton agente peut-il le maîtriser ?",
+      "step1": {
+        "title": "Le Défi Classique",
+        "text": "Le puzzle-8 (3×3) a 181 440 états ! C'est un vrai problème de référence en IA. Ton agente aura besoin d'un temps d'entraînement sérieux."
+      },
+      "step2": {
+        "title": "Configuration Intensive",
+        "text": "Pour le 3×3, utilise 2000+ épisodes et 100+ étapes max. Envisage d'augmenter le taux d'apprentissage au départ. C'est ici que la patience paie !"
+      },
+      "step3": {
+        "title": "Regarde l'Intelligence Émerger",
+        "text": "À mesure que l'entraînement progresse, tu verras ton agente passer de coups aléatoires à une résolution intelligente. C'est l'émergence — un comportement complexe à partir de règles simples !"
+      },
+      "step4": {
+        "title": "Atteindre la Maîtrise",
+        "text": "Un agent bien entraîné devrait résoudre les références en un nombre de coups presque optimal. Compare à la référence aléatoire — vois le chemin parcouru par ton agente ! Tu as entraîné une vraie IA."
+      }
+    }
+  },
+  "gate": {
+    "brand": "AI-Exhibits",
+    "title": "Point d'Entrée",
+    "subtitle": "Entrez en tant que participante, ou passez en mode animatrice pour les indications d'orchestration.",
+    "mode": "Mode : Agente",
+    "modePrefix": "Mode",
+    "modeAgent": "Agente",
+    "modeFacilitator": "Animatrice",
+    "question": "Acceptez-vous la mission d'entraîner une agente IA ?",
+    "prompt": "Vous testerez trois agentes pour résoudre des puzzles à glissement : vous-même, une agente aléatoire et une agente IA entraînée par vos soins.",
+    "hint": "Conseil : les appareils sont souvent partagés. Utilisez <span class=\"mono\">Retour au départ</span> à tout moment.",
+    "facilitatorBtn": "Mode animatrice",
+    "continueBtn": "Commencer",
+    "author": "Créé et développé par Dr. Erika Roldán Roa · MPI MiS"
+  },
+  "hud": {
+    "navLabel": "navigation",
+    "rolePill": "Rôle : —",
+    "rolePillPrefix": "Rôle",
+    "rolePillAgent": "Agente",
+    "rolePillFacilitator": "Animatrice"
+  },
+  "footer": {}
+}

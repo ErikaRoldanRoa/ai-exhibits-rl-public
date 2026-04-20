@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<!--
+  AI-Exhibits · Reinforcement Learning & Sliding Puzzles
+  Printable team score sheet — Italian edition.
+
+  © 2026 Dr. Erika Roldán Roa · Max Planck Institute for Mathematics in the Sciences (MPI MiS), Leipzig · Université de Genève, Section de Mathématiques.
+  Licensed: MIT (code) · CC-BY-SA 4.0 (pedagogical documentation) · CC-BY 4.0 (assets). See LICENSE.
+-->
+
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCHEDA PUNTEGGIO — Squadra</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 1cm;
+      }
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .page-break { page-break-before: always; }
+      input { border: 1px solid #000 !important; }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      background: #fff;
+      color: #1a1a2e;
+      font-size: 10pt;
+      line-height: 1.4;
+      padding: 15px;
+    }
+
+    .sheet {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .header {
+      border: 3px solid #1a1a2e;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .header-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14pt;
+      font-weight: 700;
+    }
+
+    .team-field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .team-label {
+      font-weight: 700;
+      font-size: 10pt;
+    }
+
+    .team-input {
+      border: 2px solid #1a1a2e;
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 12pt;
+      font-family: 'JetBrains Mono', monospace;
+      width: 180px;
+    }
+
+    .members-section {
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 15px;
+    }
+
+    .members-title {
+      font-weight: 700;
+      font-size: 10pt;
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .member-box {
+      text-align: center;
+    }
+
+    .member-label {
+      font-size: 8pt;
+      color: #888;
+      margin-bottom: 3px;
+    }
+
+    .member-input {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 5px;
+      font-size: 9pt;
+      text-align: center;
+    }
+
+    .mission-section {
+      border: 2px solid #1a1a2e;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+
+    .mission-header {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mission-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+    }
+
+    .mission-info {
+      font-size: 9pt;
+      opacity: 0.8;
+    }
+
+    .mission-body {
+      padding: 12px;
+    }
+
+    /* Attempt Table */
+    .attempt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 12px;
+    }
+
+    .attempt-table th,
+    .attempt-table td {
+      border: 1px solid #ccc;
+      padding: 6px 8px;
+      text-align: center;
+      font-size: 9pt;
+    }
+
+    .attempt-table th {
+      background: #f5f5f5;
+      font-weight: 700;
+    }
+
+    .attempt-table .benchmark-col {
+      background: #f0f0f0;
+      font-weight: 700;
+      text-align: left;
+      padding-left: 10px;
+      width: 80px;
+    }
+
+    .attempt-table .optimal-col {
+      background: #fff3e0;
+      color: #e65100;
+      font-weight: 700;
+      width: 60px;
+    }
+
+    .attempt-table .gods-row {
+      background: #fce4ec;
+    }
+
+    .attempt-table .gods-row .benchmark-col {
+      background: #f8bbd9;
+      color: #c2185b;
+    }
+
+    .param-input {
+      width: 45px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 4px;
+      font-size: 9pt;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .result-input {
+      width: 40px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 4px;
+      font-size: 10pt;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+    }
+
+    .attempt-header {
+      font-size: 8pt;
+      color: #666;
+    }
+
+    .attempt-group {
+      border: 2px solid #2196f3;
+      border-radius: 4px;
+      margin: 2px;
+      padding: 4px;
+      background: #e3f2fd;
+    }
+
+    .attempt-group.attempt-2 {
+      border-color: #ff9800;
+      background: #fff3e0;
+    }
+
+    .attempt-group.attempt-3 {
+      border-color: #4caf50;
+      background: #e8f5e9;
+    }
+
+    .best-col {
+      background: #e8f5e9 !important;
+      font-weight: 700;
+    }
+
+    /* Legend */
+    .legend {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px 15px;
+      margin-top: 15px;
+      font-size: 9pt;
+    }
+
+    .legend-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .legend-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .legend-symbol {
+      width: 20px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    /* Score Summary */
+    .score-summary {
+      border: 3px solid #4caf50;
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 15px;
+      background: #e8f5e9;
+    }
+
+    .score-title {
+      font-weight: 700;
+      font-size: 11pt;
+      margin-bottom: 10px;
+      color: #2e7d32;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .score-box {
+      text-align: center;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .score-label {
+      font-size: 9pt;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .score-input {
+      width: 50px;
+      border: 2px solid #4caf50;
+      border-radius: 4px;
+      padding: 5px;
+      font-size: 14pt;
+      text-align: center;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .total-box {
+      background: #4caf50;
+      color: #fff;
+    }
+
+    .total-box .score-label {
+      color: #fff;
+    }
+
+    .total-box .score-input {
+      border-color: #fff;
+      color: #4caf50;
+    }
+
+    /* Parameters reminder */
+    .params-reminder {
+      background: #fff8e1;
+      border: 1px solid #ffc107;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 9pt;
+    }
+
+    .params-reminder-title {
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #f57c00;
+    }
+
+    .params-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .param-reminder {
+      text-align: center;
+    }
+
+    .param-symbol {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14pt;
+      font-weight: 700;
+    }
+
+    .param-name {
+      font-size: 8pt;
+      color: #666;
+    }
+
+    .param-range {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9pt;
+      color: #e65100;
+    }
+
+    .footer {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 8pt;
+      color: #888;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .members-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .score-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .params-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="header">
+    <div class="header-title">📋 SCHEDA PUNTEGGIO</div>
+    <div class="team-field">
+      <span class="team-label">SQUADRA:</span>
+      <input type="text" class="team-input" placeholder="Nome della squadra">
+    </div>
+  </div>
+
+  <div class="members-section">
+    <div class="members-title">👥 MEMBRI DELLA SQUADRA</div>
+    <div class="members-grid">
+      <div class="member-box">
+        <div class="member-label">Agente 1</div>
+        <input type="text" class="member-input" placeholder="Nome">
+      </div>
+      <div class="member-box">
+        <div class="member-label">Agente 2</div>
+        <input type="text" class="member-input" placeholder="Nome">
+      </div>
+      <div class="member-box">
+        <div class="member-label">Agente 3</div>
+        <input type="text" class="member-input" placeholder="Nome">
+      </div>
+      <div class="member-box">
+        <div class="member-label">Agente 4</div>
+        <input type="text" class="member-input" placeholder="Nome">
+      </div>
+      <div class="member-box">
+        <div class="member-label">Agente 5</div>
+        <input type="text" class="member-input" placeholder="Nome">
+      </div>
+    </div>
+  </div>
+
+  <div class="params-reminder">
+    <div class="params-reminder-title">📝 PROMEMORIA DEI PARAMETRI</div>
+    <div class="params-grid">
+      <div class="param-reminder">
+        <div class="param-symbol">α</div>
+        <div class="param-name">Learning Rate</div>
+        <div class="param-range">0,3 → 0,7</div>
+      </div>
+      <div class="param-reminder">
+        <div class="param-symbol">γ</div>
+        <div class="param-name">Discount</div>
+        <div class="param-range">0,9 → 0,99</div>
+      </div>
+      <div class="param-reminder">
+        <div class="param-symbol">ε</div>
+        <div class="param-name">Epsilon</div>
+        <div class="param-range">0,2 → 0,4</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION 1: 2x2 -->
+  <div class="mission-section">
+    <div class="mission-header">
+      <div class="mission-title">🎯 MISSIONE 1: PUZZLE 2×2</div>
+      <div class="mission-info">Numero di Dio: 6 mosse</div>
+    </div>
+    <div class="mission-body">
+
+      <table class="attempt-table">
+        <thead>
+          <tr>
+            <th rowspan="2" style="width:70px">Bench</th>
+            <th rowspan="2" style="width:50px">Ottimo</th>
+            <th colspan="4" style="background:#e3f2fd; color:#1565c0;">TENTATIVO 1</th>
+            <th colspan="4" style="background:#fff3e0; color:#e65100;">TENTATIVO 2</th>
+            <th colspan="4" style="background:#e8f5e9; color:#2e7d32;">TENTATIVO 3</th>
+            <th rowspan="2" style="width:50px">Migliore</th>
+          </tr>
+          <tr>
+            <th style="width:35px; font-size:8pt;">α</th>
+            <th style="width:35px; font-size:8pt;">γ</th>
+            <th style="width:35px; font-size:8pt;">ε</th>
+            <th style="width:40px; font-size:8pt;">Mos.</th>
+            <th style="width:35px; font-size:8pt;">α</th>
+            <th style="width:35px; font-size:8pt;">γ</th>
+            <th style="width:35px; font-size:8pt;">ε</th>
+            <th style="width:40px; font-size:8pt;">Mos.</th>
+            <th style="width:35px; font-size:8pt;">α</th>
+            <th style="width:35px; font-size:8pt;">γ</th>
+            <th style="width:35px; font-size:8pt;">ε</th>
+            <th style="width:40px; font-size:8pt;">Mos.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="benchmark-col">B1 ⭐</td>
+            <td class="optimal-col">1</td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td class="best-col"><input type="text" class="result-input"></td>
+          </tr>
+          <tr>
+            <td class="benchmark-col">B2 ⭐⭐</td>
+            <td class="optimal-col">2</td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td class="best-col"><input type="text" class="result-input"></td>
+          </tr>
+          <tr>
+            <td class="benchmark-col">B3 ⭐⭐⭐</td>
+            <td class="optimal-col">3</td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td class="best-col"><input type="text" class="result-input"></td>
+          </tr>
+          <tr>
+            <td class="benchmark-col">B4 ⭐⭐⭐⭐</td>
+            <td class="optimal-col">4</td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td class="best-col"><input type="text" class="result-input"></td>
+          </tr>
+          <tr>
+            <td class="benchmark-col">B5 ⭐⭐⭐⭐⭐</td>
+            <td class="optimal-col">5</td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td class="best-col"><input type="text" class="result-input"></td>
+          </tr>
+          <tr class="gods-row">
+            <td class="benchmark-col">B6 🏆</td>
+            <td class="optimal-col">6</td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td class="best-col"><input type="text" class="result-input"></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- MISSION 2: 2x3 -->
+  <div class="mission-section">
+    <div class="mission-header">
+      <div class="mission-title">🎯 MISSIONE 2: PUZZLE 2×3</div>
+      <div class="mission-info">Numero di Dio: 21 mosse</div>
+    </div>
+    <div class="mission-body">
+
+      <table class="attempt-table">
+        <thead>
+          <tr>
+            <th rowspan="2" style="width:70px">Bench</th>
+            <th rowspan="2" style="width:50px">Ottimo</th>
+            <th colspan="4" style="background:#e3f2fd; color:#1565c0;">TENTATIVO 1</th>
+            <th colspan="4" style="background:#fff3e0; color:#e65100;">TENTATIVO 2</th>
+            <th colspan="4" style="background:#e8f5e9; color:#2e7d32;">TENTATIVO 3</th>
+            <th rowspan="2" style="width:50px">Migliore</th>
+          </tr>
+          <tr>
+            <th style="width:35px; font-size:8pt;">α</th>
+            <th style="width:35px; font-size:8pt;">γ</th>
+            <th style="width:35px; font-size:8pt;">ε</th>
+            <th style="width:40px; font-size:8pt;">Mos.</th>
+            <th style="width:35px; font-size:8pt;">α</th>
+            <th style="width:35px; font-size:8pt;">γ</th>
+            <th style="width:35px; font-size:8pt;">ε</th>
+            <th style="width:40px; font-size:8pt;">Mos.</th>
+            <th style="width:35px; font-size:8pt;">α</th>
+            <th style="width:35px; font-size:8pt;">γ</th>
+            <th style="width:35px; font-size:8pt;">ε</th>
+            <th style="width:40px; font-size:8pt;">Mos.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="benchmark-col">B1 ⭐</td>
+            <td class="optimal-col">1</td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td class="best-col"><input type="text" class="result-input"></td>
+          </tr>
+          <tr>
+            <td class="benchmark-col">B2 ⭐⭐</td>
+            <td class="optimal-col">3</td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td class="best-col"><input type="text" class="result-input"></td>
+          </tr>
+          <tr>
+            <td class="benchmark-col">B3 ⭐⭐⭐</td>
+            <td class="optimal-col">6</td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td class="best-col"><input type="text" class="result-input"></td>
+          </tr>
+          <tr>
+            <td class="benchmark-col">B4 ⭐⭐⭐⭐</td>
+            <td class="optimal-col">9</td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td class="best-col"><input type="text" class="result-input"></td>
+          </tr>
+          <tr class="gods-row">
+            <td class="benchmark-col">B5 🏆</td>
+            <td class="optimal-col">21</td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="param-input"></td>
+            <td><input type="text" class="result-input"></td>
+            <td class="best-col"><input type="text" class="result-input"></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- Score Summary -->
+  <div class="score-summary">
+    <div class="score-title">🏆 PUNTEGGIO FINALE DELLA SQUADRA</div>
+    <div class="score-grid">
+      <div class="score-box">
+        <div class="score-label">Missione 1 (2×2)</div>
+        <div>Benchmark superati:</div>
+        <input type="text" class="score-input" placeholder="__"> / 6
+      </div>
+      <div class="score-box">
+        <div class="score-label">Missione 2 (2×3)</div>
+        <div>Benchmark superati:</div>
+        <input type="text" class="score-input" placeholder="__"> / 5
+      </div>
+      <div class="score-box">
+        <div class="score-label">Missione 3 (3×3)</div>
+        <div>Benchmark superati:</div>
+        <input type="text" class="score-input" placeholder="__"> / 5
+      </div>
+      <div class="score-box total-box">
+        <div class="score-label">TOTALE</div>
+        <div>Benchmark superati:</div>
+        <input type="text" class="score-input" placeholder="__"> / 16
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-title">📝 COME COMPILARE QUESTA SCHEDA</div>
+    <div class="legend-grid">
+      <div class="legend-item">
+        <span class="legend-symbol">α</span>
+        <span>Velocità di apprendimento (es: 0,5)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-symbol">γ</span>
+        <span>Importanza del futuro (es: 0,9)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-symbol">ε</span>
+        <span>Esplorazione casuale (es: 0,3)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-symbol">Mos.</span>
+        <span>Numero di mosse ottenuto</span>
+      </div>
+    </div>
+    <p style="margin-top:10px; font-size:8pt; color:#666;">
+      <strong>Superato</strong> = Il tuo miglior punteggio è uguale al punteggio ottimo.
+      <strong>🏆</strong> = Numero di Dio raggiunto!
+    </p>
+  </div>
+
+  <div class="footer">
+    AI-EXHIBITS WORKSHOP • SCHEDA DI SQUADRA • TERRA-7 COMMAND
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,527 @@
+{
+  "_meta": {
+    "language": "de",
+    "label": "Deutsch",
+    "flag": "🇩🇪",
+    "status": "draft",
+    "version": "0.1.0"
+  },
+  "common": {
+    "backToHub": "Zurück zur Halle",
+    "loading": "Lädt…",
+    "shuffle": "Mischen",
+    "resetQ": "Q zurücksetzen",
+    "solve": "Lösen",
+    "solveGreedy": "Lösen (greedy)",
+    "startTraining": "Training starten",
+    "stop": "Stopp",
+    "clearLog": "Protokoll leeren",
+    "resetBestScores": "Bestwerte zurücksetzen",
+    "resetBestScoresTip": "Gespeicherte Bestwerte für dieses Puzzle löschen",
+    "bestScores": "Bestwerte",
+    "apply": "Anwenden",
+    "close": "Schließen",
+    "role": "Rolle",
+    "goal": "Ziel",
+    "reset": "Zurücksetzen",
+    "runRandom": "Zufallsagent*in starten",
+    "moves": "Züge",
+    "solved": "gelöst",
+    "running": "läuft…",
+    "loaded": "Geladen",
+    "returnToStart": "Zurück zum Start",
+    "launchTraining": "Training starten",
+    "goAhead": "Los geht's",
+    "yes": "Ja",
+    "no": "Nein",
+    "newBest": "Neuer Rekord!",
+    "facilitatorMode": "Moderations-Modus"
+  },
+  "hub": {
+    "launchTraining": "🚀 Training starten",
+    "header": {
+      "title": "AI-Exhibits: Verstärkendes Lernen — Missionshalle",
+      "h1": "AI-Exhibits: Verstärkendes Lernen — Missionshalle",
+      "yourRole": "DEINE ROLLE",
+      "yourChallenge": "DEINE HERAUSFORDERUNG",
+      "toIntel": "Zum Mission-Briefing ↓"
+    },
+    "typing": {
+      "role": "Jahr 2070 — Menschliche*r Agent*in & KI-Trainer*in.",
+      "mission": "Du nimmst gleich an einer Operation teil, in der intelligente Agent*innen und Schiebepuzzles im Mittelpunkt stehen.\n\nDie Operation besteht aus drei Missionen, jede mit einer anderen Puzzle-Größe.\nJe nach verfügbarer Zeit schaffst du vielleicht nicht alle.\n\nHier in der Halle legst du Referenzwerte fest:\n• feste Puzzles als menschliche*r Agent*in lösen\n• eine untrainierte (zufällige) Agent*in beobachten\n• vergleichen, wie viele Züge es bis zum Ziel braucht\n\nIn jeder Mission stellst du dich zwei Episoden:\neiner Trainings-Episode und einer Challenge-Episode.",
+      "goal": "Dein Ziel über die ganze Operation ist einfach: Agent*innen trainieren, die sowohl die menschliche Referenz als auch die zufällige Grundlinie schlagen."
+    },
+    "mission1": {
+      "title": "Mission I: Lernen sichtbar machen",
+      "bench": {
+        "b1Tooltip": "⭐ 1 Zug",
+        "b2Tooltip": "⭐⭐ 2 Züge",
+        "b3Tooltip": "⭐⭐⭐ 3 Züge",
+        "b4Tooltip": "⭐⭐⭐⭐ 4 Züge",
+        "b5Tooltip": "⭐⭐⭐⭐⭐ 5 Züge",
+        "b6Tooltip": "🏆 6 Züge — Gottes Zahl!"
+      }
+    },
+    "mission2": {
+      "title": "Mission II: Ausbreitung",
+      "bench": {
+        "b1Tooltip": "⭐ 1 Zug",
+        "b2Tooltip": "⭐⭐ 3 Züge",
+        "b3Tooltip": "⭐⭐⭐ 6 Züge",
+        "b4Tooltip": "⭐⭐⭐⭐ 9 Züge",
+        "b5Tooltip": "🏆 21 Züge — Gottes Zahl!"
+      }
+    },
+    "mission3": {
+      "title": "Mission III: Skalierung",
+      "bench": {
+        "b1Tooltip": "⭐ 1 Zug",
+        "b2Tooltip": "⭐⭐ 10 Züge",
+        "b3Tooltip": "⭐⭐⭐ 18 Züge",
+        "b4Tooltip": "⭐⭐⭐⭐ 26 Züge",
+        "b5Tooltip": "🏆 31 Züge — Gottes Zahl!"
+      }
+    },
+    "stats": {
+      "you": "Du",
+      "randomAgent": "Zufallsagent*in"
+    },
+    "intel": {
+      "title": "Mission-Briefing (was du wissen musst, um deine Q-Learning-Agent*in effizient zu trainieren)",
+      "showBtn": "Anzeigen",
+      "hideBtn": "Ausblenden",
+      "termsLabel": "Glossarbegriffe",
+      "chip": {
+        "agent": "Agent*in",
+        "state": "Zustand",
+        "action": "Aktion",
+        "policy": "Strategie",
+        "rl": "Verstärkendes Lernen",
+        "q": "Q-Learning"
+      }
+    },
+    "facTools": {
+      "tag": "MODERATION",
+      "title": "Schnellstart",
+      "desc": "Nutze den Moderations-Leitfaden für Ablauf, Kontrollpunkte und Problemlösungen. Die Exponate bleiben entdeckungsorientiert; der Leitfaden gibt die Struktur.",
+      "openBtn": "Moderations-Schnellstart öffnen"
+    },
+    "glossary": {
+      "agent": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">AGENT*IN</div>\n        <div>\n          Eine <strong>Agent*in</strong> ist die Instanz, die Entscheidungen trifft: eine Person oder ein System, das in jedem <strong>Zustand</strong> eine <strong>Aktion</strong> wählt.\n        </div>\n        <div style=\"margin-top:8px;\">\n          In dieser Ausstellung vergleichst du drei Agent*innen:<br>\n          • eine <strong>menschliche Agent*in</strong> (du)<br>\n          • eine <strong>untrainierte (zufällige) Agent*in</strong> (gleichverteilt gezogene legale Züge)<br>\n          • eine <strong>Q-Learning-Agent*in</strong> (gelernte Q-Werte → Strategie → Aktionen)\n        </div>\n        <div style=\"margin-top:8px;\">\n          Alle drei sind Agent*innen. Der einzige Unterschied ist die <strong>Art</strong>, wie sie ihre Aktionen in jedem Zustand wählen.\n        </div>\n      ",
+      "state": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">ZUSTAND</div>\n        <div>\n          Ein <strong>Zustand</strong> ist die aktuelle Situation, die die Agent*in „wahrnimmt\".\n          Bei einem Schiebepuzzle ist der Zustand die <strong>gesamte Brettkonfiguration</strong>:\n          welche Kachel sich an welcher Position befindet (einschließlich des leeren Feldes).\n        </div>\n      ",
+      "action": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">AKTION</div>\n        <div>\n          Eine <strong>Aktion</strong> ist ein Zug, den die Agent*in wählen kann.\n          Bei einem Schiebepuzzle ist eine Aktion ein <strong>legales Verschieben</strong>:\n          eine benachbarte Kachel in das leere Feld bewegen (äquivalent: das leere Feld nach oben, unten, links oder rechts bewegen, falls erlaubt).\n        </div>\n      ",
+      "policy": "\n  <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">STRATEGIE</div>\n  <div>\n    Eine <strong>Strategie</strong> beschreibt, wie sich eine Agent*in verhält.\n    Es ist eine Regel, die der Agent*in sagt, <strong>welche Aktion in welchem Zustand zu wählen ist</strong>.\n  </div>\n  <div style=\"margin-top:8px;\">\n    In dieser Ausstellung lernt die <strong>Q-Learning-Agent*in</strong> zunächst Q-Werte.\n    Die Strategie wird dann aus diesen Werten abgeleitet (zum Beispiel: die Aktion mit dem höchsten Q-Wert wählen).\n  </div>\n  <div style=\"margin-top:8px;\">\n    Verschiedene Agent*innen folgen verschiedenen Strategien:\n    eine zufällige Agent*in folgt einer zufälligen Strategie,\n    während eine trainierte Agent*in einer gelernten Strategie folgt.\n  </div>\n",
+      "rl": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">VERSTÄRKENDES LERNEN</div>\n        <div>\n          <strong>Verstärkendes Lernen</strong> (Reinforcement Learning) ist ein <strong>Rahmenwerk</strong>, um eine Agent*in durch Interaktion zu trainieren:\n          die Agent*in probiert Aktionen aus, erhält Rückmeldung (Belohnungen) und verbessert ihr Verhalten mit der Zeit.\n          Es ist <strong>kein</strong> einzelner Algorithmus, sondern eine Familie. Fortgeschrittenere Beispiele: DQN auf Atari (2015), AlphaZero für Go (2017).\n        </div>\n        <div style=\"margin-top:8px;\">\n          Bei unseren Puzzles ist die Belohnung einfach: <strong>+1, wenn der nächste Zustand das Ziel ist, sonst 0</strong> (eine Schritt-Strafe ist optional).\n        </div>\n      ",
+      "q": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">Q-LEARNING</div>\n        <div>\n          <strong>Q-Learning</strong> ist ein Algorithmus des verstärkenden Lernens.\n          Er lernt Werte <span class=\"mono\">Q(Zustand, Aktion)</span>, die einschätzen, wie gut jede Aktion in jedem Zustand ist.\n          Die Agent*in nutzt diese Q-Werte dann, um ihre Aktionen zu wählen (ihre Strategie).\n        </div>\n      "
+    }
+  },
+  "glossary": {
+    "state": {
+      "term": "Zustand"
+    },
+    "action": {
+      "term": "Aktion"
+    },
+    "reward": {
+      "term": "Belohnung"
+    },
+    "qvalue": {
+      "term": "Q-Wert"
+    },
+    "episode": {
+      "term": "Episode"
+    },
+    "policy": {
+      "term": "Strategie"
+    },
+    "learningRate": {
+      "term": "Lernrate (α)"
+    },
+    "discount": {
+      "term": "Diskontfaktor (γ)"
+    },
+    "epsilon": {
+      "term": "Epsilon (ε)"
+    }
+  },
+  "fiche": {
+    "title": "AI-Exhibits — Kurzreferenz",
+    "header": {
+      "title": "🎮 AI-EXHIBITS — KURZREFERENZ",
+      "subtitle": "Workshop zum verstärkenden Lernen — Trainiere deine erste KI-Agent*in"
+    },
+    "card1": {
+      "title": "🧠 Schlüsselbegriffe",
+      "colTerm": "Begriff",
+      "colMeaning": "Bedeutung",
+      "state": "Aktuelle Puzzle-Konfiguration (Position der Kacheln)",
+      "action": "Ein Zug — eine Kachel in das leere Feld schieben",
+      "reward": "Rückmeldung: <span class=\"highlight\">+1</span>, wenn der Folgezustand das Ziel ist, <span class=\"warning\">0</span> sonst (optionale Schrittstrafe)",
+      "qvalue": "Geschätzte Güte einer Aktion aus einem Zustand (gelernt)",
+      "episode": "Ein vollständiger Lösungsversuch",
+      "policy": "Die Strategie der Agent*in: welche Aktion in jedem Zustand gewählt wird",
+      "formulaLabel": "💡 Die Q-Learning-Formel:"
+    },
+    "card2": {
+      "title": "⚙️ Trainings-Parameter",
+      "colParam": "Parameter",
+      "colEffect": "Wirkung",
+      "colValues": "Sinnvolle Werte",
+      "alphaDesc": "Wie schnell Q-Werte aktualisiert werden",
+      "gammaDesc": "Gewicht zukünftiger vs. sofortiger Belohnungen",
+      "epsilonDesc": "Wahrscheinlichkeit zufälliger Exploration",
+      "tipsTitle": "Parameter-Tipps",
+      "tip1": "<strong>Hohes α</strong>: lernt schnell, kann aber instabil sein",
+      "tip2": "<strong>Hohes γ</strong>: plant langfristig (ideal für Puzzles!)",
+      "tip3": "<strong>Hohes ε</strong>: mehr Exploration, langsamere Konvergenz",
+      "tip4": "<strong>Zum Testen</strong>: ε = 0 setzen (reine Ausnutzung — Agent*in erkundet nicht mehr)"
+    },
+    "card3": {
+      "title": "🏆 Benchmarks & Gottes Zahlen",
+      "h2x2": "2×2-Puzzle (12 Zustände)",
+      "h2x3": "2×3-Puzzle (360 Zustände)",
+      "h3x3": "3×3-Puzzle (181.440 Zustände)",
+      "tip": "🏆 <strong>Gottes Zahl</strong> = Durchmesser des Graphen der erreichbaren Zustände: die Anzahl Züge, um den <em>schwierigsten</em> Startzustand bei perfektem Spiel zu lösen."
+    },
+    "card4": {
+      "title": "🚀 Trainings-Ablauf",
+      "stepByStep": "Schritt für Schritt",
+      "step1": "<strong>Parameter einstellen</strong>: α=0,5, γ=0,9, ε=0,3",
+      "step2": "<strong>Trainieren</strong>: mehrmals auf „Train 100\" klicken",
+      "step3": "<strong>Q-Tabelle beobachten</strong>: Farben erscheinen, während die Agent*in lernt",
+      "step4": "<strong>Benchmark laden</strong>: B1, B2, B3… ausprobieren",
+      "step5": "<strong>Testen</strong>: auf „Lösen (greedy)\" klicken",
+      "step6": "<strong>Vergleichen</strong>: Züge gegen theoretisches Minimum",
+      "step7": "<strong>Feintunen</strong>: Parameter anpassen, weiter trainieren",
+      "step8": "<strong>Herausforderung</strong>: Schaffst du Gottes Zahl?",
+      "troubleshoot": "Bei Problemen",
+      "t1": "<strong>Agent*in findet die Lösung nicht?</strong> Mehr trainieren (1000+ Episoden)",
+      "t2": "<strong>Q-Tabelle leer?</strong> Prüfen, dass α ≠ 0",
+      "t3": "<strong>Zu langsam?</strong> ε nach dem Training verkleinern"
+    },
+    "footer": "RL Mission Hub · Dr. Erika Roldán · MPI MiS · 2026"
+  },
+  "quickstart": {
+    "title": "🎓 Schnellstart — Moderator*in",
+    "intro": "2-stündiger Workshop zum verstärkenden Lernen mit Schiebepuzzles. Dieser Leitfaden fasst das Wesentliche zusammen.",
+    "h": {
+      "before": "Vor dem Workshop",
+      "flow": "Ablauf (2 h)",
+      "params": "Empfohlene Parameter",
+      "trouble": "Wenn es hakt"
+    },
+    "before": {
+      "1": "Die Halle auf den verwendeten Geräten (Tablets, Computer) testen. Installation: keine.",
+      "2": "Bei Bedarf drucken: Mission-Briefing, Teambogen, Wörterbuch.",
+      "3": "Einen großen Bildschirm für das gemeinsame Briefing einplanen."
+    },
+    "flow": {
+      "1": "<strong>00:00–00:15</strong> — Einstieg &amp; Missions-Rahmen",
+      "2": "<strong>00:15–00:35</strong> — Phase 1: Mensch vs. Zufallsagent*in (Mission I, 2×2)",
+      "3": "<strong>00:35–01:05</strong> — Phase 2: erste Agent*in trainieren",
+      "4": "<strong>01:05–01:15</strong> — Pause",
+      "5": "<strong>01:15–01:45</strong> — Phase 3: „Gottes Zahl\"-Herausforderung &amp; Skalierung (Missionen II / III)",
+      "6": "<strong>01:45–02:00</strong> — Reflexion &amp; Alltagsbezug"
+    },
+    "params": {
+      "2x2": "<strong>2×2</strong> (12 Zustände): α=0,5, γ=0,9, ε=0,3 · 500–2000 Episoden",
+      "2x3": "<strong>2×3</strong> (360 Zustände): α=0,3, γ=0,95, ε=0,4 · 2.000–10.000 Episoden",
+      "3x3": "<strong>3×3</strong> (181.440 Zustände): α=0,3, γ=0,99, ε=0,5 · 50.000+ Episoden"
+    },
+    "trouble": {
+      "1": "Agent*in findet die Lösung nicht → mehr Episoden oder γ erhöhen",
+      "2": "Q-Tabelle leer → prüfen, dass α ≠ 0 und Episoden laufen",
+      "3": "Zufall löst sofort → Glückstreffer, neu starten"
+    }
+  },
+  "nav": {
+    "backMissions": "← Missionen",
+    "backMissionsTitle": "Zurück zu den Missionen",
+    "returnStart": "Zurück zum Start",
+    "returnStartTitle": "Zurück zum Start"
+  },
+  "ex": {
+    "brand": {
+      "title": "AI-Exhibits: Verstärkendes Lernen (Q-Learning)"
+    },
+    "panel": {
+      "currentPuzzle": "Aktuelles Puzzle",
+      "trainingParams": "Trainings-Parameter"
+    },
+    "bench": {
+      "title": "Benchmarks",
+      "active": "Aktiv",
+      "activeNone": "Aktiv: —",
+      "description": "Lade einen festen Startzustand und klicke dann auf <b>Lösen (greedy)</b>. Wir speichern deine beste Zuganzahl pro Benchmark in diesem Browser."
+    },
+    "params": {
+      "episodes": "Episoden",
+      "episodesTip": "Anzahl der Trainings-Episoden, die ausgeführt werden.\nJede Episode startet in einem gemischten Zustand.",
+      "maxSteps": "Max. Schritte / Episode",
+      "maxStepsTip": "Sicherheits-Obergrenze: Episode stoppen, wenn sie zu viele Züge braucht.\nMehr Schritte lassen die Agent*in längere Trajektorien erkunden.",
+      "learningRate": "α (Lernrate)",
+      "learningRateTip": "Wie stark altes Q durch neue Information ersetzt wird.\nα=1 heißt vollständig ersetzen; kleineres α heißt langsam mitteln.",
+      "discount": "γ (Diskontfaktor)",
+      "discountTip": "Wie wichtig zukünftige Belohnungen sind.\nγ nahe 1 bewertet langfristigen Erfolg hoch.",
+      "epsilon": "ε (Exploration)",
+      "epsilonTip": "Explorationswahrscheinlichkeit bei ε-greedy.\nMit Wahrscheinlichkeit ε wird eine zufällige Aktion gewählt.",
+      "stepPenalty": "Schrittstrafe",
+      "stepPenaltyTip": "Optionales Shaping: eine kleine negative Belohnung pro Zug.\nFördert kürzere Lösungen.",
+      "goalReward": "Ziel-Belohnung",
+      "goalRewardTip": "Belohnung, wenn die Agent*in das gelöste Puzzle erreicht.\nStandardwert: 1.",
+      "animSpeed": "Animationsgeschwindigkeit (ms)",
+      "animSpeedTip": "Wie schnell die Züge beim Lösen angezeigt werden.\nErhöhen, um mehr Zeit zum Beobachten zu haben."
+    },
+    "stats": {
+      "currentState": "Aktueller Zustand",
+      "movesLastSolve": "Züge (letzte Lösung)",
+      "visitedStates": "Besuchte Zustände",
+      "qUpdates": "Q-Updates"
+    },
+    "btn": {
+      "stepOnce": "Schritt (ein Update)"
+    },
+    "msg": {
+      "shuffled": "Gemischt.",
+      "resetQ": "Q und Zähler zurückgesetzt.",
+      "stopRequested": "Stopp angefordert.",
+      "stopBenchLoad": "Stopp angefordert (Benchmark-Laden).",
+      "trainingStarted": "Training gestartet",
+      "trainingFinished": "Training beendet. Gelöste Episoden",
+      "episode": "Episode",
+      "solvedSoFar": "bisher gelöst",
+      "cycleDetected": "Lösung abgebrochen (Zyklus erkannt).",
+      "solvedIn": "Gelöst in",
+      "movesGreedy": "Zügen (greedy).",
+      "notReached": "Ziel nicht erreicht in",
+      "steps": "Schritten.",
+      "loaded": "B{n} geladen.",
+      "newBestFor": "Neuer Rekord für B{n}: {mv} Züge.",
+      "ready": "Bereit. Kacheln anklicken, um zu spielen; oder Trainieren → Lösen.",
+      "movesShort": "Züge",
+      "jsError": "JavaScript-Fehler"
+    },
+    "graph": {
+      "hoverEdges": "Graph (mit der Maus über Kanten fahren für Details)",
+      "goalLabel": "Ziel:",
+      "statesLabel": "Zustände:",
+      "zoom": "Zoom",
+      "layout": "Layout",
+      "layoutAria": "Graph-Layout",
+      "layoutDefault": "Standard",
+      "layoutRot90": "90° drehen",
+      "fit": "Einpassen",
+      "legendCurrent": "aktuell",
+      "legendGoal": "Ziel",
+      "legendEdgeQ": "Kantenbreite ∝ Q",
+      "empty": "leer"
+    }
+  },
+  "ex2x2": {
+    "brand": {
+      "subtitle": "Schiebepuzzle 2×2 · Erreichbare Zustände (Zielkomponente): <strong>12</strong>"
+    },
+    "mechanicsSummary": "Mechanik <span style=\"color:var(--cyan)\">s' = f(s,a)</span>. Das Lernen verändert <span style=\"color:var(--lime)\">Q(s,a)</span>. Das Verhalten folgt <span style=\"color:var(--pink)\">π(a|s)</span>.",
+    "missionTrainingChip": "Mission I. Trainings-Episode",
+    "playTrainTitle": "Spielen + Trainieren",
+    "puzzleAria": "2×2-Schiebepuzzle",
+    "inspect": {
+      "title": "Untersuchen",
+      "subtitle": "Mit der Maus über Kanten fahren, um (s,a,s′,Q,R) zu sehen. Die Listenansicht leuchtet grün für den aktuellen Zustand."
+    },
+    "view": {
+      "selectorAria": "Ansichts-Auswahl im rechten Panel",
+      "graph": "Zustandsraum-Graph",
+      "list": "Zustandsliste (Belohnungs-Overlay)",
+      "learn": "Zutaten / Erklärung",
+      "searchPlaceholder": "In Zutaten/Erklärung suchen…"
+    },
+    "rewards": {
+      "title": "Belohnungs-Overlay",
+      "intro": "Die Belohnung wird im <span style=\"color:var(--amber);font-weight:900;\">Zielzustand</span> <span style=\"font-family:var(--mono)\">s'</span> vergeben. Standard: nur das Ziel hat +1. Werte unten bearbeiten, um Reward-Shaping zu erkunden.",
+      "arrivalReward": "Ankunfts-Belohnung",
+      "andHere": "und hier",
+      "qUpdate": "Q-Learning-Update"
+    },
+    "explain": {
+      "ariaLabel": "Erklärungs-Ebene",
+      "intuitive": "Intuitiv",
+      "math": "Mathematisch",
+      "sentence": "Ein-Satz-Formulierung",
+      "hint": "Gleiche Zutat zwischen Ebenen umschalten."
+    },
+    "params": {
+      "episodesPerRun": "Episoden / Durchlauf",
+      "episodesTip": "Episoden = Anzahl der Trainingsversuche.\nProbiere 50–300, um das Lernen zu sehen.\nBei höherem ε brauchst du meist mehr Episoden.",
+      "maxStepsTip": "Max. Schritte = Zug-Budget pro Episode.\nZu klein → nie eine Belohnung erreichen.\nFür 2×2 probiere 15–40.",
+      "alphaTip": "α steuert, wie stark neue Evidenz Q aktualisiert.\nQ ← Q + α(Ziel−Q).\n0,05–0,2: stabil, aber langsam.\n0,3–0,6: schnell für dieses kleine Modell.\n>0,8: verrauscht.",
+      "gammaTip": "γ steuert, wie wichtig zukünftige Belohnungen sind.\nFür Puzzles mit verzögerter Belohnung: γ≈0,9–0,99.\nKleines γ macht die Belohnungs-Ausbreitung schwach.",
+      "epsilonTip": "ε = Wahrscheinlichkeit eines zufälligen legalen Zugs.\nProbiere 0,05–0,25.\nε=0 zu früh kann falsche Überzeugungen einfrieren.",
+      "speed": "Geschwindigkeit (ms/Tick)",
+      "speedTip": "Das Training läuft in Ticks.\n0 = sehr schnell.\nProbiere 10–40, um zu sehen, wie Q sich ausbreitet."
+    },
+    "status": {
+      "state": "Zustand sₜ",
+      "actions": "Legale Aktionen 𝒜(sₜ)",
+      "policy": "Strategie π(a|sₜ) (ε-greedy)",
+      "lastTrans": "Letzter Übergang (sₜ,aₜ,r,sₜ₊₁)",
+      "lastUpdate": "Letztes Q-Update (numerisch)",
+      "lastSolve": "Länge letzter Lösung"
+    },
+    "bench": {
+      "description": "Lade einen festen Startzustand. Klicke dann auf <b>Lösen</b>, um die aktuelle Agent*in auszuwerten (greedy, ohne Lernen). Wir speichern deine beste Zuganzahl pro Benchmark in diesem Browser.",
+      "theoretical": "<strong>Theoretisches Minimum an Zügen:</strong> B1: 1 | B2: 2 | B3: 3 | B4: 4 | B5: 5 | B6: 6 (Gottes Zahl!)",
+      "b1Tip": "⭐ Leicht: Ein Schritt entfernt (1 Zug)",
+      "b2Tip": "⭐⭐ Mittel: Wert-Ausbreitung (2 Züge)",
+      "b3Tip": "⭐⭐⭐ Schwer: Ecken-Herausforderung (3 Züge)",
+      "b4Tip": "⭐⭐⭐⭐ Sehr schwer: Tiefe Planung (4 Züge)",
+      "b5Tip": "⭐⭐⭐⭐⭐ Expert*in: Maximale Suche (5 Züge)",
+      "b6Tip": "🏆 Gottes Zahl! Ultimative Herausforderung (6 Züge)"
+    },
+    "reachableStatesCount": "12",
+    "godsNumber": "6",
+    "nodeEdit": {
+      "title": "Belohnung für diesen Zustand bearbeiten",
+      "stateLabel": "Zustand",
+      "note": "Die Belohnung wird bei Ankunft vergeben: Wenn du in diesen Zustand wechselst, erhältst du"
+    }
+  },
+  "ex2x3": {
+    "brand": {
+      "subtitle": "Schiebepuzzle 2×3 · Erreichbare Zustände (Zielkomponente): <strong>360</strong>"
+    },
+    "header": {
+      "title": "AI-Exhibits: Verstärkendes Lernen: Schiebepuzzle 2×3",
+      "subtitle": "Erreichbare Zustände (Zusammenhangskomponente, die das Ziel enthält): 360.",
+      "goal": "Ziel: [1 2 3 / 4 5 _]"
+    },
+    "bench": {
+      "theoretical": "<strong>Theoretisches Minimum an Zügen:</strong> B1: 1 | B2: 3 | B3: 6 | B4: 9 | B5: 21 (Gottes Zahl!)",
+      "b1Tip": "⭐ Leicht: Schneller Sieg (1 Zug)",
+      "b2Tip": "⭐⭐ Mittel: Wert-Ausbreitung (3 Züge)",
+      "b3Tip": "⭐⭐⭐ Schwer: Mehrschritt-Planung (6 Züge)",
+      "b4Tip": "⭐⭐⭐⭐ Sehr schwer: Tiefe Suche (9 Züge)",
+      "b5Tip": "🏆 Gottes Zahl! Ultimative Herausforderung (21 Züge)"
+    },
+    "reachableStatesCount": "360",
+    "godsNumber": "21"
+  },
+  "ex3x3": {
+    "brand": {
+      "subtitle": "Schiebepuzzle 3×3 · Erreichbare Zustände (Zielkomponente): <strong>181.440</strong>"
+    },
+    "header": {
+      "title": "Verstärkendes Lernen: Schiebepuzzle 3×3",
+      "subtitle": "Erreichbare Zustände (Zusammenhangskomponente, die das Ziel enthält): 181.440.",
+      "goal": "Ziel: [1 2 3 / 4 5 6 / 7 8 _]"
+    },
+    "bench": {
+      "theoretical": "<strong>Theoretisches Minimum an Zügen:</strong> B1: 1 | B2: 10 | B3: 18 | B4: 26 | B5: 31 (Gottes Zahl!)",
+      "b1Tip": "⭐ Leicht: Aufwärmen (1 Zug)",
+      "b2Tip": "⭐⭐ Mittel: Wachsende Herausforderung (10 Züge)",
+      "b3Tip": "⭐⭐⭐ Schwer: Tiefe Planung (18 Züge)",
+      "b4Tip": "⭐⭐⭐⭐ Sehr schwer: Expert*innen-Niveau (26 Züge)",
+      "b5Tip": "🏆 Gottes Zahl! Ultimative Herausforderung (31 Züge)"
+    },
+    "reachableStatesCount": "181.440",
+    "godsNumber": "31"
+  },
+  "tutorial": {
+    "skip": "Tutorial überspringen ✕",
+    "back": "Zurück",
+    "next": "Weiter",
+    "finish": "Fertig",
+    "startTraining": "Training starten!",
+    "hint": "Drücke LEERTASTE oder ENTER zum Weitergehen · ESC zum Überspringen",
+    "completeTitle": "Du bist bereit zum Trainieren!",
+    "completeText": "Du verstehst jetzt die Grundlagen von Q-Learning. Starte das Training und schau deiner Agent*in beim Lernen zu!",
+    "skipConfirm": "Alle Tutorials überspringen? Du kannst das jederzeit in den Einstellungen zurücksetzen.",
+    "tipsButton": "💡 TIPPS",
+    "2x2": {
+      "mission": "🎮 Trainings-Mission: 2×2",
+      "title": "Willkommen bei Q-Learning!",
+      "subtitle": "Lerne, eine KI-Agent*in zu trainieren, Schiebepuzzles zu lösen",
+      "step1": {
+        "title": "Das Puzzle verstehen",
+        "text": "Das ist ein Schiebepuzzle. Klicke auf Kacheln neben dem leeren Feld, um sie zu verschieben. Dein Ziel: die Kacheln in der Reihenfolge (1, 2, 3, leer) anordnen."
+      },
+      "step2": {
+        "title": "Trainings-Parameter",
+        "text": "Diese steuern, wie deine KI lernt. Episoden = Übungsrunden, Lernrate (α) = wie schnell sie lernt, Diskontfaktor (γ) = wie stark sie zukünftige Belohnungen gewichtet. Starte mit den Standardwerten!"
+      },
+      "step3": {
+        "title": "Trainiere deine Agent*in",
+        "text": "Klicke auf Trainieren und schau zu, wie die Magie passiert! Du siehst, wie sich die Q-Werte in Echtzeit aktualisieren, während deine Agent*in lernt, welche Züge zum Erfolg führen."
+      },
+      "step4": {
+        "title": "Testen & Vergleichen",
+        "text": "Nutze die Benchmarks, um deine trainierte Agent*in auf festen Puzzles zu testen. Vergleiche ihre Leistung mit zufälligen Zügen und menschlichen Lösungen. Kannst du eine Agent*in trainieren, die beide schlägt?"
+      }
+    },
+    "2x3": {
+      "mission": "🎮 Trainings-Mission: 2×3",
+      "title": "Skalieren: größere Puzzles",
+      "subtitle": "Beobachte die Wert-Ausbreitung in Aktion mit mehr Zuständen",
+      "step1": {
+        "title": "Komplexerer Zustandsraum",
+        "text": "Ein 2×3-Puzzle hat 360 erreichbare Zustände (gegenüber 12 beim 2×2) — das 30-Fache! Die Hälfte der Permutationen ist wegen der Paritäts-Regel nicht erreichbar. Das Lernen dauert länger, aber die Prinzipien bleiben gleich."
+      },
+      "step2": {
+        "title": "Trainings-Zeit anpassen",
+        "text": "Du brauchst mehr Episoden (probier 500–1000) und mehr Schritte (40–60), weil das Puzzle größer ist. Sei geduldig — gute KI braucht Zeit zum Trainieren!"
+      },
+      "step3": {
+        "title": "Wert-Ausbreitung",
+        "text": "Schau zu, wie die Q-Werte sich vom Ziel rückwärts ausbreiten! Ein höheres γ (Diskontfaktor) hilft, dass sich Werte weiter durch den Zustandsraum fortpflanzen."
+      },
+      "step4": {
+        "title": "Benchmark-Leistung",
+        "text": "Vergleiche deine Agent*in mit den Benchmarks. Siehst du, wie viel besser eine trainierte Agent*in gegenüber zufälliger Exploration ist? Das ist die Kraft des verstärkenden Lernens."
+      }
+    },
+    "3x3": {
+      "mission": "🎮 Trainings-Mission: 3×3",
+      "title": "Expert*innen-Modus: komplettes 8er-Puzzle",
+      "subtitle": "Die klassische KI-Herausforderung — kann deine Agent*in sie meistern?",
+      "step1": {
+        "title": "Die klassische Herausforderung",
+        "text": "Das 3×3-Achter-Puzzle hat 181.440 Zustände! Es ist ein echtes KI-Benchmark-Problem. Deine Agent*in braucht ernsthafte Trainingszeit."
+      },
+      "step2": {
+        "title": "Intensive Trainings-Konfiguration",
+        "text": "Für 3×3 nutze 2000+ Episoden und 100+ maximale Schritte. Erwäge, die Lernrate am Anfang zu erhöhen. Hier zahlt sich Geduld aus!"
+      },
+      "step3": {
+        "title": "Intelligenz entstehen sehen",
+        "text": "Mit fortschreitendem Training siehst du, wie deine Agent*in von zufälligen Zügen zu intelligentem Problemlösen übergeht. Das ist Emergenz — komplexes Verhalten aus einfachen Regeln!"
+      },
+      "step4": {
+        "title": "Meisterschaft erreichen",
+        "text": "Eine gut trainierte Agent*in sollte Benchmarks in nahezu optimaler Zuganzahl lösen. Vergleiche mit der zufälligen Grundlinie — sieh, wie weit deine Agent*in gekommen ist! Du hast eine echte KI trainiert."
+      }
+    }
+  },
+  "gate": {
+    "brand": "AI-Exhibits",
+    "title": "Zugang zur Operation",
+    "subtitle": "Als Teilnehmer*in eintreten oder in den Moderations-Modus wechseln für Ablauf-Hinweise.",
+    "mode": "Modus: Agent*in",
+    "modePrefix": "Modus",
+    "modeAgent": "Agent*in",
+    "modeFacilitator": "Moderator*in",
+    "question": "Nimmst du die Mission an, eine KI-Agent*in zu trainieren?",
+    "prompt": "Du wirst drei Agent*innen beim Lösen von Schiebepuzzles testen: dich selbst, eine Zufallsagent*in und eine von dir trainierte KI-Agent*in.",
+    "hint": "Tipp: Geräte werden oft geteilt. Nutze <span class=\"mono\">Zurück zum Start</span> jederzeit.",
+    "facilitatorBtn": "Moderations-Modus",
+    "continueBtn": "Los geht's",
+    "author": "Konzipiert und entwickelt von Dr. Erika Roldán Roa · MPI MiS"
+  },
+  "hud": {
+    "navLabel": "Navigation",
+    "rolePill": "Rolle: —",
+    "rolePillPrefix": "Rolle",
+    "rolePillAgent": "Agent*in",
+    "rolePillFacilitator": "Moderator*in"
+  },
+  "footer": {}
+}

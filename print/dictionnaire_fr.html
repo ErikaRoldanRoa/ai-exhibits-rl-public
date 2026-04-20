@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<!--
+  AI-Exhibits · Reinforcement Learning & Sliding Puzzles
+  Printable bilingual dictionary — English ↔ French.
+
+  © 2026 Dr. Erika Roldán Roa · Max Planck Institute for Mathematics in the Sciences (MPI MiS), Leipzig · Université de Genève, Section de Mathématiques.
+  Licensed: MIT (code) · CC-BY-SA 4.0 (pedagogical documentation) · CC-BY 4.0 (assets). See LICENSE.
+-->
+
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DICTIONNAIRE DE BORD — Anglais → Français</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+    
+    @media print {
+      @page { 
+        size: A4; 
+        margin: 1.2cm;
+      }
+      body { 
+        -webkit-print-color-adjust: exact; 
+        print-color-adjust: exact;
+      }
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      background: #fff;
+      color: #1a1a2e;
+      font-size: 10pt;
+      line-height: 1.5;
+      padding: 15px;
+    }
+    
+    .document {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      border: 3px solid #2196f3;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      text-align: center;
+      background: #e3f2fd;
+    }
+    
+    .header-icon {
+      font-size: 24pt;
+    }
+    
+    .header-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16pt;
+      font-weight: 700;
+      color: #1565c0;
+    }
+    
+    .header-sub {
+      font-size: 10pt;
+      color: #666;
+      margin-top: 5px;
+    }
+    
+    .intro-box {
+      background: #fff8e1;
+      border: 2px solid #ffc107;
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+    }
+    
+    .intro-text {
+      font-style: italic;
+    }
+    
+    h2 {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 8px 15px;
+      font-size: 11pt;
+      margin: 20px 0 0;
+      border-radius: 8px 8px 0 0;
+    }
+    
+    .section {
+      border: 2px solid #1a1a2e;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      margin-bottom: 15px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    th, td {
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    
+    th {
+      background: #f5f5f5;
+      font-weight: 700;
+      font-size: 9pt;
+      color: #666;
+    }
+    
+    .english {
+      font-family: 'JetBrains Mono', monospace;
+      color: #e91e63;
+      font-weight: 700;
+    }
+    
+    .french {
+      color: #4caf50;
+      font-weight: 600;
+    }
+    
+    .context {
+      color: #888;
+      font-size: 9pt;
+    }
+    
+    .important-row {
+      background: #fff3e0;
+    }
+    
+    .important-row .english {
+      color: #e65100;
+    }
+    
+    /* Two column layout for compact sections */
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    
+    .mini-section {
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .mini-header {
+      background: #f5f5f5;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 10pt;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .mini-table td {
+      padding: 6px 10px;
+      font-size: 9pt;
+    }
+    
+    .params-section {
+      background: #e8f5e9;
+      border: 2px solid #4caf50;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 20px 0;
+    }
+    
+    .params-title {
+      font-weight: 700;
+      color: #2e7d32;
+      margin-bottom: 10px;
+      font-size: 11pt;
+    }
+    
+    .params-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+    
+    .param-card {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+    
+    .param-symbol {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 24pt;
+      font-weight: 700;
+      color: #e91e63;
+    }
+    
+    .param-english {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9pt;
+      color: #666;
+      margin: 5px 0;
+    }
+    
+    .param-french {
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+    
+    .param-range {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10pt;
+      color: #4caf50;
+      margin-top: 5px;
+    }
+    
+    .param-desc {
+      font-size: 9pt;
+      color: #666;
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+    
+    .tip-box {
+      background: #e3f2fd;
+      border: 2px solid #2196f3;
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin: 15px 0;
+    }
+    
+    .tip-title {
+      font-weight: 700;
+      color: #1565c0;
+      margin-bottom: 5px;
+    }
+    
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 8pt;
+      color: #888;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="document">
+  
+  <div class="header">
+    <div class="header-icon">📖</div>
+    <div class="header-title">DICTIONNAIRE DE BORD</div>
+    <div class="header-sub">Le vocabulaire du Q-learning</div>
+  </div>
+  
+  <div class="intro-box">
+    <p class="intro-text">📡 <strong>Note du Commandement :</strong> Voici le vocabulaire essentiel pour piloter le vaisseau : les trois paramètres à régler, les boutons de l'interface, et les termes techniques que vous rencontrerez. Les mots anglais sont ceux utilisés en recherche et dans l'industrie — les connaître vous sera utile au-delà de cet atelier.</p>
+  </div>
+  
+  <!-- MOST IMPORTANT: Parameters -->
+  <div class="params-section">
+    <div class="params-title">⚙️ LES TROIS PARAMÈTRES (TRÈS IMPORTANT !)</div>
+    <div class="params-grid">
+      <div class="param-card">
+        <div class="param-symbol">α</div>
+        <div class="param-english">Learning Rate</div>
+        <div class="param-french">Vitesse d'Apprentissage</div>
+        <div class="param-range">0,3 → 0,7</div>
+        <div class="param-desc">Plus c'est haut, plus l'agente change vite d'avis</div>
+      </div>
+      <div class="param-card">
+        <div class="param-symbol">γ</div>
+        <div class="param-english">Discount</div>
+        <div class="param-french">Importance du Futur</div>
+        <div class="param-range">0,9 → 0,99</div>
+        <div class="param-desc">Plus c'est haut, plus l'agente planifie à long terme</div>
+      </div>
+      <div class="param-card">
+        <div class="param-symbol">ε</div>
+        <div class="param-english">Epsilon</div>
+        <div class="param-french">Exploration Aléatoire</div>
+        <div class="param-range">0,2 → 0,4</div>
+        <div class="param-desc">Plus c'est haut, plus l'agente essaie des choses au hasard</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Navigation Buttons -->
+  <h2>🖱️ BOUTONS DE L'INTERFACE</h2>
+  <div class="section">
+    <table>
+      <tr>
+        <th style="width:30%">ANGLAIS</th>
+        <th style="width:35%">FRANÇAIS</th>
+        <th style="width:35%">CE QUE ÇA FAIT</th>
+      </tr>
+      <tr>
+        <td class="english">Launch Training</td>
+        <td class="french">Lancer l'Entraînement</td>
+        <td class="context">Entrer dans une mission</td>
+      </tr>
+      <tr>
+        <td class="english">Shuffle</td>
+        <td class="french">Mélanger</td>
+        <td class="context">Mélanger le puzzle au hasard</td>
+      </tr>
+      <tr>
+        <td class="english">Goal</td>
+        <td class="french">Objectif</td>
+        <td class="context">Voir la solution à atteindre</td>
+      </tr>
+      <tr class="important-row">
+        <td class="english">Train 100</td>
+        <td class="french">Entraîner 100 fois</td>
+        <td class="context">Faire apprendre l'agente 100 fois</td>
+      </tr>
+      <tr class="important-row">
+        <td class="english">Solve (greedy)</td>
+        <td class="french">Résoudre</td>
+        <td class="context">L'agente essaie de résoudre</td>
+      </tr>
+      <tr>
+        <td class="english">Reset</td>
+        <td class="french">Réinitialiser</td>
+        <td class="context">Tout remettre à zéro</td>
+      </tr>
+      <tr>
+        <td class="english">Step</td>
+        <td class="french">Un pas</td>
+        <td class="context">Faire un seul mouvement</td>
+      </tr>
+      <tr>
+        <td class="english">Play / Pause</td>
+        <td class="french">Jouer / Pause</td>
+        <td class="context">Démarrer / Arrêter</td>
+      </tr>
+    </table>
+  </div>
+  
+  <!-- Key Concepts -->
+  <h2>🧠 CONCEPTS IMPORTANTS</h2>
+  <div class="section">
+    <table>
+      <tr>
+        <th>ANGLAIS</th>
+        <th>FRANÇAIS</th>
+        <th>EXPLICATION SIMPLE</th>
+      </tr>
+      <tr class="important-row">
+        <td class="english">State</td>
+        <td class="french">État</td>
+        <td class="context">Position actuelle des tuiles</td>
+      </tr>
+      <tr class="important-row">
+        <td class="english">Action</td>
+        <td class="french">Action</td>
+        <td class="context">Un mouvement (glisser une tuile)</td>
+      </tr>
+      <tr class="important-row">
+        <td class="english">Reward</td>
+        <td class="french">Récompense</td>
+        <td class="context">Signal reçu (+1 quand l'état suivant est l'objectif, 0 sinon)</td>
+      </tr>
+      <tr>
+        <td class="english">Episode</td>
+        <td class="french">Épisode</td>
+        <td class="context">Une tentative complète</td>
+      </tr>
+      <tr>
+        <td class="english">Q-value</td>
+        <td class="french">Valeur Q</td>
+        <td class="context">Ce que l'agente a appris sur une action</td>
+      </tr>
+      <tr>
+        <td class="english">Q-table</td>
+        <td class="french">Table Q</td>
+        <td class="context">La "mémoire" de l'agente</td>
+      </tr>
+    </table>
+  </div>
+  
+  <!-- Statistics -->
+  <div class="two-columns">
+    <div class="mini-section">
+      <div class="mini-header">📊 STATISTIQUES</div>
+      <table class="mini-table">
+        <tr>
+          <td class="english">Total steps</td>
+          <td class="french">Étapes totales</td>
+        </tr>
+        <tr>
+          <td class="english">Current state</td>
+          <td class="french">État actuel</td>
+        </tr>
+        <tr>
+          <td class="english">Last solve</td>
+          <td class="french">Dernière résolution</td>
+        </tr>
+        <tr>
+          <td class="english">Best solve</td>
+          <td class="french">Meilleur score</td>
+        </tr>
+        <tr>
+          <td class="english">Best scores</td>
+          <td class="french">Meilleurs scores</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="mini-section">
+      <div class="mini-header">💬 MESSAGES</div>
+      <table class="mini-table">
+        <tr>
+          <td class="english">Solved!</td>
+          <td class="french">Résolu !</td>
+        </tr>
+        <tr>
+          <td class="english">New best!</td>
+          <td class="french">Nouveau record !</td>
+        </tr>
+        <tr>
+          <td class="english">Goal reached</td>
+          <td class="french">Objectif atteint</td>
+        </tr>
+        <tr>
+          <td class="english">Training complete</td>
+          <td class="french">Entraînement fini</td>
+        </tr>
+        <tr>
+          <td class="english">Max steps reached</td>
+          <td class="french">Limite atteinte</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Special Terms -->
+  <div class="tip-box">
+    <div class="tip-title">🏆 TERMES SPÉCIAUX</div>
+    <table style="width:100%; border:none;">
+      <tr>
+        <td style="border:none;"><span class="english">God's Number</span> = <span class="french">Nombre de Dieu</span></td>
+        <td style="border:none; color:#666;">Le minimum de mouvements pour le puzzle le plus dur</td>
+      </tr>
+      <tr>
+        <td style="border:none;"><span class="english">Benchmark</span> = <span class="french">Point de contrôle</span></td>
+        <td style="border:none; color:#666;">Un test standard (B1, B2, B3…)</td>
+      </tr>
+      <tr>
+        <td style="border:none;"><span class="english">Greedy</span> = <span class="french">Glouton</span></td>
+        <td style="border:none; color:#666;">L'agente choisit toujours ce qui semble le mieux</td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="footer">
+    AI-EXHIBITS WORKSHOP • DICTIONNAIRE DE BORD • TERRA-7 COMMAND
+  </div>
+  
+</div>
+
+</body>
+</html>
