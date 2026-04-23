@@ -94,18 +94,6 @@ No installation, no backend, works offline after first visit.
 URL override: `?lang=fr|en|de|it` · preference persists via `localStorage`.
 Contributions for 🇩🇪 DE and 🇮🇹 IT are welcome — drop a filled JSON into `translations/`.
 
----
-
-## Workshops and presentations
-
-**Maison Poincaré — Paris, 30 January 2026** · Prototype testing with two *Seconde* classes (15–16 yrs), n = 25.
-
-- **92 %** of participants reported being *interested or very interested*.
-- Mean satisfaction **3.35 / 4** across the group.
-
-**CoSMO 2026 — EPFL Lausanne, 2 February 2026** · *Collaborative Swiss Math Outreach Conference*. Presentation of the Sliding Puzzles exhibit and the Maison Poincaré results to the Swiss math-outreach community (Espace des Inventions, Caravane des maths, Mathilda programme, and other national outreach projects).
-
-**Marmottes Filles et Maths — UNIGE, 13–18 April 2026** · Multi-day RL workshop scenario at the *Marmottes Filles et Maths* camp. Teen girls; n = 29 opening poll, 93 % already engaged with AI in their daily life; full multi-day closing instrument collected across the week.
 
 ---
 
