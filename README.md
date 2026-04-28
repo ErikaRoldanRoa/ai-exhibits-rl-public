@@ -111,4 +111,4 @@ Attribution in all cases: **Dr. Erika Roldán Roa (MPI MiS).**
 
 ## AI-Exhibits partnership
 
-**IMAGINARY gGmbH** (Berlin) · **Institut Henri Poincaré** (Paris) · **Max Planck Institute for Mathematics in the Sciences** (Leipzig) · **Citizens in Power** (Nicosia).
+**IMAGINARY gGmbH** (Berlin) · **Institut Henri Poincaré** (Paris) · **Max Planck Institute for Mathematics in the Sciences** (Leipzig) · **Citizens in Power** (Nicosia) · **ITT Giordani Striano** (Naples).
