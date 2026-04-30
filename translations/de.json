@@ -322,8 +322,7 @@
     "brand": {
       "subtitle": "Schiebepuzzle 2×2 · Erreichbare Zustände (Zielkomponente): <strong>12</strong>"
     },
-    "mechanicsSummary": "Mechanik <span style=\"color:var(--cyan)\">s' = f(s,a)</span>. Das Lernen verändert <span style=\"color:var(--lime)\">Q(s,a)</span>. Das Verhalten folgt <span style=\"color:var(--pink)\">π(a|s)</span>.",
-    "missionTrainingChip": "Mission I. Trainings-Episode",
+    "missionTrainingChip": "Mission I · Trainings-Episode",
     "playTrainTitle": "Spielen + Trainieren",
     "puzzleAria": "2×2-Schiebepuzzle",
     "inspect": {
@@ -425,81 +424,6 @@
     },
     "reachableStatesCount": "181.440",
     "godsNumber": "31"
-  },
-  "tutorial": {
-    "skip": "Tutorial überspringen ✕",
-    "back": "Zurück",
-    "next": "Weiter",
-    "finish": "Fertig",
-    "startTraining": "Training starten!",
-    "hint": "Drücke LEERTASTE oder ENTER zum Weitergehen · ESC zum Überspringen",
-    "completeTitle": "Du bist bereit zum Trainieren!",
-    "completeText": "Du verstehst jetzt die Grundlagen von Q-Learning. Starte das Training und schau deiner Agent*in beim Lernen zu!",
-    "skipConfirm": "Alle Tutorials überspringen? Du kannst das jederzeit in den Einstellungen zurücksetzen.",
-    "tipsButton": "💡 TIPPS",
-    "2x2": {
-      "mission": "🎮 Trainings-Mission: 2×2",
-      "title": "Willkommen bei Q-Learning!",
-      "subtitle": "Lerne, eine KI-Agent*in zu trainieren, Schiebepuzzles zu lösen",
-      "step1": {
-        "title": "Das Puzzle verstehen",
-        "text": "Das ist ein Schiebepuzzle. Klicke auf Kacheln neben dem leeren Feld, um sie zu verschieben. Dein Ziel: die Kacheln in der Reihenfolge (1, 2, 3, leer) anordnen."
-      },
-      "step2": {
-        "title": "Trainings-Parameter",
-        "text": "Diese steuern, wie deine KI lernt. Episoden = Übungsrunden, Lernrate (α) = wie schnell sie lernt, Diskontfaktor (γ) = wie stark sie zukünftige Belohnungen gewichtet. Starte mit den Standardwerten!"
-      },
-      "step3": {
-        "title": "Trainiere deine Agent*in",
-        "text": "Klicke auf Trainieren und sieh, wie sich die Q-Werte in Echtzeit aktualisieren, während deine Agent*in lernt, welche Züge zum Erfolg führen."
-      },
-      "step4": {
-        "title": "Testen & Vergleichen",
-        "text": "Nutze die Benchmarks, um deine trainierte Agent*in auf festen Puzzles zu testen. Vergleiche ihre Leistung mit zufälligen Zügen und menschlichen Lösungen. Kannst du eine Agent*in trainieren, die beide schlägt?"
-      }
-    },
-    "2x3": {
-      "mission": "🎮 Trainings-Mission: 2×3",
-      "title": "Skalieren: größere Puzzles",
-      "subtitle": "Beobachte die Wert-Ausbreitung in Aktion mit mehr Zuständen",
-      "step1": {
-        "title": "Komplexerer Zustandsraum",
-        "text": "Ein 2×3-Puzzle hat 360 erreichbare Zustände (gegenüber 12 beim 2×2) — das 30-Fache! Die Hälfte der Permutationen ist wegen der Paritäts-Regel nicht erreichbar. Das Lernen dauert länger, aber die Prinzipien bleiben gleich."
-      },
-      "step2": {
-        "title": "Trainings-Zeit anpassen",
-        "text": "Du brauchst mehr Episoden (probier 500–1000) und mehr Schritte (40–60), weil das Puzzle größer ist. Sei geduldig — gute KI braucht Zeit zum Trainieren!"
-      },
-      "step3": {
-        "title": "Wert-Ausbreitung",
-        "text": "Schau zu, wie die Q-Werte sich vom Ziel rückwärts ausbreiten! Ein höheres γ (Diskontfaktor) hilft, dass sich Werte weiter durch den Zustandsraum fortpflanzen."
-      },
-      "step4": {
-        "title": "Benchmark-Leistung",
-        "text": "Vergleiche deine Agent*in mit den Benchmarks. Siehst du, wie viel besser eine trainierte Agent*in gegenüber zufälliger Exploration ist? Das ist die Kraft des verstärkenden Lernens."
-      }
-    },
-    "3x3": {
-      "mission": "🎮 Trainings-Mission: 3×3",
-      "title": "Expert*innen-Modus: komplettes 8er-Puzzle",
-      "subtitle": "Die klassische KI-Herausforderung — kann deine Agent*in sie meistern?",
-      "step1": {
-        "title": "Die klassische Herausforderung",
-        "text": "Das 3×3-Achter-Puzzle hat 181.440 Zustände! Es ist ein echtes KI-Benchmark-Problem. Deine Agent*in braucht ernsthafte Trainingszeit."
-      },
-      "step2": {
-        "title": "Intensive Trainings-Konfiguration",
-        "text": "Für 3×3 nutze 2000+ Episoden und 100+ maximale Schritte. Erwäge, die Lernrate am Anfang zu erhöhen. Hier zahlt sich Geduld aus!"
-      },
-      "step3": {
-        "title": "Intelligenz entstehen sehen",
-        "text": "Mit fortschreitendem Training siehst du, wie deine Agent*in von zufälligen Zügen zu intelligentem Problemlösen übergeht. Das ist Emergenz — komplexes Verhalten aus einfachen Regeln!"
-      },
-      "step4": {
-        "title": "Meisterschaft erreichen",
-        "text": "Eine gut trainierte Agent*in sollte Benchmarks in nahezu optimaler Zuganzahl lösen. Vergleiche mit der zufälligen Grundlinie — sieh, wie weit deine Agent*in gekommen ist! Du hast eine echte KI trainiert."
-      }
-    }
   },
   "gate": {
     "brand": "AI-Exhibits",

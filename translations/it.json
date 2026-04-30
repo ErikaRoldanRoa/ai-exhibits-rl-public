@@ -322,8 +322,7 @@
     "brand": {
       "subtitle": "Puzzle a Scorrimento 2×2 · Stati raggiungibili (componente dell'obiettivo): <strong>12</strong>"
     },
-    "mechanicsSummary": "Meccanica <span style=\"color:var(--cyan)\">s' = f(s,a)</span>. L'apprendimento modifica <span style=\"color:var(--lime)\">Q(s,a)</span>. Il comportamento campiona da <span style=\"color:var(--pink)\">π(a|s)</span>.",
-    "missionTrainingChip": "Missione I. Episodio di Addestramento",
+    "missionTrainingChip": "Missione I · Episodio di Addestramento",
     "playTrainTitle": "Gioca + Addestra",
     "puzzleAria": "puzzle a scorrimento 2x2",
     "inspect": {
@@ -425,81 +424,6 @@
     },
     "reachableStatesCount": "181.440",
     "godsNumber": "31"
-  },
-  "tutorial": {
-    "skip": "Salta il tutorial ✕",
-    "back": "Indietro",
-    "next": "Avanti",
-    "finish": "Termina",
-    "startTraining": "Avvia l'addestramento!",
-    "hint": "Premi SPAZIO o INVIO per continuare · ESC per saltare",
-    "completeTitle": "Sei pronta ad addestrare!",
-    "completeText": "Ora conosci le basi del Q-learning. Avvia l'addestramento e guarda la tua agente imparare!",
-    "skipConfirm": "Saltare tutti i tutorial? Potrai sempre reimpostarlo nelle impostazioni.",
-    "tipsButton": "💡 SUGGERIMENTI",
-    "2x2": {
-      "mission": "🎮 Missione di addestramento: 2×2",
-      "title": "Benvenuta nel Q-Learning!",
-      "subtitle": "Impara ad addestrare un'agente IA a risolvere puzzle a scorrimento",
-      "step1": {
-        "title": "Capire il Puzzle",
-        "text": "Questo è un puzzle a scorrimento. Clicca sulle tessere adiacenti alla casella vuota per farle scorrere. Il tuo obiettivo: disporre le tessere in ordine (1, 2, 3, casella vuota)."
-      },
-      "step2": {
-        "title": "Parametri di Addestramento",
-        "text": "Questi controllano come la tua IA impara. Episodi = giri di pratica, Tasso di apprendimento (α) = con quale velocità impara, Sconto (γ) = quanto valuta le ricompense future. Inizia con i valori predefiniti!"
-      },
-      "step3": {
-        "title": "Addestra la tua Agente",
-        "text": "Clicca su Addestra e guarda i valori Q aggiornarsi in tempo reale mentre la tua agente impara quali mosse portano al successo."
-      },
-      "step4": {
-        "title": "Testare & Confrontare",
-        "text": "Usa i Riferimenti per testare la tua agente addestrata su puzzle fissi. Confronta la sua prestazione con mosse casuali e soluzioni umane. Riesci ad addestrare un'agente che batte entrambe?"
-      }
-    },
-    "2x3": {
-      "mission": "🎮 Missione di addestramento: 2×3",
-      "title": "Scalare: Puzzle più Grandi",
-      "subtitle": "Osserva la propagazione di valore in azione con più stati",
-      "step1": {
-        "title": "Spazio degli Stati più Complesso",
-        "text": "Un puzzle 2×3 ha 360 stati raggiungibili (contro 12 per il 2×2) — 30× di più! Metà delle permutazioni è irraggiungibile a causa della parità delle mosse. L'apprendimento richiede più tempo, ma i principi sono identici."
-      },
-      "step2": {
-        "title": "Regolare il Tempo di Addestramento",
-        "text": "Ti serviranno più episodi (prova 500-1000) e più passi max (40-60) perché il puzzle è più grande. Sii paziente — una buona IA richiede tempo per essere addestrata!"
-      },
-      "step3": {
-        "title": "Propagazione di Valore",
-        "text": "Guarda i valori Q diffondersi all'indietro dall'obiettivo! Un γ (sconto) più alto aiuta i valori a propagarsi più lontano nello spazio degli stati."
-      },
-      "step4": {
-        "title": "Prestazione sui Riferimenti",
-        "text": "Confronta la tua agente con i riferimenti. Nota quanto migliore è un'agente addestrata rispetto all'esplorazione casuale! Questa è la potenza dell'apprendimento per rinforzo."
-      }
-    },
-    "3x3": {
-      "mission": "🎮 Missione di addestramento: 3×3",
-      "title": "Modalità Esperto: 8-Puzzle Completo",
-      "subtitle": "La sfida IA classica — la tua agente sa padroneggiarla?",
-      "step1": {
-        "title": "La Sfida Classica",
-        "text": "L'8-puzzle (3×3) ha 181.440 stati! È un vero problema di riferimento in IA. La tua agente avrà bisogno di un tempo di addestramento serio."
-      },
-      "step2": {
-        "title": "Configurazione Intensiva",
-        "text": "Per il 3×3, usa oltre 2000 episodi e oltre 100 passi max. Considera di aumentare il tasso di apprendimento all'inizio. È qui che la pazienza ripaga!"
-      },
-      "step3": {
-        "title": "Guarda l'Intelligenza Emergere",
-        "text": "Man mano che l'addestramento progredisce, vedrai la tua agente passare da mosse casuali a una risoluzione intelligente. Questa è l'emergenza — un comportamento complesso a partire da regole semplici!"
-      },
-      "step4": {
-        "title": "Raggiungere la Maestria",
-        "text": "Un'agente ben addestrata dovrebbe risolvere i riferimenti in un numero di mosse quasi ottimale. Confronta con il riferimento casuale — vedi quanta strada ha fatto la tua agente! Hai addestrato una vera IA."
-      }
-    }
   },
   "gate": {
     "brand": "AI-Exhibits",

@@ -322,8 +322,7 @@
     "brand": {
       "subtitle": "Puzzle à Glissement 2×2 · États accessibles (composante de l'objectif) : <strong>12</strong>"
     },
-    "mechanicsSummary": "Mécanique <span style=\"color:var(--cyan)\">s' = f(s,a)</span>. L'apprentissage modifie <span style=\"color:var(--lime)\">Q(s,a)</span>. Le comportement échantillonne depuis <span style=\"color:var(--pink)\">π(a|s)</span>.",
-    "missionTrainingChip": "Mission I. Épisode d'Entraînement",
+    "missionTrainingChip": "Mission I · Épisode d'Entraînement",
     "playTrainTitle": "Jouer + Entraîner",
     "puzzleAria": "puzzle à glissement 2×2",
     "inspect": {
@@ -425,81 +424,6 @@
     },
     "reachableStatesCount": "181 440",
     "godsNumber": "31"
-  },
-  "tutorial": {
-    "skip": "Passer le tutoriel ✕",
-    "back": "Retour",
-    "next": "Suivant",
-    "finish": "Terminer",
-    "startTraining": "Lancer l'entraînement !",
-    "hint": "Appuie sur ESPACE ou ENTRÉE pour continuer · ÉCHAP pour passer",
-    "completeTitle": "Tu es prête à entraîner !",
-    "completeText": "Tu comprends maintenant les bases du Q-learning. Lance l'entraînement et regarde ton agente apprendre !",
-    "skipConfirm": "Passer tous les tutoriels ? Tu peux toujours le réinitialiser dans les paramètres.",
-    "tipsButton": "💡 ASTUCES",
-    "2x2": {
-      "mission": "🎮 Mission d'entraînement : 2×2",
-      "title": "Bienvenue dans le Q-Learning !",
-      "subtitle": "Apprenez à entraîner un agente IA à résoudre des puzzles à glissement",
-      "step1": {
-        "title": "Comprendre le Puzzle",
-        "text": "Ceci est un puzzle à glissement. Cliquez sur les tuiles adjacentes à la case vide pour les glisser. Ton objectif : arranger les tuiles dans l'ordre (1, 2, 3, case vide)."
-      },
-      "step2": {
-        "title": "Paramètres d'Entraînement",
-        "text": "Ceux-ci contrôlent comment ton IA apprend. Épisodes = tours de pratique, Taux d'apprentissage (α) = à quelle vitesse elle apprend, Escompte (γ) = combien elle valorise les récompenses futures. Commence avec les valeurs par défaut !"
-      },
-      "step3": {
-        "title": "Entraîne ton Agent",
-        "text": "Clique sur Entraîner et observe les valeurs Q se mettre à jour en temps réel à mesure que ton agente apprend quels coups mènent au succès."
-      },
-      "step4": {
-        "title": "Tester & Comparer",
-        "text": "Utilise les Références pour tester ton agente entraînée sur des puzzles fixes. Compare sa performance aux coups aléatoires et aux solutions humaines. Peux-tu entraîner une agente qui bat les deux ?"
-      }
-    },
-    "2x3": {
-      "mission": "🎮 Mission d'entraînement : 2×3",
-      "title": "Monter en Échelle : Puzzles plus Grands",
-      "subtitle": "Observe la propagation de valeur en action avec plus d'états",
-      "step1": {
-        "title": "Espace d'États plus Complexe",
-        "text": "Un puzzle 2×3 a 360 états accessibles (contre 12 pour le 2×2) — c'est 30× plus ! La moitié des permutations est inaccessible à cause de la parité des mouvements. L'apprentissage prend plus de temps, mais les principes sont identiques."
-      },
-      "step2": {
-        "title": "Ajuster le Temps d'Entraînement",
-        "text": "Il te faudra plus d'épisodes (essaye 500-1000) et plus d'étapes max (40-60) car le puzzle est plus grand. Sois patiente — une bonne IA prend du temps à entraîner !"
-      },
-      "step3": {
-        "title": "Propagation de Valeur",
-        "text": "Regarde les valeurs Q se diffuser à rebours depuis l'objectif ! Un γ (escompte) plus élevé aide les valeurs à se propager plus loin dans l'espace d'états."
-      },
-      "step4": {
-        "title": "Performance sur les Références",
-        "text": "Compare ton agente aux références. Remarque combien un agente entraînée est meilleur qu'une exploration aléatoire ! C'est la puissance de l'apprentissage par renforcement."
-      }
-    },
-    "3x3": {
-      "mission": "🎮 Mission d'entraînement : 3×3",
-      "title": "Mode Expert : Puzzle-8 Complet",
-      "subtitle": "Le défi IA classique — ton agente peut-il le maîtriser ?",
-      "step1": {
-        "title": "Le Défi Classique",
-        "text": "Le puzzle-8 (3×3) a 181 440 états ! C'est un vrai problème de référence en IA. Ton agente aura besoin d'un temps d'entraînement sérieux."
-      },
-      "step2": {
-        "title": "Configuration Intensive",
-        "text": "Pour le 3×3, utilise 2000+ épisodes et 100+ étapes max. Envisage d'augmenter le taux d'apprentissage au départ. C'est ici que la patience paie !"
-      },
-      "step3": {
-        "title": "Regarde l'Intelligence Émerger",
-        "text": "À mesure que l'entraînement progresse, tu verras ton agente passer de coups aléatoires à une résolution intelligente. C'est l'émergence — un comportement complexe à partir de règles simples !"
-      },
-      "step4": {
-        "title": "Atteindre la Maîtrise",
-        "text": "Un agent bien entraîné devrait résoudre les références en un nombre de coups presque optimal. Compare à la référence aléatoire — vois le chemin parcouru par ton agente ! Tu as entraîné une vraie IA."
-      }
-    }
   },
   "gate": {
     "brand": "AI-Exhibits",

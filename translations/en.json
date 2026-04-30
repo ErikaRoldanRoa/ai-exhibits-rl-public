@@ -322,8 +322,7 @@
     "brand": {
       "subtitle": "Sliding Puzzle 2×2 · Reachable states (goal component): <strong>12</strong>"
     },
-    "mechanicsSummary": "Mechanics <span style=\"color:var(--cyan)\">s' = f(s,a)</span>. Learning changes <span style=\"color:var(--lime)\">Q(s,a)</span>. Behavior samples from <span style=\"color:var(--pink)\">π(a|s)</span>.",
-    "missionTrainingChip": "Mission I. Training Episode",
+    "missionTrainingChip": "Mission I · Training Episode",
     "playTrainTitle": "Play + Train",
     "puzzleAria": "2x2 sliding puzzle",
     "inspect": {
@@ -425,81 +424,6 @@
     },
     "reachableStatesCount": "181,440",
     "godsNumber": "31"
-  },
-  "tutorial": {
-    "skip": "Skip Tutorial ✕",
-    "back": "Back",
-    "next": "Next",
-    "finish": "Finish",
-    "startTraining": "Start Training!",
-    "hint": "Press SPACE or ENTER to continue · ESC to skip",
-    "completeTitle": "You're Ready to Train!",
-    "completeText": "You now understand the basics of Q-learning. Start training and watch your agent learn!",
-    "skipConfirm": "Skip all tutorials? You can always reset this in settings.",
-    "tipsButton": "💡 TIPS",
-    "2x2": {
-      "mission": "🎮 Training Mission: 2×2",
-      "title": "Welcome to Q-Learning!",
-      "subtitle": "Learn to train an AI agent to solve sliding puzzles",
-      "step1": {
-        "title": "Understanding the Puzzle",
-        "text": "This is a sliding puzzle. Click tiles adjacent to the empty space to slide them. Your goal: arrange tiles in order (1, 2, 3, blank)."
-      },
-      "step2": {
-        "title": "Training Parameters",
-        "text": "These control how your AI learns. Episodes = practice rounds, Learning rate (α) = how fast it learns, Discount (γ) = how much it values future rewards. Start with the defaults!"
-      },
-      "step3": {
-        "title": "Train Your Agent",
-        "text": "Click Train Agent and watch the <strong>Q-values</strong> update in real-time as your agent learns which moves lead to success."
-      },
-      "step4": {
-        "title": "Test & Compare",
-        "text": "Use Benchmarks to test your trained agent against fixed puzzles. Compare its performance to random moves and human solutions. Can you train an agent that beats both?"
-      }
-    },
-    "2x3": {
-      "mission": "🎮 Training Mission: 2×3",
-      "title": "Scaling Up: Bigger Puzzles",
-      "subtitle": "Watch value propagation in action with more states",
-      "step1": {
-        "title": "More Complex State Space",
-        "text": "A 2×3 puzzle has 360 reachable states (vs 12 for 2×2) — 30× more! Half of the permutations are unreachable due to move parity. Learning takes longer, but the principles are identical."
-      },
-      "step2": {
-        "title": "Adjust Training Time",
-        "text": "You'll need more episodes (try 500-1000) and longer max steps (40-60) because the puzzle is larger. Be patient—good AI takes time to train!"
-      },
-      "step3": {
-        "title": "Value Propagation",
-        "text": "Watch the Q-values spread backwards from the goal! Higher γ (discount) helps values propagate further through the state space."
-      },
-      "step4": {
-        "title": "Benchmark Performance",
-        "text": "Compare your agent against the benchmarks. Notice how much better a trained agent is than random exploration! This is the power of reinforcement learning."
-      }
-    },
-    "3x3": {
-      "mission": "🎮 Training Mission: 3×3",
-      "title": "Expert Mode: Full 8-Puzzle",
-      "subtitle": "The classic AI challenge—can your agent master it?",
-      "step1": {
-        "title": "The Classic Challenge",
-        "text": "The 3×3 eight-puzzle has 181,440 states! This is a real AI benchmark problem. Your agent will need serious training time."
-      },
-      "step2": {
-        "title": "Intensive Training Setup",
-        "text": "For 3×3, use 2000+ episodes and 100+ max steps. Consider increasing learning rate initially. This is where patience pays off!"
-      },
-      "step3": {
-        "title": "Watch Intelligence Emerge",
-        "text": "As training progresses, you'll see your agent go from random moves to intelligent problem-solving. This is emergence—complex behavior from simple rules!"
-      },
-      "step4": {
-        "title": "Achieve Mastery",
-        "text": "A well-trained agent should solve benchmarks in near-optimal moves. Compare to the random baseline—see how far your agent has come! You've trained a real AI."
-      }
-    }
   },
   "gate": {
     "brand": "AI-Exhibits",

@@ -97,6 +97,21 @@
   box-sizing: border-box;
 }
 
+/* === ACCESSIBILITY: respect user's motion preference === */
+/* Reduce or remove non-essential animation/transition for users with
+   vestibular sensitivity. Targets pulse / glow / scroll-anim effects
+   used by the tutorial overlay and the celebration popups. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   margin: 0;
   color: var(--text);

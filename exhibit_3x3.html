@@ -220,6 +220,7 @@
   @media (max-width: 760px){
     .roleGrid{grid-template-columns:1fr; }
     .hdrRight{align-items:flex-start;}
+    .main{grid-template-columns:1fr;}
   }
   .roleBtn{
     text-align:left; padding:14px 14px;
@@ -762,21 +763,20 @@
         .map(k => `B${k} : ${benchBest[k]==null ? '—' : `${benchBest[k]} ${movesLbl}`}`);
       benchScoresTxt.textContent = parts.join(" · ");
     }
-
-function resetBenchBest(){
-  try { localStorage.removeItem(BENCH_STORAGE_KEY); } catch(e){}
-  Object.keys(benchBest).forEach(k => { benchBest[k] = null; });
-  if (typeof activeBench !== "undefined") activeBench = null;
-  renderBenchUI();
-}
-
-document.addEventListener('click', (e)=>{
-  const btn = e.target.closest('button[data-act="benchreset"]');
-  if(!btn) return;
-  resetBenchBest();
-});
-
   }
+
+  function resetBenchBest(){
+    try { localStorage.removeItem(BENCH_STORAGE_KEY); } catch(e){}
+    Object.keys(benchBest).forEach(k => { benchBest[k] = null; });
+    if (typeof activeBench !== "undefined") activeBench = null;
+    renderBenchUI();
+  }
+
+  document.addEventListener('click', (e)=>{
+    const btn = e.target.closest('button[data-act="benchreset"]');
+    if(!btn) return;
+    resetBenchBest();
+  });
   function setActiveBench(k){
     activeBench = k ? String(k) : null;
     renderBenchUI();
