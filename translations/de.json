@@ -260,11 +260,11 @@
       "episodesTip": "Anzahl der Trainings-Episoden, die ausgeführt werden.\nJede Episode startet in einem gemischten Zustand.",
       "maxSteps": "Max. Schritte / Episode",
       "maxStepsTip": "Sicherheits-Obergrenze: Episode stoppen, wenn sie zu viele Züge braucht.\nMehr Schritte lassen die Agent*in längere Trajektorien erkunden.",
-      "learningRate": "α (Lernrate)",
+      "learningRate": "<span class=\"sym-alpha\">α</span> (Lernrate)",
       "learningRateTip": "Wie stark altes Q durch neue Information ersetzt wird.\nα=1 heißt vollständig ersetzen; kleineres α heißt langsam mitteln.",
-      "discount": "γ (Diskontfaktor)",
+      "discount": "<span class=\"sym-gamma\">γ</span> (Diskontfaktor)",
       "discountTip": "Wie wichtig zukünftige Belohnungen sind.\nγ nahe 1 bewertet langfristigen Erfolg hoch.",
-      "epsilon": "ε (Exploration)",
+      "epsilon": "<span class=\"sym-epsilon\">ε</span> (Exploration)",
       "epsilonTip": "Explorationswahrscheinlichkeit bei ε-greedy.\nMit Wahrscheinlichkeit ε wird eine zufällige Aktion gewählt.",
       "stepPenalty": "Schrittstrafe",
       "stepPenaltyTip": "Optionales Shaping: eine kleine negative Belohnung pro Zug.\nFördert kürzere Lösungen.",
@@ -338,9 +338,7 @@
     },
     "rewards": {
       "title": "Belohnungs-Overlay",
-      "intro": "Die Belohnung wird im <span style=\"color:var(--amber);font-weight:900;\">Zielzustand</span> <span style=\"font-family:var(--mono)\">s'</span> vergeben. Standard: nur das Ziel hat +1. Werte unten bearbeiten, um Reward-Shaping zu erkunden.",
-      "arrivalReward": "Ankunfts-Belohnung",
-      "andHere": "und hier",
+      "intro": "Die Belohnung <span class=\"sym-reward\">r</span> ist auf dem <span class=\"sym-reward\">Zielzustand</span> <span style=\"font-family:var(--mono)\">s'</span> definiert. Standardmäßig: nur das Ziel hat <span class=\"sym-reward\">r = +1</span>. Ändere die Werte unten, um Reward-Shaping zu erkunden.",
       "qUpdate": "Q-Learning-Update"
     },
     "explain": {

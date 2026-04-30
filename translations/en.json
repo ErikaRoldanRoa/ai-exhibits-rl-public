@@ -260,11 +260,11 @@
       "episodesTip": "How many training episodes to run.\nEach episode starts from a shuffled state.",
       "maxSteps": "Max steps / episode",
       "maxStepsTip": "Safety cap: stop an episode if it has taken too many moves.\nMore steps lets the agent explore longer trajectories.",
-      "learningRate": "α (learning rate)",
+      "learningRate": "<span class=\"sym-alpha\">α</span> (learning rate)",
       "learningRateTip": "How much we overwrite old Q with new information.\nα=1 means replace; smaller α means average slowly.",
-      "discount": "γ (discount)",
+      "discount": "<span class=\"sym-gamma\">γ</span> (discount)",
       "discountTip": "How much future rewards matter.\nγ close to 1 values long-term success.",
-      "epsilon": "ε (exploration)",
+      "epsilon": "<span class=\"sym-epsilon\">ε</span> (exploration)",
       "epsilonTip": "Exploration probability in ε-greedy.\nWith probability ε, pick a random action.",
       "stepPenalty": "Step penalty",
       "stepPenaltyTip": "Optional shaping: a small negative reward each move.\nEncourages shorter solutions.",
@@ -338,9 +338,7 @@
     },
     "rewards": {
       "title": "Rewards overlay",
-      "intro": "Reward is defined on the <span style=\"color:var(--amber);font-weight:900;\">arrival state</span> <span style=\"font-family:var(--mono)\">s'</span>. Default: only the goal has +1. Edit values below to explore shaping.",
-      "arrivalReward": "Arrival reward",
-      "andHere": "and here",
+      "intro": "Reward <span class=\"sym-reward\">r</span> is defined on the <span class=\"sym-reward\">arrival state</span> <span style=\"font-family:var(--mono)\">s'</span>. By default: only the goal has <span class=\"sym-reward\">r = +1</span>. Edit the values below to explore reward shaping.",
       "qUpdate": "Q-learning update"
     },
     "explain": {

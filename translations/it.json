@@ -260,11 +260,11 @@
       "episodesTip": "Numero di episodi di addestramento da eseguire.\nOgni episodio parte da uno stato mescolato.",
       "maxSteps": "Passi max / episodio",
       "maxStepsTip": "Tetto di sicurezza: ferma un episodio se ha richiesto troppe mosse.\nPiù passi permettono all'agente di esplorare traiettorie più lunghe.",
-      "learningRate": "α (tasso di apprendimento)",
+      "learningRate": "<span class=\"sym-alpha\">α</span> (tasso di apprendimento)",
       "learningRateTip": "Quanto sovrascriviamo il vecchio Q con nuove informazioni.\nα=1 significa sostituire; un α più piccolo significa mediare lentamente.",
-      "discount": "γ (sconto)",
+      "discount": "<span class=\"sym-gamma\">γ</span> (sconto)",
       "discountTip": "Quanto contano le ricompense future.\nγ vicino a 1 valorizza il successo a lungo termine.",
-      "epsilon": "ε (esplorazione)",
+      "epsilon": "<span class=\"sym-epsilon\">ε</span> (esplorazione)",
       "epsilonTip": "Probabilità di esplorazione in ε-greedy.\nCon probabilità ε, scegli un'azione a caso.",
       "stepPenalty": "Penalità per passo",
       "stepPenaltyTip": "Modellamento opzionale: una piccola ricompensa negativa a ogni mossa.\nIncoraggia soluzioni più brevi.",
@@ -338,9 +338,7 @@
     },
     "rewards": {
       "title": "Sovrapposizione delle ricompense",
-      "intro": "La ricompensa è definita sullo <span style=\"color:var(--amber);font-weight:900;\">stato di arrivo</span> <span style=\"font-family:var(--mono)\">s'</span>. Predefinito: solo l'obiettivo ha +1. Modifica i valori qui sotto per esplorare il modellamento.",
-      "arrivalReward": "Ricompensa d'arrivo",
-      "andHere": "e qui",
+      "intro": "La ricompensa <span class=\"sym-reward\">r</span> è definita sullo <span class=\"sym-reward\">stato di arrivo</span> <span style=\"font-family:var(--mono)\">s'</span>. Per impostazione predefinita: solo l'obiettivo ha <span class=\"sym-reward\">r = +1</span>. Modifica i valori qui sotto per esplorare il reward shaping.",
       "qUpdate": "Aggiornamento Q-learning"
     },
     "explain": {
