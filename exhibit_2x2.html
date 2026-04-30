@@ -587,9 +587,10 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
 <div class="wrap">
   <div id="paramTip" class="paramTip"></div>
 
-  <div class="top">
+  <header style="display:flex; gap:16px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; margin-bottom:14px;">
     <div class="chip"><span class="spark"></span><span data-i18n="ex2x2.missionTrainingChip">Mission I · Épisode d'Entraînement</span></div>
-  </div>
+    <div class="mono" style="opacity:.7;font-size:12px" data-i18n="ex2x2.header.goal">Objectif : [1 2 / 3 _]</div>
+  </header>
 
   <div class="grid">
     <!-- LEFT -->
@@ -633,6 +634,19 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
       data-tooltip="Effacer les meilleurs scores enregistrés pour ce puzzle" data-tooltip-style="info" data-i18n="common.resetBestScores" data-i18n-data-tooltip="common.resetBestScoresTip">Réinitialiser les meilleurs scores</button>
   </div>
             <div class="kv" style="margin-top:10px;"><span data-i18n="common.bestScores">Meilleurs scores</span><div id="benchScoresTxt">B1 : — | B2 : — | B3 : — | B4 : — | B5 : — | B6 : —</div></div>
+
+          <!-- Coverage card — promoted to TOP of the trainer column so the
+               truth-telling bar is the first thing the reader meets after the
+               benchmarks. On Mission I it fills quickly: that IS the lesson —
+               at 12 states the curse does not bite, but it WILL on M2 and M3. -->
+          <div class="card cov-card" style="margin-top:12px;">
+            <h3 class="cov-title" data-i18n="ex.coverage.title">Couverture de l'agente Q</h3>
+            <div class="cov-row">
+              <span class="cov-label" data-i18n="ex.coverage.bar.m1">Mission I · 2×2 · 12 états</span>
+              <div class="cov-track"><div class="cov-fill" id="covM1Fill" style="width:0%; background:var(--lime);"></div></div>
+              <span class="cov-pct" id="covM1Pct">0%</span>
+            </div>
+            <p class="cov-caption" data-i18n="ex.coverage.caption.m1">12 états seulement : la barre arrive à 100 % en une poignée de pas. Garde-la en tête — sur Mission II (360 états) puis Mission III (181 440), la même barre se comportera très différemment.</p>
           </div>
 
           <div class="form">
@@ -683,20 +697,6 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
             <input id="speedInp" type="number" min="0" step="10" value="20"/>
             <span style="color:var(--muted2); font-size:11px;" data-i18n="ex.viewer.unit">ms / pas</span>
             <span class="viewer-note" data-i18n="ex.viewer.note">Affichage uniquement — n'affecte pas l'apprentissage.</span>
-          </div>
-
-          <!-- Coverage card — promoted out of the buried stats line. The bar
-               replaces the inline "X / 12 (Y%)" text and gives the curse a
-               visual home consistent with M2 and M3. On Mission I it fills
-               quickly: that IS the lesson — at 12 states the curse doesn't bite. -->
-          <div class="card cov-card" style="margin-top:12px;">
-            <h3 class="cov-title" data-i18n="ex.coverage.title">Couverture de l'agente Q</h3>
-            <div class="cov-row">
-              <span class="cov-label" data-i18n="ex.coverage.bar.m1">Mission I · 2×2 · 12 états</span>
-              <div class="cov-track"><div class="cov-fill" id="covM1Fill" style="width:0%; background:var(--lime);"></div></div>
-              <span class="cov-pct" id="covM1Pct">0%</span>
-            </div>
-            <p class="cov-caption" data-i18n="ex.coverage.caption.m1">Avec seulement 12 états, la barre se remplit en une poignée de pas — l'agente couvre tout le monde. Le fléau ne mord pas encore.</p>
           </div>
 
           <div class="status">
@@ -797,8 +797,6 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
       </div>
     </div>
   </div>
-
-  <div class="footer">Designed and developed by Dr. Erika Roldán Roa · 2026</div>
 </div>
 
 <script>
