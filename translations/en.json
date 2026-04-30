@@ -314,12 +314,12 @@
       "bar": {
         "m1": "Mission I · 2×2 · 12 states",
         "m2": "Mission II · 2×3 · 360 states",
-        "m3": "Mission III · 3×3 · 181 440 states"
+        "m3": "Mission III · 3×3 · 181,440 states"
       },
       "caption": {
         "m1": "With only 12 states, the bar fills in a handful of steps — the agent covers the whole world. The curse does not bite here.",
         "m2": "Over 360 states the bar climbs during training, but systematic coverage already starts to cost.",
-        "m3": "Over 181 440 states the bar typically plateaus far below 100%. This is the curse of dimensionality biting."
+        "m3": "Over 181,440 states the bar typically plateaus far below 100%. This is the curse of dimensionality biting."
       }
     },
     "viewer": {

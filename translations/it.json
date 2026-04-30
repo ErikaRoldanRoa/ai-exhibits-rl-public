@@ -314,12 +314,12 @@
       "bar": {
         "m1": "Missione I · 2×2 · 12 stati",
         "m2": "Missione II · 2×3 · 360 stati",
-        "m3": "Missione III · 3×3 · 181 440 stati"
+        "m3": "Missione III · 3×3 · 181.440 stati"
       },
       "caption": {
         "m1": "Con solo 12 stati, la barra si riempie in pochi passi — l'agente copre tutto il mondo. La maledizione non morde ancora.",
         "m2": "Su 360 stati la barra sale durante l'addestramento, ma una copertura sistematica comincia già a costare.",
-        "m3": "Su 181 440 stati la barra tipicamente si ferma molto sotto il 100 %. È la maledizione della dimensione che morde."
+        "m3": "Su 181.440 stati la barra tipicamente si ferma molto sotto il 100 %. È la maledizione della dimensione che morde."
       }
     },
     "viewer": {

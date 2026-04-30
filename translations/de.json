@@ -314,12 +314,12 @@
       "bar": {
         "m1": "Mission I · 2×2 · 12 Zustände",
         "m2": "Mission II · 2×3 · 360 Zustände",
-        "m3": "Mission III · 3×3 · 181 440 Zustände"
+        "m3": "Mission III · 3×3 · 181.440 Zustände"
       },
       "caption": {
         "m1": "Mit nur 12 Zuständen füllt sich der Balken in wenigen Schritten — die Agentin erfasst die ganze Welt. Der Fluch beißt hier noch nicht.",
         "m2": "Bei 360 Zuständen steigt der Balken während des Trainings, doch systematische Abdeckung kostet bereits.",
-        "m3": "Bei 181 440 Zuständen flacht der Balken typischerweise weit unter 100 % ab. Hier beißt der Fluch der Dimension."
+        "m3": "Bei 181.440 Zuständen flacht der Balken typischerweise weit unter 100 % ab. Hier beißt der Fluch der Dimension."
       }
     },
     "viewer": {

@@ -314,12 +314,12 @@
       "bar": {
         "m1": "Mission I · 2×2 · 12 états",
         "m2": "Mission II · 2×3 · 360 états",
-        "m3": "Mission III · 3×3 · 181 440 états"
+        "m3": "Mission III · 3×3 · 181 440 états"
       },
       "caption": {
         "m1": "Avec seulement 12 états, la barre se remplit en une poignée de pas — l'agente couvre tout le monde. Le fléau ne mord pas encore.",
         "m2": "Sur 360 états, la barre grimpe pendant l'entraînement, mais une couverture systématique commence à coûter.",
-        "m3": "Sur 181 440 états, la barre plafonne typiquement bien sous 100 %. C'est le fléau de la dimension qui mord."
+        "m3": "Sur 181 440 états, la barre plafonne typiquement bien sous 100 %. C'est le fléau de la dimension qui mord."
       }
     },
     "viewer": {
@@ -414,7 +414,7 @@
     "glossary": {
       "episode": {
         "term": "Épisode",
-        "def": "Une seule tentative : on mélange le puzzle, on essaie de le résoudre, on s'arrête au succès ou après le nombre maximum de coups, puis on recommence avec un nouveau mélange. Plus d'épisodes = plus d'expériences indépendantes."
+        "def": "Une seule tentative : on mélange le puzzle, on essaie de le résoudre, on s'arrête au succès ou après le nombre maximum de coups, puis on recommence avec un nouveau mélange. Plus d'épisodes = plus d'expériences indépendantes."
       },
       "propagation": {
         "term": "Propagation",
@@ -422,7 +422,7 @@
       },
       "convergence": {
         "term": "Convergence",
-        "def": "Quand les valeurs Q cessent de bouger significativement entre épisodes. L'agente a « appris » le puzzle. Sur 360 états, on y arrive en quelques milliers d'épisodes ; à plus grande échelle, c'est une autre histoire."
+        "def": "Quand les valeurs Q cessent de bouger significativement entre épisodes. L'agente a « appris » le puzzle. Sur 360 états, on y arrive en quelques milliers d'épisodes ; à plus grande échelle, c'est une autre histoire."
       }
     }
   },
@@ -448,7 +448,7 @@
     "glossary": {
       "curse": {
         "term": "Fléau de la dimension",
-        "def": "Observation de Bellman (1957) : la mémoire et le nombre d'échantillons nécessaires explosent factoriellement avec la taille de l'espace d'états. De M1 (12) à M2 (360) à M3 (181 440), le facteur est 504×. À l'échelle des échecs (~10⁴⁴ états), une table Q est inaccessible."
+        "def": "Observation de Bellman (1957) : la mémoire et le nombre d'échantillons nécessaires explosent factoriellement avec la taille de l'espace d'états. De M1 (12) à M2 (360) à M3 (181 440), le facteur est 504×. À l'échelle des échecs (~10⁴⁴ états), une table Q est inaccessible."
       },
       "generalisation": {
         "term": "Généralisation",
@@ -461,7 +461,7 @@
     },
     "economy": {
       "title": "Économie de l'entraînement",
-      "titleTip": "Trois angles sur l'argent : combien tu as déjà dépensé (Coût d'entraînement) ; combien tu as alloué à ce run (Budget total) ; combien il faudrait pour résoudre B5 de façon démo / fiable / garantie."
+      "titleTip": "Trois angles sur l'argent : combien tu as déjà dépensé (Coût d'entraînement) ; combien tu as alloué à ce run (Budget total) ; combien il faudrait pour résoudre B5 de façon démo / fiable / garantie."
     }
   },
   "gate": {
