@@ -178,15 +178,29 @@ p {
 .sym-gamma,
 .sym-epsilon,
 .sym-reward {
-  font-family: var(--mono);
+  /* Display-bold sans (var(--sans), weight 900) renders the glyph with
+     thicker strokes than the monospace family — readable as a SOLID
+     coloured chip on the dark background instead of a thin tinted line.
+     Anti-aliasing pinned to grayscale so the colour stays uniform across
+     stroke widths (no per-channel sub-pixel rainbow). */
+  font-family: var(--sans);
   font-weight: 900;
-  letter-spacing: 0.2px;
+  font-size: 1.15em;
+  letter-spacing: 0.1px;
   text-shadow: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   /* Keep the Greek glyph as-is regardless of any parent text-transform.
      Param-label classes (.lab, .field label, .nodeEditor label, .stat .k)
      all set text-transform: uppercase, which would otherwise turn α/γ/ε
      into Α/Γ/Ε — visually indistinguishable from Latin A/Γ/E. */
   text-transform: none;
+  /* Defeat any inherited opacity on muted-text parents (.lab, .field label
+     have color: rgba(255,255,255,0.55) which doesn't propagate, but a few
+     wrappers use opacity:0.x — opacity isn't on a colour, it's compositing
+     so we can't override it from the child; keep glyph at full opacity by
+     ensuring no opacity here). */
+  opacity: 1;
 }
 .sym-alpha   { color: var(--cyan); }
 .sym-gamma   { color: var(--lime); }
