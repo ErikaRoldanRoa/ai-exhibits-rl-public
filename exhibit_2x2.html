@@ -633,6 +633,13 @@ Created, designed, and authored by Dr. Erika Roldán Roa (Max Planck Institute f
             <div class="kv"><span data-i18n="ex2x2.status.lastTrans">Dernier (sₜ,aₜ,r,sₜ₊₁)</span><div id="transTxt">—</div></div>
             <div class="kv"><span data-i18n="ex2x2.status.lastUpdate">Dernière mise à jour Q (numérique)</span><div id="updateTxt">—</div></div>
             <div class="kv"><span data-i18n="ex2x2.status.lastSolve">Longueur dernière résolution</span><div id="solveLenTxt">—</div></div>
+            <div class="kv">
+              <span style="display:inline-flex; align-items:center; gap:6px;">
+                <span data-i18n="ex.stats.coverage">Couverture de l'agente Q</span>
+                <span class="qmark" data-tip="Le fléau de la dimension : la table Q n'est qu'un dictionnaire — un compteur par état rencontré. À 12 états (2×2) elle couvre tout, à 360 (2×3) presque tout, à 181 440 (3×3) elle peine à dépasser quelques pour cent. Le théorème de convergence de Watkins (1992) exige que chaque couple (état, action) soit visité infiniment souvent — à cette échelle, on ne visite même pas chaque état une seule fois. C'est ça, le fléau. AlphaZero et MuZero remplacent la table par un réseau de neurones qui généralise à des états jamais vus." data-i18n-data-tip="ex.stats.coverageTip" tabindex="0" aria-label="À propos de la couverture">ⓘ</span>
+              </span>
+              <div id="coverageTxt">—</div>
+            </div>
           </div>
 
           <div id="errBox" class="err"></div>
@@ -1742,6 +1749,25 @@ const rline = document.createElement('div');
       transTxt.textContent = lastTransition ? `${lastTransition.s} | ${lastTransition.a} | r=${Number(lastTransition.r).toFixed(2)} | ${lastTransition.sp}` : "—";
       updateTxt.textContent = lastUpdateText ? lastUpdateText : "—";
       solveLenTxt.textContent = (lastSolveLen==null) ? "—" : `${lastSolveLen} ${(window.i18n ? window.i18n.t('ex.msg.movesShort', 'coups') : 'coups')}`;
+      // Coverage = states with at least one Q entry / 12 reachable states.
+      // M1's |R|=12 means the table fills almost instantly — the lesson here
+      // is "the world is small enough that the algorithm trivially covers it".
+      const covEl = document.getElementById('coverageTxt');
+      if (covEl){
+        const REACHABLE_2X2 = 12;
+        const v = Q.size;
+        const pct = v / REACHABLE_2X2 * 100;
+        const lang = (document.documentElement.lang || 'fr').slice(0,2).toLowerCase();
+        const decSep = lang === 'en' ? '.' : ',';
+        const fmtPct = (p) => {
+          if (p >= 99.95) return '100';
+          if (p < 0.01) return '<0' + decSep + '01';
+          const d = p < 1 ? 2 : 1;
+          const s = p.toFixed(d);
+          return lang === 'en' ? s : s.replace('.', decSep);
+        };
+        covEl.textContent = `${v} / ${REACHABLE_2X2} (${fmtPct(pct)}%)`;
+      }
     }
 
     function renderViews(){

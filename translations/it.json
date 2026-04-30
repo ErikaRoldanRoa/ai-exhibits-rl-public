@@ -276,8 +276,9 @@
     "stats": {
       "currentState": "Stato attuale",
       "movesLastSolve": "Mosse (ultima risoluzione)",
-      "visitedStates": "Stati visitati",
-      "qUpdates": "Aggiornamenti Q"
+      "qUpdates": "Aggiornamenti Q",
+      "coverage": "Copertura dell'agente Q",
+      "coverageTip": "La maledizione della dimensionalità: la tabella Q è solo un dizionario — una voce per stato visitato. A 12 stati (2×2) copre tutto, a 360 (2×3) quasi tutto, a 181.440 (3×3) fatica a superare qualche percento. Il teorema di convergenza di Watkins (1992) richiede che ogni coppia (stato, azione) sia visitata *infinite volte* — a questa scala non visitiamo neppure ogni stato una volta sola. Questa è la maledizione. AlphaZero e MuZero sostituiscono la tabella con una rete neurale che generalizza a stati mai visti."
     },
     "btn": {
       "stepOnce": "Passo (un aggiornamento)"
@@ -420,10 +421,7 @@
     "reachableStatesCount": "181.440",
     "godsNumber": "31",
     "missionTrainingChip": "Missione III · Episodio di Addestramento",
-    "stats": {
-      "coverage": "Copertura dell'agente Q",
-      "coverageTip": "La maledizione della dimensionalità: la tabella Q è solo un dizionario — una voce per stato visitato. A 12 stati (2×2) copre tutto, a 360 (2×3) quasi tutto, a 181.440 (3×3) fatica a superare qualche percento. AlphaZero e MuZero sostituiscono la tabella con una rete neurale — una funzione che generalizza a stati mai visti."
-    }
+    "stats": {}
   },
   "gate": {
     "brand": "AI-Exhibits",

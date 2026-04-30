@@ -276,8 +276,9 @@
     "stats": {
       "currentState": "Current state",
       "movesLastSolve": "Moves (last solve)",
-      "visitedStates": "Visited states",
-      "qUpdates": "Q updates"
+      "qUpdates": "Q updates",
+      "coverage": "Q-agent coverage",
+      "coverageTip": "The curse of dimensionality: the Q-table is just a dictionary — one entry per state visited. At 12 states (2×2) it fills entirely; at 360 (2×3) almost entirely; at 181,440 (3×3) it struggles to pass a few percent. Watkins's 1992 convergence theorem requires every state-action pair visited *infinitely often* — at this scale we don't even visit each state once. That's the curse. AlphaZero and MuZero replace the table with a neural network that generalises to states never seen."
     },
     "btn": {
       "stepOnce": "Step (one update)"
@@ -420,10 +421,7 @@
     "reachableStatesCount": "181,440",
     "godsNumber": "31",
     "missionTrainingChip": "Mission III · Training Episode",
-    "stats": {
-      "coverage": "Q-agent coverage",
-      "coverageTip": "The curse of dimensionality: the Q-table is just a dictionary — one entry per state seen. At 12 states (2×2) it covers everything; at 360 (2×3) almost everything; at 181,440 (3×3) it struggles to pass a few percent. AlphaZero and MuZero replace the table with a neural network — a function that generalises to states never seen."
-    }
+    "stats": {}
   },
   "gate": {
     "brand": "AI-Exhibits",

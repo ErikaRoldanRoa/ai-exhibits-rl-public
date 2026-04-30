@@ -571,14 +571,22 @@
     row[a] = v;
   }
   function argmaxQ(s){
+    // Tie-break uniformly at random — when several actions share the max
+    // Q-value (e.g. all zero on a never-visited state), pick one at random.
+    // This makes the greedy policy behave as a uniform random walk in
+    // unexplored regions and as deterministic-best in well-trained ones —
+    // exactly what the math requires for "greedy = mixed policy".
     const acts = legalActions(s);
     const sk = key(s);
-    let bestA = acts[0], bestV = -Infinity;
+    let bestV = -Infinity;
+    let bestActs = [];
     for(const a of acts){
-      const v = getQ(sk,a);
-      if(v > bestV){ bestV=v; bestA=a; }
+      const v = getQ(sk, a);
+      if(v > bestV){ bestV = v; bestActs = [a]; }
+      else if(v === bestV){ bestActs.push(a); }
     }
-    return {a:bestA, v:bestV};
+    const bestA = bestActs[Math.floor(Math.random() * bestActs.length)];
+    return {a: bestA, v: bestV};
   }
   function sampleEpsGreedy(s, eps){
     const acts = legalActions(s);

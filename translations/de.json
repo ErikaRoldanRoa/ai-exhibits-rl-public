@@ -276,8 +276,9 @@
     "stats": {
       "currentState": "Aktueller Zustand",
       "movesLastSolve": "Züge (letzte Lösung)",
-      "visitedStates": "Besuchte Zustände",
-      "qUpdates": "Q-Updates"
+      "qUpdates": "Q-Updates",
+      "coverage": "Abdeckung der Q-Agent*in",
+      "coverageTip": "Der Fluch der Dimensionalität: die Q-Tabelle ist nur ein Wörterbuch — ein Eintrag pro besuchtem Zustand. Bei 12 Zuständen (2×2) deckt sie alles ab, bei 360 (2×3) fast alles, bei 181.440 (3×3) kommt sie kaum über wenige Prozent. Watkins' Konvergenzsatz von 1992 verlangt, dass jedes Zustand-Aktion-Paar *unendlich oft* besucht wird — in dieser Größe besuchen wir nicht einmal jeden Zustand ein einziges Mal. Das ist der Fluch. AlphaZero und MuZero ersetzen die Tabelle durch ein neuronales Netz, das auf nie gesehene Zustände generalisiert."
     },
     "btn": {
       "stepOnce": "Schritt (ein Update)"
@@ -420,10 +421,7 @@
     "reachableStatesCount": "181.440",
     "godsNumber": "31",
     "missionTrainingChip": "Mission III · Trainings-Episode",
-    "stats": {
-      "coverage": "Abdeckung der Q-Agent*in",
-      "coverageTip": "Der Fluch der Dimensionalität: die Q-Tabelle ist nur ein Wörterbuch — ein Eintrag pro besuchtem Zustand. Bei 12 Zuständen (2×2) deckt sie alles ab, bei 360 (2×3) fast alles, bei 181.440 (3×3) kämpft sie sich knapp über wenige Prozent. AlphaZero und MuZero ersetzen die Tabelle durch ein neuronales Netz — eine Funktion, die auf nie gesehene Zustände generalisiert."
-    }
+    "stats": {}
   },
   "gate": {
     "brand": "AI-Exhibits",

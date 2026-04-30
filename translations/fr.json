@@ -276,8 +276,9 @@
     "stats": {
       "currentState": "État actuel",
       "movesLastSolve": "Coups (dernière résolution)",
-      "visitedStates": "États visités",
-      "qUpdates": "Mises à jour Q"
+      "qUpdates": "Mises à jour Q",
+      "coverage": "Couverture de l'agente Q",
+      "coverageTip": "Le fléau de la dimension : la table Q n'est qu'un dictionnaire — un compteur par état rencontré. À 12 états (2×2) elle couvre tout, à 360 (2×3) presque tout, à 181 440 (3×3) elle peine à dépasser quelques pour cent. Le théorème de convergence de Watkins (1992) exige que chaque couple (état, action) soit visité *infiniment souvent* — à cette échelle, on ne visite même pas chaque état une seule fois. C'est ça, le fléau. AlphaZero et MuZero remplacent la table par un réseau de neurones qui généralise à des états jamais vus."
     },
     "btn": {
       "stepOnce": "Pas (une mise à jour)"
@@ -420,10 +421,7 @@
     "reachableStatesCount": "181 440",
     "godsNumber": "31",
     "missionTrainingChip": "Mission III · Épisode d'Entraînement",
-    "stats": {
-      "coverage": "Couverture de l'agente Q",
-      "coverageTip": "Le fléau de la dimension : la table Q n'est qu'un dictionnaire — un compteur par état rencontré. À 12 états (2×2) elle couvre tout, à 360 (2×3) presque tout, à 181 440 (3×3) elle peine à dépasser quelques pour cent. AlphaZero et MuZero remplacent la table par un réseau de neurones — une fonction qui généralise à des états jamais vus."
-    }
+    "stats": {}
   },
   "gate": {
     "brand": "AI-Exhibits",

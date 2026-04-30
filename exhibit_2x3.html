@@ -417,7 +417,13 @@
         <div class="stats">
           <div class="stat"><div class="k" data-i18n="ex.stats.currentState">État actuel</div><div class="v" id="curKey">—</div></div>
           <div class="stat"><div class="k" data-i18n="ex.stats.movesLastSolve">Coups (dernière résolution)</div><div class="v" id="lastMoves">—</div></div>
-          <div class="stat"><div class="k" data-i18n="ex.stats.visitedStates">États visités</div><div class="v" id="visited">—</div></div>
+          <div class="stat">
+            <div class="k" style="display:flex; align-items:center; gap:6px;">
+              <span data-i18n="ex.stats.coverage">Couverture de l'agente Q</span>
+              <span class="qmark" data-tip="Le fléau de la dimension : la table Q n'est qu'un dictionnaire — un compteur par état rencontré. À 12 états (2×2) elle couvre tout, à 360 (2×3) presque tout, à 181 440 (3×3) elle peine à dépasser quelques pour cent. Le théorème de convergence de Watkins (1992) exige que chaque couple (état, action) soit visité infiniment souvent — à cette échelle, on ne visite même pas chaque état une seule fois. C'est ça, le fléau. AlphaZero et MuZero remplacent la table par un réseau de neurones qui généralise à des états jamais vus." data-i18n-data-tip="ex.stats.coverageTip" tabindex="0" aria-label="À propos de la couverture">ⓘ</span>
+            </div>
+            <div class="v" id="visited">—</div>
+          </div>
           <div class="stat"><div class="k" data-i18n="ex.stats.qUpdates">Mises à jour Q</div><div class="v" id="updates">—</div></div>
         </div>
       </div>
@@ -552,14 +558,22 @@
     row[a] = v;
   }
   function argmaxQ(s){
+    // Tie-break uniformly at random — when several actions share the max
+    // Q-value (e.g. all zero on a never-visited state), pick one at random.
+    // This makes the greedy policy behave as a uniform random walk in
+    // unexplored regions and as deterministic-best in well-trained ones —
+    // exactly what the math requires for "greedy = mixed policy".
     const acts = legalActions(s);
     const sk = key(s);
-    let bestA = acts[0], bestV = -Infinity;
+    let bestV = -Infinity;
+    let bestActs = [];
     for(const a of acts){
-      const v = getQ(sk,a);
-      if(v > bestV){ bestV=v; bestA=a; }
+      const v = getQ(sk, a);
+      if(v > bestV){ bestV = v; bestActs = [a]; }
+      else if(v === bestV){ bestActs.push(a); }
     }
-    return {a:bestA, v:bestV};
+    const bestA = bestActs[Math.floor(Math.random() * bestActs.length)];
+    return {a: bestA, v: bestV};
   }
   function sampleEpsGreedy(s, eps){
     const acts = legalActions(s);
@@ -622,7 +636,23 @@
   function renderStats(){
     curKeyEl.textContent = key(current);
     lastMovesEl.textContent = (lastSolveLen==null ? "—" : String(lastSolveLen));
-    visitedEl.textContent = String(visited.size);
+    (function(){
+      const REACHABLE = 360;
+      const v = visited.size;
+      const pct = (v / REACHABLE * 100);
+      const lang = (document.documentElement.lang || 'fr').slice(0,2).toLowerCase();
+      const loc = lang === 'en' ? 'en-US' : lang === 'de' ? 'de-DE' : lang === 'it' ? 'it-IT' : 'fr-FR';
+      const fmtInt = (n) => n.toLocaleString(loc);
+      const decSep = lang === 'en' ? '.' : ',';
+      const fmtPct = (p) => {
+        if (p >= 99.95) return '100';
+        if (p < 0.01) return '<0' + decSep + '01';
+        const d = p < 1 ? 2 : 1;
+        const s = p.toFixed(d);
+        return lang === 'en' ? s : s.replace('.', decSep);
+      };
+      visitedEl.textContent = `${fmtInt(v)} / ${fmtInt(REACHABLE)} (${fmtPct(pct)}%)`;
+    })()
     updatesEl.textContent = String(updates);
   }
   function log(line){
