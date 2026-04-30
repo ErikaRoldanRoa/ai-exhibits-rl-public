@@ -25,6 +25,30 @@ window.LEARN_TRANSLATIONS = {
       sentence: "\"The state space is half what you'd expect — parity cuts it in two, and the agent only ever sees one half.\""
     },
     {
+      id: "watkins-infinity",
+      title: "Watkins 1992: convergence \"in the limit\"",
+      tags: "Watkins theorem convergence Robbins-Monro Even-Dar PAC",
+      public: "Watkins's 1992 theorem guarantees that Q-learning converges to Q* — under one impossible condition: that every (state, action) pair is visited an **infinite number of times**. In a finite universe like a Saturday-afternoon Mission III, we never reach that condition. That's the curse of dimensionality: not that the algorithm is wrong, but that its guarantees are asymptotic.",
+      math: "**Theorem (Watkins-Dayan 1992).** For a finite MDP with bounded rewards, the Q-learning update Q(s,a) ← Q(s,a) + α[r + γ max_{a'} Q(s',a') − Q(s,a)] converges to Q* with probability 1 provided (i) Σ α_t(s,a) = ∞ and Σ α_t²(s,a) < ∞ for every (s,a) (Robbins-Monro 1951), and (ii) every (s,a) is visited **infinitely often**. The finite-time version (Even-Dar & Mansour 2003) gives Õ(|S|·|A|/ε²(1−γ)⁴) steps to reach |Q − Q*|_∞ ≤ ε with confidence 1−δ. For M3 at ε=0.1, γ=0.99: ~7×10¹² steps — five orders of magnitude beyond the default budget.",
+      sentence: "\"The theorem requires infinity; the curse is that we don't even reach one visit per state.\""
+    },
+    {
+      id: "mixed-policy",
+      title: "Greedy policy = uniform random in unexplored regions",
+      tags: "policy greedy random mixed walk tie-breaking",
+      public: "The **argmax** rule produces two different behaviours depending on accumulated experience. On a never-visited state, all Q-values are 0 — argmax picks uniformly at random among legal actions, and the policy becomes a uniform random walk. On a well-trained state, argmax returns the winning action deterministically. **One algorithm, two regimes.**",
+      math: "Greedy policy with uniform tie-breaking: π(a|s) = 𝟙[a ∈ argmax_{a'} Q(s,a')] / |argmax_{a'} Q(s,a')|. On unvisited state (all Q=0), |argmax| = |A(s)| → π uniform = random walk. On well-trained state, |argmax|=1 → π deterministic. Consequence: the agent survives even with coverage |V|/|R| ≪ 1 via a **natural mixed strategy**: random walk in unexplored regions until hitting V, then argmax in the visited subgraph. Total time ≈ τ_V(s_0) (hitting time on V) + δ_V(s_τ, goal) (optimal distance within V).",
+      sentence: "\"When the agent knows nothing, it acts at random. When it knows everything, it plays perfectly. Same rule, two regimes.\""
+    },
+    {
+      id: "cost-curse",
+      title: "The curse has a price",
+      tags: "cost curse PAC Even-Dar AlphaZero MuZero deep RL",
+      public: "On your laptop, one Q-learning step costs about **10⁻⁹ CHF** (a billionth). A full default Mission III run costs cents — basically free. But the total cost doesn't depend on the laptop alone: it depends on how many steps **the theorem** needs to learn. And that number explodes with the state-space size. AlphaZero cost ~$25M in TPU compute, and yet visited only 10⁻³⁶ of chess's state space.",
+      math: "PAC bound (Even-Dar & Mansour 2003): N* = Õ(|S|·|A| · log(|S||A|/δ) / (ε²(1−γ)⁴)) steps for |Q − Q*|_∞ ≤ ε with probability ≥ 1−δ. Total cost = N* · c where c ≈ 10⁻⁹ CHF/step. For M3 (|S|=181 440, ε=0.1, γ=0.99): ~7×10¹² steps → ~7,000 CHF. For chess (|S|≈10⁴⁶): ~10⁵⁰ CHF — more than the entire world GDP. AlphaZero (Silver et al. 2018) sidesteps the curse: replaces the Q-table with a neural network f_θ(s,a) ≈ Q*(s,a). Training cost: ~$25M; inference cost: essentially zero. The function generalises to states never seen — and AlphaZero saw only ~10⁻³⁶ of the chess graph.",
+      sentence: "\"Beyond a few thousand states, the Q-table is no longer learnable, not even with all the money in the world. That's why neural networks were invented.\""
+    },
+    {
       id: "actions",
       title: "Actions (A(s)): which moves are allowed",
       tags: "actions legal moves neighbors",
@@ -99,6 +123,30 @@ window.LEARN_TRANSLATIONS = {
       sentence: "„Der Zustandsraum ist halb so groß, wie du erwarten würdest — Parität teilt ihn, und die Agent*in sieht nur eine Hälfte.\""
     },
     {
+      id: "watkins-infinity",
+      title: "Watkins 1992: Konvergenz „im Grenzwert\"",
+      tags: "Watkins Theorem Konvergenz Robbins-Monro Even-Dar PAC",
+      public: "Watkins' Satz von 1992 garantiert, dass Q-Learning gegen Q* konvergiert — unter einer unmöglichen Bedingung: jedes (Zustand, Aktion)-Paar muss **unendlich oft** besucht werden. In einem endlichen Universum wie einem Samstagnachmittag-Mission-III erreichen wir diese Bedingung nie. Das ist der Fluch der Dimensionalität: nicht dass der Algorithmus falsch wäre, sondern dass seine Garantien asymptotisch sind.",
+      math: "**Satz (Watkins-Dayan 1992).** Für ein endliches MDP mit beschränkten Belohnungen konvergiert das Q-Learning-Update Q(s,a) ← Q(s,a) + α[r + γ max_{a'} Q(s',a') − Q(s,a)] mit Wahrscheinlichkeit 1 gegen Q*, sofern (i) Σ α_t(s,a) = ∞ und Σ α_t²(s,a) < ∞ für jedes (s,a) (Robbins-Monro 1951) und (ii) jedes (s,a) **unendlich oft** besucht wird. Die endliche Version (Even-Dar & Mansour 2003): Õ(|S|·|A|/ε²(1−γ)⁴) Schritte für |Q − Q*|_∞ ≤ ε mit Konfidenz 1−δ. Für M3 mit ε=0,1, γ=0,99: ~7×10¹² Schritte — fünf Größenordnungen über dem Standard-Budget.",
+      sentence: "„Der Satz fordert Unendlichkeit; der Fluch ist, dass wir nicht einmal einen Besuch pro Zustand schaffen.\""
+    },
+    {
+      id: "mixed-policy",
+      title: "Greedy-Policy = uniform zufällig im unerforschten Gebiet",
+      tags: "Policy greedy zufällig mixed Wanderung tie-breaking",
+      public: "Die **argmax**-Regel erzeugt zwei Verhalten je nach gesammelter Erfahrung. Auf einem nie besuchten Zustand sind alle Q-Werte 0 — argmax wählt gleichverteilt unter den legalen Aktionen, und die Policy wird zur uniformen Zufallswanderung. Auf einem gut trainierten Zustand liefert argmax die Gewinneraktion deterministisch. **Ein Algorithmus, zwei Regime.**",
+      math: "Greedy-Policy mit uniformem Tie-Breaking: π(a|s) = 𝟙[a ∈ argmax_{a'} Q(s,a')] / |argmax_{a'} Q(s,a')|. Auf unbesuchtem Zustand (alle Q=0), |argmax| = |A(s)| → π uniform = Zufallswanderung. Auf gut trainiertem Zustand, |argmax|=1 → π deterministisch. Konsequenz: die Agent*in überlebt auch mit Abdeckung |V|/|R| ≪ 1 durch **natürliche gemischte Strategie**: Zufallswanderung im unerforschten Bereich bis V erreicht ist, dann argmax im besuchten Teilgraphen. Gesamtzeit ≈ τ_V(s_0) + δ_V(s_τ, Ziel).",
+      sentence: "„Wenn die Agent*in nichts weiß, handelt sie zufällig. Wenn sie alles weiß, spielt sie perfekt. Gleiche Regel, zwei Regime.\""
+    },
+    {
+      id: "cost-curse",
+      title: "Der Fluch hat einen Preis",
+      tags: "Kosten curse PAC Even-Dar AlphaZero MuZero deep RL",
+      public: "Auf deinem Laptop kostet ein Q-Learning-Schritt etwa **10⁻⁹ CHF** (ein Milliardstel). Ein Standard-Mission-III-Lauf kostet ein paar Rappen — praktisch nichts. Aber die Gesamtkosten hängen nicht nur vom Laptop ab: sie hängen davon ab, wie viele Schritte **der Satz** zum Lernen braucht. Und diese Zahl explodiert mit der Größe des Zustandsraums. AlphaZero kostete ~25 Millionen Dollar an TPU-Compute und besuchte trotzdem nur 10⁻³⁶ des Schach-Zustandsraums.",
+      math: "PAC-Schranke (Even-Dar & Mansour 2003): N* = Õ(|S|·|A| · log(|S||A|/δ) / (ε²(1−γ)⁴)) Schritte für |Q − Q*|_∞ ≤ ε mit Wahrscheinlichkeit ≥ 1−δ. Gesamtkosten = N* · c mit c ≈ 10⁻⁹ CHF/Schritt. Für M3 (|S|=181.440, ε=0,1, γ=0,99): ~7×10¹² Schritte → ~7.000 CHF. Für Schach (|S|≈10⁴⁶): ~10⁵⁰ CHF — mehr als das gesamte Welt-BIP. AlphaZero (Silver et al. 2018) umgeht den Fluch: ersetzt die Q-Tabelle durch ein neuronales Netz f_θ(s,a) ≈ Q*(s,a). Trainingskosten: ~25 M$; Inferenzkosten: praktisch null. Die Funktion generalisiert auf nie gesehene Zustände — und AlphaZero sah nur ~10⁻³⁶ des Schachgraphen.",
+      sentence: "„Jenseits einiger Tausend Zustände ist die Q-Tabelle nicht mehr lernbar, nicht einmal mit allem Geld der Welt. Deshalb wurden neuronale Netze erfunden.\""
+    },
+    {
       id: "actions",
       title: "Aktionen (A(s)): welche Züge erlaubt sind",
       tags: "Aktionen legal Züge Nachbarn actions",
@@ -171,6 +219,30 @@ window.LEARN_TRANSLATIONS = {
       public: "Delle 4! = 24 disposizioni di tre tessere e uno spazio vuoto, solo 12 sono raggiungibili dall'obiettivo — le altre 12 sono irrisolvibili. Ogni mossa legale inverte **due** parità insieme, e il loro prodotto resta invariante: metà del mondo è invisibile all'agente.",
       math: "Sia σ ∈ S₄ la permutazione e b ∈ {0,1} la parità di (riga + colonna) dello spazio vuoto. Ogni mossa legale è una trasposizione, quindi sgn(σ) si inverte; sposta lo spazio vuoto esattamente di una cella, quindi b si inverte. Il prodotto sgn(σ)·(−1)^b è invariante: divide le 24 disposizioni in due orbite di pari dimensione, e solo l'orbita dell'obiettivo è raggiungibile. Wilson 1974 generalizza: per ogni scacchiera r×c con r,c ≥ 2 vale |R| = (rc)!/2.",
       sentence: "«Lo spazio degli stati è la metà di quanto ti aspetteresti — la parità lo divide a metà, e l'agente vede solo una metà.»"
+    },
+    {
+      id: "watkins-infinity",
+      title: "Watkins 1992: convergenza «al limite»",
+      tags: "Watkins teorema convergenza Robbins-Monro Even-Dar PAC",
+      public: "Il teorema di Watkins (1992) garantisce che il Q-learning converge a Q* — a una condizione impossibile: che ogni coppia (stato, azione) sia visitata un **numero infinito di volte**. In un universo finito come un sabato pomeriggio di Missione III, non raggiungiamo mai questa condizione. Questa è la maledizione della dimensionalità: non che l'algoritmo sia sbagliato, ma che le sue garanzie siano asintotiche.",
+      math: "**Teorema (Watkins-Dayan 1992).** Per un MDP finito con ricompense limitate, l'aggiornamento Q-learning Q(s,a) ← Q(s,a) + α[r + γ max_{a'} Q(s',a') − Q(s,a)] converge a Q* con probabilità 1 se (i) Σ α_t(s,a) = ∞ e Σ α_t²(s,a) < ∞ per ogni (s,a) (Robbins-Monro 1951) e (ii) ogni (s,a) è visitato **infinite volte**. La versione finita (Even-Dar & Mansour 2003): Õ(|S|·|A|/ε²(1−γ)⁴) passi per |Q − Q*|_∞ ≤ ε con confidenza 1−δ. Per M3 con ε=0,1, γ=0,99: ~7×10¹² passi — cinque ordini di grandezza oltre il budget standard.",
+      sentence: "«Il teorema richiede l'infinito; la maledizione è che non raggiungiamo nemmeno una visita per stato.»"
+    },
+    {
+      id: "mixed-policy",
+      title: "Politica greedy = casuale uniforme nelle zone inesplorate",
+      tags: "politica greedy casuale mixed cammino tie-breaking",
+      public: "La regola **argmax** produce due comportamenti diversi a seconda dell'esperienza accumulata. Su uno stato mai visitato, tutti i valori Q sono 0 — argmax sceglie uniformemente tra le azioni legali, e la politica diventa una passeggiata casuale uniforme. Su uno stato ben addestrato, argmax restituisce l'azione vincente in modo deterministico. **Un solo algoritmo, due regimi.**",
+      math: "Politica greedy con tie-breaking uniforme: π(a|s) = 𝟙[a ∈ argmax_{a'} Q(s,a')] / |argmax_{a'} Q(s,a')|. Su stato non visitato (tutte Q=0), |argmax| = |A(s)| → π uniforme = passeggiata casuale. Su stato ben addestrato, |argmax|=1 → π deterministica. Conseguenza: l'agente sopravvive anche con copertura |V|/|R| ≪ 1 tramite **strategia mista naturale**: passeggiata casuale nell'inesplorato fino a raggiungere V, poi argmax nel sottografo visitato. Tempo totale ≈ τ_V(s_0) + δ_V(s_τ, obiettivo).",
+      sentence: "«Quando l'agente non sa nulla, agisce a caso. Quando sa tutto, gioca perfettamente. Stessa regola, due regimi.»"
+    },
+    {
+      id: "cost-curse",
+      title: "La maledizione ha un prezzo",
+      tags: "costo curse PAC Even-Dar AlphaZero MuZero deep RL",
+      public: "Sul tuo laptop, un passo di Q-learning costa circa **10⁻⁹ CHF** (un miliardesimo). Una sessione completa di Missione III costa qualche centesimo — praticamente gratis. Ma il costo totale non dipende solo dal laptop: dipende da quanti passi **il teorema** richiede per imparare. E quel numero esplode con la dimensione dello spazio degli stati. AlphaZero è costato ~25 milioni di dollari in TPU compute, e ha visitato solo 10⁻³⁶ dello spazio degli stati degli scacchi.",
+      math: "Limite PAC (Even-Dar & Mansour 2003): N* = Õ(|S|·|A| · log(|S||A|/δ) / (ε²(1−γ)⁴)) passi per |Q − Q*|_∞ ≤ ε con probabilità ≥ 1−δ. Costo totale = N* · c con c ≈ 10⁻⁹ CHF/passo. Per M3 (|S|=181.440, ε=0,1, γ=0,99): ~7×10¹² passi → ~7.000 CHF. Per gli scacchi (|S|≈10⁴⁶): ~10⁵⁰ CHF — più del PIL mondiale. AlphaZero (Silver et al. 2018) aggira la maledizione: sostituisce la tabella Q con una rete neurale f_θ(s,a) ≈ Q*(s,a). Costo di addestramento: ~25 M$; costo di inferenza: praticamente nullo. La funzione generalizza a stati mai visti — e AlphaZero ha visto solo ~10⁻³⁶ del grafo degli scacchi.",
+      sentence: "«Oltre qualche migliaio di stati, la tabella Q non è più apprendibile, nemmeno con tutto il denaro del mondo. Per questo si sono inventate le reti neurali.»"
     },
     {
       id: "actions",

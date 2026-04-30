@@ -1603,6 +1603,30 @@ const rline = document.createElement('div');
         sentence:"« L'espace d'états fait la moitié de ce qu'on attend — la parité le coupe en deux, et l'agente ne voit jamais qu'une moitié. »"
       },
       {
+        id:"watkins-infinity",
+        title:"Watkins 1992 : convergence « à la limite »",
+        tags:"Watkins théorème convergence Robbins-Monro Even-Dar PAC",
+        public:"Le théorème de Watkins (1992) garantit que le Q-learning converge vers Q* — à une condition impossible : que chaque couple (état, action) soit visité un **nombre infini de fois**. Dans un univers fini comme un Mission III samedi après-midi, on n'atteint jamais cette condition. C'est ça, le fléau de la dimension : pas que l'algorithme soit faux, mais que ses garanties soient asymptotiques.",
+        math:"**Théorème (Watkins-Dayan 1992).** Pour un MDP fini avec récompenses bornées, la mise à jour Q-learning Q(s,a) ← Q(s,a) + α[r + γ max_{a'} Q(s',a') − Q(s,a)] converge vers Q* avec probabilité 1, à condition que (i) Σ α_t(s,a) = ∞ et Σ α_t²(s,a) < ∞ pour tout (s,a) (Robbins-Monro 1951) et (ii) chaque (s,a) soit visité **infiniment souvent**. La version finie (Even-Dar et Mansour 2003) donne Õ(|S|·|A|/ε²(1−γ)⁴) pas pour atteindre |Q − Q*|_∞ ≤ ε avec confiance 1−δ. Pour M3 à ε=0,1 et γ=0,99 : ~7×10¹² pas, soit cinq ordres de grandeur au-delà du budget par défaut.",
+        sentence:"« Le théorème exige l'infini ; le fléau, c'est qu'on n'atteint pas même une visite par état. »"
+      },
+      {
+        id:"mixed-policy",
+        title:"Politique gloutonne = aléatoire en zone inexplorée",
+        tags:"politique greedy aléatoire mixed marche tie-breaking",
+        public:"La règle **argmax** produit deux comportements différents selon l'expérience accumulée. Sur un état jamais visité, toutes les valeurs Q sont à 0 — l'argmax est tiré au hasard parmi les actions légales, et la politique devient une marche aléatoire uniforme. Sur un état bien entraîné, l'argmax retourne l'action gagnante de manière déterministe. **Un seul algorithme, deux régimes.**",
+        math:"Politique gloutonne avec tie-breaking uniforme : π(a|s) = 𝟙[a ∈ argmax_{a'} Q(s,a')] / |argmax_{a'} Q(s,a')|. Sur état non visité (toutes Q=0), |argmax| = |A(s)| → π uniforme = marche aléatoire. Sur état bien entraîné, |argmax|=1 → π déterministe. Conséquence : l'agente survit même avec une couverture |V|/|R| ≪ 1 par **stratégie mixte naturelle** : marche aléatoire dans l'inexploré jusqu'à atteindre V, puis suivi de l'argmax dans le sous-graphe V. Temps total ≈ τ_V(s_0) (temps de frappe sur V) + δ_V(s_τ, but) (distance optimale dans V).",
+        sentence:"« Quand l'agente ne sait rien, elle agit au hasard. Quand elle sait tout, elle joue parfaitement. Même règle, deux régimes. »"
+      },
+      {
+        id:"cost-curse",
+        title:"Le fléau a un prix",
+        tags:"coût curse PAC Even-Dar AlphaZero MuZero deep RL",
+        public:"Sur ton laptop, un pas de Q-learning coûte environ **10⁻⁹ CHF** (un milliardième). Mission III complet par défaut coûte donc des centimes — quasi-gratuit. Mais le coût total ne dépend pas que du laptop : il dépend du nombre de pas dont **le théorème** a besoin pour apprendre. Et ce nombre explose avec la taille de l'espace d'états. AlphaZero a coûté ~25 millions de dollars en TPU, et n'a vu que 10⁻³⁶ de l'espace d'états des échecs.",
+        math:"Borne PAC (Even-Dar et Mansour 2003) : N* = Õ(|S|·|A| · log(|S||A|/δ) / (ε²(1−γ)⁴)) pas pour |Q − Q*|_∞ ≤ ε avec probabilité ≥ 1−δ. Coût total = N* · c où c ≈ 10⁻⁹ CHF/pas. Pour M3 (|S|=181 440, ε=0,1, γ=0,99) : ~7×10¹² pas → ~7 000 CHF. Pour les échecs (|S|≈10⁴⁶) : ~10⁵⁰ CHF — plus que la totalité du PIB mondial. AlphaZero (Silver et al. 2018) contourne le fléau : remplace la table Q par un réseau de neurones f_θ(s,a) ≈ Q*(s,a). Coût d'entraînement : ~25 M$ ; coût d'inférence : quasi-nul. La fonction généralise à des états jamais vus — il n'a pourtant visité que ~10⁻³⁶ du graphe des échecs.",
+        sentence:"« Au-delà de quelques milliers d'états, la table Q n'est plus apprenable même avec tout l'argent du monde. C'est pour ça qu'on a inventé les réseaux de neurones. »"
+      },
+      {
         id:"actions",
         title:"Actions (A(s)) : quels coups sont autorisés",
         tags:"actions légal coups voisins actions legal",
