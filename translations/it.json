@@ -419,7 +419,11 @@
     },
     "reachableStatesCount": "181.440",
     "godsNumber": "31",
-    "missionTrainingChip": "Missione III · Episodio di Addestramento"
+    "missionTrainingChip": "Missione III · Episodio di Addestramento",
+    "stats": {
+      "coverage": "Copertura dell'agente Q",
+      "coverageTip": "La maledizione della dimensionalità: la tabella Q è solo un dizionario — una voce per stato visitato. A 12 stati (2×2) copre tutto, a 360 (2×3) quasi tutto, a 181.440 (3×3) fatica a superare qualche percento. AlphaZero e MuZero sostituiscono la tabella con una rete neurale — una funzione che generalizza a stati mai visti."
+    }
   },
   "gate": {
     "brand": "AI-Exhibits",

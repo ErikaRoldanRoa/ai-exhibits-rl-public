@@ -419,7 +419,11 @@
     },
     "reachableStatesCount": "181,440",
     "godsNumber": "31",
-    "missionTrainingChip": "Mission III · Training Episode"
+    "missionTrainingChip": "Mission III · Training Episode",
+    "stats": {
+      "coverage": "Q-agent coverage",
+      "coverageTip": "The curse of dimensionality: the Q-table is just a dictionary — one entry per state seen. At 12 states (2×2) it covers everything; at 360 (2×3) almost everything; at 181,440 (3×3) it struggles to pass a few percent. AlphaZero and MuZero replace the table with a neural network — a function that generalises to states never seen."
+    }
   },
   "gate": {
     "brand": "AI-Exhibits",

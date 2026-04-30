@@ -430,7 +430,13 @@
         <div class="stats">
           <div class="stat"><div class="k" data-i18n="ex.stats.currentState">État actuel</div><div class="v" id="curKey">—</div></div>
           <div class="stat"><div class="k" data-i18n="ex.stats.movesLastSolve">Coups (dernière résolution)</div><div class="v" id="lastMoves">—</div></div>
-          <div class="stat"><div class="k" data-i18n="ex.stats.visitedStates">États visités</div><div class="v" id="visited">—</div></div>
+          <div class="stat">
+            <div class="k" style="display:flex; align-items:center; gap:6px;">
+              <span data-i18n="ex3x3.stats.coverage">Couverture Q-agent</span>
+              <span class="qmark" data-tip="Le fléau de la dimension : la table Q n'est qu'un dictionnaire — un compteur par état rencontré. À 12 états (2×2) elle couvre tout, à 360 (2×3) presque tout, à 181 440 (3×3) elle peine à dépasser quelques pour cent. AlphaZero et MuZero remplacent la table par un réseau de neurones — une fonction qui généralise à des états jamais vus." data-i18n-data-tip="ex3x3.stats.coverageTip" tabindex="0" aria-label="À propos de la couverture">ⓘ</span>
+            </div>
+            <div class="v" id="visited">—</div>
+          </div>
           <div class="stat"><div class="k" data-i18n="ex.stats.qUpdates">Mises à jour Q</div><div class="v" id="updates">—</div></div>
         </div>
       </div>
@@ -635,7 +641,26 @@
   function renderStats(){
     curKeyEl.textContent = key(current);
     lastMovesEl.textContent = (lastSolveLen==null ? "—" : String(lastSolveLen));
-    visitedEl.textContent = String(visited.size);
+    // Coverage: visited count / 181 440 reachable states. The fraction is
+    // the felt-curse moment — at 3×3 scale, even after thousands of
+    // episodes the Q-table covers a few % of the reachable graph.
+    const REACHABLE_3X3 = 181440;
+    const v = visited.size;
+    const pct = (v / REACHABLE_3X3 * 100);
+    const lang = (document.documentElement.lang || 'fr').slice(0,2).toLowerCase();
+    const loc = lang === 'en' ? 'en-US'
+              : lang === 'de' ? 'de-DE'
+              : lang === 'it' ? 'it-IT'
+                              : 'fr-FR';
+    const fmtInt = (n) => n.toLocaleString(loc);
+    const decSep = (lang === 'en') ? '.' : ',';
+    const fmtPct = (p) => {
+      if (p < 0.01) return '<0' + decSep + '01';
+      const d = p < 1 ? 2 : 1;
+      const s = p.toFixed(d);
+      return (lang === 'en') ? s : s.replace('.', decSep);
+    };
+    visitedEl.textContent = `${fmtInt(v)} / ${fmtInt(REACHABLE_3X3)} (${fmtPct(pct)}%)`;
     updatesEl.textContent = String(updates);
   }
   function log(line){
@@ -836,7 +861,11 @@
   // Init
   shuffle(Math.max(12, N*8));
   resetQ();
-  document.addEventListener('i18n:applied', () => { try { renderBenchUI(); } catch(e){} });
+  document.addEventListener('i18n:applied', () => {
+    try { renderBenchUI(); } catch(e){}
+    // Re-render coverage counter so number formatting follows the new lang.
+    try { renderStats(); } catch(e){}
+  });
   log(window.i18n ? window.i18n.t('ex.msg.ready', 'Prêt. Cliquez sur les tuiles pour jouer ; ou Entraîner → Résoudre.') : 'Prêt. Cliquez sur les tuiles pour jouer ; ou Entraîner → Résoudre.');
 })();
 </script>
