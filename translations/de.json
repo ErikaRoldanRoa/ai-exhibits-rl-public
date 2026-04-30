@@ -7,7 +7,7 @@
     "version": "0.1.0"
   },
   "common": {
-    "backToHub": "Zurück zur Halle",
+    "backToHub": "← Zurück zum Hub",
     "loading": "Lädt…",
     "shuffle": "Mischen",
     "resetQ": "Q zurücksetzen",
@@ -40,16 +40,8 @@
   "hub": {
     "launchTraining": "🚀 Training starten",
     "header": {
-      "title": "AI-Exhibits: Verstärkendes Lernen — Missionshalle",
-      "h1": "AI-Exhibits: Verstärkendes Lernen — Missionshalle",
-      "yourRole": "DEINE ROLLE",
-      "yourChallenge": "DEINE HERAUSFORDERUNG",
-      "toIntel": "Zum Mission-Briefing ↓"
-    },
-    "typing": {
-      "role": "Jahr 2070 — Menschliche*r Agent*in & KI-Trainer*in.",
-      "mission": "Du nimmst gleich an einer Operation teil, in der intelligente Agent*innen und Schiebepuzzles im Mittelpunkt stehen.\n\nDie Operation besteht aus drei Missionen, jede mit einer anderen Puzzle-Größe.\nJe nach verfügbarer Zeit schaffst du vielleicht nicht alle.\n\nHier in der Halle legst du Referenzwerte fest:\n• feste Puzzles als menschliche*r Agent*in lösen\n• eine untrainierte (zufällige) Agent*in beobachten\n• vergleichen, wie viele Züge es bis zum Ziel braucht\n\nIn jeder Mission stellst du dich zwei Episoden:\neiner Trainings-Episode und einer Challenge-Episode.",
-      "goal": "Dein Ziel über die ganze Operation ist einfach: Agent*innen trainieren, die sowohl die menschliche Referenz als auch die zufällige Grundlinie schlagen."
+      "title": "AI-Exhibits: Verstärkendes Lernen · Hub",
+      "h1": "AI-Exhibits: Verstärkendes Lernen · Hub"
     },
     "mission1": {
       "title": "Mission I: Lernen sichtbar machen",
@@ -60,7 +52,8 @@
         "b4Tooltip": "⭐⭐⭐⭐ 4 Züge",
         "b5Tooltip": "⭐⭐⭐⭐⭐ 5 Züge",
         "b6Tooltip": "🏆 6 Züge — Gottes Zahl!"
-      }
+      },
+      "subtitle": "12 Zustände · die ganze Welt auf einer Seite · Q-Tabelle von Hand bauen"
     },
     "mission2": {
       "title": "Mission II: Ausbreitung",
@@ -70,7 +63,8 @@
         "b3Tooltip": "⭐⭐⭐ 6 Züge",
         "b4Tooltip": "⭐⭐⭐⭐ 9 Züge",
         "b5Tooltip": "🏆 21 Züge — Gottes Zahl!"
-      }
+      },
+      "subtitle": "360 Zustände · zu groß zum Zeichnen · sieh Q vom Ziel zurückwandern"
     },
     "mission3": {
       "title": "Mission III: Skalierung",
@@ -80,14 +74,15 @@
         "b3Tooltip": "⭐⭐⭐ 18 Züge",
         "b4Tooltip": "⭐⭐⭐⭐ 26 Züge",
         "b5Tooltip": "🏆 31 Züge — Gottes Zahl!"
-      }
+      },
+      "subtitle": "181.440 Zustände · drei Spielende im Duell · der Fluch der Dimensionalität"
     },
     "stats": {
       "you": "Du",
       "randomAgent": "Zufallsagent*in"
     },
     "intel": {
-      "title": "Mission-Briefing (was du wissen musst, um deine Q-Learning-Agent*in effizient zu trainieren)",
+      "title": "Q-Learning-Glossar — die sechs Begriffe zum Trainieren einer Agent*in",
       "showBtn": "Anzeigen",
       "hideBtn": "Ausblenden",
       "termsLabel": "Glossarbegriffe",
@@ -113,7 +108,9 @@
       "policy": "\n  <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">STRATEGIE</div>\n  <div>\n    Eine <strong>Strategie</strong> beschreibt, wie sich eine Agent*in verhält.\n    Es ist eine Regel, die der Agent*in sagt, <strong>welche Aktion in welchem Zustand zu wählen ist</strong>.\n  </div>\n  <div style=\"margin-top:8px;\">\n    In dieser Ausstellung lernt die <strong>Q-Learning-Agent*in</strong> zunächst Q-Werte.\n    Die Strategie wird dann aus diesen Werten abgeleitet (zum Beispiel: die Aktion mit dem höchsten Q-Wert wählen).\n  </div>\n  <div style=\"margin-top:8px;\">\n    Verschiedene Agent*innen folgen verschiedenen Strategien:\n    eine zufällige Agent*in folgt einer zufälligen Strategie,\n    während eine trainierte Agent*in einer gelernten Strategie folgt.\n  </div>\n",
       "rl": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">VERSTÄRKENDES LERNEN</div>\n        <div>\n          <strong>Verstärkendes Lernen</strong> (Reinforcement Learning) ist ein <strong>Rahmenwerk</strong>, um eine Agent*in durch Interaktion zu trainieren:\n          die Agent*in probiert Aktionen aus, erhält Rückmeldung (Belohnungen) und verbessert ihr Verhalten mit der Zeit.\n          Es ist <strong>kein</strong> einzelner Algorithmus, sondern eine Familie. Fortgeschrittenere Beispiele: DQN auf Atari (2015), AlphaZero für Go (2017).\n        </div>\n        <div style=\"margin-top:8px;\">\n          Bei unseren Puzzles ist die Belohnung einfach: <strong>+1, wenn der nächste Zustand das Ziel ist, sonst 0</strong> (eine Schritt-Strafe ist optional).\n        </div>\n      ",
       "q": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">Q-LEARNING</div>\n        <div>\n          <strong>Q-Learning</strong> ist ein Algorithmus des verstärkenden Lernens.\n          Er lernt Werte <span class=\"mono\">Q(Zustand, Aktion)</span>, die einschätzen, wie gut jede Aktion in jedem Zustand ist.\n          Die Agent*in nutzt diese Q-Werte dann, um ihre Aktionen zu wählen (ihre Strategie).\n        </div>\n      "
-    }
+    },
+    "dmvmBanner": "Du liest den DMVM-Artikel. Beginne mit dem 2×2 — zwölf Zustände, die ganze Welt auf einer Serviette.",
+    "dmvmBannerClose": "DMVM-Banner schließen"
   },
   "glossary": {
     "state": {
@@ -178,10 +175,14 @@
     },
     "card3": {
       "title": "🏆 Benchmarks & Gottes Zahlen",
-      "h2x2": "2×2-Puzzle (12 Zustände)",
-      "h2x3": "2×3-Puzzle (360 Zustände)",
-      "h3x3": "3×3-Puzzle (181.440 Zustände)",
-      "tip": "🏆 <strong>Gottes Zahl</strong> = Durchmesser des Graphen der erreichbaren Zustände: die Anzahl Züge, um den <em>schwierigsten</em> Startzustand bei perfektem Spiel zu lösen."
+      "h2x2": "Mission I — Puzzle 2×2 (12 Zustände)",
+      "h2x3": "Mission II — Puzzle 2×3 (360 Zustände)",
+      "h3x3": "Mission III — Puzzle 3×3 (181.440 Zustände)",
+      "tip": "🏆 <strong>Gottes Zahl</strong> = Durchmesser des Graphen der erreichbaren Zustände: die Anzahl Züge, um den <em>schwierigsten</em> Startzustand bei perfektem Spiel zu lösen.",
+      "hook2x2": "Die ganze Welt auf einer Seite · Q-Tabelle von Hand bauen.",
+      "hook2x3": "Jetzt trainieren wir · sieh Q vom Ziel zurückwandern.",
+      "hook3x3": "Zu groß für eine Q-Tabelle · der Fluch der Dimensionalität.",
+      "benchHeader": "Benchmark Bk = ein Startzustand k Züge vom Ziel entfernt."
     },
     "card4": {
       "title": "🚀 Trainings-Ablauf",
@@ -199,7 +200,7 @@
       "t2": "<strong>Q-Tabelle leer?</strong> Prüfen, dass α ≠ 0",
       "t3": "<strong>Zu langsam?</strong> ε nach dem Training verkleinern"
     },
-    "footer": "RL Mission Hub · Dr. Erika Roldán · MPI MiS · 2026"
+    "footer": "AI-Exhibits · Dr. Erika Roldán · MPI MiS · 2026"
   },
   "quickstart": {
     "title": "🎓 Schnellstart — Moderator*in",
@@ -211,17 +212,17 @@
       "trouble": "Wenn es hakt"
     },
     "before": {
-      "1": "Die Halle auf den verwendeten Geräten (Tablets, Computer) testen. Installation: keine.",
-      "2": "Bei Bedarf drucken: Mission-Briefing, Teambogen, Wörterbuch.",
-      "3": "Einen großen Bildschirm für das gemeinsame Briefing einplanen."
+      "1": "Den Hub auf den verwendeten Geräten (Tablets, Computer) testen. Installation: keine.",
+      "2": "Bei Bedarf drucken: <a href=\"print/fiche_equipe_de.html\">Teambogen</a>, <a href=\"print/dictionnaire_de.html\">Wörterbuch</a>.",
+      "3": "Einen großen Bildschirm für die gemeinsame Einführung einplanen."
     },
     "flow": {
-      "1": "<strong>00:00–00:15</strong> — Einstieg &amp; Missions-Rahmen",
-      "2": "<strong>00:15–00:35</strong> — Phase 1: Mensch vs. Zufallsagent*in (Mission I, 2×2)",
-      "3": "<strong>00:35–01:05</strong> — Phase 2: erste Agent*in trainieren",
-      "4": "<strong>01:05–01:15</strong> — Pause",
-      "5": "<strong>01:15–01:45</strong> — Phase 3: „Gottes Zahl\"-Herausforderung &amp; Skalierung (Missionen II / III)",
-      "6": "<strong>01:45–02:00</strong> — Reflexion &amp; Alltagsbezug"
+      "1": "<strong>00:00–00:15</strong> — Einstieg &amp; Rahmen: trainiere eine KI, der du beim Lernen zuschaust.",
+      "2": "<strong>00:15–00:35</strong> — Phase 1 · Mission I (2×2, 12 Zustände): den Konfigurationsraum und die Paritätsbahn kartieren, eine Q-Tabelle von Hand auf Papier bauen.",
+      "3": "<strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 Zustände, Gottes Zahl=21): Agent*in trainieren; Episoden, ε-Abnahme und die Rückwanderung der Q-Werte vom Ziel beobachten.",
+      "4": "<strong>01:05–01:15</strong> — Pause.",
+      "5": "<strong>01:15–01:45</strong> — Phase 3 · Mission III (3×3, 181.440 Zustände, Gottes Zahl=31): Drei-Spielende-Turnier (du / Zufall / Q-Agent*in), den Fluch der Dimensionalität benennen, Brücke zu AlphaZero / MuZero.",
+      "6": "<strong>01:45–02:00</strong> — Reflexion &amp; Alltagsbezug."
     },
     "params": {
       "2x2": "<strong>2×2</strong> (12 Zustände): α=0,5, γ=0,9, ε=0,3 · 500–2000 Episoden",
@@ -451,7 +452,7 @@
       },
       "step3": {
         "title": "Trainiere deine Agent*in",
-        "text": "Klicke auf Trainieren und schau zu, wie die Magie passiert! Du siehst, wie sich die Q-Werte in Echtzeit aktualisieren, während deine Agent*in lernt, welche Züge zum Erfolg führen."
+        "text": "Klicke auf Trainieren und sieh, wie sich die Q-Werte in Echtzeit aktualisieren, während deine Agent*in lernt, welche Züge zum Erfolg führen."
       },
       "step4": {
         "title": "Testen & Vergleichen",
@@ -503,25 +504,21 @@
   },
   "gate": {
     "brand": "AI-Exhibits",
-    "title": "Zugang zur Operation",
-    "subtitle": "Als Teilnehmer*in eintreten oder in den Moderations-Modus wechseln für Ablauf-Hinweise.",
+    "title": "Trainiere deine KI!",
+    "subtitle": "Schiebepuzzles. Drei Größen. Drei Spielende.",
     "mode": "Modus: Agent*in",
     "modePrefix": "Modus",
     "modeAgent": "Agent*in",
-    "modeFacilitator": "Moderator*in",
-    "question": "Nimmst du die Mission an, eine KI-Agent*in zu trainieren?",
-    "prompt": "Du wirst drei Agent*innen beim Lösen von Schiebepuzzles testen: dich selbst, eine Zufallsagent*in und eine von dir trainierte KI-Agent*in.",
-    "hint": "Tipp: Geräte werden oft geteilt. Nutze <span class=\"mono\">Zurück zum Start</span> jederzeit.",
+    "modeFacilitator": "Moderation",
+    "question": "",
+    "prompt": "Du vergleichst drei Lösende: eine Zufalls-Agent*in, dich selbst und eine Q-Learning-Agent*in, die du trainierst. Drei Puzzlegrößen, drei Missionen.",
+    "hint": "Tipp: Geräte werden oft geteilt. Nutze Zurück zum Start jederzeit.",
     "facilitatorBtn": "Moderations-Modus",
     "continueBtn": "Los geht's",
-    "author": "Konzipiert und entwickelt von Dr. Erika Roldán Roa · MPI MiS"
+    "author": "Entwickelt von <strong>Dr. Erika Roldán Roa</strong> · MPI MiS"
   },
   "hud": {
-    "navLabel": "Navigation",
-    "rolePill": "Rolle: —",
-    "rolePillPrefix": "Rolle",
-    "rolePillAgent": "Agent*in",
-    "rolePillFacilitator": "Moderator*in"
+    "navLabel": "Navigation"
   },
   "footer": {}
 }

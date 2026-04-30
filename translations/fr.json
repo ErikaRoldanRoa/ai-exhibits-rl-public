@@ -7,7 +7,7 @@
     "version": "0.2.0"
   },
   "common": {
-    "backToHub": "Retour au Hall",
+    "backToHub": "← Retour au Hub",
     "loading": "Chargement…",
     "shuffle": "Mélanger",
     "resetQ": "Réinitialiser Q",
@@ -40,16 +40,8 @@
   "hub": {
     "launchTraining": "🚀 Lancer l'Entraînement",
     "header": {
-      "title": "AI-Exhibits : Apprentissage par Renforcement — Hall des Missions",
-      "h1": "AI-Exhibits : Apprentissage par Renforcement — Hall des Missions",
-      "yourRole": "VOTRE RÔLE",
-      "yourChallenge": "VOTRE DÉFI",
-      "toIntel": "Aller aux Infos Mission ↓"
-    },
-    "typing": {
-      "role": "Année 2070 — Agente Humaine & Entraîneuse d'IA.",
-      "mission": "Vous êtes sur le point de participer à une opération impliquant des agentes intelligentes et des puzzles à glissement.\n\nL'opération comprend trois missions, chacune basée sur une taille de puzzle différente.\nSelon le temps disponible, vous ne pourrez peut-être pas toutes les atteindre.\n\nDans ce Hall, vous établissez des références :\n• résoudre des puzzles fixes en tant qu'agente humaine\n• observer une agente non entraînée (aléatoire)\n• comparer le nombre de mouvements nécessaires pour atteindre l'objectif\n\nDans chaque mission, vous affronterez deux épisodes :\nun Épisode d'Entraînement et un Épisode de Défi.",
-      "goal": "Votre objectif tout au long de l'opération est simple : entraîner des agentes qui surpassent à la fois la référence humaine et le score aléatoire de base."
+      "title": "AI-Exhibits : Apprentissage par Renforcement · Hub",
+      "h1": "AI-Exhibits : Apprentissage par Renforcement · Hub"
     },
     "mission1": {
       "title": "Mission I : Rendre l'apprentissage visible",
@@ -60,7 +52,8 @@
         "b4Tooltip": "⭐⭐⭐⭐ 4 mouvements",
         "b5Tooltip": "⭐⭐⭐⭐⭐ 5 mouvements",
         "b6Tooltip": "🏆 6 mouvements — Nombre de Dieu !"
-      }
+      },
+      "subtitle": "12 états · le monde entier tient sur une page · construis la table Q à la main"
     },
     "mission2": {
       "title": "Mission II : Propagation",
@@ -70,24 +63,26 @@
         "b3Tooltip": "⭐⭐⭐ 6 mouvements",
         "b4Tooltip": "⭐⭐⭐⭐ 9 mouvements",
         "b5Tooltip": "🏆 21 mouvements — Nombre de Dieu !"
-      }
+      },
+      "subtitle": "360 états · trop pour tout dessiner · regarde Q remonter depuis l'objectif"
     },
     "mission3": {
-      "title": "Mission III : Mise à l'Échelle",
+      "title": "Mission III : Mise à l'échelle",
       "bench": {
         "b1Tooltip": "⭐ 1 mouvement",
         "b2Tooltip": "⭐⭐ 10 mouvements",
         "b3Tooltip": "⭐⭐⭐ 18 mouvements",
         "b4Tooltip": "⭐⭐⭐⭐ 26 mouvements",
         "b5Tooltip": "🏆 31 mouvements — Nombre de Dieu !"
-      }
+      },
+      "subtitle": "181 440 états · trois joueuses face à face · le fléau de la dimension"
     },
     "stats": {
       "you": "Vous",
       "randomAgent": "Agente aléatoire"
     },
     "intel": {
-      "title": "Infos Mission (ce qu'il faut savoir pour entraîner efficacement votre agente Q-learning)",
+      "title": "Glossaire Q-learning — les six termes pour entraîner une agente",
       "showBtn": "Afficher",
       "hideBtn": "Masquer",
       "termsLabel": "Termes du glossaire",
@@ -113,7 +108,9 @@
       "policy": "\n  <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">POLITIQUE</div>\n  <div>\n    Une <strong>politique</strong> décrit la manière dont une agente se comporte.\n    C'est une règle qui indique à l'agente <strong>quelle action choisir dans chaque état</strong>.\n  </div>\n  <div style=\"margin-top:8px;\">\n    Dans cette exposition, l'<strong>agente Q-learning</strong> apprend d'abord les valeurs Q.\n    La politique est ensuite dérivée de ces valeurs (par exemple, en choisissant l'action ayant la plus haute valeur Q).\n  </div>\n  <div style=\"margin-top:8px;\">\n    Différentes agentes suivent différentes politiques&#8239;:\n    une agente aléatoire suit une politique aléatoire,\n    tandis qu'une agente entraînée suit une politique apprise.\n  </div>\n",
       "rl": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">APPRENTISSAGE PAR RENFORCEMENT</div>\n        <div>\n          L'<strong>Apprentissage par Renforcement</strong> est un <strong>cadre</strong> pour entraîner une agente par interaction&#8239;:\n          l'agente essaie des actions, reçoit un retour (des récompenses), et améliore son comportement au fil du temps.\n          Ce n'est <strong>pas</strong> un algorithme unique, mais une famille d'algorithmes. Parmi les exemples plus avancés&#8239;: DQN sur Atari (2015), AlphaZero pour le Go (2017).\n        </div>\n        <div style=\"margin-top:8px;\">\n          Dans nos puzzles, la récompense est simple&#8239;: <strong>+1 lorsque l'état suivant est l'objectif, 0 sinon</strong> (une pénalité par pas est optionnelle).\n        </div>\n      ",
       "q": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">Q-LEARNING</div>\n        <div>\n          Le <strong>Q-learning</strong> est un algorithme d'Apprentissage par Renforcement.\n          Il apprend des valeurs <span class=\"mono\">Q(état, action)</span> qui estiment la qualité de chaque action dans chaque état.\n          L'agente utilise ensuite ces valeurs Q pour choisir ses actions (sa politique).\n        </div>\n      "
-    }
+    },
+    "dmvmBanner": "Tu lis l'article DMVM. Commence par le 2×2 — douze états, le monde entier tient sur une serviette.",
+    "dmvmBannerClose": "Fermer le bandeau DMVM"
   },
   "glossary": {
     "state": {
@@ -174,14 +171,18 @@
       "tip1": "<strong>α élevé</strong> : apprend vite mais peut être instable",
       "tip2": "<strong>γ élevé</strong> : planifie à long terme (idéal pour les puzzles !)",
       "tip3": "<strong>ε élevé</strong> : plus d'exploration, convergence plus lente",
-      "tip4": "<strong>Pour tester</strong> : régler ε = 0 (stratégie purement gloutonne — l'agente n'explore plus)"
+      "tip4": "<strong>Pour tester</strong> : régler ε = 0 (stratégie purement gloutonne — l'agente n'explore plus)"
     },
     "card3": {
       "title": "🏆 Références & Nombres de Dieu",
-      "h2x2": "Puzzle 2×2 (12 états)",
-      "h2x3": "Puzzle 2×3 (360 états)",
-      "h3x3": "Puzzle 3×3 (181 440 états)",
-      "tip": "🏆 <strong>Nombre de Dieu</strong> = diamètre du graphe des états accessibles : nombre de coups pour résoudre le <em>pire</em> état de départ si l'on joue parfaitement."
+      "h2x2": "Mission I — Puzzle 2×2 (12 états)",
+      "h2x3": "Mission II — Puzzle 2×3 (360 états)",
+      "h3x3": "Mission III — Puzzle 3×3 (181 440 états)",
+      "tip": "🏆 <strong>Nombre de Dieu</strong> = diamètre du graphe des états accessibles : nombre de coups pour résoudre le <em>pire</em> état de départ si l'on joue parfaitement.",
+      "hook2x2": "Le monde entier tient sur une page · construis la table Q à la main.",
+      "hook2x3": "Maintenant on entraîne · regarde Q remonter depuis l'objectif.",
+      "hook3x3": "Trop pour une table Q · voici le fléau de la dimension.",
+      "benchHeader": "Référence Bk = un état de départ à k coups de l'objectif."
     },
     "card4": {
       "title": "🚀 Déroulé d'Entraînement",
@@ -195,14 +196,14 @@
       "step7": "<strong>Ajuster</strong> : modifier les paramètres, entraîner davantage",
       "step8": "<strong>Défi</strong> : atteindrez-vous le Nombre de Dieu ?",
       "troubleshoot": "En cas de problème",
-      "t1": "<strong>L'agente ne trouve pas la solution ?</strong> Entraîner davantage (1000+ épisodes)",
+      "t1": "<strong>L'agente ne trouve pas la solution ?</strong> Entraîner davantage (1000+ épisodes)",
       "t2": "<strong>Table Q vide ?</strong> Vérifier que α ≠ 0",
       "t3": "<strong>Trop lent ?</strong> Réduire ε après l'entraînement"
     },
-    "footer": "RL Mission Hub · D<sup>r</sup> Erika Roldán · MPI MiS · 2026"
+    "footer": "AI-Exhibits · D<sup>r</sup> Erika Roldán · MPI MiS · 2026"
   },
   "quickstart": {
-    "title": "🎓 Démarrage rapide — Facilitatrice·ice",
+    "title": "🎓 Démarrage rapide — Facilitatrice",
     "intro": "Atelier de 2 h sur l'apprentissage par renforcement avec des taquins. Ce guide condense l'essentiel.",
     "h": {
       "before": "Avant l'atelier",
@@ -212,16 +213,16 @@
     },
     "before": {
       "1": "Tester le Hub sur le matériel qui sera utilisé (tablettes, ordinateurs). Installation : aucune.",
-      "2": "Imprimer si besoin : <a href=\"print/briefing_mission_fr.html\">briefing mission</a>, <a href=\"print/fiche_equipe_fr.html\">fiche d'équipe</a>, <a href=\"print/dictionnaire_fr.html\">dictionnaire</a>.",
-      "3": "Prévoir un grand écran pour le briefing collectif."
+      "2": "Imprimer si besoin : <a href=\"print/fiche_equipe_fr.html\">fiche d'équipe</a>, <a href=\"print/dictionnaire_fr.html\">dictionnaire</a>.",
+      "3": "Prévoir un grand écran pour l'introduction collective."
     },
     "flow": {
-      "1": "<strong>00:00–00:15</strong> — Accroche &amp; cadrage mission",
-      "2": "<strong>00:15–00:35</strong> — Phase 1 : humain vs agente aléatoire (Mission I, 2×2)",
-      "3": "<strong>00:35–01:05</strong> — Phase 2 : entraînement du premier agent",
-      "4": "<strong>01:05–01:15</strong> — Pause",
-      "5": "<strong>01:15–01:45</strong> — Phase 3 : défi « Nombre de Dieu » &amp; passage à l'échelle (Missions II / III)",
-      "6": "<strong>01:45–02:00</strong> — Réflexion &amp; liens réels"
+      "1": "<strong>00:00–00:15</strong> — Accroche &amp; cadrage&#8239;: entraîne une IA que tu peux observer apprendre.",
+      "2": "<strong>00:15–00:35</strong> — Phase 1 · Mission I (2×2, 12 états)&#8239;: cartographier l'espace des configurations et l'orbite de parité, construire une table Q à la main sur papier.",
+      "3": "<strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 états, Nombre de Dieu=21)&#8239;: entraîner l'agente&#8239;; observer les épisodes, la décroissance d'ε et la propagation des valeurs Q depuis l'objectif.",
+      "4": "<strong>01:05–01:15</strong> — Pause.",
+      "5": "<strong>01:15–01:45</strong> — Phase 3 · Mission III (3×3, 181 440 états, Nombre de Dieu=31)&#8239;: tournoi à trois joueuses (toi / aléatoire / agente Q), nommer le fléau de la dimension, pont vers AlphaZero / MuZero.",
+      "6": "<strong>01:45–02:00</strong> — Réflexion &amp; liens réels."
     },
     "params": {
       "2x2": "<strong>2×2</strong> (12 états) : α=0,5, γ=0,9, ε=0,3 · 500–2000 épisodes",
@@ -231,7 +232,7 @@
     "trouble": {
       "1": "L'agente ne trouve pas la solution → augmenter les épisodes ou le facteur γ",
       "2": "Table Q vide → vérifier que α ≠ 0 et que les épisodes tournent",
-      "3": "Aléatoire solve instantanément → coup de chance, relancer"
+      "3": "L'agente aléatoire résout instantanément → coup de chance, relancer"
     }
   },
   "nav": {
@@ -451,7 +452,7 @@
       },
       "step3": {
         "title": "Entraîne ton Agent",
-        "text": "Clique sur Entraîner et regarde la magie opérer ! Tu verras les valeurs Q se mettre à jour en temps réel à mesure que ton agente apprend quels coups mènent au succès."
+        "text": "Clique sur Entraîner et observe les valeurs Q se mettre à jour en temps réel à mesure que ton agente apprend quels coups mènent au succès."
       },
       "step4": {
         "title": "Tester & Comparer",
@@ -503,25 +504,21 @@
   },
   "gate": {
     "brand": "AI-Exhibits",
-    "title": "Point d'Entrée",
-    "subtitle": "Entrez en tant que participante, ou passez en mode animatrice pour les indications d'orchestration.",
+    "title": "Entraîne ton IA !",
+    "subtitle": "Puzzles coulissants. Trois tailles. Trois joueuses.",
     "mode": "Mode : Agente",
     "modePrefix": "Mode",
     "modeAgent": "Agente",
     "modeFacilitator": "Animatrice",
-    "question": "Acceptez-vous la mission d'entraîner une agente IA ?",
-    "prompt": "Vous testerez trois agentes pour résoudre des puzzles à glissement : vous-même, une agente aléatoire et une agente IA entraînée par vos soins.",
-    "hint": "Conseil : les appareils sont souvent partagés. Utilisez <span class=\"mono\">Retour au départ</span> à tout moment.",
+    "question": "",
+    "prompt": "Tu compares trois résolveuses : une agente aléatoire, toi, et une agente Q-learning que tu entraînes. Trois tailles de puzzle, trois missions.",
+    "hint": "Astuce : les appareils sont souvent partagés. Utilise Retour au départ à tout moment.",
     "facilitatorBtn": "Mode animatrice",
     "continueBtn": "Commencer",
-    "author": "Créé et développé par Dr. Erika Roldán Roa · MPI MiS"
+    "author": "Conçu et développé par <strong>D<sup>r</sup> Erika Roldán Roa</strong> · MPI MiS"
   },
   "hud": {
-    "navLabel": "navigation",
-    "rolePill": "Rôle : —",
-    "rolePillPrefix": "Rôle",
-    "rolePillAgent": "Agente",
-    "rolePillFacilitator": "Animatrice"
+    "navLabel": "navigation"
   },
   "footer": {}
 }

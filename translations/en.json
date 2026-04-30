@@ -40,16 +40,8 @@
   "hub": {
     "launchTraining": "🚀 Launch Training",
     "header": {
-      "title": "AI-Exhibits: Reinforcement Learning — Mission Lobby",
-      "h1": "AI-Exhibits: Reinforcement Learning — Mission Lobby",
-      "yourRole": "YOUR ROLE",
-      "yourChallenge": "YOUR CHALLENGE",
-      "toIntel": "Go To Mission Briefing ↓"
-    },
-    "typing": {
-      "role": "Year 2070 — Human Agent & AI Trainer.",
-      "mission": "You are about to take part in a larger operation involving intelligent agents and sliding puzzles.\n\nThe operation consists of three missions, each based on a different puzzle size.\nDepending on the available time, you may not reach all of them.\n\nIn this Hub, you establish benchmarks:\n• solve fixed puzzles as a human agent\n• observe an untrained (random) agent\n• compare how many moves are required to reach the goal\n\nInside each mission, you will face two episodes:\na Training Episode and a Challenge Episode.",
-      "goal": "Your goal across the operation is simple: train agents that outperform both the human benchmark and the random baseline."
+      "title": "AI-Exhibits: Reinforcement Learning · Hub",
+      "h1": "AI-Exhibits: Reinforcement Learning · Hub"
     },
     "mission1": {
       "title": "Mission I: Making learning visible",
@@ -60,7 +52,8 @@
         "b4Tooltip": "⭐⭐⭐⭐ 4 moves",
         "b5Tooltip": "⭐⭐⭐⭐⭐ 5 moves",
         "b6Tooltip": "🏆 6 moves — God's Number!"
-      }
+      },
+      "subtitle": "12 states · the whole world fits on one page · build a Q-table by hand"
     },
     "mission2": {
       "title": "Mission II: Propagation",
@@ -70,7 +63,8 @@
         "b3Tooltip": "⭐⭐⭐ 6 moves",
         "b4Tooltip": "⭐⭐⭐⭐ 9 moves",
         "b5Tooltip": "🏆 21 moves — God's Number!"
-      }
+      },
+      "subtitle": "360 states · too big to draw · watch Q propagate from the goal"
     },
     "mission3": {
       "title": "Mission III: Scaling",
@@ -80,14 +74,15 @@
         "b3Tooltip": "⭐⭐⭐ 18 moves",
         "b4Tooltip": "⭐⭐⭐⭐ 26 moves",
         "b5Tooltip": "🏆 31 moves — God's Number!"
-      }
+      },
+      "subtitle": "181 440 states · three players head to head · meet the curse of dimensionality"
     },
     "stats": {
       "you": "You",
       "randomAgent": "Random agent"
     },
     "intel": {
-      "title": "Mission Briefing (what you need to know to train your Q-learning agent efficiently)",
+      "title": "Q-learning glossary — six terms you need to train an agent",
       "showBtn": "Show",
       "hideBtn": "Hide",
       "termsLabel": "Glossary terms",
@@ -113,7 +108,9 @@
       "policy": "\n  <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">POLICY</div>\n  <div>\n    A <strong>policy</strong> describes how an agent behaves.\n    It is a rule that tells the agent <strong>which action to choose in each state</strong>.\n  </div>\n  <div style=\"margin-top:8px;\">\n    In this exhibit, the <strong>Q-learning agent</strong> first learns Q-values.\n    The policy is then derived from these values (for example, by picking the action with the highest Q-value).\n  </div>\n  <div style=\"margin-top:8px;\">\n    Different agents follow different policies:\n    a random agent follows a random policy,\n    while a trained agent follows a learned policy.\n  </div>\n",
       "rl": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">REINFORCEMENT LEARNING</div>\n        <div>\n          <strong>Reinforcement Learning</strong> is a <strong>framework</strong> for training an agent through interaction:\n          the agent tries actions, receives feedback (rewards), and improves its behaviour over time.\n          It is <strong>not</strong> a single algorithm but a family. More advanced examples: DQN on Atari (2015), AlphaZero for Go (2017).\n        </div>\n        <div style=\"margin-top:8px;\">\n          In our puzzles, the reward is simple: <strong>+1 when the next state is the goal, 0 otherwise</strong> (an optional step penalty is available).\n        </div>\n      ",
       "q": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">Q-LEARNING</div>\n        <div>\n          <strong>Q-learning</strong> is a reinforcement-learning algorithm.\n          It learns values <span class=\"mono\">Q(state, action)</span> that estimate how good each action is in each state.\n          The agent then uses these Q-values to choose its actions (its policy).\n        </div>\n      "
-    }
+    },
+    "dmvmBanner": "You're reading the DMVM article. Start with the 2×2 — twelve states, the whole world fits on a napkin.",
+    "dmvmBannerClose": "Close DMVM banner"
   },
   "glossary": {
     "state": {
@@ -178,10 +175,14 @@
     },
     "card3": {
       "title": "🏆 Benchmarks & God's Numbers",
-      "h2x2": "2×2 Puzzle (12 states)",
-      "h2x3": "2×3 Puzzle (360 states)",
-      "h3x3": "3×3 Puzzle (181,440 states)",
-      "tip": "🏆 <strong>God's Number</strong> = diameter of the reachable-state graph: the number of moves to solve the <em>worst</em> starting state if you play perfectly."
+      "h2x2": "Mission I — 2×2 puzzle (12 states)",
+      "h2x3": "Mission II — 2×3 puzzle (360 states)",
+      "h3x3": "Mission III — 3×3 puzzle (181 440 states)",
+      "tip": "🏆 <strong>God's Number</strong> = diameter of the reachable-state graph: the number of moves to solve the <em>worst</em> starting state if you play perfectly.",
+      "hook2x2": "The whole world fits on one page · build a Q-table by hand.",
+      "hook2x3": "Now we train · watch Q propagate from the goal backwards.",
+      "hook3x3": "Too big for a Q-table · meet the curse of dimensionality.",
+      "benchHeader": "Benchmark Bk = a starting state k moves from the goal."
     },
     "card4": {
       "title": "🚀 Training Workflow",
@@ -199,7 +200,7 @@
       "t2": "<strong>Q-table empty?</strong> Check learning rate isn't 0",
       "t3": "<strong>Too slow?</strong> Reduce epsilon after training"
     },
-    "footer": "RL Mission Hub · Dr. Erika Roldán · MPI MiS · 2026"
+    "footer": "AI-Exhibits · Dr. Erika Roldán · MPI MiS · 2026"
   },
   "quickstart": {
     "title": "🎓 Facilitator Quickstart",
@@ -212,16 +213,16 @@
     },
     "before": {
       "1": "Test the Hub on the devices you'll use (tablets, computers). No installation.",
-      "2": "Print if needed: mission briefing, team sheet, dictionary (FR versions available).",
-      "3": "Plan a big screen for the collective briefing."
+      "2": "Print if needed: team sheet, dictionary (DE/FR/IT versions available).",
+      "3": "Plan a big screen for the group introduction."
     },
     "flow": {
-      "1": "<strong>00:00–00:15</strong> — Hook &amp; mission framing",
-      "2": "<strong>00:15–00:35</strong> — Phase 1: human vs random agent (Mission I, 2×2)",
-      "3": "<strong>00:35–01:05</strong> — Phase 2: train your first agent",
-      "4": "<strong>01:05–01:15</strong> — Break",
-      "5": "<strong>01:15–01:45</strong> — Phase 3: God's Number challenge &amp; scaling (Missions II / III)",
-      "6": "<strong>01:45–02:00</strong> — Reflection &amp; real-world connections"
+      "1": "<strong>00:00–00:15</strong> — Hook &amp; framing: train an AI you can watch.",
+      "2": "<strong>00:15–00:35</strong> — Phase 1 · Mission I (2×2, 12 states): map the configuration space and the parity orbit, build a Q-table by hand on paper.",
+      "3": "<strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 states, God=21): train the agent; watch episodes, ε-decay, and Q-values propagate back from the goal.",
+      "4": "<strong>01:05–01:15</strong> — Break.",
+      "5": "<strong>01:15–01:45</strong> — Phase 3 · Mission III (3×3, 181 440 states, God=31): three-player tournament (you / random / Q-agent), name the curse of dimensionality, bridge to AlphaZero / MuZero.",
+      "6": "<strong>01:45–02:00</strong> — Reflection &amp; real-world connections."
     },
     "params": {
       "2x2": "<strong>2×2</strong> (12 states): α=0.5, γ=0.9, ε=0.3 · 500–2000 episodes",
@@ -451,7 +452,7 @@
       },
       "step3": {
         "title": "Train Your Agent",
-        "text": "Click Train Agent and watch magic happen! You'll see Q-values update in real-time as your agent learns which moves lead to success."
+        "text": "Click Train Agent and watch the <strong>Q-values</strong> update in real-time as your agent learns which moves lead to success."
       },
       "step4": {
         "title": "Test & Compare",
@@ -503,25 +504,21 @@
   },
   "gate": {
     "brand": "AI-Exhibits",
-    "title": "Operation Entry",
-    "subtitle": "Enter as a participant, or switch to facilitator mode for orchestration cues.",
+    "title": "Train your AI!",
+    "subtitle": "Sliding puzzles. Three sizes. Three players.",
     "mode": "Mode: Agent",
     "modePrefix": "Mode",
     "modeAgent": "Agent",
     "modeFacilitator": "Facilitator",
-    "question": "Do you accept the mission of training an AI agent?",
-    "prompt": "You will test three agents to solve sliding puzzles efficiently: yourself, a random agent, and an AI agent trained by you.",
-    "hint": "Tip: devices are often shared. Use <span class=\"mono\">Return to start</span> anytime.",
+    "question": "",
+    "prompt": "You'll compare three solvers: a random agent, yourself, and a Q-learning agent you train. Three puzzle sizes, three missions.",
+    "hint": "Tip: devices are often shared. Use Return to start anytime.",
     "facilitatorBtn": "Facilitator mode",
     "continueBtn": "Go ahead",
-    "author": "Created and developed by Dr. Erika Roldán Roa · MPI MiS"
+    "author": "Created and developed by <strong>Dr. Erika Roldán Roa</strong> · MPI MiS"
   },
   "hud": {
-    "navLabel": "navigation",
-    "rolePill": "Role: —",
-    "rolePillPrefix": "Role",
-    "rolePillAgent": "Agent",
-    "rolePillFacilitator": "Facilitator"
+    "navLabel": "navigation"
   },
   "footer": {}
 }
