@@ -17,6 +17,14 @@ window.LEARN_TRANSLATIONS = {
       sentence: "\"The state is the current snapshot of the puzzle: the position of every tile right now.\""
     },
     {
+      id: "parity",
+      title: "Parity orbit: why only 12 of the 24 arrangements are reachable",
+      tags: "parity orbit reachable invariant n!/2 Wilson",
+      public: "Of the 4! = 24 ways to arrange three tiles and a blank, only 12 are reachable from the goal — the other 12 are unsolvable. Every legal move flips **two** parities at once, and their product is invariant: half the world is invisible to the agent.",
+      math: "Let σ ∈ S₄ be the permutation and b ∈ {0,1} the parity of (row + column) of the blank. Each legal move is a transposition, so sgn(σ) flips; it also moves the blank by one cell, so b flips. The product sgn(σ)·(−1)^b is invariant: it splits the 24 arrangements into two orbits of size 12, and only the goal's orbit is reachable. Wilson 1974 generalises this: for every r×c board with r,c ≥ 2, |R| = (rc)!/2.",
+      sentence: "\"The state space is half what you'd expect — parity cuts it in two, and the agent only ever sees one half.\""
+    },
+    {
       id: "actions",
       title: "Actions (A(s)): which moves are allowed",
       tags: "actions legal moves neighbors",
@@ -83,6 +91,14 @@ window.LEARN_TRANSLATIONS = {
       sentence: "„Der Zustand ist die aktuelle Momentaufnahme des Puzzles: die Position jeder Kachel jetzt.\""
     },
     {
+      id: "parity",
+      title: "Paritätsbahn: warum nur 12 von 24 Anordnungen erreichbar sind",
+      tags: "Parität Bahn erreichbar Invariante n!/2 Wilson parity",
+      public: "Von 4! = 24 Anordnungen von drei Kacheln und einem leeren Feld sind nur 12 vom Ziel aus erreichbar — die anderen 12 sind unlösbar. Jeder legale Zug kehrt **zwei** Paritäten gleichzeitig um, und ihr Produkt bleibt invariant: die Hälfte der Welt ist für die Agent*in unsichtbar.",
+      math: "Sei σ ∈ S₄ die Permutation und b ∈ {0,1} die Parität von (Zeile + Spalte) des leeren Feldes. Jeder legale Zug ist eine Transposition, also kehrt sgn(σ) um; er verschiebt das leere Feld um genau ein Feld, also kehrt b um. Das Produkt sgn(σ)·(−1)^b ist invariant: es zerlegt die 24 Anordnungen in zwei gleich große Bahnen, und nur die Bahn mit dem Ziel ist erreichbar. Wilson 1974 verallgemeinert: für jedes r×c-Brett mit r,c ≥ 2 gilt |R| = (rc)!/2.",
+      sentence: "„Der Zustandsraum ist halb so groß, wie du erwarten würdest — Parität teilt ihn, und die Agent*in sieht nur eine Hälfte.\""
+    },
+    {
       id: "actions",
       title: "Aktionen (A(s)): welche Züge erlaubt sind",
       tags: "Aktionen legal Züge Nachbarn actions",
@@ -147,6 +163,14 @@ window.LEARN_TRANSLATIONS = {
       public: "Uno **stato** è semplicemente la disposizione attuale delle tessere. È l'istantanea che l'agente guarda prima di decidere la sua prossima mossa.",
       math: "Uno **stato** è un elemento s ∈ S. Qui S è l'insieme finito di tutte le configurazioni di tessere 2×2 raggiungibili con mosse legali. Rappresentiamo s come una 4-upla (riga per riga) con 0 = vuoto.",
       sentence: "«Lo stato è l'istantanea attuale del puzzle: la posizione di ogni tessera adesso.»"
+    },
+    {
+      id: "parity",
+      title: "Orbita di parità: perché solo 12 disposizioni su 24 sono raggiungibili",
+      tags: "parità orbita raggiungibile invariante n!/2 Wilson parity",
+      public: "Delle 4! = 24 disposizioni di tre tessere e uno spazio vuoto, solo 12 sono raggiungibili dall'obiettivo — le altre 12 sono irrisolvibili. Ogni mossa legale inverte **due** parità insieme, e il loro prodotto resta invariante: metà del mondo è invisibile all'agente.",
+      math: "Sia σ ∈ S₄ la permutazione e b ∈ {0,1} la parità di (riga + colonna) dello spazio vuoto. Ogni mossa legale è una trasposizione, quindi sgn(σ) si inverte; sposta lo spazio vuoto esattamente di una cella, quindi b si inverte. Il prodotto sgn(σ)·(−1)^b è invariante: divide le 24 disposizioni in due orbite di pari dimensione, e solo l'orbita dell'obiettivo è raggiungibile. Wilson 1974 generalizza: per ogni scacchiera r×c con r,c ≥ 2 vale |R| = (rc)!/2.",
+      sentence: "«Lo spazio degli stati è la metà di quanto ti aspetteresti — la parità lo divide a metà, e l'agente vede solo una metà.»"
     },
     {
       id: "actions",

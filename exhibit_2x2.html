@@ -602,21 +602,21 @@ Created, designed, and authored by Dr. Erika Roldán Roa (Max Planck Institute f
             </div>
 
             <div class="field">
-              <div class="fieldTop"><label data-i18n="ex.params.learningRate">Alpha (taux d'apprentissage)</label>
+              <div class="fieldTop"><label data-i18n="ex.params.learningRate">α (taux d'apprentissage)</label>
                 <span class="qmark" data-tip="α contrôle à quel point les nouvelles preuves mettent à jour Q.\nQ ← Q + α(cible−Q).\n0,05–0,2 : stable mais lent.\n0,3–0,6 : rapide pour ce modèle-jouet.\n>0,8 : bruyant." data-i18n-data-tip="ex2x2.params.alphaTip">ⓘ</span>
               </div>
               <input id="alphaInp" type="number" min="0" max="1" step="0.01" value="0.45"/>
             </div>
 
             <div class="field">
-              <div class="fieldTop"><label data-i18n="ex.params.discount">Gamma (escompte)</label>
+              <div class="fieldTop"><label data-i18n="ex.params.discount">γ (escompte)</label>
                 <span class="qmark" data-tip="γ contrôle l'importance des récompenses futures.\nPour des puzzles à récompense différée : γ≈0,9–0,99.\nUn γ faible rend la propagation des récompenses faible." data-i18n-data-tip="ex2x2.params.gammaTip">ⓘ</span>
               </div>
               <input id="gammaInp" type="number" min="0" max="1" step="0.01" value="0.95"/>
             </div>
 
             <div class="field">
-              <div class="fieldTop"><label data-i18n="ex.params.epsilon">Epsilon (explorer)</label>
+              <div class="fieldTop"><label data-i18n="ex.params.epsilon">ε (exploration)</label>
                 <span class="qmark" data-tip="ε = probabilité d'un coup légal aléatoire.\nEssayez 0,05–0,25.\nε=0 trop tôt peut figer de fausses croyances." data-i18n-data-tip="ex2x2.params.epsilonTip">ⓘ</span>
               </div>
               <input id="epsInp" type="number" min="0" max="1" step="0.01" value="0.15"/>
@@ -1595,6 +1595,14 @@ const rline = document.createElement('div');
         sentence:"« L'état est l'instantané actuel du puzzle : la position de chaque tuile maintenant. »"
       },
       {
+        id:"parity",
+        title:"Orbite de parité : pourquoi seulement 12 des 24 arrangements sont atteignables",
+        tags:"parité orbite atteignable invariant n!/2 Wilson parity",
+        public:"Sur les 4! = 24 façons de disposer trois tuiles et une case vide, seulement 12 sont atteignables depuis l'objectif — les 12 autres sont insolubles. Chaque coup légal inverse **deux** parités à la fois, et leur produit reste invariant : la moitié du monde est invisible pour l'agente.",
+        math:"Soit σ ∈ S₄ la permutation et b ∈ {0,1} la parité de (ligne + colonne) de la case vide. Chaque coup légal est une transposition, donc sgn(σ) s'inverse ; il déplace aussi la case vide d'une cellule, donc b s'inverse. Le produit sgn(σ)·(−1)^b est invariant : il sépare les 24 arrangements en deux orbites de taille 12, et seule l'orbite de l'objectif est atteignable. Wilson 1974 généralise : pour tout plateau r×c avec r,c ≥ 2, |R| = (rc)!/2.",
+        sentence:"« L'espace d'états fait la moitié de ce qu'on attend — la parité le coupe en deux, et l'agente ne voit jamais qu'une moitié. »"
+      },
+      {
         id:"actions",
         title:"Actions (A(s)) : quels coups sont autorisés",
         tags:"actions légal coups voisins actions legal",
@@ -1652,11 +1660,13 @@ const rline = document.createElement('div');
       }
     ];
     // Return the right language's LEARN cards, falling back to FR if missing.
+    // Match by presence (Array.isArray) only — never by length, since translations
+    // can legitimately add or reorder cards (e.g. parity was added 2026-04-30).
     function getLearn(){
       const lang = (document.documentElement.lang || 'fr').slice(0,2).toLowerCase();
       if (lang === 'fr') return LEARN_FR;
       const t = (window.LEARN_TRANSLATIONS || {})[lang];
-      return (Array.isArray(t) && t.length === LEARN_FR.length) ? t : LEARN_FR;
+      return (Array.isArray(t) && t.length > 0) ? t : LEARN_FR;
     }
     function renderLearn(){
       const modeSel = document.getElementById('explainMode');
