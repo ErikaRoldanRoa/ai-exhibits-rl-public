@@ -103,11 +103,13 @@ body {
   font-family: var(--sans);
   font-size: 16px; /* Base size increased from 14px for better readability */
   min-height: 100vh;
-  background:
-    radial-gradient(1200px 720px at 18% 12%, rgba(255, 59, 212, 0.20), transparent 55%),
-    radial-gradient(900px 540px at 82% 18%, rgba(47, 243, 255, 0.14), transparent 60%),
-    radial-gradient(850px 600px at 55% 95%, rgba(112, 255, 122, 0.14), transparent 60%),
-    linear-gradient(180deg, var(--bg1), var(--bg0));
+  /* Single solid background — matches Marmottes hub finish.
+     Replaced the 4-layer multi-radial gradient on 2026-04-30 (Erika: "I do
+     not like that it does not have only one color in the back, the hub
+     that is degradeted that I hate"). The pink/cyan/lime accents that the
+     wash carried now live on the panels themselves where they earn their
+     space — body stays calm, panel surfaces pop. */
+  background: var(--bg0);
 }
 
 /* === LAYOUT CONTAINERS === */
@@ -332,16 +334,6 @@ button.bench:hover {
   background: rgba(0, 0, 0, 0.22);
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(8px);
-}
-
-.rolePill {
-  font-family: var(--mono);
-  font-size: 13px;
-  color: var(--text);
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.06);
 }
 
 .switchRole {
@@ -997,13 +989,20 @@ select:focus-visible {
   }
 }
 
-/* === AUTHOR CREDIT inside role gate (discreet, bottom of modal) === */
+/* === AUTHOR CREDIT inside role gate (visible, bottom of modal) === */
 .gateAuthor {
   text-align: center;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.3px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.62);
   padding: 12px 18px 16px;
+  line-height: 1.5;
+}
+.gateAuthor strong {
+  color: var(--cyan);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-shadow: 0 0 12px rgba(47, 243, 255, 0.40);
 }
 .gateAuthor sup { font-size: 0.8em; }
 
@@ -1087,8 +1086,8 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
    Mission selection and briefing interface
    ============================================================================= */
 
-/* === LOBBY LAYOUT === */
-.lobby {
+/* === MISSIONS AREA LAYOUT === */
+.missionsArea {
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -1135,8 +1134,19 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   letter-spacing: 0.3px;
   text-align: center;
   width: 100%;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-size: 16px;
+}
+
+.pSubtitle {
+  font-size: 12.5px;
+  color: var(--muted);
+  text-align: center;
+  width: 100%;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  font-style: italic;
+  opacity: 0.85;
 }
 
 .pSub {
@@ -1631,11 +1641,28 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
     --cell: 38px;
     gap: 4px;
   }
-  
+
   .pBench .btn.bench {
     padding: 6px 4px;
     font-size: 10px;
   }
+
+  /* Welcome modal on small phones — tighten padding so 4 lang chips fit. */
+  .modalCard {
+    width: calc(100vw - 16px);
+    padding: 18px 14px;
+  }
+  .gateLangRow {
+    padding: 6px 4px 4px;
+    gap: 6px;
+  }
+  .gateLangBtn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+  .modalActions { gap: 10px; }
+  .modalBtns { flex-wrap: wrap; gap: 8px; }
+  .gateAuthor { display: none; } /* author footer hides at < 380px to free vertical space */
 }
 
 
@@ -1971,81 +1998,6 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   margin: 0 4px;
 }
 
-/* === CONTEXTUAL TOOLTIPS === */
-.context-tooltip {
-  position: absolute;
-  z-index: 999998;
-  max-width: 320px;
-  padding: 14px 16px;
-  border-radius: 14px;
-  background: rgba(7, 6, 10, 0.96);
-  border: 1px solid rgba(255, 59, 212, 0.45);
-  box-shadow: 
-    0 0 30px rgba(255, 59, 212, 0.35),
-    0 12px 40px rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(10px);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-8px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.context-tooltip.active {
-  opacity: 1;
-  pointer-events: all;
-  transform: translateY(0);
-}
-
-.context-tooltip-arrow {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background: rgba(7, 6, 10, 0.96);
-  border: 1px solid rgba(255, 59, 212, 0.45);
-  transform: rotate(45deg);
-  z-index: -1;
-}
-
-.context-tooltip-arrow.top {
-  bottom: -7px;
-  left: 50%;
-  margin-left: -6px;
-  border-top: none;
-  border-left: none;
-}
-
-.context-tooltip-arrow.bottom {
-  top: -7px;
-  left: 50%;
-  margin-left: -6px;
-  border-bottom: none;
-  border-right: none;
-}
-
-.context-tooltip-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(47, 243, 255, 0.85);
-  margin-bottom: 6px;
-}
-
-.context-tooltip-text {
-  font-size: 14px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.90);
-  margin: 0;
-}
-
-.context-tooltip-dismiss {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.10);
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.55);
-  text-align: center;
-}
 
 /* Highlight effect for elements being explained */
 .tutorial-highlight {
@@ -2079,138 +2031,6 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   }
 }
 
-/* === COACH PANEL === */
-.coach-panel {
-  position: fixed;
-  left: -360px;
-  top: 80px;
-  width: 340px;
-  max-height: calc(100vh - 160px);
-  background: linear-gradient(
-    135deg,
-    rgba(7, 6, 10, 0.95) 0%,
-    rgba(11, 7, 20, 0.95) 100%
-  );
-  border: 1px solid rgba(47, 243, 255, 0.35);
-  border-left: none;
-  border-radius: 0 18px 18px 0;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(10px);
-  z-index: 99998;
-  transition: left 0.35s ease;
-  overflow: hidden;
-}
-
-.coach-panel.open {
-  left: 0;
-}
-
-.coach-panel-header {
-  padding: 16px 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.coach-panel-title {
-  font-size: 16px;
-  font-weight: 800;
-  color: rgba(47, 243, 255, 0.95);
-  text-shadow: 0 0 16px rgba(47, 243, 255, 0.45);
-  margin: 0;
-}
-
-.coach-panel-close {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(0, 0, 0, 0.25);
-  color: rgba(255, 255, 255, 0.75);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  transition: all 0.15s ease;
-}
-
-.coach-panel-close:hover {
-  background: rgba(255, 77, 109, 0.15);
-  border-color: rgba(255, 77, 109, 0.45);
-  color: rgba(255, 255, 255, 0.95);
-}
-
-.coach-panel-content {
-  padding: 18px;
-  overflow-y: auto;
-  max-height: calc(100vh - 220px);
-}
-
-.coach-tip {
-  padding: 14px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  margin-bottom: 12px;
-}
-
-.coach-tip-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(112, 255, 122, 0.85);
-  margin-bottom: 6px;
-}
-
-.coach-tip-text {
-  font-size: 14px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0;
-}
-
-/* Coach toggle button */
-.coach-toggle {
-  position: fixed;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 48px;
-  height: 120px;
-  background: linear-gradient(135deg, rgba(47, 243, 255, 0.18), rgba(255, 59, 212, 0.14));
-  border: 1px solid rgba(47, 243, 255, 0.35);
-  border-left: none;
-  border-radius: 0 16px 16px 0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-  cursor: pointer;
-  z-index: 99997;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  color: rgba(47, 243, 255, 0.85);
-  transition: all 0.2s ease;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.coach-toggle:hover {
-  width: 56px;
-  background: linear-gradient(135deg, rgba(47, 243, 255, 0.28), rgba(255, 59, 212, 0.22));
-  box-shadow: 0 0 30px rgba(47, 243, 255, 0.35);
-}
-
-.coach-toggle.hidden {
-  left: -60px;
-}
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
@@ -2230,20 +2050,6 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   
   .tutorial-text {
     font-size: 15px;
-  }
-  
-  .coach-panel {
-    width: 100%;
-    left: -100%;
-    border-radius: 0;
-  }
-  
-  .coach-panel.open {
-    left: 0;
-  }
-  
-  .coach-toggle {
-    display: none;
   }
 }
 

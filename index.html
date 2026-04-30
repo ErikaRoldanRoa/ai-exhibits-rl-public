@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
   AI-Exhibits · Reinforcement Learning & Sliding Puzzles
-  Hub — mission lobby, glossary, role gate.
+  Hub — landing page, glossary, role gate.
 
   © 2026 Dr. Erika Roldán Roa · Max Planck Institute for Mathematics in the Sciences (MPI MiS), Leipzig · Université de Genève, Section de Mathématiques.
   Licensed: MIT (code) · CC-BY-SA 4.0 (pedagogical documentation) · CC-BY 4.0 (assets). See LICENSE.
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="AI-Exhibits RL"/>
-<title data-i18n="hub.header.title">AI-Exhibits&#8239;: Apprentissage par Renforcement — Hall des Missions</title>
+<title data-i18n="hub.header.title">AI-Exhibits&#8239;: Apprentissage par Renforcement · Hub</title>
 
 <!-- PWA Manifest -->
 <link rel="manifest" href="app/manifest.json"/>
@@ -59,10 +59,35 @@ body:not([data-role="facilitator"]) #roleCard {
   border: 1px solid rgba(47, 243, 255, 0.24);
 }
 
-.missionGlow {
-  color: rgba(255, 59, 212, 0.98);
-  text-shadow: 0 0 12px rgba(255, 59, 212, 0.55);
+/* DMVM-reader banner — appears above mission cards when localStorage flag set.
+   Permanent (no expiry); manual close-X only. */
+.dmvm-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  padding: 12px 16px 12px 18px;
+  background: rgba(255, 59, 212, 0.08);
+  border: 1px solid rgba(255, 59, 212, 0.32);
+  border-left: 3px solid rgba(255, 59, 212, 0.85);
+  border-radius: 10px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.4;
 }
+.dmvm-bookmark { font-size: 16px; flex-shrink: 0; }
+.dmvm-text { flex: 1; }
+.dmvm-close {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 22px;
+  line-height: 1;
+  padding: 0 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.dmvm-close:hover { color: rgba(255, 255, 255, 0.92); }
 </style>
 </head>
 <body data-role="agent">
@@ -85,188 +110,54 @@ body:not([data-role="facilitator"]) #roleCard {
 </div>
 <div class="modalTop">
 <div class="modalKicker mono" data-i18n="gate.brand">AI-Exhibits</div>
-<h2 id="roleGateTitle" data-i18n="gate.title">Point d'Entrée</h2>
-<div class="modalSub" data-i18n="gate.subtitle">Entrez en tant que participante, ou passez en mode animatrice pour les indications d'orchestration.</div>
+<h2 id="roleGateTitle" data-i18n="gate.title">Entraîne ton IA&#8239;!</h2>
+<div class="modalSub" data-i18n="gate.subtitle">Puzzles coulissants. Trois tailles. Trois joueuses.</div>
 </div>
       <div class="gateBody">
         <div class="gateLead mono" id="gateSelected" data-i18n="gate.mode">Mode&#8239;: Agente</div>
 
         <div class="gatePrompt">
-          <div class="gateQ" data-i18n="gate.question">Acceptez-vous la mission d'entraîner une agente IA&#8239;?</div>
-          <div class="gateP" data-i18n="gate.prompt">Vous testerez trois agentes pour résoudre des puzzles à glissement&#8239;: vous-même, une agente aléatoire et une agente IA entraînée par vos soins.</div>
+          <div class="gateQ" data-i18n="gate.question"></div>
+          <div class="gateP" data-i18n="gate.prompt">Tu compares trois résolveuses&#8239;: une agente aléatoire, toi, et une agente Q-learning que tu entraînes. Trois tailles de puzzle, trois missions.</div>
         </div>
       </div>
 
       <div class="modalActions">
         <div class="modalHint muted" data-i18n="gate.hint">
-          Conseil&#8239;: les appareils sont souvent partagés. Utilisez <span class="mono">Retour au départ</span> à tout moment.
+          Astuce&#8239;: les appareils sont souvent partagés. Utilise <span class="mono">Retour au départ</span> à tout moment.
         </div>
         <div class="modalBtns">
           <button class="roleBtn roleChip" type="button" data-role="facilitator" aria-checked="false" data-i18n="gate.facilitatorBtn">Mode animatrice</button>
           <button id="roleContinue" class="primaryBtn" type="button" data-i18n="gate.continueBtn">Commencer</button>
         </div>
       </div>
-      <div class="gateAuthor mono" data-i18n="gate.author">Créé et développé par Dr. Erika Roldán Roa · MPI MiS</div>
+      <div class="gateAuthor mono" data-i18n="gate.author">Conçu et développé par <strong>D<sup>r</sup> Erika Roldán Roa</strong> · MPI MiS</div>
 </div>
 </div>
 </div>
 <!-- Role HUD -->
 <div aria-label="navigation" class="roleHud" data-i18n-aria-label="hud.navLabel">
 
-<div aria-live="polite" class="rolePill" id="rolePill" style="display:none" data-i18n="hud.rolePill">Rôle&#8239;: —</div>
 <a class="switchRole" href="#role" id="switchRoleLink" data-i18n="common.returnToStart">Retour au départ</a>
 </div>
 <div class="wrap">
 <div class="panel">
 <div class="hd">
-<h1 data-i18n="hub.header.h1">AI-Exhibits&#8239;: Apprentissage par Renforcement — Hall des Missions</h1>
+<h1 data-i18n="hub.header.h1">AI-Exhibits&#8239;: Apprentissage par Renforcement · Hub</h1>
 <div class="bd">
-<div class="lobby">
-<div class="brief card">
-<div class="typeBlock" id="hubTypeBlock">
-<!-- ROLE BLOCK -->
-<div class="typeSection">
-<div class="typeHeader">
-<span class="missionGlow mono" data-i18n="hub.header.yourRole">VOTRE RÔLE</span>
-</div>
-<div aria-live="polite" class="typewriter mono typeBox" id="twRole"></div>
-</div>
-<!-- CHALLENGE BLOCK -->
-<div class="typeSection" style="margin-top:14px;">
-<div class="typeHeader">
-<span class="missionGlow mono" data-i18n="hub.header.yourChallenge">VOTRE DÉFI</span>
-</div>
-<div class="typewriter mono typeBox typeBoxWide" id="twMission"></div>
-<div class="goalGlowText mono" id="twGoal" style="margin-top:12px;"></div>
-</div>
-</div>
-<a class="mono" href="#mission-intel" style="display:inline-block; margin-top:12px; opacity:.9; text-decoration:none;" data-i18n="hub.header.toIntel">
-    Aller aux Infos Mission ↓
-  </a>
-<script>(function () {
-  const roleEl = document.getElementById("twRole");
-  const missionEl = document.getElementById("twMission");
-  const goalEl = document.getElementById("twGoal");
-  if (!roleEl || !missionEl || !goalEl) return;
-
-  // Defaults (French). Overridden by i18n when translations load.
-  // i18n keys: hub.typing.role / hub.typing.mission / hub.typing.goal
-  let ROLE_TEXT = "Année 2070 — Agente Humaine & Entraîneuse d'IA.";
-
-  let MISSION_TEXT =
-    "Vous êtes sur le point de participer à une opération impliquant des agentes intelligentes et des puzzles à glissement.\n\n" +
-    "L'opération comprend trois missions, chacune basée sur une taille de puzzle différente.\n" +
-    "Selon le temps disponible, vous ne pourrez peut-être pas toutes les atteindre.\n\n" +
-    "Dans ce Hall, vous établissez des références\u202F:\n" +
-    "• résoudre des puzzles fixes en tant qu'agente humaine\n" +
-    "• observer une agente non entraînée (aléatoire)\n" +
-    "• comparer le nombre de mouvements nécessaires pour atteindre l'objectif\n\n" +
-    "Dans chaque mission, vous affronterez deux épisodes\u202F:\n" +
-    "un Épisode d'Entraînement et un Épisode de Défi.";
-
-  let GOAL_TEXT =
-    "Votre objectif tout au long de l'opération est simple\u202F: entraîner des agentes qui surpassent à la fois la référence humaine et le score aléatoire de base.";
-
-  // Re-run typing when language changes (overrides with translated text)
-  document.addEventListener('i18n:applied', function (e) {
-    const d = e && e.detail && e.detail.dict;
-    if (!d || !d.hub || !d.hub.typing) return;
-    if (d.hub.typing.role) ROLE_TEXT = d.hub.typing.role;
-    if (d.hub.typing.mission) MISSION_TEXT = d.hub.typing.mission;
-    if (d.hub.typing.goal) GOAL_TEXT = d.hub.typing.goal;
-    // If typing already ran, rewrite the DOM so the visible text swaps too.
-    if (window.__briefingTypingStarted) {
-      const rTyped = roleEl.querySelector('.typed');
-      const mTyped = missionEl.querySelector('.typed');
-      if (rTyped) rTyped.textContent = ROLE_TEXT;
-      if (mTyped) mTyped.textContent = MISSION_TEXT;
-      if (goalEl) goalEl.textContent = GOAL_TEXT;
-    }
-  });
-
-  // Timing (slower, cinematic)
-  const START_DELAY_MS = 1100;
-  const SPEED_ROLE_MS = 110;
-  const SPEED_MISSION_MS = 90;
-  const BETWEEN_BLOCKS_MS = 900;
-  const BEFORE_GOAL_MS = 800;
-
-  function setupTypeBox(el) {
-    el.innerHTML = "";
-
-    const typed = document.createElement("span");
-    typed.className = "typed";
-
-    const cursor = document.createElement("span");
-    cursor.className = "cursor";
-    cursor.textContent = "_";
-
-    el.appendChild(typed);
-    el.appendChild(cursor);
-
-    return { typed, cursor };
-  }
-
-  function typeInto(typedSpan, text, speed) {
-    return new Promise((resolve) => {
-      typedSpan.textContent = "";
-      let i = 0;
-      const tick = () => {
-        typedSpan.textContent += text.charAt(i++);
-        if (i < text.length) setTimeout(tick, speed);
-        else resolve();
-      };
-      tick();
-    });
-  }
-
-  async function runTyping() {
-    const roleBox = setupTypeBox(roleEl);
-    const missionBox = setupTypeBox(missionEl);
-
-    goalEl.textContent = "";
-
-    await new Promise((r) => setTimeout(r, START_DELAY_MS));
-    await typeInto(roleBox.typed, ROLE_TEXT, SPEED_ROLE_MS);
-
-    
-      // Stop blinking cursor for YOUR ROLE once it is fully typed
-      roleBox.cursor.classList.add("hidden");
-await new Promise((r) => setTimeout(r, BETWEEN_BLOCKS_MS));
-    await typeInto(missionBox.typed, MISSION_TEXT, SPEED_MISSION_MS);
-
-    await new Promise((r) => setTimeout(r, BEFORE_GOAL_MS));
-    goalEl.textContent = GOAL_TEXT;
-
-    // Optional: hide cursors once finished
-    // roleBox.cursor.classList.add("hidden");
-    // missionBox.cursor.classList.add("hidden");
-  }
-
-  // Expose a hook the gate can call after "Continue"
-  window.startBriefingTyping = function () {
-    if (window.__briefingTypingStarted) return;
-    window.__briefingTypingStarted = true;
-    runTyping();
-  };
-
-  // Auto-start only if the gate is not currently visible
-  const gate = document.getElementById("roleGate");
-  const gateHidden =
-    !gate ||
-    gate.classList.contains("hidden") ||
-    gate.style.display === "none" ||
-    gate.getAttribute("aria-hidden") === "true";
-
-  if (gateHidden) {
-    window.startBriefingTyping();
-  }
-})();</script>
+<div class="missionsArea">
+<!-- DMVM-reader banner: appears above mission cards when arrived via ?ref=dmvm. -->
+<!-- Permanent flag (no expiry); manual close-X clears localStorage flag. -->
+<div class="dmvm-banner" id="dmvmBanner" style="display:none;" aria-live="polite">
+  <span class="dmvm-bookmark" aria-hidden="true">📖</span>
+  <span class="dmvm-text" data-i18n="hub.dmvmBanner">Tu lis l'article DMVM. Commence par le 2×2 — douze états, le monde entier tient sur une serviette.</span>
+  <button type="button" class="dmvm-close" id="dmvmClose" aria-label="Close DMVM banner" data-i18n-aria-label="hub.dmvmBannerClose">×</button>
 </div>
 <div class="puzzleGrid" id="missions">
 <div class="pCard">
   <div class="pHead">
     <div class="pTitle" data-i18n="hub.mission1.title">Mission I&#8239;: Rendre l'apprentissage visible</div>
+    <div class="pSubtitle" data-i18n="hub.mission1.subtitle">12 états · le monde entier tient sur une page · construis la table Q à la main</div>
   </div>
 
   <div class="miniWrap">
@@ -304,6 +195,7 @@ await new Promise((r) => setTimeout(r, BETWEEN_BLOCKS_MS));
 <div class="pCard">
 <div class="pHead">
 <div class="pTitle" data-i18n="hub.mission2.title">Mission II&#8239;: Propagation</div>
+<div class="pSubtitle" data-i18n="hub.mission2.subtitle">360 états · trop pour tout dessiner · regarde Q remonter depuis l'objectif</div>
 </div>
 <div class="miniWrap">
 <div class="miniPuzzle" data-cols="3" data-rows="2" id="mini-2x3"></div>
@@ -332,6 +224,7 @@ await new Promise((r) => setTimeout(r, BETWEEN_BLOCKS_MS));
 <div class="pCard">
 <div class="pHead">
 <div class="pTitle" data-i18n="hub.mission3.title">Mission III&#8239;: Mise à l'Échelle</div>
+<div class="pSubtitle" data-i18n="hub.mission3.subtitle">181 440 états · trois joueuses face à face · le fléau de la dimension</div>
 </div>
 <div class="miniWrap">
 <div class="miniPuzzle" data-cols="3" data-rows="3" id="mini-3x3"></div>
@@ -360,7 +253,7 @@ await new Promise((r) => setTimeout(r, BETWEEN_BLOCKS_MS));
 </div><div class="glossary card" id="mission-intel">
 <div class="vocabWrap">
 <div class="vocabTitle mono" style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-<span data-i18n="hub.intel.title">Infos Mission (ce qu'il faut savoir pour entraîner efficacement votre agente Q-learning)</span>
+<span data-i18n="hub.intel.title">Glossaire Q-learning — les six termes pour entraîner une agente</span>
 <button class="btn ghost mono" id="toggleGlossaryDefs" onclick="const p=document.getElementById('vocabPanel');
                  const hidden = p.classList.toggle('hidden');
                  const showKey = 'hub.intel.showBtn';
@@ -460,24 +353,53 @@ await new Promise((r) => setTimeout(r, BETWEEN_BLOCKS_MS));
 </div>
 <script>
 (function(){
-  const ROLE_KEY = "ai_exhibits_role";   // single canonical key
+  const ROLE_KEY = "ai_exhibits_role";              // facilitator vs agent
+  const DMVM_KEY = "ai_exhibits_dmvm_reader";       // permanent: "true" if arrived via ?ref=dmvm
   const gate = document.getElementById("roleGate");
-  const pill = document.getElementById("rolePill");
   const switchLink = document.getElementById("switchRoleLink");
   const contBtn = document.getElementById("roleContinue");
   const gateSelected = document.getElementById("gateSelected");
   const facToolsEl = document.getElementById("facTools");
   const roleBtns = gate ? Array.from(gate.querySelectorAll(".roleBtn")) : [];
+  const dmvmBanner = document.getElementById("dmvmBanner");
+  const dmvmCloseBtn = document.getElementById("dmvmClose");
   let selected = null;
 
+  // ---------- DMVM portal: URL flag → permanent recognition ----------
+  // Reads ?ref=dmvm once, persists to localStorage forever (no expiry —
+  // a reader may come back two years later and still be a DMVM reader).
+  // Cleans the param from the address bar so back/share are tidy.
+  // Manual close-X on the banner is the only way to clear the flag.
+  try {
+    const params = new URLSearchParams(location.search);
+    if (params.get("ref") === "dmvm") {
+      localStorage.setItem(DMVM_KEY, "true");
+      params.delete("ref");
+      const qs = params.toString();
+      const newUrl = location.pathname + (qs ? "?" + qs : "") + location.hash;
+      history.replaceState(null, "", newUrl);
+    }
+  } catch (e) { /* old browser: silently degrade */ }
+
+  function isDmvmReader(){ return localStorage.getItem(DMVM_KEY) === "true"; }
+
+  function showDmvmBanner(){
+    if (!dmvmBanner) return;
+    if (isDmvmReader()) {
+      dmvmBanner.style.display = "";
+    } else {
+      dmvmBanner.style.display = "none";
+    }
+  }
+
+  if (dmvmCloseBtn) {
+    dmvmCloseBtn.addEventListener("click", ()=>{
+      localStorage.removeItem(DMVM_KEY);
+      if (dmvmBanner) dmvmBanner.style.display = "none";
+    });
+  }
+
   function setPill(role){
-    if(!pill) return;
-    const tr = (window.i18n && window.i18n.t) ? window.i18n.t : (k, f) => f;
-    const label = (role === "facilitator")
-      ? tr("hud.rolePillFacilitator", "Animatrice")
-      : tr("hud.rolePillAgent", "Agente");
-    pill.textContent = tr("hud.rolePillPrefix", "Rôle") + "\u202F: " + label;
-    pill.dataset.role = role;
     document.body.dataset.role = role;
     if (facToolsEl) { facToolsEl.style.display = (role === "facilitator") ? "block" : "none"; }
   }
@@ -513,10 +435,6 @@ await new Promise((r) => setTimeout(r, BETWEEN_BLOCKS_MS));
     gate.setAttribute("aria-hidden","true");
     const role = selected || localStorage.getItem(ROLE_KEY) || "agent";
     setPill(role);
-    // Start typing only after gate is dismissed
-    if (typeof window.startBriefingTyping === "function") {
-      window.startBriefingTyping();
-    }
   }
 
   function getRole(){
@@ -558,14 +476,14 @@ await new Promise((r) => setTimeout(r, BETWEEN_BLOCKS_MS));
     });
   }
 
-  // On load: show gate if no role yet; otherwise hide and set pill.
+  // On load: show gate (with stored role preselected); show DMVM banner if applicable.
   document.addEventListener("DOMContentLoaded", ()=>{
-    // Always show gate on initial load so participants can choose role each session.
-    // Stored role (if any) is preselected.
     openGate();
+    showDmvmBanner();
   });
 window.AI_EXHIBITS = window.AI_EXHIBITS || {};
   window.AI_EXHIBITS.getRole = getRole;
+  window.AI_EXHIBITS.isDmvmReader = isDmvmReader;
 })();
 </script>
 <script>

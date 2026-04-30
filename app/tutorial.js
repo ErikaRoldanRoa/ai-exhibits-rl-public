@@ -21,7 +21,6 @@
         stepOf: (i, n) => `Étape ${i} sur ${n}`,
         hint: 'Appuie sur <kbd>ESPACE</kbd> ou <kbd>ENTRÉE</kbd> pour continuer · <kbd>ÉCHAP</kbd> pour passer',
         skipConfirm: 'Passer tous les tutoriels ? Tu peux toujours le réinitialiser dans les paramètres.',
-        coachLabel: '💡 ASTUCES',
         completeTitle: 'Tu es prête à entraîner !',
         completeText: "Tu comprends maintenant les bases du Q-learning. Lance l'entraînement et regarde ton agente apprendre !"
       },
@@ -36,7 +35,7 @@
             { icon: '⚙️', title: "Paramètres d'Entraînement",
               text: "Ceux-ci contrôlent comment ton IA apprend. <strong>Épisodes</strong> = tours de pratique, <strong>Taux d'apprentissage (α)</strong> = à quelle vitesse elle apprend, <strong>Escompte (γ)</strong> = combien elle valorise les récompenses futures. Commence avec les valeurs par défaut !" },
             { icon: '🚀', title: 'Entraîne ton Agent',
-              text: "Clique sur <code>Entraîner</code> et regarde la magie opérer ! Tu verras les <strong>valeurs Q</strong> se mettre à jour en temps réel à mesure que ton agente apprend quels coups mènent au succès." },
+              text: "Clique sur <code>Entraîner</code> et observe les <strong>valeurs Q</strong> se mettre à jour en temps réel à mesure que ton agente apprend quels coups mènent au succès." },
             { icon: '🏆', title: 'Tester & Comparer',
               text: "Utilise les <strong>Références</strong> pour tester ton agente entraînée sur des puzzles fixes. Compare sa performance aux coups aléatoires et aux solutions humaines. Peux-tu entraîner une agente qui bat les deux ?" }
           ]
@@ -100,7 +99,6 @@
         stepOf: (i, n) => `Step ${i} of ${n}`,
         hint: 'Press <kbd>SPACE</kbd> or <kbd>ENTER</kbd> to continue · <kbd>ESC</kbd> to skip',
         skipConfirm: 'Skip all tutorials? You can always reset them in the settings.',
-        coachLabel: '💡 TIPS',
         completeTitle: "You're ready to train!",
         completeText: 'You now understand the basics of Q-learning. Launch the training and watch your agent learn!'
       },
@@ -115,7 +113,7 @@
             { icon: '⚙️', title: 'Training Parameters',
               text: 'These control how your AI learns. <strong>Episodes</strong> = practice rounds, <strong>Learning rate (α)</strong> = how fast it learns, <strong>Discount (γ)</strong> = how much it values future rewards. Start with the defaults!' },
             { icon: '🚀', title: 'Train your Agent',
-              text: 'Click <code>Train</code> and watch the magic happen! You\'ll see the <strong>Q-values</strong> update in real time as your agent learns which moves lead to success.' },
+              text: 'Click <code>Train</code> and watch the <strong>Q-values</strong> update in real time as your agent learns which moves lead to success.' },
             { icon: '🏆', title: 'Test & Compare',
               text: 'Use the <strong>Benchmarks</strong> to test your trained agent on fixed puzzles. Compare its performance to random moves and human solutions. Can you train an agent that beats both?' }
           ]
@@ -179,7 +177,6 @@
         stepOf: (i, n) => `Schritt ${i} von ${n}`,
         hint: 'Drücke <kbd>LEERTASTE</kbd> oder <kbd>ENTER</kbd> zum Weitergehen · <kbd>ESC</kbd> zum Überspringen',
         skipConfirm: 'Alle Tutorials überspringen? Du kannst sie jederzeit in den Einstellungen zurücksetzen.',
-        coachLabel: '💡 TIPPS',
         completeTitle: 'Du bist bereit zu trainieren!',
         completeText: 'Du verstehst jetzt die Grundlagen von Q-Learning. Starte das Training und sieh deinem Agenten beim Lernen zu!'
       },
@@ -258,7 +255,6 @@
         stepOf: (i, n) => `Passo ${i} di ${n}`,
         hint: 'Premi <kbd>SPAZIO</kbd> o <kbd>INVIO</kbd> per continuare · <kbd>ESC</kbd> per saltare',
         skipConfirm: 'Saltare tutti i tutorial? Puoi sempre ripristinarli dalle impostazioni.',
-        coachLabel: '💡 SUGGERIMENTI',
         completeTitle: 'Sei pronta ad addestrare!',
         completeText: "Ora conosci le basi del Q-learning. Avvia l'addestramento e guarda la tua agente imparare!"
       },
@@ -273,7 +269,7 @@
             { icon: '⚙️', title: 'Parametri di Addestramento',
               text: "Questi controllano come impara la tua IA. <strong>Episodi</strong> = turni di pratica, <strong>Tasso di apprendimento (α)</strong> = quanto velocemente impara, <strong>Sconto (γ)</strong> = quanto valorizza le ricompense future. Inizia con i valori predefiniti!" },
             { icon: '🚀', title: 'Addestra la tua Agente',
-              text: "Clicca su <code>Addestra</code> e guarda la magia! Vedrai i <strong>valori Q</strong> aggiornarsi in tempo reale mentre la tua agente impara quali mosse portano al successo." },
+              text: "Clicca su <code>Addestra</code> e guarda i <strong>valori Q</strong> aggiornarsi in tempo reale mentre la tua agente impara quali mosse portano al successo." },
             { icon: '🏆', title: 'Testare & Confrontare',
               text: "Usa i <strong>Benchmark</strong> per testare la tua agente addestrata su puzzle fissi. Confronta la sua prestazione con mosse casuali e soluzioni umane. Riesci ad addestrare un'agente che batte entrambi?" }
           ]
@@ -360,7 +356,6 @@
         showTutorial();
       }, 800);
     }
-    createCoachToggle();
   }
 
   function detectPuzzleSize() {
@@ -571,22 +566,6 @@
         case 'ArrowLeft':  e.preventDefault(); prevStep(); break;
       }
     });
-  }
-
-  // ------- Coach toggle + quick tips --------------------------------------
-  function createCoachToggle() {
-    const toggle = document.createElement('div');
-    toggle.className = 'coach-toggle';
-    toggle.innerHTML = L().ui.coachLabel;
-    toggle.onclick = () => showQuickTips();
-    document.body.appendChild(toggle);
-    // Re-label on language change so returning users see the right text.
-    document.addEventListener('i18n:applied', () => { toggle.innerHTML = L().ui.coachLabel; });
-  }
-
-  function showQuickTips() {
-    const tipList = L().tips[detectPuzzleSize()] || L().tips['2x2'];
-    alert(tipList.map(t => `${t.label}: ${t.text}`).join('\n\n'));
   }
 
   function reset() {

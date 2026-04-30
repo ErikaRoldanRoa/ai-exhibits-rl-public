@@ -4,14 +4,14 @@
   Facilitator quickstart — in-browser 2-hour workshop flow.
 
   © 2026 Dr. Erika Roldán Roa · Max Planck Institute for Mathematics in the Sciences (MPI MiS), Leipzig · Université de Genève, Section de Mathématiques.
-  Licensed: MIT (code) · CC-BY-SA 4.0 (pedagogical documentation) · CC-BY 4.0 (assets). See LICENSE.
+  Licensed: CC BY-NC-ND 4.0. See LICENSE.
 -->
 
 <html lang="fr">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Démarrage rapide — Facilitatrice·ice · RL Mission Hub</title><link rel="stylesheet" href="app/styles.css"/>
+<title>Démarrage rapide — Facilitatrice · AI-Exhibits Hub</title><link rel="stylesheet" href="app/styles.css"/>
 <style>
   body { font-family: system-ui, -apple-system, sans-serif; max-width: 820px; margin: 0 auto; padding: 4.5rem 1rem 2rem; color: #faf9f0; background: #141413; line-height: 1.55; }
   h1 { color: #ff3bd4; text-shadow: 0 0 12px rgba(255,59,212,.4); }
@@ -33,25 +33,25 @@
 </div>
 <a href="index.html" class="back" data-i18n="common.backToHub">← Retour au Hub</a>
 
-<h1 data-i18n="quickstart.title">🎓 Démarrage rapide — Facilitatrice·ice</h1>
+<h1 data-i18n="quickstart.title">🎓 Démarrage rapide — Facilitatrice</h1>
 
 <p data-i18n="quickstart.intro">Atelier de 2 h sur l'apprentissage par renforcement avec des taquins. Ce guide condense l'essentiel.</p>
 
 <h2 data-i18n="quickstart.h.before">Avant l'atelier</h2>
 <ol>
   <li data-i18n="quickstart.before.1">Tester le Hub sur le matériel qui sera utilisé (tablettes, ordinateurs). Installation : aucune.</li>
-  <li data-i18n="quickstart.before.2">Imprimer si besoin : <a href="print/briefing_mission_fr.html">briefing mission</a>, <a href="print/fiche_equipe_fr.html">fiche d'équipe</a>, <a href="print/dictionnaire_fr.html">dictionnaire</a>.</li>
-  <li data-i18n="quickstart.before.3">Prévoir un grand écran pour le briefing collectif.</li>
+  <li data-i18n="quickstart.before.2">Imprimer si besoin : <a href="print/fiche_equipe_fr.html">fiche d'équipe</a>, <a href="print/dictionnaire_fr.html">dictionnaire</a>.</li>
+  <li data-i18n="quickstart.before.3">Prévoir un grand écran pour l'introduction collective.</li>
 </ol>
 
 <h2 data-i18n="quickstart.h.flow">Déroulé (2 h)</h2>
 <ol>
-  <li data-i18n="quickstart.flow.1"><strong>00:00–00:15</strong> — Accroche & cadrage mission</li>
-  <li data-i18n="quickstart.flow.2"><strong>00:15–00:35</strong> — Phase 1 : humain vs agente aléatoire (Mission I, 2×2)</li>
-  <li data-i18n="quickstart.flow.3"><strong>00:35–01:05</strong> — Phase 2 : entraînement du premier agent</li>
-  <li data-i18n="quickstart.flow.4"><strong>01:05–01:15</strong> — Pause</li>
-  <li data-i18n="quickstart.flow.5"><strong>01:15–01:45</strong> — Phase 3 : défi « Nombre de Dieu » & passage à l'échelle (Missions II / III)</li>
-  <li data-i18n="quickstart.flow.6"><strong>01:45–02:00</strong> — Réflexion & liens réels</li>
+  <li data-i18n="quickstart.flow.1"><strong>00:00–00:15</strong> — Accroche &amp; cadrage : entraîne une IA que tu peux observer apprendre.</li>
+  <li data-i18n="quickstart.flow.2"><strong>00:15–00:35</strong> — Phase 1 · Mission I (2×2, 12 états) : cartographier l'espace des configurations et l'orbite de parité, construire une table Q à la main sur papier.</li>
+  <li data-i18n="quickstart.flow.3"><strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 états, Nombre de Dieu=21) : entraîner l'agente ; observer les épisodes, la décroissance d'ε et la propagation des valeurs Q depuis l'objectif.</li>
+  <li data-i18n="quickstart.flow.4"><strong>01:05–01:15</strong> — Pause.</li>
+  <li data-i18n="quickstart.flow.5"><strong>01:15–01:45</strong> — Phase 3 · Mission III (3×3, 181 440 états, Nombre de Dieu=31) : tournoi à trois joueuses (toi / aléatoire / agente Q), nommer le fléau de la dimension, pont vers AlphaZero / MuZero.</li>
+  <li data-i18n="quickstart.flow.6"><strong>01:45–02:00</strong> — Réflexion &amp; liens réels.</li>
 </ol>
 
 <h2 data-i18n="quickstart.h.params">Paramètres recommandés</h2>
@@ -65,7 +65,7 @@
 <ul>
   <li data-i18n="quickstart.trouble.1">L'agente ne trouve pas la solution → augmenter les épisodes ou le facteur γ</li>
   <li data-i18n="quickstart.trouble.2">Table Q vide → vérifier que α ≠ 0 et que les épisodes tournent</li>
-  <li data-i18n="quickstart.trouble.3">Aléatoire solve instantanément → coup de chance, relancer</li>
+  <li data-i18n="quickstart.trouble.3">L'agente aléatoire résout instantanément → coup de chance, relancer</li>
 </ul>
 
 <script src="app/i18n.js"></script>
