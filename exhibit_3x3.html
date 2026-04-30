@@ -509,13 +509,13 @@
         <div class="card" id="economyCard">
           <h2 style="display:flex; align-items:center; gap:8px;">
             <span data-i18n="ex3x3.economy.title">Économie de l'entraînement</span>
-            <span class="qmark" data-tip="Trois angles sur l'argent : combien tu as déjà dépensé (Coût d'entraînement) ; combien tu as alloué à ce run (Budget total) ; combien il faudrait pour résoudre B5 de façon démo / fiable / garantie." data-i18n-data-tip="ex3x3.economy.titleTip" tabindex="0" aria-label="À propos de l'économie">ⓘ</span>
+            <span class="qmark" data-tip="Trois angles : ce que tu as dépensé, ce que tu as alloué, ce qu'il faudrait pour résoudre B5." data-i18n-data-tip="ex3x3.economy.titleTip" tabindex="0" aria-label="À propos de l'économie">ⓘ</span>
           </h2>
           <div class="stats">
           <div class="stat">
             <div class="k" style="display:flex; align-items:center; gap:6px;">
               <span data-i18n="ex.stats.cost">Coût d'entraînement</span>
-              <span class="qmark" data-tip="Coût réaliste sur un laptop : ~10⁻¹¹ CHF par mise à jour Q (dominé par l'amortissement matériel, pas l'électricité). Un Mission III complet coûte une fraction de centime. Mais le coût augmente avec la taille de l'espace d'états : même à ce tarif, apprendre Q* sur le graphe des échecs (~10⁴⁴ positions légales) est inaccessible. AlphaZero (Silver et al. 2018) a remplacé la table par un réseau de neurones — DeepMind n'a pas divulgué le coût d'entraînement ; les estimations externes le placent à plusieurs dizaines de millions de dollars." data-i18n-data-tip="ex.stats.costTip" tabindex="0" aria-label="À propos du coût">ⓘ</span>
+              <span class="qmark" data-tip="Sur un laptop, une mise à jour Q coûte environ 10⁻¹¹ CHF (surtout l'amortissement, pas l'électricité). Une Mission III entière revient à une fraction de centime. Mais ce tarif minuscule devient inaccessible dès que l'espace d'états explose : la même règle, à une autre échelle, change tout." data-i18n-data-tip="ex.stats.costTip" tabindex="0" aria-label="À propos du coût">ⓘ</span>
             </div>
             <div class="v" id="costTxt">—</div>
           </div>
@@ -529,7 +529,7 @@
           <div class="stat">
             <div class="k" style="display:flex; align-items:center; gap:6px;">
               <span data-i18n="ex.stats.b5cost">Coût pour atteindre B5</span>
-              <span class="qmark" data-tip="Trois niveaux d'exigence pour la résolution de B5 (l'antipode, 31 coups du but) :&#10;• Démo (l'agente atteint souvent B5) : ~10⁷ pas ≈ 0,0001 CHF.&#10;• Fiable (≥95% des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.&#10;• Convergence garantie (l'agente est ε-proche de Q* partout) : ~7×10¹³ pas ≈ 700 CHF.&#10;L'écart entre 'fiable' et 'garantie' (5 ordres de grandeur) est la zone où la pratique RL réelle opère. AlphaZero n'a jamais atteint la convergence garantie sur les échecs ; il a appris assez du sous-graphe utile." data-i18n-data-tip="ex.stats.b5costTip" tabindex="0" aria-label="À propos du coût pour B5">ⓘ</span>
+              <span class="qmark" data-tip="Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :&#10;• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ 0,0001 CHF.&#10;• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.&#10;• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF.&#10;Entre « fiable » et « garantie », cinq ordres de grandeur : c'est là que vit la pratique réelle du RL." data-i18n-data-tip="ex.stats.b5costTip" tabindex="0" aria-label="À propos du coût pour B5">ⓘ</span>
             </div>
             <div class="v" id="b5costTxt" style="font-size:11px; line-height:1.5;">—</div>
           </div>

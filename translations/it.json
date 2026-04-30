@@ -254,7 +254,7 @@
       "movesLastSolve": "Mosse (ultima risoluzione)",
       "qUpdates": "Aggiornamenti Q",
       "coverage": "Copertura dell'agente Q",
-      "coverageTip": "La maledizione della dimensionalità (Bellman 1957): la tabella Q è solo un dizionario — una voce per stato visitato. A 12 stati (2×2) copre tutto, a 360 (2×3) quasi tutto, a 181.440 (3×3) fatica a superare qualche percento. Il teorema di convergenza di Watkins (Watkins & Dayan 1992) richiede che ogni coppia (stato, azione) sia visitata *infinite volte* — a questa scala non visitiamo neppure ogni stato una volta sola. AlphaZero (Silver et al. 2018) aggira la maledizione con una rete neurale che generalizza a stati mai visti.",
+      "coverageTip": "La tabella Q è un dizionario — una voce per ogni stato incontrato. A 12 stati copre tutto. A 181.440 supera a stento qualche percento: ci sono semplicemente troppi stati da visitare.",
       "cost": "Costo di addestramento",
       "costTip": "Su un laptop, un aggiornamento Q costa circa 10⁻¹¹ CHF (soprattutto ammortamento hardware, non elettricità). Un'intera Mission III si paga con una frazione di centesimo. Ma questa tariffa minuscola diventa inaccessibile quando lo spazio degli stati esplode: la stessa regola, a un'altra scala, cambia tutto.",
       "budget": "Budget totale",
@@ -337,7 +337,7 @@
     "puzzleAria": "puzzle a scorrimento 2x2",
     "inspect": {
       "title": "Ispeziona",
-      "subtitle": "Passa il cursore sugli archi per vedere (s,a,s′,Q,R). La vista elenco brilla di verde per lo stato attuale."
+      "subtitle": "Passa il mouse sugli archi del grafo per vedere i dettagli. Nella vista a lista, lo stato corrente appare in verde."
     },
     "view": {
       "selectorAria": "Selettore di vista del pannello destro",
@@ -370,10 +370,10 @@
     },
     "status": {
       "state": "Stato sₜ",
-      "actions": "Azioni legali 𝒜(sₜ)",
-      "policy": "Politica π(a|sₜ) (<span class=\"sym-epsilon\">ε</span>-greedy)",
-      "lastTrans": "Ultima (sₜ,aₜ,r,sₜ₊₁)",
-      "lastUpdate": "Ultimo aggiornamento Q (numerico)",
+      "actions": "Azioni legali",
+      "policy": "Politica (come l'agente sceglie)",
+      "lastTrans": "Ultima transizione (stato → azione → ricompensa → stato successivo)",
+      "lastUpdate": "Ultimo aggiornamento Q",
       "lastSolve": "Lunghezza ultima risoluzione"
     },
     "bench": {
@@ -461,7 +461,7 @@
     },
     "economy": {
       "title": "Economia dell'addestramento",
-      "titleTip": "Tre angolazioni sul denaro: quanto hai già speso (Costo di addestramento); quanto hai destinato a questa esecuzione (Budget totale); quanto servirebbe per risolvere B5 a livello demo / affidabile / garantito."
+      "titleTip": "Tre angolazioni: quanto hai speso, quanto hai destinato, quanto servirebbe per risolvere B5."
     }
   },
   "gate": {

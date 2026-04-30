@@ -254,7 +254,7 @@
       "movesLastSolve": "Coups (dernière résolution)",
       "qUpdates": "Mises à jour Q",
       "coverage": "Couverture de l'agente Q",
-      "coverageTip": "Le fléau de la dimension (Bellman 1957) : la table Q n'est qu'un dictionnaire — une entrée par état rencontré. À 12 états (2×2) elle couvre tout, à 360 (2×3) presque tout, à 181 440 (3×3) elle peine à dépasser quelques pour cent. Le théorème de convergence de Watkins (Watkins & Dayan 1992) exige que chaque couple (état, action) soit visité *infiniment souvent* — à cette échelle, on ne visite même pas chaque état une seule fois. AlphaZero (Silver et al. 2018) contourne le fléau avec un réseau de neurones qui généralise à des états jamais vus.",
+      "coverageTip": "La table Q est un dictionnaire — une entrée par état rencontré. À 12 états, elle couvre tout. À 181 440, elle peine à dépasser quelques pour cent : il y a simplement trop d'états pour les visiter.",
       "cost": "Coût d'entraînement",
       "costTip": "Sur un laptop, une mise à jour Q coûte environ 10⁻¹¹ CHF (surtout l'amortissement, pas l'électricité). Une Mission III entière revient à une fraction de centime. Mais ce tarif minuscule devient inaccessible dès que l'espace d'états explose : la même règle, à une autre échelle, change tout.",
       "budget": "Budget total",
@@ -337,7 +337,7 @@
     "puzzleAria": "puzzle à glissement 2×2",
     "inspect": {
       "title": "Inspecter",
-      "subtitle": "Survolez les arêtes pour voir (s,a,s′,Q,R). La vue liste brille en vert pour l'état actuel."
+      "subtitle": "Survolez les arêtes du graphe pour voir les détails. Dans la vue liste, l'état actuel apparaît en vert."
     },
     "view": {
       "selectorAria": "Sélecteur de vue du panneau droit",
@@ -370,10 +370,10 @@
     },
     "status": {
       "state": "État sₜ",
-      "actions": "Actions légales 𝒜(sₜ)",
-      "policy": "Politique π(a|sₜ) (<span class=\"sym-epsilon\">ε</span>-glouton)",
-      "lastTrans": "Dernier (sₜ,aₜ,r,sₜ₊₁)",
-      "lastUpdate": "Dernière mise à jour Q (numérique)",
+      "actions": "Actions légales",
+      "policy": "Politique (comment l'agente choisit)",
+      "lastTrans": "Dernière transition (état → action → récompense → état suivant)",
+      "lastUpdate": "Dernière mise à jour Q",
       "lastSolve": "Longueur dernière résolution"
     },
     "bench": {
@@ -461,7 +461,7 @@
     },
     "economy": {
       "title": "Économie de l'entraînement",
-      "titleTip": "Trois angles sur l'argent : combien tu as déjà dépensé (Coût d'entraînement) ; combien tu as alloué à ce run (Budget total) ; combien il faudrait pour résoudre B5 de façon démo / fiable / garantie."
+      "titleTip": "Trois angles : ce que tu as dépensé, ce que tu as alloué, ce qu'il faudrait pour résoudre B5."
     }
   },
   "gate": {

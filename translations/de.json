@@ -254,7 +254,7 @@
       "movesLastSolve": "Züge (letzte Lösung)",
       "qUpdates": "Q-Updates",
       "coverage": "Abdeckung der Q-Agent*in",
-      "coverageTip": "Der Fluch der Dimensionalität (Bellman 1957): die Q-Tabelle ist nur ein Wörterbuch — ein Eintrag pro besuchtem Zustand. Bei 12 Zuständen (2×2) deckt sie alles ab, bei 360 (2×3) fast alles, bei 181.440 (3×3) kommt sie kaum über wenige Prozent. Watkins' Konvergenzsatz (Watkins & Dayan 1992) verlangt, dass jedes Zustand-Aktion-Paar *unendlich oft* besucht wird — in dieser Größe besuchen wir nicht einmal jeden Zustand ein einziges Mal. AlphaZero (Silver et al. 2018) umgeht den Fluch mit einem neuronalen Netz, das auf nie gesehene Zustände generalisiert.",
+      "coverageTip": "Die Q-Tabelle ist ein Wörterbuch — ein Eintrag pro besuchtem Zustand. Bei 12 Zuständen erfasst sie alles. Bei 181.440 kommt sie kaum über wenige Prozent hinaus: es gibt schlicht zu viele Zustände zum Besuchen.",
       "cost": "Trainingskosten",
       "costTip": "Auf einem Laptop kostet ein Q-Update etwa 10⁻¹¹ CHF (vor allem Hardware-Amortisation, kaum Strom). Eine ganze Mission III kommt auf einen Bruchteil eines Rappens. Doch dieser winzige Tarif wird unerreichbar, sobald der Zustandsraum explodiert: dieselbe Regel, in einem anderen Maßstab, ändert alles.",
       "budget": "Gesamtbudget",
@@ -337,7 +337,7 @@
     "puzzleAria": "2×2-Schiebepuzzle",
     "inspect": {
       "title": "Untersuchen",
-      "subtitle": "Mit der Maus über Kanten fahren, um (s,a,s′,Q,R) zu sehen. Die Listenansicht leuchtet grün für den aktuellen Zustand."
+      "subtitle": "Über die Graphkanten fahren, um Details zu sehen. In der Listenansicht erscheint der aktuelle Zustand grün."
     },
     "view": {
       "selectorAria": "Ansichts-Auswahl im rechten Panel",
@@ -370,10 +370,10 @@
     },
     "status": {
       "state": "Zustand sₜ",
-      "actions": "Legale Aktionen 𝒜(sₜ)",
-      "policy": "Policy π(a|sₜ) (<span class=\"sym-epsilon\">ε</span>-greedy)",
-      "lastTrans": "Letzter Übergang (sₜ,aₜ,r,sₜ₊₁)",
-      "lastUpdate": "Letztes Q-Update (numerisch)",
+      "actions": "Legale Aktionen",
+      "policy": "Strategie (wie die Agentin wählt)",
+      "lastTrans": "Letzter Übergang (Zustand → Aktion → Belohnung → nächster Zustand)",
+      "lastUpdate": "Letzte Q-Aktualisierung",
       "lastSolve": "Länge letzter Lösung"
     },
     "bench": {
@@ -461,7 +461,7 @@
     },
     "economy": {
       "title": "Trainingsökonomie",
-      "titleTip": "Drei Blickwinkel aufs Geld: wie viel du schon ausgegeben hast (Trainingskosten); wie viel du für diesen Lauf budgetiert hast (Gesamtbudget); wie viel es bräuchte, um B5 demonstrationsweise / zuverlässig / garantiert zu lösen."
+      "titleTip": "Drei Blickwinkel: was du ausgegeben hast, was du budgetiert hast, was es bräuchte, um B5 zu lösen."
     }
   },
   "gate": {

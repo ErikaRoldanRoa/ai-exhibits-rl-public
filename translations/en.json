@@ -254,7 +254,7 @@
       "movesLastSolve": "Moves (last solve)",
       "qUpdates": "Q updates",
       "coverage": "Q-agent coverage",
-      "coverageTip": "The curse of dimensionality (Bellman 1957): the Q-table is just a dictionary — one entry per state visited. At 12 states (2×2) it fills entirely; at 360 (2×3) almost entirely; at 181,440 (3×3) it struggles past a few percent. Watkins's convergence theorem (Watkins & Dayan 1992) requires every state-action pair visited *infinitely often* — at this scale we don't even visit each state once. AlphaZero (Silver et al. 2018) sidesteps the curse with a neural network that generalises to states never seen.",
+      "coverageTip": "The Q-table is a dictionary — one entry per state visited. At 12 states it covers everything. At 181,440 it barely reaches a few percent: there are simply too many states to visit.",
       "cost": "Training cost",
       "costTip": "On a laptop, one Q update costs about 10⁻¹¹ CHF (mostly hardware amortization, not electricity). A full Mission III comes to a fraction of a cent. Yet this tiny tariff becomes unreachable once the state space explodes: the same rule, at another scale, changes everything.",
       "budget": "Total budget",
@@ -337,7 +337,7 @@
     "puzzleAria": "2x2 sliding puzzle",
     "inspect": {
       "title": "Inspect",
-      "subtitle": "Hover edges to see (s,a,s′,Q,R). List view glows green for the current state."
+      "subtitle": "Hover the graph edges to see the details. In the list view, the current state shows in green."
     },
     "view": {
       "selectorAria": "Right panel view selector",
@@ -370,10 +370,10 @@
     },
     "status": {
       "state": "State sₜ",
-      "actions": "Legal actions 𝒜(sₜ)",
-      "policy": "Policy π(a|sₜ) (<span class=\"sym-epsilon\">ε</span>-greedy)",
-      "lastTrans": "Last (sₜ,aₜ,r,sₜ₊₁)",
-      "lastUpdate": "Last Q-update (numeric)",
+      "actions": "Legal actions",
+      "policy": "Policy (how the agent chooses)",
+      "lastTrans": "Last transition (state → action → reward → next state)",
+      "lastUpdate": "Last Q update",
       "lastSolve": "Last Solve length"
     },
     "bench": {
@@ -461,7 +461,7 @@
     },
     "economy": {
       "title": "Training economy",
-      "titleTip": "Three angles on money: how much you've already spent (Training cost); how much you allocated for this run (Total budget); how much it would take to solve B5 at demo / reliable / guaranteed levels."
+      "titleTip": "Three angles: what you've spent, what you've allocated, what it would take to solve B5."
     }
   },
   "gate": {
