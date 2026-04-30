@@ -256,7 +256,7 @@
       "coverage": "Abdeckung der Q-Agent*in",
       "coverageTip": "Der Fluch der Dimensionalität (Bellman 1957): die Q-Tabelle ist nur ein Wörterbuch — ein Eintrag pro besuchtem Zustand. Bei 12 Zuständen (2×2) deckt sie alles ab, bei 360 (2×3) fast alles, bei 181.440 (3×3) kommt sie kaum über wenige Prozent. Watkins' Konvergenzsatz (Watkins & Dayan 1992) verlangt, dass jedes Zustand-Aktion-Paar *unendlich oft* besucht wird — in dieser Größe besuchen wir nicht einmal jeden Zustand ein einziges Mal. AlphaZero (Silver et al. 2018) umgeht den Fluch mit einem neuronalen Netz, das auf nie gesehene Zustände generalisiert.",
       "cost": "Trainingskosten",
-      "costTip": "Realistische Kosten auf einem Laptop: ~10⁻¹¹ CHF pro Q-Update (dominant ist amortisierte Hardware, nicht Strom). Ein vollständiger Mission-III-Lauf kostet ein paar Rappen. Aber die Kosten skalieren mit der Größe des Zustandsraums: selbst zu diesem Tarif ist das Lernen von Q* auf dem Schachgraphen (~10⁴⁴ legale Stellungen) unerschwinglich. AlphaZero (Silver et al. 2018) ersetzte die Tabelle durch ein neuronales Netz — DeepMind hat die Trainingskosten nicht offengelegt; externe Schätzungen liegen im zweistelligen Millionen-USD-Bereich.",
+      "costTip": "Auf einem Laptop kostet ein Q-Update etwa 10⁻¹¹ CHF (vor allem Hardware-Amortisation, kaum Strom). Eine ganze Mission III kommt auf einen Bruchteil eines Rappens. Doch dieser winzige Tarif wird unerreichbar, sobald der Zustandsraum explodiert: dieselbe Regel, in einem anderen Maßstab, ändert alles.",
       "budget": "Gesamtbudget",
       "budgetUnit": "Schritte",
       "budgetTip": "Budget = Episoden × Max-Schritte-pro-Episode. Die Gesamtzahl der Q-Updates, die dieser Trainingsdurchlauf durchführen wird. Größeres Budget kann die Abdeckung wachsen lassen — aber auf 181.440 Zuständen bleibt selbst ein riesiges Budget weit von Konvergenzgarantien entfernt.",
@@ -264,7 +264,7 @@
       "b5costDemo": "Demo: ~0,0001 CHF",
       "b5costReliable": "Verlässlich: ~0,01 CHF",
       "b5costProven": "Garantie: ~700 CHF",
-      "b5costTip": "Drei Stufen \"B5 lösen\" (Antipode, 31 Züge vom Ziel): Demo (Agent*in erreicht B5 oft): ~10⁷ Schritte ≈ 0,0001 CHF. Verlässlich (≥95% nahe Optimum): ~10⁹–10¹⁰ Schritte ≈ 0,01–0,1 CHF. Garantie (Agent*in ist ε-nah an Q* überall): ~7×10¹³ Schritte ≈ 700 CHF. Die Lücke zwischen verlässlich und Garantie — fünf Größenordnungen — ist der Bereich realer RL-Praxis. AlphaZero hat die Garantie auf Schach nie erreicht; es hat genug vom nützlichen Teilgraphen gelernt."
+      "b5costTip": "Drei Anspruchsstufen, um B5 zu lösen (der Zustand am weitesten vom Ziel, 31 Züge entfernt):\n• Demo (die Agentin schafft es oft): ~10⁷ Schritte ≈ 0,0001 CHF.\n• Zuverlässig (≥95 % der Läufe gelingen nahe am Optimum): ~10⁹–10¹⁰ Schritte ≈ 0,01–0,1 CHF.\n• Garantiert (die Agentin spielt überall fast perfekt): ~7×10¹³ Schritte ≈ 700 CHF.\nZwischen „zuverlässig“ und „garantiert“ liegen fünf Größenordnungen: dort spielt sich die reale RL-Praxis ab."
     },
     "btn": {
       "stepOnce": "Schritt (ein Update)"
@@ -318,8 +318,8 @@
       },
       "caption": {
         "m1": "Mit nur 12 Zuständen füllt sich der Balken in wenigen Schritten — die Agentin erfasst die ganze Welt. Der Fluch beißt hier noch nicht.",
-        "m2": "Bei 360 Zuständen steigt der Balken während des Trainings, doch systematische Abdeckung kostet bereits.",
-        "m3": "Bei 181.440 Zuständen flacht der Balken typischerweise weit unter 100 % ab. Hier beißt der Fluch der Dimension."
+        "m2": "360 Zustände: 30× mehr als Mission I. Der Balken steigt im Training noch, aber er füllt sich nicht mehr von selbst — den Raum zu durchqueren beginnt zu kosten.",
+        "m3": "181.440 Zustände: 504× Mission II, 15.000× Mission I. Gleicher Algorithmus, gleiche Methode — der Raum ist nur zu weit geworden, um ihn zu durchwandern. Der Balken bleibt stehen, und der Fluch wird spürbar."
       }
     },
     "viewer": {
@@ -448,7 +448,7 @@
     "glossary": {
       "curse": {
         "term": "Fluch der Dimensionalität",
-        "def": "Bellmans Beobachtung von 1957: Speicher und benötigte Stichprobenzahl wachsen fakultativ mit der Größe des Zustandsraums. Von M1 (12) zu M2 (360) zu M3 (181.440) beträgt der Faktor 504×. Auf Schachniveau (~10⁴⁴ Zustände) ist eine Q-Tabelle unerreichbar."
+        "def": "Wenn der Zustandsraum wächst, lässt sich nicht mehr jede Situation besuchen — es gibt schlicht zu viele Fälle. Von M1 über M2 zu M3 wachsen die Konfigurationen von 12 auf 360 auf 181.440. Auf der Skala des Schachs (~10⁴⁴ Stellungen) käme selbst ein planetengroßer Computer nicht durch. Eine Q-Tabelle bleibt unerreichbar (Bellman, 1957)."
       },
       "generalisation": {
         "term": "Generalisierung",

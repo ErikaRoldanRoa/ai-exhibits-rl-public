@@ -256,7 +256,7 @@
       "coverage": "Copertura dell'agente Q",
       "coverageTip": "La maledizione della dimensionalità (Bellman 1957): la tabella Q è solo un dizionario — una voce per stato visitato. A 12 stati (2×2) copre tutto, a 360 (2×3) quasi tutto, a 181.440 (3×3) fatica a superare qualche percento. Il teorema di convergenza di Watkins (Watkins & Dayan 1992) richiede che ogni coppia (stato, azione) sia visitata *infinite volte* — a questa scala non visitiamo neppure ogni stato una volta sola. AlphaZero (Silver et al. 2018) aggira la maledizione con una rete neurale che generalizza a stati mai visti.",
       "cost": "Costo di addestramento",
-      "costTip": "Costo realistico su un laptop: ~10⁻¹¹ CHF per aggiornamento Q (dominato dall'ammortamento hardware, non dall'elettricità). Una sessione Mission III completa costa una frazione di centesimo. Ma il costo scala con la dimensione dello spazio degli stati: anche a questa tariffa, imparare Q* sul grafo degli scacchi (~10⁴⁴ posizioni legali) è inaccessibile. AlphaZero (Silver et al. 2018) ha sostituito la tabella con una rete neurale — DeepMind non ha divulgato il costo di addestramento; le stime esterne lo collocano in decine di milioni di dollari.",
+      "costTip": "Su un laptop, un aggiornamento Q costa circa 10⁻¹¹ CHF (soprattutto ammortamento hardware, non elettricità). Un'intera Mission III si paga con una frazione di centesimo. Ma questa tariffa minuscola diventa inaccessibile quando lo spazio degli stati esplode: la stessa regola, a un'altra scala, cambia tutto.",
       "budget": "Budget totale",
       "budgetUnit": "passi",
       "budgetTip": "Budget = episodi × passi-max-per-episodio. Il numero totale di aggiornamenti Q che questa sessione eseguirà. Un budget maggiore può far crescere la copertura — ma su 181.440 stati anche un budget enorme rimane lontano dalle garanzie di convergenza.",
@@ -264,7 +264,7 @@
       "b5costDemo": "Demo: ~0,0001 CHF",
       "b5costReliable": "Affidabile: ~0,01 CHF",
       "b5costProven": "Garantito: ~700 CHF",
-      "b5costTip": "Tre livelli per risolvere B5 (l'antipodo, 31 mosse dall'obiettivo): Demo (l'agente raggiunge spesso B5): ~10⁷ passi ≈ 0,0001 CHF. Affidabile (≥95% vicino all'ottimo): ~10⁹–10¹⁰ passi ≈ 0,01–0,1 CHF. Garanzia (l'agente ε-vicino a Q* ovunque): ~7×10¹³ passi ≈ 700 CHF. Il divario tra affidabile e garanzia (5 ordini di grandezza) è la zona della pratica RL reale. AlphaZero non ha mai raggiunto la garanzia sugli scacchi; ha imparato abbastanza del sottografo utile."
+      "b5costTip": "Tre livelli di esigenza per risolvere B5 (lo stato più lontano dall'obiettivo, a 31 mosse):\n• Demo (l'agente ci arriva spesso): ~10⁷ passi ≈ 0,0001 CHF.\n• Affidabile (≥95% delle prove riesce vicino all'ottimo): ~10⁹–10¹⁰ passi ≈ 0,01–0,1 CHF.\n• Garantita (l'agente gioca quasi perfettamente ovunque): ~7×10¹³ passi ≈ 700 CHF.\nTra «affidabile» e «garantita», cinque ordini di grandezza: è lì che vive la pratica reale del RL."
     },
     "btn": {
       "stepOnce": "Passo (un aggiornamento)"
@@ -318,8 +318,8 @@
       },
       "caption": {
         "m1": "Con solo 12 stati, la barra si riempie in pochi passi — l'agente copre tutto il mondo. La maledizione non morde ancora.",
-        "m2": "Su 360 stati la barra sale durante l'addestramento, ma una copertura sistematica comincia già a costare.",
-        "m3": "Su 181.440 stati la barra tipicamente si ferma molto sotto il 100 %. È la maledizione della dimensione che morde."
+        "m2": "360 stati: 30× più della Missione I. La barra sale ancora durante l'allenamento, ma non si riempie più da sola — coprire lo spazio comincia a costare.",
+        "m3": "181.440 stati: 504× la Missione II, 15 000× la Missione I. Stesso algoritmo, stesso metodo — lo spazio è semplicemente diventato troppo vasto per essere visitato. La barra si ferma, e la maledizione si fa sentire."
       }
     },
     "viewer": {
@@ -448,7 +448,7 @@
     "glossary": {
       "curse": {
         "term": "Maledizione della dimensionalità",
-        "def": "Osservazione di Bellman (1957): la memoria e il numero di campioni necessari esplodono fattorialmente con la dimensione dello spazio degli stati. Da M1 (12) a M2 (360) a M3 (181.440), il fattore è 504×. Alla scala degli scacchi (~10⁴⁴ stati), una tabella Q è inaccessibile."
+        "def": "Quando lo spazio degli stati cresce, visitare ogni situazione diventa impossibile: i casi sono semplicemente troppi. Da M1 a M2 a M3 si passa da 12 a 360 a 181.440 configurazioni. Alla scala degli scacchi (~10⁴⁴ posizioni), nemmeno un computer grande come un pianeta riuscirebbe a percorrerli. Una tabella Q diventa irraggiungibile (Bellman, 1957)."
       },
       "generalisation": {
         "term": "Generalizzazione",

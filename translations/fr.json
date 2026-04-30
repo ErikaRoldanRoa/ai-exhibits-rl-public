@@ -256,7 +256,7 @@
       "coverage": "Couverture de l'agente Q",
       "coverageTip": "Le fléau de la dimension (Bellman 1957) : la table Q n'est qu'un dictionnaire — une entrée par état rencontré. À 12 états (2×2) elle couvre tout, à 360 (2×3) presque tout, à 181 440 (3×3) elle peine à dépasser quelques pour cent. Le théorème de convergence de Watkins (Watkins & Dayan 1992) exige que chaque couple (état, action) soit visité *infiniment souvent* — à cette échelle, on ne visite même pas chaque état une seule fois. AlphaZero (Silver et al. 2018) contourne le fléau avec un réseau de neurones qui généralise à des états jamais vus.",
       "cost": "Coût d'entraînement",
-      "costTip": "Coût réaliste sur un laptop : ~10⁻¹¹ CHF par mise à jour Q (dominé par l'amortissement matériel, pas l'électricité). Un Mission III complet coûte une fraction de centime. Mais le coût augmente avec la taille de l'espace d'états : même à ce tarif, apprendre Q* sur le graphe des échecs (~10⁴⁴ positions légales) est inaccessible. AlphaZero (Silver et al. 2018) a remplacé la table par un réseau de neurones — DeepMind n'a pas divulgué le coût d'entraînement ; les estimations externes le placent à plusieurs dizaines de millions de dollars.",
+      "costTip": "Sur un laptop, une mise à jour Q coûte environ 10⁻¹¹ CHF (surtout l'amortissement, pas l'électricité). Une Mission III entière revient à une fraction de centime. Mais ce tarif minuscule devient inaccessible dès que l'espace d'états explose : la même règle, à une autre échelle, change tout.",
       "budget": "Budget total",
       "budgetUnit": "pas",
       "budgetTip": "Budget = épisodes × pas-max-par-épisode. C'est le nombre total de mises à jour Q que l'entraînement va effectuer. Plus le budget est grand, plus la couverture peut grandir — mais sur 181 440 états, même un budget énorme reste loin de la convergence garantie.",
@@ -264,7 +264,7 @@
       "b5costDemo": "Démo : ~0,0001 CHF",
       "b5costReliable": "Fiable : ~0,01 CHF",
       "b5costProven": "Garantie : ~700 CHF",
-      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'antipode, 31 coups du but) : Démo (l'agente atteint souvent B5) : ~10⁷ pas ≈ 0,0001 CHF. Fiable (≥95% des essais près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF. Convergence garantie (l'agente ε-proche de Q* partout) : ~7×10¹³ pas ≈ 700 CHF. L'écart entre fiable et garantie (5 ordres de grandeur) est la zone où la pratique RL réelle opère. AlphaZero n'a jamais atteint la garantie sur les échecs ; il a appris assez du sous-graphe utile."
+      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ 0,0001 CHF.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF.\nEntre « fiable » et « garantie », cinq ordres de grandeur : c'est là que vit la pratique réelle du RL."
     },
     "btn": {
       "stepOnce": "Pas (une mise à jour)"
@@ -318,8 +318,8 @@
       },
       "caption": {
         "m1": "Avec seulement 12 états, la barre se remplit en une poignée de pas — l'agente couvre tout le monde. Le fléau ne mord pas encore.",
-        "m2": "Sur 360 états, la barre grimpe pendant l'entraînement, mais une couverture systématique commence à coûter.",
-        "m3": "Sur 181 440 états, la barre plafonne typiquement bien sous 100 %. C'est le fléau de la dimension qui mord."
+        "m2": "360 états : 30× plus que la Mission I. La barre monte encore pendant l'entraînement, mais elle ne se remplit plus toute seule — couvrir l'espace commence à coûter.",
+        "m3": "181 440 états : 504× la Mission II, 15 000× la Mission I. Même algorithme, même méthode — l'espace est devenu trop vaste pour qu'on le visite. La barre plafonne, et la malédiction se fait sentir."
       }
     },
     "viewer": {
@@ -448,7 +448,7 @@
     "glossary": {
       "curse": {
         "term": "Fléau de la dimension",
-        "def": "Observation de Bellman (1957) : la mémoire et le nombre d'échantillons nécessaires explosent factoriellement avec la taille de l'espace d'états. De M1 (12) à M2 (360) à M3 (181 440), le facteur est 504×. À l'échelle des échecs (~10⁴⁴ états), une table Q est inaccessible."
+        "def": "Quand l'espace d'états grandit, on ne peut plus visiter toutes les situations : il y en a tout simplement trop. De M1 à M2 à M3, on passe de 12 à 360 à 181 440 configurations. À l'échelle des échecs (~10⁴⁴ positions), même un ordinateur de la taille d'une planète n'y arriverait pas. Une table Q devient inaccessible (Bellman, 1957)."
       },
       "generalisation": {
         "term": "Généralisation",
