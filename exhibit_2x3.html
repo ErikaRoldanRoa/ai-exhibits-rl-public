@@ -471,6 +471,9 @@
           <div class="stat"><div class="k" data-i18n="ex.stats.qUpdates">Mises à jour Q</div><div class="v" id="updates">—</div></div>
         </div>
       </div>
+      <!-- Right-column stack: cov-card + glossary + training-params live in
+           one grid cell so they stack tightly without empty rows. -->
+      <div class="rightCol" style="display:flex; flex-direction:column; gap:14px; min-width:0;">
       <!-- Coverage card — promoted out of the stats grid. The bar fills as
            the agent visits more of the 360 reachable states. This is the
            single most important truth-telling number on this page. -->
@@ -541,6 +544,7 @@
           <span style="color:var(--muted2); font-size:11px;" data-i18n="ex.viewer.unit">ms / pas</span>
         </div>
         <div style="margin-top:12px" class="log" id="log"></div>
+      </div>
       </div>
     </div>
   </div>

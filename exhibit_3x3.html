@@ -507,6 +507,10 @@
             <div class="v" id="b5costTxt" style="font-size:11px; line-height:1.5;">—</div>
           </div>
         </div>
+      </div>
+      <!-- Right-column stack: cov-card + glossary + training-params live in
+           one grid cell so they stack tightly. -->
+      <div class="rightCol" style="display:flex; flex-direction:column; gap:14px; min-width:0;">
         <!-- Coverage card — single live bar. Replaces the buried "Couverture
              Q-agent" stat that was redundant with this. The bar is the truth-
              telling number on this page. -->
@@ -517,9 +521,8 @@
             <div class="cov-track"><div class="cov-fill" id="covM3Fill" style="width:0%; background:var(--pink);"></div></div>
             <span class="cov-pct" id="covM3Pct">0%</span>
           </div>
-          <p class="cov-caption" data-i18n="ex.coverage.caption.m3">Sur 181 440 états, la barre plafonne typiquement bien sous 100 %. C'est le fléau de la dimension qui mord.</p>
+          <p class="cov-caption" data-i18n="ex.coverage.caption.m3">Sur 181 440 états, la barre plafonne typiquement bien sous 100 %. C'est le fléau de la dimension qui mord.</p>
         </div>
-      </div>
       <div class="glossary card" id="missionGlossary" style="margin-top:12px;"></div>
       <script src="app/glossary.js"></script>
       <script>
@@ -576,6 +579,7 @@
           <span style="color:var(--muted2); font-size:11px;" data-i18n="ex.viewer.unit">ms / pas</span>
         </div>
         <div style="margin-top:12px" class="log" id="log"></div>
+      </div>
       </div>
     </div>
   </div>
