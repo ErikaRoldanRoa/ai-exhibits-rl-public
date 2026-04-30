@@ -388,8 +388,6 @@
       "subtitle": "Puzzle a Scorrimento 2×3 · Stati raggiungibili (componente dell'obiettivo): <strong>360</strong>"
     },
     "header": {
-      "title": "AI-Exhibits: Apprendimento per Rinforzo: Puzzle a Scorrimento 2×3",
-      "subtitle": "Stati raggiungibili (la componente connessa che contiene l'obiettivo): 360.",
       "goal": "Obiettivo: [1 2 3 / 4 5 _]"
     },
     "bench": {
@@ -401,15 +399,14 @@
       "titleTip": "Carica uno stato di partenza fisso, poi lancia l'agente attuale su di esso (greedy, senza apprendimento). Il miglior punteggio per riferimento è salvato in questo browser.\nMosse minime teoriche: B1: 1 | B2: 3 | B3: 6 | B4: 9 | B5: 21 (Numero di Dio)."
     },
     "reachableStatesCount": "360",
-    "godsNumber": "21"
+    "godsNumber": "21",
+    "missionTrainingChip": "Missione II · Episodio di Addestramento"
   },
   "ex3x3": {
     "brand": {
       "subtitle": "Puzzle a Scorrimento 3×3 · Stati raggiungibili (componente dell'obiettivo): <strong>181.440</strong>"
     },
     "header": {
-      "title": "Apprendimento per Rinforzo: Puzzle a Scorrimento 3×3",
-      "subtitle": "Stati raggiungibili (la componente connessa che contiene l'obiettivo): 181.440.",
       "goal": "Obiettivo: [1 2 3 / 4 5 6 / 7 8 _]"
     },
     "bench": {
@@ -421,7 +418,8 @@
       "titleTip": "Carica uno stato di partenza fisso, poi lancia l'agente attuale su di esso (greedy, senza apprendimento). Il miglior punteggio per riferimento è salvato in questo browser.\nMosse minime teoriche: B1: 1 | B2: 10 | B3: 18 | B4: 26 | B5: 31 (Numero di Dio)."
     },
     "reachableStatesCount": "181.440",
-    "godsNumber": "31"
+    "godsNumber": "31",
+    "missionTrainingChip": "Missione III · Episodio di Addestramento"
   },
   "gate": {
     "brand": "AI-Exhibits",

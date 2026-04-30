@@ -388,8 +388,6 @@
       "subtitle": "Puzzle à Glissement 2×3 · États accessibles (composante de l'objectif) : <strong>360</strong>"
     },
     "header": {
-      "title": "AI-Exhibits : Apprentissage par Renforcement : Puzzle à Glissement 2×3",
-      "subtitle": "États accessibles (la composante connexe contenant l'objectif) : 360.",
       "goal": "Objectif : [1 2 3 / 4 5 _]"
     },
     "bench": {
@@ -401,15 +399,14 @@
       "titleTip": "Charge un état de départ fixe puis lance l'agente actuelle dessus (glouton, sans apprentissage). Le meilleur score par référence est enregistré dans ce navigateur.\nCoups minimum théoriques : B1 : 1 | B2 : 3 | B3 : 6 | B4 : 9 | B5 : 21 (Nombre de Dieu)."
     },
     "reachableStatesCount": "360",
-    "godsNumber": "21"
+    "godsNumber": "21",
+    "missionTrainingChip": "Mission II · Épisode d'Entraînement"
   },
   "ex3x3": {
     "brand": {
       "subtitle": "Puzzle à Glissement 3×3 · États accessibles (composante de l'objectif) : <strong>181 440</strong>"
     },
     "header": {
-      "title": "Apprentissage par Renforcement : Puzzle à Glissement 3×3",
-      "subtitle": "États accessibles (la composante connexe contenant l'objectif) : 181 440.",
       "goal": "Objectif : [1 2 3 / 4 5 6 / 7 8 _]"
     },
     "bench": {
@@ -421,7 +418,8 @@
       "titleTip": "Charge un état de départ fixe puis lance l'agente actuelle dessus (glouton, sans apprentissage). Le meilleur score par référence est enregistré dans ce navigateur.\nCoups minimum théoriques : B1 : 1 | B2 : 10 | B3 : 18 | B4 : 26 | B5 : 31 (Nombre de Dieu)."
     },
     "reachableStatesCount": "181 440",
-    "godsNumber": "31"
+    "godsNumber": "31",
+    "missionTrainingChip": "Mission III · Épisode d'Entraînement"
   },
   "gate": {
     "brand": "AI-Exhibits",

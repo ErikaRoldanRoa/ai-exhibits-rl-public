@@ -388,8 +388,6 @@
       "subtitle": "Sliding Puzzle 2×3 · Reachable states (goal component): <strong>360</strong>"
     },
     "header": {
-      "title": "AI-Exhibits: Reinforcement Learning: Sliding Puzzle 2×3",
-      "subtitle": "Reachable states (the connected component containing the goal): 360.",
       "goal": "Goal: [1 2 3 / 4 5 _]"
     },
     "bench": {
@@ -401,15 +399,14 @@
       "titleTip": "Load a fixed start state, then run the current agent on it (greedy, no learning). Best score per benchmark is saved in this browser.\nTheoretical minimum moves: B1: 1 | B2: 3 | B3: 6 | B4: 9 | B5: 21 (God's Number)."
     },
     "reachableStatesCount": "360",
-    "godsNumber": "21"
+    "godsNumber": "21",
+    "missionTrainingChip": "Mission II · Training Episode"
   },
   "ex3x3": {
     "brand": {
       "subtitle": "Sliding Puzzle 3×3 · Reachable states (goal component): <strong>181,440</strong>"
     },
     "header": {
-      "title": "Reinforcement Learning: Sliding Puzzle 3×3",
-      "subtitle": "Reachable states (the connected component containing the goal): 181,440.",
       "goal": "Goal: [1 2 3 / 4 5 6 / 7 8 _]"
     },
     "bench": {
@@ -421,7 +418,8 @@
       "titleTip": "Load a fixed start state, then run the current agent on it (greedy, no learning). Best score per benchmark is saved in this browser.\nTheoretical minimum moves: B1: 1 | B2: 10 | B3: 18 | B4: 26 | B5: 31 (God's Number)."
     },
     "reachableStatesCount": "181,440",
-    "godsNumber": "31"
+    "godsNumber": "31",
+    "missionTrainingChip": "Mission III · Training Episode"
   },
   "gate": {
     "brand": "AI-Exhibits",
