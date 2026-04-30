@@ -48,7 +48,7 @@
 <ol>
   <li data-i18n="quickstart.flow.1"><strong>00:00–00:15</strong> — Accroche &amp; cadrage : entraîne une IA que tu peux observer apprendre.</li>
   <li data-i18n="quickstart.flow.2"><strong>00:15–00:35</strong> — Phase 1 · Mission I (2×2, 12 états) : cartographier l'espace des configurations et l'orbite de parité, construire une table Q à la main sur papier.</li>
-  <li data-i18n="quickstart.flow.3"><strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 états, Nombre de Dieu=21) : entraîner l'agente ; observer les épisodes, la décroissance d'ε et la propagation des valeurs Q depuis l'objectif.</li>
+  <li data-i18n="quickstart.flow.3"><strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 états, Nombre de Dieu=21) : entraîner l'agente ; observer les épisodes, la décroissance d'<span class="sym-epsilon">ε</span> et la propagation des valeurs Q depuis l'objectif.</li>
   <li data-i18n="quickstart.flow.4"><strong>01:05–01:15</strong> — Pause.</li>
   <li data-i18n="quickstart.flow.5"><strong>01:15–01:45</strong> — Phase 3 · Mission III (3×3, 181 440 états, Nombre de Dieu=31) : tournoi à trois joueuses (toi / aléatoire / agente Q), nommer le fléau de la dimension, pont vers AlphaZero / MuZero.</li>
   <li data-i18n="quickstart.flow.6"><strong>01:45–02:00</strong> — Réflexion &amp; liens réels.</li>
@@ -56,15 +56,15 @@
 
 <h2 data-i18n="quickstart.h.params">Paramètres recommandés</h2>
 <ul>
-  <li data-i18n="quickstart.params.2x2"><strong>2×2</strong> (12 états) : α=0,5, γ=0,9, ε=0,3 · 500–2000 épisodes</li>
-  <li data-i18n="quickstart.params.2x3"><strong>2×3</strong> (360 états) : α=0,3, γ=0,95, ε=0,4 · 2 000–10 000 épisodes</li>
-  <li data-i18n="quickstart.params.3x3"><strong>3×3</strong> (181 440 états) : α=0,3, γ=0,99, ε=0,5 · 50 000+ épisodes</li>
+  <li data-i18n="quickstart.params.2x2"><strong>2×2</strong> (12 états) : <span class="sym-alpha">α</span>=0,5, <span class="sym-gamma">γ</span>=0,9, <span class="sym-epsilon">ε</span>=0,3 · 500–2000 épisodes</li>
+  <li data-i18n="quickstart.params.2x3"><strong>2×3</strong> (360 états) : <span class="sym-alpha">α</span>=0,3, <span class="sym-gamma">γ</span>=0,95, <span class="sym-epsilon">ε</span>=0,4 · 2 000–10 000 épisodes</li>
+  <li data-i18n="quickstart.params.3x3"><strong>3×3</strong> (181 440 états) : <span class="sym-alpha">α</span>=0,3, <span class="sym-gamma">γ</span>=0,99, <span class="sym-epsilon">ε</span>=0,5 · 50 000+ épisodes</li>
 </ul>
 
 <h2 data-i18n="quickstart.h.trouble">Si ça coince</h2>
 <ul>
-  <li data-i18n="quickstart.trouble.1">L'agente ne trouve pas la solution → augmenter les épisodes ou le facteur γ</li>
-  <li data-i18n="quickstart.trouble.2">Table Q vide → vérifier que α ≠ 0 et que les épisodes tournent</li>
+  <li data-i18n="quickstart.trouble.1">L'agente ne trouve pas la solution → augmenter les épisodes ou le facteur <span class="sym-gamma">γ</span></li>
+  <li data-i18n="quickstart.trouble.2">Table Q vide → vérifier que <span class="sym-alpha">α</span> ≠ 0 et que les épisodes tournent</li>
   <li data-i18n="quickstart.trouble.3">L'agente aléatoire résout instantanément → coup de chance, relancer</li>
 </ul>
 

@@ -132,13 +132,13 @@
       "term": "Strategie"
     },
     "learningRate": {
-      "term": "Lernrate (α)"
+      "term": "Lernrate (<span class=\"sym-alpha\">α</span>)"
     },
     "discount": {
-      "term": "Diskontfaktor (γ)"
+      "term": "Diskontfaktor (<span class=\"sym-gamma\">γ</span>)"
     },
     "epsilon": {
-      "term": "Epsilon (ε)"
+      "term": "Epsilon (<span class=\"sym-epsilon\">ε</span>)"
     }
   },
   "fiche": {
@@ -168,10 +168,10 @@
       "gammaDesc": "Gewicht zukünftiger vs. sofortiger Belohnungen",
       "epsilonDesc": "Wahrscheinlichkeit zufälliger Exploration",
       "tipsTitle": "Parameter-Tipps",
-      "tip1": "<strong>Hohes α</strong>: lernt schnell, kann aber instabil sein",
-      "tip2": "<strong>Hohes γ</strong>: plant langfristig (ideal für Puzzles!)",
-      "tip3": "<strong>Hohes ε</strong>: mehr Exploration, langsamere Konvergenz",
-      "tip4": "<strong>Zum Testen</strong>: ε = 0 setzen (reine Ausnutzung — Agent*in erkundet nicht mehr)"
+      "tip1": "<strong><span class=\"sym-alpha\">α</span> hoch</strong>: lernt schnell, kann aber instabil werden",
+      "tip2": "<strong><span class=\"sym-gamma\">γ</span> hoch</strong>: plant langfristig (ideal für Puzzles!)",
+      "tip3": "<strong><span class=\"sym-epsilon\">ε</span> hoch</strong>: mehr Exploration, langsamere Konvergenz",
+      "tip4": "<strong>Zum Testen</strong>: <span class=\"sym-epsilon\">ε</span> = 0 setzen (rein greedy — die Agent*in exploriert nicht mehr)"
     },
     "card3": {
       "title": "🏆 Benchmarks & Gottes Zahlen",
@@ -187,7 +187,7 @@
     "card4": {
       "title": "🚀 Trainings-Ablauf",
       "stepByStep": "Schritt für Schritt",
-      "step1": "<strong>Parameter einstellen</strong>: α=0,5, γ=0,9, ε=0,3",
+      "step1": "<strong>Parameter einstellen</strong>: <span class=\"sym-alpha\">α</span>=0,5, <span class=\"sym-gamma\">γ</span>=0,9, <span class=\"sym-epsilon\">ε</span>=0,3",
       "step2": "<strong>Trainieren</strong>: mehrmals auf „Train 100\" klicken",
       "step3": "<strong>Q-Tabelle beobachten</strong>: Farben erscheinen, während die Agent*in lernt",
       "step4": "<strong>Benchmark laden</strong>: B1, B2, B3… ausprobieren",
@@ -197,8 +197,8 @@
       "step8": "<strong>Herausforderung</strong>: Schaffst du Gottes Zahl?",
       "troubleshoot": "Bei Problemen",
       "t1": "<strong>Agent*in findet die Lösung nicht?</strong> Mehr trainieren (1000+ Episoden)",
-      "t2": "<strong>Q-Tabelle leer?</strong> Prüfen, dass α ≠ 0",
-      "t3": "<strong>Zu langsam?</strong> ε nach dem Training verkleinern"
+      "t2": "<strong>Q-Tabelle leer?</strong> Prüfen, dass <span class=\"sym-alpha\">α</span> ≠ 0",
+      "t3": "<strong>Zu langsam?</strong> <span class=\"sym-epsilon\">ε</span> nach dem Training verkleinern"
     },
     "footer": "AI-Exhibits · Dr. Erika Roldán · MPI MiS · 2026"
   },
@@ -225,13 +225,13 @@
       "6": "<strong>01:45–02:00</strong> — Reflexion &amp; Alltagsbezug."
     },
     "params": {
-      "2x2": "<strong>2×2</strong> (12 Zustände): α=0,5, γ=0,9, ε=0,3 · 500–2000 Episoden",
-      "2x3": "<strong>2×3</strong> (360 Zustände): α=0,3, γ=0,95, ε=0,4 · 2.000–10.000 Episoden",
-      "3x3": "<strong>3×3</strong> (181.440 Zustände): α=0,3, γ=0,99, ε=0,5 · 50.000+ Episoden"
+      "2x2": "<strong>2×2</strong> (12 Zustände): <span class=\"sym-alpha\">α</span>=0,5, <span class=\"sym-gamma\">γ</span>=0,9, <span class=\"sym-epsilon\">ε</span>=0,3 · 500–2000 Episoden",
+      "2x3": "<strong>2×3</strong> (360 Zustände): <span class=\"sym-alpha\">α</span>=0,3, <span class=\"sym-gamma\">γ</span>=0,95, <span class=\"sym-epsilon\">ε</span>=0,4 · 2.000–10.000 Episoden",
+      "3x3": "<strong>3×3</strong> (181.440 Zustände): <span class=\"sym-alpha\">α</span>=0,3, <span class=\"sym-gamma\">γ</span>=0,99, <span class=\"sym-epsilon\">ε</span>=0,5 · 50.000+ Episoden"
     },
     "trouble": {
-      "1": "Agent*in findet die Lösung nicht → mehr Episoden oder γ erhöhen",
-      "2": "Q-Tabelle leer → prüfen, dass α ≠ 0 und Episoden laufen",
+      "1": "Agent*in findet die Lösung nicht → mehr Episoden oder <span class=\"sym-gamma\">γ</span> erhöhen",
+      "2": "Q-Tabelle leer → prüfen, dass <span class=\"sym-alpha\">α</span> ≠ 0 und Episoden laufen",
       "3": "Zufall löst sofort → Glückstreffer, neu starten"
     }
   },
@@ -361,7 +361,7 @@
     "status": {
       "state": "Zustand sₜ",
       "actions": "Legale Aktionen 𝒜(sₜ)",
-      "policy": "Strategie π(a|sₜ) (ε-greedy)",
+      "policy": "Policy π(a|sₜ) (<span class=\"sym-epsilon\">ε</span>-greedy)",
       "lastTrans": "Letzter Übergang (sₜ,aₜ,r,sₜ₊₁)",
       "lastUpdate": "Letztes Q-Update (numerisch)",
       "lastSolve": "Länge letzter Lösung"

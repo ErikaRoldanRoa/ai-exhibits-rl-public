@@ -207,7 +207,7 @@
 
     <div class="tip">
       <strong data-i18n="fiche.card1.formulaLabel">💡 Formule du Q-learning :</strong><br>
-      <span class="formula">Q(s,a) ← Q(s,a) + α × [r + γ × max Q(s') − Q(s,a)]</span>
+      <span class="formula">Q(s,a) ← Q(s,a) + <span class="sym-alpha">α</span> × [<span class="sym-reward">r</span> + <span class="sym-gamma">γ</span> × max Q(s') − Q(s,a)]</span>
     </div>
   </div>
 
@@ -222,17 +222,17 @@
         <th data-i18n="fiche.card2.colValues">Valeurs utiles</th>
       </tr>
       <tr>
-        <td class="term" data-i18n="glossary.learningRate.term">Taux d'apprentissage (α)</td>
+        <td class="term" data-i18n="glossary.learningRate.term">Taux d'apprentissage (<span class="sym-alpha">α</span>)</td>
         <td data-i18n="fiche.card2.alphaDesc">Vitesse de mise à jour des valeurs Q</td>
         <td class="formula">0,3 – 0,7</td>
       </tr>
       <tr>
-        <td class="term" data-i18n="glossary.discount.term">Escompte (γ)</td>
+        <td class="term" data-i18n="glossary.discount.term">Escompte (<span class="sym-gamma">γ</span>)</td>
         <td data-i18n="fiche.card2.gammaDesc">Importance des récompenses futures vs immédiates</td>
         <td class="formula">0,9 – 0,99</td>
       </tr>
       <tr>
-        <td class="term" data-i18n="glossary.epsilon.term">Epsilon (ε)</td>
+        <td class="term" data-i18n="glossary.epsilon.term">Epsilon (<span class="sym-epsilon">ε</span>)</td>
         <td data-i18n="fiche.card2.epsilonDesc">Probabilité d'exploration aléatoire</td>
         <td class="formula">0,2 – 0,4</td>
       </tr>
@@ -240,10 +240,10 @@
 
     <h3 data-i18n="fiche.card2.tipsTitle">Conseils sur les paramètres</h3>
     <ul>
-      <li data-i18n="fiche.card2.tip1"><strong>α élevé</strong> : apprend vite mais peut être instable</li>
-      <li data-i18n="fiche.card2.tip2"><strong>γ élevé</strong> : planifie à long terme (idéal pour les puzzles !)</li>
-      <li data-i18n="fiche.card2.tip3"><strong>ε élevé</strong> : plus d'exploration, convergence plus lente</li>
-      <li data-i18n="fiche.card2.tip4"><strong>Pour tester</strong> : régler ε = 0 (stratégie purement gloutonne — l'agente n'explore plus)</li>
+      <li data-i18n="fiche.card2.tip1"><strong><span class="sym-alpha">α</span> élevé</strong> : apprend vite mais peut être instable</li>
+      <li data-i18n="fiche.card2.tip2"><strong><span class="sym-gamma">γ</span> élevé</strong> : planifie à long terme (idéal pour les puzzles !)</li>
+      <li data-i18n="fiche.card2.tip3"><strong><span class="sym-epsilon">ε</span> élevé</strong> : plus d'exploration, convergence plus lente</li>
+      <li data-i18n="fiche.card2.tip4"><strong>Pour tester</strong> : régler <span class="sym-epsilon">ε</span> = 0 (stratégie purement gloutonne — l'agente n'explore plus)</li>
     </ul>
   </div>
 
@@ -295,7 +295,7 @@
 
     <h3 data-i18n="fiche.card4.stepByStep">Pas à pas</h3>
     <ol style="padding-left: 20px; font-size: 13px;">
-      <li data-i18n="fiche.card4.step1"><strong>Régler les paramètres</strong> : α=0,5, γ=0,9, ε=0,3</li>
+      <li data-i18n="fiche.card4.step1"><strong>Régler les paramètres</strong> : <span class="sym-alpha">α</span>=0,5, <span class="sym-gamma">γ</span>=0,9, <span class="sym-epsilon">ε</span>=0,3</li>
       <li data-i18n="fiche.card4.step2"><strong>Entraîner</strong> : cliquer plusieurs fois sur « Entraîner 100 »</li>
       <li data-i18n="fiche.card4.step3"><strong>Observer la table Q</strong> : les couleurs apparaissent à mesure que l'agente apprend</li>
       <li data-i18n="fiche.card4.step4"><strong>Charger une référence</strong> : essayer B1, B2, B3…</li>
@@ -308,8 +308,8 @@
     <h3 data-i18n="fiche.card4.troubleshoot">En cas de problème</h3>
     <ul>
       <li data-i18n="fiche.card4.t1"><strong>L'agente ne trouve pas la solution ?</strong> Entraîner davantage (1000+ épisodes)</li>
-      <li data-i18n="fiche.card4.t2"><strong>Table Q vide ?</strong> Vérifier que α ≠ 0</li>
-      <li data-i18n="fiche.card4.t3"><strong>Trop lent ?</strong> Réduire ε après l'entraînement</li>
+      <li data-i18n="fiche.card4.t2"><strong>Table Q vide ?</strong> Vérifier que <span class="sym-alpha">α</span> ≠ 0</li>
+      <li data-i18n="fiche.card4.t3"><strong>Trop lent ?</strong> Réduire <span class="sym-epsilon">ε</span> après l'entraînement</li>
     </ul>
   </div>
 

@@ -132,13 +132,13 @@
       "term": "Policy"
     },
     "learningRate": {
-      "term": "Learning Rate (α)"
+      "term": "Learning Rate (<span class=\"sym-alpha\">α</span>)"
     },
     "discount": {
-      "term": "Discount (γ)"
+      "term": "Discount (<span class=\"sym-gamma\">γ</span>)"
     },
     "epsilon": {
-      "term": "Epsilon (ε)"
+      "term": "Epsilon (<span class=\"sym-epsilon\">ε</span>)"
     }
   },
   "fiche": {
@@ -168,10 +168,10 @@
       "gammaDesc": "Value of future vs immediate rewards",
       "epsilonDesc": "Probability of random exploration",
       "tipsTitle": "Parameter Tips",
-      "tip1": "<strong>High α</strong>: Learns fast but may be unstable",
-      "tip2": "<strong>High γ</strong>: Plans ahead (good for puzzles!)",
-      "tip3": "<strong>High ε</strong>: More exploration, slower convergence",
-      "tip4": "<strong>For testing</strong>: set ε = 0 (pure exploitation — the agent stops exploring)"
+      "tip1": "<strong><span class=\"sym-alpha\">α</span> high</strong>: learns fast but can be unstable",
+      "tip2": "<strong><span class=\"sym-gamma\">γ</span> high</strong>: plans long-term (ideal for puzzles!)",
+      "tip3": "<strong><span class=\"sym-epsilon\">ε</span> high</strong>: more exploration, slower convergence",
+      "tip4": "<strong>For testing</strong>: set <span class=\"sym-epsilon\">ε</span> = 0 (pure greedy — the agent stops exploring)"
     },
     "card3": {
       "title": "🏆 Benchmarks & God's Numbers",
@@ -187,7 +187,7 @@
     "card4": {
       "title": "🚀 Training Workflow",
       "stepByStep": "Step-by-Step",
-      "step1": "<strong>Set Parameters</strong>: α=0.5, γ=0.9, ε=0.3",
+      "step1": "<strong>Set Parameters</strong>: <span class=\"sym-alpha\">α</span>=0.5, <span class=\"sym-gamma\">γ</span>=0.9, <span class=\"sym-epsilon\">ε</span>=0.3",
       "step2": "<strong>Train</strong>: Click \"Train 100\" several times",
       "step3": "<strong>Watch Q-table</strong>: Colors appear as the agent learns",
       "step4": "<strong>Load Benchmark</strong>: Try B1, B2, B3…",
@@ -225,13 +225,13 @@
       "6": "<strong>01:45–02:00</strong> — Reflection &amp; real-world connections."
     },
     "params": {
-      "2x2": "<strong>2×2</strong> (12 states): α=0.5, γ=0.9, ε=0.3 · 500–2000 episodes",
-      "2x3": "<strong>2×3</strong> (360 states): α=0.3, γ=0.95, ε=0.4 · 2,000–10,000 episodes",
-      "3x3": "<strong>3×3</strong> (181,440 states): α=0.3, γ=0.99, ε=0.5 · 50,000+ episodes"
+      "2x2": "<strong>2×2</strong> (12 states): <span class=\"sym-alpha\">α</span>=0.5, <span class=\"sym-gamma\">γ</span>=0.9, <span class=\"sym-epsilon\">ε</span>=0.3 · 500–2000 episodes",
+      "2x3": "<strong>2×3</strong> (360 states): <span class=\"sym-alpha\">α</span>=0.3, <span class=\"sym-gamma\">γ</span>=0.95, <span class=\"sym-epsilon\">ε</span>=0.4 · 2,000–10,000 episodes",
+      "3x3": "<strong>3×3</strong> (181,440 states): <span class=\"sym-alpha\">α</span>=0.3, <span class=\"sym-gamma\">γ</span>=0.99, <span class=\"sym-epsilon\">ε</span>=0.5 · 50,000+ episodes"
     },
     "trouble": {
-      "1": "The agent isn't finding the solution → more episodes or higher γ",
-      "2": "Q-table empty → check α ≠ 0 and episodes are running",
+      "1": "The agent isn't finding the solution → more episodes or higher <span class=\"sym-gamma\">γ</span>",
+      "2": "Q-table empty → check <span class=\"sym-alpha\">α</span> ≠ 0 and episodes are running",
       "3": "Random solves instantly → lucky draw, re-run"
     }
   },
@@ -361,7 +361,7 @@
     "status": {
       "state": "State sₜ",
       "actions": "Legal actions 𝒜(sₜ)",
-      "policy": "Policy π(a|sₜ) (ε-greedy)",
+      "policy": "Policy π(a|sₜ) (<span class=\"sym-epsilon\">ε</span>-greedy)",
       "lastTrans": "Last (sₜ,aₜ,r,sₜ₊₁)",
       "lastUpdate": "Last Q-update (numeric)",
       "lastSolve": "Last Solve length"

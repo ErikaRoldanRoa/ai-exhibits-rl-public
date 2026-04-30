@@ -132,13 +132,13 @@
       "term": "Politica"
     },
     "learningRate": {
-      "term": "Tasso di apprendimento (α)"
+      "term": "Tasso di apprendimento (<span class=\"sym-alpha\">α</span>)"
     },
     "discount": {
-      "term": "Sconto (γ)"
+      "term": "Sconto (<span class=\"sym-gamma\">γ</span>)"
     },
     "epsilon": {
-      "term": "Epsilon (ε)"
+      "term": "Epsilon (<span class=\"sym-epsilon\">ε</span>)"
     }
   },
   "fiche": {
@@ -168,10 +168,10 @@
       "gammaDesc": "Importanza delle ricompense future rispetto a quelle immediate",
       "epsilonDesc": "Probabilità di esplorazione casuale",
       "tipsTitle": "Consigli sui parametri",
-      "tip1": "<strong>α alto</strong>: apprende in fretta ma può essere instabile",
-      "tip2": "<strong>γ alto</strong>: pianifica a lungo termine (ideale per i puzzle!)",
-      "tip3": "<strong>ε alto</strong>: più esplorazione, convergenza più lenta",
-      "tip4": "<strong>Per testare</strong>: imposta ε = 0 (pura sfruttamento — l'agente non esplora più)"
+      "tip1": "<strong><span class=\"sym-alpha\">α</span> alto</strong>: apprende velocemente ma può essere instabile",
+      "tip2": "<strong><span class=\"sym-gamma\">γ</span> alto</strong>: pianifica a lungo termine (ideale per i puzzle!)",
+      "tip3": "<strong><span class=\"sym-epsilon\">ε</span> alto</strong>: più esplorazione, convergenza più lenta",
+      "tip4": "<strong>Per testare</strong>: imposta <span class=\"sym-epsilon\">ε</span> = 0 (pura greedy — l'agente smette di esplorare)"
     },
     "card3": {
       "title": "🏆 Riferimenti & Numeri di Dio",
@@ -187,7 +187,7 @@
     "card4": {
       "title": "🚀 Flusso di Addestramento",
       "stepByStep": "Passo dopo passo",
-      "step1": "<strong>Imposta i parametri</strong>: α=0,5, γ=0,9, ε=0,3",
+      "step1": "<strong>Imposta i parametri</strong>: <span class=\"sym-alpha\">α</span>=0,5, <span class=\"sym-gamma\">γ</span>=0,9, <span class=\"sym-epsilon\">ε</span>=0,3",
       "step2": "<strong>Addestra</strong>: clicca più volte su « Addestra 100 »",
       "step3": "<strong>Osserva la tabella Q</strong>: i colori compaiono man mano che l'agente impara",
       "step4": "<strong>Carica un riferimento</strong>: prova B1, B2, B3…",
@@ -197,8 +197,8 @@
       "step8": "<strong>Sfida</strong>: riuscirai a raggiungere il Numero di Dio?",
       "troubleshoot": "Risoluzione dei problemi",
       "t1": "<strong>L'agente non trova la soluzione?</strong> Addestra di più (oltre 1000 episodi)",
-      "t2": "<strong>Tabella Q vuota?</strong> Verifica che α ≠ 0",
-      "t3": "<strong>Troppo lento?</strong> Riduci ε dopo l'addestramento"
+      "t2": "<strong>Tabella Q vuota?</strong> Verifica che <span class=\"sym-alpha\">α</span> ≠ 0",
+      "t3": "<strong>Troppo lento?</strong> Riduci <span class=\"sym-epsilon\">ε</span> dopo l'addestramento"
     },
     "footer": "AI-Exhibits · D<sup>ssa</sup> Erika Roldán · MPI MiS · 2026"
   },
@@ -225,13 +225,13 @@
       "6": "<strong>01:45–02:00</strong> — Riflessione &amp; collegamenti con il mondo reale."
     },
     "params": {
-      "2x2": "<strong>2×2</strong> (12 stati): α=0,5, γ=0,9, ε=0,3 · 500–2000 episodi",
-      "2x3": "<strong>2×3</strong> (360 stati): α=0,3, γ=0,95, ε=0,4 · 2.000–10.000 episodi",
-      "3x3": "<strong>3×3</strong> (181.440 stati): α=0,3, γ=0,99, ε=0,5 · oltre 50.000 episodi"
+      "2x2": "<strong>2×2</strong> (12 stati): <span class=\"sym-alpha\">α</span>=0,5, <span class=\"sym-gamma\">γ</span>=0,9, <span class=\"sym-epsilon\">ε</span>=0,3 · 500–2000 episodi",
+      "2x3": "<strong>2×3</strong> (360 stati): <span class=\"sym-alpha\">α</span>=0,3, <span class=\"sym-gamma\">γ</span>=0,95, <span class=\"sym-epsilon\">ε</span>=0,4 · 2.000–10.000 episodi",
+      "3x3": "<strong>3×3</strong> (181.440 stati): <span class=\"sym-alpha\">α</span>=0,3, <span class=\"sym-gamma\">γ</span>=0,99, <span class=\"sym-epsilon\">ε</span>=0,5 · oltre 50.000 episodi"
     },
     "trouble": {
-      "1": "L'agente non trova la soluzione → aumenta gli episodi o il fattore γ",
-      "2": "Tabella Q vuota → verifica che α ≠ 0 e che gli episodi stiano girando",
+      "1": "L'agente non trova la soluzione → aumenta gli episodi o il fattore <span class=\"sym-gamma\">γ</span>",
+      "2": "Tabella Q vuota → verifica che <span class=\"sym-alpha\">α</span> ≠ 0 e che gli episodi stiano girando",
       "3": "Il casuale risolve all'istante → colpo di fortuna, rilancia"
     }
   },
@@ -361,7 +361,7 @@
     "status": {
       "state": "Stato sₜ",
       "actions": "Azioni legali 𝒜(sₜ)",
-      "policy": "Politica π(a|sₜ) (ε-greedy)",
+      "policy": "Politica π(a|sₜ) (<span class=\"sym-epsilon\">ε</span>-greedy)",
       "lastTrans": "Ultima (sₜ,aₜ,r,sₜ₊₁)",
       "lastUpdate": "Ultimo aggiornamento Q (numerico)",
       "lastSolve": "Lunghezza ultima risoluzione"

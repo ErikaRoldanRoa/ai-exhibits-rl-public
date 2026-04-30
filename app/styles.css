@@ -170,10 +170,10 @@ p {
 }
 
 /* === Q-LEARNING SYMBOL COLORS ===
-   Each parameter / formula variable gets a stable accent colour so the
-   parameter input panel and the Q-update formula speak the same visual
-   language. Glow is mild on the labels (so they read as glyphs, not as
-   buttons). */
+   Each parameter / formula variable gets a stable solid accent colour
+   so the parameter input panel and the Q-update formula speak the same
+   visual language. Solid colour, no halo, no gradient — the glyph
+   itself reads as the variable. */
 .sym-alpha,
 .sym-gamma,
 .sym-epsilon,
@@ -181,16 +181,12 @@ p {
   font-family: var(--mono);
   font-weight: 900;
   letter-spacing: 0.2px;
+  text-shadow: none;
 }
-.sym-alpha   { color: var(--cyan);  text-shadow: 0 0 10px rgba(47, 243, 255, 0.45); }
-.sym-gamma   { color: var(--lime);  text-shadow: 0 0 10px rgba(112, 255, 122, 0.45); }
-.sym-epsilon { color: var(--pink);  text-shadow: 0 0 10px rgba(255, 59, 212, 0.45); }
-.sym-reward  { color: var(--amber); text-shadow: 0 0 10px rgba(255, 210, 74, 0.45); }
-/* Stronger glow inside formula displays (so the variable pops in math). */
-.math .sym-alpha,
-.math .sym-gamma,
-.math .sym-epsilon,
-.math .sym-reward { text-shadow: 0 0 14px currentColor; }
+.sym-alpha   { color: var(--cyan); }
+.sym-gamma   { color: var(--lime); }
+.sym-epsilon { color: var(--pink); }
+.sym-reward  { color: var(--amber); }
 
 .small {
   color: var(--muted2);
