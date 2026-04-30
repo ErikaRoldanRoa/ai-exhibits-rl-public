@@ -370,14 +370,13 @@
       "lastSolve": "Last Solve length"
     },
     "bench": {
-      "description": "Load a fixed start state. Then click <b>Solve</b> to evaluate the current agent (greedy, no learning). We record your best move count per benchmark in this browser.",
-      "theoretical": "<strong>Theoretical minimum moves:</strong> B1: 1 | B2: 2 | B3: 3 | B4: 4 | B5: 5 | B6: 6 (God's Number!)",
       "b1Tip": "⭐ Easy: One Step Away (1 move)",
       "b2Tip": "⭐⭐ Medium: Value Propagation (2 moves)",
       "b3Tip": "⭐⭐⭐ Hard: Corner Challenge (3 moves)",
       "b4Tip": "⭐⭐⭐⭐ Very Hard: Deep Planning (4 moves)",
       "b5Tip": "⭐⭐⭐⭐⭐ Expert: Maximum Search (5 moves)",
-      "b6Tip": "🏆 God's Number! Ultimate Challenge (6 moves)"
+      "b6Tip": "🏆 God's Number! Ultimate Challenge (6 moves)",
+      "titleTip": "Load a fixed start state, then run the current agent on it (greedy, no learning). Best score per benchmark is saved in this browser.\nTheoretical minimum moves: B1: 1 | B2: 2 | B3: 3 | B4: 4 | B5: 5 | B6: 6 (God's Number)."
     },
     "reachableStatesCount": "12",
     "godsNumber": "6",
@@ -397,12 +396,12 @@
       "goal": "Goal: [1 2 3 / 4 5 _]"
     },
     "bench": {
-      "theoretical": "<strong>Theoretical minimum moves:</strong> B1: 1 | B2: 3 | B3: 6 | B4: 9 | B5: 21 (God's Number!)",
       "b1Tip": "⭐ Easy: Quick Win (1 move)",
       "b2Tip": "⭐⭐ Medium: Value Propagation (3 moves)",
       "b3Tip": "⭐⭐⭐ Hard: Multi-Step Planning (6 moves)",
       "b4Tip": "⭐⭐⭐⭐ Very Hard: Deep Search (9 moves)",
-      "b5Tip": "🏆 God's Number! Ultimate Challenge (21 moves)"
+      "b5Tip": "🏆 God's Number! Ultimate Challenge (21 moves)",
+      "titleTip": "Load a fixed start state, then run the current agent on it (greedy, no learning). Best score per benchmark is saved in this browser.\nTheoretical minimum moves: B1: 1 | B2: 3 | B3: 6 | B4: 9 | B5: 21 (God's Number)."
     },
     "reachableStatesCount": "360",
     "godsNumber": "21"
@@ -417,12 +416,12 @@
       "goal": "Goal: [1 2 3 / 4 5 6 / 7 8 _]"
     },
     "bench": {
-      "theoretical": "<strong>Theoretical minimum moves:</strong> B1: 1 | B2: 10 | B3: 18 | B4: 26 | B5: 31 (God's Number!)",
       "b1Tip": "⭐ Easy: Warm-up (1 move)",
       "b2Tip": "⭐⭐ Medium: Growing Challenge (10 moves)",
       "b3Tip": "⭐⭐⭐ Hard: Deep Planning (18 moves)",
       "b4Tip": "⭐⭐⭐⭐ Very Hard: Expert Level (26 moves)",
-      "b5Tip": "🏆 God's Number! Ultimate Challenge (31 moves)"
+      "b5Tip": "🏆 God's Number! Ultimate Challenge (31 moves)",
+      "titleTip": "Load a fixed start state, then run the current agent on it (greedy, no learning). Best score per benchmark is saved in this browser.\nTheoretical minimum moves: B1: 1 | B2: 10 | B3: 18 | B4: 26 | B5: 31 (God's Number)."
     },
     "reachableStatesCount": "181,440",
     "godsNumber": "31"

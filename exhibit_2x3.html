@@ -393,15 +393,12 @@
           <!-- Benchmarks (fixed start states, evaluation only) -->
           <div class="card" id="benchCard" style="margin-top:12px;">
             <h2 style="display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin:0 0 6px 0;">
-              <span data-i18n="ex.bench.title">Références</span>
+              <span style="display:inline-flex; align-items:center; gap:6px;">
+                <span data-i18n="ex.bench.title">Références</span>
+                <span class="qmark" data-tip="Charge un état de départ fixe puis lance l'agente actuelle dessus (glouton, sans apprentissage). Le meilleur score par référence est enregistré dans ce navigateur.&#10;Coups minimum théoriques : B1 : 1 | B2 : 3 | B3 : 6 | B4 : 9 | B5 : 21 (Nombre de Dieu)." data-i18n-data-tip="ex2x3.bench.titleTip" tabindex="0" aria-label="Plus d'infos sur les références">ⓘ</span>
+              </span>
               <span id="benchActiveLbl" style="color:var(--muted2); font-family:var(--mono); font-size:12px;" data-i18n="ex.bench.activeNone">Active : —</span>
             </h2>
-            <p style="margin:0 0 10px 0;" data-i18n="ex.bench.description">
-              Chargez un état de départ fixe, puis cliquez sur <b>Résoudre (glouton)</b>. Nous enregistrons votre meilleur nombre de coups par référence dans ce navigateur.
-            </p>
-            <p style="font-size:12px; color:var(--muted2); margin:0 0 10px 0;" data-i18n="ex2x3.bench.theoretical">
-              <strong>Coups minimum théoriques :</strong> B1 : 1 | B2 : 3 | B3 : 6 | B4 : 9 | B5 : 21 (Nombre de Dieu !)
-            </p>
             <div class="row" style="gap:8px; flex-wrap:wrap;">
               <button class="btn" type="button" data-act="bench" data-bench="1" data-tooltip="⭐ Facile : Victoire Rapide (1 coup)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x3.bench.b1Tip">⭐ B1</button>
               <button class="btn" type="button" data-act="bench" data-bench="2" data-tooltip="⭐⭐ Moyen : Propagation de Valeur (3 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x3.bench.b2Tip">⭐⭐ B2</button>
