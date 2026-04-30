@@ -75,7 +75,7 @@
         "b4Tooltip": "⭐⭐⭐⭐ 26 Züge",
         "b5Tooltip": "🏆 31 Züge — Gottes Zahl!"
       },
-      "subtitle": "181.440 Zustände · drei Lösende, ein Fluch · der Algorithmus trifft auf die Dimensionalität"
+      "subtitle": "181.440 Zustände · eine Q-Lernende, ein Fluch · der Algorithmus trifft auf die Dimensionalität"
     },
     "stats": {
       "you": "Du",
@@ -278,9 +278,9 @@
       "movesLastSolve": "Züge (letzte Lösung)",
       "qUpdates": "Q-Updates",
       "coverage": "Abdeckung der Q-Agent*in",
-      "coverageTip": "Der Fluch der Dimensionalität: die Q-Tabelle ist nur ein Wörterbuch — ein Eintrag pro besuchtem Zustand. Bei 12 Zuständen (2×2) deckt sie alles ab, bei 360 (2×3) fast alles, bei 181.440 (3×3) kommt sie kaum über wenige Prozent. Watkins' Konvergenzsatz von 1992 verlangt, dass jedes Zustand-Aktion-Paar *unendlich oft* besucht wird — in dieser Größe besuchen wir nicht einmal jeden Zustand ein einziges Mal. Das ist der Fluch. AlphaZero und MuZero ersetzen die Tabelle durch ein neuronales Netz, das auf nie gesehene Zustände generalisiert.",
+      "coverageTip": "Der Fluch der Dimensionalität: die Q-Tabelle ist nur ein Wörterbuch — ein Eintrag pro besuchtem Zustand. Bei 12 Zuständen (2×2) deckt sie alles ab, bei 360 (2×3) fast alles, bei 181.440 (3×3) kommt sie kaum über wenige Prozent. Watkins' Konvergenzsatz von 1992 (rigorose Vollendung: Tsitsiklis 1994) verlangt, dass jedes Zustand-Aktion-Paar mit γ ∈ [0,1) *unendlich oft* besucht wird — in dieser Größe besuchen wir nicht einmal jeden Zustand ein einziges Mal. AlphaZero (Silver et al. 2018) umgeht den Fluch mit einem neuronalen Netz, das auf nie gesehene Zustände generalisiert.",
       "cost": "Trainingskosten",
-      "costTip": "Realistische Kosten auf deinem Laptop: ~10⁻⁹ CHF (ein Milliardstel) pro Schritt. Ein vollständiger Standard-Lauf von Mission III kostet ein paar Rappen — praktisch nichts. Aber die Kosten explodieren mit der Größe des Zustandsraums: Even-Dar und Mansour 2003 beweisen, dass O(|S|·|A|/ε²(1−γ)⁴) Schritte nötig sind, um Q* bis auf ε zu lernen. Für Schach (10⁴⁶ Zustände) sind selbst 10⁻⁹ CHF/Schritt unerschwinglich. AlphaZero hat ~25M Dollar für TPU-Training ausgegeben und dabei nur 10⁻³⁶ des Schach-Zustandsraums gesehen — es hat gelernt, mit einem neuronalen Netz zu *generalisieren* statt zu *enumerieren*."
+      "costTip": "Realistische Kosten auf einem Laptop-CPU: ~10⁻¹¹ CHF pro Q-Update (dominant ist amortisierte Hardware, nicht Strom). Ein vollständiger Mission-III-Lauf kostet ein paar Rappen — praktisch nichts. Aber die Kosten skalieren mit der Größe des Zustandsraums: die minimax-optimale Stichprobenkomplexität für tabelliertes Q-Learning ist Õ(|S|·|A|/ε²(1−γ)³) (Li, Cai, Chen, Wei 2020). Für Mission III mit ε=0,1, γ=0,99 sind das ~7×10¹³ Schritte ≈ einige hundert CHF. Für Schach (~10⁴⁴ legale Stellungen, Tromp 2021) ist die Schranke selbst bei 10⁻¹¹ CHF/Schritt unerschwinglich. AlphaZeros Trainingskosten werden auf einige zehn Millionen USD geschätzt (Silver et al. 2018; DeepMind hat keinen Betrag genannt); es besuchte weniger als 10⁻³⁵ der legalen Schachstellungen und lernte zu *generalisieren* statt zu *enumerieren*."
     },
     "btn": {
       "stepOnce": "Schritt (ein Update)"

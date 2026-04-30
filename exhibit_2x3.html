@@ -586,6 +586,10 @@
     const goalReward = Number(goalRewardEl.value) || 0;
     return eq(sp, goal) ? goalReward : stepPenalty;
   }
+  // Q-learning update (Watkins 1989; Watkins & Dayan 1992; rigorous proof: Tsitsiklis 1994):
+  //   Q(s,a) ← Q(s,a) + α · [ r + γ · max_{a'} Q(s',a') − Q(s,a) ]
+  // Converges to Q* with probability 1 if every (s,a) is visited infinitely
+  // often with α-conditions (Robbins-Monro 1951): Σαₜ = ∞, Σαₜ² < ∞.
   function qUpdate(s, a, r, sp){
     const alpha = clamp01(Number(alphaEl.value));
     const gamma = clamp01(Number(gammaEl.value));

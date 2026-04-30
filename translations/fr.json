@@ -75,7 +75,7 @@
         "b4Tooltip": "⭐⭐⭐⭐ 26 mouvements",
         "b5Tooltip": "🏆 31 mouvements — Nombre de Dieu !"
       },
-      "subtitle": "181 440 états · trois solveuses, un fléau · l'algorithme rencontre la dimension"
+      "subtitle": "181 440 états · une Q-apprenante, un fléau · l'algorithme rencontre la dimension"
     },
     "stats": {
       "you": "Vous",
@@ -278,9 +278,9 @@
       "movesLastSolve": "Coups (dernière résolution)",
       "qUpdates": "Mises à jour Q",
       "coverage": "Couverture de l'agente Q",
-      "coverageTip": "Le fléau de la dimension : la table Q n'est qu'un dictionnaire — un compteur par état rencontré. À 12 états (2×2) elle couvre tout, à 360 (2×3) presque tout, à 181 440 (3×3) elle peine à dépasser quelques pour cent. Le théorème de convergence de Watkins (1992) exige que chaque couple (état, action) soit visité *infiniment souvent* — à cette échelle, on ne visite même pas chaque état une seule fois. C'est ça, le fléau. AlphaZero et MuZero remplacent la table par un réseau de neurones qui généralise à des états jamais vus.",
+      "coverageTip": "Le fléau de la dimension : la table Q n'est qu'un dictionnaire — une entrée par état rencontré. À 12 états (2×2) elle couvre tout, à 360 (2×3) presque tout, à 181 440 (3×3) elle peine à dépasser quelques pour cent. Le théorème de convergence de Watkins (1992 ; preuve rigoureuse : Tsitsiklis 1994) exige que chaque couple (état, action) soit visité *infiniment souvent* avec γ ∈ [0,1) — à cette échelle, on ne visite même pas chaque état une seule fois. AlphaZero (Silver et al. 2018) contourne le fléau avec un réseau de neurones qui généralise à des états jamais vus.",
       "cost": "Coût d'entraînement",
-      "costTip": "Coût réaliste sur ton laptop : ~10⁻⁹ CHF (un milliardième) par pas. Un Mission III complet par défaut coûte des centimes — quasiment rien. Mais le coût explose avec la taille de l'espace d'états : Even-Dar et Mansour 2003 prouvent qu'il faut O(|S|·|A|/ε²(1−γ)⁴) pas pour apprendre Q* à ε près. Pour les échecs (10⁴⁶ états), même à 10⁻⁹ CHF/pas, c'est inaccessible. AlphaZero a coûté ~$25M en compute TPU pour son entraînement, et n'a pourtant visité que 10⁻³⁶ de l'espace d'états des échecs — il a appris à *généraliser* via un réseau de neurones plutôt qu'à *énumérer*."
+      "costTip": "Coût réaliste sur un CPU de laptop : ~10⁻¹¹ CHF par mise à jour Q (dominé par l'amortissement matériel, pas l'électricité). Un Mission III complet coûte une fraction de centime — quasi-gratuit. Mais le coût augmente avec la taille de l'espace d'états : la complexité minimax-optimale pour le Q-learning tabulaire est Õ(|S|·|A|/ε²(1−γ)³) (Li, Cai, Chen, Wei 2020). Pour Mission III à ε=0,1, γ=0,99 : ~7×10¹³ pas ≈ quelques centaines de CHF. Pour les échecs (~10⁴⁴ positions légales, Tromp 2021), même à 10⁻¹¹ CHF/pas, la borne est inaccessible. Le coût d'entraînement d'AlphaZero est estimé à plusieurs dizaines de millions de dollars (Silver et al. 2018 ; DeepMind n'a pas divulgué le chiffre) ; il a visité moins de 10⁻³⁵ des positions légales d'échecs et a appris à *généraliser* via un réseau de neurones au lieu d'*énumérer*."
     },
     "btn": {
       "stepOnce": "Pas (une mise à jour)"

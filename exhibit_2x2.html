@@ -752,6 +752,10 @@ Created, designed, and authored by Dr. Erika Roldán Roa (Max Planck Institute f
     let lastSolveLen = null;
 
     let Q = new Map();
+    // Track real experience for the coverage stat. Distinct from Q.size,
+    // which is mutated by the graph-view renderer enumerating every cell.
+    // visited.size only grows when training or manual play actually visits a state.
+    const visited = new Set();
     let rewardMap = new Map();
 
     let STATES = [];
@@ -1044,7 +1048,12 @@ document.addEventListener('click', (e)=>{
       return probs;
     }
 
+    // Q-learning update (Watkins 1989; Watkins & Dayan 1992; rigorous proof:
+    // Tsitsiklis 1994): Q(s,a) ← Q(s,a) + α·[r + γ·max_{a'} Q(s',a') − Q(s,a)].
+    // Converges to Q* w.p.1 if every (s,a) visited infinitely often with α
+    // satisfying Σαₜ = ∞, Σαₜ² < ∞ (Robbins-Monro 1951).
     function qUpdateDetailed(s, a, sp, alpha, gamma){
+      visited.add(key(s)); visited.add(key(sp));
       const sk = key(s);
       const old = getQ(sk, a);
       const r = getReward(sp);
@@ -1758,6 +1767,7 @@ const rline = document.createElement('div');
 
       const s = clone(current);
       const sp = step(s, action);
+      visited.add(key(s)); visited.add(key(sp));
       lastTransition = {s:key(s), a:action, r:getReward(sp), sp:key(sp)};
       current = sp;
       lastSolveLen = null;
@@ -1779,7 +1789,7 @@ const rline = document.createElement('div');
       const covEl = document.getElementById('coverageTxt');
       if (covEl){
         const REACHABLE_2X2 = 12;
-        const v = Q.size;
+        const v = visited.size;
         const pct = v / REACHABLE_2X2 * 100;
         const lang = (document.documentElement.lang || 'fr').slice(0,2).toLowerCase();
         const decSep = lang === 'en' ? '.' : ',';
@@ -1825,6 +1835,7 @@ const rline = document.createElement('div');
       renderBenchUI();
     }
     function resetQ(){
+      visited.clear();
       Q = new Map();
       lastTransition = null;
       lastUpdateText = null;
