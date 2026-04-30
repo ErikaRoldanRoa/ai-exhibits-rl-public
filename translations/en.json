@@ -423,7 +423,17 @@
     "reachableStatesCount": "181,440",
     "godsNumber": "31",
     "missionTrainingChip": "Mission III · Training Episode",
-    "stats": {}
+    "stats": {},
+    "coverageChart": {
+      "title": "Coverage across missions",
+      "headline": "The Q-table fills with experience — at this scale, it can't keep up.",
+      "bar": {
+        "m1": "Mission I · 2×2 · 12 states",
+        "m2": "Mission II · 2×3 · 360 states",
+        "m3": "Mission III · 3×3 · 181,440 states (live)"
+      },
+      "caption": "M1 fills entirely; M2 reaches ~99% after default training; M3 stays well below 100% no matter how long you train."
+    }
   },
   "gate": {
     "brand": "AI-Exhibits",

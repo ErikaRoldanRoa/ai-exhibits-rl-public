@@ -423,7 +423,17 @@
     "reachableStatesCount": "181.440",
     "godsNumber": "31",
     "missionTrainingChip": "Missione III · Episodio di Addestramento",
-    "stats": {}
+    "stats": {},
+    "coverageChart": {
+      "title": "Copertura nelle tre missioni",
+      "headline": "La tabella Q si riempie con l'esperienza — a questa scala, non riesce più a tenere il passo.",
+      "bar": {
+        "m1": "Missione I · 2×2 · 12 stati",
+        "m2": "Missione II · 2×3 · 360 stati",
+        "m3": "Missione III · 3×3 · 181.440 stati (in diretta)"
+      },
+      "caption": "M1 si riempie del tutto; M2 raggiunge ~99% dopo addestramento standard; M3 resta ben sotto il 100%, per quanto a lungo si addestri."
+    }
   },
   "gate": {
     "brand": "AI-Exhibits",

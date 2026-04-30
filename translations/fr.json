@@ -423,7 +423,17 @@
     "reachableStatesCount": "181 440",
     "godsNumber": "31",
     "missionTrainingChip": "Mission III · Épisode d'Entraînement",
-    "stats": {}
+    "stats": {},
+    "coverageChart": {
+      "title": "Couverture d'une mission à l'autre",
+      "headline": "La table Q se remplit avec l'expérience — à cette échelle, elle ne suit plus.",
+      "bar": {
+        "m1": "Mission I · 2×2 · 12 états",
+        "m2": "Mission II · 2×3 · 360 états",
+        "m3": "Mission III · 3×3 · 181 440 états (en direct)"
+      },
+      "caption": "M1 se remplit entièrement ; M2 atteint ~99 % après entraînement par défaut ; M3 reste bien sous les 100 %, peu importe la durée."
+    }
   },
   "gate": {
     "brand": "AI-Exhibits",
