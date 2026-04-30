@@ -45,6 +45,14 @@ window.LEARN_TRANSLATIONS = {
       sentence: "\"Beyond a few thousand states, the Q-table is no longer learnable. That's why neural networks were invented.\""
     },
     {
+      id: "episode-horizon",
+      title: "Episode and horizon — two knobs, one budget",
+      tags: "episode horizon max-steps budget reset bias variance",
+      public: "Q-learning runs in **episodes**: shuffle the puzzle, try to solve it, stop on success or after **max-steps** moves, then reset to a new shuffle. Two knobs: how many episodes E and how long each one H. The total budget is B = E × H. But B alone is not enough — the *split* matters too: the reset between episodes is a structural lever on what the agent sees.",
+      math: "Total step budget B = E × H. The two extremes:\n• High E, low H (many short episodes) — explores the vicinity of start states; low variance estimates.\n• Low E, high H (few long episodes) — explores deep into the state graph; richer reward propagation per episode.\n\n**Threshold**: H ≥ G (God's number) is mandatory. If H < G the worst-case start state is unreachable in one episode → no reward signal → no learning, regardless of how big B is. M1: G=6, H=30 (5×). M2: G=21, H=80 (~4×). M3: G=31, H=200 (~6×). The c-factor is generous to accommodate ε-greedy meandering.\n\n**Mixing-time view**: under ε-greedy at high ε on a graph of diameter G, expected hitting time on the goal is O(G²) for random walks. Setting H much larger than G² wastes compute on hopeless trajectories.",
+      sentence: "\"Episodes are the experiments; max-steps is the patience per experiment. Same total compute, different policies.\""
+    },
+    {
       id: "actions",
       title: "Actions (A(s)): which moves are allowed",
       tags: "actions legal moves neighbors",
@@ -143,6 +151,14 @@ window.LEARN_TRANSLATIONS = {
       sentence: "„Jenseits einiger Tausend Zustände ist die Q-Tabelle nicht mehr lernbar. Deshalb wurden neuronale Netze erfunden.\""
     },
     {
+      id: "episode-horizon",
+      title: "Episode und Horizont — zwei Regler, ein Budget",
+      tags: "Episode Horizont Max-Schritte Budget Reset Bias Varianz",
+      public: "Q-Learning läuft in **Episoden**: Puzzle mischen, versuchen zu lösen, bei Erfolg oder nach **Max-Schritten** Zügen anhalten, dann auf neues Mischen zurücksetzen. Zwei Regler: wie viele Episoden E und wie lang jede H. Das Gesamtbudget ist B = E × H. Aber B allein reicht nicht — die *Aufteilung* zählt: der Reset zwischen Episoden ist ein struktureller Hebel auf das, was die Agent*in sieht.",
+      math: "Gesamt-Schrittbudget B = E × H. Die zwei Extreme:\n• Viele E, kleines H (viele kurze Episoden) — erkundet die Umgebung der Startzustände; niedrige Varianz.\n• Wenige E, großes H (wenige lange Episoden) — dringt tief in den Zustandsgraphen ein; reichere Belohnungs-Propagation pro Episode.\n\n**Schwelle**: H ≥ G (Gottes Zahl) ist zwingend. Bei H < G ist der schlimmste Startzustand in einer Episode unerreichbar → kein Belohnungssignal → kein Lernen, egal wie groß B ist. M1: G=6, H=30 (5×). M2: G=21, H=80 (~4×). M3: G=31, H=200 (~6×). Der c-Faktor ist großzügig, um ε-greedy-Wanderungen zu erlauben.\n\n**Mischzeit-Sicht**: unter ε-greedy bei hohem ε auf einem Graphen vom Durchmesser G ist die erwartete Treffzeit auf dem Ziel O(G²) für Zufallswanderungen.",
+      sentence: "„Episoden sind die Experimente; Max-Schritte ist die Geduld pro Experiment. Gleiches Gesamt-Compute, unterschiedliche Strategien.\""
+    },
+    {
       id: "actions",
       title: "Aktionen (A(s)): welche Züge erlaubt sind",
       tags: "Aktionen legal Züge Nachbarn actions",
@@ -239,6 +255,14 @@ window.LEARN_TRANSLATIONS = {
       public: "Sul tuo laptop, un passo di Q-learning costa circa **10⁻¹¹ CHF** (un centesimo di miliardesimo). Una sessione completa di Missione III costa una frazione di centesimo. Ma il costo totale dipende da **quanti passi** l'algoritmo richiede, e quel numero esplode con la dimensione dello spazio degli stati. AlphaZero (Silver et al. 2018) ha avuto successo sugli scacchi (~10⁴⁴ posizioni legali) sostituendo la tabella Q con una rete neurale — una funzione che *generalizza* a stati mai visti, anziché *enumerarli*.",
       math: "Costo marginale per aggiornamento Q ≈ 10⁻¹¹ CHF (dominato dall'ammortamento hardware, non dall'elettricità). Missione III standard: ~10⁷ passi → ~10⁻⁴ CHF. Per gli scacchi (~10⁴⁴ posizioni legali), anche a 10⁻¹¹ CHF/passo una Q tabulare è irraggiungibile: richiederebbe ordini di grandezza più passi di quanti qualsiasi macchina possa eseguire. **Soluzione di AlphaZero (Silver et al. 2018):** approssimare Q*(s,a) con una rete neurale f_θ(s,a). Vantaggi: (1) la memoria è costante in θ, indipendentemente da |S|; (2) la funzione generalizza — uno stato vicino a uno visitato eredita un valore ragionevole. Il costo di addestramento di AlphaZero non è stato divulgato da DeepMind; le stime esterne lo collocano in decine di milioni di USD in compute TPU.",
       sentence: "«Oltre qualche migliaio di stati, la tabella Q non è più apprendibile. Per questo si sono inventate le reti neurali.»"
+    },
+    {
+      id: "episode-horizon",
+      title: "Episodio e orizzonte — due manopole, un budget",
+      tags: "episodio orizzonte passi-max budget reset bias varianza",
+      public: "Il Q-learning gira in **episodi**: mescolare il puzzle, provare a risolverlo, fermarsi al successo o dopo **passi-max** mosse, poi ricominciare con un nuovo mescolamento. Due manopole: quanti episodi E e la lunghezza H di ciascuno. Il budget totale è B = E × H. Ma B da solo non basta — la *ripartizione* conta: il reset tra episodi è una leva strutturale su ciò che l'agente vede.",
+      math: "Budget totale di passi B = E × H. I due estremi:\n• Grande E, piccolo H (molti episodi brevi) — esplora i dintorni degli stati di partenza; stime a bassa varianza.\n• Piccolo E, grande H (pochi episodi lunghi) — penetra in profondità nel grafo degli stati; propagazione di ricompensa più ricca per episodio.\n\n**Soglia**: H ≥ G (Numero di Dio) è obbligatorio. Se H < G, lo stato di partenza peggiore è irraggiungibile in un episodio → nessun segnale di ricompensa → nessun apprendimento, indipendentemente dalla dimensione di B. M1: G=6, H=30 (5×). M2: G=21, H=80 (~4×). M3: G=31, H=200 (~6×). Il fattore c è generoso per accomodare i giri di ε-greedy.\n\n**Vista tempo di mixing**: sotto ε-greedy con ε alto su un grafo di diametro G, il tempo di hitting atteso sull'obiettivo è O(G²) per le passeggiate casuali.",
+      sentence: "«Gli episodi sono gli esperimenti; passi-max è la pazienza per esperimento. Stesso calcolo totale, politiche diverse.»"
     },
     {
       id: "actions",

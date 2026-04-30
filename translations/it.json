@@ -280,7 +280,15 @@
       "coverage": "Copertura dell'agente Q",
       "coverageTip": "La maledizione della dimensionalità (Bellman 1957): la tabella Q è solo un dizionario — una voce per stato visitato. A 12 stati (2×2) copre tutto, a 360 (2×3) quasi tutto, a 181.440 (3×3) fatica a superare qualche percento. Il teorema di convergenza di Watkins (Watkins & Dayan 1992) richiede che ogni coppia (stato, azione) sia visitata *infinite volte* — a questa scala non visitiamo neppure ogni stato una volta sola. AlphaZero (Silver et al. 2018) aggira la maledizione con una rete neurale che generalizza a stati mai visti.",
       "cost": "Costo di addestramento",
-      "costTip": "Costo realistico su un laptop: ~10⁻¹¹ CHF per aggiornamento Q (dominato dall'ammortamento hardware, non dall'elettricità). Una sessione Mission III completa costa una frazione di centesimo. Ma il costo scala con la dimensione dello spazio degli stati: anche a questa tariffa, imparare Q* sul grafo degli scacchi (~10⁴⁴ posizioni legali) è inaccessibile. AlphaZero (Silver et al. 2018) ha sostituito la tabella con una rete neurale — DeepMind non ha divulgato il costo di addestramento; le stime esterne lo collocano in decine di milioni di dollari."
+      "costTip": "Costo realistico su un laptop: ~10⁻¹¹ CHF per aggiornamento Q (dominato dall'ammortamento hardware, non dall'elettricità). Una sessione Mission III completa costa una frazione di centesimo. Ma il costo scala con la dimensione dello spazio degli stati: anche a questa tariffa, imparare Q* sul grafo degli scacchi (~10⁴⁴ posizioni legali) è inaccessibile. AlphaZero (Silver et al. 2018) ha sostituito la tabella con una rete neurale — DeepMind non ha divulgato il costo di addestramento; le stime esterne lo collocano in decine di milioni di dollari.",
+      "budget": "Budget totale",
+      "budgetUnit": "passi",
+      "budgetTip": "Budget = episodi × passi-max-per-episodio. Il numero totale di aggiornamenti Q che questa sessione eseguirà. Un budget maggiore può far crescere la copertura — ma su 181.440 stati anche un budget enorme rimane lontano dalle garanzie di convergenza.",
+      "b5cost": "Costo per raggiungere B5",
+      "b5costDemo": "Demo: ~0,0001 CHF",
+      "b5costReliable": "Affidabile: ~0,01 CHF",
+      "b5costProven": "Garantito: ~700 CHF",
+      "b5costTip": "Tre livelli per risolvere B5 (l'antipodo, 31 mosse dall'obiettivo): Demo (l'agente raggiunge spesso B5): ~10⁷ passi ≈ 0,0001 CHF. Affidabile (≥95% vicino all'ottimo): ~10⁹–10¹⁰ passi ≈ 0,01–0,1 CHF. Garanzia (l'agente ε-vicino a Q* ovunque): ~7×10¹³ passi ≈ 700 CHF. Il divario tra affidabile e garanzia (5 ordini di grandezza) è la zona della pratica RL reale. AlphaZero non ha mai raggiunto la garanzia sugli scacchi; ha imparato abbastanza del sottografo utile."
     },
     "btn": {
       "stepOnce": "Passo (un aggiornamento)"
@@ -425,14 +433,11 @@
     "missionTrainingChip": "Missione III · Episodio di Addestramento",
     "stats": {},
     "coverageChart": {
-      "title": "Copertura nelle tre missioni",
-      "headline": "La tabella Q si riempie con l'esperienza — a questa scala, non riesce più a tenere il passo.",
+      "title": "Copertura dell'agente Q",
       "bar": {
-        "m1": "Missione I · 2×2 · 12 stati",
-        "m2": "Missione II · 2×3 · 360 stati",
-        "m3": "Missione III · 3×3 · 181.440 stati (in diretta)"
+        "m3": "Missione III · 3×3 · 181.440 stati"
       },
-      "caption": "M1 si riempie del tutto; M2 raggiunge ~99% dopo addestramento standard; M3 resta ben sotto il 100%, per quanto a lungo si addestri."
+      "caption": "La barra si riempie durante l'addestramento. Su 181.440 stati si stabilizza tipicamente ben al di sotto del 100 % — questa è la maledizione della dimensionalità."
     }
   },
   "gate": {

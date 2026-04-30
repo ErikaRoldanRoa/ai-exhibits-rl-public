@@ -481,32 +481,35 @@
           <div class="stat">
             <div class="k" style="display:flex; align-items:center; gap:6px;">
               <span data-i18n="ex.stats.cost">Coût d'entraînement</span>
-              <span class="qmark" data-tip="Coût réaliste sur ton laptop : ~10⁻⁹ CHF (un milliardième) par pas. Un Mission III complet par défaut coûte donc des centimes — quasiment rien. Mais le coût explose avec la taille de l'espace d'états : Even-Dar et Mansour 2003 prouvent qu'il faut O(|S|·|A|/ε²(1−γ)⁴) pas pour apprendre Q* à ε près. Pour les échecs (10⁴⁶ états), même à 10⁻⁹ CHF/pas, c'est inaccessible. AlphaZero a coûté ~$25M en compute TPU pour son entraînement, et n'a pourtant visité que 10⁻³⁶ de l'espace d'états des échecs — il a appris à *généraliser* via un réseau de neurones plutôt qu'à *énumérer*." data-i18n-data-tip="ex.stats.costTip" tabindex="0" aria-label="À propos du coût">ⓘ</span>
+              <span class="qmark" data-tip="Coût réaliste sur un laptop : ~10⁻¹¹ CHF par mise à jour Q (dominé par l'amortissement matériel, pas l'électricité). Un Mission III complet coûte une fraction de centime. Mais le coût augmente avec la taille de l'espace d'états : même à ce tarif, apprendre Q* sur le graphe des échecs (~10⁴⁴ positions légales) est inaccessible. AlphaZero (Silver et al. 2018) a remplacé la table par un réseau de neurones — DeepMind n'a pas divulgué le coût d'entraînement ; les estimations externes le placent à plusieurs dizaines de millions de dollars." data-i18n-data-tip="ex.stats.costTip" tabindex="0" aria-label="À propos du coût">ⓘ</span>
             </div>
             <div class="v" id="costTxt">—</div>
+          </div>
+          <div class="stat">
+            <div class="k" style="display:flex; align-items:center; gap:6px;">
+              <span data-i18n="ex.stats.budget">Budget total</span>
+              <span class="qmark" data-tip="Budget = épisodes × pas-max-par-épisode. C'est le nombre total de mises à jour Q que l'entraînement va effectuer. Plus le budget est grand, plus la couverture peut grandir — mais sur 181 440 états, même un budget énorme reste loin de la convergence garantie." data-i18n-data-tip="ex.stats.budgetTip" tabindex="0" aria-label="À propos du budget">ⓘ</span>
+            </div>
+            <div class="v" id="budgetTxt">—</div>
+          </div>
+          <div class="stat">
+            <div class="k" style="display:flex; align-items:center; gap:6px;">
+              <span data-i18n="ex.stats.b5cost">Coût pour atteindre B5</span>
+              <span class="qmark" data-tip="Trois niveaux d'exigence pour la résolution de B5 (l'antipode, 31 coups du but) :&#10;• Démo (l'agente atteint souvent B5) : ~10⁷ pas ≈ 0,0001 CHF.&#10;• Fiable (≥95% des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.&#10;• Convergence garantie (l'agente est ε-proche de Q* partout) : ~7×10¹³ pas ≈ 700 CHF.&#10;L'écart entre 'fiable' et 'garantie' (5 ordres de grandeur) est la zone où la pratique RL réelle opère. AlphaZero n'a jamais atteint la convergence garantie sur les échecs ; il a appris assez du sous-graphe utile." data-i18n-data-tip="ex.stats.b5costTip" tabindex="0" aria-label="À propos du coût pour B5">ⓘ</span>
+            </div>
+            <div class="v" id="b5costTxt" style="font-size:11px; line-height:1.5;">—</div>
           </div>
         </div>
         <!-- Coverage comparison chart — three horizontal bars showing the
              curse of dimensionality across missions side by side. -->
         <div class="card cov-card" style="margin-top:12px;">
-          <h3 class="cov-title" data-i18n="ex3x3.coverageChart.title">Couverture d'une mission à l'autre</h3>
-          <p class="cov-headline" data-i18n="ex3x3.coverageChart.headline">La table Q se remplit avec l'expérience — à cette échelle, elle ne suit plus.</p>
+          <h3 class="cov-title" data-i18n="ex3x3.coverageChart.title">Couverture de l'agente Q</h3>
           <div class="cov-row">
-            <span class="cov-label" data-i18n="ex3x3.coverageChart.bar.m1">Mission I · 2×2 · 12 états</span>
-            <div class="cov-track"><div class="cov-fill" style="width:100%; background:var(--cyan);"></div></div>
-            <span class="cov-pct">100%</span>
-          </div>
-          <div class="cov-row">
-            <span class="cov-label" data-i18n="ex3x3.coverageChart.bar.m2">Mission II · 2×3 · 360 états</span>
-            <div class="cov-track"><div class="cov-fill" style="width:99%; background:var(--lime);"></div></div>
-            <span class="cov-pct">~99%</span>
-          </div>
-          <div class="cov-row">
-            <span class="cov-label" data-i18n="ex3x3.coverageChart.bar.m3">Mission III · 3×3 · 181 440 états (en direct)</span>
+            <span class="cov-label" data-i18n="ex3x3.coverageChart.bar.m3">Mission III · 3×3 · 181 440 états</span>
             <div class="cov-track"><div class="cov-fill" id="covM3Fill" style="width:0%; background:var(--pink);"></div></div>
             <span class="cov-pct" id="covM3Pct">0%</span>
           </div>
-          <p class="cov-caption" data-i18n="ex3x3.coverageChart.caption">M1 se remplit entièrement ; M2 atteint ~99 % après entraînement par défaut ; M3 reste bien sous les 100 %, peu importe la durée.</p>
+          <p class="cov-caption" data-i18n="ex3x3.coverageChart.caption">La barre se remplit pendant l'entraînement. Sur 181 440 états, elle plafonne typiquement bien sous 100 % — c'est le fléau de la dimension.</p>
         </div>
       </div>
       <div class="card">
@@ -761,12 +764,35 @@
       if (lang !== 'en') s = s.replace('.', decSep);
       costEl.textContent = `${s} CHF`;
     }
-    // Coverage comparison chart — live M3 bar
+    // Coverage chart — live M3 bar
     const m3FillEl = document.getElementById('covM3Fill');
     const m3PctEl = document.getElementById('covM3Pct');
     if (m3FillEl && m3PctEl){
       m3FillEl.style.width = pct.toFixed(2) + '%';
       m3PctEl.textContent = fmtPct(pct) + '%';
+    }
+    // Total budget = episodes × max-steps. The total number of Q-updates
+    // this training pass will perform if it runs to completion. Reads
+    // directly from the user's form inputs.
+    const budgetEl = document.getElementById('budgetTxt');
+    if (budgetEl){
+      const E = Math.max(1, Math.floor(Number(episodesEl.value) || 1));
+      const H = Math.max(1, Math.floor(Number(maxStepsEl.value) || 1));
+      const B = E * H;
+      const stepsLabel = (window.i18n ? window.i18n.t('ex.stats.budgetUnit', 'pas') : 'pas');
+      budgetEl.textContent = `${fmtInt(E)} × ${fmtInt(H)} = ${fmtInt(B)} ${stepsLabel}`;
+    }
+    // Cost to reach B5 — three pedagogical tiers shown compactly.
+    // Numbers come from order-of-magnitude estimates: demo ~10⁷ steps,
+    // reliable ~10⁹–10¹⁰, "convergence guarantee" ~7×10¹³ (the
+    // classical asymptotic bound). At 10⁻¹¹ CHF/step that's
+    // ~10⁻⁴ / ~10⁻²–10⁻¹ / ~700 CHF respectively.
+    const b5El = document.getElementById('b5costTxt');
+    if (b5El){
+      const t1 = (window.i18n ? window.i18n.t('ex.stats.b5costDemo',     'Démo : ~0,0001 CHF') : 'Démo : ~0,0001 CHF');
+      const t2 = (window.i18n ? window.i18n.t('ex.stats.b5costReliable', 'Fiable : ~0,01 CHF') : 'Fiable : ~0,01 CHF');
+      const t3 = (window.i18n ? window.i18n.t('ex.stats.b5costProven',   'Garantie : ~700 CHF') : 'Garantie : ~700 CHF');
+      b5El.innerHTML = `${t1}<br>${t2}<br>${t3}`;
     }
   }
   function log(line){

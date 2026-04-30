@@ -1636,6 +1636,14 @@ const rline = document.createElement('div');
         sentence:"« Au-delà de quelques milliers d'états, la table Q n'est plus apprenable. C'est pour ça qu'on a inventé les réseaux de neurones. »"
       },
       {
+        id:"episode-horizon",
+        title:"Épisode et horizon — deux boutons, un budget",
+        tags:"épisode horizon pas-max budget reset biais variance",
+        public:"Le Q-learning tourne par **épisodes** : mélanger le puzzle, essayer de le résoudre, s'arrêter au succès ou après **pas-max** coups, puis recommencer avec un nouveau mélange. Deux boutons : combien d'épisodes E et la longueur H de chacun. Le budget total est B = E × H. Mais B seul ne suffit pas — la *répartition* compte : le reset entre épisodes est un levier structurel sur ce que l'agente voit.",
+        math:"Budget total de pas B = E × H. Les deux extrêmes :\n• Grand E, petit H (beaucoup d'épisodes courts) — explore le voisinage des états de départ ; estimations à faible variance.\n• Petit E, grand H (peu d'épisodes longs) — pénètre loin dans le graphe d'états ; propagation de récompense plus riche par épisode.\n\n**Seuil** : H ≥ G (Nombre de Dieu) est obligatoire. Si H < G, le pire état de départ est inatteignable en un épisode → aucun signal de récompense → aucun apprentissage, peu importe la taille de B. M1 : G=6, H=30 (5×). M2 : G=21, H=80 (~4×). M3 : G=31, H=200 (~6×).\n\n**Vue temps de mélange** : sous ε-glouton à ε élevé sur un graphe de diamètre G, le temps de frappe espéré sur l'objectif est O(G²) pour les marches aléatoires.",
+        sentence:"« Les épisodes sont les expériences ; pas-max est la patience par expérience. Même calcul total, politiques différentes. »"
+      },
+      {
         id:"actions",
         title:"Actions (A(s)) : quels coups sont autorisés",
         tags:"actions légal coups voisins actions legal",

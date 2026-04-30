@@ -280,7 +280,15 @@
       "coverage": "Abdeckung der Q-Agent*in",
       "coverageTip": "Der Fluch der Dimensionalität (Bellman 1957): die Q-Tabelle ist nur ein Wörterbuch — ein Eintrag pro besuchtem Zustand. Bei 12 Zuständen (2×2) deckt sie alles ab, bei 360 (2×3) fast alles, bei 181.440 (3×3) kommt sie kaum über wenige Prozent. Watkins' Konvergenzsatz (Watkins & Dayan 1992) verlangt, dass jedes Zustand-Aktion-Paar *unendlich oft* besucht wird — in dieser Größe besuchen wir nicht einmal jeden Zustand ein einziges Mal. AlphaZero (Silver et al. 2018) umgeht den Fluch mit einem neuronalen Netz, das auf nie gesehene Zustände generalisiert.",
       "cost": "Trainingskosten",
-      "costTip": "Realistische Kosten auf einem Laptop: ~10⁻¹¹ CHF pro Q-Update (dominant ist amortisierte Hardware, nicht Strom). Ein vollständiger Mission-III-Lauf kostet ein paar Rappen. Aber die Kosten skalieren mit der Größe des Zustandsraums: selbst zu diesem Tarif ist das Lernen von Q* auf dem Schachgraphen (~10⁴⁴ legale Stellungen) unerschwinglich. AlphaZero (Silver et al. 2018) ersetzte die Tabelle durch ein neuronales Netz — DeepMind hat die Trainingskosten nicht offengelegt; externe Schätzungen liegen im zweistelligen Millionen-USD-Bereich."
+      "costTip": "Realistische Kosten auf einem Laptop: ~10⁻¹¹ CHF pro Q-Update (dominant ist amortisierte Hardware, nicht Strom). Ein vollständiger Mission-III-Lauf kostet ein paar Rappen. Aber die Kosten skalieren mit der Größe des Zustandsraums: selbst zu diesem Tarif ist das Lernen von Q* auf dem Schachgraphen (~10⁴⁴ legale Stellungen) unerschwinglich. AlphaZero (Silver et al. 2018) ersetzte die Tabelle durch ein neuronales Netz — DeepMind hat die Trainingskosten nicht offengelegt; externe Schätzungen liegen im zweistelligen Millionen-USD-Bereich.",
+      "budget": "Gesamtbudget",
+      "budgetUnit": "Schritte",
+      "budgetTip": "Budget = Episoden × Max-Schritte-pro-Episode. Die Gesamtzahl der Q-Updates, die dieser Trainingsdurchlauf durchführen wird. Größeres Budget kann die Abdeckung wachsen lassen — aber auf 181.440 Zuständen bleibt selbst ein riesiges Budget weit von Konvergenzgarantien entfernt.",
+      "b5cost": "Kosten bis B5",
+      "b5costDemo": "Demo: ~0,0001 CHF",
+      "b5costReliable": "Verlässlich: ~0,01 CHF",
+      "b5costProven": "Garantie: ~700 CHF",
+      "b5costTip": "Drei Stufen \"B5 lösen\" (Antipode, 31 Züge vom Ziel): Demo (Agent*in erreicht B5 oft): ~10⁷ Schritte ≈ 0,0001 CHF. Verlässlich (≥95% nahe Optimum): ~10⁹–10¹⁰ Schritte ≈ 0,01–0,1 CHF. Garantie (Agent*in ist ε-nah an Q* überall): ~7×10¹³ Schritte ≈ 700 CHF. Die Lücke zwischen verlässlich und Garantie — fünf Größenordnungen — ist der Bereich realer RL-Praxis. AlphaZero hat die Garantie auf Schach nie erreicht; es hat genug vom nützlichen Teilgraphen gelernt."
     },
     "btn": {
       "stepOnce": "Schritt (ein Update)"
@@ -425,14 +433,11 @@
     "missionTrainingChip": "Mission III · Trainings-Episode",
     "stats": {},
     "coverageChart": {
-      "title": "Abdeckung über die Missionen",
-      "headline": "Die Q-Tabelle füllt sich durch Erfahrung — in dieser Größe kommt sie nicht mehr hinterher.",
+      "title": "Abdeckung der Q-Agent*in",
       "bar": {
-        "m1": "Mission I · 2×2 · 12 Zustände",
-        "m2": "Mission II · 2×3 · 360 Zustände",
-        "m3": "Mission III · 3×3 · 181.440 Zustände (live)"
+        "m3": "Mission III · 3×3 · 181.440 Zustände"
       },
-      "caption": "M1 füllt sich vollständig; M2 erreicht ~99% nach Standard-Training; M3 bleibt deutlich unter 100%, egal wie lange man trainiert."
+      "caption": "Die Leiste füllt sich beim Trainieren. Auf 181.440 Zuständen bleibt sie typischerweise deutlich unter 100% — das ist der Fluch der Dimensionalität."
     }
   },
   "gate": {
