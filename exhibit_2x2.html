@@ -28,11 +28,8 @@
     *{ box-sizing:border-box; }
     body{
       margin:0; color:var(--text); font-family:var(--sans); min-height:100vh;
-      background:
-        radial-gradient(1200px 720px at 18% 12%, rgba(255,59,212,0.20), transparent 55%),
-        radial-gradient(900px 540px at 82% 18%, rgba(47,243,255,0.14), transparent 60%),
-        radial-gradient(850px 600px at 55% 95%, rgba(112,255,122,0.14), transparent 60%),
-        linear-gradient(180deg, var(--bg1), var(--bg0));
+      /* Solid background — matches the hub. */
+      background: var(--bg0);
     }
     .wrap{ width:min(1320px, calc(100vw - 36px)); margin: 72px auto 48px; }
     .top{ display:flex; gap:16px; align-items:flex-start; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; }
@@ -696,7 +693,6 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
             </span>
             <input id="speedInp" type="number" min="0" step="10" value="20"/>
             <span style="color:var(--muted2); font-size:11px;" data-i18n="ex.viewer.unit">ms / pas</span>
-            <span class="viewer-note" data-i18n="ex.viewer.note">Affichage uniquement — n'affecte pas l'apprentissage.</span>
           </div>
 
           <div class="status">
@@ -709,6 +705,21 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
           </div>
 
           <div id="errBox" class="err"></div>
+
+          <!-- Shared chip-glossary — Mission I shows the four hub-core terms.
+               Same widget grows on M2 (+ episode/propagation/convergence) and
+               M3 (+ curse/generalisation/budget). Definitions all live in
+               app/glossary.js. -->
+          <div class="glossary card" id="missionGlossary" style="margin-top:12px;"></div>
+          <script src="app/glossary.js"></script>
+          <script>
+            if (window.AIGlossary && document.getElementById("missionGlossary")) {
+              window.AIGlossary.render(document.getElementById("missionGlossary"), {
+                chips: ["agent", "state", "action", "q"],
+                defaultActive: "agent",
+              });
+            }
+          </script>
         </div>
       </div>
     </div>

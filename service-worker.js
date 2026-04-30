@@ -14,7 +14,7 @@
    previously visited (old cached version is discarded on next load).
    ============================================================================= */
 
-const CACHE_VERSION = 'v2.18.0-2026-04-30';   // bump on each deploy to invalidate
+const CACHE_VERSION = 'v2.19.0-2026-04-30';   // bump on each deploy to invalidate
 const CACHE_NAME = `ai-exhibits-rl-${CACHE_VERSION}`;
 
 const PRECACHE = [
@@ -30,6 +30,7 @@ const PRECACHE = [
   './app/i18n.js',
   './app/feedback.js',
   './app/tooltips.js',
+  './app/glossary.js',
   './app/learn-cards-translations.js',
   './translations/fr.json',
   './translations/en.json',

@@ -28,11 +28,8 @@
   html,body{height:100%}
   body{
     margin:0;
-    background:
-      radial-gradient(1200px 700px at 12% 18%, rgba(255,47,214,0.14), transparent 60%),
-      radial-gradient(900px 600px at 78% 22%, rgba(106,215,255,0.12), transparent 62%),
-      radial-gradient(900px 700px at 50% 86%, rgba(85,255,122,0.10), transparent 58%),
-      linear-gradient(180deg, var(--bg0), var(--bg1));
+    /* Solid background — matches the hub. */
+    background: var(--bg0);
     color: var(--text);
     font-family: var(--sans);
     overflow:auto;
@@ -352,19 +349,6 @@
   .cov-pct { text-align: left; }
 }
 
-/* Mission-specific glossary card (collapsible) */
-.mission-glossary { padding: 12px 14px; }
-.mg-summary { cursor: pointer; list-style: none; user-select: none; padding: 4px 0; }
-.mg-summary::-webkit-details-marker { display: none; }
-.mg-summary::before { content: "▶"; display: inline-block; margin-right: 8px; transition: transform 0.15s; font-size: 11px; opacity: 0.7; }
-details[open] > .mg-summary::before { transform: rotate(90deg); }
-.mg-hint { color: var(--muted); font-size: 11px; font-style: italic; }
-.mg-entry { margin: 12px 0 0 0; padding-left: 8px; border-left: 2px solid rgba(255,255,255,0.10); }
-.mg-entry h4 { margin: 0 0 4px 0; font-size: 13px; color: var(--cyan); font-weight: 700; letter-spacing: 0.2px; }
-.mg-entry p { margin: 0; font-size: 12px; line-height: 1.5; color: var(--muted); }
-.mg-pointer { margin: 14px 0 0 0; font-size: 11px; color: var(--muted2); }
-.mg-pointer a { color: var(--lime); text-decoration: none; }
-.mg-pointer a:hover { text-decoration: underline; }
 
 /* Viewer-speed strip — display only, NOT a training hyperparameter.
    Dashed border-top + italic note signal this distinction visually. */
@@ -536,22 +520,16 @@ details[open] > .mg-summary::before { transform: rotate(90deg); }
           <p class="cov-caption" data-i18n="ex.coverage.caption.m3">Sur 181 440 états, la barre plafonne typiquement bien sous 100 %. C'est le fléau de la dimension qui mord.</p>
         </div>
       </div>
-      <details class="card mission-glossary" style="margin-top:12px;">
-        <summary class="mg-summary"><strong data-i18n="ex.glossary.title">Concepts de cette mission</strong> <span class="mg-hint" data-i18n="ex.glossary.expandHint">— clique pour déplier</span></summary>
-        <div class="mg-entry">
-          <h4 data-i18n="ex3x3.glossary.curse.term">Fléau de la dimension</h4>
-          <p data-i18n="ex3x3.glossary.curse.def">Observation de Bellman (1957) : la mémoire et le nombre d'échantillons nécessaires explosent factoriellement avec la taille de l'espace d'états. De M1 (12) à M2 (360) à M3 (181 440), le facteur est 504×. À l'échelle des échecs (~10⁴⁴ états), une table Q est inaccessible.</p>
-        </div>
-        <div class="mg-entry">
-          <h4 data-i18n="ex3x3.glossary.generalisation.term">Généralisation</h4>
-          <p data-i18n="ex3x3.glossary.generalisation.def">Capacité d'une fonction apprise à donner une valeur raisonnable sur des états jamais rencontrés à l'entraînement. Une table Q n'a aucune généralisation — chaque état est une entrée séparée. Un réseau de neurones (AlphaZero, Silver et al. 2018) apprend une fonction qui interpole entre états proches.</p>
-        </div>
-        <div class="mg-entry">
-          <h4 data-i18n="ex3x3.glossary.budget.term">Budget d'échantillons</h4>
-          <p data-i18n="ex3x3.glossary.budget.def">Compute total = épisodes × pas-max-par-épisode. Même à 10⁻¹¹ CHF par mise à jour Q, le budget nécessaire pour atteindre la convergence garantie sur Mission III est de plusieurs ordres de grandeur au-delà de ce qu'un samedi après-midi sur un laptop peut produire.</p>
-        </div>
-        <p class="mg-pointer"><a href="exhibit_2x2.html#learn" data-i18n="ex.glossary.moreLink">Plus de concepts dans le glossaire complet de Mission I →</a></p>
-      </details>
+      <div class="glossary card" id="missionGlossary" style="margin-top:12px;"></div>
+      <script src="app/glossary.js"></script>
+      <script>
+        if (window.AIGlossary && document.getElementById("missionGlossary")) {
+          window.AIGlossary.render(document.getElementById("missionGlossary"), {
+            chips: ["agent", "state", "action", "q", "episode", "propagation", "convergence", "curse", "generalisation", "budget"],
+            defaultActive: "curse",
+          });
+        }
+      </script>
       <div class="card">
         <h2 data-i18n="ex.panel.trainingParams">Paramètres d'entraînement</h2>
         <div class="kv">
@@ -596,7 +574,6 @@ details[open] > .mg-summary::before { transform: rotate(90deg); }
           </span>
           <input id="speed" type="number" min="0" step="20" value="220"/>
           <span style="color:var(--muted2); font-size:11px;" data-i18n="ex.viewer.unit">ms / pas</span>
-          <span class="viewer-note" data-i18n="ex.viewer.note">Affichage uniquement — n'affecte pas l'apprentissage.</span>
         </div>
         <div style="margin-top:12px" class="log" id="log"></div>
       </div>

@@ -113,33 +113,9 @@
     "dmvmBannerClose": "Close DMVM banner"
   },
   "glossary": {
-    "state": {
-      "term": "State"
-    },
-    "action": {
-      "term": "Action"
-    },
-    "reward": {
-      "term": "Reward"
-    },
-    "qvalue": {
-      "term": "Q-value"
-    },
-    "episode": {
-      "term": "Episode"
-    },
-    "policy": {
-      "term": "Policy"
-    },
-    "learningRate": {
-      "term": "Learning Rate (<span class=\"sym-alpha\">α</span>)"
-    },
-    "discount": {
-      "term": "Discount (<span class=\"sym-gamma\">γ</span>)"
-    },
-    "epsilon": {
-      "term": "Epsilon (<span class=\"sym-epsilon\">ε</span>)"
-    }
+    "cardTitle": "Glossary — Q-learning terms",
+    "show": "Show",
+    "hide": "Hide"
   },
   "fiche": {
     "title": "AI-Exhibits — Quick Reference Card",
@@ -348,9 +324,8 @@
     },
     "viewer": {
       "title": "Playback speed",
-      "note": "Display only — does not affect learning.",
       "unit": "ms / step",
-      "tip": "Delay between displayed moves. 0 = as fast as possible. Increase to follow with your eyes."
+      "tip": "Display only — does not change what the agent learns. Delay between displayed moves. 0 = as fast as possible. Increase to follow with your eyes."
     }
   },
   "ex2x2": {

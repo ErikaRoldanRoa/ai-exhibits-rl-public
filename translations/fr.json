@@ -113,33 +113,9 @@
     "dmvmBannerClose": "Fermer le bandeau DMVM"
   },
   "glossary": {
-    "state": {
-      "term": "État"
-    },
-    "action": {
-      "term": "Action"
-    },
-    "reward": {
-      "term": "Récompense"
-    },
-    "qvalue": {
-      "term": "Valeur Q"
-    },
-    "episode": {
-      "term": "Épisode"
-    },
-    "policy": {
-      "term": "Politique"
-    },
-    "learningRate": {
-      "term": "Taux d'apprentissage (<span class=\"sym-alpha\">α</span>)"
-    },
-    "discount": {
-      "term": "Escompte (<span class=\"sym-gamma\">γ</span>)"
-    },
-    "epsilon": {
-      "term": "Epsilon (<span class=\"sym-epsilon\">ε</span>)"
-    }
+    "cardTitle": "Glossaire — termes Q-learning",
+    "show": "Afficher",
+    "hide": "Masquer"
   },
   "fiche": {
     "title": "AI-Exhibits — Fiche de Référence Rapide",
@@ -348,9 +324,8 @@
     },
     "viewer": {
       "title": "Vitesse de visionnage",
-      "note": "Affichage uniquement — n'affecte pas l'apprentissage.",
       "unit": "ms / pas",
-      "tip": "Délai entre les coups affichés. 0 = aussi vite que possible. Augmentez pour mieux suivre des yeux."
+      "tip": "Affichage uniquement — ne change rien à ce que l'agente apprend. Délai entre les coups affichés. 0 = aussi vite que possible. Augmente pour mieux suivre des yeux."
     }
   },
   "ex2x2": {

@@ -113,33 +113,9 @@
     "dmvmBannerClose": "Chiudi il banner DMVM"
   },
   "glossary": {
-    "state": {
-      "term": "Stato"
-    },
-    "action": {
-      "term": "Azione"
-    },
-    "reward": {
-      "term": "Ricompensa"
-    },
-    "qvalue": {
-      "term": "Valore Q"
-    },
-    "episode": {
-      "term": "Episodio"
-    },
-    "policy": {
-      "term": "Politica"
-    },
-    "learningRate": {
-      "term": "Tasso di apprendimento (<span class=\"sym-alpha\">α</span>)"
-    },
-    "discount": {
-      "term": "Sconto (<span class=\"sym-gamma\">γ</span>)"
-    },
-    "epsilon": {
-      "term": "Epsilon (<span class=\"sym-epsilon\">ε</span>)"
-    }
+    "cardTitle": "Glossario — termini Q-learning",
+    "show": "Mostra",
+    "hide": "Nascondi"
   },
   "fiche": {
     "title": "AI-Exhibits — Scheda di Riferimento Rapido",
@@ -348,9 +324,8 @@
     },
     "viewer": {
       "title": "Velocità di visione",
-      "note": "Solo visualizzazione — non influisce sull'apprendimento.",
       "unit": "ms / passo",
-      "tip": "Ritardo tra le mosse visualizzate. 0 = il più veloce possibile. Aumenta per seguire con gli occhi."
+      "tip": "Solo visualizzazione — non cambia ciò che l'agente impara. Ritardo tra le mosse visualizzate. 0 = il più veloce possibile. Aumenta per seguire con gli occhi."
     }
   },
   "ex2x2": {

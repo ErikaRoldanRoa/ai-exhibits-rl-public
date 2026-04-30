@@ -250,96 +250,19 @@ body:not([data-role="facilitator"]) #roleCard {
 <a class="btn pink" href="exhibit_3x3.html" data-i18n="hub.launchTraining">🚀 Lancer l'Entraînement</a>
 </div>
 </div>
-</div><div class="glossary card" id="mission-intel">
-<div class="vocabWrap">
-<div class="vocabTitle mono" style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-<span data-i18n="hub.intel.title">Glossaire Q-learning — les six termes pour entraîner une agente</span>
-<button class="btn ghost mono" id="toggleGlossaryDefs" onclick="const p=document.getElementById('vocabPanel');
-                 const hidden = p.classList.toggle('hidden');
-                 const showKey = 'hub.intel.showBtn';
-                 const hideKey = 'hub.intel.hideBtn';
-                 this.setAttribute('data-i18n', hidden ? showKey : hideKey);
-                 const tr = window.i18n && window.i18n.t;
-                 this.textContent = tr ? tr(hidden ? showKey : hideKey, hidden ? 'Afficher' : 'Masquer') : (hidden ? 'Afficher' : 'Masquer');" type="button" data-i18n="hub.intel.showBtn">
-        Afficher
-      </button>
-</div>
-<div aria-label="Termes du glossaire" class="vocabChips" role="tablist" data-i18n-aria-label="hub.intel.termsLabel">
-<button aria-selected="true" class="chip active" data-term="agent" role="tab" type="button" data-i18n="hub.intel.chip.agent">Agente</button>
-<button aria-selected="false" class="chip" data-term="state" role="tab" type="button" data-i18n="hub.intel.chip.state">État</button>
-<button aria-selected="false" class="chip" data-term="action" role="tab" type="button" data-i18n="hub.intel.chip.action">Action</button>
-<button aria-selected="false" class="chip" data-term="policy" role="tab" type="button" data-i18n="hub.intel.chip.policy">Politique</button>
-<button aria-selected="false" class="chip" data-term="rl" role="tab" type="button" data-i18n="hub.intel.chip.rl">Apprentissage par Renforcement</button>
-<button aria-selected="false" class="chip" data-term="q" role="tab" type="button" data-i18n="hub.intel.chip.q">Q-learning</button>
-</div>
-<div class="vocabPanel hidden" id="vocabPanel" role="tabpanel"></div>
+</div><div class="glossary card" id="mission-intel"></div>
+<script src="app/glossary.js"></script>
 <script>
-  (function () {
-    const wrap = document.currentScript.closest(".glossary");
-    if (!wrap) return;
-
-    const panel = wrap.querySelector("#vocabPanel");
-    const chips = Array.from(wrap.querySelectorAll(".chip[data-term]"));
-    const toggleBtn = wrap.querySelector("#toggleGlossaryDefs");
-
-    // NOTE: Glossary definitions are statically in French (not i18n-wired).
-    // If multi-language glossary is needed later, swap to dict lookup via i18n.t().
-    const FALLBACK = {"agent": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">AGENTE</div>\n        <div>\n          Une <strong>agente</strong> est l'entité qui prend les décisions&#8239;: une personne ou un système qui choisit une <strong>action</strong> dans chaque <strong>état</strong>.\n        </div>\n        <div style=\"margin-top:8px;\">\n          Dans cette exposition, vous comparerez trois agentes&#8239;:<br>\n          • une <strong>agente humaine</strong> (vous)<br>\n          • une <strong>agente non entraînée (aléatoire)</strong> (mouvements légaux tirés uniformément au hasard)<br>\n          • une <strong>agente Q-learning</strong> (valeurs Q apprises → politique → actions)\n        </div>\n        <div style=\"margin-top:8px;\">\n          Toutes sont des agentes. La seule différence réside dans la <strong>manière</strong> dont elles choisissent leurs actions dans chaque état.\n        </div>\n      ", "state": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">ÉTAT</div>\n        <div>\n          Un <strong>état</strong> est la situation actuelle que l'agente «&#8239;perçoit&#8239;».\n          Pour un puzzle à glissement, l'état est la <strong>configuration complète du plateau</strong>&#8239;:\n          quelle tuile se trouve à chaque position (y compris la case vide).\n        </div>\n      ", "action": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">ACTION</div>\n        <div>\n          Une <strong>action</strong> est un mouvement que l'agente peut choisir.\n          Dans un puzzle à glissement, une action est un <strong>glissement légal</strong>&#8239;:\n          déplacer une tuile voisine dans la case vide (de façon équivalente&#8239;: déplacer la case vide vers le haut, le bas, la gauche ou la droite lorsque c'est permis).\n        </div>\n      ", "policy": "\n  <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">POLITIQUE</div>\n  <div>\n    Une <strong>politique</strong> décrit la manière dont une agente se comporte.\n    C'est une règle qui indique à l'agente <strong>quelle action choisir dans chaque état</strong>.\n  </div>\n  <div style=\"margin-top:8px;\">\n    Dans cette exposition, l'<strong>agente Q-learning</strong> apprend d'abord les valeurs Q.\n    La politique est ensuite dérivée de ces valeurs (par exemple, en choisissant l'action ayant la plus haute valeur Q).\n  </div>\n  <div style=\"margin-top:8px;\">\n    Différentes agentes suivent différentes politiques&#8239;:\n    une agente aléatoire suit une politique aléatoire,\n    tandis qu'une agente entraînée suit une politique apprise.\n  </div>\n", "rl": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">APPRENTISSAGE PAR RENFORCEMENT</div>\n        <div>\n          L'<strong>Apprentissage par Renforcement</strong> est un <strong>cadre</strong> pour entraîner une agente par interaction&#8239;:\n          l'agente essaie des actions, reçoit un retour (des récompenses), et améliore son comportement au fil du temps.\n          Ce n'est <strong>pas</strong> un algorithme unique, mais une famille d'algorithmes. Parmi les exemples plus avancés&#8239;: DQN sur Atari (2015), AlphaZero pour le Go (2017).\n        </div>\n        <div style=\"margin-top:8px;\">\n          Dans nos puzzles, la récompense est simple&#8239;: <strong>+1 lorsque l'état suivant est l'objectif, 0 sinon</strong> (une pénalité par pas est optionnelle).\n        </div>\n      ", "q": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">Q-LEARNING</div>\n        <div>\n          Le <strong>Q-learning</strong> est un algorithme d'Apprentissage par Renforcement.\n          Il apprend des valeurs <span class=\"mono\">Q(état, action)</span> qui estiment la qualité de chaque action dans chaque état.\n          L'agente utilise ensuite ces valeurs Q pour choisir ses actions (sa politique).\n        </div>\n      "};
-    function buildDefs() {
-      const tr = (window.i18n && window.i18n.t) ? window.i18n.t : (k, f) => f;
-      return {
-        agent:  tr('hub.glossary.agent',  FALLBACK.agent),
-        state:  tr('hub.glossary.state',  FALLBACK.state),
-        action: tr('hub.glossary.action', FALLBACK.action),
-        policy: tr('hub.glossary.policy', FALLBACK.policy),
-        rl:     tr('hub.glossary.rl',     FALLBACK.rl),
-        q:      tr('hub.glossary.q',      FALLBACK.q),
-      };
-    }
-    let defs = buildDefs();
-    // Re-render active entry when language changes
-    document.addEventListener('i18n:applied', () => {
-      defs = buildDefs();
-      const active = wrap.querySelector('.chip.active');
-      if (active) setActive(active.dataset.term);
+  // Hub glossary: keep the four core terms only — agent / state / action / q.
+  // The same widget grows on each mission (M2 adds episode/propagation/convergence,
+  // M3 adds curse/generalisation/budget) — definitions all live in app/glossary.js.
+  if (window.AIGlossary && document.getElementById("mission-intel")) {
+    window.AIGlossary.render(document.getElementById("mission-intel"), {
+      chips: ["agent", "state", "action", "q"],
+      defaultActive: "agent",
     });
-    function setActive(term) {
-      // Rebuild defs synchronously to avoid stale-dict race on rapid lang switching.
-      defs = buildDefs();
-      chips.forEach(btn => {
-        const on = btn.dataset.term === term;
-        btn.classList.toggle("active", on);
-        btn.setAttribute("aria-selected", on ? "true" : "false");
-      });
-
-      panel.innerHTML = defs[term] || `<div class="mono" style="opacity:.85;">—</div>`;
-      panel.setAttribute("data-active-term", term);
-    }
-
-    function expandPanelIfHidden() {
-      if (!panel.classList.contains("hidden")) return;
-      panel.classList.remove("hidden");
-      if (toggleBtn) {
-        const tr = (window.i18n && window.i18n.t) ? window.i18n.t : (k, f) => f;
-        toggleBtn.setAttribute("data-i18n", "hub.intel.hideBtn");
-        toggleBtn.textContent = tr("hub.intel.hideBtn", "Masquer");
-      }
-    }
-
-    // Bind click handlers: chip clicks auto-expand the panel and update content.
-    chips.forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        expandPanelIfHidden();
-        setActive(btn.dataset.term);
-      }, true);
-    });
-
-    setActive("agent");
-  })();
+  }
 </script>
-</div>
 </div><div class="facCard card facOnly" id="facTools" style="display:none;">
 <div class="mTag mono" data-i18n="hub.facTools.tag">ANIMATRICE</div>
 <h2 style="margin:6px 0 8px" data-i18n="hub.facTools.title">Démarrage Rapide</h2>

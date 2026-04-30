@@ -113,33 +113,9 @@
     "dmvmBannerClose": "DMVM-Banner schließen"
   },
   "glossary": {
-    "state": {
-      "term": "Zustand"
-    },
-    "action": {
-      "term": "Aktion"
-    },
-    "reward": {
-      "term": "Belohnung"
-    },
-    "qvalue": {
-      "term": "Q-Wert"
-    },
-    "episode": {
-      "term": "Episode"
-    },
-    "policy": {
-      "term": "Strategie"
-    },
-    "learningRate": {
-      "term": "Lernrate (<span class=\"sym-alpha\">α</span>)"
-    },
-    "discount": {
-      "term": "Diskontfaktor (<span class=\"sym-gamma\">γ</span>)"
-    },
-    "epsilon": {
-      "term": "Epsilon (<span class=\"sym-epsilon\">ε</span>)"
-    }
+    "cardTitle": "Glossar — Q-Learning-Begriffe",
+    "show": "Anzeigen",
+    "hide": "Verbergen"
   },
   "fiche": {
     "title": "AI-Exhibits — Kurzreferenz",
@@ -348,9 +324,8 @@
     },
     "viewer": {
       "title": "Wiedergabegeschwindigkeit",
-      "note": "Nur Anzeige — beeinflusst das Lernen nicht.",
       "unit": "ms / Schritt",
-      "tip": "Verzögerung zwischen angezeigten Zügen. 0 = so schnell wie möglich. Erhöhen, um mit den Augen zu folgen."
+      "tip": "Nur Anzeige — ändert nichts daran, was die Agentin lernt. Verzögerung zwischen angezeigten Zügen. 0 = so schnell wie möglich. Erhöhen, um mit den Augen zu folgen."
     }
   },
   "ex2x2": {
