@@ -3,7 +3,7 @@
 Interactive pedagogical platform for teaching **Q-learning** through sliding puzzles (2×2 · 2×3 · 3×3). Browser-based, offline-capable (PWA), internationalisation-ready.
 
 **Live:** https://erikaroldanroa.github.io/ai-exhibits-rl-public/
-**Languages:** 🇫🇷 FR · 🇬🇧 EN · 🇩🇪 DE · 🇮🇹 IT — all four loaded, native-speaker feedback welcome.
+**Languages:** 🇫🇷 FR · 🇬🇧 EN · 🇩🇪 DE · 🇮🇹 IT — all four loaded.
 
 ---
 
@@ -24,13 +24,15 @@ For questions, collaboration, or translation contributions: [redacted] · [erika
 
 ## The three missions
 
-| Mission | Puzzle | Reachable states | Nombre de Dieu |
-|---|---|---:|---:|
-| I — Fondations | 2×2 | 12 | **6** |
-| II — Propagation | 2×3 | 360 | **21** |
-| III — Mise à l'échelle | 3×3 | **181 440** | **31** |
+Each mission has a distinct pedagogical role:
 
-Only half of *n!* permutations are reachable — a parity invariant splits the state space into two orbits, one containing the goal. The **Nombre de Dieu** (God's number) is the smallest number of moves guaranteed to solve the hardest starting configuration; all three values above are verified by a breadth-first search on the reachable state graph.
+| Mission | Puzzle | Reachable states | God's Number | Pedagogical focus |
+|---|---|---:|---:|---|
+| I — Making learning visible | 2×2 | 12 | **6** | Configuration space and parity orbit; build a Q-table by hand. |
+| II — Propagation | 2×3 | 360 | **21** | Train the algorithm; watch Q-values propagate from the goal. |
+| III — Scaling | 3×3 | **181 440** | **31** | Three-player tournament; meet the curse of dimensionality. |
+
+Only half of *n!* permutations are reachable — a parity invariant splits the state space into two orbits, one containing the goal. **God's Number** (Nombre de Dieu) is the smallest number of moves guaranteed to solve the hardest starting configuration; all three values above are verified by a breadth-first search on the reachable state graph.
 
 ---
 
@@ -47,7 +49,7 @@ ai-exhibits-rl-public/
 ├── fiche_participant.html           Printable A4 reference card handed out to participants.
 ├── facilitator_quickstart.html      Self-contained guide for anyone running the 2-hour workshop.
 ├── service-worker.js                Makes the exhibit work offline after the first visit (useful for classrooms with patchy wifi).
-├── LICENSE                          Three-tier open license (code MIT · documentation CC-BY-SA 4.0 · assets CC-BY 4.0).
+├── LICENSE                          CC BY-NC-ND 4.0 — share with attribution, non-commercial, no derivatives.
 ├── README.md                        This file.
 │
 ├── app/                             All runtime code and shared styles.
@@ -57,7 +59,7 @@ ai-exhibits-rl-public/
 │   ├── tutorial.js                  First-visit walkthrough that introduces Q-learning step by step.
 │   ├── tooltips.js                  Shared tooltip helper used by the trainers.
 │   ├── feedback.js                  "Suggest a correction" button that opens the user's email client with a pre-filled message.
-│   └── learn-cards-translations.js  Translations of the tutorial flashcards (kept separate from translations/*.json because the card structure is richer than flat UI strings).
+│   └── learn-cards-translations.js  Translations of the Mission I "Apprendre" flashcards (state, parity orbit, actions, transition, reward, Q, update, policy, behaviour). Kept separate from translations/*.json because the card structure is richer than flat UI strings.
 │
 ├── translations/                    User-interface, glossary, and exhibit copy — one file per language.
 │   ├── fr.json                      French.
@@ -66,9 +68,6 @@ ai-exhibits-rl-public/
 │   └── it.json                      Italian.
 │
 └── print/                           Printable A4 materials used in classroom delivery.
-    ├── briefing_mission_fr.html     Mission briefing handed out to open the workshop — French.
-    ├── briefing_mission_de.html     Mission briefing handed out to open the workshop — German.
-    ├── briefing_mission_it.html     Mission briefing handed out to open the workshop — Italian.
     ├── dictionnaire_fr.html         Bilingual glossary (FR ↔ EN) for bilingual classrooms.
     ├── dictionnaire_de.html         Bilingual glossary (DE ↔ EN).
     ├── dictionnaire_it.html         Bilingual glossary (IT ↔ EN).
@@ -84,6 +83,7 @@ ai-exhibits-rl-public/
 1. **Open** the live exhibit: https://erikaroldanroa.github.io/ai-exhibits-rl-public/
 2. **Facilitators** — see [`facilitator_quickstart.html`](facilitator_quickstart.html) for the 2-hour workshop flow.
 3. **Print kits** — download the classroom handouts from [`print/`](print/).
+4. **DMVM article companions** — readers of the DMVM outreach article enter via `?ref=dmvm`; a permanent banner welcomes them and points to the recommended starting puzzle.
 
 No installation, no backend, works offline after first visit.
 
@@ -92,20 +92,19 @@ No installation, no backend, works offline after first visit.
 ## Internationalisation
 
 URL override: `?lang=fr|en|de|it` · preference persists via `localStorage`.
-Contributions for 🇩🇪 DE and 🇮🇹 IT are welcome — drop a filled JSON into `translations/`.
 
 
 ---
 
 ## License
 
-Tiered · see [`LICENSE`](LICENSE) for the full text:
+**Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
+(CC BY-NC-ND 4.0)** — see [`LICENSE`](LICENSE) for the full text.
 
-- **Code** (HTML · CSS · JS · JSON) — MIT
-- **Pedagogical documentation** (`print/`, facilitator & participant texts) — CC-BY-SA 4.0
-- **Photos and other assets** — CC-BY 4.0
-
-Attribution in all cases: **Dr. Erika Roldán Roa (MPI MiS).**
+You may share the material for non-commercial purposes with attribution to
+**Dr. Erika Roldán Roa (MPI MiS)**. Modifications, derivative works,
+translations, and commercial use require written permission — contact
+[redacted].
 
 ---
 
