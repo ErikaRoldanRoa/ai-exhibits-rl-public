@@ -311,6 +311,60 @@ details[open] > .mg-summary::before { transform: rotate(90deg); }
 .mg-pointer { margin: 14px 0 0 0; font-size: 11px; color: var(--muted2); }
 .mg-pointer a { color: var(--lime); text-decoration: none; }
 .mg-pointer a:hover { text-decoration: underline; }
+
+/* Coverage card — single horizontal bar (mirrors M3 pattern) */
+.cov-card { padding: 12px 14px; }
+.cov-title { margin: 0 0 4px 0; font-size: 14px; }
+.cov-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) 2fr auto;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.cov-label { color: var(--muted); }
+.cov-track {
+  height: 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.cov-fill {
+  height: 100%;
+  border-radius: 9px;
+  transition: width 0.4s ease-out;
+  box-shadow: inset 0 0 8px rgba(255,255,255,0.18);
+}
+.cov-pct {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  min-width: 50px;
+  text-align: right;
+}
+.cov-caption { margin: 10px 0 0 0; font-size: 11px; color: rgba(255,255,255,0.55); line-height: 1.4; }
+@media (max-width: 760px) {
+  .cov-row { grid-template-columns: 1fr; gap: 4px; }
+  .cov-pct { text-align: left; }
+}
+
+/* Viewer-speed strip — visually demoted, signals "cosmetic, not training" */
+.viewer-strip {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px; margin-top: 10px;
+  border-top: 1px dashed rgba(255,255,255,0.12);
+  font-size: 12px; color: var(--muted);
+}
+.viewer-strip .viewer-label { display: flex; align-items: center; gap: 6px; flex: 0 0 auto; }
+.viewer-strip input[type="number"] { width: 88px; }
+.viewer-strip .viewer-note { color: var(--muted2); font-size: 11px; font-style: italic; flex: 1 1 auto; }
+@media (max-width: 760px) {
+  .viewer-strip { flex-wrap: wrap; }
+  .viewer-strip .viewer-note { flex: 1 1 100%; }
+}
 </style>
 </head>
 <body>
@@ -431,15 +485,20 @@ details[open] > .mg-summary::before { transform: rotate(90deg); }
         <div class="stats">
           <div class="stat"><div class="k" data-i18n="ex.stats.currentState">État actuel</div><div class="v" id="curKey">—</div></div>
           <div class="stat"><div class="k" data-i18n="ex.stats.movesLastSolve">Coups (dernière résolution)</div><div class="v" id="lastMoves">—</div></div>
-          <div class="stat">
-            <div class="k" style="display:flex; align-items:center; gap:6px;">
-              <span data-i18n="ex.stats.coverage">Couverture de l'agente Q</span>
-              <span class="qmark" data-tip="Le fléau de la dimension : la table Q n'est qu'un dictionnaire — un compteur par état rencontré. À 12 états (2×2) elle couvre tout, à 360 (2×3) presque tout, à 181 440 (3×3) elle peine à dépasser quelques pour cent. Le théorème de convergence de Watkins (1992) exige que chaque couple (état, action) soit visité infiniment souvent — à cette échelle, on ne visite même pas chaque état une seule fois. C'est ça, le fléau. AlphaZero et MuZero remplacent la table par un réseau de neurones qui généralise à des états jamais vus." data-i18n-data-tip="ex.stats.coverageTip" tabindex="0" aria-label="À propos de la couverture">ⓘ</span>
-            </div>
-            <div class="v" id="visited">—</div>
-          </div>
           <div class="stat"><div class="k" data-i18n="ex.stats.qUpdates">Mises à jour Q</div><div class="v" id="updates">—</div></div>
         </div>
+      </div>
+      <!-- Coverage card — promoted out of the stats grid. The bar fills as
+           the agent visits more of the 360 reachable states. This is the
+           single most important truth-telling number on this page. -->
+      <div class="card cov-card" style="margin-top:12px;">
+        <h3 class="cov-title" data-i18n="ex.coverage.title">Couverture de l'agente Q</h3>
+        <div class="cov-row">
+          <span class="cov-label" data-i18n="ex.coverage.bar.m2">Mission II · 2×3 · 360 états</span>
+          <div class="cov-track"><div class="cov-fill" id="covM2Fill" style="width:0%; background:var(--cyan);"></div></div>
+          <span class="cov-pct" id="covM2Pct">0%</span>
+        </div>
+        <p class="cov-caption" data-i18n="ex.coverage.caption.m2">Sur 360 états, la barre grimpe pendant l'entraînement, mais une couverture systématique commence à coûter.</p>
       </div>
       <details class="card mission-glossary" style="margin-top:12px;">
         <summary class="mg-summary"><strong data-i18n="ex.glossary.title">Concepts de cette mission</strong> <span class="mg-hint" data-i18n="ex.glossary.expandHint">— clique pour déplier</span></summary>
@@ -488,15 +547,22 @@ details[open] > .mg-summary::before { transform: rotate(90deg); }
             <div class="lab"><span data-i18n="ex.params.goalReward">Récompense objectif</span><span class="i" data-tip="Récompense lorsque l'agente atteint le puzzle résolu.\nValeur par défaut : 1." data-i18n-data-tip="ex.params.goalRewardTip">i</span></div>
             <input id="goalReward" type="number" step="0.1" value="1"/>
           </div>
-          <div class="field">
-            <div class="lab"><span data-i18n="ex.params.animSpeed">Vitesse d'animation (ms)</span><span class="i" data-tip="À quelle vitesse afficher les coups pendant la résolution.\nAugmentez pour avoir plus de temps à observer." data-i18n-data-tip="ex.params.animSpeedTip">i</span></div>
-            <input id="speed" type="number" min="0" step="20" value="220"/>
-          </div>
         </div>
         <div class="row" style="margin-top:12px">
           <button class="btn lime" id="btnTrain" data-i18n="common.startTraining">Lancer l'entraînement</button>
           <button class="btn ghost" id="btnStop" data-i18n="common.stop">Arrêter</button>
           <button class="btn" id="btnClearLog" data-i18n="common.clearLog">Effacer le journal</button>
+        </div>
+        <!-- Viewer-speed strip — display only, NOT a training hyperparameter.
+             Dashed border-top + italic note signal this distinction visually. -->
+        <div class="viewer-strip">
+          <span class="viewer-label">
+            <span data-i18n="ex.viewer.title">Vitesse de visionnage</span>
+            <span class="i" data-tip="Délai entre les coups affichés. 0 = aussi vite que possible. Augmentez pour mieux suivre des yeux." data-i18n-data-tip="ex.viewer.tip">i</span>
+          </span>
+          <input id="speed" type="number" min="0" step="20" value="220"/>
+          <span style="color:var(--muted2); font-size:11px;" data-i18n="ex.viewer.unit">ms / pas</span>
+          <span class="viewer-note" data-i18n="ex.viewer.note">Affichage uniquement — n'affecte pas l'apprentissage.</span>
         </div>
         <div style="margin-top:12px" class="log" id="log"></div>
       </div>
@@ -512,7 +578,6 @@ details[open] > .mg-summary::before { transform: rotate(90deg); }
   const puzzleEl = document.getElementById("puzzle");
   const curKeyEl = document.getElementById("curKey");
   const lastMovesEl = document.getElementById("lastMoves");
-  const visitedEl = document.getElementById("visited");
   const updatesEl = document.getElementById("updates");
   const logEl = document.getElementById("log");
   const episodesEl = document.getElementById("episodes");
@@ -675,8 +740,6 @@ details[open] > .mg-summary::before { transform: rotate(90deg); }
       const v = visited.size;
       const pct = (v / REACHABLE * 100);
       const lang = (document.documentElement.lang || 'fr').slice(0,2).toLowerCase();
-      const loc = lang === 'en' ? 'en-US' : lang === 'de' ? 'de-DE' : lang === 'it' ? 'it-IT' : 'fr-FR';
-      const fmtInt = (n) => n.toLocaleString(loc);
       const decSep = lang === 'en' ? '.' : ',';
       const fmtPct = (p) => {
         if (p >= 99.95) return '100';
@@ -685,7 +748,13 @@ details[open] > .mg-summary::before { transform: rotate(90deg); }
         const s = p.toFixed(d);
         return lang === 'en' ? s : s.replace('.', decSep);
       };
-      visitedEl.textContent = `${fmtInt(v)} / ${fmtInt(REACHABLE)} (${fmtPct(pct)}%)`;
+      // Live coverage bar — promoted to its own card, replaces the buried stat.
+      const fillEl = document.getElementById('covM2Fill');
+      const pctEl = document.getElementById('covM2Pct');
+      if (fillEl && pctEl){
+        fillEl.style.width = pct.toFixed(2) + '%';
+        pctEl.textContent = fmtPct(pct) + '%';
+      }
     })()
     updatesEl.textContent = String(updates);
   }

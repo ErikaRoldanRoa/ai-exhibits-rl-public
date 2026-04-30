@@ -446,6 +446,59 @@
   color: rgba(255,255,255,0.95);
 }
 
+/* Coverage card — single horizontal bar (mirrors M2/M3 pattern) */
+.cov-card { padding: 12px 14px; }
+.cov-title { margin: 0 0 4px 0; font-size: 14px; }
+.cov-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) 2fr auto;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.cov-label { color: var(--muted); }
+.cov-track {
+  height: 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.cov-fill {
+  height: 100%;
+  border-radius: 9px;
+  transition: width 0.4s ease-out;
+  box-shadow: inset 0 0 8px rgba(255,255,255,0.18);
+}
+.cov-pct {
+  font-family: var(--mono, monospace);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  min-width: 50px;
+  text-align: right;
+}
+.cov-caption { margin: 10px 0 0 0; font-size: 11px; color: rgba(255,255,255,0.55); line-height: 1.4; }
+@media (max-width: 760px) {
+  .cov-row { grid-template-columns: 1fr; gap: 4px; }
+  .cov-pct { text-align: left; }
+}
+
+/* Viewer-speed strip — display only, NOT a training hyperparameter. */
+.viewer-strip {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px; margin-top: 10px;
+  border-top: 1px dashed rgba(255,255,255,0.12);
+  font-size: 12px; color: var(--muted);
+}
+.viewer-strip .viewer-label { display: flex; align-items: center; gap: 6px; flex: 0 0 auto; }
+.viewer-strip input[type="number"] { width: 88px; }
+.viewer-strip .viewer-note { color: var(--muted2); font-size: 11px; font-style: italic; flex: 1 1 auto; }
+@media (max-width: 760px) {
+  .viewer-strip { flex-wrap: wrap; }
+  .viewer-strip .viewer-note { flex: 1 1 100%; }
+}
 </style>
 </head>
 
@@ -501,7 +554,7 @@
 
 
 <!--
-Created, designed, and authored by Dr. Erika Roldán Roa (Max Planck Institute for Mathematics in the Sciences).
+Created, designed, and authored by Dr. Erika Roldán Roa.
 -->
 
 
@@ -618,12 +671,32 @@ Created, designed, and authored by Dr. Erika Roldán Roa (Max Planck Institute f
               <input id="epsInp" type="number" min="0" max="1" step="0.01" value="0.15"/>
             </div>
 
-            <div class="field">
-              <div class="fieldTop"><label data-i18n="ex2x2.params.speed">Vitesse (ms/tic)</label>
-                <span class="qmark" data-tip="L'entraînement s'exécute par tics.\n0 = très rapide.\nEssayez 10–40 pour voir Q se propager." data-i18n-data-tip="ex2x2.params.speedTip">ⓘ</span>
-              </div>
-              <input id="speedInp" type="number" min="0" step="10" value="20"/>
+          </div>
+
+          <!-- Viewer-speed strip — display only, NOT a training hyperparameter.
+               Pulled out of the form so it stops impersonating α/γ/ε. -->
+          <div class="viewer-strip">
+            <span class="viewer-label">
+              <span data-i18n="ex.viewer.title">Vitesse de visionnage</span>
+              <span class="qmark" data-tip="Délai entre les tics affichés. 0 = aussi vite que possible. Essayez 10–40 pour voir Q se propager." data-i18n-data-tip="ex.viewer.tip">ⓘ</span>
+            </span>
+            <input id="speedInp" type="number" min="0" step="10" value="20"/>
+            <span style="color:var(--muted2); font-size:11px;" data-i18n="ex.viewer.unit">ms / pas</span>
+            <span class="viewer-note" data-i18n="ex.viewer.note">Affichage uniquement — n'affecte pas l'apprentissage.</span>
+          </div>
+
+          <!-- Coverage card — promoted out of the buried stats line. The bar
+               replaces the inline "X / 12 (Y%)" text and gives the curse a
+               visual home consistent with M2 and M3. On Mission I it fills
+               quickly: that IS the lesson — at 12 states the curse doesn't bite. -->
+          <div class="card cov-card" style="margin-top:12px;">
+            <h3 class="cov-title" data-i18n="ex.coverage.title">Couverture de l'agente Q</h3>
+            <div class="cov-row">
+              <span class="cov-label" data-i18n="ex.coverage.bar.m1">Mission I · 2×2 · 12 états</span>
+              <div class="cov-track"><div class="cov-fill" id="covM1Fill" style="width:0%; background:var(--lime);"></div></div>
+              <span class="cov-pct" id="covM1Pct">0%</span>
             </div>
+            <p class="cov-caption" data-i18n="ex.coverage.caption.m1">Avec seulement 12 états, la barre se remplit en une poignée de pas — l'agente couvre tout le monde. Le fléau ne mord pas encore.</p>
           </div>
 
           <div class="status">
@@ -633,13 +706,6 @@ Created, designed, and authored by Dr. Erika Roldán Roa (Max Planck Institute f
             <div class="kv"><span data-i18n="ex2x2.status.lastTrans">Dernier (sₜ,aₜ,r,sₜ₊₁)</span><div id="transTxt">—</div></div>
             <div class="kv"><span data-i18n="ex2x2.status.lastUpdate">Dernière mise à jour Q (numérique)</span><div id="updateTxt">—</div></div>
             <div class="kv"><span data-i18n="ex2x2.status.lastSolve">Longueur dernière résolution</span><div id="solveLenTxt">—</div></div>
-            <div class="kv">
-              <span style="display:inline-flex; align-items:center; gap:6px;">
-                <span data-i18n="ex.stats.coverage">Couverture de l'agente Q</span>
-                <span class="qmark" data-tip="Le fléau de la dimension : la table Q n'est qu'un dictionnaire — un compteur par état rencontré. À 12 états (2×2) elle couvre tout, à 360 (2×3) presque tout, à 181 440 (3×3) elle peine à dépasser quelques pour cent. Le théorème de convergence de Watkins (1992) exige que chaque couple (état, action) soit visité infiniment souvent — à cette échelle, on ne visite même pas chaque état une seule fois. C'est ça, le fléau. AlphaZero et MuZero remplacent la table par un réseau de neurones qui généralise à des états jamais vus." data-i18n-data-tip="ex.stats.coverageTip" tabindex="0" aria-label="À propos de la couverture">ⓘ</span>
-              </span>
-              <div id="coverageTxt">—</div>
-            </div>
           </div>
 
           <div id="errBox" class="err"></div>
@@ -1791,11 +1857,14 @@ const rline = document.createElement('div');
       transTxt.textContent = lastTransition ? `${lastTransition.s} | ${lastTransition.a} | r=${Number(lastTransition.r).toFixed(2)} | ${lastTransition.sp}` : "—";
       updateTxt.textContent = lastUpdateText ? lastUpdateText : "—";
       solveLenTxt.textContent = (lastSolveLen==null) ? "—" : `${lastSolveLen} ${(window.i18n ? window.i18n.t('ex.msg.movesShort', 'coups') : 'coups')}`;
-      // Coverage = states with at least one Q entry / 12 reachable states.
-      // M1's |R|=12 means the table fills almost instantly — the lesson here
-      // is "the world is small enough that the algorithm trivially covers it".
-      const covEl = document.getElementById('coverageTxt');
-      if (covEl){
+      // Coverage bar — drives the cov-card. At |R|=12 it fills almost
+      // instantly, which IS the lesson here: at this scale the curse does
+      // not bite. M2 and M3 use the same visual; the contrast across the
+      // three missions is what teaches the curse.
+      (function(){
+        const fillEl = document.getElementById('covM1Fill');
+        const pctEl = document.getElementById('covM1Pct');
+        if (!fillEl || !pctEl) return;
         const REACHABLE_2X2 = 12;
         const v = visited.size;
         const pct = v / REACHABLE_2X2 * 100;
@@ -1808,8 +1877,9 @@ const rline = document.createElement('div');
           const s = p.toFixed(d);
           return lang === 'en' ? s : s.replace('.', decSep);
         };
-        covEl.textContent = `${v} / ${REACHABLE_2X2} (${fmtPct(pct)}%)`;
-      }
+        fillEl.style.width = pct.toFixed(2) + '%';
+        pctEl.textContent = fmtPct(pct) + '%';
+      })();
     }
 
     function renderViews(){

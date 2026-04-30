@@ -365,6 +365,22 @@ details[open] > .mg-summary::before { transform: rotate(90deg); }
 .mg-pointer { margin: 14px 0 0 0; font-size: 11px; color: var(--muted2); }
 .mg-pointer a { color: var(--lime); text-decoration: none; }
 .mg-pointer a:hover { text-decoration: underline; }
+
+/* Viewer-speed strip — display only, NOT a training hyperparameter.
+   Dashed border-top + italic note signal this distinction visually. */
+.viewer-strip {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px; margin-top: 10px;
+  border-top: 1px dashed rgba(255,255,255,0.12);
+  font-size: 12px; color: var(--muted);
+}
+.viewer-strip .viewer-label { display: flex; align-items: center; gap: 6px; flex: 0 0 auto; }
+.viewer-strip input[type="number"] { width: 88px; }
+.viewer-strip .viewer-note { color: var(--muted2); font-size: 11px; font-style: italic; flex: 1 1 auto; }
+@media (max-width: 760px) {
+  .viewer-strip { flex-wrap: wrap; }
+  .viewer-strip .viewer-note { flex: 1 1 100%; }
+}
 </style>
 </head>
 <body>
@@ -484,13 +500,6 @@ details[open] > .mg-summary::before { transform: rotate(90deg); }
         <div class="stats">
           <div class="stat"><div class="k" data-i18n="ex.stats.currentState">État actuel</div><div class="v" id="curKey">—</div></div>
           <div class="stat"><div class="k" data-i18n="ex.stats.movesLastSolve">Coups (dernière résolution)</div><div class="v" id="lastMoves">—</div></div>
-          <div class="stat">
-            <div class="k" style="display:flex; align-items:center; gap:6px;">
-              <span data-i18n="ex3x3.stats.coverage">Couverture Q-agent</span>
-              <span class="qmark" data-tip="Le fléau de la dimension : la table Q n'est qu'un dictionnaire — un compteur par état rencontré. À 12 états (2×2) elle couvre tout, à 360 (2×3) presque tout, à 181 440 (3×3) elle peine à dépasser quelques pour cent. AlphaZero et MuZero remplacent la table par un réseau de neurones — une fonction qui généralise à des états jamais vus." data-i18n-data-tip="ex3x3.stats.coverageTip" tabindex="0" aria-label="À propos de la couverture">ⓘ</span>
-            </div>
-            <div class="v" id="visited">—</div>
-          </div>
           <div class="stat"><div class="k" data-i18n="ex.stats.qUpdates">Mises à jour Q</div><div class="v" id="updates">—</div></div>
           <div class="stat">
             <div class="k" style="display:flex; align-items:center; gap:6px;">
@@ -514,16 +523,17 @@ details[open] > .mg-summary::before { transform: rotate(90deg); }
             <div class="v" id="b5costTxt" style="font-size:11px; line-height:1.5;">—</div>
           </div>
         </div>
-        <!-- Coverage comparison chart — three horizontal bars showing the
-             curse of dimensionality across missions side by side. -->
+        <!-- Coverage card — single live bar. Replaces the buried "Couverture
+             Q-agent" stat that was redundant with this. The bar is the truth-
+             telling number on this page. -->
         <div class="card cov-card" style="margin-top:12px;">
-          <h3 class="cov-title" data-i18n="ex3x3.coverageChart.title">Couverture de l'agente Q</h3>
+          <h3 class="cov-title" data-i18n="ex.coverage.title">Couverture de l'agente Q</h3>
           <div class="cov-row">
-            <span class="cov-label" data-i18n="ex3x3.coverageChart.bar.m3">Mission III · 3×3 · 181 440 états</span>
+            <span class="cov-label" data-i18n="ex.coverage.bar.m3">Mission III · 3×3 · 181 440 états</span>
             <div class="cov-track"><div class="cov-fill" id="covM3Fill" style="width:0%; background:var(--pink);"></div></div>
             <span class="cov-pct" id="covM3Pct">0%</span>
           </div>
-          <p class="cov-caption" data-i18n="ex3x3.coverageChart.caption">La barre se remplit pendant l'entraînement. Sur 181 440 états, elle plafonne typiquement bien sous 100 % — c'est le fléau de la dimension.</p>
+          <p class="cov-caption" data-i18n="ex.coverage.caption.m3">Sur 181 440 états, la barre plafonne typiquement bien sous 100 %. C'est le fléau de la dimension qui mord.</p>
         </div>
       </div>
       <details class="card mission-glossary" style="margin-top:12px;">
@@ -573,15 +583,20 @@ details[open] > .mg-summary::before { transform: rotate(90deg); }
             <div class="lab"><span data-i18n="ex.params.goalReward">Récompense objectif</span><span class="i" data-tip="Récompense lorsque l'agente atteint le puzzle résolu.\nValeur par défaut : 1." data-i18n-data-tip="ex.params.goalRewardTip">i</span></div>
             <input id="goalReward" type="number" step="0.1" value="1"/>
           </div>
-          <div class="field">
-            <div class="lab"><span data-i18n="ex.params.animSpeed">Vitesse d'animation (ms)</span><span class="i" data-tip="À quelle vitesse afficher les coups pendant la résolution.\nAugmentez pour avoir plus de temps à observer." data-i18n-data-tip="ex.params.animSpeedTip">i</span></div>
-            <input id="speed" type="number" min="0" step="20" value="220"/>
-          </div>
         </div>
         <div class="row" style="margin-top:12px">
           <button class="btn lime" id="btnTrain" data-i18n="common.startTraining">Lancer l'entraînement</button>
           <button class="btn ghost" id="btnStop" data-i18n="common.stop">Arrêter</button>
           <button class="btn" id="btnClearLog" data-i18n="common.clearLog">Effacer le journal</button>
+        </div>
+        <div class="viewer-strip">
+          <span class="viewer-label">
+            <span data-i18n="ex.viewer.title">Vitesse de visionnage</span>
+            <span class="i" data-tip="Délai entre les coups affichés. 0 = aussi vite que possible. Augmentez pour mieux suivre des yeux." data-i18n-data-tip="ex.viewer.tip">i</span>
+          </span>
+          <input id="speed" type="number" min="0" step="20" value="220"/>
+          <span style="color:var(--muted2); font-size:11px;" data-i18n="ex.viewer.unit">ms / pas</span>
+          <span class="viewer-note" data-i18n="ex.viewer.note">Affichage uniquement — n'affecte pas l'apprentissage.</span>
         </div>
         <div style="margin-top:12px" class="log" id="log"></div>
       </div>
@@ -597,7 +612,6 @@ details[open] > .mg-summary::before { transform: rotate(90deg); }
   const puzzleEl = document.getElementById("puzzle");
   const curKeyEl = document.getElementById("curKey");
   const lastMovesEl = document.getElementById("lastMoves");
-  const visitedEl = document.getElementById("visited");
   const updatesEl = document.getElementById("updates");
   const logEl = document.getElementById("log");
   const episodesEl = document.getElementById("episodes");
@@ -774,7 +788,6 @@ details[open] > .mg-summary::before { transform: rotate(90deg); }
       const s = p.toFixed(d);
       return (lang === 'en') ? s : s.replace('.', decSep);
     };
-    visitedEl.textContent = `${fmtInt(v)} / ${fmtInt(REACHABLE_3X3)} (${fmtPct(pct)}%)`;
     updatesEl.textContent = String(updates);
     // Training cost — realistic CPU step cost on a laptop ≈ 10⁻⁹ CHF.
     // Total = updates × COST_PER_STEP. The point is not the absolute number
