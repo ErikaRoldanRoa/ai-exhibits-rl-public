@@ -75,7 +75,7 @@
         "b4Tooltip": "⭐⭐⭐⭐ 26 Züge",
         "b5Tooltip": "🏆 31 Züge — Gottes Zahl!"
       },
-      "subtitle": "181.440 Zustände · drei Spielende im Duell · der Fluch der Dimensionalität"
+      "subtitle": "181.440 Zustände · drei Lösende, ein Fluch · der Algorithmus trifft auf die Dimensionalität"
     },
     "stats": {
       "you": "Du",
@@ -221,7 +221,7 @@
       "2": "<strong>00:15–00:35</strong> — Phase 1 · Mission I (2×2, 12 Zustände): den Konfigurationsraum und die Paritätsbahn kartieren, eine Q-Tabelle von Hand auf Papier bauen.",
       "3": "<strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 Zustände, Gottes Zahl=21): Agent*in trainieren; Episoden, ε-Abnahme und die Rückwanderung der Q-Werte vom Ziel beobachten.",
       "4": "<strong>01:05–01:15</strong> — Pause.",
-      "5": "<strong>01:15–01:45</strong> — Phase 3 · Mission III (3×3, 181.440 Zustände, Gottes Zahl=31): Drei-Spielende-Turnier (du / Zufall / Q-Agent*in), den Fluch der Dimensionalität benennen, Brücke zu AlphaZero / MuZero.",
+      "5": "<strong>01:15–01:45</strong> — Phase 3 · Mission III (3×3, 181.440 Zustände, Gottes Zahl=31): drei Lösende vergleichen (du / Zufall / Q-Agent*in), den Fluch der Dimensionalität benennen, Brücke zu AlphaZero / MuZero.",
       "6": "<strong>01:45–02:00</strong> — Reflexion &amp; Alltagsbezug."
     },
     "params": {

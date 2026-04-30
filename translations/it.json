@@ -75,7 +75,7 @@
         "b4Tooltip": "⭐⭐⭐⭐ 26 mosse",
         "b5Tooltip": "🏆 31 mosse — Numero di Dio!"
       },
-      "subtitle": "181 440 stati · tre giocatrici a confronto · la maledizione della dimensionalità"
+      "subtitle": "181 440 stati · tre risolutrici, una maledizione · l'algoritmo incontra la dimensionalità"
     },
     "stats": {
       "you": "Tu",
@@ -221,7 +221,7 @@
       "2": "<strong>00:15–00:35</strong> — Fase 1 · Missione I (2×2, 12 stati): mappare lo spazio delle configurazioni e l'orbita di parità, costruire una tabella Q a mano su carta.",
       "3": "<strong>00:35–01:05</strong> — Fase 2 · Missione II (2×3, 360 stati, Numero di Dio=21): allenare l'agente; osservare episodi, decrescita di ε e propagazione dei valori Q dall'obiettivo.",
       "4": "<strong>01:05–01:15</strong> — Pausa.",
-      "5": "<strong>01:15–01:45</strong> — Fase 3 · Missione III (3×3, 181 440 stati, Numero di Dio=31): torneo a tre giocatrici (te / casuale / agente Q), nominare la maledizione della dimensionalità, ponte verso AlphaZero / MuZero.",
+      "5": "<strong>01:15–01:45</strong> — Fase 3 · Missione III (3×3, 181 440 stati, Numero di Dio=31): confrontare tre risolutrici (te / casuale / agente Q), nominare la maledizione della dimensionalità, ponte verso AlphaZero / MuZero.",
       "6": "<strong>01:45–02:00</strong> — Riflessione &amp; collegamenti con il mondo reale."
     },
     "params": {
