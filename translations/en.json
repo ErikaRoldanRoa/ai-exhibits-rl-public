@@ -82,7 +82,7 @@
       "randomAgent": "Random agent"
     },
     "intel": {
-      "title": "Q-learning glossary — six terms you need to train an agent",
+      "title": "Q-learning glossary — four terms to start",
       "showBtn": "Show",
       "hideBtn": "Hide",
       "termsLabel": "Glossary terms",
@@ -156,8 +156,8 @@
       "h3x3": "Mission III — 3×3 puzzle (181,440 states)",
       "tip": "🏆 <strong>God's Number</strong> = diameter of the reachable-state graph: the number of moves to solve the <em>worst</em> starting state if you play perfectly.",
       "hook2x2": "The whole world fits on one page · build a Q-table by hand.",
-      "hook2x3": "Now we train · watch Q propagate from the goal backwards.",
-      "hook3x3": "Too big for a Q-table · meet the curse of dimensionality.",
+      "hook2x3": "360 states · 30× more than Mission I · covering the space starts to cost.",
+      "hook3x3": "181,440 states · 504× Mission II, 15,000× Mission I · same algorithm, space too vast.",
       "benchHeader": "Benchmark Bk = a starting state k moves from the goal."
     },
     "card4": {
@@ -197,7 +197,7 @@
       "2": "<strong>00:15–00:35</strong> — Phase 1 · Mission I (2×2, 12 states): map the configuration space and the parity orbit, build a Q-table by hand on paper.",
       "3": "<strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 states, God=21): train the agent; watch episodes, ε-decay, and Q-values propagate back from the goal.",
       "4": "<strong>01:05–01:15</strong> — Break.",
-      "5": "<strong>01:15–01:45</strong> — Phase 3 · Mission III (3×3, 181,440 states, God=31): compare three solvers (you / random / Q-agent), name the curse of dimensionality, bridge to AlphaZero / MuZero.",
+      "5": "Mission III — 3×3, the tournament · name the curse of dimensionality: same algorithm, the space has simply grown too vast to visit.",
       "6": "<strong>01:45–02:00</strong> — Reflection &amp; real-world connections."
     },
     "params": {

@@ -127,7 +127,21 @@
   // Always hide on scroll/resize so stale positions don't linger.
   window.addEventListener('scroll', hide, true);
   window.addEventListener('resize', hide);
+
+  // Touch + click handling: on touch devices, hover doesn't fire and tooltips
+  // are otherwise unreachable. Tap on a (i) toggles its tooltip via the
+  // existing show()/hide() pipeline; tap elsewhere dismisses.
   document.addEventListener('click', (e) => {
-    if (currentTarget && !currentTarget.contains(e.target)) hide();
+    const el = e.target && e.target.closest && e.target.closest('[data-tooltip], [data-tip]');
+    if (el) {
+      if (currentTarget === el && tip && tip.classList.contains('on')) {
+        hide();
+      } else {
+        show(el);
+      }
+      e.stopPropagation();
+      return;
+    }
+    if (currentTarget) hide();
   }, true);
 })();

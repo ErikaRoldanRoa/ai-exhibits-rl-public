@@ -82,7 +82,7 @@
       "randomAgent": "Zufallsagent*in"
     },
     "intel": {
-      "title": "Q-Learning-Glossar — die sechs Begriffe zum Trainieren einer Agent*in",
+      "title": "Q-Learning-Glossar — vier Begriffe zum Starten",
       "showBtn": "Anzeigen",
       "hideBtn": "Ausblenden",
       "termsLabel": "Glossarbegriffe",
@@ -156,8 +156,8 @@
       "h3x3": "Mission III — Puzzle 3×3 (181.440 Zustände)",
       "tip": "🏆 <strong>Gottes Zahl</strong> = Durchmesser des Graphen der erreichbaren Zustände: die Anzahl Züge, um den <em>schwierigsten</em> Startzustand bei perfektem Spiel zu lösen.",
       "hook2x2": "Die ganze Welt auf einer Seite · Q-Tabelle von Hand bauen.",
-      "hook2x3": "Jetzt trainieren wir · sieh Q vom Ziel zurückwandern.",
-      "hook3x3": "Zu groß für eine Q-Tabelle · der Fluch der Dimensionalität.",
+      "hook2x3": "360 Zustände · 30× mehr als Mission I · den Raum zu durchqueren beginnt zu kosten.",
+      "hook3x3": "181.440 Zustände · 504× Mission II, 15.000× Mission I · gleicher Algorithmus, Raum zu weit.",
       "benchHeader": "Benchmark Bk = ein Startzustand k Züge vom Ziel entfernt."
     },
     "card4": {
@@ -197,7 +197,7 @@
       "2": "<strong>00:15–00:35</strong> — Phase 1 · Mission I (2×2, 12 Zustände): den Konfigurationsraum und die Paritätsbahn kartieren, eine Q-Tabelle von Hand auf Papier bauen.",
       "3": "<strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 Zustände, Gottes Zahl=21): Agent*in trainieren; Episoden, ε-Abnahme und die Rückwanderung der Q-Werte vom Ziel beobachten.",
       "4": "<strong>01:05–01:15</strong> — Pause.",
-      "5": "<strong>01:15–01:45</strong> — Phase 3 · Mission III (3×3, 181.440 Zustände, Gottes Zahl=31): drei Lösende vergleichen (du / Zufall / Q-Agent*in), den Fluch der Dimensionalität benennen, Brücke zu AlphaZero / MuZero.",
+      "5": "Mission III — 3×3, das Turnier · den Fluch der Dimension benennen: gleicher Algorithmus, der Raum ist nur zu weit geworden, um ihn zu durchwandern.",
       "6": "<strong>01:45–02:00</strong> — Reflexion &amp; Alltagsbezug."
     },
     "params": {

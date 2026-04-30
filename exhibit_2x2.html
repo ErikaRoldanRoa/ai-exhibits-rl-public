@@ -655,35 +655,35 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
           <div class="form">
             <div class="field">
               <div class="fieldTop"><label data-i18n="ex2x2.params.episodesPerRun">Épisodes / exécution</label>
-                <span class="qmark" data-tip="Épisodes = nombre de tentatives d'entraînement.\nEssayez 50–300 pour voir l'apprentissage.\nSi ε est plus élevé, il faut généralement plus d'épisodes." data-i18n-data-tip="ex2x2.params.episodesTip">ⓘ</span>
+                <span class="qmark" data-tip="Épisodes = nombre de tentatives d'entraînement.\nEssayez 50–300 pour voir l'apprentissage.\nSi ε est plus élevé, il faut généralement plus d'épisodes." data-i18n-data-tip="ex2x2.params.episodesTip" tabindex="0" aria-label="Plus d'infos sur les épisodes">ⓘ</span>
               </div>
               <input id="episodesInp" type="number" min="1" step="1" value="250"/>
             </div>
 
             <div class="field">
               <div class="fieldTop"><label data-i18n="ex.params.maxSteps">Étapes max / épisode</label>
-                <span class="qmark" data-tip="Étapes max = budget de coups par épisode.\nTrop petit → jamais de récompense.\nEssayez 15–40 pour 2×2." data-i18n-data-tip="ex2x2.params.maxStepsTip">ⓘ</span>
+                <span class="qmark" data-tip="Étapes max = budget de coups par épisode.\nTrop petit → jamais de récompense.\nEssayez 15–40 pour 2×2." data-i18n-data-tip="ex2x2.params.maxStepsTip" tabindex="0" aria-label="Plus d'infos sur les étapes max">ⓘ</span>
               </div>
               <input id="maxStepsInp" type="number" min="1" step="1" value="30"/>
             </div>
 
             <div class="field">
               <div class="fieldTop"><label data-i18n="ex.params.learningRate"><span class="sym-alpha">α</span> (taux d'apprentissage)</label>
-                <span class="qmark" data-tip="α contrôle à quel point les nouvelles preuves mettent à jour Q.\nQ ← Q + α(cible−Q).\n0,05–0,2 : stable mais lent.\n0,3–0,6 : rapide pour ce modèle-jouet.\n>0,8 : bruyant." data-i18n-data-tip="ex2x2.params.alphaTip">ⓘ</span>
+                <span class="qmark" data-tip="α contrôle à quel point les nouvelles preuves mettent à jour Q.\nQ ← Q + α(cible−Q).\n0,05–0,2 : stable mais lent.\n0,3–0,6 : rapide pour ce modèle-jouet.\n>0,8 : bruyant." data-i18n-data-tip="ex2x2.params.alphaTip" tabindex="0" aria-label="Plus d'infos sur le taux d'apprentissage α">ⓘ</span>
               </div>
               <input id="alphaInp" type="number" min="0" max="1" step="0.01" value="0.45"/>
             </div>
 
             <div class="field">
               <div class="fieldTop"><label data-i18n="ex.params.discount"><span class="sym-gamma">γ</span> (escompte)</label>
-                <span class="qmark" data-tip="γ contrôle l'importance des récompenses futures.\nPour des puzzles à récompense différée : γ≈0,9–0,99.\nUn γ faible rend la propagation des récompenses faible." data-i18n-data-tip="ex2x2.params.gammaTip">ⓘ</span>
+                <span class="qmark" data-tip="γ contrôle l'importance des récompenses futures.\nPour des puzzles à récompense différée : γ≈0,9–0,99.\nUn γ faible rend la propagation des récompenses faible." data-i18n-data-tip="ex2x2.params.gammaTip" tabindex="0" aria-label="Plus d'infos sur le facteur d'escompte γ">ⓘ</span>
               </div>
               <input id="gammaInp" type="number" min="0" max="1" step="0.01" value="0.95"/>
             </div>
 
             <div class="field">
               <div class="fieldTop"><label data-i18n="ex.params.epsilon"><span class="sym-epsilon">ε</span> (exploration)</label>
-                <span class="qmark" data-tip="ε = probabilité d'un coup légal aléatoire.\nEssayez 0,05–0,25.\nε=0 trop tôt peut figer de fausses croyances." data-i18n-data-tip="ex2x2.params.epsilonTip">ⓘ</span>
+                <span class="qmark" data-tip="ε = probabilité d'un coup légal aléatoire.\nEssayez 0,05–0,25.\nε=0 trop tôt peut figer de fausses croyances." data-i18n-data-tip="ex2x2.params.epsilonTip" tabindex="0" aria-label="Plus d'infos sur le taux d'exploration ε">ⓘ</span>
               </div>
               <input id="epsInp" type="number" min="0" max="1" step="0.01" value="0.15"/>
             </div>
@@ -695,7 +695,7 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
           <div class="viewer-strip">
             <span class="viewer-label">
               <span data-i18n="ex.viewer.title">Vitesse de visionnage</span>
-              <span class="qmark" data-tip="Délai entre les tics affichés. 0 = aussi vite que possible. Essayez 10–40 pour voir Q se propager." data-i18n-data-tip="ex.viewer.tip">ⓘ</span>
+              <span class="qmark" data-tip="Affichage uniquement — ne change rien à ce que l'agente apprend. Délai entre les coups affichés. 0 = aussi vite que possible. Augmente pour mieux suivre des yeux." data-i18n-data-tip="ex.viewer.tip" tabindex="0" aria-label="Plus d'infos sur la vitesse de visionnage">ⓘ</span>
             </span>
             <input id="speedInp" type="number" min="0" step="10" value="20"/>
             <span style="color:var(--muted2); font-size:11px;" data-i18n="ex.viewer.unit">ms / pas</span>
