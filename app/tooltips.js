@@ -2,8 +2,8 @@
  * AI-Exhibits · Reinforcement Learning & Sliding Puzzles
  * Floating tooltip helper for the interactive trainers.
  *
- * © 2026 Dr. Erika Roldán Roa · Max Planck Institute for Mathematics in the Sciences (MPI MiS), Leipzig · Université de Genève, Section de Mathématiques.
- * Licensed: MIT (code) · CC-BY-SA 4.0 (pedagogical documentation) · CC-BY 4.0 (assets). See LICENSE.
+ * © 2026 Dr. Erika Roldán Roa. All rights reserved by the author.
+ * Licensed: CC BY-NC-ND 4.0. See LICENSE.
  * ============================================================================ */
 
 (function () {

@@ -200,7 +200,7 @@
       "t2": "<strong>Q-Tabelle leer?</strong> Prüfen, dass <span class=\"sym-alpha\">α</span> ≠ 0",
       "t3": "<strong>Zu langsam?</strong> <span class=\"sym-epsilon\">ε</span> nach dem Training verkleinern"
     },
-    "footer": "AI-Exhibits · Dr. Erika Roldán · MPI MiS · 2026"
+    "footer": "AI-Exhibits · Dr. Erika Roldán · 2026"
   },
   "quickstart": {
     "title": "🎓 Schnellstart — Moderator*in",
@@ -332,6 +332,25 @@
       "title": "Missionskonzepte",
       "expandHint": "— klicken zum Ausklappen",
       "moreLink": "Mehr Konzepte im vollständigen Glossar von Mission I →"
+    },
+    "coverage": {
+      "title": "Abdeckung der Q-Agentin",
+      "bar": {
+        "m1": "Mission I · 2×2 · 12 Zustände",
+        "m2": "Mission II · 2×3 · 360 Zustände",
+        "m3": "Mission III · 3×3 · 181 440 Zustände"
+      },
+      "caption": {
+        "m1": "Mit nur 12 Zuständen füllt sich der Balken in wenigen Schritten — die Agentin erfasst die ganze Welt. Der Fluch beißt hier noch nicht.",
+        "m2": "Bei 360 Zuständen steigt der Balken während des Trainings, doch systematische Abdeckung kostet bereits.",
+        "m3": "Bei 181 440 Zuständen flacht der Balken typischerweise weit unter 100 % ab. Hier beißt der Fluch der Dimension."
+      }
+    },
+    "viewer": {
+      "title": "Wiedergabegeschwindigkeit",
+      "note": "Nur Anzeige — beeinflusst das Lernen nicht.",
+      "unit": "ms / Schritt",
+      "tip": "Verzögerung zwischen angezeigten Zügen. 0 = so schnell wie möglich. Erhöhen, um mit den Augen zu folgen."
     }
   },
   "ex2x2": {
@@ -451,13 +470,6 @@
     "godsNumber": "31",
     "missionTrainingChip": "Mission III · Trainings-Episode",
     "stats": {},
-    "coverageChart": {
-      "title": "Abdeckung der Q-Agent*in",
-      "bar": {
-        "m3": "Mission III · 3×3 · 181.440 Zustände"
-      },
-      "caption": "Die Leiste füllt sich beim Trainieren. Auf 181.440 Zuständen bleibt sie typischerweise deutlich unter 100% — das ist der Fluch der Dimensionalität."
-    },
     "glossary": {
       "curse": {
         "term": "Fluch der Dimensionalität",
@@ -486,7 +498,7 @@
     "hint": "Tipp: Geräte werden oft geteilt. Nutze Zurück zum Start jederzeit.",
     "facilitatorBtn": "Moderations-Modus",
     "continueBtn": "Los geht's",
-    "author": "Entwickelt von <strong>Dr. Erika Roldán Roa</strong> · MPI MiS"
+    "author": "Entwickelt von <strong>Dr. Erika Roldán Roa</strong>"
   },
   "hud": {
     "navLabel": "Navigation"

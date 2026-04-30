@@ -200,7 +200,7 @@
       "t2": "<strong>Tabella Q vuota?</strong> Verifica che <span class=\"sym-alpha\">α</span> ≠ 0",
       "t3": "<strong>Troppo lento?</strong> Riduci <span class=\"sym-epsilon\">ε</span> dopo l'addestramento"
     },
-    "footer": "AI-Exhibits · D<sup>ssa</sup> Erika Roldán · MPI MiS · 2026"
+    "footer": "AI-Exhibits · D<sup>ssa</sup> Erika Roldán · 2026"
   },
   "quickstart": {
     "title": "🎓 Avvio rapido — Facilitatrice",
@@ -332,6 +332,25 @@
       "title": "Concetti di questa missione",
       "expandHint": "— clicca per espandere",
       "moreLink": "Altri concetti nel glossario completo di Missione I →"
+    },
+    "coverage": {
+      "title": "Copertura dell'agente Q",
+      "bar": {
+        "m1": "Missione I · 2×2 · 12 stati",
+        "m2": "Missione II · 2×3 · 360 stati",
+        "m3": "Missione III · 3×3 · 181 440 stati"
+      },
+      "caption": {
+        "m1": "Con solo 12 stati, la barra si riempie in pochi passi — l'agente copre tutto il mondo. La maledizione non morde ancora.",
+        "m2": "Su 360 stati la barra sale durante l'addestramento, ma una copertura sistematica comincia già a costare.",
+        "m3": "Su 181 440 stati la barra tipicamente si ferma molto sotto il 100 %. È la maledizione della dimensione che morde."
+      }
+    },
+    "viewer": {
+      "title": "Velocità di visione",
+      "note": "Solo visualizzazione — non influisce sull'apprendimento.",
+      "unit": "ms / passo",
+      "tip": "Ritardo tra le mosse visualizzate. 0 = il più veloce possibile. Aumenta per seguire con gli occhi."
     }
   },
   "ex2x2": {
@@ -451,13 +470,6 @@
     "godsNumber": "31",
     "missionTrainingChip": "Missione III · Episodio di Addestramento",
     "stats": {},
-    "coverageChart": {
-      "title": "Copertura dell'agente Q",
-      "bar": {
-        "m3": "Missione III · 3×3 · 181.440 stati"
-      },
-      "caption": "La barra si riempie durante l'addestramento. Su 181.440 stati si stabilizza tipicamente ben al di sotto del 100 % — questa è la maledizione della dimensionalità."
-    },
     "glossary": {
       "curse": {
         "term": "Maledizione della dimensionalità",
@@ -486,7 +498,7 @@
     "hint": "Suggerimento: i dispositivi sono spesso condivisi. Usa Torna all'inizio in ogni momento.",
     "facilitatorBtn": "Modalità facilitatrice",
     "continueBtn": "Inizia",
-    "author": "Sviluppato dalla <strong>Dr.ssa Erika Roldán Roa</strong> · MPI MiS"
+    "author": "Sviluppato dalla <strong>Dr.ssa Erika Roldán Roa</strong>"
   },
   "hud": {
     "navLabel": "navigazione"

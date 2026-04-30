@@ -200,7 +200,7 @@
       "t2": "<strong>Table Q vide ?</strong> Vérifier que <span class=\"sym-alpha\">α</span> ≠ 0",
       "t3": "<strong>Trop lent ?</strong> Réduire <span class=\"sym-epsilon\">ε</span> après l'entraînement"
     },
-    "footer": "AI-Exhibits · D<sup>r</sup> Erika Roldán · MPI MiS · 2026"
+    "footer": "AI-Exhibits · D<sup>r</sup> Erika Roldán · 2026"
   },
   "quickstart": {
     "title": "🎓 Démarrage rapide — Facilitatrice",
@@ -332,6 +332,25 @@
       "title": "Concepts de cette mission",
       "expandHint": "— clique pour déplier",
       "moreLink": "Plus de concepts dans le glossaire complet de Mission I →"
+    },
+    "coverage": {
+      "title": "Couverture de l'agente Q",
+      "bar": {
+        "m1": "Mission I · 2×2 · 12 états",
+        "m2": "Mission II · 2×3 · 360 états",
+        "m3": "Mission III · 3×3 · 181 440 états"
+      },
+      "caption": {
+        "m1": "Avec seulement 12 états, la barre se remplit en une poignée de pas — l'agente couvre tout le monde. Le fléau ne mord pas encore.",
+        "m2": "Sur 360 états, la barre grimpe pendant l'entraînement, mais une couverture systématique commence à coûter.",
+        "m3": "Sur 181 440 états, la barre plafonne typiquement bien sous 100 %. C'est le fléau de la dimension qui mord."
+      }
+    },
+    "viewer": {
+      "title": "Vitesse de visionnage",
+      "note": "Affichage uniquement — n'affecte pas l'apprentissage.",
+      "unit": "ms / pas",
+      "tip": "Délai entre les coups affichés. 0 = aussi vite que possible. Augmentez pour mieux suivre des yeux."
     }
   },
   "ex2x2": {
@@ -451,13 +470,6 @@
     "godsNumber": "31",
     "missionTrainingChip": "Mission III · Épisode d'Entraînement",
     "stats": {},
-    "coverageChart": {
-      "title": "Couverture de l'agente Q",
-      "bar": {
-        "m3": "Mission III · 3×3 · 181 440 états"
-      },
-      "caption": "La barre se remplit pendant l'entraînement. Sur 181 440 états, elle plafonne typiquement bien sous 100 % — c'est le fléau de la dimension."
-    },
     "glossary": {
       "curse": {
         "term": "Fléau de la dimension",
@@ -486,7 +498,7 @@
     "hint": "Astuce : les appareils sont souvent partagés. Utilise Retour au départ à tout moment.",
     "facilitatorBtn": "Mode animatrice",
     "continueBtn": "Commencer",
-    "author": "Conçu et développé par <strong>D<sup>r</sup> Erika Roldán Roa</strong> · MPI MiS"
+    "author": "Conçu et développé par <strong>D<sup>r</sup> Erika Roldán Roa</strong>"
   },
   "hud": {
     "navLabel": "navigation"

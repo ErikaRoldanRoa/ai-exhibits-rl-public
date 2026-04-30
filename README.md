@@ -18,7 +18,7 @@ Visiting Researcher · Université de Genève, Section de Mathématiques
 
 Developed in the frame of the **AI-Exhibits** initiative (IMAGINARY · IHP · MPI MiS · CIP).
 
-For questions, collaboration, or translation contributions: [redacted] · [erikaroldan.net](https://erikaroldan.net)
+For questions, collaboration, or translation contributions: [erikaroldan.net](https://erikaroldan.net)
 
 ---
 
@@ -30,7 +30,7 @@ Each mission has a distinct pedagogical role:
 |---|---|---:|---:|---|
 | I — Making learning visible | 2×2 | 12 | **6** | Configuration space and parity orbit; build a Q-table by hand. |
 | II — Propagation | 2×3 | 360 | **21** | Train the algorithm; watch Q-values propagate from the goal. |
-| III — Scaling | 3×3 | **181 440** | **31** | Three-player tournament; meet the curse of dimensionality. |
+| III — Scaling | 3×3 | **181 440** | **31** | One Q-agent meets the curse of dimensionality; live coverage gauge, training-cost in CHF. |
 
 Only half of *n!* permutations are reachable — a parity invariant splits the state space into two orbits, one containing the goal. **God's Number** (Nombre de Dieu) is the smallest number of moves guaranteed to solve the hardest starting configuration; all three values above are verified by a breadth-first search on the reachable state graph.
 
@@ -102,9 +102,9 @@ URL override: `?lang=fr|en|de|it` · preference persists via `localStorage`.
 (CC BY-NC-ND 4.0)** — see [`LICENSE`](LICENSE) for the full text.
 
 You may share the material for non-commercial purposes with attribution to
-**Dr. Erika Roldán Roa (MPI MiS)**. Modifications, derivative works,
-translations, and commercial use require written permission — contact
-[redacted].
+**Dr. Erika Roldán Roa**. Modifications, derivative works, translations,
+and commercial use require written permission — contact via
+[erikaroldan.net](https://erikaroldan.net).
 
 ---
 

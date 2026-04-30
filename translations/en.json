@@ -200,7 +200,7 @@
       "t2": "<strong>Q-table empty?</strong> Check learning rate isn't 0",
       "t3": "<strong>Too slow?</strong> Reduce epsilon after training"
     },
-    "footer": "AI-Exhibits · Dr. Erika Roldán · MPI MiS · 2026"
+    "footer": "AI-Exhibits · Dr. Erika Roldán · 2026"
   },
   "quickstart": {
     "title": "🎓 Facilitator Quickstart",
@@ -332,6 +332,25 @@
       "title": "Mission concepts",
       "expandHint": "— click to expand",
       "moreLink": "More concepts in the full Mission I glossary →"
+    },
+    "coverage": {
+      "title": "Q-agent coverage",
+      "bar": {
+        "m1": "Mission I · 2×2 · 12 states",
+        "m2": "Mission II · 2×3 · 360 states",
+        "m3": "Mission III · 3×3 · 181 440 states"
+      },
+      "caption": {
+        "m1": "With only 12 states, the bar fills in a handful of steps — the agent covers the whole world. The curse does not bite here.",
+        "m2": "Over 360 states the bar climbs during training, but systematic coverage already starts to cost.",
+        "m3": "Over 181 440 states the bar typically plateaus far below 100%. This is the curse of dimensionality biting."
+      }
+    },
+    "viewer": {
+      "title": "Playback speed",
+      "note": "Display only — does not affect learning.",
+      "unit": "ms / step",
+      "tip": "Delay between displayed moves. 0 = as fast as possible. Increase to follow with your eyes."
     }
   },
   "ex2x2": {
@@ -451,13 +470,6 @@
     "godsNumber": "31",
     "missionTrainingChip": "Mission III · Training Episode",
     "stats": {},
-    "coverageChart": {
-      "title": "Q-agent coverage",
-      "bar": {
-        "m3": "Mission III · 3×3 · 181,440 states"
-      },
-      "caption": "The bar fills as you train. On 181,440 states it typically plateaus well below 100% — that is the curse of dimensionality."
-    },
     "glossary": {
       "curse": {
         "term": "Curse of dimensionality",
@@ -486,7 +498,7 @@
     "hint": "Tip: devices are often shared. Use Return to start anytime.",
     "facilitatorBtn": "Facilitator mode",
     "continueBtn": "Go ahead",
-    "author": "Created and developed by <strong>Dr. Erika Roldán Roa</strong> · MPI MiS"
+    "author": "Created and developed by <strong>Dr. Erika Roldán Roa</strong>"
   },
   "hud": {
     "navLabel": "navigation"
