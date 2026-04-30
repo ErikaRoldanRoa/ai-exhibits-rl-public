@@ -182,6 +182,11 @@ p {
   font-weight: 900;
   letter-spacing: 0.2px;
   text-shadow: none;
+  /* Keep the Greek glyph as-is regardless of any parent text-transform.
+     Param-label classes (.lab, .field label, .nodeEditor label, .stat .k)
+     all set text-transform: uppercase, which would otherwise turn α/γ/ε
+     into Α/Γ/Ε — visually indistinguishable from Latin A/Γ/E. */
+  text-transform: none;
 }
 .sym-alpha   { color: var(--cyan); }
 .sym-gamma   { color: var(--lime); }
