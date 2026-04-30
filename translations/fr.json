@@ -458,6 +458,10 @@
         "term": "Budget d'échantillons",
         "def": "Compute total = épisodes × pas-max-par-épisode. Même à 10⁻¹¹ CHF par mise à jour Q, le budget nécessaire pour atteindre la convergence garantie sur Mission III est de plusieurs ordres de grandeur au-delà de ce qu'un samedi après-midi sur un laptop peut produire."
       }
+    },
+    "economy": {
+      "title": "Économie de l'entraînement",
+      "titleTip": "Trois angles sur l'argent : combien tu as déjà dépensé (Coût d'entraînement) ; combien tu as alloué à ce run (Budget total) ; combien il faudrait pour résoudre B5 de façon démo / fiable / garantie."
     }
   },
   "gate": {

@@ -458,6 +458,10 @@
         "term": "Stichprobenbudget",
         "def": "Gesamt-Compute = Episoden × Max-Schritte-pro-Episode. Selbst bei 10⁻¹¹ CHF pro Q-Update liegt das für Mission-III-Konvergenz nötige Budget viele Größenordnungen über dem, was ein Samstagnachmittag-Laptop liefert."
       }
+    },
+    "economy": {
+      "title": "Trainingsökonomie",
+      "titleTip": "Drei Blickwinkel aufs Geld: wie viel du schon ausgegeben hast (Trainingskosten); wie viel du für diesen Lauf budgetiert hast (Gesamtbudget); wie viel es bräuchte, um B5 demonstrationsweise / zuverlässig / garantiert zu lösen."
     }
   },
   "gate": {

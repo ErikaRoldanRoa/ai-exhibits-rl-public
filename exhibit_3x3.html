@@ -485,6 +485,33 @@
           <div class="stat"><div class="k" data-i18n="ex.stats.currentState">État actuel</div><div class="v" id="curKey">—</div></div>
           <div class="stat"><div class="k" data-i18n="ex.stats.movesLastSolve">Coups (dernière résolution)</div><div class="v" id="lastMoves">—</div></div>
           <div class="stat"><div class="k" data-i18n="ex.stats.qUpdates">Mises à jour Q</div><div class="v" id="updates">—</div></div>
+        </div>
+      </div>
+      <!-- Right-column stack: cov-card + glossary + training-params live in
+           one grid cell so they stack tightly. -->
+      <div class="rightCol" style="display:flex; flex-direction:column; gap:14px; min-width:0;">
+        <!-- Coverage card — single live bar. Replaces the buried "Couverture
+             Q-agent" stat that was redundant with this. The bar is the truth-
+             telling number on this page. -->
+        <div class="card cov-card" style="margin-top:12px;">
+          <h3 class="cov-title" data-i18n="ex.coverage.title">Couverture de l'agente Q</h3>
+          <div class="cov-row">
+            <span class="cov-label" data-i18n="ex.coverage.bar.m3">Mission III · 3×3 · 181 440 états</span>
+            <div class="cov-track"><div class="cov-fill" id="covM3Fill" style="width:0%; background:var(--pink);"></div></div>
+            <span class="cov-pct" id="covM3Pct">0%</span>
+          </div>
+          <p class="cov-caption" data-i18n="ex.coverage.caption.m3">Sur 181 440 états, la barre plafonne typiquement bien sous 100 %. C'est le fléau de la dimension qui mord.</p>
+        </div>
+        <!-- Économie de l'entraînement — money/cost stats grouped in their
+             own card so the reader's brain locates this as one section: how
+             much did this training run cost, what's the budget, what would
+             it take to fully solve B5? -->
+        <div class="card" id="economyCard">
+          <h2 style="display:flex; align-items:center; gap:8px;">
+            <span data-i18n="ex3x3.economy.title">Économie de l'entraînement</span>
+            <span class="qmark" data-tip="Trois angles sur l'argent : combien tu as déjà dépensé (Coût d'entraînement) ; combien tu as alloué à ce run (Budget total) ; combien il faudrait pour résoudre B5 de façon démo / fiable / garantie." data-i18n-data-tip="ex3x3.economy.titleTip" tabindex="0" aria-label="À propos de l'économie">ⓘ</span>
+          </h2>
+          <div class="stats">
           <div class="stat">
             <div class="k" style="display:flex; align-items:center; gap:6px;">
               <span data-i18n="ex.stats.cost">Coût d'entraînement</span>
@@ -506,22 +533,7 @@
             </div>
             <div class="v" id="b5costTxt" style="font-size:11px; line-height:1.5;">—</div>
           </div>
-        </div>
-      </div>
-      <!-- Right-column stack: cov-card + glossary + training-params live in
-           one grid cell so they stack tightly. -->
-      <div class="rightCol" style="display:flex; flex-direction:column; gap:14px; min-width:0;">
-        <!-- Coverage card — single live bar. Replaces the buried "Couverture
-             Q-agent" stat that was redundant with this. The bar is the truth-
-             telling number on this page. -->
-        <div class="card cov-card" style="margin-top:12px;">
-          <h3 class="cov-title" data-i18n="ex.coverage.title">Couverture de l'agente Q</h3>
-          <div class="cov-row">
-            <span class="cov-label" data-i18n="ex.coverage.bar.m3">Mission III · 3×3 · 181 440 états</span>
-            <div class="cov-track"><div class="cov-fill" id="covM3Fill" style="width:0%; background:var(--pink);"></div></div>
-            <span class="cov-pct" id="covM3Pct">0%</span>
           </div>
-          <p class="cov-caption" data-i18n="ex.coverage.caption.m3">Sur 181 440 états, la barre plafonne typiquement bien sous 100 %. C'est le fléau de la dimension qui mord.</p>
         </div>
       <div class="card">
         <h2 data-i18n="ex.panel.trainingParams">Paramètres d'entraînement</h2>

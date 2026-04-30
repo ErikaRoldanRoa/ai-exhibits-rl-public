@@ -458,6 +458,10 @@
         "term": "Budget di campioni",
         "def": "Calcolo totale = episodi × passi-max-per-episodio. Anche a 10⁻¹¹ CHF per aggiornamento Q, il budget necessario per la convergenza garantita su Missione III è di molti ordini di grandezza oltre ciò che un sabato pomeriggio su un laptop può produrre."
       }
+    },
+    "economy": {
+      "title": "Economia dell'addestramento",
+      "titleTip": "Tre angolazioni sul denaro: quanto hai già speso (Costo di addestramento); quanto hai destinato a questa esecuzione (Budget totale); quanto servirebbe per risolvere B5 a livello demo / affidabile / garantito."
     }
   },
   "gate": {

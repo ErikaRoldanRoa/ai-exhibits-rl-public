@@ -458,6 +458,10 @@
         "term": "Sample budget",
         "def": "Total compute = episodes × max-steps-per-episode. Even at 10⁻¹¹ CHF per Q-update, the budget needed for guaranteed convergence on Mission III is many orders of magnitude beyond what a Saturday-afternoon laptop session produces."
       }
+    },
+    "economy": {
+      "title": "Training economy",
+      "titleTip": "Three angles on money: how much you've already spent (Training cost); how much you allocated for this run (Total budget); how much it would take to solve B5 at demo / reliable / guaranteed levels."
     }
   },
   "gate": {
