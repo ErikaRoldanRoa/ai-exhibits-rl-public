@@ -14,7 +14,7 @@
    previously visited (old cached version is discarded on next load).
    ============================================================================= */
 
-const CACHE_VERSION = 'v2.21.0-2026-04-30';   // bump on each deploy to invalidate
+const CACHE_VERSION = 'v2.22.0-2026-04-30';   // bump on each deploy to invalidate
 const CACHE_NAME = `ai-exhibits-rl-${CACHE_VERSION}`;
 
 const PRECACHE = [

@@ -705,21 +705,6 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
           </div>
 
           <div id="errBox" class="err"></div>
-
-          <!-- Shared chip-glossary — Mission I shows the four hub-core terms.
-               Same widget grows on M2 (+ episode/propagation/convergence) and
-               M3 (+ curse/generalisation/budget). Definitions all live in
-               app/glossary.js. -->
-          <div class="glossary card" id="missionGlossary" style="margin-top:12px;"></div>
-          <script src="app/glossary.js"></script>
-          <script>
-            if (window.AIGlossary && document.getElementById("missionGlossary")) {
-              window.AIGlossary.render(document.getElementById("missionGlossary"), {
-                chips: ["agent", "state", "action", "q"],
-                defaultActive: "agent",
-              });
-            }
-          </script>
         </div>
       </div>
     </div>
@@ -807,6 +792,21 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
         </div>
       </div>
     </div>
+
+    <!-- Shared chip-glossary — full-width below the workspace.
+         Mission I shows the four hub-core terms; the same widget
+         grows on M2 (+ episode/propagation/convergence) and M3
+         (+ curse/generalisation/budget). -->
+    <div class="glossary card" id="missionGlossary" style="margin-top:14px;"></div>
+    <script src="app/glossary.js"></script>
+    <script>
+      if (window.AIGlossary && document.getElementById("missionGlossary")) {
+        window.AIGlossary.render(document.getElementById("missionGlossary"), {
+          chips: ["agent", "state", "action", "q"],
+          defaultActive: "agent",
+        });
+      }
+    </script>
   </div>
 </div>
 
