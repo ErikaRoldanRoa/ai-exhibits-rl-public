@@ -314,10 +314,10 @@
       "bar": {
         "m1": "Mission I · 2×2 · 12 états",
         "m2": "Mission II · 2×3 · 360 états",
-        "m3": "Mission III · 3×3 · 181 440 états"
+        "m3": "Mission III · 3×3 · 181 440 états"
       },
       "caption": {
-        "m1": "Avec seulement 12 états, la barre se remplit en une poignée de pas — l'agente couvre tout le monde. Le fléau ne mord pas encore.",
+        "m1": "12 états seulement : la barre arrive à 100 % en une poignée de pas. Garde-la en tête — sur Mission II (360 états) puis Mission III (181 440), la même barre se comportera très différemment.",
         "m2": "360 états : 30× plus que la Mission I. La barre monte encore pendant l'entraînement, mais elle ne se remplit plus toute seule — couvrir l'espace commence à coûter.",
         "m3": "181 440 états : 504× la Mission II, 15 000× la Mission I. Même algorithme, même méthode — l'espace est devenu trop vaste pour qu'on le visite. La barre plafonne, et la malédiction se fait sentir."
       }
@@ -391,6 +391,9 @@
       "title": "Modifier la récompense pour cet état",
       "stateLabel": "État",
       "note": "La récompense est appliquée à l'arrivée : lorsque vous entrez dans cet état, vous recevez"
+    },
+    "header": {
+      "goal": "Objectif : [1 2 / 3 _]"
     }
   },
   "ex2x3": {

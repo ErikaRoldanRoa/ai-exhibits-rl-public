@@ -317,7 +317,7 @@
         "m3": "Mission III · 3×3 · 181.440 Zustände"
       },
       "caption": {
-        "m1": "Mit nur 12 Zuständen füllt sich der Balken in wenigen Schritten — die Agentin erfasst die ganze Welt. Der Fluch beißt hier noch nicht.",
+        "m1": "Nur 12 Zustände: Der Balken erreicht 100% in wenigen Schritten. Behalte ihn im Kopf — in Mission II (360 Zustände) und dann Mission III (181.440) wird sich derselbe Balken ganz anders verhalten.",
         "m2": "360 Zustände: 30× mehr als Mission I. Der Balken steigt im Training noch, aber er füllt sich nicht mehr von selbst — den Raum zu durchqueren beginnt zu kosten.",
         "m3": "181.440 Zustände: 504× Mission II, 15.000× Mission I. Gleicher Algorithmus, gleiche Methode — der Raum ist nur zu weit geworden, um ihn zu durchwandern. Der Balken bleibt stehen, und der Fluch wird spürbar."
       }
@@ -391,6 +391,9 @@
       "title": "Belohnung für diesen Zustand bearbeiten",
       "stateLabel": "Zustand",
       "note": "Die Belohnung wird bei Ankunft vergeben: Wenn du in diesen Zustand wechselst, erhältst du"
+    },
+    "header": {
+      "goal": "Ziel: [1 2 / 3 _]"
     }
   },
   "ex2x3": {

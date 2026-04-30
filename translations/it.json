@@ -75,7 +75,7 @@
         "b4Tooltip": "⭐⭐⭐⭐ 26 mosse",
         "b5Tooltip": "🏆 31 mosse — Numero di Dio!"
       },
-      "subtitle": "181 440 stati · una Q-apprendente, una maledizione · l'algoritmo incontra la dimensionalità"
+      "subtitle": "181.440 stati · una Q-apprendente, una maledizione · l'algoritmo incontra la dimensionalità"
     },
     "stats": {
       "you": "Tu",
@@ -153,7 +153,7 @@
       "title": "🏆 Riferimenti & Numeri di Dio",
       "h2x2": "Missione I — Puzzle 2×2 (12 stati)",
       "h2x3": "Missione II — Puzzle 2×3 (360 stati)",
-      "h3x3": "Missione III — Puzzle 3×3 (181 440 stati)",
+      "h3x3": "Missione III — Puzzle 3×3 (181.440 stati)",
       "tip": "🏆 <strong>Numero di Dio</strong> = diametro del grafo degli stati raggiungibili: numero di mosse per risolvere lo stato di partenza <em>peggiore</em> giocando in modo perfetto.",
       "hook2x2": "L'intero mondo entra in una pagina · costruisci la tabella Q a mano.",
       "hook2x3": "Ora alleniamo · guarda Q risalire dall'obiettivo.",
@@ -197,7 +197,7 @@
       "2": "<strong>00:15–00:35</strong> — Fase 1 · Missione I (2×2, 12 stati): mappare lo spazio delle configurazioni e l'orbita di parità, costruire una tabella Q a mano su carta.",
       "3": "<strong>00:35–01:05</strong> — Fase 2 · Missione II (2×3, 360 stati, Numero di Dio=21): allenare l'agente; osservare episodi, decrescita di ε e propagazione dei valori Q dall'obiettivo.",
       "4": "<strong>01:05–01:15</strong> — Pausa.",
-      "5": "<strong>01:15–01:45</strong> — Fase 3 · Missione III (3×3, 181 440 stati, Numero di Dio=31): confrontare tre risolutrici (te / casuale / agente Q), nominare la maledizione della dimensionalità, ponte verso AlphaZero / MuZero.",
+      "5": "<strong>01:15–01:45</strong> — Fase 3 · Missione III (3×3, 181.440 stati, Numero di Dio=31): confrontare tre risolutrici (te / casuale / agente Q), nominare la maledizione della dimensionalità, ponte verso AlphaZero / MuZero.",
       "6": "<strong>01:45–02:00</strong> — Riflessione &amp; collegamenti con il mondo reale."
     },
     "params": {
@@ -317,7 +317,7 @@
         "m3": "Missione III · 3×3 · 181.440 stati"
       },
       "caption": {
-        "m1": "Con solo 12 stati, la barra si riempie in pochi passi — l'agente copre tutto il mondo. La maledizione non morde ancora.",
+        "m1": "Solo 12 stati: la barra arriva al 100% in pochi passi. Tienila a mente — nella Missione II (360 stati) e poi nella Missione III (181.440), la stessa barra si comporterà in modo molto diverso.",
         "m2": "360 stati: 30× più della Missione I. La barra sale ancora durante l'allenamento, ma non si riempie più da sola — coprire lo spazio comincia a costare.",
         "m3": "181.440 stati: 504× la Missione II, 15 000× la Missione I. Stesso algoritmo, stesso metodo — lo spazio è semplicemente diventato troppo vasto per essere visitato. La barra si ferma, e la maledizione si fa sentire."
       }
@@ -391,6 +391,9 @@
       "title": "Modifica la ricompensa per questo stato",
       "stateLabel": "Stato",
       "note": "La ricompensa viene applicata all'arrivo: quando entri in questo stato, ricevi"
+    },
+    "header": {
+      "goal": "Obiettivo: [1 2 / 3 _]"
     }
   },
   "ex2x3": {
