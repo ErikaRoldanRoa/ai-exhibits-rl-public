@@ -327,6 +327,11 @@
       "legendGoal": "objectif",
       "legendEdgeQ": "largeur d'arête ∝ Q",
       "empty": "vide"
+    },
+    "glossary": {
+      "title": "Concepts de cette mission",
+      "expandHint": "— clique pour déplier",
+      "moreLink": "Plus de concepts dans le glossaire complet de Mission I →"
     }
   },
   "ex2x2": {
@@ -411,7 +416,21 @@
     },
     "reachableStatesCount": "360",
     "godsNumber": "21",
-    "missionTrainingChip": "Mission II · Épisode d'Entraînement"
+    "missionTrainingChip": "Mission II · Épisode d'Entraînement",
+    "glossary": {
+      "episode": {
+        "term": "Épisode",
+        "def": "Une seule tentative : on mélange le puzzle, on essaie de le résoudre, on s'arrête au succès ou après le nombre maximum de coups, puis on recommence avec un nouveau mélange. Plus d'épisodes = plus d'expériences indépendantes."
+      },
+      "propagation": {
+        "term": "Propagation",
+        "def": "Comment la récompense de l'objectif remonte à travers les valeurs Q, un épisode après l'autre. Plus γ est élevé, plus loin la récompense voyage en arrière dans le graphe d'états."
+      },
+      "convergence": {
+        "term": "Convergence",
+        "def": "Quand les valeurs Q cessent de bouger significativement entre épisodes. L'agente a « appris » le puzzle. Sur 360 états, on y arrive en quelques milliers d'épisodes ; à plus grande échelle, c'est une autre histoire."
+      }
+    }
   },
   "ex3x3": {
     "brand": {
@@ -438,6 +457,20 @@
         "m3": "Mission III · 3×3 · 181 440 états"
       },
       "caption": "La barre se remplit pendant l'entraînement. Sur 181 440 états, elle plafonne typiquement bien sous 100 % — c'est le fléau de la dimension."
+    },
+    "glossary": {
+      "curse": {
+        "term": "Fléau de la dimension",
+        "def": "Observation de Bellman (1957) : la mémoire et le nombre d'échantillons nécessaires explosent factoriellement avec la taille de l'espace d'états. De M1 (12) à M2 (360) à M3 (181 440), le facteur est 504×. À l'échelle des échecs (~10⁴⁴ états), une table Q est inaccessible."
+      },
+      "generalisation": {
+        "term": "Généralisation",
+        "def": "Capacité d'une fonction apprise à donner une valeur raisonnable sur des états jamais rencontrés à l'entraînement. Une table Q n'a aucune généralisation — chaque état est une entrée séparée. Un réseau de neurones (AlphaZero, Silver et al. 2018) apprend une fonction qui interpole entre états proches."
+      },
+      "budget": {
+        "term": "Budget d'échantillons",
+        "def": "Compute total = épisodes × pas-max-par-épisode. Même à 10⁻¹¹ CHF par mise à jour Q, le budget nécessaire pour atteindre la convergence garantie sur Mission III est de plusieurs ordres de grandeur au-delà de ce qu'un samedi après-midi sur un laptop peut produire."
+      }
     }
   },
   "gate": {

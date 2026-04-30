@@ -327,6 +327,11 @@
       "legendGoal": "Ziel",
       "legendEdgeQ": "Kantenbreite ∝ Q",
       "empty": "leer"
+    },
+    "glossary": {
+      "title": "Missionskonzepte",
+      "expandHint": "— klicken zum Ausklappen",
+      "moreLink": "Mehr Konzepte im vollständigen Glossar von Mission I →"
     }
   },
   "ex2x2": {
@@ -411,7 +416,21 @@
     },
     "reachableStatesCount": "360",
     "godsNumber": "21",
-    "missionTrainingChip": "Mission II · Trainings-Episode"
+    "missionTrainingChip": "Mission II · Trainings-Episode",
+    "glossary": {
+      "episode": {
+        "term": "Episode",
+        "def": "Ein einzelner Versuch: Puzzle mischen, versuchen zu lösen, bei Erfolg oder nach Max-Schritten anhalten, dann mit neuem Mischen beginnen. Mehr Episoden = mehr unabhängige Erfahrungen."
+      },
+      "propagation": {
+        "term": "Propagation",
+        "def": "Wie die Belohnung des Ziels durch die Q-Werte zurückwandert, eine Episode nach der anderen. Je höher γ, desto weiter wandert die Belohnung im Zustandsgraphen rückwärts."
+      },
+      "convergence": {
+        "term": "Konvergenz",
+        "def": "Wenn sich Q-Werte zwischen Episoden nicht mehr nennenswert ändern. Die Agent*in hat das Puzzle „gelernt\". Auf 360 Zuständen passiert das in wenigen Tausend Episoden; bei größerem Maßstab ist es eine andere Geschichte."
+      }
+    }
   },
   "ex3x3": {
     "brand": {
@@ -438,6 +457,20 @@
         "m3": "Mission III · 3×3 · 181.440 Zustände"
       },
       "caption": "Die Leiste füllt sich beim Trainieren. Auf 181.440 Zuständen bleibt sie typischerweise deutlich unter 100% — das ist der Fluch der Dimensionalität."
+    },
+    "glossary": {
+      "curse": {
+        "term": "Fluch der Dimensionalität",
+        "def": "Bellmans Beobachtung von 1957: Speicher und benötigte Stichprobenzahl wachsen fakultativ mit der Größe des Zustandsraums. Von M1 (12) zu M2 (360) zu M3 (181.440) beträgt der Faktor 504×. Auf Schachniveau (~10⁴⁴ Zustände) ist eine Q-Tabelle unerreichbar."
+      },
+      "generalisation": {
+        "term": "Generalisierung",
+        "def": "Fähigkeit einer gelernten Funktion, einen vernünftigen Wert für Zustände zu liefern, die im Training nie gesehen wurden. Eine Q-Tabelle hat keine Generalisierung — jeder Zustand ist ein eigener Eintrag. Ein neuronales Netz (AlphaZero, Silver et al. 2018) lernt eine Funktion, die zwischen nahen Zuständen interpoliert."
+      },
+      "budget": {
+        "term": "Stichprobenbudget",
+        "def": "Gesamt-Compute = Episoden × Max-Schritte-pro-Episode. Selbst bei 10⁻¹¹ CHF pro Q-Update liegt das für Mission-III-Konvergenz nötige Budget viele Größenordnungen über dem, was ein Samstagnachmittag-Laptop liefert."
+      }
     }
   },
   "gate": {

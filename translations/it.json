@@ -327,6 +327,11 @@
       "legendGoal": "obiettivo",
       "legendEdgeQ": "spessore arco ∝ Q",
       "empty": "vuoto"
+    },
+    "glossary": {
+      "title": "Concetti di questa missione",
+      "expandHint": "— clicca per espandere",
+      "moreLink": "Altri concetti nel glossario completo di Missione I →"
     }
   },
   "ex2x2": {
@@ -411,7 +416,21 @@
     },
     "reachableStatesCount": "360",
     "godsNumber": "21",
-    "missionTrainingChip": "Missione II · Episodio di Addestramento"
+    "missionTrainingChip": "Missione II · Episodio di Addestramento",
+    "glossary": {
+      "episode": {
+        "term": "Episodio",
+        "def": "Un singolo tentativo: si mescola il puzzle, si prova a risolverlo, ci si ferma al successo o dopo il numero massimo di mosse, poi si ricomincia con un nuovo mescolamento. Più episodi = più esperienze indipendenti."
+      },
+      "propagation": {
+        "term": "Propagazione",
+        "def": "Come la ricompensa dell'obiettivo risale attraverso i valori Q, un episodio dopo l'altro. Più γ è alto, più lontano la ricompensa viaggia all'indietro nel grafo degli stati."
+      },
+      "convergence": {
+        "term": "Convergenza",
+        "def": "Quando i valori Q smettono di cambiare significativamente tra episodi. L'agente ha «imparato» il puzzle. Su 360 stati, ci si arriva in qualche migliaio di episodi; a scala maggiore è un'altra storia."
+      }
+    }
   },
   "ex3x3": {
     "brand": {
@@ -438,6 +457,20 @@
         "m3": "Missione III · 3×3 · 181.440 stati"
       },
       "caption": "La barra si riempie durante l'addestramento. Su 181.440 stati si stabilizza tipicamente ben al di sotto del 100 % — questa è la maledizione della dimensionalità."
+    },
+    "glossary": {
+      "curse": {
+        "term": "Maledizione della dimensionalità",
+        "def": "Osservazione di Bellman (1957): la memoria e il numero di campioni necessari esplodono fattorialmente con la dimensione dello spazio degli stati. Da M1 (12) a M2 (360) a M3 (181.440), il fattore è 504×. Alla scala degli scacchi (~10⁴⁴ stati), una tabella Q è inaccessibile."
+      },
+      "generalisation": {
+        "term": "Generalizzazione",
+        "def": "Capacità di una funzione appresa di dare un valore ragionevole per stati mai incontrati durante l'addestramento. Una tabella Q non ha generalizzazione — ogni stato è una voce separata. Una rete neurale (AlphaZero, Silver et al. 2018) impara una funzione che interpola tra stati vicini."
+      },
+      "budget": {
+        "term": "Budget di campioni",
+        "def": "Calcolo totale = episodi × passi-max-per-episodio. Anche a 10⁻¹¹ CHF per aggiornamento Q, il budget necessario per la convergenza garantita su Missione III è di molti ordini di grandezza oltre ciò che un sabato pomeriggio su un laptop può produrre."
+      }
     }
   },
   "gate": {

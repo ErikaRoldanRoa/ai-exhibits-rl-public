@@ -297,6 +297,20 @@
   box-shadow:0 8px 22px rgba(0,0,0,0.45); cursor:pointer;
 }
 .langSelector:hover{ border-color:rgba(255,47,214,0.85); }
+
+/* Mission-specific glossary card (collapsible) */
+.mission-glossary { padding: 12px 14px; }
+.mg-summary { cursor: pointer; list-style: none; user-select: none; padding: 4px 0; }
+.mg-summary::-webkit-details-marker { display: none; }
+.mg-summary::before { content: "▶"; display: inline-block; margin-right: 8px; transition: transform 0.15s; font-size: 11px; opacity: 0.7; }
+details[open] > .mg-summary::before { transform: rotate(90deg); }
+.mg-hint { color: var(--muted); font-size: 11px; font-style: italic; }
+.mg-entry { margin: 12px 0 0 0; padding-left: 8px; border-left: 2px solid rgba(255,255,255,0.10); }
+.mg-entry h4 { margin: 0 0 4px 0; font-size: 13px; color: var(--cyan); font-weight: 700; letter-spacing: 0.2px; }
+.mg-entry p { margin: 0; font-size: 12px; line-height: 1.5; color: var(--muted); }
+.mg-pointer { margin: 14px 0 0 0; font-size: 11px; color: var(--muted2); }
+.mg-pointer a { color: var(--lime); text-decoration: none; }
+.mg-pointer a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -427,6 +441,22 @@
           <div class="stat"><div class="k" data-i18n="ex.stats.qUpdates">Mises à jour Q</div><div class="v" id="updates">—</div></div>
         </div>
       </div>
+      <details class="card mission-glossary" style="margin-top:12px;">
+        <summary class="mg-summary"><strong data-i18n="ex.glossary.title">Concepts de cette mission</strong> <span class="mg-hint" data-i18n="ex.glossary.expandHint">— clique pour déplier</span></summary>
+        <div class="mg-entry">
+          <h4 data-i18n="ex2x3.glossary.episode.term">Épisode</h4>
+          <p data-i18n="ex2x3.glossary.episode.def">Une seule tentative : on mélange le puzzle, on essaie de le résoudre, on s'arrête au succès ou après le nombre maximum de coups, puis on recommence avec un nouveau mélange. Plus d'épisodes = plus d'expériences indépendantes.</p>
+        </div>
+        <div class="mg-entry">
+          <h4 data-i18n="ex2x3.glossary.propagation.term">Propagation</h4>
+          <p data-i18n="ex2x3.glossary.propagation.def">Comment la récompense de l'objectif remonte à travers les valeurs Q, un épisode après l'autre. Plus γ est élevé, plus loin la récompense voyage en arrière dans le graphe d'états.</p>
+        </div>
+        <div class="mg-entry">
+          <h4 data-i18n="ex2x3.glossary.convergence.term">Convergence</h4>
+          <p data-i18n="ex2x3.glossary.convergence.def">Quand les valeurs Q cessent de bouger significativement entre épisodes. L'agente a « appris » le puzzle. Sur 360 états, on y arrive en quelques milliers d'épisodes ; à plus grande échelle, c'est une autre histoire.</p>
+        </div>
+        <p class="mg-pointer"><a href="exhibit_2x2.html#learn" data-i18n="ex.glossary.moreLink">Plus de concepts dans le glossaire complet de Mission I →</a></p>
+      </details>
       <div class="card">
         <h2 data-i18n="ex.panel.trainingParams">Paramètres d'entraînement</h2>
         <div class="kv">

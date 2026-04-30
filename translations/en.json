@@ -327,6 +327,11 @@
       "legendGoal": "goal",
       "legendEdgeQ": "edge width ∝ Q",
       "empty": "empty"
+    },
+    "glossary": {
+      "title": "Mission concepts",
+      "expandHint": "— click to expand",
+      "moreLink": "More concepts in the full Mission I glossary →"
     }
   },
   "ex2x2": {
@@ -411,7 +416,21 @@
     },
     "reachableStatesCount": "360",
     "godsNumber": "21",
-    "missionTrainingChip": "Mission II · Training Episode"
+    "missionTrainingChip": "Mission II · Training Episode",
+    "glossary": {
+      "episode": {
+        "term": "Episode",
+        "def": "A single attempt: shuffle the puzzle, try to solve it, stop on success or after max-steps moves, then start again with a fresh shuffle. More episodes = more independent experiences."
+      },
+      "propagation": {
+        "term": "Propagation",
+        "def": "How the goal's reward travels back through Q-values, one episode at a time. The higher γ, the further the reward propagates backward through the state graph."
+      },
+      "convergence": {
+        "term": "Convergence",
+        "def": "When Q-values stop changing meaningfully between episodes. The agent has \"learned\" the puzzle. On 360 states, this happens within a few thousand episodes; at larger scale, it is another story."
+      }
+    }
   },
   "ex3x3": {
     "brand": {
@@ -438,6 +457,20 @@
         "m3": "Mission III · 3×3 · 181,440 states"
       },
       "caption": "The bar fills as you train. On 181,440 states it typically plateaus well below 100% — that is the curse of dimensionality."
+    },
+    "glossary": {
+      "curse": {
+        "term": "Curse of dimensionality",
+        "def": "Bellman's 1957 observation: the memory and number of samples needed explode factorially with state-space size. From M1 (12) to M2 (360) to M3 (181,440), the factor is 504×. At chess scale (~10⁴⁴ states), a Q-table is unreachable."
+      },
+      "generalisation": {
+        "term": "Generalisation",
+        "def": "The ability of a learned function to give a reasonable value for states never seen during training. A Q-table has no generalisation — each state is a separate entry. A neural network (AlphaZero, Silver et al. 2018) learns a function that interpolates between nearby states."
+      },
+      "budget": {
+        "term": "Sample budget",
+        "def": "Total compute = episodes × max-steps-per-episode. Even at 10⁻¹¹ CHF per Q-update, the budget needed for guaranteed convergence on Mission III is many orders of magnitude beyond what a Saturday-afternoon laptop session produces."
+      }
     }
   },
   "gate": {
