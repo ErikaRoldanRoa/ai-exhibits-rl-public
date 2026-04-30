@@ -1,11 +1,7 @@
-/* ============================================================================
- * AI-Exhibits · Reinforcement Learning & Sliding Puzzles
- * Tutorial card content in all four exhibit languages.
- *
- * © 2026 Dr. Erika Roldán Roa · Max Planck Institute for Mathematics in the Sciences (MPI MiS), Leipzig · Université de Genève, Section de Mathématiques.
- * Licensed: MIT (code) · CC-BY-SA 4.0 (pedagogical documentation) · CC-BY 4.0 (assets). See LICENSE.
- * ============================================================================ */
-
+/* AI-Exhibits — Learn cards · EN / DE / IT translations.
+ * Generated: keeps the structure of the original LEARN_TRANSLATIONS.
+ * FR translations live inline in exhibit_2x2.html as LEARN_FR.
+ */
 window.LEARN_TRANSLATIONS = {
   en: [
     {
@@ -27,9 +23,9 @@ window.LEARN_TRANSLATIONS = {
     {
       id: "watkins-infinity",
       title: "Watkins 1992: convergence \"in the limit\"",
-      tags: "Watkins theorem convergence Robbins-Monro Even-Dar PAC",
-      public: "Watkins's 1992 theorem guarantees that Q-learning converges to Q* — under one impossible condition: that every (state, action) pair is visited an **infinite number of times**. In a finite universe like a Saturday-afternoon Mission III, we never reach that condition. That's the curse of dimensionality: not that the algorithm is wrong, but that its guarantees are asymptotic.",
-      math: "**Theorem (Watkins-Dayan 1992).** For a finite MDP with bounded rewards, the Q-learning update Q(s,a) ← Q(s,a) + α[r + γ max_{a'} Q(s',a') − Q(s,a)] converges to Q* with probability 1 provided (i) Σ α_t(s,a) = ∞ and Σ α_t²(s,a) < ∞ for every (s,a) (Robbins-Monro 1951), and (ii) every (s,a) is visited **infinitely often**. The finite-time version (Even-Dar & Mansour 2003) gives Õ(|S|·|A|/ε²(1−γ)⁴) steps to reach |Q − Q*|_∞ ≤ ε with confidence 1−δ. For M3 at ε=0.1, γ=0.99: ~7×10¹² steps — five orders of magnitude beyond the default budget.",
+      tags: "Watkins theorem convergence asymptotic",
+      public: "The Watkins & Dayan (1992) theorem guarantees that Q-learning converges to Q* — under one impossible condition: every (state, action) pair must be visited an **infinite number of times**. In a finite universe like a Saturday-afternoon Mission III, we never reach that condition. The curse of dimensionality is not that the algorithm is wrong — its guarantees are asymptotic.",
+      math: "**Theorem (Watkins & Dayan 1992).** For a finite MDP with bounded rewards and discount factor γ ∈ [0,1), the Q-learning update Q(s,a) ← Q(s,a) + α[r + γ·max_{a'} Q(s',a') − Q(s,a)] converges to Q* with probability 1 if (i) the step-size sequence α_t satisfies Σ α_t = ∞ and Σ α_t² < ∞ for every (s,a), and (ii) every (s,a) is visited **infinitely often**. The result is asymptotic: it says nothing about the finite number of steps required to be close to Q*. On Mission III's 181,440 states, the default training budget is far below the convergence threshold.",
       sentence: "\"The theorem requires infinity; the curse is that we don't even reach one visit per state.\""
     },
     {
@@ -43,10 +39,10 @@ window.LEARN_TRANSLATIONS = {
     {
       id: "cost-curse",
       title: "The curse has a price",
-      tags: "cost curse PAC Even-Dar AlphaZero MuZero deep RL",
-      public: "On your laptop, one Q-learning step costs about **10⁻⁹ CHF** (a billionth). A full default Mission III run costs cents — basically free. But the total cost doesn't depend on the laptop alone: it depends on how many steps **the theorem** needs to learn. And that number explodes with the state-space size. AlphaZero cost ~$25M in TPU compute, and yet visited only 10⁻³⁶ of chess's state space.",
-      math: "PAC bound (Even-Dar & Mansour 2003): N* = Õ(|S|·|A| · log(|S||A|/δ) / (ε²(1−γ)⁴)) steps for |Q − Q*|_∞ ≤ ε with probability ≥ 1−δ. Total cost = N* · c where c ≈ 10⁻⁹ CHF/step. For M3 (|S|=181 440, ε=0.1, γ=0.99): ~7×10¹² steps → ~7,000 CHF. For chess (|S|≈10⁴⁶): ~10⁵⁰ CHF — more than the entire world GDP. AlphaZero (Silver et al. 2018) sidesteps the curse: replaces the Q-table with a neural network f_θ(s,a) ≈ Q*(s,a). Training cost: ~$25M; inference cost: essentially zero. The function generalises to states never seen — and AlphaZero saw only ~10⁻³⁶ of the chess graph.",
-      sentence: "\"Beyond a few thousand states, the Q-table is no longer learnable, not even with all the money in the world. That's why neural networks were invented.\""
+      tags: "cost AlphaZero MuZero deep RL generalisation",
+      public: "On your laptop, one Q-learning step costs about **10⁻¹¹ CHF** (one hundredth of a billionth). A full default Mission III run costs a fraction of a centime — basically free. But the total cost depends on **how many steps** the algorithm needs, and that number explodes with the size of the state space. AlphaZero (Silver et al. 2018) succeeded on chess (~10⁴⁴ legal positions) by replacing the Q-table with a neural network — a function that *generalises* to states never seen, rather than *enumerating* them.",
+      math: "Marginal cost per Q-update ≈ 10⁻¹¹ CHF (dominated by amortised hardware, not electricity). Default Mission III: ~10⁷ steps → ~10⁻⁴ CHF. For chess (~10⁴⁴ legal positions), even at 10⁻¹¹ CHF/step a tabular Q is unreachable: it would require orders of magnitude more steps than any machine could perform. **AlphaZero's solution (Silver et al. 2018):** approximate Q*(s,a) by a neural network f_θ(s,a). Benefits: (1) memory is constant in θ, independent of |S|; (2) the function generalises — a state close to a visited one inherits a reasonable value. AlphaZero's training cost was not disclosed by DeepMind; external estimates put it in the tens of millions of USD in TPU compute.",
+      sentence: "\"Beyond a few thousand states, the Q-table is no longer learnable. That's why neural networks were invented.\""
     },
     {
       id: "actions",
@@ -125,9 +121,9 @@ window.LEARN_TRANSLATIONS = {
     {
       id: "watkins-infinity",
       title: "Watkins 1992: Konvergenz „im Grenzwert\"",
-      tags: "Watkins Theorem Konvergenz Robbins-Monro Even-Dar PAC",
-      public: "Watkins' Satz von 1992 garantiert, dass Q-Learning gegen Q* konvergiert — unter einer unmöglichen Bedingung: jedes (Zustand, Aktion)-Paar muss **unendlich oft** besucht werden. In einem endlichen Universum wie einem Samstagnachmittag-Mission-III erreichen wir diese Bedingung nie. Das ist der Fluch der Dimensionalität: nicht dass der Algorithmus falsch wäre, sondern dass seine Garantien asymptotisch sind.",
-      math: "**Satz (Watkins-Dayan 1992).** Für ein endliches MDP mit beschränkten Belohnungen konvergiert das Q-Learning-Update Q(s,a) ← Q(s,a) + α[r + γ max_{a'} Q(s',a') − Q(s,a)] mit Wahrscheinlichkeit 1 gegen Q*, sofern (i) Σ α_t(s,a) = ∞ und Σ α_t²(s,a) < ∞ für jedes (s,a) (Robbins-Monro 1951) und (ii) jedes (s,a) **unendlich oft** besucht wird. Die endliche Version (Even-Dar & Mansour 2003): Õ(|S|·|A|/ε²(1−γ)⁴) Schritte für |Q − Q*|_∞ ≤ ε mit Konfidenz 1−δ. Für M3 mit ε=0,1, γ=0,99: ~7×10¹² Schritte — fünf Größenordnungen über dem Standard-Budget.",
+      tags: "Watkins Theorem Konvergenz asymptotisch",
+      public: "Der Satz von Watkins & Dayan (1992) garantiert, dass Q-Learning gegen Q* konvergiert — unter einer unmöglichen Bedingung: jedes (Zustand, Aktion)-Paar muss **unendlich oft** besucht werden. In einem endlichen Universum wie einem Samstagnachmittag-Mission-III erreichen wir diese Bedingung nie. Der Fluch der Dimensionalität bedeutet nicht, dass der Algorithmus falsch ist — seine Garantien sind asymptotisch.",
+      math: "**Satz (Watkins & Dayan 1992).** Für ein endliches MDP mit beschränkten Belohnungen und Diskontfaktor γ ∈ [0,1) konvergiert das Q-Learning-Update Q(s,a) ← Q(s,a) + α[r + γ·max_{a'} Q(s',a') − Q(s,a)] mit Wahrscheinlichkeit 1 gegen Q*, sofern (i) die Schrittweite α_t für jedes (s,a) Σ α_t = ∞ und Σ α_t² < ∞ erfüllt und (ii) jedes (s,a) **unendlich oft** besucht wird. Das Ergebnis ist asymptotisch: es sagt nichts über die endliche Schrittanzahl bis zur Nähe von Q*. Bei Mission IIIs 181.440 Zuständen liegt das Standard-Trainingsbudget weit unter der Konvergenzschwelle.",
       sentence: "„Der Satz fordert Unendlichkeit; der Fluch ist, dass wir nicht einmal einen Besuch pro Zustand schaffen.\""
     },
     {
@@ -141,10 +137,10 @@ window.LEARN_TRANSLATIONS = {
     {
       id: "cost-curse",
       title: "Der Fluch hat einen Preis",
-      tags: "Kosten curse PAC Even-Dar AlphaZero MuZero deep RL",
-      public: "Auf deinem Laptop kostet ein Q-Learning-Schritt etwa **10⁻⁹ CHF** (ein Milliardstel). Ein Standard-Mission-III-Lauf kostet ein paar Rappen — praktisch nichts. Aber die Gesamtkosten hängen nicht nur vom Laptop ab: sie hängen davon ab, wie viele Schritte **der Satz** zum Lernen braucht. Und diese Zahl explodiert mit der Größe des Zustandsraums. AlphaZero kostete ~25 Millionen Dollar an TPU-Compute und besuchte trotzdem nur 10⁻³⁶ des Schach-Zustandsraums.",
-      math: "PAC-Schranke (Even-Dar & Mansour 2003): N* = Õ(|S|·|A| · log(|S||A|/δ) / (ε²(1−γ)⁴)) Schritte für |Q − Q*|_∞ ≤ ε mit Wahrscheinlichkeit ≥ 1−δ. Gesamtkosten = N* · c mit c ≈ 10⁻⁹ CHF/Schritt. Für M3 (|S|=181.440, ε=0,1, γ=0,99): ~7×10¹² Schritte → ~7.000 CHF. Für Schach (|S|≈10⁴⁶): ~10⁵⁰ CHF — mehr als das gesamte Welt-BIP. AlphaZero (Silver et al. 2018) umgeht den Fluch: ersetzt die Q-Tabelle durch ein neuronales Netz f_θ(s,a) ≈ Q*(s,a). Trainingskosten: ~25 M$; Inferenzkosten: praktisch null. Die Funktion generalisiert auf nie gesehene Zustände — und AlphaZero sah nur ~10⁻³⁶ des Schachgraphen.",
-      sentence: "„Jenseits einiger Tausend Zustände ist die Q-Tabelle nicht mehr lernbar, nicht einmal mit allem Geld der Welt. Deshalb wurden neuronale Netze erfunden.\""
+      tags: "Kosten AlphaZero MuZero deep RL Generalisierung",
+      public: "Auf deinem Laptop kostet ein Q-Learning-Schritt etwa **10⁻¹¹ CHF** (ein hundertstel Milliardstel). Ein Standard-Mission-III-Lauf kostet einen Bruchteil eines Rappens. Aber die Gesamtkosten hängen davon ab, **wie viele Schritte** der Algorithmus braucht, und diese Zahl explodiert mit der Größe des Zustandsraums. AlphaZero (Silver et al. 2018) hat Schach (~10⁴⁴ legale Stellungen) gelöst, indem es die Q-Tabelle durch ein neuronales Netz ersetzt hat — eine Funktion, die auf nie gesehene Zustände *generalisiert*, statt sie zu *enumerieren*.",
+      math: "Grenzkosten pro Q-Update ≈ 10⁻¹¹ CHF (dominant ist amortisierte Hardware, nicht Strom). Standard-Mission-III: ~10⁷ Schritte → ~10⁻⁴ CHF. Für Schach (~10⁴⁴ legale Stellungen) ist selbst bei 10⁻¹¹ CHF/Schritt eine tabellierte Q-Funktion unerreichbar: es würde mehrere Größenordnungen mehr Schritte erfordern, als jede Maschine leisten könnte. **AlphaZeros Lösung (Silver et al. 2018):** Q*(s,a) durch ein neuronales Netz f_θ(s,a) approximieren. Vorteile: (1) der Speicher ist konstant in θ, unabhängig von |S|; (2) die Funktion generalisiert — ein Zustand nahe einem besuchten erbt einen vernünftigen Wert. AlphaZeros Trainingskosten wurden von DeepMind nicht veröffentlicht; externe Schätzungen liegen im zweistelligen Millionen-USD-Bereich an TPU-Compute.",
+      sentence: "„Jenseits einiger Tausend Zustände ist die Q-Tabelle nicht mehr lernbar. Deshalb wurden neuronale Netze erfunden.\""
     },
     {
       id: "actions",
@@ -223,9 +219,9 @@ window.LEARN_TRANSLATIONS = {
     {
       id: "watkins-infinity",
       title: "Watkins 1992: convergenza «al limite»",
-      tags: "Watkins teorema convergenza Robbins-Monro Even-Dar PAC",
-      public: "Il teorema di Watkins (1992) garantisce che il Q-learning converge a Q* — a una condizione impossibile: che ogni coppia (stato, azione) sia visitata un **numero infinito di volte**. In un universo finito come un sabato pomeriggio di Missione III, non raggiungiamo mai questa condizione. Questa è la maledizione della dimensionalità: non che l'algoritmo sia sbagliato, ma che le sue garanzie siano asintotiche.",
-      math: "**Teorema (Watkins-Dayan 1992).** Per un MDP finito con ricompense limitate, l'aggiornamento Q-learning Q(s,a) ← Q(s,a) + α[r + γ max_{a'} Q(s',a') − Q(s,a)] converge a Q* con probabilità 1 se (i) Σ α_t(s,a) = ∞ e Σ α_t²(s,a) < ∞ per ogni (s,a) (Robbins-Monro 1951) e (ii) ogni (s,a) è visitato **infinite volte**. La versione finita (Even-Dar & Mansour 2003): Õ(|S|·|A|/ε²(1−γ)⁴) passi per |Q − Q*|_∞ ≤ ε con confidenza 1−δ. Per M3 con ε=0,1, γ=0,99: ~7×10¹² passi — cinque ordini di grandezza oltre il budget standard.",
+      tags: "Watkins teorema convergenza asintotico",
+      public: "Il teorema di Watkins & Dayan (1992) garantisce che il Q-learning converge a Q* — a una condizione impossibile: ogni coppia (stato, azione) deve essere visitata un **numero infinito di volte**. In un universo finito come un sabato pomeriggio di Missione III, non raggiungiamo mai questa condizione. La maledizione della dimensionalità non significa che l'algoritmo sia sbagliato — le sue garanzie sono asintotiche.",
+      math: "**Teorema (Watkins & Dayan 1992).** Per un MDP finito con ricompense limitate e fattore di sconto γ ∈ [0,1), l'aggiornamento Q-learning Q(s,a) ← Q(s,a) + α[r + γ·max_{a'} Q(s',a') − Q(s,a)] converge a Q* con probabilità 1 se (i) la sequenza α_t soddisfa Σ α_t = ∞ e Σ α_t² < ∞ per ogni (s,a) e (ii) ogni (s,a) è visitato **infinite volte**. Il risultato è asintotico: non dice nulla sul numero finito di passi necessari per essere vicini a Q*. Sui 181.440 stati di Missione III, il budget di addestramento standard è molto al di sotto della soglia di convergenza.",
       sentence: "«Il teorema richiede l'infinito; la maledizione è che non raggiungiamo nemmeno una visita per stato.»"
     },
     {
@@ -239,10 +235,10 @@ window.LEARN_TRANSLATIONS = {
     {
       id: "cost-curse",
       title: "La maledizione ha un prezzo",
-      tags: "costo curse PAC Even-Dar AlphaZero MuZero deep RL",
-      public: "Sul tuo laptop, un passo di Q-learning costa circa **10⁻⁹ CHF** (un miliardesimo). Una sessione completa di Missione III costa qualche centesimo — praticamente gratis. Ma il costo totale non dipende solo dal laptop: dipende da quanti passi **il teorema** richiede per imparare. E quel numero esplode con la dimensione dello spazio degli stati. AlphaZero è costato ~25 milioni di dollari in TPU compute, e ha visitato solo 10⁻³⁶ dello spazio degli stati degli scacchi.",
-      math: "Limite PAC (Even-Dar & Mansour 2003): N* = Õ(|S|·|A| · log(|S||A|/δ) / (ε²(1−γ)⁴)) passi per |Q − Q*|_∞ ≤ ε con probabilità ≥ 1−δ. Costo totale = N* · c con c ≈ 10⁻⁹ CHF/passo. Per M3 (|S|=181.440, ε=0,1, γ=0,99): ~7×10¹² passi → ~7.000 CHF. Per gli scacchi (|S|≈10⁴⁶): ~10⁵⁰ CHF — più del PIL mondiale. AlphaZero (Silver et al. 2018) aggira la maledizione: sostituisce la tabella Q con una rete neurale f_θ(s,a) ≈ Q*(s,a). Costo di addestramento: ~25 M$; costo di inferenza: praticamente nullo. La funzione generalizza a stati mai visti — e AlphaZero ha visto solo ~10⁻³⁶ del grafo degli scacchi.",
-      sentence: "«Oltre qualche migliaio di stati, la tabella Q non è più apprendibile, nemmeno con tutto il denaro del mondo. Per questo si sono inventate le reti neurali.»"
+      tags: "costo AlphaZero MuZero deep RL generalizzazione",
+      public: "Sul tuo laptop, un passo di Q-learning costa circa **10⁻¹¹ CHF** (un centesimo di miliardesimo). Una sessione completa di Missione III costa una frazione di centesimo. Ma il costo totale dipende da **quanti passi** l'algoritmo richiede, e quel numero esplode con la dimensione dello spazio degli stati. AlphaZero (Silver et al. 2018) ha avuto successo sugli scacchi (~10⁴⁴ posizioni legali) sostituendo la tabella Q con una rete neurale — una funzione che *generalizza* a stati mai visti, anziché *enumerarli*.",
+      math: "Costo marginale per aggiornamento Q ≈ 10⁻¹¹ CHF (dominato dall'ammortamento hardware, non dall'elettricità). Missione III standard: ~10⁷ passi → ~10⁻⁴ CHF. Per gli scacchi (~10⁴⁴ posizioni legali), anche a 10⁻¹¹ CHF/passo una Q tabulare è irraggiungibile: richiederebbe ordini di grandezza più passi di quanti qualsiasi macchina possa eseguire. **Soluzione di AlphaZero (Silver et al. 2018):** approssimare Q*(s,a) con una rete neurale f_θ(s,a). Vantaggi: (1) la memoria è costante in θ, indipendentemente da |S|; (2) la funzione generalizza — uno stato vicino a uno visitato eredita un valore ragionevole. Il costo di addestramento di AlphaZero non è stato divulgato da DeepMind; le stime esterne lo collocano in decine di milioni di USD in compute TPU.",
+      sentence: "«Oltre qualche migliaio di stati, la tabella Q non è più apprendibile. Per questo si sono inventate le reti neurali.»"
     },
     {
       id: "actions",
