@@ -278,7 +278,9 @@
       "movesLastSolve": "Coups (dernière résolution)",
       "qUpdates": "Mises à jour Q",
       "coverage": "Couverture de l'agente Q",
-      "coverageTip": "Le fléau de la dimension : la table Q n'est qu'un dictionnaire — un compteur par état rencontré. À 12 états (2×2) elle couvre tout, à 360 (2×3) presque tout, à 181 440 (3×3) elle peine à dépasser quelques pour cent. Le théorème de convergence de Watkins (1992) exige que chaque couple (état, action) soit visité *infiniment souvent* — à cette échelle, on ne visite même pas chaque état une seule fois. C'est ça, le fléau. AlphaZero et MuZero remplacent la table par un réseau de neurones qui généralise à des états jamais vus."
+      "coverageTip": "Le fléau de la dimension : la table Q n'est qu'un dictionnaire — un compteur par état rencontré. À 12 états (2×2) elle couvre tout, à 360 (2×3) presque tout, à 181 440 (3×3) elle peine à dépasser quelques pour cent. Le théorème de convergence de Watkins (1992) exige que chaque couple (état, action) soit visité *infiniment souvent* — à cette échelle, on ne visite même pas chaque état une seule fois. C'est ça, le fléau. AlphaZero et MuZero remplacent la table par un réseau de neurones qui généralise à des états jamais vus.",
+      "cost": "Coût d'entraînement",
+      "costTip": "Coût réaliste sur ton laptop : ~10⁻⁹ CHF (un milliardième) par pas. Un Mission III complet par défaut coûte des centimes — quasiment rien. Mais le coût explose avec la taille de l'espace d'états : Even-Dar et Mansour 2003 prouvent qu'il faut O(|S|·|A|/ε²(1−γ)⁴) pas pour apprendre Q* à ε près. Pour les échecs (10⁴⁶ états), même à 10⁻⁹ CHF/pas, c'est inaccessible. AlphaZero a coûté ~$25M en compute TPU pour son entraînement, et n'a pourtant visité que 10⁻³⁶ de l'espace d'états des échecs — il a appris à *généraliser* via un réseau de neurones plutôt qu'à *énumérer*."
     },
     "btn": {
       "stepOnce": "Pas (une mise à jour)"

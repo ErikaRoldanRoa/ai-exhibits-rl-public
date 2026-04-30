@@ -438,6 +438,13 @@
             <div class="v" id="visited">—</div>
           </div>
           <div class="stat"><div class="k" data-i18n="ex.stats.qUpdates">Mises à jour Q</div><div class="v" id="updates">—</div></div>
+          <div class="stat">
+            <div class="k" style="display:flex; align-items:center; gap:6px;">
+              <span data-i18n="ex.stats.cost">Coût d'entraînement</span>
+              <span class="qmark" data-tip="Coût réaliste sur ton laptop : ~10⁻⁹ CHF (un milliardième) par pas. Un Mission III complet par défaut coûte donc des centimes — quasiment rien. Mais le coût explose avec la taille de l'espace d'états : Even-Dar et Mansour 2003 prouvent qu'il faut O(|S|·|A|/ε²(1−γ)⁴) pas pour apprendre Q* à ε près. Pour les échecs (10⁴⁶ états), même à 10⁻⁹ CHF/pas, c'est inaccessible. AlphaZero a coûté ~$25M en compute TPU pour son entraînement, et n'a pourtant visité que 10⁻³⁶ de l'espace d'états des échecs — il a appris à *généraliser* via un réseau de neurones plutôt qu'à *énumérer*." data-i18n-data-tip="ex.stats.costTip" tabindex="0" aria-label="À propos du coût">ⓘ</span>
+            </div>
+            <div class="v" id="costTxt">—</div>
+          </div>
         </div>
       </div>
       <div class="card">
@@ -670,6 +677,24 @@
     };
     visitedEl.textContent = `${fmtInt(v)} / ${fmtInt(REACHABLE_3X3)} (${fmtPct(pct)}%)`;
     updatesEl.textContent = String(updates);
+    // Training cost — realistic CPU step cost on a laptop ≈ 10⁻⁹ CHF.
+    // Total = updates × COST_PER_STEP. The point is not the absolute number
+    // (it's pennies on YOUR laptop) but the *scaling* — at chess-size MDPs
+    // (10⁴⁶ states) even 10⁻⁹ CHF per step is unaffordable.
+    const costEl = document.getElementById('costTxt');
+    if (costEl){
+      const COST_PER_STEP = 1e-9; // CHF on a CPU laptop, realistic
+      const total = updates * COST_PER_STEP;
+      // Avoid scientific notation; use plain decimal with up to 9 digits.
+      let s;
+      if (total === 0)            s = '0';
+      else if (total < 0.000001)  s = total.toFixed(9).replace(/\.?0+$/, '');
+      else if (total < 0.001)     s = total.toFixed(6);
+      else if (total < 1)         s = total.toFixed(4);
+      else                        s = total.toFixed(2);
+      if (lang !== 'en') s = s.replace('.', decSep);
+      costEl.textContent = `${s} CHF`;
+    }
   }
   function log(line){
     const t = new Date().toISOString().slice(11,19);

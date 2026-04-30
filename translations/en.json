@@ -278,7 +278,9 @@
       "movesLastSolve": "Moves (last solve)",
       "qUpdates": "Q updates",
       "coverage": "Q-agent coverage",
-      "coverageTip": "The curse of dimensionality: the Q-table is just a dictionary — one entry per state visited. At 12 states (2×2) it fills entirely; at 360 (2×3) almost entirely; at 181,440 (3×3) it struggles to pass a few percent. Watkins's 1992 convergence theorem requires every state-action pair visited *infinitely often* — at this scale we don't even visit each state once. That's the curse. AlphaZero and MuZero replace the table with a neural network that generalises to states never seen."
+      "coverageTip": "The curse of dimensionality: the Q-table is just a dictionary — one entry per state visited. At 12 states (2×2) it fills entirely; at 360 (2×3) almost entirely; at 181,440 (3×3) it struggles to pass a few percent. Watkins's 1992 convergence theorem requires every state-action pair visited *infinitely often* — at this scale we don't even visit each state once. That's the curse. AlphaZero and MuZero replace the table with a neural network that generalises to states never seen.",
+      "cost": "Training cost",
+      "costTip": "Realistic cost on your laptop: ~10⁻⁹ CHF (one billionth) per step. A full default Mission III run costs cents — basically free. But cost explodes with state-space size: Even-Dar and Mansour 2003 prove that O(|S|·|A|/ε²(1−γ)⁴) steps are needed to learn Q* within ε. For chess (10⁴⁶ states), even at 10⁻⁹ CHF/step, that's unaffordable. AlphaZero spent ~$25M on TPU training and yet only visited 10⁻³⁶ of the chess state space — it learned to *generalise* via a neural network rather than to *enumerate*."
     },
     "btn": {
       "stepOnce": "Step (one update)"
