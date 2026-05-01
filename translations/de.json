@@ -525,10 +525,10 @@
       "chip": "Mission III · Workshop-Kit",
       "title": "Skalierung · 3×3",
       "curseTitle": "Der Fluch macht sich bemerkbar.",
-      "curseBody": " Bei 181.440 Zuständen flacht die Abdeckungsanzeige weit unter 100 % ab. Im Hub übersetzt die <a href=\"exhibit_3x3.html\" target=\"_blank\" rel=\"noopener\">Trainingsökonomie-Karte</a> die Kosten in CHF: Demo 0,0001 · Zuverlässig 0,01 · Garantiert 700. Fünf Größenordnungen zwischen Hobby und Garantie.",
+      "curseBody": " Bei 181.440 Zuständen flacht die Abdeckungsanzeige weit unter 100 % ab. Im Hub übersetzt die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Trainingsökonomie-Karte</a> die Kosten in CHF: Demo 0,0001 · Zuverlässig 0,01 · Garantiert 700. Fünf Größenordnungen zwischen Hobby und Garantie.",
       "raceBody": "Jedes Team wählt (α, γ, ε) dreimal mit derselben Episodenzahl. Die Tabelle hält die Spuren fest.",
       "notes": {
-        "1": "5 Min · auf die <a href=\"exhibit_3x3.html\" target=\"_blank\" rel=\"noopener\">Trainingsökonomie-Karte</a> zeigen: drei Pillen Demo / Zuverlässig / Garantiert, fünf Größenordnungen zwischen der ersten und der letzten.",
+        "1": "5 Min · auf die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Trainingsökonomie-Karte</a> zeigen: drei Pillen Demo / Zuverlässig / Garantiert, fünf Größenordnungen zwischen der ersten und der letzten.",
         "2": "20 Min · mit empfohlenen Parametern trainieren; B5 anvisieren (31 Züge, Antipode); beobachten wie die Abdeckung abflacht.",
         "3": "Empfohlene Parameter: α≈0,3 · γ≈0,99 · ε≈0,5 · 10000 Episoden. Das Maximum 50000 schützt vor Runaway.",
         "4": "Den Fluch benennen: gleicher Algorithmus, gleiche Methode, der Raum ist nur zu weit geworden, um ihn zu durchwandern. Das ist die Tür zu neuronalen Netzen — kein Versagen."

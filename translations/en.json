@@ -525,10 +525,10 @@
       "chip": "Mission III · Workshop kit",
       "title": "Scaling · 3×3",
       "curseTitle": "The curse begins to bite.",
-      "curseBody": " Over 181,440 states the coverage gauge plateaus far below 100%. On the Hub, the <a href=\"exhibit_3x3.html\" target=\"_blank\" rel=\"noopener\">Training Economy card</a> prices the curse in CHF: Demo 0.0001 · Reliable 0.01 · Guaranteed 700. Five orders of magnitude between hobby and guarantee.",
+      "curseBody": " Over 181,440 states the coverage gauge plateaus far below 100%. On the Hub, the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Training Economy card</a> prices the curse in CHF: Demo 0.0001 · Reliable 0.01 · Guaranteed 700. Five orders of magnitude between hobby and guarantee.",
       "raceBody": "Each team picks (α, γ, ε) three times with the same number of episodes. The table keeps score.",
       "notes": {
-        "1": "5 min · point at the <a href=\"exhibit_3x3.html\" target=\"_blank\" rel=\"noopener\">Training Economy card</a>: three pills Demo / Reliable / Guaranteed, five orders of magnitude between the first and the last.",
+        "1": "5 min · point at the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Training Economy card</a>: three pills Demo / Reliable / Guaranteed, five orders of magnitude between the first and the last.",
         "2": "20 min · train with the recommended parameters; aim for B5 (31 moves, antipode); watch the coverage gauge plateau.",
         "3": "Recommended parameters: α≈0.3 · γ≈0.99 · ε≈0.5 · 10000 episodes. The max 50000 protects against runaway.",
         "4": "Name the curse: same algorithm, same method, the space has simply grown too vast to visit. This is the doorway to neural networks — not a failure."
