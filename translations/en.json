@@ -477,7 +477,6 @@
     "modeFacilitator": "Facilitator",
     "question": "",
     "prompt": "You'll compare three solvers: a random agent, yourself, and a Q-learning agent you train. Three puzzle sizes, three missions.",
-    "hint": "Tip: devices are often shared. Use Return to start anytime.",
     "facilitatorBtn": "Facilitator mode",
     "continueBtn": "Go ahead",
     "author": "Created and developed by <strong>Dr. Erika Roldán Roa</strong>"

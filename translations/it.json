@@ -477,7 +477,6 @@
     "modeFacilitator": "Facilitatrice",
     "question": "",
     "prompt": "Confronti tre risolutrici: un'agente casuale, te stessa e un'agente Q-learning che alleni. Tre dimensioni di puzzle, tre missioni.",
-    "hint": "Suggerimento: i dispositivi sono spesso condivisi. Usa Torna all'inizio in ogni momento.",
     "facilitatorBtn": "Modalità facilitatrice",
     "continueBtn": "Inizia",
     "author": "Sviluppato dalla <strong>Dr.ssa Erika Roldán Roa</strong>"

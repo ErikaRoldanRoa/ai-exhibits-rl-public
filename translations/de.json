@@ -477,7 +477,6 @@
     "modeFacilitator": "Moderation",
     "question": "",
     "prompt": "Du vergleichst drei Lösende: eine Zufalls-Agent*in, dich selbst und eine Q-Learning-Agent*in, die du trainierst. Drei Puzzlegrößen, drei Missionen.",
-    "hint": "Tipp: Geräte werden oft geteilt. Nutze Zurück zum Start jederzeit.",
     "facilitatorBtn": "Moderations-Modus",
     "continueBtn": "Los geht's",
     "author": "Entwickelt von <strong>Dr. Erika Roldán Roa</strong>"

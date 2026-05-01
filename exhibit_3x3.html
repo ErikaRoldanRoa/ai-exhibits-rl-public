@@ -34,7 +34,7 @@
     font-family: var(--sans);
     overflow:auto;
   }
-  .wrap{min-height:100vh; display:flex; align-items:stretch; justify-content:center; padding:16px 18px 24px;
+  .wrap{min-height:100vh; display:flex; align-items:stretch; justify-content:center; padding:8px 18px 24px;
 }
   .panel{
     width:min(860px, 96vw);
@@ -539,23 +539,23 @@
         <div class="kv">
           <div class="field">
             <div class="lab"><span data-i18n="ex.params.episodes">Épisodes</span><span class="i" data-tip="Nombre d'épisodes d'entraînement à exécuter.\nChaque épisode commence depuis un état mélangé." data-i18n-data-tip="ex.params.episodesTip">i</span></div>
-            <input id="episodes" type="number" min="1" step="1" value="800"/>
+            <input id="episodes" type="number" min="1" step="1" max="50000" value="10000"/>
           </div>
           <div class="field">
             <div class="lab"><span data-i18n="ex.params.maxSteps">Étapes max / épisode</span><span class="i" data-tip="Plafond de sécurité : arrêter un épisode s'il a pris trop de coups.\nPlus d'étapes permet à l'agente d'explorer des trajectoires plus longues." data-i18n-data-tip="ex.params.maxStepsTip">i</span></div>
-            <input id="maxSteps" type="number" min="1" step="1" value="120"/>
+            <input id="maxSteps" type="number" min="1" step="1" max="500" value="120"/>
           </div>
           <div class="field">
             <div class="lab"><span data-i18n="ex.params.learningRate"><span class="sym-alpha">α</span> (taux d'apprentissage)</span><span class="i" data-tip="À quel point on remplace l'ancien Q par de nouvelles informations.\nα=1 signifie remplacer ; un α plus petit signifie moyenner lentement." data-i18n-data-tip="ex.params.learningRateTip">i</span></div>
-            <input id="alpha" type="number" min="0" max="1" step="0.05" value="0.4"/>
+            <input id="alpha" type="number" min="0" max="1" step="0.05" value="0.3"/>
           </div>
           <div class="field">
             <div class="lab"><span data-i18n="ex.params.discount"><span class="sym-gamma">γ</span> (escompte)</span><span class="i" data-tip="L'importance des récompenses futures.\nγ proche de 1 valorise le succès à long terme." data-i18n-data-tip="ex.params.discountTip">i</span></div>
-            <input id="gamma" type="number" min="0" max="0.999" step="0.05" value="0.92"/>
+            <input id="gamma" type="number" min="0" max="0.999" step="0.05" value="0.99"/>
           </div>
           <div class="field">
             <div class="lab"><span data-i18n="ex.params.epsilon"><span class="sym-epsilon">ε</span> (exploration)</span><span class="i" data-tip="Probabilité d'exploration en ε-glouton.\nAvec la probabilité ε, choisir une action au hasard." data-i18n-data-tip="ex.params.epsilonTip">i</span></div>
-            <input id="eps" type="number" min="0" max="1" step="0.05" value="0.25"/>
+            <input id="eps" type="number" min="0" max="1" step="0.05" value="0.5"/>
           </div>
           <div class="field">
             <div class="lab"><span data-i18n="ex.params.stepPenalty">Pénalité par pas</span><span class="i" data-tip="Modelage optionnel : une petite récompense négative à chaque coup.\nEncourage des solutions plus courtes." data-i18n-data-tip="ex.params.stepPenaltyTip">i</span></div>
