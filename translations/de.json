@@ -110,7 +110,8 @@
       "q": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">Q-LEARNING</div>\n        <div>\n          <strong>Q-Learning</strong> ist ein Algorithmus des verstärkenden Lernens.\n          Er lernt Werte <span class=\"mono\">Q(Zustand, Aktion)</span>, die einschätzen, wie gut jede Aktion in jedem Zustand ist.\n          Die Agent*in nutzt diese Q-Werte dann, um ihre Aktionen zu wählen (ihre Strategie).\n        </div>\n      "
     },
     "dmvmBanner": "Du liest den DMVM-Artikel. Beginne mit dem 2×2 — zwölf Zustände, die ganze Welt auf einer Serviette.",
-    "dmvmBannerClose": "DMVM-Banner schließen"
+    "dmvmBannerClose": "DMVM-Banner schließen",
+    "tutorialReplay": "Tutorial ansehen"
   },
   "glossary": {
     "cardTitle": "Glossar — Q-Learning-Begriffe",

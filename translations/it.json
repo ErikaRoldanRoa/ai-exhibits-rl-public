@@ -110,7 +110,8 @@
       "q": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">Q-LEARNING</div>\n        <div>\n          Il <strong>Q-learning</strong> è un algoritmo di apprendimento per rinforzo.\n          Apprende valori <span class=\"mono\">Q(stato, azione)</span> che stimano quanto è buona ogni azione in ogni stato.\n          L'agente usa poi questi valori Q per scegliere le sue azioni (la sua politica).\n        </div>\n      "
     },
     "dmvmBanner": "Stai leggendo l'articolo DMVM. Comincia con il 2×2 — dodici stati, l'intero mondo entra in un tovagliolo.",
-    "dmvmBannerClose": "Chiudi il banner DMVM"
+    "dmvmBannerClose": "Chiudi il banner DMVM",
+    "tutorialReplay": "Vedi il tutorial"
   },
   "glossary": {
     "cardTitle": "Glossario — termini Q-learning",

@@ -110,7 +110,8 @@
       "q": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">Q-LEARNING</div>\n        <div>\n          <strong>Q-learning</strong> is a reinforcement-learning algorithm.\n          It learns values <span class=\"mono\">Q(state, action)</span> that estimate how good each action is in each state.\n          The agent then uses these Q-values to choose its actions (its policy).\n        </div>\n      "
     },
     "dmvmBanner": "You're reading the DMVM article. Start with the 2×2 — twelve states, the whole world fits on a napkin.",
-    "dmvmBannerClose": "Close DMVM banner"
+    "dmvmBannerClose": "Close DMVM banner",
+    "tutorialReplay": "See the tutorial"
   },
   "glossary": {
     "cardTitle": "Glossary — Q-learning terms",
