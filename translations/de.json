@@ -97,9 +97,12 @@
     },
     "facTools": {
       "tag": "MODERATION",
-      "title": "Schnellstart",
-      "desc": "Nutze den Moderations-Leitfaden für Ablauf, Kontrollpunkte und Problemlösungen. Die Exponate bleiben entdeckungsorientiert; der Leitfaden gibt die Struktur.",
-      "openBtn": "Moderations-Schnellstart öffnen"
+      "title": "Workshop-Kits",
+      "desc": "Ein druckbares Kit pro Mission: Glossar, Referenzen, Versuchstabelle, Notizen für die Leitung. Ein Team-Bewertungsbogen fasst die drei Missionen auf einer Seite zusammen.",
+      "kit1": "Kit Mission I",
+      "kit2": "Kit Mission II",
+      "kit3": "Kit Mission III",
+      "scoresheet": "Team-Bewertungsbogen"
     },
     "glossary": {
       "agent": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">AGENT*IN</div>\n        <div>\n          Eine <strong>Agent*in</strong> ist die Instanz, die Entscheidungen trifft: eine Person oder ein System, das in jedem <strong>Zustand</strong> eine <strong>Aktion</strong> wählt.\n        </div>\n        <div style=\"margin-top:8px;\">\n          In dieser Ausstellung vergleichst du drei Agent*innen:<br>\n          • eine <strong>menschliche Agent*in</strong> (du)<br>\n          • eine <strong>untrainierte (zufällige) Agent*in</strong> (gleichverteilt gezogene legale Züge)<br>\n          • eine <strong>Q-Learning-Agent*in</strong> (gelernte Q-Werte → Strategie → Aktionen)\n        </div>\n        <div style=\"margin-top:8px;\">\n          Alle drei sind Agent*innen. Der einzige Unterschied ist die <strong>Art</strong>, wie sie ihre Aktionen in jedem Zustand wählen.\n        </div>\n      ",

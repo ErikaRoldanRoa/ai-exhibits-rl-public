@@ -97,9 +97,12 @@
     },
     "facTools": {
       "tag": "FACILITATRICE",
-      "title": "Avvio Rapido",
-      "desc": "Usa la guida della facilitatrice per l'orchestrazione, i punti di controllo e le piste di risoluzione dei problemi. Le esposizioni restano centrate sull'esplorazione; la guida fornisce la struttura.",
-      "openBtn": "Apri l'avvio rapido facilitatrice"
+      "title": "Kit per il laboratorio",
+      "desc": "Un kit stampabile per missione: glossario, riferimenti, tabella di gara, note per l'animatrice. Una scheda di squadra raccoglie le tre missioni in una pagina.",
+      "kit1": "Kit Missione I",
+      "kit2": "Kit Missione II",
+      "kit3": "Kit Missione III",
+      "scoresheet": "Scheda di squadra"
     },
     "glossary": {
       "agent": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">AGENTE</div>\n        <div>\n          Un'<strong>agente</strong> è l'entità che prende le decisioni: una persona o un sistema che sceglie un'<strong>azione</strong> in ogni <strong>stato</strong>.\n        </div>\n        <div style=\"margin-top:8px;\">\n          In questa mostra confronterai tre agenti:<br>\n          • un'<strong>agente umana</strong> (tu)<br>\n          • un'<strong>agente non addestrata (casuale)</strong> (mosse legali estratte uniformemente a caso)<br>\n          • un'<strong>agente Q-learning</strong> (valori Q appresi → politica → azioni)\n        </div>\n        <div style=\"margin-top:8px;\">\n          Tutte sono agenti. L'unica differenza sta nel <strong>modo</strong> in cui scelgono le loro azioni in ogni stato.\n        </div>\n      ",

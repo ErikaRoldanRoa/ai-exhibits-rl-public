@@ -97,9 +97,12 @@
     },
     "facTools": {
       "tag": "ANIMATRICE",
-      "title": "Démarrage Rapide",
-      "desc": "Utilisez le guide de l'animatrice pour l'orchestration, les points de contrôle et les pistes de dépannage. Les expositions restent axées sur l'exploration ; le guide apporte la structure.",
-      "openBtn": "Ouvrir le démarrage rapide animatrice"
+      "title": "Kits d'atelier",
+      "desc": "Un kit imprimable par mission : glossaire, références, tableau de course, notes pour l'animatrice. Une fiche d'équipe consolide les trois missions en une page.",
+      "kit1": "Kit Mission I",
+      "kit2": "Kit Mission II",
+      "kit3": "Kit Mission III",
+      "scoresheet": "Fiche d'équipe"
     },
     "glossary": {
       "agent": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">AGENTE</div>\n        <div>\n          Une <strong>agente</strong> est l'entité qui prend les décisions&#8239;: une personne ou un système qui choisit une <strong>action</strong> dans chaque <strong>état</strong>.\n        </div>\n        <div style=\"margin-top:8px;\">\n          Dans cette exposition, vous comparerez trois agentes&#8239;:<br>\n          • une <strong>agente humaine</strong> (vous)<br>\n          • une <strong>agente non entraînée (aléatoire)</strong> (mouvements légaux tirés uniformément au hasard)<br>\n          • une <strong>agente Q-learning</strong> (valeurs Q apprises → politique → actions)\n        </div>\n        <div style=\"margin-top:8px;\">\n          Toutes sont des agentes. La seule différence réside dans la <strong>manière</strong> dont elles choisissent leurs actions dans chaque état.\n        </div>\n      ",

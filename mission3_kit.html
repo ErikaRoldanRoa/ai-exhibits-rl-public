@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--
+  AI-Exhibits · Reinforcement Learning & Sliding Puzzles
+  Mission III — workshop kit (printable, i18n).
+  One per-mission artifact: glossary, bench reference, attempt table, facilitator notes.
+
+  © 2026 Dr. Erika Roldán Roa. All rights reserved by the author.
+  Licensed: CC BY-NC-ND 4.0. See LICENSE.
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Mission III · Kit — AI-Exhibits</title>
+<link rel="stylesheet" href="app/styles.css"/>
+<style>
+  :root {
+    --bg0:#070812; --bg1:#0b0d1a;
+    --pink:#ff2fd6; --cyan:#6ad7ff; --lime:#55ff7a;
+    --text:rgba(255,255,255,0.92);
+    --muted:rgba(255,255,255,0.70);
+    --muted2:rgba(255,255,255,0.55);
+    --stroke:rgba(255,255,255,0.14);
+    --radius:18px;
+    --shadow:0 14px 44px rgba(0,0,0,0.45);
+    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  }
+  html,body{height:100%;}
+  body{margin:0;background:var(--bg0);color:var(--text);font-family:var(--sans);}
+  .kit-wrap{max-width:1080px;margin:16px auto 32px;padding:14px;
+    background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.04));
+    border:1px solid var(--stroke);border-radius:var(--radius);
+    box-shadow:var(--shadow);backdrop-filter:blur(10px);}
+  .kit-header{display:flex;align-items:center;justify-content:space-between;
+    gap:14px;flex-wrap:wrap;padding:12px 14px 14px;
+    border-bottom:1px solid rgba(255,255,255,0.10);}
+  .kit-chip{display:inline-flex;gap:8px;align-items:center;
+    padding:6px 12px;border:1px solid rgba(255,47,214,0.45);border-radius:999px;
+    background:rgba(0,0,0,0.20);font-size:13px;font-weight:800;}
+  .kit-spark{width:8px;height:8px;border-radius:999px;background:var(--pink);
+    box-shadow:0 0 10px rgba(255,47,214,0.55);}
+  .kit-h1{font-size:18px;letter-spacing:0.2px;margin:0;font-weight:900;color:var(--pink);}
+  .kit-meta{display:flex;align-items:center;gap:10px;color:var(--muted2);font-size:12px;font-family:var(--mono);}
+  /* Goal mini-icon (matches trainer header) */
+  .goal-mini{display:inline-grid;gap:2px;vertical-align:middle;padding:2px;}
+  .goal-3x3{grid-template-columns:repeat(3,16px);}
+  .gm-cell{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:10px;font-weight:800;color:var(--text);
+    background:linear-gradient(180deg,rgba(255,47,214,0.18),rgba(255,47,214,0.10));
+    border:1px solid rgba(255,47,214,0.40);border-radius:4px;}
+  .gm-empty{background:transparent;border-style:dashed;opacity:0.5;}
+  /* Body grid */
+  .kit-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;padding:14px;}
+  @media (max-width:780px){.kit-grid{grid-template-columns:1fr;}}
+  .kit-card{background:linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.04));
+    border:1px solid var(--stroke);border-radius:14px;padding:14px;
+    box-shadow:0 8px 22px rgba(0,0,0,0.30);}
+  .kit-card h2{margin:0 0 10px 0;font-size:14px;letter-spacing:0.2px;color:rgba(255,255,255,0.92);}
+  .kit-card p{margin:0 0 6px 0;font-size:12px;color:var(--muted);line-height:1.5;}
+  .kit-card .stat-line{display:flex;justify-content:space-between;align-items:baseline;
+    padding:6px 8px;border-radius:8px;background:rgba(0,0,0,0.22);font-family:var(--mono);
+    font-size:12px;border:1px solid rgba(255,255,255,0.08);margin-top:6px;}
+  .kit-card .stat-line .lbl{color:var(--muted);}
+  .kit-card .stat-line .val{font-weight:800;color:var(--text);}
+  /* Bench buttons */
+  .kit-bench{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
+  .kit-bench .btn-bench{font-family:var(--mono);font-size:11px;padding:5px 10px;
+    border-radius:8px;background:rgba(0,0,0,0.22);border:1px solid rgba(255,255,255,0.10);
+    color:var(--text);font-weight:700;}
+  .kit-bench .b-gods{border-color:rgba(255,47,214,0.50);background:rgba(255,47,214,0.10);}
+  /* Attempt table — paper-gold race scaffolding (per fiche_equipe) */
+  .kit-table-wrap{margin-top:8px;overflow-x:auto;}
+  table.kit-table{width:100%;border-collapse:collapse;font-size:11px;font-family:var(--mono);}
+  table.kit-table th, table.kit-table td{
+    border:1px solid rgba(255,255,255,0.10);padding:5px 6px;text-align:center;}
+  table.kit-table th{background:rgba(0,0,0,0.30);font-weight:700;color:var(--muted);font-size:10px;}
+  table.kit-table .bench-col{font-weight:800;color:var(--text);background:rgba(0,0,0,0.22);}
+  table.kit-table .opt-col{color:var(--cyan);font-weight:800;}
+  table.kit-table .best-col{color:var(--lime);font-weight:800;background:rgba(85,255,122,0.06);}
+  table.kit-table .gods-row{background:rgba(255,47,214,0.05);}
+  table.kit-table .gods-row .bench-col{color:var(--pink);}
+  table.kit-table input{width:100%;background:transparent;border:0;outline:0;
+    color:var(--text);font:inherit;text-align:center;}
+  table.kit-table input:focus{background:rgba(106,215,255,0.08);}
+  /* Tip block */
+  .kit-tip{background:rgba(106,215,255,0.07);border:1px dashed rgba(106,215,255,0.32);
+    border-radius:10px;padding:10px 12px;margin-top:10px;font-size:12px;color:var(--muted);}
+  .kit-tip strong{color:var(--cyan);}
+  /* Facilitator notes (collapsible) */
+  details.kit-notes{margin-top:10px;padding:10px 12px;border:1px dashed rgba(255,255,255,0.14);
+    border-radius:10px;background:rgba(0,0,0,0.18);}
+  details.kit-notes summary{cursor:pointer;font-weight:700;font-size:12px;color:var(--muted);
+    list-style:none;}
+  details.kit-notes summary::before{content:"▶";display:inline-block;margin-right:8px;
+    transition:transform 0.15s;font-size:9px;opacity:0.7;}
+  details.kit-notes[open] > summary::before{transform:rotate(90deg);}
+  details.kit-notes ul{margin:8px 0 0;padding-left:18px;font-size:11.5px;color:var(--muted);line-height:1.5;}
+  /* Print CSS — A4 landscape, light bg */
+  @media print{
+    @page{size:A4 landscape;margin:10mm 12mm;}
+    body{background:#fff;color:#111;}
+    .kit-wrap{background:none;border:1px solid #888;box-shadow:none;backdrop-filter:none;
+      max-width:none;margin:0;padding:6px;}
+    .kit-card{background:#fff;border:1px solid #999;box-shadow:none;}
+    .kit-card h2{color:#111;}
+    .kit-card p, .kit-card .stat-line .lbl{color:#333;}
+    .kit-card .stat-line{background:#f5f5f5;}
+    .kit-card .stat-line .val, table.kit-table .bench-col, table.kit-table input{color:#111;}
+    .kit-h1{color:#a01480;}
+    .kit-chip{border-color:#a01480;}
+    table.kit-table th{background:#eee;color:#222;}
+    table.kit-table .opt-col{color:#0a4d6b;}
+    table.kit-table .best-col{color:#1a7a30;background:#f0fff0;}
+    table.kit-table .gods-row{background:#fff0fa;}
+    table.kit-table .gods-row .bench-col{color:#a01480;}
+    .kit-tip{background:#f0faff;border-color:#88c0e0;color:#222;}
+    .kit-tip strong{color:#0a4d6b;}
+    details.kit-notes{background:#fafafa;border-color:#aaa;color:#333;}
+    details.kit-notes[open] summary{color:#222;}
+    details.kit-notes ul{color:#333;}
+    .gm-cell{color:#a01480;background:#fff0fa;border-color:#a01480;}
+    .gm-empty{background:transparent;}
+    .kit-back, .kit-replay{display:none;}
+  }
+  /* Top-right back-to-hub link */
+  .kit-back{position:fixed;top:14px;right:14px;font-size:12px;font-family:var(--mono);
+    color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:999px;
+    border:1px solid rgba(255,255,255,0.18);background:rgba(0,0,0,0.30);}
+  .kit-back:hover{color:var(--cyan);border-color:rgba(106,215,255,0.45);}
+</style>
+</head>
+<body>
+
+<a href="index.html" class="kit-back" data-i18n="kit.backToHub">← Hub</a>
+
+<div class="kit-wrap">
+
+  <header class="kit-header">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+      <span class="kit-chip"><span class="kit-spark"></span><span data-i18n="kit.m3.chip">Mission III · Kit atelier</span></span>
+      <h1 class="kit-h1" data-i18n="kit.m3.title">Mise à l'Échelle · 3×3</h1>
+    </div>
+    <div class="kit-meta">
+      <span data-i18n="ex.header.goalLabel">Objectif</span>
+      <span class="goal-mini goal-3x3" aria-label="puzzle goal">
+        <span class="gm-cell">1</span><span class="gm-cell">2</span><span class="gm-cell">3</span>
+        <span class="gm-cell">4</span><span class="gm-cell">5</span><span class="gm-cell">6</span>
+        <span class="gm-cell">7</span><span class="gm-cell">8</span><span class="gm-cell gm-empty"></span>
+      </span>
+    </div>
+  </header>
+
+  <div class="kit-grid">
+
+    <!-- LEFT COLUMN: facts + glossary + bench -->
+    <section class="kit-card">
+      <h2 data-i18n="kit.facts.title">Le monde de Mission III</h2>
+      <div class="stat-line"><span class="lbl" data-i18n="kit.facts.states">États accessibles</span><span class="val">181 440 = 9!/2</span></div>
+      <div class="stat-line"><span class="lbl" data-i18n="kit.facts.gods">Nombre de Dieu</span><span class="val">31</span></div>
+      <div class="stat-line"><span class="lbl" data-i18n="kit.facts.qsize">Table Q</span><span class="val">≤ 725 760</span></div>
+      <div class="stat-line"><span class="lbl" data-i18n="kit.facts.diam">Diamètre du graphe</span><span class="val">31</span></div>
+
+      <div class="kit-tip">
+        <strong data-i18n="kit.m3.curseTitle">Le fléau se fait sentir.</strong>
+        <span data-i18n="kit.m3.curseBody"> Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Sur le Hub, la carte Économie traduit le coût en CHF : Démo 0,0001 · Fiable 0,01 · Garantie 700. Cinq ordres de grandeur entre hobby et garantie.</span>
+      </div>
+
+      <h2 style="margin-top:14px;" data-i18n="kit.bench.title">Références (B1 → B5)</h2>
+      <p data-i18n="kit.m1.benchHint">Chaque référence est un état de départ à distance fixe du but. La distance optimale est la longueur de la solution la plus courte.</p>
+      <div class="kit-bench">
+        <span class="btn-bench">B1 ⭐ · 1</span>
+        <span class="btn-bench">B2 ⭐⭐ · 10</span>
+        <span class="btn-bench">B3 ⭐⭐⭐ · 18</span>
+        <span class="btn-bench">B4 ⭐⭐⭐⭐ · 26</span>
+        <span class="btn-bench b-gods">B5 🏆 · 31 (Nombre de Dieu)</span>
+      </div>
+
+      <!-- Glossary chips for THIS mission — shared widget, M1 chips only -->
+      <div class="glossary card" id="kitGlossary" style="margin-top:14px;"></div>
+      <script src="app/glossary.js"></script>
+      <script>
+        if (window.AIGlossary && document.getElementById("kitGlossary")) {
+          window.AIGlossary.render(document.getElementById("kitGlossary"), {
+            chips: ["agent", "state", "action", "q", "episode", "propagation", "convergence", "curse", "generalisation", "budget"],
+            defaultActive: "curse",
+          });
+        }
+      </script>
+    </section>
+
+    <!-- RIGHT COLUMN: attempt table + facilitator notes -->
+    <section class="kit-card">
+      <h2 data-i18n="kit.race.title">La course cachée · 3 essais à budget fixe</h2>
+      <p data-i18n="kit.m3.raceBody">Chaque équipe choisit (α, γ, ε) trois fois avec le même nombre d'épisodes. Le tableau garde la trace.</p>
+      <div class="kit-table-wrap">
+        <table class="kit-table">
+          <thead>
+            <tr>
+              <th rowspan="2" data-i18n="kit.race.bench">Bench</th>
+              <th rowspan="2" data-i18n="kit.race.optimal">Opt.</th>
+              <th colspan="4" data-i18n="kit.race.attempt1">Essai 1</th>
+              <th colspan="4" data-i18n="kit.race.attempt2">Essai 2</th>
+              <th colspan="4" data-i18n="kit.race.attempt3">Essai 3</th>
+              <th rowspan="2" data-i18n="kit.race.best">Meilleur</th>
+            </tr>
+            <tr>
+              <th>α</th><th>γ</th><th>ε</th><th data-i18n="kit.race.moves">Mvts</th>
+              <th>α</th><th>γ</th><th>ε</th><th data-i18n="kit.race.moves">Mvts</th>
+              <th>α</th><th>γ</th><th>ε</th><th data-i18n="kit.race.moves">Mvts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="bench-col">B1</td><td class="opt-col">1</td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td class="best-col"><input/></td></tr>
+            <tr><td class="bench-col">B2</td><td class="opt-col">10</td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td class="best-col"><input/></td></tr>
+            <tr><td class="bench-col">B3</td><td class="opt-col">18</td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td class="best-col"><input/></td></tr>
+            <tr><td class="bench-col">B4</td><td class="opt-col">26</td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td class="best-col"><input/></td></tr>
+            <tr class="gods-row"><td class="bench-col">B5 🏆</td><td class="opt-col">31</td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td class="best-col"><input/></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <details class="kit-notes">
+        <summary data-i18n="kit.notes.facilitatorTitle">Notes pour l'animatrice</summary>
+        <ul>
+          <li data-i18n="kit.m3.notes.1">5 min · pointer la carte Économie : trois pastilles Démo / Fiable / Garantie, cinq ordres de grandeur entre la première et la dernière.</li>
+          <li data-i18n="kit.m3.notes.2">20 min · entraîner avec les paramètres recommandés ; viser B5 (31 coups, antipode) ; observer la jauge de couverture plafonner.</li>
+          <li data-i18n="kit.m3.notes.3">Paramètres recommandés : α≈0,3 · γ≈0,99 · ε≈0,5 · épisodes 10 000. Le maximum 50 000 protège du runaway.</li>
+          <li data-i18n="kit.m3.notes.4">Nommer le fléau : même algorithme, même méthode, l'espace est devenu trop vaste pour qu'on le visite. C'est la porte d'entrée vers les réseaux de neurones — pas un échec.</li>
+        </ul>
+      </details>
+    </section>
+
+  </div>
+</div>
+
+<script src="app/i18n.js"></script>
+<script src="app/tooltips.js"></script>
+</body>
+</html>

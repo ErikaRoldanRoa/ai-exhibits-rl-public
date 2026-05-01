@@ -97,9 +97,12 @@
     },
     "facTools": {
       "tag": "FACILITATOR",
-      "title": "Quickstart",
-      "desc": "Use the facilitator guide for orchestration, checkpoints, and troubleshooting prompts. The exhibits stay exploration-first; the guide provides structure.",
-      "openBtn": "Open facilitator quickstart"
+      "title": "Workshop kits",
+      "desc": "One printable kit per mission: glossary, references, race table, facilitator notes. A team scoresheet consolidates the three missions on one page.",
+      "kit1": "Mission I kit",
+      "kit2": "Mission II kit",
+      "kit3": "Mission III kit",
+      "scoresheet": "Team scoresheet"
     },
     "glossary": {
       "agent": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">AGENT</div>\n        <div>\n          An <strong>agent</strong> is the entity making decisions: a person or a system that chooses an <strong>action</strong> in each <strong>state</strong>.\n        </div>\n        <div style=\"margin-top:8px;\">\n          In this exhibit, you will compare three agents:<br>\n          • a <strong>human agent</strong> (you)<br>\n          • an <strong>untrained (random) agent</strong> (legal moves drawn uniformly at random)<br>\n          • a <strong>Q-learning agent</strong> (learned Q-values → policy → actions)\n        </div>\n        <div style=\"margin-top:8px;\">\n          All three are agents. The only difference is <strong>how</strong> they choose their actions in each state.\n        </div>\n      ",
