@@ -89,16 +89,10 @@ ai-exhibits-rl-public/
 │   ├── de.json                      German.
 │   └── it.json                      Italian.
 │
-├── print/
-│   └── fiche_equipe.html            Single consolidated team scoresheet — all 3 missions on one A4
-│                                    landscape page, fillable with α, γ, ε, moves per benchmark per
-│                                    attempt. i18n via __i18nBase shim.
-│
-└── archive/                         Pre-consolidation artifacts kept for reference.
-    ├── facilitator_quickstart.html  Folded into per-mission kit notes.
-    ├── fiche_participant.html       Folded into per-mission kits.
-    └── print/                       Old per-language scoresheets + bilingual dictionaries; replaced
-                                     by the i18n consolidated kits + scoresheet.
+└── print/
+    └── fiche_equipe.html            Single consolidated team scoresheet — all 3 missions on one A4
+                                     landscape page, fillable with α, γ, ε, moves per benchmark per
+                                     attempt. i18n via __i18nBase shim.
 ```
 
 ---
