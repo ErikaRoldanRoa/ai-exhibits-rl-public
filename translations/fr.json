@@ -525,10 +525,10 @@
       "chip": "Mission III · Kit atelier",
       "title": "Mise à l'Échelle · 3×3",
       "curseTitle": "Le fléau se fait sentir.",
-      "curseBody": " Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Sur le Hub, la carte Économie traduit le coût en CHF : Démo 0,0001 · Fiable 0,01 · Garantie 700. Cinq ordres de grandeur entre hobby et garantie.",
+      "curseBody": " Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Sur le Hub, la <a href=\"exhibit_3x3.html\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût en CHF : Démo 0,0001 · Fiable 0,01 · Garantie 700. Cinq ordres de grandeur entre hobby et garantie.",
       "raceBody": "Chaque équipe choisit (α, γ, ε) trois fois avec le même nombre d'épisodes. Le tableau garde la trace.",
       "notes": {
-        "1": "5 min · pointer la carte Économie : trois pastilles Démo / Fiable / Garantie, cinq ordres de grandeur entre la première et la dernière.",
+        "1": "5 min · pointer la <a href=\"exhibit_3x3.html\" target=\"_blank\" rel=\"noopener\">carte Économie</a> : trois pastilles Démo / Fiable / Garantie, cinq ordres de grandeur entre la première et la dernière.",
         "2": "20 min · entraîner avec les paramètres recommandés ; viser B5 (31 coups, antipode) ; observer la jauge de couverture plafonner.",
         "3": "Paramètres recommandés : α≈0,3 · γ≈0,99 · ε≈0,5 · épisodes 10 000. Le maximum 50 000 protège du runaway.",
         "4": "Nommer le fléau : même algorithme, même méthode, l'espace est devenu trop vaste pour qu'on le visite. C'est la porte d'entrée vers les réseaux de neurones — pas un échec."
@@ -543,7 +543,7 @@
     },
     "bench": {
       "title": "Références",
-      "hint": "Chaque référence est un état de départ à distance fixe du but. La distance optimale est la longueur de la solution la plus courte."
+      "hint": "B<em>k</em> = un état de départ à <em>k</em> coups de l'objectif. La distance optimale est la longueur de la solution la plus courte."
     },
     "race": {
       "title": "La course cachée · 3 essais à budget fixe",
@@ -554,7 +554,8 @@
       "attempt3": "Essai 3",
       "best": "Meilleur",
       "moves": "Mvts",
-      "scoresheetNote": "→ Note aussi le résultat sur la fiche d'équipe consolidée (3 missions sur une page)."
+      "scoresheetNote": "→ Note aussi le résultat sur la fiche d'équipe consolidée (3 missions sur une page).",
+      "scoresheetLink": "Ouvrir la fiche d'équipe (3 missions sur une page)"
     },
     "notes": {
       "facilitatorTitle": "Notes pour l'animatrice"
@@ -567,6 +568,10 @@
       "alpha": "élevé : apprend vite mais peut osciller · faible : stable mais lent",
       "gamma": "élevé : planifie loin (plus de propagation backward) · faible : myope",
       "epsilon": "élevé : explore davantage · trop bas trop tôt : se fige sur un choix initial"
+    },
+    "strip": {
+      "bench": "Bench",
+      "moves": "Mvts"
     }
   },
   "fe": {

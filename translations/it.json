@@ -525,10 +525,10 @@
       "chip": "Missione III · Kit del laboratorio",
       "title": "Scala · 3×3",
       "curseTitle": "La maledizione si fa sentire.",
-      "curseBody": " Su 181.440 stati la barra di copertura si ferma molto sotto il 100 %. Sull'Hub, la carta Économie traduce il costo in CHF: Demo 0,0001 · Affidabile 0,01 · Garantita 700. Cinque ordini di grandezza fra hobby e garanzia.",
+      "curseBody": " Su 181.440 stati la barra di copertura si ferma molto sotto il 100 %. Sull'Hub, la <a href=\"exhibit_3x3.html\" target=\"_blank\" rel=\"noopener\">carta Economia di addestramento</a> traduce il costo in CHF: Demo 0,0001 · Affidabile 0,01 · Garantita 700. Cinque ordini di grandezza fra hobby e garanzia.",
       "raceBody": "Ogni squadra sceglie (α, γ, ε) tre volte con lo stesso numero di episodi. La tabella tiene le tracce.",
       "notes": {
-        "1": "5 min · indicare la carta Économie: tre pasticche Demo / Affidabile / Garantita, cinque ordini di grandezza fra la prima e l'ultima.",
+        "1": "5 min · indicare la <a href=\"exhibit_3x3.html\" target=\"_blank\" rel=\"noopener\">carta Economia di addestramento</a>: tre pasticche Demo / Affidabile / Garantita, cinque ordini di grandezza fra la prima e l'ultima.",
         "2": "20 min · addestrare con i parametri consigliati; mirare a B5 (31 mosse, antipode); osservare la barra di copertura fermarsi.",
         "3": "Parametri consigliati: α≈0,3 · γ≈0,99 · ε≈0,5 · 10000 episodi. Il massimo 50000 protegge dal runaway.",
         "4": "Nominare la maledizione: stesso algoritmo, stesso metodo, lo spazio è semplicemente diventato troppo vasto per essere visitato. È la porta verso le reti neurali — non un fallimento."
@@ -543,7 +543,7 @@
     },
     "bench": {
       "title": "Riferimenti",
-      "hint": "Ogni riferimento è uno stato iniziale a distanza fissa dall'obiettivo. La distanza ottimale è la lunghezza della soluzione più breve."
+      "hint": "B<em>k</em> = uno stato iniziale a <em>k</em> mosse dall'obiettivo. La distanza ottimale è la lunghezza della soluzione più breve."
     },
     "race": {
       "title": "La corsa nascosta · 3 tentativi a budget fisso",
@@ -554,7 +554,8 @@
       "attempt3": "Tentativo 3",
       "best": "Migliore",
       "moves": "Mosse",
-      "scoresheetNote": "→ Annota anche il risultato sulla scheda di squadra consolidata (3 missioni su una pagina)."
+      "scoresheetNote": "→ Annota anche il risultato sulla scheda di squadra consolidata (3 missioni su una pagina).",
+      "scoresheetLink": "Apri la scheda di squadra (3 missioni su una pagina)"
     },
     "notes": {
       "facilitatorTitle": "Note per l'animatrice"
@@ -567,6 +568,10 @@
       "alpha": "alto: impara in fretta ma può oscillare · basso: stabile ma lento",
       "gamma": "alto: pianifica lontano (più propagazione all'indietro) · basso: miope",
       "epsilon": "alto: esplora di più · troppo basso troppo presto: si blocca su una prima scelta"
+    },
+    "strip": {
+      "bench": "Bench",
+      "moves": "Mosse"
     }
   },
   "fe": {

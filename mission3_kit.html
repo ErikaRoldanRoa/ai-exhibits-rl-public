@@ -13,134 +13,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Mission III · Kit — AI-Exhibits</title>
 <link rel="stylesheet" href="app/styles.css"/>
+<link rel="stylesheet" href="app/kit-shared.css"/>
 <style>
-  :root {
-    --bg0:#070812; --bg1:#0b0d1a;
-    --pink:#ff2fd6; --cyan:#6ad7ff; --lime:#55ff7a;
-    --text:rgba(255,255,255,0.92);
-    --muted:rgba(255,255,255,0.70);
-    --muted2:rgba(255,255,255,0.55);
-    --stroke:rgba(255,255,255,0.14);
-    --radius:18px;
-    --shadow:0 14px 44px rgba(0,0,0,0.45);
-    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  }
-  html,body{height:100%;}
-  body{margin:0;background:var(--bg0);color:var(--text);font-family:var(--sans);}
-  .kit-wrap{max-width:1080px;margin:16px auto 32px;padding:14px;
-    background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.04));
-    border:1px solid var(--stroke);border-radius:var(--radius);
-    box-shadow:var(--shadow);backdrop-filter:blur(10px);}
-  .kit-header{display:flex;align-items:center;justify-content:space-between;
-    gap:14px;flex-wrap:wrap;padding:12px 14px 14px;
-    border-bottom:1px solid rgba(255,255,255,0.10);}
-  .kit-chip{display:inline-flex;gap:8px;align-items:center;
-    padding:6px 12px;border:1px solid rgba(255,47,214,0.45);border-radius:999px;
-    background:rgba(0,0,0,0.20);font-size:13px;font-weight:800;}
-  .kit-spark{width:8px;height:8px;border-radius:999px;background:var(--pink);
-    box-shadow:0 0 10px rgba(255,47,214,0.55);}
-  .kit-h1{font-size:18px;letter-spacing:0.2px;margin:0;font-weight:900;color:var(--pink);}
-  .kit-meta{display:flex;align-items:center;gap:10px;color:var(--muted2);font-size:12px;font-family:var(--mono);}
-  /* Goal mini-icon (matches trainer header) */
-  .goal-mini{display:inline-grid;gap:2px;vertical-align:middle;padding:2px;}
+  /* Per-mission goal-icon grid override */
   .goal-3x3{grid-template-columns:repeat(3,16px);}
-  .gm-cell{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;
-    font-family:var(--mono);font-size:10px;font-weight:800;color:var(--text);
-    background:linear-gradient(180deg,rgba(255,47,214,0.18),rgba(255,47,214,0.10));
-    border:1px solid rgba(255,47,214,0.40);border-radius:4px;}
-  .gm-empty{background:transparent;border-style:dashed;opacity:0.5;}
-  /* Body grid */
-  .kit-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;padding:14px;}
-  @media (max-width:780px){.kit-grid{grid-template-columns:1fr;}}
-  .kit-card{background:linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.04));
-    border:1px solid var(--stroke);border-radius:14px;padding:14px;
-    box-shadow:0 8px 22px rgba(0,0,0,0.30);}
-  .kit-card h2{margin:0 0 10px 0;font-size:14px;letter-spacing:0.2px;color:rgba(255,255,255,0.92);}
-  .kit-card p{margin:0 0 6px 0;font-size:12px;color:var(--muted);line-height:1.5;}
-  .kit-card .stat-line{display:flex;justify-content:space-between;align-items:baseline;
-    padding:6px 8px;border-radius:8px;background:rgba(0,0,0,0.22);font-family:var(--mono);
-    font-size:12px;border:1px solid rgba(255,255,255,0.08);margin-top:6px;}
-  .kit-card .stat-line .lbl{color:var(--muted);}
-  .kit-card .stat-line .val{font-weight:800;color:var(--text);}
-  /* Bench buttons */
-  .kit-bench{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
-  .kit-bench .btn-bench{font-family:var(--mono);font-size:11px;padding:5px 10px;
-    border-radius:8px;background:rgba(0,0,0,0.22);border:1px solid rgba(255,255,255,0.10);
-    color:var(--text);font-weight:700;}
-  .kit-bench .b-gods{border-color:rgba(255,47,214,0.50);background:rgba(255,47,214,0.10);}
-  /* Attempt table — paper-gold race scaffolding (per fiche_equipe) */
-  .kit-table-wrap{margin-top:8px;overflow-x:auto;}
-  table.kit-table{width:100%;border-collapse:collapse;font-size:11px;font-family:var(--mono);}
-  table.kit-table th, table.kit-table td{
-    border:1px solid rgba(255,255,255,0.10);padding:5px 6px;text-align:center;}
-  table.kit-table th{background:rgba(0,0,0,0.30);font-weight:700;color:var(--muted);font-size:10px;}
-  table.kit-table .bench-col{font-weight:800;color:var(--text);background:rgba(0,0,0,0.22);}
-  table.kit-table .opt-col{color:var(--cyan);font-weight:800;}
-  table.kit-table .best-col{color:var(--lime);font-weight:800;background:rgba(85,255,122,0.06);}
-  table.kit-table .gods-row{background:rgba(255,47,214,0.05);}
-  table.kit-table .gods-row .bench-col{color:var(--pink);}
-  table.kit-table input{width:100%;background:transparent;border:0;outline:0;
-    color:var(--text);font:inherit;text-align:center;}
-  table.kit-table input:focus{background:rgba(106,215,255,0.08);}
-  /* Tip block */
-  .kit-tip{background:rgba(106,215,255,0.07);border:1px dashed rgba(106,215,255,0.32);
-    border-radius:10px;padding:10px 12px;margin-top:10px;font-size:12px;color:var(--muted);}
-  .kit-tip strong{color:var(--cyan);}
-  /* Facilitator notes (collapsible) */
-  details.kit-notes{margin-top:10px;padding:10px 12px;border:1px dashed rgba(255,255,255,0.14);
-    border-radius:10px;background:rgba(0,0,0,0.18);}
-  details.kit-notes summary{cursor:pointer;font-weight:700;font-size:12px;color:var(--muted);
-    list-style:none;}
-  details.kit-notes summary::before{content:"▶";display:inline-block;margin-right:8px;
-    transition:transform 0.15s;font-size:9px;opacity:0.7;}
-  details.kit-notes[open] > summary::before{transform:rotate(90deg);}
-  details.kit-notes ul{margin:8px 0 0;padding-left:18px;font-size:11.5px;color:var(--muted);line-height:1.5;}
-  /* Print CSS — A4 landscape, light bg */
-  @media print{
-    @page{size:A4 landscape;margin:10mm 12mm;}
-    body{background:#fff;color:#111;}
-    .kit-wrap{background:none;border:1px solid #888;box-shadow:none;backdrop-filter:none;
-      max-width:none;margin:0;padding:6px;}
-    .kit-card{background:#fff;border:1px solid #999;box-shadow:none;}
-    .kit-card h2{color:#111;}
-    .kit-card p, .kit-card .stat-line .lbl{color:#333;}
-    .kit-card .stat-line{background:#f5f5f5;}
-    .kit-card .stat-line .val, table.kit-table .bench-col, table.kit-table input{color:#111;}
-    .kit-h1{color:#a01480;}
-    .kit-chip{border-color:#a01480;}
-    table.kit-table th{background:#eee;color:#222;}
-    table.kit-table .opt-col{color:#0a4d6b;}
-    table.kit-table .best-col{color:#1a7a30;background:#f0fff0;}
-    table.kit-table .gods-row{background:#fff0fa;}
-    table.kit-table .gods-row .bench-col{color:#a01480;}
-    .kit-tip{background:#f0faff;border-color:#88c0e0;color:#222;}
-    .kit-tip strong{color:#0a4d6b;}
-    details.kit-notes{background:#fafafa;border-color:#aaa;color:#333;}
-    details.kit-notes[open] summary{color:#222;}
-    details.kit-notes ul{color:#333;}
-    .gm-cell{color:#a01480;background:#fff0fa;border-color:#a01480;}
-    .gm-empty{background:transparent;}
-    .kit-back, .kit-replay{display:none;}
-  }
-
-    /* Force details to render expanded in print + give glossary print theme */
-    @media print {
-      details.kit-notes { display: block !important; }
-      details.kit-notes > summary { display: list-item; font-weight: 700; }
-      details.kit-notes > *:not(summary) { display: block !important; }
-      .glossary.card, .glossary .card { background: #fff !important; color: #111 !important; border: 1px solid #999 !important; }
-      .glossary .chip { background: #f0f0f0 !important; color: #333 !important; border-color: #999 !important; }
-      .glossary .chip.active { background: #fff0fa !important; color: #a01480 !important; border-color: #a01480 !important; }
-      .vocabPanel, .vocabPanel * { color: #222 !important; }
-      .vocabPanel .mono { color: #a01480 !important; }
-      .kit-bench .b-gods { white-space: nowrap; font-size: 10px; }
-    }
-    /* Top-right back-to-hub link */
-  .kit-back{position:fixed;top:14px;right:14px;font-size:12px;font-family:var(--mono);
-    color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:999px;
-    border:1px solid rgba(255,255,255,0.18);background:rgba(0,0,0,0.30);}
-  .kit-back:hover{color:var(--cyan);border-color:rgba(106,215,255,0.45);}
 </style>
 </head>
 <body>
@@ -218,36 +94,20 @@
     <!-- RIGHT COLUMN: attempt table + facilitator notes -->
     <section class="kit-card">
       <h2 data-i18n="kit.race.title">La course cachée · 3 essais à budget fixe</h2>
-      <p data-i18n="kit.m3.raceBody">Chaque équipe choisit (α, γ, ε) trois fois avec le même nombre d'épisodes. Le tableau garde la trace.</p>
-      <div class="kit-table-wrap">
-        <table class="kit-table">
-          <thead>
-            <tr>
-              <th rowspan="2" data-i18n="kit.race.bench">Bench</th>
-              <th rowspan="2" data-i18n="kit.race.optimal">Opt.</th>
-              <th colspan="4" data-i18n="kit.race.attempt1">Essai 1</th>
-              <th colspan="4" data-i18n="kit.race.attempt2">Essai 2</th>
-              <th colspan="4" data-i18n="kit.race.attempt3">Essai 3</th>
-              <th rowspan="2" data-i18n="kit.race.best">Meilleur</th>
-            </tr>
-            <tr>
-              <th>α</th><th>γ</th><th>ε</th><th data-i18n="kit.race.moves">Mvts</th>
-              <th>α</th><th>γ</th><th>ε</th><th data-i18n="kit.race.moves">Mvts</th>
-              <th>α</th><th>γ</th><th>ε</th><th data-i18n="kit.race.moves">Mvts</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="bench-col">B1</td><td class="opt-col">1</td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td class="best-col"><input/></td></tr>
-            <tr><td class="bench-col">B2</td><td class="opt-col">10</td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td class="best-col"><input/></td></tr>
-            <tr><td class="bench-col">B3</td><td class="opt-col">18</td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td class="best-col"><input/></td></tr>
-            <tr><td class="bench-col">B4</td><td class="opt-col">26</td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td class="best-col"><input/></td></tr>
-            <tr class="gods-row"><td class="bench-col">B5 🏆</td><td class="opt-col">31</td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td><input/></td><td class="best-col"><input/></td></tr>
-          </tbody>
-        </table>
+      <p data-i18n="kit.m3.raceBody">Chaque équipe choisit (α, γ, ε) trois fois avec le même nombre d'épisodes. Note ici l'essai en cours, puis transcris sur la fiche d'équipe.</p>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1.2fr 1.2fr; gap:6px; margin-top:8px; align-items:end;">
+        <div><div style="font-size:10px; color:var(--muted2); font-family:var(--mono); margin-bottom:2px;">α</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
+        <div><div style="font-size:10px; color:var(--muted2); font-family:var(--mono); margin-bottom:2px;">γ</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
+        <div><div style="font-size:10px; color:var(--muted2); font-family:var(--mono); margin-bottom:2px;">ε</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
+        <div><div style="font-size:10px; color:var(--muted2); font-family:var(--mono); margin-bottom:2px;" data-i18n="kit.strip.bench">Bench</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
+        <div><div style="font-size:10px; color:var(--lime); font-family:var(--mono); margin-bottom:2px;" data-i18n="kit.strip.moves">Mvts</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(85,255,122,0.06); border:1px solid rgba(85,255,122,0.32); border-radius:6px; color:var(--lime); font-family:var(--mono); font-weight:800; text-align:center;"/></div>
       </div>
-      <p style="margin-top:8px; font-size:11px; color:var(--muted2); font-style:italic;">
-        <span data-i18n="kit.race.scoresheetNote">→ Note aussi le résultat sur la fiche d'équipe consolidée (3 missions sur une page).</span>
-      </p>
+
+      <a href="print/fiche_equipe.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; margin-top:14px; padding:10px 14px; background:rgba(106,215,255,0.10); border:1px solid rgba(106,215,255,0.42); border-radius:10px; color:var(--cyan); text-decoration:none; font-size:12px; font-weight:700;">
+        <span style="font-size:16px;">📋</span>
+        <span data-i18n="kit.race.scoresheetLink">Ouvrir la fiche d'équipe (3 missions sur une page)</span>
+      </a>
 
       <details class="kit-notes" open>
         <summary data-i18n="kit.notes.facilitatorTitle">Notes pour l'animatrice</summary>
