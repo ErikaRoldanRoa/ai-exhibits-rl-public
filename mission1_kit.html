@@ -62,7 +62,7 @@
         <span class="btn-bench">B3 ⭐⭐⭐ · 3</span>
         <span class="btn-bench">B4 ⭐⭐⭐⭐ · 4</span>
         <span class="btn-bench">B5 ⭐⭐⭐⭐⭐ · 5</span>
-        <span class="btn-bench b-gods">B6 🏆 · 6 (Nombre de Dieu)</span>
+        <span class="btn-bench b-gods">B6 🏆 · 6 (<span data-i18n="kit.bench.godsLabel">Nombre de Dieu</span>)</span>
       </div>
 
       
@@ -72,7 +72,7 @@
       </div>
 
       <h2 style="margin-top:14px;" data-i18n="kit.tune.title">Régler les trois boutons</h2>
-      <ul style="margin:6px 0 0 0; padding-left:18px; font-size:12px; color:var(--muted); line-height:1.6;">
+      <ul style="margin:6px 0 0 0; padding-left:18px; font-size:12px; color:var(--text); line-height:1.6;">
         <li><strong style="color:var(--text);">α</strong> · <span data-i18n="kit.tune.alpha">élevé : apprend vite mais peut osciller · faible : stable mais lent</span></li>
         <li><strong style="color:var(--text);">γ</strong> · <span data-i18n="kit.tune.gamma">élevé : planifie loin (plus de propagation backward) · faible : myope</span></li>
         <li><strong style="color:var(--text);">ε</strong> · <span data-i18n="kit.tune.epsilon">élevé : explore davantage · trop bas trop tôt : se fige sur un choix initial</span></li>
@@ -97,11 +97,11 @@
       <p data-i18n="kit.m1.raceBody">Chaque équipe choisit (α, γ, ε) trois fois avec le même nombre d'épisodes. Note ici l'essai en cours, puis transcris sur la fiche d'équipe.</p>
 
       <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1.2fr 1.2fr; gap:6px; margin-top:8px; align-items:end;">
-        <div><div style="font-size:10px; color:var(--muted2); font-family:var(--mono); margin-bottom:2px;">α</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
-        <div><div style="font-size:10px; color:var(--muted2); font-family:var(--mono); margin-bottom:2px;">γ</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
-        <div><div style="font-size:10px; color:var(--muted2); font-family:var(--mono); margin-bottom:2px;">ε</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
-        <div><div style="font-size:10px; color:var(--muted2); font-family:var(--mono); margin-bottom:2px;" data-i18n="kit.strip.bench">Bench</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
-        <div><div style="font-size:10px; color:var(--lime); font-family:var(--mono); margin-bottom:2px;" data-i18n="kit.strip.moves">Mvts</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(85,255,122,0.06); border:1px solid rgba(85,255,122,0.32); border-radius:6px; color:var(--lime); font-family:var(--mono); font-weight:800; text-align:center;"/></div>
+        <div><div class="strip-label" style="font-size:10px; color:var(--muted); font-family:var(--mono); margin-bottom:2px;">α</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
+        <div><div class="strip-label" style="font-size:10px; color:var(--muted); font-family:var(--mono); margin-bottom:2px;">γ</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
+        <div><div class="strip-label" style="font-size:10px; color:var(--muted); font-family:var(--mono); margin-bottom:2px;">ε</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
+        <div><div class="strip-label" style="font-size:10px; color:var(--muted); font-family:var(--mono); margin-bottom:2px;" data-i18n="kit.strip.bench">Bench</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
+        <div><div class="strip-label strip-best" style="font-size:10px; color:var(--lime); font-family:var(--mono); margin-bottom:2px;" data-i18n="kit.strip.moves">Mvts</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(85,255,122,0.06); border:1px solid rgba(85,255,122,0.32); border-radius:6px; color:var(--lime); font-family:var(--mono); font-weight:800; text-align:center;"/></div>
       </div>
 
       <a href="print/fiche_equipe.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; margin-top:14px; padding:10px 14px; background:rgba(106,215,255,0.10); border:1px solid rgba(106,215,255,0.42); border-radius:10px; color:var(--cyan); text-decoration:none; font-size:12px; font-weight:700;">

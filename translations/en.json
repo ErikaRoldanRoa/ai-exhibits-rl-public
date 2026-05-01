@@ -543,7 +543,8 @@
     },
     "bench": {
       "title": "References",
-      "hint": "B<em>k</em> = a starting state at <em>k</em> moves from the goal. The optimal distance is the length of the shortest solution."
+      "hint": "B<em>k</em> = a starting state at <em>k</em> moves from the goal. The optimal distance is the length of the shortest solution.",
+      "godsLabel": "God's Number"
     },
     "race": {
       "title": "The hidden race · 3 attempts at fixed budget",

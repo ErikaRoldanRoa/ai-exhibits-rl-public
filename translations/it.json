@@ -543,7 +543,8 @@
     },
     "bench": {
       "title": "Riferimenti",
-      "hint": "B<em>k</em> = uno stato iniziale a <em>k</em> mosse dall'obiettivo. La distanza ottimale è la lunghezza della soluzione più breve."
+      "hint": "B<em>k</em> = uno stato iniziale a <em>k</em> mosse dall'obiettivo. La distanza ottimale è la lunghezza della soluzione più breve.",
+      "godsLabel": "Numero di Dio"
     },
     "race": {
       "title": "La corsa nascosta · 3 tentativi a budget fisso",

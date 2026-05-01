@@ -543,7 +543,8 @@
     },
     "bench": {
       "title": "Referenzen",
-      "hint": "B<em>k</em> = ein Startzustand mit <em>k</em> Zügen vom Ziel entfernt. Der optimale Abstand ist die Länge der kürzesten Lösung."
+      "hint": "B<em>k</em> = ein Startzustand mit <em>k</em> Zügen vom Ziel entfernt. Der optimale Abstand ist die Länge der kürzesten Lösung.",
+      "godsLabel": "Gottes Zahl"
     },
     "race": {
       "title": "Das verborgene Rennen · 3 Versuche bei festem Budget",

@@ -134,3 +134,23 @@
     color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:999px;
     border:1px solid rgba(255,255,255,0.18);background:rgba(0,0,0,0.30);}
   .kit-back:hover{color:var(--cyan);border-color:rgba(106,215,255,0.45);}
+
+/* === Iteration #3 print fixes ============================================ */
+@media print {
+  /* Tuning bullets must be ink-readable on white */
+  .kit-card ul, .kit-card ul li, .kit-card ul li * { color:#222 !important; }
+  .kit-card ul li strong { color:#000 !important; }
+
+  /* Current-attempt strip labels (α γ ε Bench Mvts) */
+  .strip-label { color:#333 !important; }
+  .strip-best { color:#1a7a30 !important; }
+  .kit-card input[type="text"] { background:#fff !important; border-color:#888 !important; color:#111 !important; }
+
+  /* Bench gods row: bump contrast — was pink-on-pink wash */
+  .kit-bench .b-gods { background:#ffe0f5 !important; color:#7a0a55 !important;
+                       border-color:#a01480 !important; font-weight:900 !important; }
+
+  /* Page-2 orphan: glossary card is on-screen-only; hide on print since kits
+     already have bench reference + concept tip + tuning bullets. */
+  .glossary.card { display: none !important; }
+}

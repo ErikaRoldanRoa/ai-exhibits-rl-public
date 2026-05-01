@@ -543,7 +543,8 @@
     },
     "bench": {
       "title": "Références",
-      "hint": "B<em>k</em> = un état de départ à <em>k</em> coups de l'objectif. La distance optimale est la longueur de la solution la plus courte."
+      "hint": "B<em>k</em> = un état de départ à <em>k</em> coups de l'objectif. La distance optimale est la longueur de la solution la plus courte.",
+      "godsLabel": "Nombre de Dieu"
     },
     "race": {
       "title": "La course cachée · 3 essais à budget fixe",
