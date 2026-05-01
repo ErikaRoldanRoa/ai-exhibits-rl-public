@@ -43,8 +43,12 @@
   }
 
   async function loadTranslations(lang) {
+    // Honour an optional base path so files in subfolders (e.g. /print/) can
+    // still reach /translations/. Set window.__i18nBase before this script
+    // loads, e.g. <script>window.__i18nBase='../';</script>.
+    const base = (typeof window !== 'undefined' && window.__i18nBase) || './';
     try {
-      const res = await fetch(`./translations/${lang}.json`, { cache: 'no-cache' });
+      const res = await fetch(`${base}translations/${lang}.json`, { cache: 'no-cache' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return await res.json();
     } catch (e) {

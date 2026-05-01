@@ -491,5 +491,107 @@
   "hud": {
     "navLabel": "Navigation"
   },
-  "footer": {}
+  "footer": {},
+  "kit": {
+    "backToHub": "← Hub",
+    "m1": {
+      "chip": "Mission I · Workshop-Kit",
+      "title": "Lernen sichtbar machen · 2×2",
+      "napkinTitle": "Die Q-Tabelle passt auf eine Serviette.",
+      "napkinBody": " 12 Zustände × 2 Aktionen pro Zustand = höchstens 24 Zeilen. Baue sie von Hand auf, während die Agentin trainiert.",
+      "benchHint": "Jede Referenz ist ein Startzustand mit festem Abstand zum Ziel. Der optimale Abstand ist die Länge der kürzesten Lösung.",
+      "raceBody": "Jedes Team wählt (α, γ, ε) dreimal mit derselben Episodenzahl. Die Tabelle hält die Spuren fest.",
+      "notes": {
+        "1": "15 Min · Einstieg: einen Menschen gegen die Zufalls-Agentin auf der Mini-Karte spielen lassen. Der Du · Zufall-Vergleich zeigt das Warum.",
+        "2": "15 Min · die 12 vom Ziel erreichbaren Konfigurationen aufzeichnen. Q-Tabelle von Hand bauen.",
+        "3": "Empfohlene Parameter: α≈0,5 · γ≈0,9 · ε≈0,3 · 300 Episoden. Das Maximum 2000 schützt vor Runaway.",
+        "4": "Falls Greedy versagt: ε zu früh auf 0, oder die Q-Tabelle hat nicht genug Episoden gesehen. Zurücksetzen und neu starten."
+      }
+    },
+    "m2": {
+      "chip": "Mission II · Workshop-Kit",
+      "title": "Propagation · 2×3",
+      "algoTitle": "Der Algorithmus findet seinen Platz.",
+      "algoBody": " Bei 360 Zuständen passt die Tabelle nicht mehr auf eine Seite. Starte das Training und beobachte, wie Q vom Ziel rückwärts wandert, Episode für Episode.",
+      "raceBody": "Jedes Team wählt (α, γ, ε) dreimal mit derselben Episodenzahl. Die Tabelle hält die Spuren fest.",
+      "notes": {
+        "1": "10 Min · Mission II öffnen, beobachten wie die Abdeckungsanzeige in den ersten Episoden über 360 Zustände steigt.",
+        "2": "15 Min · mit empfohlenen Parametern trainieren; B1→B5 benchmarken; Renntabelle füllen.",
+        "3": "Empfohlene Parameter: α≈0,3 · γ≈0,95 · ε≈0,4 · 2000 Episoden. Das Maximum 20000 schützt vor Runaway.",
+        "4": "Rückwärtspropagation betonen: die Belohnung wandert vom Ziel rückwärts, eine Episode nach der anderen (γ pro Schritt)."
+      }
+    },
+    "m3": {
+      "chip": "Mission III · Workshop-Kit",
+      "title": "Skalierung · 3×3",
+      "curseTitle": "Der Fluch macht sich bemerkbar.",
+      "curseBody": " Bei 181.440 Zuständen flacht die Abdeckungsanzeige weit unter 100 % ab. Im Hub übersetzt die Économie-Karte die Kosten in CHF: Demo 0,0001 · Zuverlässig 0,01 · Garantiert 700. Fünf Größenordnungen zwischen Hobby und Garantie.",
+      "raceBody": "Jedes Team wählt (α, γ, ε) dreimal mit derselben Episodenzahl. Die Tabelle hält die Spuren fest.",
+      "notes": {
+        "1": "5 Min · auf die Économie-Karte zeigen: drei Pillen Demo / Zuverlässig / Garantiert, fünf Größenordnungen zwischen der ersten und der letzten.",
+        "2": "20 Min · mit empfohlenen Parametern trainieren; B5 anvisieren (31 Züge, Antipode); beobachten wie die Abdeckung abflacht.",
+        "3": "Empfohlene Parameter: α≈0,3 · γ≈0,99 · ε≈0,5 · 10000 Episoden. Das Maximum 50000 schützt vor Runaway.",
+        "4": "Den Fluch benennen: gleicher Algorithmus, gleiche Methode, der Raum ist nur zu weit geworden, um ihn zu durchwandern. Das ist die Tür zu neuronalen Netzen — kein Versagen."
+      }
+    },
+    "facts": {
+      "title": "Die Welt dieser Mission",
+      "states": "Erreichbare Zustände",
+      "gods": "Gottes Zahl",
+      "qsize": "Q-Tabelle",
+      "diam": "Graphdurchmesser"
+    },
+    "bench": {
+      "title": "Referenzen",
+      "hint": "Jede Referenz ist ein Startzustand mit festem Abstand zum Ziel. Der optimale Abstand ist die Länge der kürzesten Lösung."
+    },
+    "race": {
+      "title": "Das verborgene Rennen · 3 Versuche bei festem Budget",
+      "bench": "Bench",
+      "optimal": "Opt.",
+      "attempt1": "Versuch 1",
+      "attempt2": "Versuch 2",
+      "attempt3": "Versuch 3",
+      "best": "Bestes",
+      "moves": "Züge",
+      "scoresheetNote": "→ Trage das Ergebnis auch auf den konsolidierten Team-Bewertungsbogen ein (3 Missionen auf einer Seite)."
+    },
+    "notes": {
+      "facilitatorTitle": "Hinweise für die Leitung"
+    },
+    "formula": {
+      "title": "Q-Learning-Formel"
+    },
+    "tune": {
+      "title": "Die drei Regler einstellen",
+      "alpha": "hoch: lernt schnell, kann aber oszillieren · niedrig: stabil, aber langsam",
+      "gamma": "hoch: plant weit voraus (mehr Rückwärtspropagation) · niedrig: kurzsichtig",
+      "epsilon": "hoch: mehr Exploration · zu früh zu niedrig: bleibt an einer ersten Wahl haften"
+    }
+  },
+  "fe": {
+    "title": "🏆 Team-Bewertungsbogen — alle Missionen",
+    "teamLabel": "Team:",
+    "intro": "Jeder Versuch: (α, γ, ε) wählen, trainieren, Referenzen testen, Züge notieren. Die beste Spalte pro Referenz ergibt das Ergebnis.",
+    "bench": "Bench",
+    "opt": "Opt.",
+    "best": "Bestes",
+    "moves": "Züge",
+    "attempt1": "Versuch 1",
+    "attempt2": "Versuch 2",
+    "attempt3": "Versuch 3",
+    "total": "GESAMT",
+    "m1": {
+      "title": "Mission I · 2×2",
+      "gods": "Gottes Zahl: 6 · 6 Referenzen"
+    },
+    "m2": {
+      "title": "Mission II · 2×3",
+      "gods": "Gottes Zahl: 21 · 5 Referenzen"
+    },
+    "m3": {
+      "title": "Mission III · 3×3",
+      "gods": "Gottes Zahl: 31 · 5 Referenzen"
+    }
+  }
 }

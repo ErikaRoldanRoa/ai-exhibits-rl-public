@@ -491,5 +491,107 @@
   "hud": {
     "navLabel": "navigazione"
   },
-  "footer": {}
+  "footer": {},
+  "kit": {
+    "backToHub": "← Hub",
+    "m1": {
+      "chip": "Missione I · Kit del laboratorio",
+      "title": "Rendere visibile l'apprendimento · 2×2",
+      "napkinTitle": "La tabella Q sta su un tovagliolo.",
+      "napkinBody": " 12 stati × 2 azioni per stato = al massimo 24 righe. Costruiscila a mano mentre l'agente si addestra.",
+      "benchHint": "Ogni riferimento è uno stato iniziale a distanza fissa dall'obiettivo. La distanza ottimale è la lunghezza della soluzione più breve.",
+      "raceBody": "Ogni squadra sceglie (α, γ, ε) tre volte con lo stesso numero di episodi. La tabella tiene le tracce.",
+      "notes": {
+        "1": "15 min · gancio: far giocare un umano contro l'agente casuale sulla mini-carta della pagina iniziale. Il confronto Tu · Casuale mostra il perché.",
+        "2": "15 min · mappare le 12 configurazioni raggiungibili dall'obiettivo. Costruire la tabella Q a mano.",
+        "3": "Parametri consigliati: α≈0,5 · γ≈0,9 · ε≈0,3 · 300 episodi. Il massimo 2000 protegge dal runaway.",
+        "4": "Se il greedy fallisce: ε è arrivato a 0 troppo presto, o la tabella Q non ha ricevuto abbastanza episodi. Resettare e ripartire."
+      }
+    },
+    "m2": {
+      "chip": "Missione II · Kit del laboratorio",
+      "title": "Propagazione · 2×3",
+      "algoTitle": "L'algoritmo prende il suo posto.",
+      "algoBody": " Con 360 stati la tabella non sta più su una pagina. Lancia l'addestramento e osserva Q risalire dall'obiettivo, episodio dopo episodio.",
+      "raceBody": "Ogni squadra sceglie (α, γ, ε) tre volte con lo stesso numero di episodi. La tabella tiene le tracce.",
+      "notes": {
+        "1": "10 min · aprire Missione II, osservare la barra di copertura salire sui 360 stati nei primi episodi.",
+        "2": "15 min · addestrare con i parametri consigliati; benchmark di ogni B1→B5; riempire la tabella della corsa.",
+        "3": "Parametri consigliati: α≈0,3 · γ≈0,95 · ε≈0,4 · 2000 episodi. Il massimo 20000 protegge dal runaway.",
+        "4": "Insistere sulla propagazione all'indietro: la ricompensa risale dall'obiettivo, un episodio alla volta (γ a ogni passo)."
+      }
+    },
+    "m3": {
+      "chip": "Missione III · Kit del laboratorio",
+      "title": "Scala · 3×3",
+      "curseTitle": "La maledizione si fa sentire.",
+      "curseBody": " Su 181.440 stati la barra di copertura si ferma molto sotto il 100 %. Sull'Hub, la carta Économie traduce il costo in CHF: Demo 0,0001 · Affidabile 0,01 · Garantita 700. Cinque ordini di grandezza fra hobby e garanzia.",
+      "raceBody": "Ogni squadra sceglie (α, γ, ε) tre volte con lo stesso numero di episodi. La tabella tiene le tracce.",
+      "notes": {
+        "1": "5 min · indicare la carta Économie: tre pasticche Demo / Affidabile / Garantita, cinque ordini di grandezza fra la prima e l'ultima.",
+        "2": "20 min · addestrare con i parametri consigliati; mirare a B5 (31 mosse, antipode); osservare la barra di copertura fermarsi.",
+        "3": "Parametri consigliati: α≈0,3 · γ≈0,99 · ε≈0,5 · 10000 episodi. Il massimo 50000 protegge dal runaway.",
+        "4": "Nominare la maledizione: stesso algoritmo, stesso metodo, lo spazio è semplicemente diventato troppo vasto per essere visitato. È la porta verso le reti neurali — non un fallimento."
+      }
+    },
+    "facts": {
+      "title": "Il mondo di questa missione",
+      "states": "Stati raggiungibili",
+      "gods": "Numero di Dio",
+      "qsize": "Tabella Q",
+      "diam": "Diametro del grafo"
+    },
+    "bench": {
+      "title": "Riferimenti",
+      "hint": "Ogni riferimento è uno stato iniziale a distanza fissa dall'obiettivo. La distanza ottimale è la lunghezza della soluzione più breve."
+    },
+    "race": {
+      "title": "La corsa nascosta · 3 tentativi a budget fisso",
+      "bench": "Bench",
+      "optimal": "Ott.",
+      "attempt1": "Tentativo 1",
+      "attempt2": "Tentativo 2",
+      "attempt3": "Tentativo 3",
+      "best": "Migliore",
+      "moves": "Mosse",
+      "scoresheetNote": "→ Annota anche il risultato sulla scheda di squadra consolidata (3 missioni su una pagina)."
+    },
+    "notes": {
+      "facilitatorTitle": "Note per l'animatrice"
+    },
+    "formula": {
+      "title": "Formula Q-learning"
+    },
+    "tune": {
+      "title": "Regolare i tre pulsanti",
+      "alpha": "alto: impara in fretta ma può oscillare · basso: stabile ma lento",
+      "gamma": "alto: pianifica lontano (più propagazione all'indietro) · basso: miope",
+      "epsilon": "alto: esplora di più · troppo basso troppo presto: si blocca su una prima scelta"
+    }
+  },
+  "fe": {
+    "title": "🏆 Scheda di squadra — tutte le missioni",
+    "teamLabel": "Squadra:",
+    "intro": "Ogni tentativo: scegli (α, γ, ε), addestra, testa i riferimenti, annota le mosse. La colonna migliore per riferimento dà il punteggio.",
+    "bench": "Bench",
+    "opt": "Ott.",
+    "best": "Migliore",
+    "moves": "Mosse",
+    "attempt1": "Tentativo 1",
+    "attempt2": "Tentativo 2",
+    "attempt3": "Tentativo 3",
+    "total": "TOTALE",
+    "m1": {
+      "title": "Missione I · 2×2",
+      "gods": "Numero di Dio: 6 · 6 riferimenti"
+    },
+    "m2": {
+      "title": "Missione II · 2×3",
+      "gods": "Numero di Dio: 21 · 5 riferimenti"
+    },
+    "m3": {
+      "title": "Missione III · 3×3",
+      "gods": "Numero di Dio: 31 · 5 riferimenti"
+    }
+  }
 }

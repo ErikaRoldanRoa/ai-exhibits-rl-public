@@ -123,7 +123,20 @@
     .gm-empty{background:transparent;}
     .kit-back, .kit-replay{display:none;}
   }
-  /* Top-right back-to-hub link */
+
+    /* Force details to render expanded in print + give glossary print theme */
+    @media print {
+      details.kit-notes { display: block !important; }
+      details.kit-notes > summary { display: list-item; font-weight: 700; }
+      details.kit-notes > *:not(summary) { display: block !important; }
+      .glossary.card, .glossary .card { background: #fff !important; color: #111 !important; border: 1px solid #999 !important; }
+      .glossary .chip { background: #f0f0f0 !important; color: #333 !important; border-color: #999 !important; }
+      .glossary .chip.active { background: #fff0fa !important; color: #a01480 !important; border-color: #a01480 !important; }
+      .vocabPanel, .vocabPanel * { color: #222 !important; }
+      .vocabPanel .mono { color: #a01480 !important; }
+      .kit-bench .b-gods { white-space: nowrap; font-size: 10px; }
+    }
+    /* Top-right back-to-hub link */
   .kit-back{position:fixed;top:14px;right:14px;font-size:12px;font-family:var(--mono);
     color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:999px;
     border:1px solid rgba(255,255,255,0.18);background:rgba(0,0,0,0.30);}
@@ -166,7 +179,7 @@
       </div>
 
       <h2 style="margin-top:14px;" data-i18n="kit.bench.title">Références (B1 → B6)</h2>
-      <p data-i18n="kit.m1.benchHint">Chaque référence est un état de départ à distance fixe du but. La distance optimale est la longueur de la solution la plus courte.</p>
+      <p data-i18n="kit.bench.hint">B<em>k</em> = un état de départ à <em>k</em> coups de l'objectif. La distance optimale est la longueur de la solution la plus courte.</p>
       <div class="kit-bench">
         <span class="btn-bench">B1 ⭐ · 1</span>
         <span class="btn-bench">B2 ⭐⭐ · 2</span>
@@ -175,6 +188,19 @@
         <span class="btn-bench">B5 ⭐⭐⭐⭐⭐ · 5</span>
         <span class="btn-bench b-gods">B6 🏆 · 6 (Nombre de Dieu)</span>
       </div>
+
+      
+      <h2 style="margin-top:14px;" data-i18n="kit.formula.title">Formule Q-learning</h2>
+      <div class="kit-tip" style="font-family:var(--mono); font-size:12px; line-height:1.6;">
+        Q(s,a) ← Q(s,a) + α [ r + γ · max<sub>a'</sub> Q(s',a') − Q(s,a) ]
+      </div>
+
+      <h2 style="margin-top:14px;" data-i18n="kit.tune.title">Régler les trois boutons</h2>
+      <ul style="margin:6px 0 0 0; padding-left:18px; font-size:12px; color:var(--muted); line-height:1.6;">
+        <li><strong style="color:var(--text);">α</strong> · <span data-i18n="kit.tune.alpha">élevé : apprend vite mais peut osciller · faible : stable mais lent</span></li>
+        <li><strong style="color:var(--text);">γ</strong> · <span data-i18n="kit.tune.gamma">élevé : planifie loin (plus de propagation backward) · faible : myope</span></li>
+        <li><strong style="color:var(--text);">ε</strong> · <span data-i18n="kit.tune.epsilon">élevé : explore davantage · trop bas trop tôt : se fige sur un choix initial</span></li>
+      </ul>
 
       <!-- Glossary chips for THIS mission — shared widget, M1 chips only -->
       <div class="glossary card" id="kitGlossary" style="margin-top:14px;"></div>
@@ -244,8 +270,11 @@
           </tbody>
         </table>
       </div>
+      <p style="margin-top:8px; font-size:11px; color:var(--muted2); font-style:italic;">
+        <span data-i18n="kit.race.scoresheetNote">→ Note aussi le résultat sur la fiche d'équipe consolidée (3 missions sur une page).</span>
+      </p>
 
-      <details class="kit-notes">
+      <details class="kit-notes" open>
         <summary data-i18n="kit.notes.facilitatorTitle">Notes pour l'animatrice</summary>
         <ul>
           <li data-i18n="kit.m1.notes.1">15 min · accroche : faire jouer l'agente aléatoire vs un humain sur la mini-carte de la page d'accueil. La comparaison Vous · Agente aléatoire montre le pourquoi.</li>

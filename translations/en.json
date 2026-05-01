@@ -491,5 +491,107 @@
   "hud": {
     "navLabel": "navigation"
   },
-  "footer": {}
+  "footer": {},
+  "kit": {
+    "backToHub": "← Hub",
+    "m1": {
+      "chip": "Mission I · Workshop kit",
+      "title": "Make learning visible · 2×2",
+      "napkinTitle": "The Q-table fits on a napkin.",
+      "napkinBody": " 12 states × 2 actions per state = at most 24 rows. Build it by hand while the agent trains.",
+      "benchHint": "Each reference is a starting state at a fixed distance from the goal. The optimal distance is the length of the shortest solution.",
+      "raceBody": "Each team picks (α, γ, ε) three times with the same number of episodes. The table keeps score.",
+      "notes": {
+        "1": "15 min · hook: have a human play against the random agent on the home-page mini-card. The You · Random comparison shows the why.",
+        "2": "15 min · map the 12 configurations reachable from the goal. Build the Q-table by hand.",
+        "3": "Recommended parameters: α≈0.5 · γ≈0.9 · ε≈0.3 · 300 episodes. The max 2000 protects against runaway.",
+        "4": "If greedy fails: ε hit 0 too early, or the Q-table did not get enough episodes. Reset and rerun."
+      }
+    },
+    "m2": {
+      "chip": "Mission II · Workshop kit",
+      "title": "Propagation · 2×3",
+      "algoTitle": "The algorithm earns its place.",
+      "algoBody": " With 360 states the table no longer fits on a page. Start training and watch Q propagate backward from the goal, episode after episode.",
+      "raceBody": "Each team picks (α, γ, ε) three times with the same number of episodes. The table keeps score.",
+      "notes": {
+        "1": "10 min · open Mission II, watch the coverage gauge climb across 360 states in the first episodes.",
+        "2": "15 min · train with the recommended parameters; benchmark each B1→B5; fill the race table.",
+        "3": "Recommended parameters: α≈0.3 · γ≈0.95 · ε≈0.4 · 2000 episodes. The max 20000 protects against runaway.",
+        "4": "Emphasise backward propagation: the reward travels back from the goal, one episode at a time (γ per hop)."
+      }
+    },
+    "m3": {
+      "chip": "Mission III · Workshop kit",
+      "title": "Scaling · 3×3",
+      "curseTitle": "The curse begins to bite.",
+      "curseBody": " Over 181,440 states the coverage gauge plateaus far below 100%. On the Hub, the Économie card prices the curse in CHF: Demo 0.0001 · Reliable 0.01 · Guaranteed 700. Five orders of magnitude between hobby and guarantee.",
+      "raceBody": "Each team picks (α, γ, ε) three times with the same number of episodes. The table keeps score.",
+      "notes": {
+        "1": "5 min · point at the Économie card: three pills Demo / Reliable / Guaranteed, five orders of magnitude between the first and the last.",
+        "2": "20 min · train with the recommended parameters; aim for B5 (31 moves, antipode); watch the coverage gauge plateau.",
+        "3": "Recommended parameters: α≈0.3 · γ≈0.99 · ε≈0.5 · 10000 episodes. The max 50000 protects against runaway.",
+        "4": "Name the curse: same algorithm, same method, the space has simply grown too vast to visit. This is the doorway to neural networks — not a failure."
+      }
+    },
+    "facts": {
+      "title": "The world of this mission",
+      "states": "Reachable states",
+      "gods": "God's number",
+      "qsize": "Q-table",
+      "diam": "Graph diameter"
+    },
+    "bench": {
+      "title": "References",
+      "hint": "Each reference is a starting state at a fixed distance from the goal. The optimal distance is the length of the shortest solution."
+    },
+    "race": {
+      "title": "The hidden race · 3 attempts at fixed budget",
+      "bench": "Bench",
+      "optimal": "Opt.",
+      "attempt1": "Attempt 1",
+      "attempt2": "Attempt 2",
+      "attempt3": "Attempt 3",
+      "best": "Best",
+      "moves": "Moves",
+      "scoresheetNote": "→ Also note the result on the consolidated team scoresheet (3 missions on one page)."
+    },
+    "notes": {
+      "facilitatorTitle": "Notes for the facilitator"
+    },
+    "formula": {
+      "title": "Q-learning formula"
+    },
+    "tune": {
+      "title": "Tuning the three knobs",
+      "alpha": "high: learns fast but may oscillate · low: stable but slow",
+      "gamma": "high: plans far ahead (more backward propagation) · low: myopic",
+      "epsilon": "high: explores more · too low too early: locks onto an initial choice"
+    }
+  },
+  "fe": {
+    "title": "🏆 Team scoresheet — all missions",
+    "teamLabel": "Team:",
+    "intro": "Each attempt: pick (α, γ, ε), train, test the references, note the moves. The best column per reference gives the score.",
+    "bench": "Bench",
+    "opt": "Opt.",
+    "best": "Best",
+    "moves": "Moves",
+    "attempt1": "Attempt 1",
+    "attempt2": "Attempt 2",
+    "attempt3": "Attempt 3",
+    "total": "TOTAL",
+    "m1": {
+      "title": "Mission I · 2×2",
+      "gods": "God's number: 6 · 6 references"
+    },
+    "m2": {
+      "title": "Mission II · 2×3",
+      "gods": "God's number: 21 · 5 references"
+    },
+    "m3": {
+      "title": "Mission III · 3×3",
+      "gods": "God's number: 31 · 5 references"
+    }
+  }
 }
