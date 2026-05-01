@@ -1298,11 +1298,36 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   margin-top: 6px;
 }
 
+/* Mission-card "Vous vs Random" comparison stats — this IS the point of the
+   mini-puzzles on the hub home page. Override the muted .small inheritance:
+   labels and counts get full-contrast colors keyed to lime (You) and cyan
+   (Random) so the comparison reads at a glance. */
 .pStats {
-  margin-top: 8px;
-  line-height: 1.35;
+  margin-top: 10px;
+  padding: 8px 10px;
+  line-height: 1.45;
   font-size: 13px;
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
+.pStats .stat-you-label { color: var(--lime, #55ff7a); font-weight: 800; letter-spacing: 0.2px; }
+.pStats .stat-rand-label { color: var(--cyan, #6ad7ff); font-weight: 800; letter-spacing: 0.2px; }
+.pStats [data-stat="moves-human"] { color: var(--lime, #55ff7a); font-weight: 800; }
+.pStats [data-stat="moves-rand"] { color: var(--cyan, #6ad7ff); font-weight: 800; }
+.pStats .stat-sep { color: var(--muted2); margin: 0 4px; }
+.pStats [data-stat="status"] { color: var(--muted); font-style: italic; }
+/* Title qmark — sits on the right of the pTitle and carries the old subtitle. */
+.pHead { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.pHead .qmark {
+  flex: 0 0 auto; cursor: help; opacity: 0.75; font-size: 14px;
+  padding: 2px 4px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  color: var(--muted); background: rgba(0,0,0,0.18);
+  transition: opacity 0.15s, border-color 0.15s;
+}
+.pHead .qmark:hover, .pHead .qmark:focus-visible { opacity: 1; border-color: rgba(106,215,255,0.6); }
 
 .pLinks {
   margin-top: auto;
