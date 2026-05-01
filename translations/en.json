@@ -312,9 +312,9 @@
     "coverage": {
       "title": "Q-agent coverage",
       "bar": {
-        "m1": "Mission I · 2×2 · 12 states",
-        "m2": "Mission II · 2×3 · 360 states",
-        "m3": "Mission III · 3×3 · 181,440 states"
+        "m1": "Mission I · 12 states",
+        "m2": "Mission II · 360 states",
+        "m3": "Mission III · 181,440 states"
       },
       "caption": {
         "m1": "Only 12 states: the bar reaches 100% in a handful of steps. Keep it in mind — on Mission II (360 states) and then Mission III (181,440), the same bar will behave very differently.",
@@ -326,6 +326,9 @@
       "title": "Playback speed",
       "unit": "ms / step",
       "tip": "Display only — does not change what the agent learns. Delay between displayed moves. 0 = as fast as possible. Increase to follow with your eyes."
+    },
+    "header": {
+      "goalLabel": "Goal"
     }
   },
   "ex2x2": {

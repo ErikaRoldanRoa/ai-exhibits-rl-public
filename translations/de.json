@@ -312,9 +312,9 @@
     "coverage": {
       "title": "Abdeckung der Q-Agentin",
       "bar": {
-        "m1": "Mission I · 2×2 · 12 Zustände",
-        "m2": "Mission II · 2×3 · 360 Zustände",
-        "m3": "Mission III · 3×3 · 181.440 Zustände"
+        "m1": "Mission I · 12 Zustände",
+        "m2": "Mission II · 360 Zustände",
+        "m3": "Mission III · 181.440 Zustände"
       },
       "caption": {
         "m1": "Nur 12 Zustände: Der Balken erreicht 100% in wenigen Schritten. Behalte ihn im Kopf — in Mission II (360 Zustände) und dann Mission III (181.440) wird sich derselbe Balken ganz anders verhalten.",
@@ -326,6 +326,9 @@
       "title": "Wiedergabegeschwindigkeit",
       "unit": "ms / Schritt",
       "tip": "Nur Anzeige — ändert nichts daran, was die Agentin lernt. Verzögerung zwischen angezeigten Zügen. 0 = so schnell wie möglich. Erhöhen, um mit den Augen zu folgen."
+    },
+    "header": {
+      "goalLabel": "Ziel"
     }
   },
   "ex2x2": {

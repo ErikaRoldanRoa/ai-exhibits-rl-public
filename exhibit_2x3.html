@@ -350,6 +350,27 @@
   .viewer-strip { flex-wrap: wrap; }
   .viewer-strip .viewer-note { flex: 1 1 100%; }
 }
+
+/* Goal mini-icon — replaces the "Objectif : [1 2 / 3 _]" text in headers.
+   The puzzle is visible on the page; this micro-grid just signals which arrangement is the goal. */
+.goal-mini {
+  display: inline-grid; gap: 2px; vertical-align: middle;
+  padding: 2px; border-radius: 4px;
+}
+.gm-cell {
+  width: 14px; height: 14px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--mono, ui-monospace); font-size: 9px; font-weight: 800;
+  color: rgba(255,255,255,0.92);
+  background: linear-gradient(180deg, rgba(255,47,214,0.18), rgba(255,47,214,0.10));
+  border: 1px solid rgba(255,47,214,0.40);
+  border-radius: 3px;
+}
+.gm-empty { background: transparent; border-style: dashed; opacity: 0.5; }
+.goal-2x2 { grid-template-columns: repeat(2, 14px); }
+.goal-2x3 { grid-template-columns: repeat(3, 14px); }
+.goal-3x3 { grid-template-columns: repeat(3, 14px); }
+
 </style>
 </head>
 <body>
@@ -427,7 +448,7 @@
   <div class="panel">
     <header>
       <div class="chip"><span class="spark"></span><span data-i18n="ex2x3.missionTrainingChip">Mission II · Épisode d'Entraînement</span></div>
-      <div class="mono" style="opacity:.7;font-size:12px" data-i18n="ex2x3.header.goal">Objectif : [1 2 3 / 4 5 _]</div>
+      <div class="header-goal" style="display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted); font-family:var(--mono);"><span data-i18n="ex.header.goalLabel">Objectif</span><span class="goal-mini goal-2x3" aria-label="puzzle goal"><span class="gm-cell">1</span><span class="gm-cell">2</span><span class="gm-cell">3</span><span class="gm-cell">4</span><span class="gm-cell">5</span><span class="gm-cell gm-empty"></span></span></div>
     </header>
     <div class="main">
       <div class="card">
@@ -480,7 +501,7 @@
       <div class="card cov-card" style="margin-top:12px;">
         <h3 class="cov-title" style="display:flex; align-items:center; gap:8px;"><span data-i18n="ex.coverage.title">Couverture de l'agente Q</span><span class="qmark" data-tip="360 états : 30× plus que la Mission I. La barre monte encore pendant l'entraînement, mais elle ne se remplit plus toute seule — couvrir l'espace commence à coûter." data-i18n-data-tip="ex.coverage.caption.m2" tabindex="0" aria-label="À propos de la couverture">ⓘ</span></h3>
         <div class="cov-row">
-          <span class="cov-label" data-i18n="ex.coverage.bar.m2">Mission II · 2×3 · 360 états</span>
+          <span class="cov-label" data-i18n="ex.coverage.bar.m2">Mission II  · 360 états</span>
           <div class="cov-track"><div class="cov-fill" id="covM2Fill" style="width:0%; background:var(--cyan);"></div></div>
           <span class="cov-pct" id="covM2Pct">0%</span>
         </div>

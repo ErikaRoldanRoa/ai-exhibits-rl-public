@@ -365,6 +365,55 @@
   .viewer-strip { flex-wrap: wrap; }
   .viewer-strip .viewer-note { flex: 1 1 100%; }
 }
+
+/* B5 cost staircase — three pill-tiers (Démo / Fiable / Garantie) of growing
+   color intensity so the 0,0001 → 0,01 → 700 CHF reads as a staircase, not a
+   comma-separated string. The brain locates this as "the money story". */
+.b5-staircase { display: flex; flex-direction: column; gap: 5px; margin-top: 4px; }
+.b5-tier {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 5px 10px; border-radius: 8px; font-size: 11px;
+  font-family: var(--mono);
+}
+.b5-tier .b5-label { font-weight: 700; letter-spacing: 0.2px; }
+.b5-tier .b5-value { font-family: var(--mono); }
+.b5-demo {
+  background: rgba(85,255,122,0.08);
+  border: 1px solid rgba(85,255,122,0.22);
+  color: rgba(255,255,255,0.85);
+}
+.b5-reliable {
+  background: rgba(106,215,255,0.10);
+  border: 1px solid rgba(106,215,255,0.32);
+  color: rgba(255,255,255,0.92);
+}
+.b5-proven {
+  background: rgba(255,47,214,0.14);
+  border: 1px solid rgba(255,47,214,0.42);
+  color: rgba(255,255,255,0.95);
+  box-shadow: 0 0 10px rgba(255,47,214,0.18);
+}
+
+/* Goal mini-icon — replaces the "Objectif : [1 2 / 3 _]" text in headers.
+   The puzzle is visible on the page; this micro-grid just signals which arrangement is the goal. */
+.goal-mini {
+  display: inline-grid; gap: 2px; vertical-align: middle;
+  padding: 2px; border-radius: 4px;
+}
+.gm-cell {
+  width: 14px; height: 14px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--mono, ui-monospace); font-size: 9px; font-weight: 800;
+  color: rgba(255,255,255,0.92);
+  background: linear-gradient(180deg, rgba(255,47,214,0.18), rgba(255,47,214,0.10));
+  border: 1px solid rgba(255,47,214,0.40);
+  border-radius: 3px;
+}
+.gm-empty { background: transparent; border-style: dashed; opacity: 0.5; }
+.goal-2x2 { grid-template-columns: repeat(2, 14px); }
+.goal-2x3 { grid-template-columns: repeat(3, 14px); }
+.goal-3x3 { grid-template-columns: repeat(3, 14px); }
+
 </style>
 </head>
 <body>
@@ -443,7 +492,7 @@
   <div class="panel">
     <header>
       <div class="chip"><span class="spark"></span><span data-i18n="ex3x3.missionTrainingChip">Mission III · Épisode d'Entraînement</span></div>
-      <div class="mono" style="opacity:.7;font-size:12px" data-i18n="ex3x3.header.goal">Objectif : [1 2 3 / 4 5 6 / 7 8 _]</div>
+      <div class="header-goal" style="display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted); font-family:var(--mono);"><span data-i18n="ex.header.goalLabel">Objectif</span><span class="goal-mini goal-3x3" aria-label="puzzle goal"><span class="gm-cell">1</span><span class="gm-cell">2</span><span class="gm-cell">3</span><span class="gm-cell">4</span><span class="gm-cell">5</span><span class="gm-cell">6</span><span class="gm-cell">7</span><span class="gm-cell">8</span><span class="gm-cell gm-empty"></span></span></div>
     </header>
     <div class="main">
       <div class="card">
@@ -496,7 +545,7 @@
         <div class="card cov-card" style="margin-top:12px;">
           <h3 class="cov-title" style="display:flex; align-items:center; gap:8px;"><span data-i18n="ex.coverage.title">Couverture de l'agente Q</span><span class="qmark" data-tip="181 440 états : 504× la Mission II, 15 000× la Mission I. Même algorithme, même méthode — l'espace est devenu trop vaste pour qu'on le visite. La barre plafonne, et la malédiction se fait sentir." data-i18n-data-tip="ex.coverage.caption.m3" tabindex="0" aria-label="À propos de la couverture">ⓘ</span></h3>
           <div class="cov-row">
-            <span class="cov-label" data-i18n="ex.coverage.bar.m3">Mission III · 3×3 · 181 440 états</span>
+            <span class="cov-label" data-i18n="ex.coverage.bar.m3">Mission III  · 181 440 états</span>
             <div class="cov-track"><div class="cov-fill" id="covM3Fill" style="width:0%; background:var(--pink);"></div></div>
             <span class="cov-pct" id="covM3Pct">0%</span>
           </div>
@@ -530,7 +579,7 @@
               <span data-i18n="ex.stats.b5cost">Coût pour atteindre B5</span>
               <span class="qmark" data-tip="Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :&#10;• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ 0,0001 CHF.&#10;• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.&#10;• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF.&#10;Entre « fiable » et « garantie », cinq ordres de grandeur : c'est là que vit la pratique réelle du RL." data-i18n-data-tip="ex.stats.b5costTip" tabindex="0" aria-label="À propos du coût pour B5">ⓘ</span>
             </div>
-            <div class="v" id="b5costTxt" style="font-size:11px; line-height:1.5;">—</div>
+            <div class="v" id="b5costTxt">—</div>
           </div>
           </div>
         </div>
@@ -826,10 +875,25 @@
     // ~10⁻⁴ / ~10⁻²–10⁻¹ / ~700 CHF respectively.
     const b5El = document.getElementById('b5costTxt');
     if (b5El){
-      const t1 = (window.i18n ? window.i18n.t('ex.stats.b5costDemo',     'Démo : ~0,0001 CHF') : 'Démo : ~0,0001 CHF');
-      const t2 = (window.i18n ? window.i18n.t('ex.stats.b5costReliable', 'Fiable : ~0,01 CHF') : 'Fiable : ~0,01 CHF');
-      const t3 = (window.i18n ? window.i18n.t('ex.stats.b5costProven',   'Garantie : ~700 CHF') : 'Garantie : ~700 CHF');
-      b5El.innerHTML = `${t1}<br>${t2}<br>${t3}`;
+      const tr = window.i18n && window.i18n.t ? window.i18n.t : (k, f) => f;
+      // Each tier: a label + a value, separated visually by tier styling.
+      // Locale rule: split on " : " (FR-style label : value) so the rendered
+      // pill shows the LABEL on the left and the VALUE on the right.
+      const splitTier = (raw, fallbackLabel, fallbackValue) => {
+        const parts = raw.split(/\s*:\s*/);
+        if (parts.length >= 2) return { label: parts[0], value: parts.slice(1).join(' : ') };
+        return { label: fallbackLabel, value: fallbackValue };
+      };
+      const demo     = splitTier(tr('ex.stats.b5costDemo',     'Démo : ~0,0001 CHF'),     'Démo',     '~0,0001 CHF');
+      const reliable = splitTier(tr('ex.stats.b5costReliable', 'Fiable : ~0,01 CHF'),     'Fiable',   '~0,01 CHF');
+      const proven   = splitTier(tr('ex.stats.b5costProven',   'Garantie : ~700 CHF'),    'Garantie', '~700 CHF');
+      const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      b5El.innerHTML =
+        `<div class="b5-staircase">
+          <div class="b5-tier b5-demo"><span class="b5-label">${esc(demo.label)}</span><span class="b5-value">${esc(demo.value)}</span></div>
+          <div class="b5-tier b5-reliable"><span class="b5-label">${esc(reliable.label)}</span><span class="b5-value">${esc(reliable.value)}</span></div>
+          <div class="b5-tier b5-proven"><span class="b5-label">${esc(proven.label)}</span><span class="b5-value">${esc(proven.value)}</span></div>
+        </div>`;
     }
   }
   function log(line){

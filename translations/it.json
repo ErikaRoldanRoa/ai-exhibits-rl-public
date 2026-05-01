@@ -312,9 +312,9 @@
     "coverage": {
       "title": "Copertura dell'agente Q",
       "bar": {
-        "m1": "Missione I · 2×2 · 12 stati",
-        "m2": "Missione II · 2×3 · 360 stati",
-        "m3": "Missione III · 3×3 · 181.440 stati"
+        "m1": "Missione I · 12 stati",
+        "m2": "Missione II · 360 stati",
+        "m3": "Missione III · 181.440 stati"
       },
       "caption": {
         "m1": "Solo 12 stati: la barra arriva al 100% in pochi passi. Tienila a mente — nella Missione II (360 stati) e poi nella Missione III (181.440), la stessa barra si comporterà in modo molto diverso.",
@@ -326,6 +326,9 @@
       "title": "Velocità di visione",
       "unit": "ms / passo",
       "tip": "Solo visualizzazione — non cambia ciò che l'agente impara. Ritardo tra le mosse visualizzate. 0 = il più veloce possibile. Aumenta per seguire con gli occhi."
+    },
+    "header": {
+      "goalLabel": "Obiettivo"
     }
   },
   "ex2x2": {

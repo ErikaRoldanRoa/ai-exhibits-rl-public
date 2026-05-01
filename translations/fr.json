@@ -312,9 +312,9 @@
     "coverage": {
       "title": "Couverture de l'agente Q",
       "bar": {
-        "m1": "Mission I · 2×2 · 12 états",
-        "m2": "Mission II · 2×3 · 360 états",
-        "m3": "Mission III · 3×3 · 181 440 états"
+        "m1": "Mission I · 12 états",
+        "m2": "Mission II · 360 états",
+        "m3": "Mission III · 181 440 états"
       },
       "caption": {
         "m1": "12 états seulement : la barre arrive à 100 % en une poignée de pas. Garde-la en tête — sur Mission II (360 états) puis Mission III (181 440), la même barre se comportera très différemment.",
@@ -326,6 +326,9 @@
       "title": "Vitesse de visionnage",
       "unit": "ms / pas",
       "tip": "Affichage uniquement — ne change rien à ce que l'agente apprend. Délai entre les coups affichés. 0 = aussi vite que possible. Augmente pour mieux suivre des yeux."
+    },
+    "header": {
+      "goalLabel": "Objectif"
     }
   },
   "ex2x2": {
