@@ -93,7 +93,7 @@ body:not([data-role="facilitator"]) #roleCard {
 <body data-role="agent">
 <div class="langSelectorWrap" role="region" aria-label="Langue / Language">
   <button type="button" id="tutorialReplay" class="tutorialReplay" title="Voir le tutoriel" data-i18n-title="hub.tutorialReplay"
-    onclick="if(window.AIExhibitsTutorial){window.AIExhibitsTutorial.reset();window.AIExhibitsTutorial.init();}">🎓</button>
+    onclick="try{localStorage.removeItem('ai-exhibits-tutorial-completed');localStorage.removeItem('ai-exhibits-tutorial-skip');}catch(e){}window.location.href='exhibit_2x2.html';">🎓</button>
   <select id="langSelector" class="langSelector" onchange="window.i18n.setLang(this.value)">
     <option value="fr">🇫🇷 FR</option>
     <option value="en">🇬🇧 EN</option>
