@@ -469,13 +469,17 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
     el.style.gridTemplateColumns = `repeat(${cols}, var(--cell))`;
     for(let i=0;i<state.length;i++){
       const v = state[i];
-      const b = document.createElement("button");
-      b.type="button";
-      b.className = "miniTile" + (v===0 ? " miniBlank" : "");
-      b.textContent = v===0 ? "" : String(v);
+      let b;
       if(v===0){
-        b.disabled = true;
+        b = document.createElement("span");
+        b.className = "miniTile miniBlank";
+        b.setAttribute("aria-hidden", "true");
       } else {
+        b = document.createElement("button");
+        b.type = "button";
+        b.className = "miniTile";
+        b.textContent = String(v);
+        b.setAttribute("aria-label", "tile " + v);
         b.addEventListener("click", ()=> moveHuman(inst, i));
       }
       el.appendChild(b);
