@@ -152,6 +152,29 @@ h1 {
   font-size: 26px;
 }
 
+/* Shared brand title — used on the hub h1 and on all 3 mission trainer h1s.
+   Pink monospace, plain (no text-shadow glow) per the M3 plain-not-diffusing
+   reference. Uniform across the hub and all three missions. */
+.brand-title {
+  margin: 0;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  color: var(--pink);
+  line-height: 1.2;
+}
+
+/* Mission upper bar — uniform across the 3 missions: Objectif (left),
+   live coverage % (center), mission-name chip (right). */
+.mission-header .header-cov-value {
+  color: var(--text);
+  font-weight: 700;
+  font-family: var(--mono);
+  min-width: 4ch;
+  text-align: right;
+}
+
 h2 {
   font-size: 18px;
 }
@@ -384,9 +407,7 @@ button.bench:hover {
   padding: 10px 12px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(0, 0, 0, 0.22);
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(8px);
+  background: rgba(7, 6, 10, 0.94);
 }
 
 .switchRole {
@@ -419,15 +440,13 @@ body[data-role="facilitator"] .facOnly {
   position: fixed;
   inset: 0;
   z-index: var(--z-modal, 10000);
-  background: rgba(7, 6, 10, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(7, 6, 10, 0.96);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--space-xl, 24px);
   min-height: 100vh;
-  min-height: 100dvh; /* Dynamic viewport for mobile */
+  min-height: 100dvh;
   opacity: 1;
   transition: opacity var(--duration-normal, 0.2s) var(--ease-out);
   overflow-y: auto;
@@ -444,32 +463,25 @@ body[data-role="facilitator"] .facOnly {
   max-height: calc(100vh - 48px);
   max-height: calc(100dvh - 48px);
   margin: auto;
-  border: 2px solid rgba(255, 59, 212, 0.35);
-  background: linear-gradient(180deg, 
-    rgba(18, 14, 28, 0.98) 0%, 
-    rgba(7, 6, 10, 0.98) 100%
-  );
+  border: 1px solid rgba(255, 59, 212, 0.45);
+  background: rgba(14, 11, 22, 0.98);
   border-radius: var(--radius-2xl, 24px);
   padding: var(--space-2xl, 32px);
-  box-shadow: 
-    0 0 60px rgba(255, 59, 212, 0.15),
-    0 32px 80px rgba(0, 0, 0, 0.75),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7);
   overflow-y: auto;
 }
 
-/* Decorative top accent line */
+/* Decorative top accent line — solid, no glow */
 .modalCard::before {
   content: "";
   position: absolute;
   top: 16px;
   left: 32px;
   right: 32px;
-  height: 3px;
+  height: 2px;
   border-radius: var(--radius-full);
-  background: linear-gradient(90deg, var(--pink), var(--cyan), var(--lime));
-  opacity: 0.7;
-  box-shadow: 0 0 20px rgba(255, 59, 212, 0.5);
+  background: var(--pink);
+  opacity: 0.6;
 }
 
 .modalTop {
@@ -484,7 +496,6 @@ body[data-role="facilitator"] .facOnly {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgba(255, 59, 212, 0.95);
-  text-shadow: 0 0 20px rgba(255, 59, 212, 0.6);
   margin-bottom: var(--space-md, 12px);
   padding: 6px 14px;
   border-radius: var(--radius-full);
@@ -532,32 +543,20 @@ body[data-role="facilitator"] .facOnly {
 .primaryBtn {
   padding: 14px 28px;
   border-radius: var(--radius-full);
-  border: 2px solid rgba(255, 59, 212, 0.6);
-  background: linear-gradient(135deg, 
-    rgba(255, 59, 212, 0.2) 0%, 
-    rgba(255, 59, 212, 0.1) 100%
-  );
+  border: 1px solid rgba(255, 59, 212, 0.7);
+  background: rgba(255, 59, 212, 0.16);
   color: rgba(255, 255, 255, 0.98);
   font-weight: 900;
   font-size: var(--text-base, 15px);
   letter-spacing: 0.3px;
   cursor: pointer;
-  box-shadow: 
-    0 0 30px rgba(255, 59, 212, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all var(--duration-fast) var(--ease-out);
   min-height: 48px;
 }
 
 .primaryBtn:hover {
-  border-color: rgba(255, 59, 212, 0.9);
-  background: linear-gradient(135deg, 
-    rgba(255, 59, 212, 0.3) 0%, 
-    rgba(255, 59, 212, 0.15) 100%
-  );
-  box-shadow: 
-    0 0 40px rgba(255, 59, 212, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 59, 212, 0.95);
+  background: rgba(255, 59, 212, 0.26);
   transform: translateY(-1px);
 }
 
@@ -1781,8 +1780,7 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   position: fixed;
   inset: 0;
   z-index: 999999;
-  background: rgba(7, 6, 10, 0.95);
-  backdrop-filter: blur(12px);
+  background: rgba(7, 6, 10, 0.97);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1797,23 +1795,15 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   pointer-events: all;
 }
 
-/* Tutorial card - glassmorphism with neon edges */
+/* Tutorial card — plain solid styling, no halo, no gradient */
 .tutorial-card {
   position: relative;
   width: min(680px, 100%);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 59, 212, 0.08) 0%,
-    rgba(47, 243, 255, 0.06) 50%,
-    rgba(112, 255, 122, 0.06) 100%
-  );
-  border: 2px solid rgba(255, 59, 212, 0.35);
+  background: rgba(14, 11, 22, 0.98);
+  border: 1px solid rgba(255, 59, 212, 0.45);
   border-radius: 24px;
   padding: 40px 36px 32px;
-  box-shadow: 
-    0 0 60px rgba(255, 59, 212, 0.25),
-    0 20px 80px rgba(0, 0, 0, 0.70),
-    inset 0 0 40px rgba(255, 59, 212, 0.05);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7);
   transform: scale(0.95);
   transition: transform 0.3s ease;
 }
@@ -1822,19 +1812,17 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   transform: scale(1);
 }
 
-/* Neon top border accent */
+/* Top accent line — solid, no glow, no blur */
 .tutorial-card::before {
   content: "";
   position: absolute;
   left: 36px;
   right: 36px;
   top: 20px;
-  height: 4px;
+  height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--pink), var(--cyan), var(--lime));
-  opacity: 0.85;
-  filter: blur(1px);
-  box-shadow: 0 0 20px rgba(255, 59, 212, 0.55);
+  background: var(--pink);
+  opacity: 0.65;
 }
 
 /* Tutorial header */
@@ -2041,16 +2029,14 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
 }
 
 .tutorial-btn.primary {
-  background: linear-gradient(135deg, rgba(255, 59, 212, 0.25), rgba(47, 243, 255, 0.20));
-  border-color: rgba(255, 59, 212, 0.55);
+  background: rgba(255, 59, 212, 0.20);
+  border-color: rgba(255, 59, 212, 0.65);
   color: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 0 20px rgba(255, 59, 212, 0.25);
 }
 
 .tutorial-btn.primary:hover {
-  background: linear-gradient(135deg, rgba(255, 59, 212, 0.35), rgba(47, 243, 255, 0.28));
-  border-color: rgba(255, 59, 212, 0.75);
-  box-shadow: 0 0 28px rgba(255, 59, 212, 0.40);
+  background: rgba(255, 59, 212, 0.30);
+  border-color: rgba(255, 59, 212, 0.85);
 }
 
 .tutorial-btn-icon {

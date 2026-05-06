@@ -468,15 +468,7 @@
   border-bottom:1px solid rgba(255,255,255,0.12);
   background:linear-gradient(180deg, rgba(255,47,214,0.08), rgba(0,0,0,0));
 ">
-  <h1 style="
-    margin:0;
-    font-family:'JetBrains Mono', ui-monospace, monospace;
-    font-size:30px;
-    font-weight:900;
-    letter-spacing:0.6px;
-    color:#ff2fd6;
-    text-shadow:0 0 14px rgba(255,47,214,0.55);
-  " data-i18n="ex.brand.title">AI-Exhibits :
+  <h1 class="brand-title" data-i18n="ex.brand.title">AI-Exhibits :
     Apprentissage par Renforcement (Q-learning)
   </h1>
   <div style="
@@ -490,10 +482,11 @@
 </div>
 <div class="wrap">
   <div class="panel">
-    <header>
-      <div class="chip"><span class="spark"></span><span data-i18n="ex3x3.missionTrainingChip">Mission III · Épisode d'Entraînement</span></div>
-      <div class="header-goal" style="display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted); font-family:var(--mono);"><span data-i18n="ex.header.goalLabel">Objectif</span><span class="goal-mini goal-3x3" aria-label="puzzle goal"><span class="gm-cell">1</span><span class="gm-cell">2</span><span class="gm-cell">3</span><span class="gm-cell">4</span><span class="gm-cell">5</span><span class="gm-cell">6</span><span class="gm-cell">7</span><span class="gm-cell">8</span><span class="gm-cell gm-empty"></span></span></div>
-    </header>
+    <header class="mission-header" style="display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:14px;">
+    <div class="header-goal" style="display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted); font-family:var(--mono);"><span data-i18n="ex.header.goalLabel">Objectif</span><span class="goal-mini goal-3x3" aria-label="puzzle goal"><span class="gm-cell">1</span><span class="gm-cell">2</span><span class="gm-cell">3</span><span class="gm-cell">4</span><span class="gm-cell">5</span><span class="gm-cell">6</span><span class="gm-cell">7</span><span class="gm-cell">8</span><span class="gm-cell gm-empty"></span></span></div>
+    <div class="header-cov" style="display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted); font-family:var(--mono);"><span data-i18n="ex.header.covLabel">Couverture</span><span class="header-cov-value" id="headerCovM3Pct">0%</span></div>
+    <div class="chip"><span class="spark"></span><span data-i18n="ex3x3.missionTrainingChip">Mission III · Épisode d'Entraînement</span></div>
+  </header>
     <div class="main">
       <div class="card">
         <h2 data-i18n="ex.panel.currentPuzzle">Puzzle actuel</h2>
@@ -853,10 +846,12 @@
     // Coverage chart — live M3 bar
     const m3FillEl = document.getElementById('covM3Fill');
     const m3PctEl = document.getElementById('covM3Pct');
+    const headerCovPctEl = document.getElementById('headerCovM3Pct');
     if (m3FillEl && m3PctEl){
       m3FillEl.style.width = pct.toFixed(2) + '%';
       m3PctEl.textContent = fmtPct(pct) + '%';
     }
+    if (headerCovPctEl) headerCovPctEl.textContent = fmtPct(pct) + '%';
     // Total budget = episodes × max-steps. The total number of Q-updates
     // this training pass will perform if it runs to completion. Reads
     // directly from the user's form inputs.

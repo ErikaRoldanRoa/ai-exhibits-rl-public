@@ -598,15 +598,7 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
   border-bottom:1px solid rgba(255,255,255,0.12);
   background:linear-gradient(180deg, rgba(255,47,214,0.08), rgba(0,0,0,0));
 ">
-  <h1 style="
-    margin:0;
-    font-family:'JetBrains Mono', ui-monospace, monospace;
-    font-size:30px;
-    font-weight:900;
-    letter-spacing:0.6px;
-    color:#ff2fd6;
-    text-shadow:0 0 14px rgba(255,47,214,0.55);
-  " data-i18n="ex.brand.title">AI-Exhibits :
+  <h1 class="brand-title" data-i18n="ex.brand.title">AI-Exhibits :
     Apprentissage par Renforcement (Q-learning)
   </h1>
   <div style="
@@ -622,9 +614,10 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
 <div class="wrap">
   <div id="paramTip" class="paramTip"></div>
 
-  <header style="display:flex; gap:16px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; margin-bottom:14px;">
-    <div class="chip"><span class="spark"></span><span data-i18n="ex2x2.missionTrainingChip">Mission I · Épisode d'Entraînement</span></div>
+  <header class="mission-header" style="display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:14px;">
     <div class="header-goal" style="display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted); font-family:var(--mono);"><span data-i18n="ex.header.goalLabel">Objectif</span><span class="goal-mini goal-2x2" aria-label="puzzle goal"><span class="gm-cell">1</span><span class="gm-cell">2</span><span class="gm-cell">3</span><span class="gm-cell gm-empty"></span></span></div>
+    <div class="header-cov" style="display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted); font-family:var(--mono);"><span data-i18n="ex.header.covLabel">Couverture</span><span class="header-cov-value" id="headerCovM1Pct">0%</span></div>
+    <div class="chip"><span class="spark"></span><span data-i18n="ex2x2.missionTrainingChip">Mission I · Épisode d'Entraînement</span></div>
   </header>
 
   <div class="grid">
@@ -1927,6 +1920,8 @@ const rline = document.createElement('div');
         };
         fillEl.style.width = pct.toFixed(2) + '%';
         pctEl.textContent = fmtPct(pct) + '%';
+        const headerPctEl = document.getElementById('headerCovM1Pct');
+        if (headerPctEl) headerPctEl.textContent = fmtPct(pct) + '%';
       })();
     }
 

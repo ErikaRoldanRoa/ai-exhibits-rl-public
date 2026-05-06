@@ -332,7 +332,8 @@
       "tip": "Solo visualizzazione — non cambia ciò che l'agente impara. Ritardo tra le mosse visualizzate. 0 = il più veloce possibile. Aumenta per seguire con gli occhi."
     },
     "header": {
-      "goalLabel": "Obiettivo"
+      "goalLabel": "Obiettivo",
+      "covLabel": "Copertura"
     }
   },
   "ex2x2": {

@@ -332,7 +332,8 @@
       "tip": "Affichage uniquement — ne change rien à ce que l'agente apprend. Délai entre les coups affichés. 0 = aussi vite que possible. Augmente pour mieux suivre des yeux."
     },
     "header": {
-      "goalLabel": "Objectif"
+      "goalLabel": "Objectif",
+      "covLabel": "Couverture"
     }
   },
   "ex2x2": {
