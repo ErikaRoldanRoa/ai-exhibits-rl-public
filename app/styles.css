@@ -166,13 +166,31 @@ h1 {
 }
 
 /* Mission upper bar — uniform across the 3 missions: Objectif (left),
-   live coverage % (center), mission-name chip (right). */
-.mission-header .header-cov-value {
-  color: var(--text);
-  font-weight: 700;
-  font-family: var(--mono);
-  min-width: 4ch;
-  text-align: right;
+   coverage card with live bar (center), mission-name chip (right).
+   The coverage card uses .cov-card-inline to fit compactly in the header
+   (smaller title, tighter padding, single-row bar) while keeping the same
+   visual — it's the same card the user used to scroll to find. */
+.mission-header .cov-card-inline {
+  padding: 8px 12px;
+}
+.mission-header .cov-card-inline .cov-title {
+  font-size: 12px;
+  margin: 0 0 4px 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+.mission-header .cov-card-inline .cov-row {
+  margin-bottom: 0;
+  font-size: 11px;
+  grid-template-columns: minmax(110px, auto) 1fr auto;
+  gap: 8px;
+}
+.mission-header .cov-card-inline .cov-track {
+  height: 12px;
+}
+.mission-header .cov-card-inline .cov-pct {
+  font-size: 12px;
+  min-width: 44px;
 }
 
 h2 {

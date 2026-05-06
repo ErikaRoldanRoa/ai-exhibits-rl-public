@@ -440,7 +440,14 @@
   <div class="panel">
     <header class="mission-header" style="display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:14px;">
     <div class="header-goal" style="display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted); font-family:var(--mono);"><span data-i18n="ex.header.goalLabel">Objectif</span><span class="goal-mini goal-2x3" aria-label="puzzle goal"><span class="gm-cell">1</span><span class="gm-cell">2</span><span class="gm-cell">3</span><span class="gm-cell">4</span><span class="gm-cell">5</span><span class="gm-cell gm-empty"></span></span></div>
-    <div class="header-cov" style="display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted); font-family:var(--mono);"><span data-i18n="ex.header.covLabel">Couverture</span><span class="header-cov-value" id="headerCovM2Pct">0%</span></div>
+    <div class="card cov-card cov-card-inline" style="flex:1 1 320px; max-width:560px; min-width:260px; margin:0;">
+      <h3 class="cov-title" style="display:flex; align-items:center; gap:8px;"><span data-i18n="ex.coverage.title">Couverture de l'agente Q</span><span class="qmark" data-tip="360 états : 30× plus que la Mission I. La barre monte encore pendant l'entraînement, mais elle ne se remplit plus toute seule — couvrir l'espace commence à coûter." data-i18n-data-tip="ex.coverage.caption.m2" tabindex="0" aria-label="À propos de la couverture">ⓘ</span></h3>
+      <div class="cov-row">
+        <span class="cov-label" data-i18n="ex.coverage.bar.m2">Mission II  · 360 états</span>
+        <div class="cov-track"><div class="cov-fill" id="covM2Fill" style="width:0%; background:var(--cyan);"></div></div>
+        <span class="cov-pct" id="covM2Pct">0%</span>
+      </div>
+    </div>
     <div class="chip"><span class="spark"></span><span data-i18n="ex2x3.missionTrainingChip">Mission II · Épisode d'Entraînement</span></div>
   </header>
     <div class="main">
@@ -488,14 +495,7 @@
       <!-- Right-column stack: cov-card + glossary + training-params live in
            one grid cell so they stack tightly without empty rows. -->
       <div class="rightCol" style="display:flex; flex-direction:column; gap:14px; min-width:0;">
-      <!-- Coverage card — promoted out of the stats grid. The bar fills as
-           the agent visits more of the 360 reachable states. This is the
-           single most important truth-telling number on this page. -->
-      <div class="card cov-card" style="margin-top:12px;">
-        <h3 class="cov-title" style="display:flex; align-items:center; gap:8px;"><span data-i18n="ex.coverage.title">Couverture de l'agente Q</span><span class="qmark" data-tip="360 états : 30× plus que la Mission I. La barre monte encore pendant l'entraînement, mais elle ne se remplit plus toute seule — couvrir l'espace commence à coûter." data-i18n-data-tip="ex.coverage.caption.m2" tabindex="0" aria-label="À propos de la couverture">ⓘ</span></h3>
-        <div class="cov-row">
-          <span class="cov-label" data-i18n="ex.coverage.bar.m2">Mission II  · 360 états</span>
-          <div class="cov-track"><div class="cov-fill" id="covM2Fill" style="width:0%; background:var(--cyan);"></div></div>
+      <!-- Coverage card lives in the header bar above. -->
           <span class="cov-pct" id="covM2Pct">0%</span>
         </div>
         </div>
@@ -749,8 +749,6 @@
       if (fillEl && pctEl){
         fillEl.style.width = pct.toFixed(2) + '%';
         pctEl.textContent = fmtPct(pct) + '%';
-        const headerPctEl = document.getElementById('headerCovM2Pct');
-        if (headerPctEl) headerPctEl.textContent = fmtPct(pct) + '%';
       }
     })()
     updatesEl.textContent = String(updates);

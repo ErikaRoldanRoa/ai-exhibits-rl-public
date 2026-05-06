@@ -332,8 +332,7 @@
       "tip": "Nur Anzeige — ändert nichts daran, was die Agentin lernt. Verzögerung zwischen angezeigten Zügen. 0 = so schnell wie möglich. Erhöhen, um mit den Augen zu folgen."
     },
     "header": {
-      "goalLabel": "Ziel",
-      "covLabel": "Abdeckung"
+      "goalLabel": "Ziel"
     }
   },
   "ex2x2": {

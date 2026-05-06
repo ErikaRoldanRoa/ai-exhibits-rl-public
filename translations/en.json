@@ -332,8 +332,7 @@
       "tip": "Display only — does not change what the agent learns. Delay between displayed moves. 0 = as fast as possible. Increase to follow with your eyes."
     },
     "header": {
-      "goalLabel": "Goal",
-      "covLabel": "Coverage"
+      "goalLabel": "Goal"
     }
   },
   "ex2x2": {

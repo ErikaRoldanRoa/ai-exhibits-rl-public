@@ -616,7 +616,14 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
 
   <header class="mission-header" style="display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:14px;">
     <div class="header-goal" style="display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted); font-family:var(--mono);"><span data-i18n="ex.header.goalLabel">Objectif</span><span class="goal-mini goal-2x2" aria-label="puzzle goal"><span class="gm-cell">1</span><span class="gm-cell">2</span><span class="gm-cell">3</span><span class="gm-cell gm-empty"></span></span></div>
-    <div class="header-cov" style="display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted); font-family:var(--mono);"><span data-i18n="ex.header.covLabel">Couverture</span><span class="header-cov-value" id="headerCovM1Pct">0%</span></div>
+    <div class="card cov-card cov-card-inline" style="flex:1 1 320px; max-width:560px; min-width:260px; margin:0;">
+      <h3 class="cov-title" style="display:flex; align-items:center; gap:8px;"><span data-i18n="ex.coverage.title">Couverture de l'agente Q</span><span class="qmark" data-tip="12 états seulement : la barre arrive à 100 % en une poignée de pas. Garde-la en tête — sur Mission II (360 états) puis Mission III (181 440), la même barre se comportera très différemment." data-i18n-data-tip="ex.coverage.caption.m1" tabindex="0" aria-label="À propos de la couverture">ⓘ</span></h3>
+      <div class="cov-row">
+        <span class="cov-label" data-i18n="ex.coverage.bar.m1">Mission I  · 12 états</span>
+        <div class="cov-track"><div class="cov-fill" id="covM1Fill" style="width:0%; background:var(--lime);"></div></div>
+        <span class="cov-pct" id="covM1Pct">0%</span>
+      </div>
+    </div>
     <div class="chip"><span class="spark"></span><span data-i18n="ex2x2.missionTrainingChip">Mission I · Épisode d'Entraînement</span></div>
   </header>
 
@@ -664,16 +671,7 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
             <div class="kv" style="margin-top:10px;"><span data-i18n="common.bestScores">Meilleurs scores</span><div id="benchScoresTxt">B1 : — | B2 : — | B3 : — | B4 : — | B5 : — | B6 : —</div></div>
           </div>
           <!-- /Benchmarks -->
-
-          <!-- Coverage card — promoted to TOP of the trainer column so the
-               truth-telling bar is the first thing the reader meets after the
-               benchmarks. On Mission I it fills quickly: that IS the lesson —
-               at 12 states the curse does not bite, but it WILL on M2 and M3. -->
-          <div class="card cov-card" style="margin-top:12px;">
-            <h3 class="cov-title" style="display:flex; align-items:center; gap:8px;"><span data-i18n="ex.coverage.title">Couverture de l'agente Q</span><span class="qmark" data-tip="12 états seulement : la barre arrive à 100 % en une poignée de pas. Garde-la en tête — sur Mission II (360 états) puis Mission III (181 440), la même barre se comportera très différemment." data-i18n-data-tip="ex.coverage.caption.m1" tabindex="0" aria-label="À propos de la couverture">ⓘ</span></h3>
-            <div class="cov-row">
-              <span class="cov-label" data-i18n="ex.coverage.bar.m1">Mission I  · 12 états</span>
-              <div class="cov-track"><div class="cov-fill" id="covM1Fill" style="width:0%; background:var(--lime);"></div></div>
+          <!-- Coverage card lives in the header bar above. -->
               <span class="cov-pct" id="covM1Pct">0%</span>
             </div>
             </div>
@@ -1920,8 +1918,6 @@ const rline = document.createElement('div');
         };
         fillEl.style.width = pct.toFixed(2) + '%';
         pctEl.textContent = fmtPct(pct) + '%';
-        const headerPctEl = document.getElementById('headerCovM1Pct');
-        if (headerPctEl) headerPctEl.textContent = fmtPct(pct) + '%';
       })();
     }
 
