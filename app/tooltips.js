@@ -129,17 +129,28 @@
   window.addEventListener('resize', hide);
 
   // Touch + click handling: on touch devices, hover doesn't fire and tooltips
-  // are otherwise unreachable. Tap on a (i) toggles its tooltip via the
-  // existing show()/hide() pipeline; tap elsewhere dismisses.
+  // are otherwise unreachable. Tap on a (i) toggles its tooltip; tap elsewhere
+  // dismisses.
+  //
+  // Critical: only intercept clicks on non-actionable tooltip triggers
+  // (spans, divs — typically the (i) qmark spans). For actionable elements
+  // (buttons, links), let the click through so their own handlers can run.
+  // Stopping propagation indiscriminately broke bench-button loads
+  // (B1–B6 on the trainers all carry data-tooltip and would silently fail).
   document.addEventListener('click', (e) => {
     const el = e.target && e.target.closest && e.target.closest('[data-tooltip], [data-tip]');
     if (el) {
+      const tag = (el.tagName || '').toLowerCase();
+      const isActionable = tag === 'button' || tag === 'a'
+        || el.hasAttribute('data-act') || el.getAttribute('role') === 'button';
       if (currentTarget === el && tip && tip.classList.contains('on')) {
         hide();
       } else {
         show(el);
       }
-      e.stopPropagation();
+      // Only swallow the click for non-actionable tooltip triggers (i.e. the
+      // (i) qmark spans). Actionable elements must still reach their handlers.
+      if (!isActionable) e.stopPropagation();
       return;
     }
     if (currentTarget) hide();
