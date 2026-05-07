@@ -337,9 +337,7 @@
     }
   },
   "ex2x2": {
-    "brand": {
-      "subtitle": "Schiebepuzzle 2×2 · Erreichbare Zustände (Zielkomponente): <strong>12</strong>"
-    },
+    "brand": {},
     "missionTrainingChip": "Mission I · Trainings-Episode",
     "playTrainTitle": "Spielen + Trainieren",
     "puzzleAria": "2×2-Schiebepuzzle",
@@ -405,9 +403,7 @@
     }
   },
   "ex2x3": {
-    "brand": {
-      "subtitle": "Schiebepuzzle 2×3 · Erreichbare Zustände (Zielkomponente): <strong>360</strong>"
-    },
+    "brand": {},
     "header": {
       "goal": "Ziel: [1 2 3 / 4 5 _]"
     },
@@ -438,9 +434,7 @@
     }
   },
   "ex3x3": {
-    "brand": {
-      "subtitle": "Schiebepuzzle 3×3 · Erreichbare Zustände (Zielkomponente): <strong>181.440</strong>"
-    },
+    "brand": {},
     "header": {
       "goal": "Ziel: [1 2 3 / 4 5 6 / 7 8 _]"
     },

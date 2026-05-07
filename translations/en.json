@@ -337,9 +337,7 @@
     }
   },
   "ex2x2": {
-    "brand": {
-      "subtitle": "Sliding Puzzle 2×2 · Reachable states (goal component): <strong>12</strong>"
-    },
+    "brand": {},
     "missionTrainingChip": "Mission I · Training Episode",
     "playTrainTitle": "Play + Train",
     "puzzleAria": "2x2 sliding puzzle",
@@ -405,9 +403,7 @@
     }
   },
   "ex2x3": {
-    "brand": {
-      "subtitle": "Sliding Puzzle 2×3 · Reachable states (goal component): <strong>360</strong>"
-    },
+    "brand": {},
     "header": {
       "goal": "Goal: [1 2 3 / 4 5 _]"
     },
@@ -438,9 +434,7 @@
     }
   },
   "ex3x3": {
-    "brand": {
-      "subtitle": "Sliding Puzzle 3×3 · Reachable states (goal component): <strong>181,440</strong>"
-    },
+    "brand": {},
     "header": {
       "goal": "Goal: [1 2 3 / 4 5 6 / 7 8 _]"
     },

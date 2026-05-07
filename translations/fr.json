@@ -337,9 +337,7 @@
     }
   },
   "ex2x2": {
-    "brand": {
-      "subtitle": "Puzzle à Glissement 2×2 · États accessibles (composante de l'objectif) : <strong>12</strong>"
-    },
+    "brand": {},
     "missionTrainingChip": "Mission I · Épisode d'Entraînement",
     "playTrainTitle": "Jouer + Entraîner",
     "puzzleAria": "puzzle à glissement 2×2",
@@ -405,9 +403,7 @@
     }
   },
   "ex2x3": {
-    "brand": {
-      "subtitle": "Puzzle à Glissement 2×3 · États accessibles (composante de l'objectif) : <strong>360</strong>"
-    },
+    "brand": {},
     "header": {
       "goal": "Objectif : [1 2 3 / 4 5 _]"
     },
@@ -438,9 +434,7 @@
     }
   },
   "ex3x3": {
-    "brand": {
-      "subtitle": "Puzzle à Glissement 3×3 · États accessibles (composante de l'objectif) : <strong>181 440</strong>"
-    },
+    "brand": {},
     "header": {
       "goal": "Objectif : [1 2 3 / 4 5 6 / 7 8 _]"
     },

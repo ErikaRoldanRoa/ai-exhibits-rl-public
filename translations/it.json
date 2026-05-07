@@ -337,9 +337,7 @@
     }
   },
   "ex2x2": {
-    "brand": {
-      "subtitle": "Puzzle a Scorrimento 2×2 · Stati raggiungibili (componente dell'obiettivo): <strong>12</strong>"
-    },
+    "brand": {},
     "missionTrainingChip": "Missione I · Episodio di Addestramento",
     "playTrainTitle": "Gioca + Addestra",
     "puzzleAria": "puzzle a scorrimento 2x2",
@@ -405,9 +403,7 @@
     }
   },
   "ex2x3": {
-    "brand": {
-      "subtitle": "Puzzle a Scorrimento 2×3 · Stati raggiungibili (componente dell'obiettivo): <strong>360</strong>"
-    },
+    "brand": {},
     "header": {
       "goal": "Obiettivo: [1 2 3 / 4 5 _]"
     },
@@ -438,9 +434,7 @@
     }
   },
   "ex3x3": {
-    "brand": {
-      "subtitle": "Puzzle a Scorrimento 3×3 · Stati raggiungibili (componente dell'obiettivo): <strong>181.440</strong>"
-    },
+    "brand": {},
     "header": {
       "goal": "Obiettivo: [1 2 3 / 4 5 6 / 7 8 _]"
     },
