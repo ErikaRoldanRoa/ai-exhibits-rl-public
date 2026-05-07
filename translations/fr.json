@@ -115,7 +115,12 @@
     "dmvmBanner": "Tu lis l'article DMVM. Commence par le 2×2 — douze états, le monde entier tient sur une serviette.",
     "dmvmBannerClose": "Fermer le bandeau DMVM",
     "tutorialReplay": "Voir le tutoriel",
-    "trainLocked": "Résoudre {solved}/{need} benchmarks pour débloquer"
+    "trainLocked": "Résoudre {solved}/{need} benchmarks pour débloquer",
+    "recordsLabel": "Records de cette mission",
+    "recordsBenchHeader": "Repère",
+    "recordsRandomShort": "Aléat.",
+    "recordsQShort": "Q-agente",
+    "solvedCelebration": "🎉 Résolu en {n} coups !"
   },
   "glossary": {
     "cardTitle": "Glossaire — termes Q-learning",

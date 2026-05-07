@@ -793,6 +793,37 @@ select:focus-visible {
   box-shadow: 0 0 30px rgba(255,59,212,0.35), 0 8px 32px rgba(0,0,0,0.65);
 }
 .rl-tip[data-style="gods"][data-placement="top"] .rl-tip-arrow { border-top-color: rgba(255,59,212,0.7); }
+
+/* "records" — gold-bordered table tooltip used by the 🏆 mission-card icon.
+   Monospace text and left-aligned so the per-benchmark table reads cleanly
+   with You / Random / Q-agent columns lined up. */
+.rl-tip[data-style="records"] {
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 22px rgba(255,215,0,0.22), 0 8px 32px rgba(0,0,0,0.65);
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 12px;
+  text-align: left;
+  white-space: pre;
+  max-width: min(520px, calc(100vw - 28px));
+}
+.rl-tip[data-style="records"][data-placement="top"] .rl-tip-arrow { border-top-color: rgba(255,215,0,0.6); }
+.rl-tip[data-style="records"][data-placement="bottom"] .rl-tip-arrow { border-bottom-color: rgba(255,215,0,0.6); }
+
+/* Solve-celebration: when the user reaches the goal, the stats line
+   briefly transforms with a glowing gradient + scale pulse. Replaces the
+   static " · résolu" text with a full-width emphatic message. */
+.pStats.celebrating {
+  color: var(--lime, #6dff8a);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  animation: solve-pulse 1.6s ease-out;
+}
+@keyframes solve-pulse {
+  0%   { transform: scale(1);    text-shadow: 0 0 0 rgba(109,255,138,0); }
+  20%  { transform: scale(1.04); text-shadow: 0 0 14px rgba(109,255,138,0.55); }
+  60%  { transform: scale(1);    text-shadow: 0 0 8px rgba(109,255,138,0.30); }
+  100% { transform: scale(1);    text-shadow: 0 0 0 rgba(109,255,138,0); }
+}
 .rl-tip[data-style="gods"][data-placement="bottom"] .rl-tip-arrow { border-bottom-color: rgba(255,59,212,0.7); }
 
 /* Old pseudo-element block below is kept for reference but neutralised
@@ -1144,17 +1175,37 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   outline-offset: 2px;
 }
 
-/* Hub mission-card pHead — title (left) + (i) info icon + 🚀 train-launch
-   icon (both right). Both icons share the same 36×36 circular treatment so
-   they read as a paired controls group. The (i) keeps its existing
-   data-tip styled tooltip; 🚀 uses the same data-tooltip system (matching
-   colored-border styled tooltip, not the gray native title rectangle). */
+/* Hub mission-card pHead — 🏆 records icon (left) + title + (i) info icon
+   + 🚀 train-launch icon (right). All three icons share the same 36×36
+   circular treatment for a uniform paired-corner look. Each uses the
+   styled colored-border tooltip system (data-tooltip), not the gray
+   native title rectangle. */
 .pHead {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 .pHead .pTitle { flex: 1; min-width: 0; }
+.pHead .recordsIcon {
+  width: 36px; height: 36px;
+  border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 16px; line-height: 1;
+  border: 1px solid rgba(255, 215, 0, 0.45);
+  background: linear-gradient(180deg, rgba(255,215,0,0.10), rgba(255,215,0,0.04));
+  color: rgba(255,255,255,0.95);
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+.pHead .recordsIcon:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 215, 0, 0.85);
+  background: rgba(255, 215, 0, 0.14);
+}
+.pHead .recordsIcon:focus-visible {
+  outline: 2px solid rgba(255, 215, 0, 0.95);
+  outline-offset: 2px;
+}
 .pHead .qmark {
   width: 36px; height: 36px;
   border-radius: 999px;

@@ -115,7 +115,12 @@
     "dmvmBanner": "Stai leggendo l'articolo DMVM. Comincia con il 2×2 — dodici stati, l'intero mondo entra in un tovagliolo.",
     "dmvmBannerClose": "Chiudi il banner DMVM",
     "tutorialReplay": "Vedi il tutorial",
-    "trainLocked": "Risolvi {solved}/{need} benchmark per sbloccare"
+    "trainLocked": "Risolvi {solved}/{need} benchmark per sbloccare",
+    "recordsLabel": "Record di questa missione",
+    "recordsBenchHeader": "Bench",
+    "recordsRandomShort": "Casuale",
+    "recordsQShort": "Q-agente",
+    "solvedCelebration": "🎉 Risolto in {n} mosse !"
   },
   "glossary": {
     "cardTitle": "Glossario — termini Q-learning",

@@ -115,7 +115,12 @@
     "dmvmBanner": "Du liest den DMVM-Artikel. Beginne mit dem 2×2 — zwölf Zustände, die ganze Welt auf einer Serviette.",
     "dmvmBannerClose": "DMVM-Banner schließen",
     "tutorialReplay": "Tutorial ansehen",
-    "trainLocked": "Löse {solved}/{need} Benchmarks zum Freischalten"
+    "trainLocked": "Löse {solved}/{need} Benchmarks zum Freischalten",
+    "recordsLabel": "Rekorde dieser Mission",
+    "recordsBenchHeader": "Test",
+    "recordsRandomShort": "Zufall",
+    "recordsQShort": "Q-Agent",
+    "solvedCelebration": "🎉 Gelöst in {n} Zügen !"
   },
   "glossary": {
     "cardTitle": "Glossar — Q-Learning-Begriffe",
