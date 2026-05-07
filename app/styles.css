@@ -1144,17 +1144,39 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   outline-offset: 2px;
 }
 
-/* Hub mission-card 🚀 train-launch icon. Sits in .pHead next to the (i)
-   qmark, top-right of each mission card. Locked state grays out the icon
-   and disables click; unlocked is brand-pink. Tooltip (native title
-   attribute, i18n'd) shows progress when locked. */
+/* Hub mission-card pHead — title (left) + (i) info icon + 🚀 train-launch
+   icon (both right). Both icons share the same 36×36 circular treatment so
+   they read as a paired controls group. The (i) keeps its existing
+   data-tip styled tooltip; 🚀 uses the same data-tooltip system (matching
+   colored-border styled tooltip, not the gray native title rectangle). */
+.pHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pHead .pTitle { flex: 1; min-width: 0; }
+.pHead .qmark {
+  width: 36px; height: 36px;
+  border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 16px; line-height: 1;
+  border: 1px solid rgba(47, 243, 255, 0.45);
+  background: linear-gradient(180deg, rgba(47,243,255,0.10), rgba(47,243,255,0.04));
+  color: rgba(255,255,255,0.95);
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+.pHead .qmark:hover {
+  transform: translateY(-1px);
+  border-color: rgba(47, 243, 255, 0.85);
+  background: rgba(47, 243, 255, 0.14);
+}
 .pHead .trainIcon {
-  margin-left: auto;
-  width: 28px; height: 28px;
+  width: 36px; height: 36px;
   border-radius: 999px;
   display: inline-flex; align-items: center; justify-content: center;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1;
   border: 1px solid rgba(255, 255, 255, 0.18);
   transition: opacity 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
@@ -1177,8 +1199,6 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   background: rgba(255, 255, 255, 0.04);
 }
 .pHead .trainIcon.locked:hover {
-  /* Reveal a hint of color on hover so users notice the affordance and
-     read the title tooltip explaining the progress requirement. */
   opacity: 0.78;
   border-color: rgba(255, 255, 255, 0.42);
 }
