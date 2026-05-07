@@ -1179,13 +1179,31 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
    + 🚀 train-launch icon (right). All three icons share the same 36×36
    circular treatment for a uniform paired-corner look. Each uses the
    styled colored-border tooltip system (data-tooltip), not the gray
-   native title rectangle. */
-.pHead {
+   native title rectangle.
+
+   Note: there are older `.pHead` rules later in this file that set
+   flex-direction: column (legacy stacked layout). We use `.pCard .pHead`
+   scope here for higher specificity so the row layout wins. */
+.pCard .pHead {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
   gap: 8px;
+  margin-bottom: 8px;
 }
-.pHead .pTitle { flex: 1; min-width: 0; }
+.pCard .pHead .pTitle {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  text-align: left;
+  margin-bottom: 0;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .pHead .recordsIcon {
   width: 36px; height: 36px;
   border-radius: 999px;
@@ -1252,6 +1270,33 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
 .pHead .trainIcon.locked:hover {
   opacity: 0.78;
   border-color: rgba(255, 255, 255, 0.42);
+}
+
+/* Inline 🎲 sits next to the "Random agent" stats label — small (24×24)
+   so it doesn't dominate the line, but reads as a clickable affordance. */
+.iconAct.iconAct-inline {
+  width: 24px; height: 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(47, 243, 255, 0.5);
+  background: rgba(47, 243, 255, 0.08);
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 13px;
+  line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0;
+  margin: 0 4px;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+.iconAct.iconAct-inline:hover {
+  transform: translateY(-1px);
+  border-color: rgba(47, 243, 255, 0.95);
+  background: rgba(47, 243, 255, 0.18);
+}
+.iconAct.iconAct-inline:focus-visible {
+  outline: 2px solid var(--cyan, #6ad7ff);
+  outline-offset: 2px;
 }
 
 /* Hub mini-game action buttons — circular icon buttons sitting in the
