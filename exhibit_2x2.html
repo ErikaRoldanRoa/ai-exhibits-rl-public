@@ -1015,6 +1015,26 @@ document.addEventListener('click', (e)=>{
       renderBenchUI();
     }
 
+    // Mirror Q-agent bench-best to the hub's records storage so the hub's
+    // 🏆 tooltip can show the Q-agent column. Same schema the hub writes:
+    // ai_exhibits.hub_bench.mini-<size> = { "<n>": {h, r, q} }.
+    function saveQAgentToHubRecords(n, moves){
+      const KEY = 'ai_exhibits.hub_bench.mini-2x2';
+      let d;
+      try { d = JSON.parse(localStorage.getItem(KEY) || '{}'); }
+      catch { d = {}; }
+      // Migrate the legacy short form on read (number → {h: number}).
+      for (const k of Object.keys(d)){
+        if (typeof d[k] === 'number') d[k] = { h: d[k], r: null, q: null };
+      }
+      const row = d[n] || { h: null, r: null, q: null };
+      if (row.q == null || moves < row.q){
+        row.q = moves;
+        d[n] = row;
+        try { localStorage.setItem(KEY, JSON.stringify(d)); } catch {}
+      }
+    }
+
     function maybeRecordBenchScore(){
       if (!activeBench) return;
       if (lastSolveLen == null) return;
@@ -1023,6 +1043,7 @@ document.addEventListener('click', (e)=>{
       if (prev == null || lastSolveLen < prev){
         benchBest[k] = lastSolveLen;
         saveBenchBest();
+        saveQAgentToHubRecords(k, lastSolveLen);
       }
       renderBenchUI();
     }

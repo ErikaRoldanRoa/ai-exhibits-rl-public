@@ -121,7 +121,15 @@
     "recordsRandomShort": "Aléat.",
     "recordsQShort": "Q-agente",
     "solvedCelebration": "🎉 Résolu en {n} coups !",
-    "solvedCelebrationWithName": "🎉 Bravo {name}, résolu en {n} coups !"
+    "solvedCelebrationWithName": "🎉 Bravo {name}, résolu en {n} coups !",
+    "submitResults": "Soumettre mes résultats",
+    "submitTitle": "Tes résultats du tournoi",
+    "submitCopy": "📋 Copier",
+    "submitMail": "✉️ Envoyer par email",
+    "submitDownload": "⬇️ Télécharger",
+    "submitHint": "Ajoute un commentaire si tu veux, puis envoie via une des trois options.",
+    "resetRecords": "Réinitialiser les records de cette mission",
+    "resetConfirm": "Réinitialiser TOUS les records de cette mission ? Cette action est définitive."
   },
   "glossary": {
     "cardTitle": "Glossaire — termes Q-learning",

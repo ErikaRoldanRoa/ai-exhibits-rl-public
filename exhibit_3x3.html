@@ -1037,6 +1037,25 @@
     if(typeof log === "function") log((window.i18n ? window.i18n.t('ex.msg.loaded', 'B{n} chargé.') : 'B{n} chargé.').replace('{n}', kk));
     setActiveBench(kk);
   }
+  // Mirror Q-agent bench-best to the hub's records storage so the hub's
+  // 🏆 tooltip can show the Q-agent column. Same schema the hub writes:
+  // ai_exhibits.hub_bench.mini-<size> = { "<n>": {h, r, q} }.
+  function saveQAgentToHubRecords(n, moves){
+    const KEY = 'ai_exhibits.hub_bench.mini-3x3';
+    let d;
+    try { d = JSON.parse(localStorage.getItem(KEY) || '{}'); }
+    catch { d = {}; }
+    for (const k of Object.keys(d)){
+      if (typeof d[k] === 'number') d[k] = { h: d[k], r: null, q: null };
+    }
+    const row = d[n] || { h: null, r: null, q: null };
+    if (row.q == null || moves < row.q){
+      row.q = moves;
+      d[n] = row;
+      try { localStorage.setItem(KEY, JSON.stringify(d)); } catch {}
+    }
+  }
+
   function maybeRecordBenchScore(){
     if(!activeBench) return;
     if(lastSolveLen == null) return;
@@ -1049,6 +1068,7 @@
     if(prev == null || mv < prev){
       benchBest[k] = mv;
       saveBenchBest();
+      saveQAgentToHubRecords(k, mv);
       renderBenchUI();
       if(typeof log === "function") log((window.i18n ? window.i18n.t('ex.msg.newBestFor', 'Nouveau record pour B{n} : {mv} coups.') : 'Nouveau record pour B{n} : {mv} coups.').replace('{n}', k).replace('{mv}', String(mv)));
     } else {

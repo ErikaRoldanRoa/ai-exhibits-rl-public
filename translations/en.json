@@ -121,7 +121,15 @@
     "recordsRandomShort": "Random",
     "recordsQShort": "Q-agent",
     "solvedCelebration": "🎉 Solved in {n} moves !",
-    "solvedCelebrationWithName": "🎉 Well done {name}, solved in {n} moves !"
+    "solvedCelebrationWithName": "🎉 Well done {name}, solved in {n} moves !",
+    "submitResults": "Submit my results",
+    "submitTitle": "Your tournament results",
+    "submitCopy": "📋 Copy",
+    "submitMail": "✉️ Send by email",
+    "submitDownload": "⬇️ Download",
+    "submitHint": "Add a comment if you like, then submit via any of the three options.",
+    "resetRecords": "Reset records for this mission",
+    "resetConfirm": "Reset ALL records for this mission? This cannot be undone."
   },
   "glossary": {
     "cardTitle": "Glossary — Q-learning terms",

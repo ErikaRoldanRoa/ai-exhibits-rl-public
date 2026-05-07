@@ -1224,6 +1224,29 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   outline: 2px solid rgba(255, 215, 0, 0.95);
   outline-offset: 2px;
 }
+/* ⟲ reset icon — small, muted, sits next to 🏆 in the pHead. Click triggers
+   a confirmation prompt before clearing the mission's bench records. */
+.pHead .resetIcon {
+  width: 26px; height: 26px;
+  border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 14px; line-height: 1;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+.pHead .resetIcon:hover {
+  transform: rotate(-30deg);
+  border-color: rgba(255, 100, 100, 0.55);
+  color: rgba(255, 130, 130, 0.95);
+}
+.pHead .resetIcon:focus-visible {
+  outline: 2px solid rgba(255, 100, 100, 0.85);
+  outline-offset: 2px;
+}
 .pHead .qmark {
   width: 36px; height: 36px;
   border-radius: 999px;
