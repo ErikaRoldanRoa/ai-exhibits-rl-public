@@ -120,7 +120,8 @@
     "recordsBenchHeader": "Bench",
     "recordsRandomShort": "Random",
     "recordsQShort": "Q-agent",
-    "solvedCelebration": "🎉 Solved in {n} moves !"
+    "solvedCelebration": "🎉 Solved in {n} moves !",
+    "solvedCelebrationWithName": "🎉 Well done {name}, solved in {n} moves !"
   },
   "glossary": {
     "cardTitle": "Glossary — Q-learning terms",
@@ -487,7 +488,9 @@
     "prompt": "You'll compare three solvers: a random agent, yourself, and a Q-learning agent you train. Three puzzle sizes, three missions.",
     "facilitatorBtn": "Facilitator mode",
     "continueBtn": "Go ahead",
-    "author": "Created and developed by <strong>Dr. Erika Roldán Roa</strong>"
+    "author": "Created and developed by <strong>Dr. Erika Roldán Roa</strong>",
+    "personaPrompt": "Your name or team name (optional)",
+    "personaPlaceholder": "e.g. Team Marmottes"
   },
   "hud": {
     "navLabel": "navigation"

@@ -124,6 +124,12 @@ body:not([data-role="facilitator"]) #roleCard {
           <div class="gateQ" data-i18n="gate.question"></div>
           <div class="gateP" data-i18n="gate.prompt">Tu compares trois résolveuses&#8239;: une agente aléatoire, toi, et une agente Q-learning que tu entraînes. Trois tailles de puzzle, trois missions.</div>
         </div>
+
+        <div class="gatePersona">
+          <label for="personaInput" class="gatePersonaLabel" data-i18n="gate.personaPrompt">Ton nom ou nom d'équipe (facultatif)</label>
+          <input id="personaInput" class="gatePersonaInput" type="text" maxlength="30" autocomplete="off"
+                 data-i18n-placeholder="gate.personaPlaceholder" placeholder="ex. Équipe Marmottes" />
+        </div>
       </div>
 
       <div class="modalActions">
@@ -329,6 +335,8 @@ body:not([data-role="facilitator"]) #roleCard {
     // Default to stored role if any, else student
     const stored = localStorage.getItem(ROLE_KEY) || "agent";
     applySelection(stored);
+    // Pre-fill persona input from storage so the user can edit it.
+    if (typeof syncPersonaInputFromStorage === 'function') syncPersonaInputFromStorage();
   }
 
   function closeGate(){
@@ -360,11 +368,46 @@ body:not([data-role="facilitator"]) #roleCard {
     });
   });
 
-  // Continue button
+  // Persona (name / team name) — replaces 'Vous'/'You' in stats and records.
+  const PERSONA_KEY = "ai_exhibits_persona";
+  const personaInput = document.getElementById("personaInput");
+  function getPersona(){
+    return (localStorage.getItem(PERSONA_KEY) || "").trim();
+  }
+  function setPersona(name){
+    const trimmed = (name || "").trim().slice(0, 30);
+    if (trimmed) localStorage.setItem(PERSONA_KEY, trimmed);
+    else localStorage.removeItem(PERSONA_KEY);
+  }
+  // Pre-fill the input on every gate-open with whatever's stored.
+  function syncPersonaInputFromStorage(){
+    if (personaInput) personaInput.value = getPersona();
+  }
+  // Replace every visible 'Vous'/'You' label with the persona (or fall back
+  // to the i18n default if persona is empty).
+  function refreshPersonaLabels(){
+    const persona = getPersona();
+    const tr = (window.i18n && window.i18n.t) ? window.i18n.t : (k, f) => f;
+    const fallback = tr('hub.stats.you', 'Vous');
+    const label = persona || fallback;
+    document.querySelectorAll('.stat-you-label').forEach(el => {
+      el.textContent = label;
+    });
+    // Records tooltip uses persona via formatRecordsTooltip → also refresh.
+    if (typeof window.AI_EXHIBITS_REFRESH_RECORDS === 'function')
+      window.AI_EXHIBITS_REFRESH_RECORDS();
+  }
+  // Expose for the records-tooltip generator and celebration code below.
+  window.AI_EXHIBITS_GET_PERSONA = getPersona;
+  window.AI_EXHIBITS_REFRESH_PERSONA = refreshPersonaLabels;
+
+  // Continue button: also save persona on gate-close.
   if (contBtn){
     contBtn.addEventListener("click", ()=>{
       const role = selected || "agent";
       localStorage.setItem(ROLE_KEY, role);
+      if (personaInput) setPersona(personaInput.value);
+      refreshPersonaLabels();
       closeGate();
     });
   }
@@ -472,7 +515,10 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
   function formatRecordsTooltip(id){
     const d = loadHubBench(id);
     const tr = (window.i18n && window.i18n.t) ? window.i18n.t : (k, f) => f;
-    const youLbl = tr('hub.stats.you', 'Vous');
+    // 'You' column uses the persona if set, else fall back to the i18n label.
+    const persona = (typeof window.AI_EXHIBITS_GET_PERSONA === 'function')
+      ? window.AI_EXHIBITS_GET_PERSONA() : '';
+    const youLbl = persona || tr('hub.stats.you', 'Vous');
     const ranLbl = tr('hub.recordsRandomShort', 'Aléat.');
     const qLbl   = tr('hub.recordsQShort', 'Q-agente');
     const benchLbl = tr('hub.recordsBenchHeader', 'Repère');
@@ -517,6 +563,9 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
   function refreshAllRecordsTooltips(){
     ['mini-2x2','mini-2x3','mini-3x3'].forEach(refreshRecordsTooltip);
   }
+  // Expose to the role-gate IIFE so persona changes can trigger a refresh
+  // of the records tooltip headers (which now use the persona).
+  window.AI_EXHIBITS_REFRESH_RECORDS = refreshAllRecordsTooltips;
   // Solve celebration — adds a brief animated "🎉 Résolu en N coups !" to
   // the stats line then reverts.
   function triggerSolveCelebration(inst){
@@ -526,8 +575,12 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
     const stats = card.querySelector('.pStats');
     if (!stats) return;
     const tr = (window.i18n && window.i18n.t) ? window.i18n.t : (k, f) => f;
-    const tmpl = tr('hub.solvedCelebration', '🎉 Résolu en {n} coups !');
-    const msg = tmpl.replace('{n}', inst.humanMoves);
+    const persona = (typeof window.AI_EXHIBITS_GET_PERSONA === 'function')
+      ? window.AI_EXHIBITS_GET_PERSONA() : '';
+    const tmpl = persona
+      ? tr('hub.solvedCelebrationWithName', '🎉 Bravo {name}, résolu en {n} coups !')
+      : tr('hub.solvedCelebration', '🎉 Résolu en {n} coups !');
+    const msg = tmpl.replace('{n}', inst.humanMoves).replace('{name}', persona);
     // Remember original innerHTML so we can restore after the animation.
     if (!stats.dataset.original) stats.dataset.original = stats.innerHTML;
     stats.classList.add('celebrating');
@@ -746,17 +799,23 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
 
   // Re-run stats on language change so frozen fallback strings (e.g. "résolu"
   // written before translations loaded) get replaced with the correct text.
-  // Also refresh train-icon tooltips and records tables (text is i18n'd).
+  // Also refresh train-icon tooltips and records tables (text is i18n'd) and
+  // the persona-substituted 'Vous' labels (which i18n.js would otherwise
+  // overwrite back to the i18n value).
   document.addEventListener('i18n:applied', () => {
     instances.forEach((inst) => updateStats(inst));
     refreshAllTrainLocks();
     refreshAllRecordsTooltips();
+    if (typeof window.AI_EXHIBITS_REFRESH_PERSONA === 'function')
+      window.AI_EXHIBITS_REFRESH_PERSONA();
   });
 
-  // Initial lock + records state on page load.
+  // Initial lock + records + persona-label state on page load.
   document.addEventListener('DOMContentLoaded', () => {
     refreshAllTrainLocks();
     refreshAllRecordsTooltips();
+    if (typeof window.AI_EXHIBITS_REFRESH_PERSONA === 'function')
+      window.AI_EXHIBITS_REFRESH_PERSONA();
   });
 
   // Highlight the active language button inside the role gate (if present),

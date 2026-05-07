@@ -120,7 +120,8 @@
     "recordsBenchHeader": "Bench",
     "recordsRandomShort": "Casuale",
     "recordsQShort": "Q-agente",
-    "solvedCelebration": "🎉 Risolto in {n} mosse !"
+    "solvedCelebration": "🎉 Risolto in {n} mosse !",
+    "solvedCelebrationWithName": "🎉 Bravo {name}, risolto in {n} mosse !"
   },
   "glossary": {
     "cardTitle": "Glossario — termini Q-learning",
@@ -487,7 +488,9 @@
     "prompt": "Confronti tre risolutrici: un'agente casuale, te stessa e un'agente Q-learning che alleni. Tre dimensioni di puzzle, tre missioni.",
     "facilitatorBtn": "Modalità facilitatrice",
     "continueBtn": "Inizia",
-    "author": "Sviluppato dalla <strong>Dr.ssa Erika Roldán Roa</strong>"
+    "author": "Sviluppato dalla <strong>Dr.ssa Erika Roldán Roa</strong>",
+    "personaPrompt": "Il tuo nome o nome del team (facoltativo)",
+    "personaPlaceholder": "es. Squadra Marmotte"
   },
   "hud": {
     "navLabel": "navigazione"
