@@ -94,6 +94,8 @@ body:not([data-role="facilitator"]) #roleCard {
 <div class="langSelectorWrap" role="region" aria-label="Langue / Language">
   <button type="button" id="tutorialReplay" class="tutorialReplay" title="Voir le tutoriel" data-i18n-title="hub.tutorialReplay"
     onclick="try{localStorage.removeItem('ai-exhibits-tutorial-completed');localStorage.removeItem('ai-exhibits-tutorial-skip');}catch(e){}window.location.href='exhibit_2x2.html';">🎓</button>
+  <a class="tutorialReplay" href="#role" id="switchRoleLink" title="Retour au départ" data-i18n-title="common.returnToStart" aria-label="Retour au départ" data-i18n-aria-label="common.returnToStart">⏮</a>
+  <button type="button" id="fbBtn" class="tutorialReplay" title="Suggérer une correction" data-i18n-title="feedback.suggestCorrection" aria-label="Suggérer une correction" data-i18n-aria-label="feedback.suggestCorrection">🔧</button>
   <select id="langSelector" class="langSelector" onchange="window.i18n.setLang(this.value)">
     <option value="fr">🇫🇷 FR</option>
     <option value="en">🇬🇧 EN</option>
@@ -133,11 +135,6 @@ body:not([data-role="facilitator"]) #roleCard {
       <div class="gateAuthor mono" data-i18n="gate.author">Conçu et développé par <strong>D<sup>r</sup> Erika Roldán Roa</strong></div>
 </div>
 </div>
-</div>
-<!-- Role HUD -->
-<div aria-label="navigation" class="roleHud" data-i18n-aria-label="hud.navLabel">
-
-<a class="switchRole" href="#role" id="switchRoleLink" data-i18n="common.returnToStart">Retour au départ</a>
 </div>
 <div class="wrap">
 <div class="panel">
