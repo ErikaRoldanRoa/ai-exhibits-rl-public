@@ -219,7 +219,8 @@
     "backMissions": "← Missions",
     "backMissionsTitle": "Retour aux Missions",
     "returnStart": "Retour au départ",
-    "returnStartTitle": "Retour au départ"
+    "returnStartTitle": "Retour au départ",
+    "backHome": "Retour à l'accueil"
   },
   "ex": {
     "brand": {
@@ -599,5 +600,8 @@
       "title": "Mission III · 3×3",
       "gods": "Nombre de Dieu : 31 · 5 références"
     }
+  },
+  "feedback": {
+    "suggestCorrection": "Suggérer une correction"
   }
 }

@@ -420,13 +420,10 @@
 
 <!-- Tutorial System (Auto-loads on first visit) -->
 <script src="app/tutorial.js"></script>
-
-  
-<div class="aiNav" aria-label="AI-Exhibits navigation">
-  <a href="index.html#missions" title="Retour aux Missions" data-i18n="nav.backMissions" data-i18n-title="nav.backMissionsTitle">← Missions</a>
-  <a href="index.html#role" title="Retour au départ" data-i18n="nav.returnStart" data-i18n-title="nav.returnStartTitle">Retour au départ</a>
-</div>
 <div class="langSelectorWrap" role="region" aria-label="Langue / Language">
+  <button type="button" class="tutorialReplay" title="Voir le tutoriel" data-i18n-title="hub.tutorialReplay" aria-label="Voir le tutoriel" data-i18n-aria-label="hub.tutorialReplay"
+    onclick="try{const d=JSON.parse(localStorage.getItem('ai-exhibits-tutorial-completed')||'{}');delete d['3x3'];localStorage.setItem('ai-exhibits-tutorial-completed', JSON.stringify(d));localStorage.removeItem('ai-exhibits-tutorial-skip');}catch(e){}location.reload();">🎓</button>
+  <a href="index.html" class="tutorialReplay" title="Retour à l'accueil" data-i18n-title="nav.backHome" aria-label="Retour à l'accueil" data-i18n-aria-label="nav.backHome">🏠</a>
   <select id="langSelector" class="langSelector" onchange="window.i18n.setLang(this.value)">
     <option value="fr">🇫🇷 FR</option>
     <option value="en">🇬🇧 EN</option>

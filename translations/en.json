@@ -219,7 +219,8 @@
     "backMissions": "← Missions",
     "backMissionsTitle": "Back to Missions",
     "returnStart": "Return to start",
-    "returnStartTitle": "Return to start"
+    "returnStartTitle": "Return to start",
+    "backHome": "Back to home"
   },
   "ex": {
     "brand": {
@@ -599,5 +600,8 @@
       "title": "Mission III · 3×3",
       "gods": "God's number: 31 · 5 references"
     }
+  },
+  "feedback": {
+    "suggestCorrection": "Suggest a correction"
   }
 }

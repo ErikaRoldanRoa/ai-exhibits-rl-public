@@ -18,26 +18,35 @@
     const btn = document.createElement('button');
     btn.id = 'fbBtn';
     btn.type = 'button';
+    // Native title tooltip — i18n.js picks up data-i18n-title at language change.
+    btn.setAttribute('data-i18n-title', 'feedback.suggestCorrection');
+    btn.setAttribute('data-i18n-aria-label', 'feedback.suggestCorrection');
+    btn.title = 'Suggest a correction';
     btn.setAttribute('aria-label', 'Suggest a correction');
-    btn.textContent = '🔧 Suggest correction';
+    btn.textContent = '🔧';
     Object.assign(btn.style, {
       position: 'fixed',
       top: '56px',
       right: '14px',
       zIndex: '9998',
-      padding: '8px 16px',
+      width: '36px',
+      height: '36px',
       borderRadius: '999px',
       background: 'rgba(7, 6, 10, 0.88)',
       color: 'rgba(255,255,255,0.92)',
       border: '1px solid rgba(47, 243, 255, 0.35)',
       boxShadow: '0 4px 16px rgba(0,0,0,0.4), 0 0 0 1px rgba(47,243,255,0.06) inset',
       fontFamily: 'ui-sans-serif, system-ui, -apple-system, sans-serif',
-      fontSize: '12px',
+      fontSize: '16px',
       fontWeight: '600',
       letterSpacing: '0.3px',
       cursor: 'pointer',
       backdropFilter: 'blur(6px)',
       WebkitBackdropFilter: 'blur(6px)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '0',
       transition: 'border-color 0.15s, box-shadow 0.15s'
     });
     btn.addEventListener('mouseenter', () => {
