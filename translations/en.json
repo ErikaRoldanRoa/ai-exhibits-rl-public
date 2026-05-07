@@ -114,7 +114,8 @@
     },
     "dmvmBanner": "You're reading the DMVM article. Start with the 2×2 — twelve states, the whole world fits on a napkin.",
     "dmvmBannerClose": "Close DMVM banner",
-    "tutorialReplay": "See the tutorial"
+    "tutorialReplay": "See the tutorial",
+    "trainLocked": "Solve {solved}/{need} benchmarks to unlock"
   },
   "glossary": {
     "cardTitle": "Glossary — Q-learning terms",

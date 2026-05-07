@@ -114,7 +114,8 @@
     },
     "dmvmBanner": "Du liest den DMVM-Artikel. Beginne mit dem 2×2 — zwölf Zustände, die ganze Welt auf einer Serviette.",
     "dmvmBannerClose": "DMVM-Banner schließen",
-    "tutorialReplay": "Tutorial ansehen"
+    "tutorialReplay": "Tutorial ansehen",
+    "trainLocked": "Löse {solved}/{need} Benchmarks zum Freischalten"
   },
   "glossary": {
     "cardTitle": "Glossar — Q-Learning-Begriffe",

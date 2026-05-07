@@ -154,6 +154,7 @@ body:not([data-role="facilitator"]) #roleCard {
   <div class="pHead">
     <div class="pTitle" data-i18n="hub.mission1.title">Mission I&#8239;: Rendre l'apprentissage visible</div>
     <span class="qmark" data-tip="12 états · le monde entier tient sur une page · construis la table Q à la main" data-i18n-data-tip="hub.mission1.subtitle" tabindex="0" aria-label="Mission I&#8239;: Rendre l'apprentissage visible">ⓘ</span>
+    <a class="trainIcon locked" data-mini="mini-2x2" href="exhibit_2x2.html" title="🔒 Résoudre les benchmarks pour débloquer" data-i18n-title="hub.trainLocked" aria-label="Lancer l'entraînement" data-i18n-aria-label="hub.launchTraining">🚀</a>
   </div>
 
   <div class="miniWrap">
@@ -182,16 +183,13 @@ body:not([data-role="facilitator"]) #roleCard {
     <span class="stat-rand-label" data-i18n="hub.stats.randomAgent">Agente aléatoire</span>&#8239;: <span class="mono" data-stat="moves-rand" data-target="mini-2x2">0</span>
     <span class="muted2" data-stat="status" data-target="mini-2x2"></span>
   </div>
-
-  <div class="pLinks">
-    <a class="btn pink" href="exhibit_2x2.html" data-i18n="hub.launchTraining">🚀 Lancer l'Entraînement</a>
-  </div>
 </div>
 
 <div class="pCard">
 <div class="pHead">
 <div class="pTitle" data-i18n="hub.mission2.title">Mission II&#8239;: Propagation</div>
     <span class="qmark" data-tip="360 états · trop pour tout dessiner · regarde Q remonter depuis l'objectif" data-i18n-data-tip="hub.mission2.subtitle" tabindex="0" aria-label="Mission II&#8239;: Propagation">ⓘ</span>
+    <a class="trainIcon locked" data-mini="mini-2x3" href="exhibit_2x3.html" title="🔒 Résoudre les benchmarks pour débloquer" data-i18n-title="hub.trainLocked" aria-label="Lancer l'entraînement" data-i18n-aria-label="hub.launchTraining">🚀</a>
 </div>
 <div class="miniWrap">
 <div class="miniPuzzle" data-cols="3" data-rows="2" id="mini-2x3"></div>
@@ -213,14 +211,12 @@ body:not([data-role="facilitator"]) #roleCard {
     <span class="stat-rand-label" data-i18n="hub.stats.randomAgent">Agente aléatoire</span>&#8239;: <span class="mono" data-stat="moves-rand" data-target="mini-2x3">0</span>
               <span class="muted2" data-stat="status" data-target="mini-2x3"></span>
 </div>
-<div class="pLinks">
-<a class="btn pink" href="exhibit_2x3.html" data-i18n="hub.launchTraining">🚀 Lancer l'Entraînement</a>
-</div>
 </div>
 <div class="pCard">
 <div class="pHead">
 <div class="pTitle" data-i18n="hub.mission3.title">Mission III&#8239;: Mise à l'Échelle</div>
     <span class="qmark" data-tip="181 440 états · trois solveuses, un fléau · l'algorithme rencontre la dimension" data-i18n-data-tip="hub.mission3.subtitle" tabindex="0" aria-label="Mission III&#8239;: Mise à l'Échelle">ⓘ</span>
+    <a class="trainIcon locked" data-mini="mini-3x3" href="exhibit_3x3.html" title="🔒 Résoudre les benchmarks pour débloquer" data-i18n-title="hub.trainLocked" aria-label="Lancer l'entraînement" data-i18n-aria-label="hub.launchTraining">🚀</a>
 </div>
 <div class="miniWrap">
 <div class="miniPuzzle" data-cols="3" data-rows="3" id="mini-3x3"></div>
@@ -241,9 +237,6 @@ body:not([data-role="facilitator"]) #roleCard {
               <span class="stat-you-label" data-i18n="hub.stats.you">Vous</span>&#8239;: <span class="mono" data-stat="moves-human" data-target="mini-3x3">0</span> <span class="stat-sep">·</span>
     <span class="stat-rand-label" data-i18n="hub.stats.randomAgent">Agente aléatoire</span>&#8239;: <span class="mono" data-stat="moves-rand" data-target="mini-3x3">0</span>
               <span class="muted2" data-stat="status" data-target="mini-3x3"></span>
-</div>
-<div class="pLinks">
-<a class="btn pink" href="exhibit_3x3.html" data-i18n="hub.launchTraining">🚀 Lancer l'Entraînement</a>
 </div>
 </div>
 </div><div class="glossary card" id="mission-intel"></div>
@@ -444,6 +437,57 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
     return s;
   }
 
+  // ---- Hub bench-progress tracking + train-icon lock state ----
+  const HUB_BENCH_KEY = (id) => `ai_exhibits.hub_bench.${id}`;
+  const TRAIN_THRESHOLD = { 'mini-2x2': 6, 'mini-2x3': 3, 'mini-3x3': 3 };
+
+  function loadHubBench(id){
+    try { return JSON.parse(localStorage.getItem(HUB_BENCH_KEY(id)) || '{}'); }
+    catch { return {}; }
+  }
+  function saveHubBenchSolve(id, n, moves){
+    const d = loadHubBench(id);
+    if (d[n] == null || moves < d[n]){
+      d[n] = moves;
+      try { localStorage.setItem(HUB_BENCH_KEY(id), JSON.stringify(d)); } catch {}
+    }
+  }
+  function countHubSolved(id){
+    return Object.keys(loadHubBench(id)).length;
+  }
+  function refreshTrainLock(id){
+    const btn = document.querySelector(`.trainIcon[data-mini="${id}"]`);
+    if (!btn) return;
+    const solved = countHubSolved(id);
+    const need = TRAIN_THRESHOLD[id] || 0;
+    const unlocked = solved >= need;
+    btn.classList.toggle('locked', !unlocked);
+    btn.classList.toggle('unlocked', unlocked);
+    const tr = (window.i18n && window.i18n.t) ? window.i18n.t : (k, f) => f;
+    if (unlocked){
+      // Strip leading 🚀 from the i18n string if present (it's the icon already).
+      const txt = tr('hub.launchTraining', "Lancer l'Entraînement").replace(/^🚀\s*/, '');
+      btn.title = txt;
+      btn.setAttribute('aria-disabled', 'false');
+    } else {
+      const tmpl = tr('hub.trainLocked', 'Résoudre {solved}/{need} benchmarks pour débloquer');
+      btn.title = tmpl.replace('{solved}', solved).replace('{need}', need);
+      btn.setAttribute('aria-disabled', 'true');
+    }
+  }
+  function refreshAllTrainLocks(){
+    Object.keys(TRAIN_THRESHOLD).forEach(refreshTrainLock);
+  }
+  // Intercept clicks on locked train icons.
+  document.addEventListener('click', (e) => {
+    const a = e.target && e.target.closest && e.target.closest('a.trainIcon');
+    if (!a) return;
+    if (a.classList.contains('locked')){
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
+
   function updateStats(inst){
     const id = inst.id;
     const humanEl = document.querySelector(`[data-stat="moves-human"][data-target="${id}"]`);
@@ -451,12 +495,21 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
     const statEl  = document.querySelector(`[data-stat="status"][data-target="${id}"]`);
     if(humanEl) humanEl.textContent = String(inst.humanMoves);
     if(randEl) randEl.textContent = String(inst.randMoves);
+    const solved = same(inst.state, inst.goal);
     if(statEl){
       const tr = (window.i18n && window.i18n.t) ? window.i18n.t : (k, f) => f;
-      const solved = same(inst.state, inst.goal);
       statEl.textContent = solved
         ? " · " + tr("common.solved", "résolu")
         : (inst.running ? " · " + tr("common.running", "en cours…") : "");
+    }
+    // Record bench solves: when state reaches goal AND a benchmark was loaded,
+    // persist the human's move count, then refresh the train-icon lock for
+    // this mini. Only count human-driven solves (random-agent solves don't
+    // demonstrate the user's own competence).
+    if (solved && inst.activeBench != null && inst.humanMoves > 0 && !inst.running){
+      saveHubBenchSolve(id, inst.activeBench, inst.humanMoves);
+      inst.activeBench = null;
+      refreshTrainLock(id);
     }
   }
 
@@ -513,6 +566,7 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
     inst.state = inst.goal.slice();
     inst.humanMoves = 0;
     inst.randMoves = 0;
+    inst.activeBench = null;
     render(inst);
   }
 
@@ -521,6 +575,7 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
     inst.state = shuffleFrom(inst.goal, inst.rows, inst.cols, inst.rows*inst.cols*20);
     inst.humanMoves = 0;
     inst.randMoves = 0;
+    inst.activeBench = null;
     render(inst);
   }
 
@@ -552,7 +607,7 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
       const cols = parseInt(el.dataset.cols,10);
       const id = el.id;
       const goal = goalState(rows,cols);
-      const inst = {id, el, rows, cols, goal, state: goal.slice(), humanMoves:0, randMoves:0, running:false, timer:null};
+      const inst = {id, el, rows, cols, goal, state: goal.slice(), humanMoves:0, randMoves:0, running:false, timer:null, activeBench:null};
       instances.set(id, inst);
       const BOX = 240; // target square size for all mini puzzles
       const GAP = 8;  // must match CSS gap in .miniPuzzle
@@ -586,9 +641,14 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
 
   // Re-run stats on language change so frozen fallback strings (e.g. "résolu"
   // written before translations loaded) get replaced with the correct text.
+  // Also refresh train-icon tooltips (locked/unlocked text is i18n'd).
   document.addEventListener('i18n:applied', () => {
     instances.forEach((inst) => updateStats(inst));
+    refreshAllTrainLocks();
   });
+
+  // Initial lock state on page load (before any solve, reads stored progress).
+  document.addEventListener('DOMContentLoaded', () => { refreshAllTrainLocks(); });
 
   // Highlight the active language button inside the role gate (if present),
   // so users see which language is currently selected on first visit.
@@ -666,6 +726,7 @@ function loadBenchmark(inst, n){
   inst.state = st.slice();
   inst.humanMoves = 0;
   inst.randMoves = 0;
+  inst.activeBench = k;
 
   api.render(inst);
 

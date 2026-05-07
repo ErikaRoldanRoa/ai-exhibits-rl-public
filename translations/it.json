@@ -114,7 +114,8 @@
     },
     "dmvmBanner": "Stai leggendo l'articolo DMVM. Comincia con il 2×2 — dodici stati, l'intero mondo entra in un tovagliolo.",
     "dmvmBannerClose": "Chiudi il banner DMVM",
-    "tutorialReplay": "Vedi il tutorial"
+    "tutorialReplay": "Vedi il tutorial",
+    "trainLocked": "Risolvi {solved}/{need} benchmark per sbloccare"
   },
   "glossary": {
     "cardTitle": "Glossario — termini Q-learning",

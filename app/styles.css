@@ -1144,6 +1144,45 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   outline-offset: 2px;
 }
 
+/* Hub mission-card 🚀 train-launch icon. Sits in .pHead next to the (i)
+   qmark, top-right of each mission card. Locked state grays out the icon
+   and disables click; unlocked is brand-pink. Tooltip (native title
+   attribute, i18n'd) shows progress when locked. */
+.pHead .trainIcon {
+  margin-left: auto;
+  width: 28px; height: 28px;
+  border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: opacity 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+.pHead .trainIcon.unlocked {
+  opacity: 1;
+  cursor: pointer;
+  border-color: rgba(255, 47, 214, 0.55);
+  background: rgba(255, 47, 214, 0.10);
+}
+.pHead .trainIcon.unlocked:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 47, 214, 0.95);
+  background: rgba(255, 47, 214, 0.18);
+}
+.pHead .trainIcon.locked {
+  opacity: 0.55;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+  background: rgba(255, 255, 255, 0.04);
+}
+.pHead .trainIcon.locked:hover {
+  /* Reveal a hint of color on hover so users notice the affordance and
+     read the title tooltip explaining the progress requirement. */
+  opacity: 0.78;
+  border-color: rgba(255, 255, 255, 0.42);
+}
+
 /* Hub mini-game action buttons — circular icon buttons sitting in the
    pControls row. Slightly larger than the nav cluster so they read as
    primary actions; tooltip on hover (native title attribute, i18n'd). */
