@@ -1186,24 +1186,40 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
    scope here for higher specificity so the row layout wins. */
 .pCard .pHead {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
+  flex-direction: column;
   gap: 8px;
   margin-bottom: 8px;
 }
 .pCard .pHead .pTitle {
-  flex: 1;
-  min-width: 0;
-  width: auto;
-  text-align: left;
+  width: 100%;
+  text-align: center;
   margin-bottom: 0;
-  font-size: 14px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  /* Allow the title to wrap naturally on narrow screens — preferable to
+     truncating it with ellipsis. */
+  word-wrap: break-word;
 }
+/* Icon row sits below the title: 🏆 + ⟲ on the left, (i) + 🚀 on the right.
+   The .pIconSpacer is a flex-grow gap that pushes the right group to the
+   end of the row. Stays a single row at any viewport width because each
+   icon is fixed-width and there are at most 4. */
+.pCard .pHead .pIconRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+/* The .pIconSpacer is a flex-grow gap that pushes the (i) + 🚀 group to the
+   right edge while 🏆 + ⟲ stay anchored on the left. Setting display:block
+   makes the empty span flex correctly. */
+.pCard .pHead .pIconRow .pIconSpacer { flex: 1 1 auto; display: block; }
+/* Belt-and-braces: also push the (i) qmark to the right via auto margin so
+   the layout works even if the spacer is missing or styled away. */
+.pCard .pHead .pIconRow .qmark { margin-left: auto; }
 .pHead .recordsIcon {
   width: 36px; height: 36px;
   border-radius: 999px;
