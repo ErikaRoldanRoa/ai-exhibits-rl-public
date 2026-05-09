@@ -629,7 +629,6 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
           <div id="puzzle" class="puzzle" aria-label="puzzle à glissement 2×2" data-i18n-aria-label="ex2x2.puzzleAria"></div>
 
           <div class="btnrow" style="margin-top:12px;">
-            <button id="shuffleBtn" type="button" data-i18n="common.shuffle">Mélanger</button>
             <button id="resetQBtn" class="danger" type="button" data-i18n="common.resetQ">Réinitialiser Q</button>
             <button id="trainBtn" class="primary" type="button" data-i18n="common.startTraining">Lancer l'entraînement</button>
             <button id="stopBtn" type="button" disabled data-i18n="common.stop">Arrêter</button>
@@ -647,18 +646,13 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
               <span id="benchActiveLbl" style="color:var(--muted2); font-family:var(--mono); font-size:12px;" data-i18n="ex.bench.activeNone">Active : —</span>
             </h3>
             <div class="btnrow" style="margin-top:10px; flex-wrap:wrap;">
-              <button type="button" data-act="bench" data-bench="1" data-tooltip="⭐ Facile : À Un Pas (1 coup)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x2.bench.b1Tip">⭐ B1</button>
-              <button type="button" data-act="bench" data-bench="2" data-tooltip="⭐⭐ Moyen : Propagation de Valeur (2 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x2.bench.b2Tip">⭐⭐ B2</button>
-              <button type="button" data-act="bench" data-bench="3" data-tooltip="⭐⭐⭐ Difficile : Défi du Coin (3 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x2.bench.b3Tip">⭐⭐⭐ B3</button>
-              <button type="button" data-act="bench" data-bench="4" data-tooltip="⭐⭐⭐⭐ Très Difficile : Planification Profonde (4 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x2.bench.b4Tip">⭐⭐⭐⭐ B4</button>
-              <button type="button" data-act="bench" data-bench="5" data-tooltip="⭐⭐⭐⭐⭐ Expert : Recherche Maximale (5 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x2.bench.b5Tip">⭐⭐⭐⭐⭐ B5</button>
-              <button type="button" data-act="bench" data-bench="6" data-tooltip="🏆 Nombre de Dieu ! Défi Ultime (6 coups)" data-tooltip-style="gods" data-i18n-data-tooltip="ex2x2.bench.b6Tip">🏆 B6</button>
+              <button type="button" data-act="bench" data-bench="1" data-tooltip="Facile : À Un Pas (1 coup)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x2.bench.b1Tip">B1 · 1</button>
+              <button type="button" data-act="bench" data-bench="2" data-tooltip="Moyen : Propagation de Valeur (2 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x2.bench.b2Tip">B2 · 2</button>
+              <button type="button" data-act="bench" data-bench="3" data-tooltip="Difficile : Défi du Coin (3 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x2.bench.b3Tip">B3 · 3</button>
+              <button type="button" data-act="bench" data-bench="4" data-tooltip="Très Difficile : Planification Profonde (4 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x2.bench.b4Tip">B4 · 4</button>
+              <button type="button" data-act="bench" data-bench="5" data-tooltip="Expert : Recherche Maximale (5 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x2.bench.b5Tip">B5 · 5</button>
+              <button type="button" data-act="bench" data-bench="6" data-tooltip="Nombre de Dieu ! Défi Ultime (6 coups)" data-tooltip-style="gods" data-i18n-data-tooltip="ex2x2.bench.b6Tip">B6 · 6</button>
             </div>
-  <div class="row" style="gap:8px; flex-wrap:wrap; margin-top:8px;">
-    <button class="btn ghost" type="button" data-act="benchreset"
-      data-tooltip="Effacer les meilleurs scores enregistrés pour ce puzzle" data-tooltip-style="info" data-i18n="common.resetBestScores" data-i18n-data-tooltip="common.resetBestScoresTip">Réinitialiser les meilleurs scores</button>
-  </div>
-            <div class="kv" style="margin-top:10px;"><span data-i18n="common.bestScores">Meilleurs scores</span><div id="benchScoresTxt">B1 : — | B2 : — | B3 : — | B4 : — | B5 : — | B6 : —</div></div>
           </div>
           <!-- /Benchmarks -->
           <!-- Coverage card lives in the header bar above. -->
@@ -883,8 +877,7 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
     let activeBench = null; // 1..N, or null
     let benchBest = {1: null, 2: null, 3: null, 4: null, 5: null, 6: null};
 
-    const shuffleBtn = $('shuffleBtn');
-    const resetQBtn = $('resetQBtn');
+        const resetQBtn = $('resetQBtn');
     const trainBtn = $('trainBtn');
     const stopBtn = $('stopBtn');
     const stepBtn = $('stepBtn');
@@ -1974,7 +1967,7 @@ const rline = document.createElement('div');
       loadBenchmark(btn.getAttribute('data-bench'));
     });
 
-    shuffleBtn.addEventListener('click', shuffle);
+    /* Mélanger button removed: with benchmarks providing structured starts, shuffle is redundant. */
     resetQBtn.addEventListener('click', resetQ);
     trainBtn.addEventListener('click', startTraining);
     stopBtn.addEventListener('click', stopTraining);

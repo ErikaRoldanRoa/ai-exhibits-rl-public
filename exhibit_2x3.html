@@ -446,7 +446,6 @@
         <h2 data-i18n="ex.panel.currentPuzzle">Puzzle actuel</h2>
         <div id="puzzle" class="grid"><div class="glow"></div></div>
         <div class="row" style="margin-top:12px">
-          <button class="btn pink" id="btnShuffle" data-i18n="common.shuffle">Mélanger</button>
           <button class="btn cyan" id="btnResetQ" data-i18n="common.resetQ">Réinitialiser Q</button>
           <button class="btn lime" id="btnSolve" data-i18n="common.solveGreedy">Résoudre (glouton)</button>
         
@@ -460,19 +459,11 @@
               <span id="benchActiveLbl" style="color:var(--muted2); font-family:var(--mono); font-size:12px;" data-i18n="ex.bench.activeNone">Active : —</span>
             </h2>
             <div class="row" style="gap:8px; flex-wrap:wrap;">
-              <button class="btn" type="button" data-act="bench" data-bench="1" data-tooltip="⭐ Facile : Victoire Rapide (1 coup)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x3.bench.b1Tip">⭐ B1</button>
-              <button class="btn" type="button" data-act="bench" data-bench="2" data-tooltip="⭐⭐ Moyen : Propagation de Valeur (3 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x3.bench.b2Tip">⭐⭐ B2</button>
-              <button class="btn" type="button" data-act="bench" data-bench="3" data-tooltip="⭐⭐⭐ Difficile : Planification Multi-Étapes (6 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x3.bench.b3Tip">⭐⭐⭐ B3</button>
-              <button class="btn" type="button" data-act="bench" data-bench="4" data-tooltip="⭐⭐⭐⭐ Très Difficile : Recherche Profonde (9 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x3.bench.b4Tip">⭐⭐⭐⭐ B4</button>
-              <button class="btn" type="button" data-act="bench" data-bench="5" data-tooltip="🏆 Nombre de Dieu ! Défi Ultime (21 coups)" data-tooltip-style="gods" data-i18n-data-tooltip="ex2x3.bench.b5Tip">🏆 B5</button>
-            </div>
-  <div class="row" style="gap:8px; flex-wrap:wrap; margin-top:8px;">
-    <button class="btn ghost" type="button" data-act="benchreset"
-      data-tooltip="Effacer les meilleurs scores enregistrés pour ce puzzle" data-tooltip-style="info" data-i18n="common.resetBestScores" data-i18n-data-tooltip="common.resetBestScoresTip">Réinitialiser les meilleurs scores</button>
-  </div>
-            <div class="stat" style="margin-top:10px;">
-              <div class="k" data-i18n="common.bestScores">Meilleurs scores</div>
-              <div class="v" id="benchScoresTxt">B1 : — · B2 : — · B3 : — · B4 : — · B5 : —</div>
+              <button class="btn" type="button" data-act="bench" data-bench="1" data-tooltip="Facile : Victoire Rapide (1 coup)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x3.bench.b1Tip">B1 · 1</button>
+              <button class="btn" type="button" data-act="bench" data-bench="2" data-tooltip="Moyen : Propagation de Valeur (3 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x3.bench.b2Tip">B2 · 3</button>
+              <button class="btn" type="button" data-act="bench" data-bench="3" data-tooltip="Difficile : Planification Multi-Étapes (6 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x3.bench.b3Tip">B3 · 6</button>
+              <button class="btn" type="button" data-act="bench" data-bench="4" data-tooltip="Très Difficile : Recherche Profonde (9 coups)" data-tooltip-style="bench" data-i18n-data-tooltip="ex2x3.bench.b4Tip">B4 · 9</button>
+              <button class="btn" type="button" data-act="bench" data-bench="5" data-tooltip="Nombre de Dieu ! Défi Ultime (21 coups)" data-tooltip-style="gods" data-i18n-data-tooltip="ex2x3.bench.b5Tip">B5 · 21</button>
             </div>
           </div>
           <!-- /Benchmarks -->
@@ -950,7 +941,7 @@
   /* ========================================================= */
 
   // Events
-  btnShuffle.addEventListener("click", ()=>{ shuffle(Math.max(12, N*8)); log(window.i18n ? window.i18n.t('ex.msg.shuffled', 'Mélangé.') : 'Mélangé.'); setActiveBench(null); });
+  /* Mélanger button removed; benchmarks replace shuffle. */
   btnResetQ.addEventListener("click", resetQ);
   btnSolve.addEventListener("click", async ()=>{ await solveGreedy(); maybeRecordBenchScore(); });
   btnTrain.addEventListener("click", runTraining);
