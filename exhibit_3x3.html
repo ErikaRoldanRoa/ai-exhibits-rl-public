@@ -421,16 +421,16 @@
 <!-- Tutorial System (Auto-loads on first visit) -->
 <script src="app/tutorial.js"></script>
 <div class="langSelectorWrap" role="region" aria-label="Langue / Language">
-  <button type="button" class="tutorialReplay" title="Voir le tutoriel" data-i18n-title="hub.tutorialReplay" aria-label="Voir le tutoriel" data-i18n-aria-label="hub.tutorialReplay"
-    onclick="try{const d=JSON.parse(localStorage.getItem('ai-exhibits-tutorial-completed')||'{}');delete d['3x3'];localStorage.setItem('ai-exhibits-tutorial-completed', JSON.stringify(d));localStorage.removeItem('ai-exhibits-tutorial-skip');}catch(e){}location.reload();">🎓</button>
-  <a href="index.html" class="tutorialReplay" title="Retour à l'accueil" data-i18n-title="nav.backHome" aria-label="Retour à l'accueil" data-i18n-aria-label="nav.backHome">🏠</a>
-  <button type="button" id="fbBtn" class="tutorialReplay" title="Suggérer une correction" data-i18n-title="feedback.suggestCorrection" aria-label="Suggérer une correction" data-i18n-aria-label="feedback.suggestCorrection">🔧</button>
   <select id="langSelector" class="langSelector" onchange="window.i18n.setLang(this.value)">
     <option value="fr">🇫🇷 FR</option>
     <option value="en">🇬🇧 EN</option>
     <option value="de">🇩🇪 DE</option>
     <option value="it">🇮🇹 IT</option>
   </select>
+  <button type="button" class="tutorialReplay" data-tooltip="Voir le tutoriel" data-i18n-data-tooltip="hub.tutorialReplay" data-tooltip-style="info" aria-label="Voir le tutoriel" data-i18n-aria-label="hub.tutorialReplay"
+    onclick="try{const d=JSON.parse(localStorage.getItem('ai-exhibits-tutorial-completed')||'{}');delete d['3x3'];localStorage.setItem('ai-exhibits-tutorial-completed', JSON.stringify(d));localStorage.removeItem('ai-exhibits-tutorial-skip');}catch(e){}location.reload();">🎓</button>
+  <a href="index.html" class="tutorialReplay" data-tooltip="Retour à l'accueil" data-i18n-data-tooltip="nav.backHome" data-tooltip-style="info" aria-label="Retour à l'accueil" data-i18n-aria-label="nav.backHome">🏠</a>
+  <button type="button" id="fbBtn" class="tutorialReplay" data-tooltip="Suggérer une correction" data-i18n-data-tooltip="feedback.suggestCorrection" data-tooltip-style="info" aria-label="Suggérer une correction" data-i18n-aria-label="feedback.suggestCorrection">🔧</button>
 </div>
 
 <div id="aiExhibitsBrand" style="

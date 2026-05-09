@@ -129,7 +129,20 @@
     "submitDownload": "⬇️ Herunterladen",
     "submitHint": "Füge optional einen Kommentar hinzu und sende über eine der drei Optionen.",
     "resetRecords": "Rekorde dieser Mission zurücksetzen",
-    "resetConfirm": "ALLE Rekorde dieser Mission zurücksetzen? Diese Aktion ist endgültig."
+    "resetConfirm": "ALLE Rekorde dieser Mission zurücksetzen? Diese Aktion ist endgültig.",
+    "submitToSheet": "🏆 Zum Turnier senden",
+    "submitLoading": "⏳ Wird gesendet…",
+    "submitSent": "✓ Gesendet — danke!",
+    "submitRetry": "↻ Erneut versuchen",
+    "submitOffline": "Offline",
+    "submitRows": "Zeilen",
+    "submitErrTimeout": "Zeitüberschreitung. In Warteschlange — automatischer Wiederholungsversuch.",
+    "submitErrNetwork": "Kein Netzwerk. In Warteschlange — automatischer Wiederholungsversuch.",
+    "submitErrHttp": "Serverfehler. In Warteschlange.",
+    "submitErrApi": "Fehler — kopiere oder sende per E-Mail.",
+    "submitErrGeneric": "Fehler.",
+    "submitErrAuth": "Ungültige VIP-Sitzung — prüfe deine Zugangs-URL.",
+    "submitNoNewRows": "nichts Neues"
   },
   "glossary": {
     "cardTitle": "Glossar — Q-Learning-Begriffe",

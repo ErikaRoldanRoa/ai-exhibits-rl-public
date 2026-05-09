@@ -129,7 +129,20 @@
     "submitDownload": "⬇️ Scarica",
     "submitHint": "Aggiungi un commento se vuoi, poi invia tramite una delle tre opzioni.",
     "resetRecords": "Reimposta i record di questa missione",
-    "resetConfirm": "Reimpostare TUTTI i record di questa missione? Questa azione è definitiva."
+    "resetConfirm": "Reimpostare TUTTI i record di questa missione? Questa azione è definitiva.",
+    "submitToSheet": "🏆 Invia al torneo",
+    "submitLoading": "⏳ Invio in corso…",
+    "submitSent": "✓ Inviato — grazie!",
+    "submitRetry": "↻ Riprova",
+    "submitOffline": "Offline",
+    "submitRows": "righe",
+    "submitErrTimeout": "Timeout. In coda — riproverà automaticamente.",
+    "submitErrNetwork": "Niente rete. In coda — riproverà automaticamente.",
+    "submitErrHttp": "Errore server. In coda.",
+    "submitErrApi": "Errore — copia o invia per email.",
+    "submitErrGeneric": "Errore.",
+    "submitErrAuth": "Sessione VIP non valida — controlla l'URL di accesso.",
+    "submitNoNewRows": "nulla di nuovo"
   },
   "glossary": {
     "cardTitle": "Glossario — termini Q-learning",

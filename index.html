@@ -92,17 +92,17 @@ body:not([data-role="facilitator"]) #roleCard {
 </head>
 <body data-role="agent">
 <div class="langSelectorWrap" role="region" aria-label="Langue / Language">
-  <button type="button" id="tutorialReplay" class="tutorialReplay" title="Voir le tutoriel" data-i18n-title="hub.tutorialReplay"
-    onclick="try{localStorage.removeItem('ai-exhibits-tutorial-completed');localStorage.removeItem('ai-exhibits-tutorial-skip');}catch(e){}window.location.href='exhibit_2x2.html';">🎓</button>
-  <a class="tutorialReplay" href="#role" id="switchRoleLink" title="Retour au départ" data-i18n-title="common.returnToStart" aria-label="Retour au départ" data-i18n-aria-label="common.returnToStart">⏮</a>
-  <button type="button" id="submitResultsBtn" class="tutorialReplay" title="Soumettre mes résultats" data-i18n-title="hub.submitResults" aria-label="Soumettre mes résultats" data-i18n-aria-label="hub.submitResults">📤</button>
-  <button type="button" id="fbBtn" class="tutorialReplay" title="Suggérer une correction" data-i18n-title="feedback.suggestCorrection" aria-label="Suggérer une correction" data-i18n-aria-label="feedback.suggestCorrection">🔧</button>
   <select id="langSelector" class="langSelector" onchange="window.i18n.setLang(this.value)">
     <option value="fr">🇫🇷 FR</option>
     <option value="en">🇬🇧 EN</option>
     <option value="de">🇩🇪 DE</option>
     <option value="it">🇮🇹 IT</option>
   </select>
+  <button type="button" id="tutorialReplay" class="tutorialReplay" data-tooltip="Voir le tutoriel" data-i18n-data-tooltip="hub.tutorialReplay" data-tooltip-style="info" aria-label="Voir le tutoriel" data-i18n-aria-label="hub.tutorialReplay"
+    onclick="try{localStorage.removeItem('ai-exhibits-tutorial-completed');localStorage.removeItem('ai-exhibits-tutorial-skip');}catch(e){}window.location.href='exhibit_2x2.html';">🎓</button>
+  <a class="tutorialReplay" href="#role" id="switchRoleLink" data-tooltip="Retour au départ" data-i18n-data-tooltip="common.returnToStart" data-tooltip-style="info" aria-label="Retour au départ" data-i18n-aria-label="common.returnToStart">⏮</a>
+  <button type="button" id="submitResultsBtn" class="tutorialReplay" data-tooltip="Soumettre mes résultats" data-i18n-data-tooltip="hub.submitResults" data-tooltip-style="gods" aria-label="Soumettre mes résultats" data-i18n-aria-label="hub.submitResults">📤</button>
+  <button type="button" id="fbBtn" class="tutorialReplay" data-tooltip="Suggérer une correction" data-i18n-data-tooltip="feedback.suggestCorrection" data-tooltip-style="info" aria-label="Suggérer une correction" data-i18n-aria-label="feedback.suggestCorrection">🔧</button>
 </div>
 <!-- Role gate (shown on every load; supports shared devices) -->
 <div aria-labelledby="roleGateTitle" aria-modal="true" class="modalOverlay" id="roleGate" role="dialog"><a id="role" aria-hidden="true"></a>
@@ -706,9 +706,154 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
       }
     };
   }
+  /* ── Tournament endpoint + VIP gating + retry queue ───────────────────── */
+  // VIP-only feature: the 📤 button is hidden by default. To grant access,
+  // open the hub with `?w=<workshop_tag>&t=<token>` once — those params are
+  // captured into localStorage and the button reveals. To revoke on a
+  // device: `?vip=off`. To kill the feature mid-workshop: `?tournament=off`.
+  const TOURNAMENT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxR84v8EDB4bV5icuTFLuRPZn5g0fwYmQd9fm0vPKkOGERLzldZwkV0JTup3UxFX5g/exec';
+  const VIP_KEY = 'ai_exhibits.tournament_vip';
+  const WORKSHOP_KEY = 'ai_exhibits.tournament_workshop';
+  const TOKEN_KEY = 'ai_exhibits.tournament_token';
+  const DISABLED_KEY = 'ai_exhibits.tournament_disabled';
+  const PENDING_KEY = 'ai_exhibits.tournament_pending';
+
+  (function captureUrlParams(){
+    try {
+      const p = new URLSearchParams(location.search);
+      const w = p.get('w');
+      const t = p.get('t');
+      if (w && t) {
+        localStorage.setItem(WORKSHOP_KEY, w);
+        localStorage.setItem(TOKEN_KEY, t);
+        localStorage.setItem(VIP_KEY, '1');
+      }
+      if (p.get('tournament') === 'off') {
+        localStorage.setItem(DISABLED_KEY, '1');
+      } else if (p.get('tournament') === 'on') {
+        localStorage.removeItem(DISABLED_KEY);
+      }
+      if (p.get('vip') === 'off') {
+        localStorage.removeItem(VIP_KEY);
+        localStorage.removeItem(WORKSHOP_KEY);
+        localStorage.removeItem(TOKEN_KEY);
+      }
+    } catch (e) {}
+  })();
+
+  function isTournamentEnabled(){
+    try {
+      if (localStorage.getItem(DISABLED_KEY) === '1') return false;
+      return localStorage.getItem(VIP_KEY) === '1'
+          && !!localStorage.getItem(WORKSHOP_KEY)
+          && !!localStorage.getItem(TOKEN_KEY);
+    } catch (e) { return false; }
+  }
+  function applyVipVisibility(){
+    const btn = document.getElementById('submitResultsBtn');
+    if (btn) btn.style.display = isTournamentEnabled() ? '' : 'none';
+  }
+
+  async function submitToAppsScript(payload, opts){
+    const timeoutMs = (opts && opts.timeoutMs) || 12000;
+    const controller = new AbortController();
+    const t = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const res = await fetch(TOURNAMENT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload),
+        redirect: 'follow',
+        signal: controller.signal,
+      });
+      if (!res.ok) return { ok: false, kind: 'http', status: res.status };
+      const data = await res.json();
+      if (data && data.status === 'error') {
+        return { ok: false, kind: 'api', message: data.message || 'API error', data };
+      }
+      return { ok: true, data };
+    } catch (e) {
+      if (e.name === 'AbortError') return { ok: false, kind: 'timeout' };
+      return { ok: false, kind: 'network', message: e.message };
+    } finally {
+      clearTimeout(t);
+    }
+  }
+
+  function loadPending(){
+    try { return JSON.parse(localStorage.getItem(PENDING_KEY) || '[]'); } catch { return []; }
+  }
+  function savePending(arr){
+    try { localStorage.setItem(PENDING_KEY, JSON.stringify(arr.slice(-20))); } catch {}
+  }
+  function buildSubmitPayload(){
+    const persona = (typeof window.AI_EXHIBITS_GET_PERSONA === 'function')
+      ? window.AI_EXHIBITS_GET_PERSONA() : '';
+    const lang = (document.documentElement.lang || 'fr').slice(0, 2).toLowerCase();
+    return {
+      action: 'submitScore',
+      workshop: localStorage.getItem(WORKSHOP_KEY) || '',
+      token: localStorage.getItem(TOKEN_KEY) || '',
+      persona,
+      lang,
+      origin: location.origin,
+      records: {
+        'mini-2x2': loadHubBench('mini-2x2'),
+        'mini-2x3': loadHubBench('mini-2x3'),
+        'mini-3x3': loadHubBench('mini-3x3'),
+      },
+      source: 'hub-localStorage',
+    };
+  }
+  // Backoff schedule per attempt: 30s, 2m, 10m, 1h, 6h, 24h.
+  const RETRY_BACKOFFS_MS = [30e3, 120e3, 600e3, 3600e3, 21600e3, 86400e3];
+  function queueForRetry(payload, lastError){
+    if (!isTournamentEnabled()) return;
+    const arr = loadPending();
+    arr.push({
+      id: 'q' + Math.random().toString(36).slice(2, 10),
+      payload,
+      firstAttempt: Date.now(),
+      lastAttempt: Date.now(),
+      attempts: 1,
+      lastError: lastError || null,
+    });
+    savePending(arr);
+  }
+  async function processPending(){
+    if (!isTournamentEnabled()) return;
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) return;
+    const arr = loadPending();
+    if (arr.length === 0) return;
+    const now = Date.now();
+    const remaining = [];
+    for (const item of arr) {
+      const age = now - item.firstAttempt;
+      if (item.attempts >= 6 || age > 7 * 86400e3) continue; // give up
+      const since = now - (item.lastAttempt || 0);
+      const wait = RETRY_BACKOFFS_MS[Math.min(item.attempts - 1, RETRY_BACKOFFS_MS.length - 1)];
+      if (since < wait) { remaining.push(item); continue; }
+      item.attempts++;
+      item.lastAttempt = now;
+      try {
+        const r = await submitToAppsScript(item.payload);
+        if (!r.ok) remaining.push(item);
+      } catch (e) {
+        remaining.push(item);
+      }
+    }
+    savePending(remaining);
+  }
+  window.addEventListener('online', () => { processPending().catch(() => {}); });
+  document.addEventListener('DOMContentLoaded', () => {
+    applyVipVisibility();
+    setTimeout(() => processPending().catch(() => {}), 3000);
+  });
+
   // Submit-results modal — same shape as the feedback (🔧) modal: dynamic
   // overlay, a card with the records pre-filled in a textarea (editable so
-  // the user can add a comment), and three actions (copy / mailto / JSON).
+  // the user can add a comment), and four actions (Submit-to-Sheet primary,
+  // copy / mailto / JSON download as fallbacks).
   function openResultsModal(){
     if (document.getElementById('resultsOverlay')) return;
     const tr = (window.i18n && window.i18n.t) ? window.i18n.t : (k, f) => f;
@@ -761,10 +906,137 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
       'Ajoute un commentaire si tu veux, puis envoie via une des trois options.');
     Object.assign(hint.style, {
       fontSize: '11px', color: 'rgba(255,255,255,0.55)',
-      margin: '8px 0 16px 0',
+      margin: '8px 0 12px 0',
     });
     card.appendChild(hint);
 
+    /* ── Status line — drives loading/success/error visuals ───────────── */
+    const status = document.createElement('div');
+    status.id = 'submitStatusLine';
+    Object.assign(status.style, {
+      fontSize: '12px', minHeight: '20px',
+      margin: '0 0 12px 0', textAlign: 'center', fontWeight: '600',
+      letterSpacing: '0.2px', transition: 'color 0.15s, opacity 0.2s',
+    });
+    card.appendChild(status);
+
+    const setStatus = (state, text) => {
+      status.dataset.state = state;
+      status.textContent = text || '';
+      const palette = {
+        idle:    'rgba(255,255,255,0.0)',
+        loading: 'rgba(255,255,255,0.65)',
+        success: 'rgba(112,255,138,0.95)',
+        error:   'rgba(255,138,138,0.95)',
+        offline: 'rgba(255,200,80,0.85)',
+      };
+      status.style.color = palette[state] || palette.idle;
+      status.style.opacity = text ? '1' : '0';
+    };
+    setStatus('idle', '');
+
+    /* ── Submit-to-Sheet primary button (VIP-only) ───────────────────── */
+    let submitState = 'idle';
+    let submitBtn = null;
+    const refreshSubmitBtn = () => {
+      if (!submitBtn) return;
+      const offline = (typeof navigator !== 'undefined' && navigator.onLine === false);
+      const dis = (submitState === 'loading' || submitState === 'success' || offline);
+      submitBtn.disabled = dis;
+      submitBtn.style.opacity = dis ? '0.6' : '1';
+      submitBtn.style.cursor = dis ? 'not-allowed' : 'pointer';
+      const labels = {
+        idle: tr('hub.submitToSheet', '🏆 Soumettre au tournoi'),
+        loading: tr('hub.submitLoading', '⏳ Envoi en cours…'),
+        success: tr('hub.submitSent', '✓ Soumis — merci !'),
+        error: tr('hub.submitRetry', '↻ Réessayer'),
+      };
+      submitBtn.textContent = offline ? tr('hub.submitOffline', 'Hors-ligne') : labels[submitState];
+    };
+
+    async function doSubmit(){
+      if (submitState === 'loading' || submitState === 'success') return;
+      submitState = 'loading';
+      refreshSubmitBtn();
+      setStatus('loading', tr('hub.submitLoading', '⏳ Envoi en cours…'));
+      // Build payload + include any user-edited note
+      const payload = buildSubmitPayload();
+      const userNote = ta.value !== buildResultsText() ? ta.value : '';
+      if (userNote) payload.note = userNote.slice(0, 500);
+      const r = await submitToAppsScript(payload);
+      // Discriminate: a server-side tarpit (auth failed) returns
+      // {status:'ok', queued:true} with NO rowsWritten. The client surfaces
+      // that as an error so legitimate VIP users with a wrong/expired token
+      // don't think they've submitted when they haven't.
+      const realSuccess = r.ok && r.data && typeof r.data.rowsWritten === 'number';
+      const tarpit = r.ok && r.data && r.data.queued === true && r.data.rowsWritten == null;
+      if (realSuccess) {
+        submitState = 'success';
+        ta.style.borderColor = 'rgba(112,255,138,0.7)';
+        const n = r.data.rowsWritten;
+        setStatus('success',
+          tr('hub.submitSent', '✓ Soumis — merci !')
+          + (n > 0 ? ' (' + n + ' ' + tr('hub.submitRows', 'lignes') + ')'
+                  : ' (' + tr('hub.submitNoNewRows', 'rien de nouveau') + ')'));
+      } else if (tarpit) {
+        submitState = 'error';
+        ta.style.borderColor = 'rgba(255,138,138,0.7)';
+        setStatus('error', tr('hub.submitErrAuth',
+          "Session VIP invalide — vérifie ton URL d'accès."));
+      } else if (r.ok) {
+        // Server returned ok but neither rowsWritten nor queued — defensive.
+        submitState = 'error';
+        setStatus('error', tr('hub.submitErrGeneric', 'Échec.'));
+      } else {
+        submitState = 'error';
+        ta.style.borderColor = 'rgba(255,138,138,0.7)';
+        const errorMap = {
+          timeout: tr('hub.submitErrTimeout', "Délai dépassé. Mis en file d'attente — réessai automatique."),
+          network: tr('hub.submitErrNetwork', "Pas de réseau. Mis en file d'attente — réessai automatique."),
+          http:    tr('hub.submitErrHttp',    "Erreur serveur. Mis en file d'attente."),
+          api:     tr('hub.submitErrApi',     "Échec — copie ou envoie par email à la place."),
+        };
+        setStatus('error', errorMap[r.kind] || tr('hub.submitErrGeneric', 'Échec.'));
+        // Queue for retry on transient failures.
+        if (r.kind === 'timeout' || r.kind === 'network' || r.kind === 'http') {
+          queueForRetry(payload, r.kind);
+        }
+      }
+      refreshSubmitBtn();
+    }
+
+    if (isTournamentEnabled()) {
+      submitBtn = document.createElement('button');
+      submitBtn.type = 'button';
+      submitBtn.id = 'submitToSheetBtn';
+      Object.assign(submitBtn.style, {
+        width: '100%', padding: '12px 18px', borderRadius: '999px',
+        border: '1px solid rgba(255,215,0,0.7)',
+        background: 'linear-gradient(135deg, rgba(255,215,0,0.20), rgba(255,120,180,0.15))',
+        color: 'rgba(255,255,255,0.98)',
+        fontSize: '14px', fontWeight: '700', letterSpacing: '0.3px',
+        fontFamily: 'ui-sans-serif, system-ui, sans-serif',
+        cursor: 'pointer', marginBottom: '10px',
+        transition: 'opacity 0.15s, border-color 0.15s',
+      });
+      submitBtn.addEventListener('click', () => { doSubmit().catch(() => {}); });
+      card.appendChild(submitBtn);
+      refreshSubmitBtn();
+
+      // Keyboard: Enter triggers submit when focus is outside the textarea.
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && document.activeElement !== ta && !e.shiftKey) {
+          e.preventDefault();
+          doSubmit().catch(() => {});
+        }
+      });
+      // React to network state.
+      const onLine = () => refreshSubmitBtn();
+      window.addEventListener('online', onLine);
+      window.addEventListener('offline', onLine);
+    }
+
+    /* ── Fallback row: Copy / Mail / Download / ✕ ─────────────────────── */
     const actions = document.createElement('div');
     Object.assign(actions.style, {
       display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'flex-end',
@@ -793,7 +1065,7 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
       ta.style.borderColor = 'rgba(112,255,138,0.7)';
       setTimeout(() => { ta.style.borderColor = orig; }, 900);
     }));
-    actions.appendChild(mkBtn(tr('hub.submitMail', '✉️ Envoyer par email'), true, () => {
+    actions.appendChild(mkBtn(tr('hub.submitMail', '✉️ Envoyer par email'), false, () => {
       const subject = 'AI-Exhibits — ' + tr('hub.submitTitle', 'résultats');
       const url = 'mailto:?subject=' + encodeURIComponent(subject)
                 + '&body=' + encodeURIComponent(ta.value);
