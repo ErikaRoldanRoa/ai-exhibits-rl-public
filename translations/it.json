@@ -96,11 +96,11 @@
     },
     "facTools": {
       "tag": "FACILITATRICE",
-      "title": "Kit per il laboratorio",
+      "title": "Dashboard animatrice",
       "desc": "Un kit stampabile per missione: glossario, riferimenti, tabella di gara, note per l'animatrice. Una scheda di squadra raccoglie le tre missioni in una pagina.",
-      "kit1": "Kit Missione I",
-      "kit2": "Kit Missione II",
-      "kit3": "Kit Missione III",
+      "kit1": "Kit Missione I · 20 min",
+      "kit2": "Kit Missione II · 25 min",
+      "kit3": "Kit Missione III · 20 min",
       "scoresheet": "Scheda di squadra"
     },
     "glossary": {
@@ -606,7 +606,14 @@
       "m3": "Missione III",
       "debrief": "Debriefing",
       "totalSuffix": "min",
-      "budgetHint": "Budget predefinito. Comprimi in 60 min o espandi in 90 min mantenendo le proporzioni."
+      "budgetHint": "Budget predefinito. Comprimi in 60 min o espandi in 90 min mantenendo le proporzioni.",
+      "min": {
+        "accueil": "5 min",
+        "m1": "20 min",
+        "m2": "25 min",
+        "m3": "20 min",
+        "debrief": "5 min"
+      }
     },
     "troubleshooting": {
       "title": "Se si blocca",

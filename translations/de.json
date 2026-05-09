@@ -96,11 +96,11 @@
     },
     "facTools": {
       "tag": "MODERATION",
-      "title": "Workshop-Kits",
+      "title": "Animatrice-Dashboard",
       "desc": "Ein druckbares Kit pro Mission: Glossar, Referenzen, Versuchstabelle, Notizen für die Leitung. Ein Team-Bewertungsbogen fasst die drei Missionen auf einer Seite zusammen.",
-      "kit1": "Kit Mission I",
-      "kit2": "Kit Mission II",
-      "kit3": "Kit Mission III",
+      "kit1": "Kit Mission I · 20 min",
+      "kit2": "Kit Mission II · 25 min",
+      "kit3": "Kit Mission III · 20 min",
       "scoresheet": "Team-Bewertungsbogen"
     },
     "glossary": {
@@ -606,7 +606,14 @@
       "m3": "Mission III",
       "debrief": "Nachbesprechung",
       "totalSuffix": "min",
-      "budgetHint": "Standardbudget. Auf 60 min komprimieren oder auf 90 min erweitern, Verhältnisse beibehalten."
+      "budgetHint": "Standardbudget. Auf 60 min komprimieren oder auf 90 min erweitern, Verhältnisse beibehalten.",
+      "min": {
+        "accueil": "5 min",
+        "m1": "20 min",
+        "m2": "25 min",
+        "m3": "20 min",
+        "debrief": "5 min"
+      }
     },
     "troubleshooting": {
       "title": "Wenn es hakt",

@@ -96,11 +96,11 @@
     },
     "facTools": {
       "tag": "FACILITATOR",
-      "title": "Workshop kits",
+      "title": "Facilitator dashboard",
       "desc": "One printable kit per mission: glossary, references, race table, facilitator notes. A team scoresheet consolidates the three missions on one page.",
-      "kit1": "Mission I kit",
-      "kit2": "Mission II kit",
-      "kit3": "Mission III kit",
+      "kit1": "Kit Mission I · 20 min",
+      "kit2": "Kit Mission II · 25 min",
+      "kit3": "Kit Mission III · 20 min",
       "scoresheet": "Team scoresheet"
     },
     "glossary": {
@@ -606,7 +606,14 @@
       "m3": "Mission III",
       "debrief": "Debrief",
       "totalSuffix": "min",
-      "budgetHint": "Default budget. Compress to 60 min or expand to 90 min keeping the proportions."
+      "budgetHint": "Default budget. Compress to 60 min or expand to 90 min keeping the proportions.",
+      "min": {
+        "accueil": "5 min",
+        "m1": "20 min",
+        "m2": "25 min",
+        "m3": "20 min",
+        "debrief": "5 min"
+      }
     },
     "troubleshooting": {
       "title": "If stuck",

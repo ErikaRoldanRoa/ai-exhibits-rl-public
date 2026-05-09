@@ -39,6 +39,14 @@
     </div>
   </header>
 
+
+  <nav class="kit-session" aria-label="Session structure" role="region">
+    <div class="kit-session-title" data-i18n="kit.session.title">Structure de session · 75 min</div>
+    <div class="kit-session-row">
+      <div class="kit-session-cell"><div class="kit-session-name" data-i18n="kit.session.accueil">Accueil</div><div class="kit-session-min" data-i18n="kit.session.min.accueil">5 min</div></div><div class="kit-session-cell"><div class="kit-session-name" data-i18n="kit.session.m1">Mission I</div><div class="kit-session-min" data-i18n="kit.session.min.m1">20 min</div></div><div class="kit-session-cell is-current"><div class="kit-session-name" data-i18n="kit.session.m2">Mission II</div><div class="kit-session-min" data-i18n="kit.session.min.m2">25 min</div></div><div class="kit-session-cell"><div class="kit-session-name" data-i18n="kit.session.m3">Mission III</div><div class="kit-session-min" data-i18n="kit.session.min.m3">20 min</div></div><div class="kit-session-cell"><div class="kit-session-name" data-i18n="kit.session.debrief">Débrief</div><div class="kit-session-min" data-i18n="kit.session.min.debrief">5 min</div></div>
+    </div>
+    <div class="kit-session-hint" data-i18n="kit.session.budgetHint">Budget par défaut. Compresse en 60 min ou détend en 90 min en gardant les proportions.</div>
+  </nav>
   <div class="kit-grid">
 
     <!-- LEFT COLUMN: facts + glossary + bench -->
@@ -92,6 +100,7 @@
 
     <!-- RIGHT COLUMN: attempt table + facilitator notes -->
     <section class="kit-card">
+      <div class="kit-bridge" data-i18n="kit.m2.bridge">Depuis Mission I · La table Q ne tient plus sur une serviette. 360 états : tu vois la propagation backward agir épisode après épisode.</div>
       <h2 data-i18n="kit.race.title">La course cachée · 3 essais à budget fixe</h2>
       <p data-i18n="kit.race.body">Chaque équipe choisit (α, γ, ε) trois fois avec le même nombre d'épisodes. Note ici l'essai en cours, puis transcris sur la fiche d'équipe.</p>
 
@@ -117,6 +126,14 @@
           <li data-i18n="kit.m2.notes.4">Insister sur la propagation backward : la récompense remonte depuis l'objectif, un épisode à la fois (γ par hop).</li>
         </ul>
       </details>
+      <div class="kit-trouble">
+        <h3 data-i18n="kit.troubleshooting.title">Si ça coince</h3>
+        <ul>
+          <li data-i18n="kit.troubleshooting.coverage">Couverture stagne · ε trop bas, ou pas assez d'épisodes. Augmente ε vers 0,4–0,5 et relance.</li>
+          <li data-i18n="kit.troubleshooting.greedy">Greedy échoue · ε figé à 0 trop tôt, ou Q n'a pas convergé. Réinitialiser Q, repartir avec plus d'épisodes.</li>
+          <li data-i18n="kit.troubleshooting.runaway">Entraînement runaway · vérifie le maximum d'épisodes (M1 = 2 000, M2 = 20 000, M3 = 50 000).</li>
+        </ul>
+      </div>
     </section>
 
   </div>

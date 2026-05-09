@@ -21,7 +21,7 @@
 <!-- PWA Manifest -->
 <link rel="manifest" href="app/manifest.json"/>
 
-<!-- External Stylesheets for Better Maintainability & Performance --><link rel="stylesheet" href="app/styles.css"/>
+<!-- External Stylesheets for Better Maintainability & Performance --><link rel="stylesheet" href="app/styles.css"/><link rel="stylesheet" href="app/kit-shared.css"/>
 <style>
 /* ===================================================================
    INDEX.HTML PAGE-SPECIFIC STYLES
@@ -260,13 +260,34 @@ body:not([data-role="facilitator"]) #roleCard {
 </script>
 </div><div class="facCard card facOnly" id="facTools" style="display:none;">
 <div class="mTag mono" data-i18n="hub.facTools.tag">ANIMATRICE</div>
-<h2 style="margin:6px 0 8px" data-i18n="hub.facTools.title">Kits d'atelier</h2>
-<p class="mDesc" data-i18n="hub.facTools.desc">Un kit imprimable par mission&#8239;: glossaire, références, tableau de course, notes pour l'animatrice. Une fiche d'équipe consolide les trois missions en une page.</p>
+<h2 style="margin:6px 0 8px" data-i18n="hub.facTools.title">Tableau de bord animatrice</h2>
+
+<nav class="kit-session" aria-label="Session structure" role="region" style="margin-bottom:14px;">
+  <div class="kit-session-title" data-i18n="kit.session.title">Structure de session · 75 min</div>
+  <div class="kit-session-row">
+    <div class="kit-session-cell"><div class="kit-session-name" data-i18n="kit.session.accueil">Accueil</div><div class="kit-session-min" data-i18n="kit.session.min.accueil">5 min</div></div>
+    <div class="kit-session-cell"><div class="kit-session-name" data-i18n="kit.session.m1">Mission I</div><div class="kit-session-min" data-i18n="kit.session.min.m1">20 min</div></div>
+    <div class="kit-session-cell"><div class="kit-session-name" data-i18n="kit.session.m2">Mission II</div><div class="kit-session-min" data-i18n="kit.session.min.m2">25 min</div></div>
+    <div class="kit-session-cell"><div class="kit-session-name" data-i18n="kit.session.m3">Mission III</div><div class="kit-session-min" data-i18n="kit.session.min.m3">20 min</div></div>
+    <div class="kit-session-cell"><div class="kit-session-name" data-i18n="kit.session.debrief">Débrief</div><div class="kit-session-min" data-i18n="kit.session.min.debrief">5 min</div></div>
+  </div>
+  <div class="kit-session-hint" data-i18n="kit.session.budgetHint">Budget par défaut. Compresse en 60 min ou détend en 90 min en gardant les proportions.</div>
+</nav>
+
 <div class="btnRow" style="flex-wrap:wrap; gap:8px;">
-<a class="btn pink" href="mission1_kit.html" data-i18n="hub.facTools.kit1">Kit Mission I</a>
-<a class="btn cyan" href="mission2_kit.html" data-i18n="hub.facTools.kit2">Kit Mission II</a>
-<a class="btn lime" href="mission3_kit.html" data-i18n="hub.facTools.kit3">Kit Mission III</a>
+<a class="btn pink" href="mission1_kit.html" data-i18n="hub.facTools.kit1">Kit Mission I · 20 min</a>
+<a class="btn cyan" href="mission2_kit.html" data-i18n="hub.facTools.kit2">Kit Mission II · 25 min</a>
+<a class="btn lime" href="mission3_kit.html" data-i18n="hub.facTools.kit3">Kit Mission III · 20 min</a>
 <a class="btn ghost" href="print/fiche_equipe.html" data-i18n="hub.facTools.scoresheet">Fiche d'équipe</a>
+</div>
+
+<div class="kit-trouble" style="margin-top:14px;">
+  <h3 data-i18n="kit.troubleshooting.title">Si ça coince</h3>
+  <ul>
+    <li data-i18n="kit.troubleshooting.coverage">Couverture stagne · ε trop bas, ou pas assez d'épisodes. Augmente ε vers 0,4–0,5 et relance.</li>
+    <li data-i18n="kit.troubleshooting.greedy">Greedy échoue · ε figé à 0 trop tôt, ou Q n'a pas convergé. Réinitialiser Q, repartir avec plus d'épisodes.</li>
+    <li data-i18n="kit.troubleshooting.runaway">Entraînement runaway · vérifie le maximum d'épisodes (M1 = 2 000, M2 = 20 000, M3 = 50 000).</li>
+  </ul>
 </div>
 </div></div>
 </div>

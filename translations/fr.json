@@ -96,11 +96,11 @@
     },
     "facTools": {
       "tag": "ANIMATRICE",
-      "title": "Kits d'atelier",
+      "title": "Tableau de bord animatrice",
       "desc": "Un kit imprimable par mission : glossaire, références, tableau de course, notes pour l'animatrice. Une fiche d'équipe consolide les trois missions en une page.",
-      "kit1": "Kit Mission I",
-      "kit2": "Kit Mission II",
-      "kit3": "Kit Mission III",
+      "kit1": "Kit Mission I · 20 min",
+      "kit2": "Kit Mission II · 25 min",
+      "kit3": "Kit Mission III · 20 min",
       "scoresheet": "Fiche d'équipe"
     },
     "glossary": {
@@ -606,7 +606,14 @@
       "m3": "Mission III",
       "debrief": "Débrief",
       "totalSuffix": "min",
-      "budgetHint": "Budget par défaut. Compresse en 60 min ou détend en 90 min en gardant les proportions."
+      "budgetHint": "Budget par défaut. Compresse en 60 min ou détend en 90 min en gardant les proportions.",
+      "min": {
+        "accueil": "5 min",
+        "m1": "20 min",
+        "m2": "25 min",
+        "m3": "20 min",
+        "debrief": "5 min"
+      }
     },
     "troubleshooting": {
       "title": "Si ça coince",
