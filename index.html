@@ -98,8 +98,8 @@ body:not([data-role="facilitator"]) #roleCard {
     <option value="de">🇩🇪 DE</option>
     <option value="it">🇮🇹 IT</option>
   </select>
-  <button type="button" id="tutorialReplay" class="tutorialReplay" data-tooltip="Voir le tutoriel" data-i18n-data-tooltip="hub.tutorialReplay" data-tooltip-style="info" aria-label="Voir le tutoriel" data-i18n-aria-label="hub.tutorialReplay"
-    onclick="try{localStorage.removeItem('ai-exhibits-tutorial-completed');localStorage.removeItem('ai-exhibits-tutorial-skip');}catch(e){}window.location.href='exhibit_2x2.html';">🎓</button>
+  <button type="button" id="tutorialReplay" class="tutorialReplay" data-tooltip="Voir l'aide" data-i18n-data-tooltip="hub.tutorialReplay" data-tooltip-style="info" aria-label="Voir l'aide" data-i18n-aria-label="hub.tutorialReplay"
+    onclick="try{const g=document.getElementById('roleGate');if(g){g.style.display='flex';g.setAttribute('aria-hidden','false');}}catch(e){}">🎓</button>
   <a class="tutorialReplay" href="#role" id="switchRoleLink" data-tooltip="Retour au départ" data-i18n-data-tooltip="common.returnToStart" data-tooltip-style="info" aria-label="Retour au départ" data-i18n-aria-label="common.returnToStart">⏮</a>
   <button type="button" id="submitResultsBtn" class="tutorialReplay" data-tooltip="Soumettre mes résultats" data-i18n-data-tooltip="hub.submitResults" data-tooltip-style="gods" aria-label="Soumettre mes résultats" data-i18n-aria-label="hub.submitResults">📤</button>
   <button type="button" id="fbBtn" class="tutorialReplay" data-tooltip="Suggérer une correction" data-i18n-data-tooltip="feedback.suggestCorrection" data-tooltip-style="info" aria-label="Suggérer une correction" data-i18n-aria-label="feedback.suggestCorrection">🔧</button>
@@ -320,9 +320,36 @@ body:not([data-role="facilitator"]) #roleCard {
     });
   }
 
+  // Facilitator mode is now VIP-gated. A user can only become facilitator
+  // if they have an active VIP session (workshop tag + token in localStorage,
+  // captured from a ?w=…&t=… URL). The "Mode animatrice" button on the role
+  // gate is hidden unless VIP is active. Visiting a VIP URL automatically
+  // elevates the role to facilitator on first arrival.
+  function isVipFacilitatorEligible(){
+    try {
+      if (localStorage.getItem('ai_exhibits.tournament_disabled') === '1') return false;
+      return localStorage.getItem('ai_exhibits.tournament_vip') === '1'
+          && !!localStorage.getItem('ai_exhibits.tournament_workshop')
+          && !!localStorage.getItem('ai_exhibits.tournament_token');
+    } catch (e) { return false; }
+  }
+  function applyFacilitatorButtonVisibility(){
+    const btn = document.querySelector('.roleBtn[data-role="facilitator"]');
+    if (btn) btn.style.display = isVipFacilitatorEligible() ? '' : 'none';
+  }
   function setPill(role){
+    // Defensive: if non-VIP somehow stored facilitator (e.g. from before this
+    // gate landed), demote silently.
+    if (role === 'facilitator' && !isVipFacilitatorEligible()) {
+      role = 'agent';
+      try { localStorage.setItem(ROLE_KEY, 'agent'); } catch (e) {}
+    }
     document.body.dataset.role = role;
     if (facToolsEl) { facToolsEl.style.display = (role === "facilitator") ? "block" : "none"; }
+    // Force-unlock all 🚀 train icons in facilitator mode (so demos work).
+    if (typeof window.AI_EXHIBITS_REFRESH_TRAIN_LOCKS === 'function') {
+      window.AI_EXHIBITS_REFRESH_TRAIN_LOCKS();
+    }
   }
 
   function applySelection(role){
@@ -350,7 +377,27 @@ body:not([data-role="facilitator"]) #roleCard {
     applySelection(stored);
     // Pre-fill persona input from storage so the user can edit it.
     if (typeof syncPersonaInputFromStorage === 'function') syncPersonaInputFromStorage();
+    // Hide "Mode animatrice" button unless VIP is active.
+    applyFacilitatorButtonVisibility();
   }
+  // Auto-elevate to facilitator on first arrival via a VIP URL.
+  // Runs once on script load (after the URL-param-capture IIFE in the
+  // mini-game IIFE has populated the VIP localStorage keys).
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      try {
+        if (isVipFacilitatorEligible()
+            && localStorage.getItem(ROLE_KEY) !== 'facilitator') {
+          localStorage.setItem(ROLE_KEY, 'facilitator');
+          setPill('facilitator');
+        } else {
+          // Always re-check (a stale facilitator role gets demoted by setPill).
+          setPill(localStorage.getItem(ROLE_KEY) || 'agent');
+        }
+        applyFacilitatorButtonVisibility();
+      } catch (e) {}
+    }, 80);
+  });
 
   function closeGate(){
     if(!gate) return;
@@ -576,9 +623,11 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
   function refreshAllRecordsTooltips(){
     ['mini-2x2','mini-2x3','mini-3x3'].forEach(refreshRecordsTooltip);
   }
-  // Expose to the role-gate IIFE so persona changes can trigger a refresh
-  // of the records tooltip headers (which now use the persona).
+  // Expose to the role-gate IIFE: persona changes refresh the records
+  // tooltip headers; role changes refresh the train-icon lock state
+  // (facilitator mode force-unlocks all 🚀).
   window.AI_EXHIBITS_REFRESH_RECORDS = refreshAllRecordsTooltips;
+  window.AI_EXHIBITS_REFRESH_TRAIN_LOCKS = refreshAllTrainLocks;
   // Solve celebration — adds a brief animated "🎉 Résolu en N coups !" to
   // the stats line then reverts.
   function triggerSolveCelebration(inst){
@@ -615,7 +664,10 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
     if (!btn) return;
     const solved = countHubSolved(id);
     const need = TRAIN_THRESHOLD[id] || 0;
-    const unlocked = solved >= need;
+    // Facilitator mode (VIP-gated) unlocks all 🚀 so the facilitator can
+    // demo any mission without needing to solve benchmarks first.
+    const isFacilitator = (document.body.dataset.role === 'facilitator');
+    const unlocked = isFacilitator || solved >= need;
     btn.classList.toggle('locked', !unlocked);
     btn.classList.toggle('unlocked', unlocked);
     const tr = (window.i18n && window.i18n.t) ? window.i18n.t : (k, f) => f;
