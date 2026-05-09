@@ -94,14 +94,14 @@
     <!-- RIGHT COLUMN: attempt table + facilitator notes -->
     <section class="kit-card">
       <h2 data-i18n="kit.race.title">La course cachée · 3 essais à budget fixe</h2>
-      <p data-i18n="kit.m1.raceBody">Chaque équipe choisit (α, γ, ε) trois fois avec le même nombre d'épisodes. Note ici l'essai en cours, puis transcris sur la fiche d'équipe.</p>
+      <p data-i18n="kit.race.body">Chaque équipe choisit (α, γ, ε) trois fois avec le même nombre d'épisodes. Note ici l'essai en cours, puis transcris sur la fiche d'équipe.</p>
 
-      <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1.2fr 1.2fr; gap:6px; margin-top:8px; align-items:end;">
-        <div><div class="strip-label" style="font-size:10px; color:var(--muted); font-family:var(--mono); margin-bottom:2px;">α</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
-        <div><div class="strip-label" style="font-size:10px; color:var(--muted); font-family:var(--mono); margin-bottom:2px;">γ</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
-        <div><div class="strip-label" style="font-size:10px; color:var(--muted); font-family:var(--mono); margin-bottom:2px;">ε</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
-        <div><div class="strip-label" style="font-size:10px; color:var(--muted); font-family:var(--mono); margin-bottom:2px;" data-i18n="kit.strip.bench">Bench</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.10); border-radius:6px; color:var(--text); font-family:var(--mono); text-align:center;"/></div>
-        <div><div class="strip-label strip-best" style="font-size:10px; color:var(--lime); font-family:var(--mono); margin-bottom:2px;" data-i18n="kit.strip.moves">Mvts</div><input type="text" style="width:100%; box-sizing:border-box; padding:6px; background:rgba(85,255,122,0.06); border:1px solid rgba(85,255,122,0.32); border-radius:6px; color:var(--lime); font-family:var(--mono); font-weight:800; text-align:center;"/></div>
+      <div class="kit-strip">
+        <div class="kit-strip-cell"><div class="kit-strip-label">α</div><input type="text" class="kit-strip-input"/></div>
+        <div class="kit-strip-cell"><div class="kit-strip-label">γ</div><input type="text" class="kit-strip-input"/></div>
+        <div class="kit-strip-cell"><div class="kit-strip-label">ε</div><input type="text" class="kit-strip-input"/></div>
+        <div class="kit-strip-cell"><div class="kit-strip-label" data-i18n="kit.strip.bench">Bench</div><input type="text" class="kit-strip-input"/></div>
+        <div class="kit-strip-cell kit-strip-best"><div class="kit-strip-label" data-i18n="kit.strip.moves">Mvts</div><input type="text" class="kit-strip-input"/></div>
       </div>
 
       <a href="print/fiche_equipe.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; margin-top:14px; padding:10px 14px; background:rgba(106,215,255,0.10); border:1px solid rgba(106,215,255,0.42); border-radius:10px; color:var(--cyan); text-decoration:none; font-size:12px; font-weight:700;">

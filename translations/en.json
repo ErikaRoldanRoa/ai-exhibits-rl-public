@@ -38,7 +38,6 @@
     "facilitatorMode": "Facilitator mode"
   },
   "hub": {
-    "launchTraining": "🚀 Launch Training",
     "header": {
       "title": "AI-Exhibits: Reinforcement Learning · Hub",
       "h1": "AI-Exhibits: Reinforcement Learning · Hub"
@@ -525,12 +524,11 @@
       "napkinTitle": "The Q-table fits on a napkin.",
       "napkinBody": " 12 states × 2 actions per state = at most 24 rows. Build it by hand while the agent trains.",
       "benchHint": "Each reference is a starting state at a fixed distance from the goal. The optimal distance is the length of the shortest solution.",
-      "raceBody": "Each team picks (α, γ, ε) three times with the same number of episodes. The table keeps score.",
       "notes": {
-        "1": "15 min · hook: have a human play against the random agent on the home-page mini-card. The You · Random comparison shows the why.",
-        "2": "15 min · map the 12 configurations reachable from the goal. Build the Q-table by hand.",
-        "3": "Recommended parameters: α≈0.5 · γ≈0.9 · ε≈0.3 · 300 episodes. The max 2000 protects against runaway.",
-        "4": "If greedy fails: ε hit 0 too early, or the Q-table did not get enough episodes. Reset and rerun."
+        "1": "5 min · hook · demo 🎲 on the hub's 2×2 mini. Compare You · Random — that's the why.",
+        "2": "5 min · map · 12 reachable states, Q-table on a napkin (12 × 2 = 24 rows max).",
+        "3": "8 min · train · α≈0.5 · γ≈0.9 · ε≈0.3 · 300 episodes; aim for B6 (God's number, 6 moves).",
+        "4": "2 min · debrief · the agent learned an optimal policy on a tiny world. Bridge to Mission II."
       }
     },
     "m2": {
@@ -538,26 +536,26 @@
       "title": "Propagation · 2×3",
       "algoTitle": "The algorithm earns its place.",
       "algoBody": " With 360 states the table no longer fits on a page. Start training and watch Q propagate backward from the goal, episode after episode.",
-      "raceBody": "Each team picks (α, γ, ε) three times with the same number of episodes. The table keeps score.",
       "notes": {
-        "1": "10 min · open Mission II, watch the coverage gauge climb across 360 states in the first episodes.",
-        "2": "15 min · train with the recommended parameters; benchmark each B1→B5; fill the race table.",
-        "3": "Recommended parameters: α≈0.3 · γ≈0.95 · ε≈0.4 · 2000 episodes. The max 20000 protects against runaway.",
-        "4": "Emphasise backward propagation: the reward travels back from the goal, one episode at a time (γ per hop)."
-      }
+        "1": "3 min · transition · open Mission II; point at the coverage gauge over 360 states.",
+        "2": "5 min · observe · train and watch the gauge climb, Q propagating backward from the goal.",
+        "3": "14 min · 3 attempts · α≈0.3 · γ≈0.95 · ε≈0.4 · 2 000 episodes; benchmark B1→B5.",
+        "4": "3 min · debrief · ε > 0 keeps exploration alive; γ close to 1 carries reward far back."
+      },
+      "bridge": "From Mission I · The Q-table no longer fits on a napkin. 360 states: watch backward propagation act episode after episode."
     },
     "m3": {
       "chip": "Mission III · Workshop kit",
       "title": "Scaling · 3×3",
       "curseTitle": "The curse begins to bite.",
-      "curseBody": " Over 181,440 states the coverage gauge plateaus far below 100%. On the Hub, the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Training Economy card</a> prices the curse in CHF: Demo 0.0001 · Reliable 0.01 · Guaranteed 700. Five orders of magnitude between hobby and guarantee.",
-      "raceBody": "Each team picks (α, γ, ε) three times with the same number of episodes. The table keeps score.",
+      "curseBody": " On 181 440 states, the coverage gauge plateaus below 100%. Inside Mission III, the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a> translates cost into CHF: Demo 0.0001 · Reliable 0.01 · Proven 700. Five orders of magnitude between hobby and proven.",
       "notes": {
-        "1": "5 min · point at the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Training Economy card</a>: three pills Demo / Reliable / Guaranteed, five orders of magnitude between the first and the last.",
-        "2": "20 min · train with the recommended parameters; aim for B5 (31 moves, antipode); watch the coverage gauge plateau.",
-        "3": "Recommended parameters: α≈0.3 · γ≈0.99 · ε≈0.5 · 10000 episodes. The max 50000 protects against runaway.",
-        "4": "Name the curse: same algorithm, same method, the space has simply grown too vast to visit. This is the doorway to neural networks — not a failure."
-      }
+        "1": "3 min · transition · open Mission III; point at the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a> (Demo / Reliable / Proven, 5 orders of magnitude).",
+        "2": "5 min · observe · 181 440 states; the gauge plateaus below 100% — show it.",
+        "3": "10 min · train · α≈0.3 · γ≈0.99 · ε≈0.5 · 10 000 episodes; aim for B5 (31 moves, antipode).",
+        "4": "2 min · debrief · the curse of dimensionality. Same algorithm, same method — the space wins. Entry to DQN / AlphaZero."
+      },
+      "bridge": "From Mission II · 504× more states. Coverage plateaus. This is where the same algorithm hits the wall — entry to neural networks."
     },
     "facts": {
       "title": "The world of this mission",
@@ -581,7 +579,8 @@
       "best": "Best",
       "moves": "Moves",
       "scoresheetNote": "→ Also note the result on the consolidated team scoresheet (3 missions on one page).",
-      "scoresheetLink": "Open the team scoresheet (3 missions on one page)"
+      "scoresheetLink": "Open the team scoresheet (3 missions on one page)",
+      "body": "Each team picks (α, γ, ε) three times with the same number of episodes. The table keeps the record."
     },
     "notes": {
       "facilitatorTitle": "Notes for the facilitator"
@@ -598,6 +597,22 @@
     "strip": {
       "bench": "Bench",
       "moves": "Moves"
+    },
+    "session": {
+      "title": "Session structure · 75 min",
+      "accueil": "Welcome",
+      "m1": "Mission I",
+      "m2": "Mission II",
+      "m3": "Mission III",
+      "debrief": "Debrief",
+      "totalSuffix": "min",
+      "budgetHint": "Default budget. Compress to 60 min or expand to 90 min keeping the proportions."
+    },
+    "troubleshooting": {
+      "title": "If stuck",
+      "coverage": "Coverage stalls · ε too low or not enough episodes. Raise ε toward 0.4–0.5 and re-run.",
+      "greedy": "Greedy fails · ε locked at 0 too early, or Q hasn't converged. Reset Q, run more episodes.",
+      "runaway": "Runaway training · check the episodes ceiling (M1 = 2 000, M2 = 20 000, M3 = 50 000)."
     }
   },
   "fe": {

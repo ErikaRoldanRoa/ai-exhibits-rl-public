@@ -154,3 +154,41 @@
      already have bench reference + concept tip + tuning bullets. */
   .glossary.card { display: none !important; }
 }
+
+
+/* Workshop-kit attempt strip — α / γ / ε / Bench / Mvts row.
+   Used in all 3 mission_kit.html files. Replaces the inline-styled grid
+   that was duplicated across the kits. */
+.kit-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1.2fr 1.2fr;
+  gap: 6px;
+  margin-top: 8px;
+  align-items: end;
+}
+.kit-strip-cell { display: flex; flex-direction: column; }
+.kit-strip-label {
+  font-size: 10px;
+  color: var(--muted);
+  font-family: var(--mono);
+  margin-bottom: 2px;
+  letter-spacing: 0.2px;
+}
+.kit-strip-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: var(--mono);
+  text-align: center;
+}
+.kit-strip-cell.kit-strip-best .kit-strip-label { color: var(--lime); }
+.kit-strip-cell.kit-strip-best .kit-strip-input {
+  background: rgba(85, 255, 122, 0.06);
+  border-color: rgba(85, 255, 122, 0.32);
+  color: var(--lime);
+  font-weight: 800;
+}

@@ -38,7 +38,6 @@
     "facilitatorMode": "Moderations-Modus"
   },
   "hub": {
-    "launchTraining": "🚀 Training starten",
     "header": {
       "title": "AI-Exhibits: Verstärkendes Lernen · Hub",
       "h1": "AI-Exhibits: Verstärkendes Lernen · Hub"
@@ -525,12 +524,11 @@
       "napkinTitle": "Die Q-Tabelle passt auf eine Serviette.",
       "napkinBody": " 12 Zustände × 2 Aktionen pro Zustand = höchstens 24 Zeilen. Baue sie von Hand auf, während die Agentin trainiert.",
       "benchHint": "Jede Referenz ist ein Startzustand mit festem Abstand zum Ziel. Der optimale Abstand ist die Länge der kürzesten Lösung.",
-      "raceBody": "Jedes Team wählt (α, γ, ε) dreimal mit derselben Episodenzahl. Die Tabelle hält die Spuren fest.",
       "notes": {
-        "1": "15 Min · Einstieg: einen Menschen gegen die Zufalls-Agentin auf der Mini-Karte spielen lassen. Der Du · Zufall-Vergleich zeigt das Warum.",
-        "2": "15 Min · die 12 vom Ziel erreichbaren Konfigurationen aufzeichnen. Q-Tabelle von Hand bauen.",
-        "3": "Empfohlene Parameter: α≈0,5 · γ≈0,9 · ε≈0,3 · 300 Episoden. Das Maximum 2000 schützt vor Runaway.",
-        "4": "Falls Greedy versagt: ε zu früh auf 0, oder die Q-Tabelle hat nicht genug Episoden gesehen. Zurücksetzen und neu starten."
+        "1": "5 min · Aufhänger · 🎲 auf der 2×2-Mini-Karte zeigen. Vergleich Du · Zufall — das ist das Warum.",
+        "2": "5 min · Kartierung · 12 erreichbare Zustände, Q-Tabelle auf Serviette (12 × 2 = 24 Zeilen max).",
+        "3": "8 min · trainieren · α≈0,5 · γ≈0,9 · ε≈0,3 · 300 Episoden; B6 anvisieren (Gottes Zahl, 6 Züge).",
+        "4": "2 min · Nachbesprechung · der Agent hat eine optimale Politik auf einer winzigen Welt gelernt. Brücke zu Mission II."
       }
     },
     "m2": {
@@ -538,26 +536,26 @@
       "title": "Propagation · 2×3",
       "algoTitle": "Der Algorithmus findet seinen Platz.",
       "algoBody": " Bei 360 Zuständen passt die Tabelle nicht mehr auf eine Seite. Starte das Training und beobachte, wie Q vom Ziel rückwärts wandert, Episode für Episode.",
-      "raceBody": "Jedes Team wählt (α, γ, ε) dreimal mit derselben Episodenzahl. Die Tabelle hält die Spuren fest.",
       "notes": {
-        "1": "10 Min · Mission II öffnen, beobachten wie die Abdeckungsanzeige in den ersten Episoden über 360 Zustände steigt.",
-        "2": "15 Min · mit empfohlenen Parametern trainieren; B1→B5 benchmarken; Renntabelle füllen.",
-        "3": "Empfohlene Parameter: α≈0,3 · γ≈0,95 · ε≈0,4 · 2000 Episoden. Das Maximum 20000 schützt vor Runaway.",
-        "4": "Rückwärtspropagation betonen: die Belohnung wandert vom Ziel rückwärts, eine Episode nach der anderen (γ pro Schritt)."
-      }
+        "1": "3 min · Übergang · Mission II öffnen; auf die Abdeckungsanzeige über 360 Zustände zeigen.",
+        "2": "5 min · beobachten · trainieren und beobachten, wie die Anzeige steigt, Q rückwärts vom Ziel propagiert.",
+        "3": "14 min · 3 Versuche · α≈0,3 · γ≈0,95 · ε≈0,4 · 2 000 Episoden; B1→B5 benchmarken.",
+        "4": "3 min · Nachbesprechung · ε > 0 hält die Exploration; γ nahe 1 trägt die Belohnung weit zurück."
+      },
+      "bridge": "Aus Mission I · Die Q-Tabelle passt nicht mehr auf eine Serviette. 360 Zustände: beobachte die Rückwärts-Propagation Episode für Episode."
     },
     "m3": {
       "chip": "Mission III · Workshop-Kit",
       "title": "Skalierung · 3×3",
       "curseTitle": "Der Fluch macht sich bemerkbar.",
-      "curseBody": " Bei 181.440 Zuständen flacht die Abdeckungsanzeige weit unter 100 % ab. Im Hub übersetzt die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Trainingsökonomie-Karte</a> die Kosten in CHF: Demo 0,0001 · Zuverlässig 0,01 · Garantiert 700. Fünf Größenordnungen zwischen Hobby und Garantie.",
-      "raceBody": "Jedes Team wählt (α, γ, ε) dreimal mit derselben Episodenzahl. Die Tabelle hält die Spuren fest.",
+      "curseBody": " Auf 181 440 Zuständen erreicht die Abdeckungsanzeige unter 100% ein Plateau. In Mission III übersetzt die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Wirtschafts-Karte</a> die Kosten in CHF: Demo 0,0001 · Zuverlässig 0,01 · Garantiert 700. Fünf Größenordnungen zwischen Hobby und Garantie.",
       "notes": {
-        "1": "5 Min · auf die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Trainingsökonomie-Karte</a> zeigen: drei Pillen Demo / Zuverlässig / Garantiert, fünf Größenordnungen zwischen der ersten und der letzten.",
-        "2": "20 Min · mit empfohlenen Parametern trainieren; B5 anvisieren (31 Züge, Antipode); beobachten wie die Abdeckung abflacht.",
-        "3": "Empfohlene Parameter: α≈0,3 · γ≈0,99 · ε≈0,5 · 10000 Episoden. Das Maximum 50000 schützt vor Runaway.",
-        "4": "Den Fluch benennen: gleicher Algorithmus, gleiche Methode, der Raum ist nur zu weit geworden, um ihn zu durchwandern. Das ist die Tür zu neuronalen Netzen — kein Versagen."
-      }
+        "1": "3 min · Übergang · Mission III öffnen; auf die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Wirtschafts-Karte</a> zeigen (Demo / Zuverlässig / Garantiert, 5 Größenordnungen).",
+        "2": "5 min · beobachten · 181 440 Zustände; die Anzeige erreicht unter 100% ein Plateau — zeigen.",
+        "3": "10 min · trainieren · α≈0,3 · γ≈0,99 · ε≈0,5 · 10 000 Episoden; B5 anvisieren (31 Züge, Antipode).",
+        "4": "2 min · Nachbesprechung · der Fluch der Dimensionalität. Selber Algorithmus, selbe Methode — der Raum gewinnt. Tor zu DQN / AlphaZero."
+      },
+      "bridge": "Aus Mission II · 504× mehr Zustände. Die Abdeckung erreicht ein Plateau. Hier stößt derselbe Algorithmus an die Wand — Tor zu neuronalen Netzen."
     },
     "facts": {
       "title": "Die Welt dieser Mission",
@@ -581,7 +579,8 @@
       "best": "Bestes",
       "moves": "Züge",
       "scoresheetNote": "→ Trage das Ergebnis auch auf den konsolidierten Team-Bewertungsbogen ein (3 Missionen auf einer Seite).",
-      "scoresheetLink": "Team-Bewertungsbogen öffnen (3 Missionen auf einer Seite)"
+      "scoresheetLink": "Team-Bewertungsbogen öffnen (3 Missionen auf einer Seite)",
+      "body": "Jedes Team wählt (α, γ, ε) dreimal mit derselben Episodenzahl. Die Tabelle führt das Protokoll."
     },
     "notes": {
       "facilitatorTitle": "Hinweise für die Leitung"
@@ -598,6 +597,22 @@
     "strip": {
       "bench": "Bench",
       "moves": "Züge"
+    },
+    "session": {
+      "title": "Sitzungsstruktur · 75 min",
+      "accueil": "Empfang",
+      "m1": "Mission I",
+      "m2": "Mission II",
+      "m3": "Mission III",
+      "debrief": "Nachbesprechung",
+      "totalSuffix": "min",
+      "budgetHint": "Standardbudget. Auf 60 min komprimieren oder auf 90 min erweitern, Verhältnisse beibehalten."
+    },
+    "troubleshooting": {
+      "title": "Wenn es hakt",
+      "coverage": "Abdeckung stagniert · ε zu niedrig oder zu wenige Episoden. ε auf 0,4–0,5 erhöhen und neu starten.",
+      "greedy": "Greedy scheitert · ε zu früh auf 0 fixiert, oder Q nicht konvergiert. Q zurücksetzen, mit mehr Episoden neu starten.",
+      "runaway": "Training läuft aus dem Ruder · prüfe Episodengrenze (M1 = 2 000, M2 = 20 000, M3 = 50 000)."
     }
   },
   "fe": {

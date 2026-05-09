@@ -38,7 +38,6 @@
     "facilitatorMode": "Modalità facilitatrice"
   },
   "hub": {
-    "launchTraining": "🚀 Avvia l'Addestramento",
     "header": {
       "title": "AI-Exhibits: Apprendimento per Rinforzo · Hub",
       "h1": "AI-Exhibits: Apprendimento per Rinforzo · Hub"
@@ -525,12 +524,11 @@
       "napkinTitle": "La tabella Q sta su un tovagliolo.",
       "napkinBody": " 12 stati × 2 azioni per stato = al massimo 24 righe. Costruiscila a mano mentre l'agente si addestra.",
       "benchHint": "Ogni riferimento è uno stato iniziale a distanza fissa dall'obiettivo. La distanza ottimale è la lunghezza della soluzione più breve.",
-      "raceBody": "Ogni squadra sceglie (α, γ, ε) tre volte con lo stesso numero di episodi. La tabella tiene le tracce.",
       "notes": {
-        "1": "15 min · gancio: far giocare un umano contro l'agente casuale sulla mini-carta della pagina iniziale. Il confronto Tu · Casuale mostra il perché.",
-        "2": "15 min · mappare le 12 configurazioni raggiungibili dall'obiettivo. Costruire la tabella Q a mano.",
-        "3": "Parametri consigliati: α≈0,5 · γ≈0,9 · ε≈0,3 · 300 episodi. Il massimo 2000 protegge dal runaway.",
-        "4": "Se il greedy fallisce: ε è arrivato a 0 troppo presto, o la tabella Q non ha ricevuto abbastanza episodi. Resettare e ripartire."
+        "1": "5 min · aggancio · dimostra 🎲 sulla mini-mappa 2×2 dell'hub. Confronto Tu · Casuale — è il perché.",
+        "2": "5 min · mappa · 12 stati raggiungibili, tabella Q su tovagliolo (12 × 2 = 24 righe max).",
+        "3": "8 min · allena · α≈0,5 · γ≈0,9 · ε≈0,3 · 300 episodi; punta B6 (Numero di Dio, 6 mosse).",
+        "4": "2 min · debriefing · l'agente ha imparato una politica ottimale su un mondo minuscolo. Ponte verso Missione II."
       }
     },
     "m2": {
@@ -538,26 +536,26 @@
       "title": "Propagazione · 2×3",
       "algoTitle": "L'algoritmo prende il suo posto.",
       "algoBody": " Con 360 stati la tabella non sta più su una pagina. Lancia l'addestramento e osserva Q risalire dall'obiettivo, episodio dopo episodio.",
-      "raceBody": "Ogni squadra sceglie (α, γ, ε) tre volte con lo stesso numero di episodi. La tabella tiene le tracce.",
       "notes": {
-        "1": "10 min · aprire Missione II, osservare la barra di copertura salire sui 360 stati nei primi episodi.",
-        "2": "15 min · addestrare con i parametri consigliati; benchmark di ogni B1→B5; riempire la tabella della corsa.",
-        "3": "Parametri consigliati: α≈0,3 · γ≈0,95 · ε≈0,4 · 2000 episodi. Il massimo 20000 protegge dal runaway.",
-        "4": "Insistere sulla propagazione all'indietro: la ricompensa risale dall'obiettivo, un episodio alla volta (γ a ogni passo)."
-      }
+        "1": "3 min · transizione · aprire Missione II; indicare l'indicatore di copertura su 360 stati.",
+        "2": "5 min · osserva · allena e guarda l'indicatore salire, Q propagarsi backward dall'obiettivo.",
+        "3": "14 min · 3 tentativi · α≈0,3 · γ≈0,95 · ε≈0,4 · 2 000 episodi; benchmarkare B1→B5.",
+        "4": "3 min · debriefing · ε > 0 mantiene viva l'esplorazione; γ vicino a 1 trasporta la ricompensa lontano."
+      },
+      "bridge": "Da Missione I · La tabella Q non sta più su un tovagliolo. 360 stati: osserva la propagazione backward episodio dopo episodio."
     },
     "m3": {
       "chip": "Missione III · Kit del laboratorio",
       "title": "Scala · 3×3",
       "curseTitle": "La maledizione si fa sentire.",
-      "curseBody": " Su 181.440 stati la barra di copertura si ferma molto sotto il 100 %. Sull'Hub, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carta Economia di addestramento</a> traduce il costo in CHF: Demo 0,0001 · Affidabile 0,01 · Garantita 700. Cinque ordini di grandezza fra hobby e garanzia.",
-      "raceBody": "Ogni squadra sceglie (α, γ, ε) tre volte con lo stesso numero di episodi. La tabella tiene le tracce.",
+      "curseBody": " Su 181 440 stati, l'indicatore di copertura si stabilizza sotto il 100%. In Missione III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a> traduce il costo in CHF: Demo 0,0001 · Affidabile 0,01 · Garantito 700. Cinque ordini di grandezza tra hobby e garanzia.",
       "notes": {
-        "1": "5 min · indicare la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carta Economia di addestramento</a>: tre pasticche Demo / Affidabile / Garantita, cinque ordini di grandezza fra la prima e l'ultima.",
-        "2": "20 min · addestrare con i parametri consigliati; mirare a B5 (31 mosse, antipode); osservare la barra di copertura fermarsi.",
-        "3": "Parametri consigliati: α≈0,3 · γ≈0,99 · ε≈0,5 · 10000 episodi. Il massimo 50000 protegge dal runaway.",
-        "4": "Nominare la maledizione: stesso algoritmo, stesso metodo, lo spazio è semplicemente diventato troppo vasto per essere visitato. È la porta verso le reti neurali — non un fallimento."
-      }
+        "1": "3 min · transizione · aprire Missione III; indicare la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a> (Demo / Affidabile / Garantito, 5 ordini di grandezza).",
+        "2": "5 min · osserva · 181 440 stati; l'indicatore si stabilizza sotto il 100% — mostrare.",
+        "3": "10 min · allena · α≈0,3 · γ≈0,99 · ε≈0,5 · 10 000 episodi; puntare B5 (31 mosse, antipode).",
+        "4": "2 min · debriefing · la maledizione della dimensione. Stesso algoritmo, stesso metodo — lo spazio vince. Porta verso DQN / AlphaZero."
+      },
+      "bridge": "Da Missione II · 504× più stati. La copertura si stabilizza. Qui lo stesso algoritmo tocca il muro — porta verso le reti neurali."
     },
     "facts": {
       "title": "Il mondo di questa missione",
@@ -581,7 +579,8 @@
       "best": "Migliore",
       "moves": "Mosse",
       "scoresheetNote": "→ Annota anche il risultato sulla scheda di squadra consolidata (3 missioni su una pagina).",
-      "scoresheetLink": "Apri la scheda di squadra (3 missioni su una pagina)"
+      "scoresheetLink": "Apri la scheda di squadra (3 missioni su una pagina)",
+      "body": "Ogni squadra sceglie (α, γ, ε) tre volte con lo stesso numero di episodi. La tabella tiene traccia."
     },
     "notes": {
       "facilitatorTitle": "Note per l'animatrice"
@@ -598,6 +597,22 @@
     "strip": {
       "bench": "Bench",
       "moves": "Mosse"
+    },
+    "session": {
+      "title": "Struttura sessione · 75 min",
+      "accueil": "Accoglienza",
+      "m1": "Missione I",
+      "m2": "Missione II",
+      "m3": "Missione III",
+      "debrief": "Debriefing",
+      "totalSuffix": "min",
+      "budgetHint": "Budget predefinito. Comprimi in 60 min o espandi in 90 min mantenendo le proporzioni."
+    },
+    "troubleshooting": {
+      "title": "Se si blocca",
+      "coverage": "Copertura ferma · ε troppo basso o pochi episodi. Alza ε verso 0,4–0,5 e riavvia.",
+      "greedy": "Greedy fallisce · ε bloccato a 0 troppo presto, o Q non convergente. Reset Q, ripartire con più episodi.",
+      "runaway": "Training fuori controllo · verifica il limite di episodi (M1 = 2 000, M2 = 20 000, M3 = 50 000)."
     }
   },
   "fe": {
