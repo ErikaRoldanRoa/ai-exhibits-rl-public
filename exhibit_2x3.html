@@ -446,8 +446,8 @@
         <h2 data-i18n="ex.panel.currentPuzzle">Puzzle actuel</h2>
         <div id="puzzle" class="grid"><div class="glow"></div></div>
         <div class="row" style="margin-top:12px">
-          <button class="btn cyan" id="btnResetQ" data-i18n="common.resetQ">Réinitialiser Q</button>
-          <button class="btn lime" id="btnSolve" data-i18n="common.solveGreedy">Résoudre (glouton)</button>
+          <button class="btn cyan" id="btnResetQ" data-i18n="common.resetQ" data-tooltip="Efface tout ce que l'agente a appris. Repart à zéro." data-tooltip-style="info" data-i18n-data-tooltip="ex.btn.resetQ.tip">Réinitialiser Q</button>
+          <button class="btn lime" id="btnSolve" data-i18n="common.solveGreedy" data-tooltip="Lance l'agente actuelle sur l'état présent en mode glouton (politique apprise, ε=0)." data-tooltip-style="info" data-i18n-data-tooltip="ex.btn.solve.tip">Résoudre (glouton)</button>
         
           <!-- Benchmarks (fixed start states, evaluation only) -->
           <div class="card" id="benchCard" style="margin-top:12px;">
@@ -455,6 +455,7 @@
               <span style="display:inline-flex; align-items:center; gap:6px;">
                 <span data-i18n="ex.bench.title">Références</span>
                 <span class="qmark" data-tip="Charge un état de départ fixe puis lance l'agente actuelle dessus (glouton, sans apprentissage). Le meilleur score par référence est enregistré dans ce navigateur.&#10;Coups minimum théoriques : B1 : 1 | B2 : 3 | B3 : 6 | B4 : 9 | B5 : 21 (Nombre de Dieu)." data-i18n-data-tip="ex2x3.bench.titleTip" tabindex="0" aria-label="Plus d'infos sur les références">ⓘ</span>
+                <span id="benchTrophy" class="benchTrophy" data-tooltip="—" data-tooltip-style="records" aria-label="Records de cette mission" data-i18n-aria-label="hub.recordsLabel" tabindex="0">🏆</span>
               </span>
               <span id="benchActiveLbl" style="color:var(--muted2); font-family:var(--mono); font-size:12px;" data-i18n="ex.bench.activeNone">Active : —</span>
             </h2>
@@ -511,8 +512,8 @@
           </div>
         </div>
         <div class="row" style="margin-top:12px">
-          <button class="btn lime" id="btnTrain" data-i18n="common.startTraining">Lancer l'entraînement</button>
-          <button class="btn ghost" id="btnStop" data-i18n="common.stop">Arrêter</button>
+          <button class="btn lime" id="btnTrain" data-i18n="common.startTraining" data-tooltip="Lance l'entraînement Q-learning. L'agente joue des épisodes et met à jour Q." data-tooltip-style="info" data-i18n-data-tooltip="ex.btn.train.tip">Lancer l'entraînement</button>
+          <button class="btn ghost" id="btnStop" data-i18n="common.stop" data-tooltip="Arrête l'entraînement en cours." data-tooltip-style="info" data-i18n-data-tooltip="ex.btn.stop.tip">Arrêter</button>
           <button class="btn" id="btnClearLog" data-i18n="common.clearLog">Effacer le journal</button>
         </div>
         <!-- Viewer-speed strip — display only, NOT a training hyperparameter.
@@ -961,5 +962,50 @@
 <script src="app/i18n.js"></script>
 <script src="app/feedback.js"></script>
 <script src="app/tooltips.js"></script>
+<script>
+
+  // 🏆 trainer-page records tooltip — reads ai_exhibits.hub_bench.mini-2x3
+  // (the same key the hub trophy uses) and shows the per-bench best for
+  // You / Random / Q-agent. Refreshed after every Q-agent solve via the
+  // existing saveQAgentToHubRecords mirror.
+  (function setupBenchTrophy(){
+    const SIZE_KEY = 'ai_exhibits.hub_bench.mini-2x3';
+    const t = document.getElementById('benchTrophy');
+    if (!t) return;
+    function tr(k, f){ return (window.i18n && window.i18n.t) ? window.i18n.t(k, f) : f; }
+    function build(){
+      let d;
+      try { d = JSON.parse(localStorage.getItem(SIZE_KEY) || '{}'); }
+      catch (e) { d = {}; }
+      const persona = (function(){
+        try { return (localStorage.getItem('ai_exhibits_persona') || '').trim(); }
+        catch(e) { return ''; }
+      })();
+      const youLbl = persona || tr('hub.stats.you', 'Vous');
+      const ranLbl = tr('hub.recordsRandomShort', 'Aléat.');
+      const qLbl   = tr('hub.recordsQShort', 'Q-agente');
+      const lines = [
+        'Repère   ' + pad(youLbl, 8) + ' ' + pad(ranLbl, 8) + ' ' + pad(qLbl, 8),
+        '-----------------------------------',
+      ];
+      for (const n of [1,2,3,4,5]) {
+        const row = d[String(n)] || {};
+        const h = row.h == null ? '—' : String(row.h);
+        const r = row.r == null ? '—' : String(row.r);
+        const q = row.q == null ? '—' : String(row.q);
+        lines.push('B' + n + '       ' + pad(h, 8) + ' ' + pad(r, 8) + ' ' + pad(q, 8));
+      }
+      return lines.join('\n');
+    }
+    function pad(s, n) { s = String(s); return s + ' '.repeat(Math.max(0, n - s.length)); }
+    function refresh(){ t.setAttribute('data-tooltip', build()); }
+    refresh();
+    document.addEventListener('i18n:applied', refresh);
+    // Hook: any Q-agent solve writes to localStorage → poll every 5s as a
+    // cheap refresh, since maybeRecordBenchScore is a separate IIFE.
+    setInterval(refresh, 5000);
+  })();
+
+</script>
 </body>
 </html>

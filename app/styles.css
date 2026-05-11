@@ -2452,4 +2452,49 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   margin: 0 0 24px;
 }
 
+/* Role-gate facilitator-keyword status pill — appears below the keyword
+   input with checking/ok/bad states. */
+.facKeywordStatus {
+  font-size: 11px;
+  font-family: var(--mono, ui-monospace, monospace);
+  margin-top: 6px;
+  min-height: 16px;
+  letter-spacing: 0.2px;
+}
+.facKeywordStatus[data-state="checking"] { color: rgba(255,255,255,0.65); }
+.facKeywordStatus[data-state="ok"]       { color: rgba(112,255,138,0.95); }
+.facKeywordStatus[data-state="bad"]      { color: rgba(255,138,138,0.95); }
 
+/* Trainer-page bench row — keep B1..B6 on a single line. The hub's mini-game
+   benches fit one row because the buttons are smaller; the trainer card is
+   wider so 6 buttons fit naturally when we just nowrap. Min-width:0 lets them
+   shrink if the container is narrow. */
+.btnrow-bench { display: flex; flex-wrap: nowrap; gap: 6px; }
+.btnrow-bench > .btn.bench { flex: 0 0 auto; min-width: 0; }
+
+/* Trainer-page records icon — same gold-on-dark treatment as the hub's,
+   sits inside the .benchCard header right of the (i) ⓘ qmark. */
+.benchTrophy {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 215, 0, 0.45);
+  background: linear-gradient(180deg, rgba(255,215,0,0.10), rgba(255,215,0,0.04));
+  color: rgba(255,255,255,0.95);
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+.benchTrophy:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 215, 0, 0.85);
+  background: rgba(255, 215, 0, 0.14);
+}
+
+/* Trainer-page bench buttons — tighter padding so all 6 (M1) / 5 (M2/M3)
+   fit on a single line within the trainer's left column. */
+.btnrow-bench > .btn.bench {
+  padding: 4px 10px;
+  font-size: 12px;
+  min-height: 32px;
+}

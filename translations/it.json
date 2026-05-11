@@ -510,7 +510,12 @@
     "continueBtn": "Inizia",
     "author": "Sviluppato dalla <strong>Dr.ssa Erika Roldán Roa</strong>",
     "personaPrompt": "Il tuo nome o nome del team (facoltativo)",
-    "personaPlaceholder": "es. Squadra Marmotte"
+    "personaPlaceholder": "es. Squadra Marmotte",
+    "facKeywordPrompt": "Parola chiave animatrice (facoltativa)",
+    "facKeywordPlaceholder": "per evento — fornita da Erika",
+    "facKeywordChecking": "Verifica…",
+    "facKeywordOk": "✓ Modalità animatrice attivata",
+    "facKeywordBad": "✗ Parola chiave non valida"
   },
   "hud": {
     "navLabel": "navigazione"

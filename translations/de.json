@@ -510,7 +510,12 @@
     "continueBtn": "Los geht's",
     "author": "Entwickelt von <strong>Dr. Erika Roldán Roa</strong>",
     "personaPrompt": "Dein Name oder Teamname (optional)",
-    "personaPlaceholder": "z. B. Team Murmeltiere"
+    "personaPlaceholder": "z. B. Team Murmeltiere",
+    "facKeywordPrompt": "Animatrice-Schlüsselwort (optional)",
+    "facKeywordPlaceholder": "pro Event — von Erika bereitgestellt",
+    "facKeywordChecking": "Überprüfung…",
+    "facKeywordOk": "✓ Animatrice-Modus aktiviert",
+    "facKeywordBad": "✗ Ungültiges Schlüsselwort"
   },
   "hud": {
     "navLabel": "Navigation"

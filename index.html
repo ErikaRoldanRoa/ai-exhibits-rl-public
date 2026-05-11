@@ -131,6 +131,13 @@ body:not([data-role="facilitator"]) #roleCard {
           <input id="personaInput" class="gatePersonaInput" type="text" maxlength="30" autocomplete="off"
                  data-i18n-placeholder="gate.personaPlaceholder" placeholder="ex. Équipe Marmottes" />
         </div>
+
+        <div class="gatePersona" style="margin-top:12px;">
+          <label for="facKeywordInput" class="gatePersonaLabel" data-i18n="gate.facKeywordPrompt">Mot-clé animatrice (facultatif)</label>
+          <input id="facKeywordInput" class="gatePersonaInput" type="password" maxlength="40" autocomplete="off"
+                 data-i18n-placeholder="gate.facKeywordPlaceholder" placeholder="par événement — fourni par Erika" />
+          <div id="facKeywordStatus" class="facKeywordStatus" aria-live="polite"></div>
+        </div>
       </div>
 
       <div class="modalActions">
@@ -482,12 +489,79 @@ body:not([data-role="facilitator"]) #roleCard {
   window.AI_EXHIBITS_GET_PERSONA = getPersona;
   window.AI_EXHIBITS_REFRESH_PERSONA = refreshPersonaLabels;
 
-  // Continue button: also save persona on gate-close.
+  // Facilitator-keyword validation. If the user typed a keyword in the gate,
+  // POST it to the tournament API's `validateToken` action. On match, store
+  // the workshop+token in localStorage (same shape the URL-grant path uses)
+  // → user is auto-elevated to facilitator + 🚀 unlocked + 📤 visible.
+  const TOURNAMENT_VALIDATE_URL = 'https://script.google.com/macros/s/AKfycbxR84v8EDB4bV5icuTFLuRPZn5g0fwYmQd9fm0vPKkOGERLzldZwkV0JTup3UxFX5g/exec';
+  async function validateFacilitatorKeyword(keyword){
+    if (!keyword || keyword.length < 4) return { ok: false, msg: 'empty' };
+    try {
+      const res = await fetch(TOURNAMENT_VALIDATE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ action: 'validateToken', token: keyword }),
+        redirect: 'follow',
+      });
+      const data = await res.json();
+      if (data && data.status === 'ok' && data.workshop) {
+        return { ok: true, workshop: data.workshop };
+      }
+      return { ok: false, msg: 'invalid' };
+    } catch (e) {
+      return { ok: false, msg: 'network' };
+    }
+  }
+
+  // Continue button: persona save + (optional) facilitator-keyword validation.
   if (contBtn){
-    contBtn.addEventListener("click", ()=>{
+    contBtn.addEventListener("click", async ()=>{
       const role = selected || "agent";
-      localStorage.setItem(ROLE_KEY, role);
       if (personaInput) setPersona(personaInput.value);
+      // Check facilitator keyword (async; non-blocking on empty)
+      const kwInput = document.getElementById('facKeywordInput');
+      const kwStatus = document.getElementById('facKeywordStatus');
+      const kw = kwInput && kwInput.value.trim();
+      if (kw) {
+        if (kwStatus) {
+          kwStatus.textContent = (window.i18n && window.i18n.t)
+            ? window.i18n.t('gate.facKeywordChecking', 'Vérification…')
+            : 'Vérification…';
+          kwStatus.dataset.state = 'checking';
+        }
+        const r = await validateFacilitatorKeyword(kw);
+        if (r.ok) {
+          try {
+            localStorage.setItem('ai_exhibits.tournament_workshop', r.workshop);
+            localStorage.setItem('ai_exhibits.tournament_token', kw);
+            localStorage.setItem('ai_exhibits.tournament_vip', '1');
+            localStorage.setItem(ROLE_KEY, 'facilitator');
+          } catch (e) {}
+          if (kwStatus) {
+            kwStatus.textContent = (window.i18n && window.i18n.t)
+              ? window.i18n.t('gate.facKeywordOk', '✓ Mode animatrice activé')
+              : '✓ Mode animatrice activé';
+            kwStatus.dataset.state = 'ok';
+          }
+          refreshPersonaLabels();
+          // setPill('facilitator') will re-trigger lock refresh + facTools visibility
+          setPill('facilitator');
+          // Brief pause so the user sees the success state
+          setTimeout(() => closeGate(), 700);
+          return;
+        } else {
+          if (kwStatus) {
+            kwStatus.textContent = (window.i18n && window.i18n.t)
+              ? window.i18n.t('gate.facKeywordBad', '✗ Mot-clé invalide')
+              : '✗ Mot-clé invalide';
+            kwStatus.dataset.state = 'bad';
+          }
+          // Don't proceed if keyword was typed but rejected — user can clear and retry
+          return;
+        }
+      }
+      // No keyword path: normal student flow
+      localStorage.setItem(ROLE_KEY, role);
       refreshPersonaLabels();
       closeGate();
     });

@@ -510,7 +510,12 @@
     "continueBtn": "Go ahead",
     "author": "Created and developed by <strong>Dr. Erika Roldán Roa</strong>",
     "personaPrompt": "Your name or team name (optional)",
-    "personaPlaceholder": "e.g. Team Marmottes"
+    "personaPlaceholder": "e.g. Team Marmottes",
+    "facKeywordPrompt": "Facilitator keyword (optional)",
+    "facKeywordPlaceholder": "per event — provided by Erika",
+    "facKeywordChecking": "Checking…",
+    "facKeywordOk": "✓ Facilitator mode activated",
+    "facKeywordBad": "✗ Invalid keyword"
   },
   "hud": {
     "navLabel": "navigation"
