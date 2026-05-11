@@ -141,7 +141,8 @@
     "submitErrApi": "Fehler — kopiere oder sende per E-Mail.",
     "submitErrGeneric": "Fehler.",
     "submitErrAuth": "Ungültige VIP-Sitzung — prüfe deine Zugangs-URL.",
-    "submitNoNewRows": "nichts Neues"
+    "submitNoNewRows": "nichts Neues",
+    "launchTraining": "Training starten"
   },
   "glossary": {
     "cardTitle": "Glossar — Q-Learning-Begriffe",
@@ -299,7 +300,22 @@
       "b5costTip": "Drei Anspruchsstufen, um B5 zu lösen (der Zustand am weitesten vom Ziel, 31 Züge entfernt):\n• Demo (die Agentin schafft es oft): ~10⁷ Schritte ≈ 0,0001 CHF.\n• Zuverlässig (≥95 % der Läufe gelingen nahe am Optimum): ~10⁹–10¹⁰ Schritte ≈ 0,01–0,1 CHF.\n• Garantiert (die Agentin spielt überall fast perfekt): ~7×10¹³ Schritte ≈ 700 CHF.\nZwischen „zuverlässig“ und „garantiert“ liegen fünf Größenordnungen: dort spielt sich die reale RL-Praxis ab."
     },
     "btn": {
-      "stepOnce": "Schritt (ein Update)"
+      "stepOnce": "Schritt (ein Update)",
+      "resetQ": {
+        "tip": "Löscht alles, was der Agent gelernt hat. Beginnt von vorne."
+      },
+      "train": {
+        "tip": "Startet Q-Learning-Training. Der Agent spielt Episoden und aktualisiert Q."
+      },
+      "stop": {
+        "tip": "Stoppt den aktuellen Trainingslauf."
+      },
+      "step": {
+        "tip": "Ein einzelnes Q-Update. Nützlich, um das Lernen schrittweise zu beobachten."
+      },
+      "solve": {
+        "tip": "Lässt den aktuellen Agenten den jetzigen Zustand greedy lösen (gelernte Politik, ε=0)."
+      }
     },
     "msg": {
       "shuffled": "Gemischt.",
@@ -407,7 +423,8 @@
       "policy": "Strategie (wie die Agentin wählt)",
       "lastTrans": "Letzter Übergang (Zustand → Aktion → Belohnung → nächster Zustand)",
       "lastUpdate": "Letzte Q-Aktualisierung",
-      "lastSolve": "Länge letzter Lösung"
+      "lastSolve": "Länge letzter Lösung",
+      "toggle": "Agent-Details (zum Anzeigen klicken)"
     },
     "bench": {
       "b1Tip": "⭐ Leicht: Ein Schritt entfernt (1 Zug)",

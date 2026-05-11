@@ -141,7 +141,8 @@
     "submitErrApi": "Errore — copia o invia per email.",
     "submitErrGeneric": "Errore.",
     "submitErrAuth": "Sessione VIP non valida — controlla l'URL di accesso.",
-    "submitNoNewRows": "nulla di nuovo"
+    "submitNoNewRows": "nulla di nuovo",
+    "launchTraining": "Avvia addestramento"
   },
   "glossary": {
     "cardTitle": "Glossario — termini Q-learning",
@@ -299,7 +300,22 @@
       "b5costTip": "Tre livelli di esigenza per risolvere B5 (lo stato più lontano dall'obiettivo, a 31 mosse):\n• Demo (l'agente ci arriva spesso): ~10⁷ passi ≈ 0,0001 CHF.\n• Affidabile (≥95% delle prove riesce vicino all'ottimo): ~10⁹–10¹⁰ passi ≈ 0,01–0,1 CHF.\n• Garantita (l'agente gioca quasi perfettamente ovunque): ~7×10¹³ passi ≈ 700 CHF.\nTra «affidabile» e «garantita», cinque ordini di grandezza: è lì che vive la pratica reale del RL."
     },
     "btn": {
-      "stepOnce": "Passo (un aggiornamento)"
+      "stepOnce": "Passo (un aggiornamento)",
+      "resetQ": {
+        "tip": "Cancella tutto ciò che l'agente ha imparato. Riparte da zero."
+      },
+      "train": {
+        "tip": "Avvia l'addestramento Q-learning. L'agente gioca episodi e aggiorna Q."
+      },
+      "stop": {
+        "tip": "Ferma l'addestramento in corso."
+      },
+      "step": {
+        "tip": "Un singolo aggiornamento di Q. Utile per osservare l'apprendimento passo per passo."
+      },
+      "solve": {
+        "tip": "Esegue l'agente attuale sullo stato presente in modalità greedy (politica appresa, ε=0)."
+      }
     },
     "msg": {
       "shuffled": "Mescolato.",
@@ -407,7 +423,8 @@
       "policy": "Politica (come l'agente sceglie)",
       "lastTrans": "Ultima transizione (stato → azione → ricompensa → stato successivo)",
       "lastUpdate": "Ultimo aggiornamento Q",
-      "lastSolve": "Lunghezza ultima risoluzione"
+      "lastSolve": "Lunghezza ultima risoluzione",
+      "toggle": "Dettagli dell'agente (clicca per mostrare)"
     },
     "bench": {
       "b1Tip": "⭐ Facile: A Un Passo (1 mossa)",

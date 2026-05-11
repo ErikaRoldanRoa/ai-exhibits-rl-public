@@ -141,7 +141,8 @@
     "submitErrApi": "Échec — copie ou envoie par email à la place.",
     "submitErrGeneric": "Échec.",
     "submitErrAuth": "Session VIP invalide — vérifie ton URL d'accès.",
-    "submitNoNewRows": "rien de nouveau"
+    "submitNoNewRows": "rien de nouveau",
+    "launchTraining": "Lancer l'Entraînement"
   },
   "glossary": {
     "cardTitle": "Glossaire — termes Q-learning",
@@ -299,7 +300,22 @@
       "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ 0,0001 CHF.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF.\nEntre « fiable » et « garantie », cinq ordres de grandeur : c'est là que vit la pratique réelle du RL."
     },
     "btn": {
-      "stepOnce": "Pas (une mise à jour)"
+      "stepOnce": "Pas (une mise à jour)",
+      "resetQ": {
+        "tip": "Efface tout ce que l'agente a appris. Repart à zéro."
+      },
+      "train": {
+        "tip": "Lance l'entraînement Q-learning. L'agente joue des épisodes et met à jour Q."
+      },
+      "stop": {
+        "tip": "Arrête l'entraînement en cours."
+      },
+      "step": {
+        "tip": "Une seule mise à jour Q. Pratique pour observer l'apprentissage pas à pas."
+      },
+      "solve": {
+        "tip": "Lance l'agente actuelle sur l'état présent en mode glouton (politique apprise, ε=0)."
+      }
     },
     "msg": {
       "shuffled": "Mélangé.",
@@ -407,7 +423,8 @@
       "policy": "Politique (comment l'agente choisit)",
       "lastTrans": "Dernière transition (état → action → récompense → état suivant)",
       "lastUpdate": "Dernière mise à jour Q",
-      "lastSolve": "Longueur dernière résolution"
+      "lastSolve": "Longueur dernière résolution",
+      "toggle": "Détails de l'agente (cliquer pour afficher)"
     },
     "bench": {
       "b1Tip": "⭐ Facile : À Un Pas (1 coup)",

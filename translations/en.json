@@ -141,7 +141,8 @@
     "submitErrApi": "Failed — copy or email instead.",
     "submitErrGeneric": "Failed.",
     "submitErrAuth": "Invalid VIP session — check your access URL.",
-    "submitNoNewRows": "nothing new"
+    "submitNoNewRows": "nothing new",
+    "launchTraining": "Launch Training"
   },
   "glossary": {
     "cardTitle": "Glossary — Q-learning terms",
@@ -299,7 +300,22 @@
       "b5costTip": "Three levels of demand for solving B5 (the state farthest from the goal, 31 moves away):\n• Demo (the agent often gets there): ~10⁷ steps ≈ 0.0001 CHF.\n• Reliable (≥95% of runs succeed near the optimum): ~10⁹–10¹⁰ steps ≈ 0.01–0.1 CHF.\n• Guaranteed (the agent plays near-perfectly everywhere): ~7×10¹³ steps ≈ 700 CHF.\nBetween 'reliable' and 'guaranteed', five orders of magnitude: that's where real RL practice lives."
     },
     "btn": {
-      "stepOnce": "Step (one update)"
+      "stepOnce": "Step (one update)",
+      "resetQ": {
+        "tip": "Erases everything the agent has learned. Start fresh."
+      },
+      "train": {
+        "tip": "Starts Q-learning training. The agent plays episodes and updates Q."
+      },
+      "stop": {
+        "tip": "Stops the current training run."
+      },
+      "step": {
+        "tip": "A single Q update. Useful for watching learning step by step."
+      },
+      "solve": {
+        "tip": "Runs the current agent on the present state greedily (learned policy, ε=0)."
+      }
     },
     "msg": {
       "shuffled": "Shuffled.",
@@ -407,7 +423,8 @@
       "policy": "Policy (how the agent chooses)",
       "lastTrans": "Last transition (state → action → reward → next state)",
       "lastUpdate": "Last Q update",
-      "lastSolve": "Last Solve length"
+      "lastSolve": "Last Solve length",
+      "toggle": "Agent details (click to show)"
     },
     "bench": {
       "b1Tip": "⭐ Easy: One Step Away (1 move)",
