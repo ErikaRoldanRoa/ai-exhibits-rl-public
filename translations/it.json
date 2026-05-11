@@ -386,7 +386,7 @@
     "puzzleAria": "puzzle a scorrimento 2x2",
     "inspect": {
       "title": "Ispeziona",
-      "subtitle": "Passa il mouse sugli archi del grafo per vedere i dettagli. Nella vista a lista, lo stato corrente appare in verde."
+      "subtitle": "Passa sopra gli archi del grafo per vedere i dettagli di ogni transizione."
     },
     "view": {
       "selectorAria": "Selettore di vista del pannello destro",

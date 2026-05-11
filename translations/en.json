@@ -386,7 +386,7 @@
     "puzzleAria": "2x2 sliding puzzle",
     "inspect": {
       "title": "Inspect",
-      "subtitle": "Hover the graph edges to see the details. In the list view, the current state shows in green."
+      "subtitle": "Hover the graph edges to see transition details."
     },
     "view": {
       "selectorAria": "Right panel view selector",

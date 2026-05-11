@@ -386,7 +386,7 @@
     "puzzleAria": "puzzle à glissement 2×2",
     "inspect": {
       "title": "Inspecter",
-      "subtitle": "Survolez les arêtes du graphe pour voir les détails. Dans la vue liste, l'état actuel apparaît en vert."
+      "subtitle": "Survolez les arêtes du graphe pour voir les détails de chaque transition."
     },
     "view": {
       "selectorAria": "Sélecteur de vue du panneau droit",

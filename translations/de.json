@@ -386,7 +386,7 @@
     "puzzleAria": "2×2-Schiebepuzzle",
     "inspect": {
       "title": "Untersuchen",
-      "subtitle": "Über die Graphkanten fahren, um Details zu sehen. In der Listenansicht erscheint der aktuelle Zustand grün."
+      "subtitle": "Fahren Sie mit der Maus über die Kanten des Graphen, um Übergangsdetails zu sehen."
     },
     "view": {
       "selectorAria": "Ansichts-Auswahl im rechten Panel",

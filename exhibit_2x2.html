@@ -192,13 +192,6 @@
     .math .arr{ color: var(--lime); font-weight: 900; }
 
     .graphWrap{ border:1px solid rgba(255,255,255,0.12); background: rgba(0,0,0,0.26); border-radius:18px; overflow:hidden; position:relative; display:flex; flex-direction:column; flex:1; min-height:0; }
-    .graphHd{
-      display:flex; justify-content:space-between; align-items:center; gap:10px;
-      padding:10px 12px; border-bottom:1px solid rgba(255,255,255,0.12);
-      background: linear-gradient(180deg, rgba(47,243,255,0.10), transparent);
-    }
-    .graphHd .left{ font-weight:950; font-size:12px; letter-spacing:0.4px; }
-    .graphHd .right{ display:flex; gap:10px; align-items:center; color: var(--muted2); font-size:12px; font-family: var(--mono); flex-wrap:wrap; justify-content:flex-end; }
     .graphCtl{
       padding:10px 12px;
       border-bottom:1px solid rgba(255,255,255,0.12);
@@ -720,7 +713,7 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
 
           <!-- Viewer-speed strip — display only, NOT a training hyperparameter.
                Pulled out of the form so it stops impersonating α/γ/ε. -->
-          <div class="viewer-strip">
+          <div class="viewer-strip trainerFacOnly">
             <span class="viewer-label">
               <span data-i18n="ex.viewer.title">Vitesse de visionnage</span>
               <span class="qmark" data-tip="Affichage uniquement — ne change rien à ce que l'agente apprend. Délai entre les coups affichés. 0 = aussi vite que possible. Augmente pour mieux suivre des yeux." data-i18n-data-tip="ex.viewer.tip" tabindex="0" aria-label="Plus d'infos sur la vitesse de visionnage">ⓘ</span>
@@ -752,10 +745,10 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
         <div class="hd">
           <h2 style="display:flex; align-items:center; gap:8px;">
             <span data-i18n="ex2x2.inspect.title">Inspecter</span>
-            <span class="qmark" data-tip="Survolez les arêtes du graphe pour voir les détails. Dans la vue liste, l'état actuel apparaît en vert." data-i18n-data-tip="ex2x2.inspect.subtitle" tabindex="0" aria-label="Comment lire le graphe">ⓘ</span>
-            <!-- VIP-only: inspect-action chips above the graph (moved from below the puzzle).
-                 Reset Q / Step / Solve are debug/inspection actions for facilitators. -->
-            <span class="trainerFacOnly" id="inspectActions" style="margin-left:auto; display:none; gap:6px;"></span>
+            <span class="qmark" data-tip="Survolez les arêtes du graphe pour voir les détails de chaque transition." data-i18n-data-tip="ex2x2.inspect.subtitle" tabindex="0" aria-label="Comment lire le graphe">ⓘ</span>
+            <!-- Inspect-action chips above the graph. Public: Reset Q + Solve
+                 (participant training loop). VIP-only: Step (one-update debug). -->
+            <span class="inspectActionsRow" style="margin-left:auto; display:inline-flex; gap:6px; align-items:center;"><span id="inspectActionsPublic" style="display:inline-flex; gap:6px;"></span><span class="trainerFacOnly" id="inspectActions" style="display:inline-flex; gap:6px;"></span></span>
           </h2>
         </div>
         <div class="bd">
@@ -773,14 +766,6 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
           <div id="view-graph" class="view">
             <div id="nodeEditor" class="nodeEditor" style="display:none;"></div>
             <div class="graphWrap">
-              <div class="graphHd">
-                <div class="left" data-i18n="ex.graph.hoverEdges">Graphe (survolez les arêtes pour les détails)</div>
-                <div class="right">
-                  <span data-i18n="ex.graph.goalLabel">objectif :</span><span id="goalTxt"></span>
-                  <span>|</span>
-                  <span data-i18n="ex.graph.statesLabel">états :</span><span id="nStatesTxt"></span>
-                </div>
-              </div>
               <div class="graphCtl">
                 <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
                   <span data-i18n="ex.graph.zoom">Zoom</span>
@@ -934,9 +919,6 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
     const graphViewport = $('graphViewport');
     const graphInner = $('graphInner');
     const edgeTip = $('edgeTip');
-
-    const goalTxt = $('goalTxt');
-    const nStatesTxt = $('nStatesTxt');
 
     const zoomRange = $('zoomRange');
     const layoutSel = $('layoutSel');
@@ -1372,8 +1354,6 @@ document.addEventListener('click', (e)=>{
         setReward(goalKey, 1);
       }
 
-      goalTxt.textContent = goalKey;
-      nStatesTxt.textContent = String(STATES.length);
     }
 
 
@@ -2105,19 +2085,21 @@ const rline = document.createElement('div');
 <script src="app/tooltips.js"></script>
 <script>
 
-  // Relocate the inspection-action buttons (Reset Q / Step / Solve) from
-  // their hidden source container into the right-panel "Inspecter" header,
-  // next to the (i) icon. They render only when facilitator mode is active
-  // (via the .trainerFacOnly container CSS rule).
+  // Relocate inspection-action buttons. Reset Q + Solve are part of the
+  // participant training loop (Reset → Train → Stop → Solve) — they go
+  // into the always-visible #inspectActionsPublic. Step is a debug-only
+  // one-update advance — kept VIP-only inside #inspectActions.
   (function relocateInspectActions(){
     const src = document.getElementById('inspectActionsSrc');
-    const dst = document.getElementById('inspectActions');
-    if (!src || !dst) return;
-    // Move each button from src to dst, preserving listeners on the
-    // existing DOM nodes (don't innerHTML).
-    while (src.firstElementChild) {
-      dst.appendChild(src.firstElementChild);
-    }
+    const dstPub = document.getElementById('inspectActionsPublic');
+    const dstFac = document.getElementById('inspectActions');
+    if (!src || !dstPub || !dstFac) return;
+    const resetQ = src.querySelector('#resetQBtn');
+    const step   = src.querySelector('#stepBtn');
+    const solve  = src.querySelector('#solveBtn');
+    if (resetQ) dstPub.appendChild(resetQ);
+    if (solve)  dstPub.appendChild(solve);
+    if (step)   dstFac.appendChild(step);
     src.remove();
   })();
 
