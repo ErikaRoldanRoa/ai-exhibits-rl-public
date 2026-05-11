@@ -538,6 +538,23 @@
 </head>
 
 <body>
+<script>
+  // Mirror the hub's role state on this page so .trainerFacOnly CSS works.
+  // Demotes a stale 'facilitator' role to 'agent' if VIP is no longer active.
+  (function(){
+    try {
+      const role = localStorage.getItem('ai_exhibits_role') || 'agent';
+      const vipActive = localStorage.getItem('ai_exhibits.tournament_vip') === '1'
+                     && localStorage.getItem('ai_exhibits.tournament_workshop')
+                     && localStorage.getItem('ai_exhibits.tournament_token')
+                     && localStorage.getItem('ai_exhibits.tournament_disabled') !== '1';
+      const effective = (role === 'facilitator' && !vipActive) ? 'agent' : role;
+      document.body.dataset.role = effective;
+      if (effective !== role) localStorage.setItem('ai_exhibits_role', effective);
+    } catch (e) {}
+  })();
+</script>
+
 
 <!-- Tutorial System (Auto-loads on first visit) -->
 <script src="app/tutorial.js"></script>
@@ -628,10 +645,17 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
         <div class="bd">
           <div id="puzzle" class="puzzle" aria-label="puzzle à glissement 2×2" data-i18n-aria-label="ex2x2.puzzleAria"></div>
 
+          <!-- Left, below puzzle: training drivers only (the actions
+               every participant performs). Inspection actions (Reset Q /
+               Step / Solve) move to the right panel and are VIP-only. -->
           <div class="btnrow" style="margin-top:12px;">
-            <button id="resetQBtn" class="danger" type="button" data-i18n="common.resetQ" data-tooltip="Efface tout ce que l'agente a appris. Repart à zéro." data-tooltip-style="info" data-i18n-data-tooltip="ex.btn.resetQ.tip">Réinitialiser Q</button>
             <button id="trainBtn" class="primary" type="button" data-i18n="common.startTraining" data-tooltip="Lance l'entraînement Q-learning. L'agente joue des épisodes et met à jour Q." data-tooltip-style="info" data-i18n-data-tooltip="ex.btn.train.tip">Lancer l'entraînement</button>
             <button id="stopBtn" type="button" disabled data-i18n="common.stop" data-tooltip="Arrête l'entraînement en cours." data-tooltip-style="info" data-i18n-data-tooltip="ex.btn.stop.tip">Arrêter</button>
+          </div>
+          <!-- Inspection actions, VIP-only — rendered above the graph
+               in the right panel via #inspectActions. -->
+          <div id="inspectActionsSrc" style="display:none;">
+            <button id="resetQBtn" class="danger" type="button" data-i18n="common.resetQ" data-tooltip="Efface tout ce que l'agente a appris. Repart à zéro." data-tooltip-style="info" data-i18n-data-tooltip="ex.btn.resetQ.tip">Réinitialiser Q</button>
             <button id="stepBtn" class="cyan" type="button" data-i18n="ex.btn.stepOnce" data-tooltip="Une seule mise à jour Q. Pratique pour observer l'apprentissage pas à pas." data-tooltip-style="info" data-i18n-data-tooltip="ex.btn.step.tip">Pas (une mise à jour)</button>
             <button id="solveBtn" class="primary" type="button" data-i18n="common.solve" data-tooltip="Lance l'agente actuelle sur l'état présent en mode glouton (politique apprise, ε=0)." data-tooltip-style="info" data-i18n-data-tooltip="ex.btn.solve.tip">Résoudre</button>
           </div>
@@ -705,7 +729,7 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
             <span style="color:var(--muted2); font-size:11px;" data-i18n="ex.viewer.unit">ms / pas</span>
           </div>
 
-          <details class="status-details" style="margin-top:12px;">
+          <details class="status-details trainerFacOnly" style="margin-top:12px;">
             <summary data-i18n="ex2x2.status.toggle" style="cursor:pointer; padding:6px 0; font-size:12px; color:var(--muted); letter-spacing:0.3px;">Détails de l'agente (cliquer pour afficher)</summary>
           <div class="status">
             <div class="kv"><span data-i18n="ex2x2.status.state">État sₜ</span><div id="stateTxt">—</div></div>
@@ -726,11 +750,18 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
     <div class="panel">
       <div class="clip">
         <div class="hd">
-          <h2 data-i18n="ex2x2.inspect.title">Inspecter</h2>
-          <div class="small" data-i18n="ex2x2.inspect.subtitle">Survolez les arêtes du graphe pour voir les détails. Dans la vue liste, l'état actuel apparaît en vert.</div>
+          <h2 style="display:flex; align-items:center; gap:8px;">
+            <span data-i18n="ex2x2.inspect.title">Inspecter</span>
+            <span class="qmark" data-tip="Survolez les arêtes du graphe pour voir les détails. Dans la vue liste, l'état actuel apparaît en vert." data-i18n-data-tip="ex2x2.inspect.subtitle" tabindex="0" aria-label="Comment lire le graphe">ⓘ</span>
+            <!-- VIP-only: inspect-action chips above the graph (moved from below the puzzle).
+                 Reset Q / Step / Solve are debug/inspection actions for facilitators. -->
+            <span class="trainerFacOnly" id="inspectActions" style="margin-left:auto; display:none; gap:6px;"></span>
+          </h2>
         </div>
         <div class="bd">
-          <div class="menuRow">
+          <!-- View selector + search → VIP-only. Participants see only the
+               graph view; the List + Learn variants are debug-mode views. -->
+          <div class="menuRow trainerFacOnly">
             <select id="viewSel" aria-label="Sélecteur de vue du panneau droit" data-i18n-aria-label="ex2x2.view.selectorAria">
               <option value="graph" data-i18n="ex2x2.view.graph">Graphe de l'espace d'états</option>
               <option value="list" data-i18n="ex2x2.view.list">Liste des états (superposition des récompenses)</option>
@@ -2073,6 +2104,22 @@ const rline = document.createElement('div');
 <script src="app/feedback.js"></script>
 <script src="app/tooltips.js"></script>
 <script>
+
+  // Relocate the inspection-action buttons (Reset Q / Step / Solve) from
+  // their hidden source container into the right-panel "Inspecter" header,
+  // next to the (i) icon. They render only when facilitator mode is active
+  // (via the .trainerFacOnly container CSS rule).
+  (function relocateInspectActions(){
+    const src = document.getElementById('inspectActionsSrc');
+    const dst = document.getElementById('inspectActions');
+    if (!src || !dst) return;
+    // Move each button from src to dst, preserving listeners on the
+    // existing DOM nodes (don't innerHTML).
+    while (src.firstElementChild) {
+      dst.appendChild(src.firstElementChild);
+    }
+    src.remove();
+  })();
 
   // 🏆 trainer-page records tooltip — reads ai_exhibits.hub_bench.mini-2x2
   // (the same key the hub trophy uses) and shows the per-bench best for

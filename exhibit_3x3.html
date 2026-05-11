@@ -417,6 +417,23 @@
 </style>
 </head>
 <body>
+<script>
+  // Mirror the hub's role state on this page so .trainerFacOnly CSS works.
+  // Demotes a stale 'facilitator' role to 'agent' if VIP is no longer active.
+  (function(){
+    try {
+      const role = localStorage.getItem('ai_exhibits_role') || 'agent';
+      const vipActive = localStorage.getItem('ai_exhibits.tournament_vip') === '1'
+                     && localStorage.getItem('ai_exhibits.tournament_workshop')
+                     && localStorage.getItem('ai_exhibits.tournament_token')
+                     && localStorage.getItem('ai_exhibits.tournament_disabled') !== '1';
+      const effective = (role === 'facilitator' && !vipActive) ? 'agent' : role;
+      document.body.dataset.role = effective;
+      if (effective !== role) localStorage.setItem('ai_exhibits_role', effective);
+    } catch (e) {}
+  })();
+</script>
+
 
 <!-- Tutorial System (Auto-loads on first visit) -->
 <script src="app/tutorial.js"></script>

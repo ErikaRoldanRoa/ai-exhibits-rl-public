@@ -2498,3 +2498,9 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   font-size: 12px;
   min-height: 32px;
 }
+
+/* Trainer-page facilitator-only elements. Use .trainerFacOnly to gate any
+   element by body[data-role]. Hidden by default; shown only when the body
+   is in facilitator mode (set by the role-gate IIFE on VIP capture). */
+.trainerFacOnly { display: none !important; }
+body[data-role="facilitator"] .trainerFacOnly { display: revert !important; }
