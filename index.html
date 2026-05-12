@@ -1490,12 +1490,9 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
       ta.style.borderColor = 'rgba(112,255,138,0.7)';
       setTimeout(() => { ta.style.borderColor = orig; }, 900);
     }));
-    actions.appendChild(mkBtn(tr('hub.submitMail', '✉️ Envoyer par email'), false, () => {
-      const subject = 'AI-Exhibits — ' + tr('hub.submitTitle', 'résultats');
-      const url = 'mailto:?subject=' + encodeURIComponent(subject)
-                + '&body=' + encodeURIComponent(ta.value);
-      window.location.href = url;
-    }));
+    // Mailto chip removed: bypassed event-tagging, exposed contact emails,
+    // encouraged untagged data flows. Submission only through 📤 with a
+    // validated event code; Copy + Download remain as offline fallbacks.
     actions.appendChild(mkBtn(tr('hub.submitDownload', '⬇️ Télécharger'), false, () => {
       const data = buildResultsJSON();
       data.note = ta.value !== buildResultsText() ? ta.value : null;
