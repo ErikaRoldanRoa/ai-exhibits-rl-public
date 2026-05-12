@@ -24,7 +24,7 @@ Train a Q-learning agent on three sliding puzzles — watch it learn, then watch
 | Print | `mission{1,2,3}_kit.html` (A4 landscape) per team + `print/fiche_equipe.html` team scoresheet |
 | Project on screen | The hub (`index.html`) — students see the same coverage gauge climb together |
 
-Anonymous play sends nothing. Submission is optional and requires a facilitator keyword (request one from the author).
+Anonymous play sends nothing. Submission is optional and requires a facilitator keyword — **organizers request one via [the event form](request.html)**.
 
 ---
 
@@ -182,7 +182,7 @@ If you want to contribute a translation or fork this for your own museum / class
 
 ## Reproducibility
 
-`tools/verify_gods_numbers.py` (in the parent project) does breadth-first search on each reachable state graph and reports the reachable set size, the graph diameter, and every benchmark distance. Sub-second on a laptop. Every numerical claim in this hub and in the companion DMVM paper is reproducible from this single script.
+`tools/verify_gods_numbers.py` (in the parent project) does breadth-first search on each reachable state graph and reports the reachable set size, the graph diameter, and every benchmark distance. Sub-second on a laptop. Every **state-graph and benchmark-distance** claim is reproducible from this single script. Cost figures (Démo / Fiable / Garanti) layer per-step compute estimates on top of those distances.
 
 ---
 
@@ -199,6 +199,7 @@ URL override `?lang=fr|en|de|it`. Preference persists in `localStorage`. Files u
 - **Maison Poincaré** (Paris) — n = 51, January 2026
 - **Marmottes UNIGE** (Geneva) — n = 29, April 2026
 - **Pi Day workshop** — March 2026
+- **Bilingual DE/FR session** — February 2026 (materials in `workshops/2026-02-10-workshop/`)
 
 A 2-hour workshop = hub + 3 printable kits + 1 team scoresheet. Multilingual rooms work: switch language, print, run.
 
@@ -206,10 +207,11 @@ A 2-hour workshop = hub + 3 printable kits + 1 team scoresheet. Multilingual roo
 
 ## Tests & quality
 
-Two test suites run before any push to `public/`:
+Three test suites run before any push to `public/`:
 
-- `tools/usability_harness.py` — 85 functional + visual checks (clean-slate scenarios).
-- `tools/gate_carryover_test.py` — 19 carry-over scenarios (non-empty pre-state). This is the suite that catches "stale animatrice credentials leaking into a participant session" — bugs the clean-slate harness misses.
+- `tools/usability_harness.py` — functional + visual checks across hub, trainers, kits, scoresheet.
+- `tools/gate_carryover_test.py` — non-empty-pre-state checks. Catches "stale animatrice credentials leaking into a participant session" — bugs the clean-slate harness misses.
+- `tools/request_form_test.py` — every chip, every conditional, every consent, full E2E submission for `request.html`.
 
 ---
 
@@ -221,7 +223,7 @@ Two test suites run before any push to `public/`:
 
 ## Author
 
-**Dr. Erika Roldán Roa** — design, pedagogy, code, translations, visual identity, and the learning-analytics backbone. Contact: [erikaroldan.net](https://erikaroldan.net).
+**Dr. Erika Roldán Roa** — design, pedagogy, code, translations, visual identity, submission pipeline. Contact: [erikaroldan.net](https://erikaroldan.net).
 
 ---
 
