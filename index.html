@@ -589,24 +589,26 @@ body:not([data-role="facilitator"]) #roleCard {
   }
 
   // ============ PARTICIPANT CONTINUE ============
-  // Welcome path is intentionally minimal: save the optional name and let
-  // the user in. Event identification is asked at submit time, not here.
+  // Clicking Commencer on the participant pane is an explicit choice to play
+  // as a participant THIS session — even if VIP credentials exist from a
+  // previous animatrice login. Clear them so the user gets the clean
+  // participant experience (no 📤, no 🚀 unlock, no facTools). To come back
+  // as animatrice, the user re-enters via the discrete Animatrice → link.
   if (participantContBtn) {
     participantContBtn.addEventListener("click", () => {
       if (personaInput) setPersona(personaInput.value);
-      // A returning VIP keeps facilitator status; non-VIP stays 'agent'.
-      const stillVip = (function(){
-        try {
-          return localStorage.getItem('ai_exhibits.tournament_vip') === '1'
-              && !!localStorage.getItem('ai_exhibits.tournament_workshop')
-              && !!localStorage.getItem('ai_exhibits.tournament_token')
-              && localStorage.getItem('ai_exhibits.tournament_disabled') !== '1';
-        } catch (e) { return false; }
-      })();
-      const newRole = stillVip ? 'facilitator' : 'agent';
-      try { localStorage.setItem(ROLE_KEY, newRole); } catch (e) {}
+      try {
+        localStorage.removeItem('ai_exhibits.tournament_vip');
+        localStorage.removeItem('ai_exhibits.tournament_workshop');
+        localStorage.removeItem('ai_exhibits.tournament_token');
+        localStorage.setItem(ROLE_KEY, 'agent');
+      } catch (e) {}
       refreshPersonaLabels();
-      setPill(newRole);
+      setPill('agent');
+      // Refresh the 📤 button visibility (VIP-gated, now hidden).
+      if (typeof window.AI_EXHIBITS_REFRESH_VIP_VISIBILITY === 'function') {
+        window.AI_EXHIBITS_REFRESH_VIP_VISIBILITY();
+      }
       closeGate();
     });
   }
@@ -980,6 +982,9 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
     const btn = document.getElementById('submitResultsBtn');
     if (btn) btn.style.display = isTournamentEnabled() ? '' : 'none';
   }
+  // Exposed so the role gate can refresh the 📤 visibility immediately after
+  // a participant-pane Commencer (which clears VIP credentials).
+  window.AI_EXHIBITS_REFRESH_VIP_VISIBILITY = applyVipVisibility;
 
   async function submitToAppsScript(payload, opts){
     const timeoutMs = (opts && opts.timeoutMs) || 12000;
