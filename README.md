@@ -199,7 +199,7 @@ URL override `?lang=fr|en|de|it`. Preference persists in `localStorage`. Files u
 
 - **Maison Poincaré** (Paris) — n = 51, January 2026
 - **Marmottes UNIGE** (Geneva) — n = 29, April 2026
-- **Pi Day workshop** (MPI MiS, Leipzig) — March 2026
+- **Pi Day workshop** — March 2026
 
 A 2-hour workshop = hub + 3 printable kits + 1 team scoresheet. Multilingual rooms work: switch language, print, run.
 
