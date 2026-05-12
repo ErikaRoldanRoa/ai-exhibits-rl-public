@@ -95,7 +95,7 @@ Each mission follows the same arc: read the world → play by hand → train the
 
 ## Optional: submitting workshop data
 
-The hub ships with an optional backend (Google Apps Script + Sheet) so facilitators can collect results across sessions. **If you never click 📤, nothing leaves the browser.**
+The hub supports anonymous play (the default) and an optional submission flow for workshop facilitators who want results across sessions in one place. **If you never click 📤, nothing leaves the browser.**
 
 ```
 Welcome gate (everyone)               Submit modal (facilitators, click 📤)
@@ -108,9 +108,9 @@ Welcome gate (everyone)               Submit modal (facilitators, click 📤)
 
 The event code (e.g., `DMVM26`) is asked **at submit time, not at session start** — anonymous play stays one click.
 
-**Privacy:** anonymous play sends nothing. Even facilitator mode sends nothing until 📤. Team names are free text. Event codes are short slugs. No tracking cookies, no analytics, no third-party scripts.
+**Privacy:** anonymous play sends nothing. Even facilitator mode sends nothing until 📤. Team names are free text the facilitator types. No tracking cookies, no analytics, no third-party scripts.
 
-**Backend admin:** create a new event with the Apps Script `addEvent` action, share the event code with participants. Facilitators receive their keyword separately.
+**Running a workshop?** [Request an event code](https://erikaroldan.net) so your team data is tagged to your session. Facilitators receive an unlock keyword separately.
 
 ---
 
@@ -146,7 +146,6 @@ ai-exhibits-rl-public/
 The parent project (not in this public repo) holds:
 
 - `tools/verify_gods_numbers.py` — BFS verifier (see Reproducibility)
-- `tournament-api/clasp-project/` — Apps Script backend (optional)
 - `papers/dmvm-sliding-puzzles/` — companion paper
 
 ---
