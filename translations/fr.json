@@ -559,7 +559,8 @@
     "facBackLink": "← Retour",
     "facTitle": "Mode animatrice",
     "facContinueBtn": "Entrer",
-    "facKeywordNetwork": "↻ Réseau indisponible — réessaye"
+    "facKeywordNetwork": "↻ Réseau indisponible — réessaye",
+    "requestEvent": "📅 Organiser un événement avec AI-Exhibits →"
   },
   "hud": {
     "navLabel": "navigation"

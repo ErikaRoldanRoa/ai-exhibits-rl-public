@@ -66,11 +66,21 @@
   .radio-row-label, .checkbox-row-label { flex: 1; font-size: 13px; color: var(--text); }
   .radio-row-label-sub { display: block; font-size: 11px; color: var(--muted2); margin-top: 2px; }
 
-  /* Sub-chips for multi-select */
+  /* Sub-chips for multi-select. A11y: <button role="switch">, keyboard-toggleable. */
   .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-  .chip { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--stroke); background: rgba(0,0,0,0.3); color: var(--muted); font-size: 12px; cursor: pointer; user-select: none; transition: all 0.15s; font-family: var(--mono); }
+  .chip {
+    /* Touch target ≥ 44 px on mobile (WCAG 2.5.5). */
+    min-height: 36px; padding: 8px 14px; border-radius: 999px;
+    border: 1px solid var(--stroke); background: rgba(0,0,0,0.3);
+    color: var(--muted); font-size: 12px; cursor: pointer; user-select: none;
+    transition: all 0.15s; font-family: var(--mono);
+    /* button reset */
+    -webkit-appearance: none; appearance: none;
+  }
   .chip:hover { border-color: rgba(255,255,255,0.2); }
-  .chip.active { border-color: var(--lime); color: var(--lime); background: rgba(112,255,138,0.08); }
+  .chip:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+  .chip[aria-pressed="true"] { border-color: var(--lime); color: var(--lime); background: rgba(112,255,138,0.08); }
+  @media (max-width: 540px) { .chip { min-height: 44px; padding: 10px 16px; } }
 
   /* Conditional sections */
   .conditional { display: none; }
@@ -261,19 +271,19 @@
       <div class="field">
         <label class="req" data-i18n="s3.languages">Langue(s) de l'atelier</label>
         <div class="chips" data-chips="languages">
-          <span class="chip" data-value="fr">FR</span>
-          <span class="chip" data-value="en">EN</span>
-          <span class="chip" data-value="de">DE</span>
-          <span class="chip" data-value="it">IT</span>
+          <button type="button" role="switch" aria-pressed="false" class="chip" data-value="fr">FR</button>
+          <button type="button" role="switch" aria-pressed="false" class="chip" data-value="en">EN</button>
+          <button type="button" role="switch" aria-pressed="false" class="chip" data-value="de">DE</button>
+          <button type="button" role="switch" aria-pressed="false" class="chip" data-value="it">IT</button>
         </div>
       </div>
 
       <div class="field">
         <label data-i18n="s3.missions">Missions prévues</label>
         <div class="chips" data-chips="missions">
-          <span class="chip" data-value="M1">Mission I (2×2)</span>
-          <span class="chip" data-value="M2">Mission II (2×3)</span>
-          <span class="chip" data-value="M3">Mission III (3×3)</span>
+          <button type="button" role="switch" aria-pressed="false" class="chip" data-value="M1">Mission I (2×2)</button>
+          <button type="button" role="switch" aria-pressed="false" class="chip" data-value="M2">Mission II (2×3)</button>
+          <button type="button" role="switch" aria-pressed="false" class="chip" data-value="M3">Mission III (3×3)</button>
         </div>
       </div>
 
@@ -325,9 +335,14 @@
       <h2 data-i18n="s5.title">Classements souhaités</h2>
       <div class="section-desc" data-i18n="s5.desc">Trois classements peuvent être calculés à partir des soumissions. Sélectionnez ceux qui vous intéressent — par défaut les trois.</div>
       <div class="chips" data-chips="metrics_interest">
-        <span class="chip active" data-value="efficiency">⚡ <span data-i18n="s5.eff">Efficacité (score × coût)</span></span>
-        <span class="chip active" data-value="convergence">📈 <span data-i18n="s5.conv">Vitesse de convergence</span></span>
-        <span class="chip active" data-value="params">🎯 <span data-i18n="s5.params">Meilleure combinaison de paramètres</span></span>
+        <button type="button" role="switch" aria-pressed="true" class="chip active" data-value="efficiency">⚡ <span data-i18n="s5.eff">Efficacité (score × coût)</span></button>
+        <button type="button" role="switch" aria-pressed="true" class="chip active" data-value="convergence">📈 <span data-i18n="s5.conv">Vitesse de convergence</span></button>
+        <button type="button" role="switch" aria-pressed="true" class="chip active" data-value="params">🎯 <span data-i18n="s5.params">Meilleure combinaison de paramètres</span></button>
+      </div>
+      <div class="hint" style="margin-top:10px;">
+        <span data-i18n="s5.eff">Efficacité</span> = <span data-i18n="s5.eff.desc">agents classés selon score par unité de coût d'entraînement</span>.<br>
+        <span data-i18n="s5.conv">Vitesse de convergence</span> = <span data-i18n="s5.conv.desc">épisodes nécessaires pour atteindre le Nombre de Dieu</span>.<br>
+        <span data-i18n="s5.params">Paramètres</span> = <span data-i18n="s5.params.desc">quelles combinaisons α/γ/ε gagnent</span>.
       </div>
     </section>
 
@@ -375,6 +390,7 @@
           <div class="checkbox-row-label" data-i18n="s7.consent.report">Je souhaite recevoir un rapport statistique après l'événement (ateliers délimités dans le temps uniquement).</div>
         </label>
       </div>
+      <div class="hint" style="margin-top:12px;" data-i18n="s7.credentials">Si la demande est approuvée, les identifiants animateur·trice sont envoyés par email séparément, généralement dans 1 à 2 semaines.</div>
     </section>
 
     <div class="submit-row">
@@ -384,8 +400,8 @@
   </form>
 
   <!-- Success screen -->
-  <div class="success" id="successScreen">
-    <div class="success-icon">✓</div>
+  <div class="success" id="successScreen" role="status" aria-live="polite">
+    <div class="success-icon" aria-hidden="true">✓</div>
     <div class="success-title" data-i18n="success.title">Demande envoyée</div>
     <div class="success-body" data-i18n="success.body">Merci. Dr. Roldán recevra une notification et vous répondra dans 1 à 2 semaines par email.</div>
     <div class="success-id" id="successId"></div>
@@ -468,18 +484,25 @@
       's6.notes': 'Autre chose que nous devrions savoir ?',
       's7.title': 'Consentements',
       's7.desc': "L'approbation est à la discrétion de Dr. Roldán et prend généralement 1 à 2 semaines.",
-      's7.consent.institution': "J'ai le consentement de mon institution pour organiser cet événement.",
-      's7.consent.data': "J'accepte que les données de soumission de cet événement soient stockées dans un jeu de données privé conservé par Dr. Erika Roldán Roa à des fins de recherche.",
-      's7.consent.report': 'Je souhaite recevoir un rapport statistique après l\'événement (ateliers délimités dans le temps uniquement).',
+      's7.consent.institution': "J'ai l'autorité d'organiser cet événement (au nom de mon institution, ou en tant qu'organisateur·trice indépendant·e).",
+      's7.consent.data': "J'accepte que les données de soumission de cet événement soient stockées par Dr. Erika Roldán Roa à des fins de recherche pédagogique sur l'apprentissage par renforcement, conservées pendant la durée du projet AI-Exhibits (jusqu'en 2027 actuellement), et je peux demander leur accès ou leur suppression à tout moment via erikaroldan.net. (Art. 6(1)(a) RGPD, consentement.)",
+      's7.consent.report': "Je souhaite recevoir un rapport statistique après l'événement (ateliers délimités dans le temps uniquement).",
+      's7.credentials': "Si la demande est approuvée, les identifiants animateur·trice sont envoyés par email séparément, généralement dans 1 à 2 semaines.",
       'submit.btn': 'Envoyer la demande',
       'submit.checking': 'Envoi en cours…',
-      'submit.bad': 'Vérifiez les champs requis (marqués *).',
+      'submit.bad.fields': 'Veuillez remplir tous les champs requis (marqués *).',
+      'submit.bad.languages': 'Sélectionnez au moins une langue.',
+      'submit.bad.dates': 'La date de fin doit être après la date de début.',
+      'submit.bad.consent': "Cochez les deux consentements obligatoires (institution et données).",
       'submit.network': 'Erreur réseau — réessayez plus tard.',
       'success.title': 'Demande envoyée',
-      'success.body': 'Merci. Dr. Roldán recevra une notification et vous répondra dans 1 à 2 semaines par email.',
+      'success.body': "Merci. Dr. Roldán examinera votre demande dans 1 à 2 semaines. Si elle est approuvée, vous recevrez les identifiants animateur·trice et une liste de mise en place par email ; elle peut aussi vous répondre d'abord avec des questions de clarification.",
       'success.id': 'Référence de votre demande :',
       'footer.back': '← Retour au hub',
       'footer.contact': 'erikaroldan.net',
+      's5.eff.desc': 'agents classés selon score par unité de coût d\'entraînement',
+      's5.conv.desc': 'épisodes nécessaires pour atteindre le Nombre de Dieu',
+      's5.params.desc': 'quelles combinaisons α/γ/ε gagnent',
     },
     en: {
       'kicker': 'AI-Exhibits · Reinforcement Learning',
@@ -547,18 +570,25 @@
       's6.notes': 'Anything else we should know?',
       's7.title': 'Consents',
       's7.desc': "Approval is at Dr. Roldán's discretion and typically takes 1–2 weeks.",
-      's7.consent.institution': 'I have institutional consent to run this event.',
-      's7.consent.data': 'I agree that submission data from this event will be stored in a private research dataset held by Dr. Erika Roldán Roa.',
+      's7.consent.institution': 'I have the authority to run this event (on behalf of my institution, or as an independent organizer).',
+      's7.consent.data': 'I agree that submission data from this event will be stored by Dr. Erika Roldán Roa for pedagogical research on reinforcement learning, retained for the duration of the AI-Exhibits project (currently through 2027), and I can request access or deletion at any time via erikaroldan.net. (Art. 6(1)(a) GDPR, consent.)',
       's7.consent.report': 'I would like to receive a statistics report after the event (time-bounded workshops only).',
+      's7.credentials': 'If approved, facilitator credentials are sent by email separately, typically within 1–2 weeks.',
       'submit.btn': 'Send request',
       'submit.checking': 'Sending…',
-      'submit.bad': 'Please complete the required fields (marked *).',
+      'submit.bad.fields': 'Please complete all required fields (marked *).',
+      'submit.bad.languages': 'Select at least one language.',
+      'submit.bad.dates': 'End date must be after start date.',
+      'submit.bad.consent': 'Check both required consent boxes (institution and data).',
       'submit.network': 'Network error — try again later.',
       'success.title': 'Request sent',
-      'success.body': 'Thanks. Dr. Roldán will receive a notification and reply within 1–2 weeks by email.',
+      'success.body': "Thanks. Dr. Roldán will review your request within 1–2 weeks. If approved, you'll receive facilitator credentials and a setup checklist by email; she may reply first with clarifying questions.",
       'success.id': 'Your request reference:',
       'footer.back': '← Back to hub',
       'footer.contact': 'erikaroldan.net',
+      's5.eff.desc': 'agents ranked by score per unit of training cost',
+      's5.conv.desc': 'episodes needed to reach God\'s Number',
+      's5.params.desc': 'which α/γ/ε combinations win',
     },
   };
 
@@ -622,10 +652,20 @@
   }
   applyConditionals();
 
-  // ── Chips (multi-select) ────────────────────────────────────────────────
+  // ── Chips (multi-select) — keyboard + screen-reader accessible ───────
   document.querySelectorAll('.chips').forEach(group => {
     group.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', () => chip.classList.toggle('active'));
+      const toggle = () => {
+        const next = !(chip.getAttribute('aria-pressed') === 'true');
+        chip.setAttribute('aria-pressed', next ? 'true' : 'false');
+        chip.classList.toggle('active', next);
+      };
+      chip.addEventListener('click', (e) => { e.preventDefault(); toggle(); });
+      // Buttons receive Enter/Space natively, but we override default for
+      // Space on <button type=button> to avoid scroll.
+      chip.addEventListener('keydown', (e) => {
+        if (e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); toggle(); }
+      });
     });
   });
 
@@ -637,7 +677,7 @@
   const successId = document.getElementById('successId');
 
   function getChips(name) {
-    return Array.from(document.querySelector(`[data-chips="${name}"]`).querySelectorAll('.chip.active'))
+    return Array.from(document.querySelector(`[data-chips="${name}"]`).querySelectorAll('.chip[aria-pressed="true"]'))
       .map(c => c.dataset.value).join(',');
   }
   function getRadio(name) {
@@ -690,15 +730,25 @@
       origin: location.origin,
     };
 
-    // Client-side required-field check (the backend also enforces).
+    // Client-side validation with branched error messages.
     const required = ['organizer_name', 'organizer_email', 'organizer_institution',
                       'organizer_country', 'event_name', 'audience'];
     for (const f of required) {
-      if (!payload[f]) { setStatus('bad', 'submit.bad'); submitBtn.disabled = false; return; }
+      if (!payload[f]) { setStatus('bad', 'submit.bad.fields'); submitBtn.disabled = false; return; }
     }
-    if (!payload.languages) { setStatus('bad', 'submit.bad'); submitBtn.disabled = false; return; }
+    if (!payload.languages) {
+      setStatus('bad', 'submit.bad.languages'); submitBtn.disabled = false; return;
+    }
+    if (payload.event_scope === 'time-bounded') {
+      if (!payload.start_date || !payload.end_date) {
+        setStatus('bad', 'submit.bad.fields'); submitBtn.disabled = false; return;
+      }
+      if (payload.end_date < payload.start_date) {
+        setStatus('bad', 'submit.bad.dates'); submitBtn.disabled = false; return;
+      }
+    }
     if (!payload.consent_data || !payload.consent_institution) {
-      setStatus('bad', 'submit.bad'); submitBtn.disabled = false; return;
+      setStatus('bad', 'submit.bad.consent'); submitBtn.disabled = false; return;
     }
 
     try {

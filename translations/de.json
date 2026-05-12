@@ -559,7 +559,8 @@
     "facBackLink": "← Zurück",
     "facTitle": "Moderator-Modus",
     "facContinueBtn": "Eintreten",
-    "facKeywordNetwork": "↻ Netzwerk nicht verfügbar — erneut versuchen"
+    "facKeywordNetwork": "↻ Netzwerk nicht verfügbar — erneut versuchen",
+    "requestEvent": "📅 Veranstaltung mit AI-Exhibits organisieren →"
   },
   "hud": {
     "navLabel": "Navigation"

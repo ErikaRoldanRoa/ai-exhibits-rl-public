@@ -559,7 +559,8 @@
     "facBackLink": "← Back",
     "facTitle": "Facilitator mode",
     "facContinueBtn": "Enter",
-    "facKeywordNetwork": "↻ Network unavailable — try again"
+    "facKeywordNetwork": "↻ Network unavailable — try again",
+    "requestEvent": "📅 Host an AI-Exhibits event →"
   },
   "hud": {
     "navLabel": "navigation"

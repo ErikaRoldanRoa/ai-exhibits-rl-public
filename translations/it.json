@@ -559,7 +559,8 @@
     "facBackLink": "← Indietro",
     "facTitle": "Modalità facilitatrice",
     "facContinueBtn": "Entra",
-    "facKeywordNetwork": "↻ Rete non disponibile — riprova"
+    "facKeywordNetwork": "↻ Rete non disponibile — riprova",
+    "requestEvent": "📅 Organizzare un evento AI-Exhibits →"
   },
   "hud": {
     "navLabel": "navigazione"
