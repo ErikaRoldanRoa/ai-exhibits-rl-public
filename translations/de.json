@@ -548,7 +548,7 @@
     "author": "Entwickelt von <strong>Dr. Erika Roldán Roa</strong>",
     "personaPrompt": "Dein Name oder Teamname (optional)",
     "personaPlaceholder": "z. B. Team Murmeltiere",
-    "facKeywordPrompt": "Animatrice-Schlüsselwort (optional)",
+    "facKeywordPrompt": "Moderator-Schlüsselwort",
     "facKeywordPlaceholder": "pro Event — von Erika bereitgestellt",
     "facKeywordChecking": "Überprüfung…",
     "facKeywordOk": "✓ Animatrice-Modus aktiviert",
@@ -559,7 +559,8 @@
     "facLink": "Moderator·in →",
     "facBackLink": "← Zurück",
     "facTitle": "Moderator-Modus",
-    "facContinueBtn": "Eintreten"
+    "facContinueBtn": "Eintreten",
+    "facKeywordNetwork": "↻ Netzwerk nicht verfügbar — erneut versuchen"
   },
   "hud": {
     "navLabel": "Navigation"

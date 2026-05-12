@@ -548,7 +548,7 @@
     "author": "Conçu et développé par <strong>D<sup>r</sup> Erika Roldán Roa</strong>",
     "personaPrompt": "Ton nom ou nom d'équipe (facultatif)",
     "personaPlaceholder": "ex. Équipe Marmottes",
-    "facKeywordPrompt": "Mot-clé animatrice (facultatif)",
+    "facKeywordPrompt": "Mot-clé animatrice",
     "facKeywordPlaceholder": "par événement — fourni par Erika",
     "facKeywordChecking": "Vérification…",
     "facKeywordOk": "✓ Mode animatrice activé",
@@ -559,7 +559,8 @@
     "facLink": "Animatrice / Facilitateur·trice →",
     "facBackLink": "← Retour",
     "facTitle": "Mode animatrice",
-    "facContinueBtn": "Entrer"
+    "facContinueBtn": "Entrer",
+    "facKeywordNetwork": "↻ Réseau indisponible — réessaye"
   },
   "hud": {
     "navLabel": "navigation"

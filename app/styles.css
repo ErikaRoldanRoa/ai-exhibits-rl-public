@@ -2477,7 +2477,8 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   font-size: 11px;
   font-family: var(--mono, ui-monospace, monospace);
   letter-spacing: 0.3px;
-  color: rgba(255, 255, 255, 0.45);
+  /* WCAG AA: bumped from 0.45 to 0.55 for 4.5:1 contrast on the modal bg. */
+  color: rgba(255, 255, 255, 0.55);
   text-decoration: none;
   padding: 4px 10px;
   border-radius: 8px;

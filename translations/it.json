@@ -548,7 +548,7 @@
     "author": "Sviluppato dalla <strong>Dr.ssa Erika Roldán Roa</strong>",
     "personaPrompt": "Il tuo nome o nome del team (facoltativo)",
     "personaPlaceholder": "es. Squadra Marmotte",
-    "facKeywordPrompt": "Parola chiave animatrice (facoltativa)",
+    "facKeywordPrompt": "Parola chiave facilitatrice",
     "facKeywordPlaceholder": "per evento — fornita da Erika",
     "facKeywordChecking": "Verifica…",
     "facKeywordOk": "✓ Modalità animatrice attivata",
@@ -559,7 +559,8 @@
     "facLink": "Facilitatrice / Facilitatore →",
     "facBackLink": "← Indietro",
     "facTitle": "Modalità facilitatrice",
-    "facContinueBtn": "Entra"
+    "facContinueBtn": "Entra",
+    "facKeywordNetwork": "↻ Rete non disponibile — riprova"
   },
   "hud": {
     "navLabel": "navigazione"

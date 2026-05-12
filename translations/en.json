@@ -548,7 +548,7 @@
     "author": "Created and developed by <strong>Dr. Erika Roldán Roa</strong>",
     "personaPrompt": "Your name or team name (optional)",
     "personaPlaceholder": "e.g. Team Marmottes",
-    "facKeywordPrompt": "Facilitator keyword (optional)",
+    "facKeywordPrompt": "Facilitator keyword",
     "facKeywordPlaceholder": "per event — provided by Erika",
     "facKeywordChecking": "Checking…",
     "facKeywordOk": "✓ Facilitator mode activated",
@@ -559,7 +559,8 @@
     "facLink": "Facilitator →",
     "facBackLink": "← Back",
     "facTitle": "Facilitator mode",
-    "facContinueBtn": "Enter"
+    "facContinueBtn": "Enter",
+    "facKeywordNetwork": "↻ Network unavailable — try again"
   },
   "hud": {
     "navLabel": "navigation"
