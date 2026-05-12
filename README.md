@@ -110,7 +110,7 @@ The event code (e.g., `DMVM26`) is asked **at submit time, not at session start*
 
 **Privacy:** anonymous play sends nothing. Even facilitator mode sends nothing until 📤. Team names are free text the facilitator types. No tracking cookies, no analytics, no third-party scripts.
 
-**Running a workshop?** [Request an event code](https://erikaroldan.net) so your team data is tagged to your session. Facilitators receive an unlock keyword separately.
+**Running a workshop or planning a tournament?** [Request an event](request.html) — every request is reviewed manually by Dr. Roldán; approval takes 1–2 weeks. Workshop events get time-bounded credentials (auto-expire at the end); permanent events (paper tournaments, ongoing installations) get open credentials.
 
 ---
 

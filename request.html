@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Demander un événement — AI-Exhibits</title>
+<meta name="description" content="Request an AI-Exhibits workshop or tournament event — Dr. Erika Roldán Roa">
+<meta name="theme-color" content="#07060a">
+<link rel="manifest" href="app/manifest.json">
+<style>
+  /* ── Tokens (match the hub's neon-dark identity) ────────────────────── */
+  :root {
+    --bg0: #07060a; --bg1: #0b0714;
+    --panel: rgba(255,255,255,0.06);
+    --stroke: rgba(255,255,255,0.14);
+    --text: rgba(255,255,255,0.92);
+    --muted: rgba(255,255,255,0.70);
+    --muted2: rgba(255,255,255,0.52);
+    --pink: #ff3bd4; --cyan: #2ff3ff; --lime: #70ff7a;
+    --danger: #ff4d6d; --amber: #ffd24a; --purple: #b278ff;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg0); color: var(--text); font-family: var(--sans); font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  body { min-height: 100vh; background-image: radial-gradient(ellipse at top, rgba(47,243,255,0.06), transparent 60%), radial-gradient(ellipse at bottom right, rgba(255,59,212,0.05), transparent 60%); }
+
+  /* Layout */
+  .container { max-width: 760px; margin: 0 auto; padding: 24px 18px 80px; }
+  .header { text-align: center; padding: 12px 0 24px; }
+  .langSwitch { position: absolute; top: 16px; right: 16px; display: flex; gap: 4px; }
+  .langSwitch button { background: rgba(255,255,255,0.06); border: 1px solid var(--stroke); color: var(--muted); padding: 4px 10px; border-radius: 6px; font-family: var(--mono); font-size: 11px; cursor: pointer; }
+  .langSwitch button.active { background: rgba(47,243,255,0.12); border-color: var(--cyan); color: var(--cyan); }
+  .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; color: var(--cyan); text-transform: uppercase; margin-bottom: 6px; }
+  h1 { font-size: 28px; font-weight: 700; margin: 0 0 8px 0; letter-spacing: -0.02em; }
+  .sub { color: var(--muted); font-size: 14px; }
+  .author-line { font-family: var(--mono); font-size: 11px; color: var(--muted2); margin-top: 10px; letter-spacing: 0.3px; }
+
+  /* Sections */
+  .section { background: var(--panel); border: 1px solid var(--stroke); border-radius: 14px; padding: 20px; margin-bottom: 18px; }
+  .section h2 { font-size: 16px; font-weight: 700; margin: 0 0 12px 0; color: var(--cyan); letter-spacing: 0.2px; }
+  .section-desc { font-size: 12px; color: var(--muted2); margin-bottom: 14px; line-height: 1.5; }
+
+  /* Fields */
+  .field { margin-bottom: 14px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 540px) { .field-row { grid-template-columns: 1fr; } }
+  label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 5px; font-weight: 500; letter-spacing: 0.2px; }
+  label.req::after { content: " *"; color: var(--pink); }
+  input[type="text"], input[type="email"], input[type="url"], input[type="date"], textarea, select {
+    width: 100%; padding: 10px 12px; background: rgba(0,0,0,0.4); border: 1px solid var(--stroke); border-radius: 8px;
+    color: var(--text); font-size: 13px; font-family: var(--sans); outline: none; transition: border-color 0.15s;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--cyan); }
+  textarea { resize: vertical; min-height: 80px; }
+  select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+  select option { background: var(--bg0); color: var(--text); }
+  .hint { font-size: 11px; color: var(--muted2); margin-top: 4px; font-style: italic; }
+
+  /* Radio + checkbox */
+  .radio-group, .checkbox-group { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+  .radio-row, .checkbox-row { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; padding: 8px 10px; border: 1px solid var(--stroke); border-radius: 8px; background: rgba(0,0,0,0.2); transition: background 0.15s, border-color 0.15s; }
+  .radio-row:hover, .checkbox-row:hover { background: rgba(255,255,255,0.04); }
+  .radio-row.checked, .checkbox-row.checked { border-color: var(--cyan); background: rgba(47,243,255,0.06); }
+  .radio-row input, .checkbox-row input { margin-top: 2px; accent-color: var(--cyan); }
+  .radio-row-label, .checkbox-row-label { flex: 1; font-size: 13px; color: var(--text); }
+  .radio-row-label-sub { display: block; font-size: 11px; color: var(--muted2); margin-top: 2px; }
+
+  /* Sub-chips for multi-select */
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .chip { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--stroke); background: rgba(0,0,0,0.3); color: var(--muted); font-size: 12px; cursor: pointer; user-select: none; transition: all 0.15s; font-family: var(--mono); }
+  .chip:hover { border-color: rgba(255,255,255,0.2); }
+  .chip.active { border-color: var(--lime); color: var(--lime); background: rgba(112,255,138,0.08); }
+
+  /* Conditional sections */
+  .conditional { display: none; }
+  .conditional.visible { display: block; animation: fadeIn 0.25s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Honeypot — hidden from human eyes, visible to bots */
+  .hp-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; tab-index: -1; }
+
+  /* Submit */
+  .submit-row { text-align: center; margin-top: 24px; }
+  .btn-submit { padding: 14px 36px; border-radius: 999px; border: 1px solid var(--cyan); background: linear-gradient(135deg, rgba(47,243,255,0.20), rgba(255,59,212,0.15)); color: var(--text); font-size: 15px; font-weight: 700; letter-spacing: 0.4px; cursor: pointer; font-family: var(--sans); transition: opacity 0.15s, transform 0.15s; }
+  .btn-submit:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(47,243,255,0.25); }
+  .btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+  .submit-status { margin-top: 12px; font-size: 12px; color: var(--muted); min-height: 16px; }
+  .submit-status[data-state="ok"] { color: var(--lime); }
+  .submit-status[data-state="bad"] { color: var(--danger); }
+  .submit-status[data-state="checking"] { color: var(--cyan); }
+
+  /* Success screen */
+  .success { display: none; text-align: center; padding: 40px 20px; }
+  .success.visible { display: block; }
+  .success-icon { font-size: 48px; margin-bottom: 16px; }
+  .success-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; color: var(--lime); }
+  .success-body { color: var(--muted); font-size: 14px; max-width: 480px; margin: 0 auto; line-height: 1.6; }
+  .success-id { font-family: var(--mono); font-size: 11px; color: var(--cyan); margin-top: 16px; padding: 8px 12px; background: rgba(47,243,255,0.06); border: 1px solid rgba(47,243,255,0.2); border-radius: 8px; display: inline-block; }
+
+  /* Footer */
+  .footer { margin-top: 32px; text-align: center; font-size: 11px; color: var(--muted2); font-family: var(--mono); letter-spacing: 0.3px; }
+  .footer a { color: var(--cyan); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="langSwitch" role="group" aria-label="Language">
+  <button type="button" data-lang="fr" class="active">FR</button>
+  <button type="button" data-lang="en">EN</button>
+</div>
+
+<div class="container">
+  <div class="header">
+    <div class="kicker" data-i18n="kicker">AI-Exhibits · Apprentissage par Renforcement</div>
+    <h1 data-i18n="title">Demander un événement</h1>
+    <div class="sub" data-i18n="subtitle">Atelier, tournoi, exposition permanente — chaque demande est revue manuellement.</div>
+    <div class="author-line" data-i18n="author">par <strong>Dr. Erika Roldán Roa</strong> · MPI MiS</div>
+  </div>
+
+  <form id="requestForm" autocomplete="on" novalidate>
+
+    <!-- Honeypot — must stay empty -->
+    <div class="hp-trap" aria-hidden="true">
+      <label>If you are human, leave this empty</label>
+      <input type="text" name="hp" id="hp" tabindex="-1" autocomplete="off">
+    </div>
+
+    <!-- ============ 1. ABOUT YOU ============ -->
+    <section class="section">
+      <h2 data-i18n="s1.title">Qui demande</h2>
+      <div class="field-row">
+        <div class="field">
+          <label class="req" for="organizer_name" data-i18n="s1.name">Votre nom</label>
+          <input type="text" id="organizer_name" maxlength="100" required>
+        </div>
+        <div class="field">
+          <label class="req" for="organizer_email" data-i18n="s1.email">Email</label>
+          <input type="email" id="organizer_email" maxlength="120" required>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="req" for="organizer_institution" data-i18n="s1.institution">Institution</label>
+          <input type="text" id="organizer_institution" maxlength="200" required>
+        </div>
+        <div class="field">
+          <label class="req" for="organizer_country" data-i18n="s1.country">Pays</label>
+          <input type="text" id="organizer_country" maxlength="80" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="organizer_role" data-i18n="s1.role">Rôle (enseignant·e, professeur·e, médiateur·trice…)</label>
+        <input type="text" id="organizer_role" maxlength="80">
+      </div>
+    </section>
+
+    <!-- ============ 2. EVENT BASICS ============ -->
+    <section class="section">
+      <h2 data-i18n="s2.title">L'événement</h2>
+      <div class="field">
+        <label class="req" for="event_name" data-i18n="s2.name">Nom de l'événement</label>
+        <input type="text" id="event_name" maxlength="120" required>
+        <div class="hint" data-i18n="s2.name.hint">Ex. « DMVM 2026 », « Marmottes UNIGE », « Atelier Pi Day Lyon »</div>
+      </div>
+
+      <div class="field">
+        <label class="req" data-i18n="s2.scope.label">Portée</label>
+        <div class="radio-group" data-radio="event_scope">
+          <label class="radio-row">
+            <input type="radio" name="event_scope" value="time-bounded" checked>
+            <div class="radio-row-label">
+              <span data-i18n="s2.scope.bounded">Délimité dans le temps</span>
+              <span class="radio-row-label-sub" data-i18n="s2.scope.bounded.sub">Atelier sur une ou plusieurs dates précises. Les identifiants expirent à la fin.</span>
+            </div>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="event_scope" value="permanent">
+            <div class="radio-row-label">
+              <span data-i18n="s2.scope.permanent">Permanent</span>
+              <span class="radio-row-label-sub" data-i18n="s2.scope.permanent.sub">Publication, exposition continue, communauté en ligne. Ouvert sans date de fin.</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="field conditional visible" data-when="scope:time-bounded">
+        <div class="field-row">
+          <div class="field" style="margin: 0;">
+            <label class="req" for="start_date" data-i18n="s2.start">Date de début</label>
+            <input type="date" id="start_date">
+          </div>
+          <div class="field" style="margin: 0;">
+            <label class="req" for="end_date" data-i18n="s2.end">Date de fin</label>
+            <input type="date" id="end_date">
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="req" data-i18n="s2.delivery.label">Format</label>
+        <div class="radio-group" data-radio="event_delivery">
+          <label class="radio-row">
+            <input type="radio" name="event_delivery" value="in-person" checked>
+            <div class="radio-row-label" data-i18n="s2.delivery.inperson">En présentiel</div>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="event_delivery" value="remote">
+            <div class="radio-row-label" data-i18n="s2.delivery.remote">À distance</div>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="event_delivery" value="hybrid">
+            <div class="radio-row-label" data-i18n="s2.delivery.hybrid">Hybride</div>
+          </label>
+        </div>
+      </div>
+
+      <div class="field conditional visible" data-when="delivery:in-person,hybrid">
+        <label for="venue" data-i18n="s2.venue">Lieu (ville, salle, adresse)</label>
+        <input type="text" id="venue" maxlength="200">
+      </div>
+
+      <div class="field">
+        <label class="req" data-i18n="s2.access.label">Accès</label>
+        <div class="radio-group" data-radio="event_access">
+          <label class="radio-row">
+            <input type="radio" name="event_access" value="facilitator-only" checked>
+            <div class="radio-row-label">
+              <span data-i18n="s2.access.fac">Animatrice uniquement</span>
+              <span class="radio-row-label-sub" data-i18n="s2.access.fac.sub">Les participant·e·s jouent en mode anonyme ; vous (animatrice) soumettez les résultats.</span>
+            </div>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="event_access" value="restricted-by-code">
+            <div class="radio-row-label">
+              <span data-i18n="s2.access.code">Restreint par code</span>
+              <span class="radio-row-label-sub" data-i18n="s2.access.code.sub">Les participant·e·s entrent un code pour rejoindre le tournoi (compétition fermée).</span>
+            </div>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="event_access" value="open">
+            <div class="radio-row-label">
+              <span data-i18n="s2.access.open">Ouvert (URL publique)</span>
+              <span class="radio-row-label-sub" data-i18n="s2.access.open.sub">N'importe qui peut rejoindre via l'URL — pour les tournois liés à une publication.</span>
+            </div>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. AUDIENCE + LOGISTICS ============ -->
+    <section class="section">
+      <h2 data-i18n="s3.title">Public et logistique</h2>
+      <div class="field">
+        <label class="req" for="audience" data-i18n="s3.audience">Description du public (âges, nombre, contexte)</label>
+        <textarea id="audience" maxlength="500" required></textarea>
+        <div class="hint" data-i18n="s3.audience.hint">Ex. « 30 lycéen·ne·s âgé·e·s de 14 à 16 ans », « groupe mixte 14-22 », « lecteur·trice·s du journal DMVM ».</div>
+      </div>
+
+      <div class="field">
+        <label class="req" data-i18n="s3.languages">Langue(s) de l'atelier</label>
+        <div class="chips" data-chips="languages">
+          <span class="chip" data-value="fr">FR</span>
+          <span class="chip" data-value="en">EN</span>
+          <span class="chip" data-value="de">DE</span>
+          <span class="chip" data-value="it">IT</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label data-i18n="s3.missions">Missions prévues</label>
+        <div class="chips" data-chips="missions">
+          <span class="chip" data-value="M1">Mission I (2×2)</span>
+          <span class="chip" data-value="M2">Mission II (2×3)</span>
+          <span class="chip" data-value="M3">Mission III (3×3)</span>
+        </div>
+      </div>
+
+      <div class="field conditional visible" data-when="delivery:in-person,hybrid">
+        <label data-i18n="s3.format">Format de travail</label>
+        <select id="working_format">
+          <option value="">—</option>
+          <option value="individual" data-i18n="s3.format.individual">Individuel</option>
+          <option value="pairs" data-i18n="s3.format.pairs">En binôme</option>
+          <option value="small-groups" data-i18n="s3.format.groups">Petits groupes (3-4)</option>
+          <option value="whole-class" data-i18n="s3.format.class">Classe entière avec projection</option>
+          <option value="mixed" data-i18n="s3.format.mixed">Mixte</option>
+        </select>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="devices" data-i18n="s3.devices">Matériel disponible</label>
+          <input type="text" id="devices" maxlength="200">
+          <div class="hint" data-i18n="s3.devices.hint">Ex. « 12 ordinateurs pour 24 élèves », « 1 projecteur + 6 tablettes ».</div>
+        </div>
+        <div class="field">
+          <label for="connectivity" data-i18n="s3.connectivity">Connectivité</label>
+          <select id="connectivity">
+            <option value="">—</option>
+            <option value="wifi" data-i18n="s3.connectivity.wifi">Wifi stable</option>
+            <option value="unreliable" data-i18n="s3.connectivity.unreliable">Wifi peu fiable</option>
+            <option value="offline-only" data-i18n="s3.connectivity.offline">Hors ligne uniquement</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. PEDAGOGY ============ -->
+    <section class="section">
+      <h2 data-i18n="s4.title">Contexte pédagogique</h2>
+      <div class="field">
+        <label for="pedagogy_context" data-i18n="s4.context">Ce que les participant·e·s auront étudié avant, et ce qui suivra</label>
+        <textarea id="pedagogy_context" maxlength="1000"></textarea>
+      </div>
+      <div class="field">
+        <label for="agenda_url" data-i18n="s4.agenda">Lien vers l'agenda / programme de l'événement (optionnel)</label>
+        <input type="url" id="agenda_url" maxlength="300" placeholder="https://...">
+      </div>
+    </section>
+
+    <!-- ============ 5. TOURNAMENT METRICS ============ -->
+    <section class="section">
+      <h2 data-i18n="s5.title">Classements souhaités</h2>
+      <div class="section-desc" data-i18n="s5.desc">Trois classements peuvent être calculés à partir des soumissions. Sélectionnez ceux qui vous intéressent — par défaut les trois.</div>
+      <div class="chips" data-chips="metrics_interest">
+        <span class="chip active" data-value="efficiency">⚡ <span data-i18n="s5.eff">Efficacité (score × coût)</span></span>
+        <span class="chip active" data-value="convergence">📈 <span data-i18n="s5.conv">Vitesse de convergence</span></span>
+        <span class="chip active" data-value="params">🎯 <span data-i18n="s5.params">Meilleure combinaison de paramètres</span></span>
+      </div>
+    </section>
+
+    <!-- ============ 6. ERIKA + NOTES ============ -->
+    <section class="section">
+      <h2 data-i18n="s6.title">Autres détails</h2>
+      <div class="field">
+        <label data-i18n="s6.invite">Souhaitez-vous que Dr. Roldán soit présente (en ligne ou en personne) ?</label>
+        <div class="radio-group" data-radio="invite_erika">
+          <label class="radio-row">
+            <input type="radio" name="invite_erika" value="no" checked>
+            <div class="radio-row-label" data-i18n="s6.invite.no">Non, juste les outils suffisent</div>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="invite_erika" value="maybe">
+            <div class="radio-row-label" data-i18n="s6.invite.maybe">Peut-être (en ligne)</div>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="invite_erika" value="yes">
+            <div class="radio-row-label" data-i18n="s6.invite.yes">Oui, en présence si possible</div>
+          </label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="notes" data-i18n="s6.notes">Autre chose que nous devrions savoir ?</label>
+        <textarea id="notes" maxlength="1000"></textarea>
+      </div>
+    </section>
+
+    <!-- ============ 7. CONSENT ============ -->
+    <section class="section">
+      <h2 data-i18n="s7.title">Consentements</h2>
+      <div class="section-desc" data-i18n="s7.desc">L'approbation est à la discrétion de Dr. Roldán et prend généralement 1 à 2 semaines.</div>
+      <div class="checkbox-group">
+        <label class="checkbox-row">
+          <input type="checkbox" id="consent_institution" required>
+          <div class="checkbox-row-label" data-i18n="s7.consent.institution">J'ai le consentement de mon institution pour organiser cet événement.</div>
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" id="consent_data" required>
+          <div class="checkbox-row-label" data-i18n="s7.consent.data">J'accepte que les données de soumission de cet événement soient stockées dans un jeu de données privé conservé par Dr. Erika Roldán Roa à des fins de recherche.</div>
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" id="consent_report">
+          <div class="checkbox-row-label" data-i18n="s7.consent.report">Je souhaite recevoir un rapport statistique après l'événement (ateliers délimités dans le temps uniquement).</div>
+        </label>
+      </div>
+    </section>
+
+    <div class="submit-row">
+      <button type="submit" class="btn-submit" id="submitBtn" data-i18n="submit.btn">Envoyer la demande</button>
+      <div class="submit-status" id="submitStatus" role="status" aria-live="polite"></div>
+    </div>
+  </form>
+
+  <!-- Success screen -->
+  <div class="success" id="successScreen">
+    <div class="success-icon">✓</div>
+    <div class="success-title" data-i18n="success.title">Demande envoyée</div>
+    <div class="success-body" data-i18n="success.body">Merci. Dr. Roldán recevra une notification et vous répondra dans 1 à 2 semaines par email.</div>
+    <div class="success-id" id="successId"></div>
+  </div>
+
+  <div class="footer">
+    <a href="index.html" data-i18n="footer.back">← Retour au hub</a>
+    · <a href="https://erikaroldan.net" data-i18n="footer.contact">erikaroldan.net</a>
+  </div>
+</div>
+
+<script>
+  const TOURNAMENT_URL = 'https://script.google.com/macros/s/AKfycbxR84v8EDB4bV5icuTFLuRPZn5g0fwYmQd9fm0vPKkOGERLzldZwkV0JTup3UxFX5g/exec';
+
+  // ── i18n ────────────────────────────────────────────────────────────────
+  const I18N = {
+    fr: {
+      'kicker': 'AI-Exhibits · Apprentissage par Renforcement',
+      'title': 'Demander un événement',
+      'subtitle': 'Atelier, tournoi, exposition permanente — chaque demande est revue manuellement.',
+      'author': 'par <strong>Dr. Erika Roldán Roa</strong> · MPI MiS',
+      's1.title': 'Qui demande',
+      's1.name': 'Votre nom',
+      's1.email': 'Email',
+      's1.institution': 'Institution',
+      's1.country': 'Pays',
+      's1.role': 'Rôle (enseignant·e, professeur·e, médiateur·trice…)',
+      's2.title': "L'événement",
+      's2.name': "Nom de l'événement",
+      's2.name.hint': 'Ex. « DMVM 2026 », « Marmottes UNIGE », « Atelier Pi Day Lyon »',
+      's2.scope.label': 'Portée',
+      's2.scope.bounded': 'Délimité dans le temps',
+      's2.scope.bounded.sub': 'Atelier sur une ou plusieurs dates précises. Les identifiants expirent à la fin.',
+      's2.scope.permanent': 'Permanent',
+      's2.scope.permanent.sub': 'Publication, exposition continue, communauté en ligne. Ouvert sans date de fin.',
+      's2.start': 'Date de début',
+      's2.end': 'Date de fin',
+      's2.delivery.label': 'Format',
+      's2.delivery.inperson': 'En présentiel',
+      's2.delivery.remote': 'À distance',
+      's2.delivery.hybrid': 'Hybride',
+      's2.venue': 'Lieu (ville, salle, adresse)',
+      's2.access.label': 'Accès',
+      's2.access.fac': 'Animatrice uniquement',
+      's2.access.fac.sub': 'Les participant·e·s jouent en mode anonyme ; vous (animatrice) soumettez les résultats.',
+      's2.access.code': 'Restreint par code',
+      's2.access.code.sub': 'Les participant·e·s entrent un code pour rejoindre le tournoi (compétition fermée).',
+      's2.access.open': 'Ouvert (URL publique)',
+      's2.access.open.sub': "N'importe qui peut rejoindre via l'URL — pour les tournois liés à une publication.",
+      's3.title': 'Public et logistique',
+      's3.audience': 'Description du public (âges, nombre, contexte)',
+      's3.audience.hint': 'Ex. « 30 lycéen·ne·s âgé·e·s de 14 à 16 ans », « groupe mixte 14-22 », « lecteur·trice·s du journal DMVM ».',
+      's3.languages': "Langue(s) de l'atelier",
+      's3.missions': 'Missions prévues',
+      's3.format': 'Format de travail',
+      's3.format.individual': 'Individuel',
+      's3.format.pairs': 'En binôme',
+      's3.format.groups': 'Petits groupes (3-4)',
+      's3.format.class': 'Classe entière avec projection',
+      's3.format.mixed': 'Mixte',
+      's3.devices': 'Matériel disponible',
+      's3.devices.hint': 'Ex. « 12 ordinateurs pour 24 élèves », « 1 projecteur + 6 tablettes ».',
+      's3.connectivity': 'Connectivité',
+      's3.connectivity.wifi': 'Wifi stable',
+      's3.connectivity.unreliable': 'Wifi peu fiable',
+      's3.connectivity.offline': 'Hors ligne uniquement',
+      's4.title': 'Contexte pédagogique',
+      's4.context': 'Ce que les participant·e·s auront étudié avant, et ce qui suivra',
+      's4.agenda': 'Lien vers l\'agenda / programme de l\'événement (optionnel)',
+      's5.title': 'Classements souhaités',
+      's5.desc': 'Trois classements peuvent être calculés à partir des soumissions. Sélectionnez ceux qui vous intéressent — par défaut les trois.',
+      's5.eff': 'Efficacité (score × coût)',
+      's5.conv': 'Vitesse de convergence',
+      's5.params': 'Meilleure combinaison de paramètres',
+      's6.title': 'Autres détails',
+      's6.invite': 'Souhaitez-vous que Dr. Roldán soit présente (en ligne ou en personne) ?',
+      's6.invite.no': 'Non, juste les outils suffisent',
+      's6.invite.maybe': 'Peut-être (en ligne)',
+      's6.invite.yes': 'Oui, en présence si possible',
+      's6.notes': 'Autre chose que nous devrions savoir ?',
+      's7.title': 'Consentements',
+      's7.desc': "L'approbation est à la discrétion de Dr. Roldán et prend généralement 1 à 2 semaines.",
+      's7.consent.institution': "J'ai le consentement de mon institution pour organiser cet événement.",
+      's7.consent.data': "J'accepte que les données de soumission de cet événement soient stockées dans un jeu de données privé conservé par Dr. Erika Roldán Roa à des fins de recherche.",
+      's7.consent.report': 'Je souhaite recevoir un rapport statistique après l\'événement (ateliers délimités dans le temps uniquement).',
+      'submit.btn': 'Envoyer la demande',
+      'submit.checking': 'Envoi en cours…',
+      'submit.bad': 'Vérifiez les champs requis (marqués *).',
+      'submit.network': 'Erreur réseau — réessayez plus tard.',
+      'success.title': 'Demande envoyée',
+      'success.body': 'Merci. Dr. Roldán recevra une notification et vous répondra dans 1 à 2 semaines par email.',
+      'success.id': 'Référence de votre demande :',
+      'footer.back': '← Retour au hub',
+      'footer.contact': 'erikaroldan.net',
+    },
+    en: {
+      'kicker': 'AI-Exhibits · Reinforcement Learning',
+      'title': 'Request an event',
+      'subtitle': 'Workshop, tournament, permanent installation — every request is reviewed manually.',
+      'author': 'by <strong>Dr. Erika Roldán Roa</strong> · MPI MiS',
+      's1.title': 'About you',
+      's1.name': 'Your name',
+      's1.email': 'Email',
+      's1.institution': 'Institution',
+      's1.country': 'Country',
+      's1.role': 'Role (teacher, professor, museum educator…)',
+      's2.title': 'The event',
+      's2.name': 'Event name',
+      's2.name.hint': 'e.g. "DMVM 2026", "Marmottes UNIGE", "Pi Day Workshop Lyon"',
+      's2.scope.label': 'Scope',
+      's2.scope.bounded': 'Time-bounded',
+      's2.scope.bounded.sub': 'Workshop on specific dates. Credentials expire at the end.',
+      's2.scope.permanent': 'Permanent',
+      's2.scope.permanent.sub': 'Publication, ongoing installation, online community. No end date.',
+      's2.start': 'Start date',
+      's2.end': 'End date',
+      's2.delivery.label': 'Delivery',
+      's2.delivery.inperson': 'In-person',
+      's2.delivery.remote': 'Remote',
+      's2.delivery.hybrid': 'Hybrid',
+      's2.venue': 'Venue (city, room, address)',
+      's2.access.label': 'Access',
+      's2.access.fac': 'Facilitator-only',
+      's2.access.fac.sub': 'Participants play anonymously; you (the facilitator) submit results.',
+      's2.access.code': 'Restricted by code',
+      's2.access.code.sub': 'Participants enter a code to join the tournament (closed competition).',
+      's2.access.open': 'Open (public URL)',
+      's2.access.open.sub': 'Anyone can join via the URL — for publication-tied tournaments.',
+      's3.title': 'Audience and logistics',
+      's3.audience': 'Audience description (ages, count, context)',
+      's3.audience.hint': 'e.g. "30 high-school students aged 14-16", "mixed 14-22 group", "DMVM journal readers".',
+      's3.languages': 'Workshop language(s)',
+      's3.missions': 'Missions you plan to use',
+      's3.format': 'Working format',
+      's3.format.individual': 'Individual',
+      's3.format.pairs': 'Pairs',
+      's3.format.groups': 'Small groups (3-4)',
+      's3.format.class': 'Whole-class with projection',
+      's3.format.mixed': 'Mixed',
+      's3.devices': 'Available devices',
+      's3.devices.hint': 'e.g. "12 laptops for 24 students", "1 projector + 6 tablets".',
+      's3.connectivity': 'Connectivity',
+      's3.connectivity.wifi': 'Stable wifi',
+      's3.connectivity.unreliable': 'Unreliable wifi',
+      's3.connectivity.offline': 'Offline-only',
+      's4.title': 'Pedagogical context',
+      's4.context': 'What participants will have studied before, and what comes after',
+      's4.agenda': "Link to the event's agenda / program (optional)",
+      's5.title': 'Desired rankings',
+      's5.desc': 'Three rankings can be derived from the submissions. Pick the ones you care about — defaults to all three.',
+      's5.eff': 'Efficiency (score × cost)',
+      's5.conv': 'Speed of convergence',
+      's5.params': 'Best parameter combination',
+      's6.title': 'Other details',
+      's6.invite': 'Would you like Dr. Roldán to attend (online or in person)?',
+      's6.invite.no': 'No, the tools are enough',
+      's6.invite.maybe': 'Maybe (online)',
+      's6.invite.yes': 'Yes, in person if possible',
+      's6.notes': 'Anything else we should know?',
+      's7.title': 'Consents',
+      's7.desc': "Approval is at Dr. Roldán's discretion and typically takes 1–2 weeks.",
+      's7.consent.institution': 'I have institutional consent to run this event.',
+      's7.consent.data': 'I agree that submission data from this event will be stored in a private research dataset held by Dr. Erika Roldán Roa.',
+      's7.consent.report': 'I would like to receive a statistics report after the event (time-bounded workshops only).',
+      'submit.btn': 'Send request',
+      'submit.checking': 'Sending…',
+      'submit.bad': 'Please complete the required fields (marked *).',
+      'submit.network': 'Network error — try again later.',
+      'success.title': 'Request sent',
+      'success.body': 'Thanks. Dr. Roldán will receive a notification and reply within 1–2 weeks by email.',
+      'success.id': 'Your request reference:',
+      'footer.back': '← Back to hub',
+      'footer.contact': 'erikaroldan.net',
+    },
+  };
+
+  let lang = (localStorage.getItem('rl-hub-lang') || 'fr');
+  if (!I18N[lang]) lang = 'fr';
+
+  function applyI18n() {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (I18N[lang][k]) el.innerHTML = I18N[lang][k];
+    });
+    document.querySelectorAll('.langSwitch button').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+  }
+  applyI18n();
+  document.querySelectorAll('.langSwitch button').forEach(b => {
+    b.addEventListener('click', () => {
+      lang = b.dataset.lang;
+      localStorage.setItem('rl-hub-lang', lang);
+      applyI18n();
+    });
+  });
+
+  // ── Radio + checkbox visual state ────────────────────────────────────────
+  document.querySelectorAll('.radio-row input[type=radio], .checkbox-row input[type=checkbox]').forEach(inp => {
+    const row = inp.closest('.radio-row, .checkbox-row');
+    const sync = () => {
+      if (inp.type === 'radio') {
+        document.querySelectorAll(`input[name="${inp.name}"]`).forEach(r => {
+          r.closest('.radio-row').classList.toggle('checked', r.checked);
+        });
+      } else {
+        row.classList.toggle('checked', inp.checked);
+      }
+    };
+    inp.addEventListener('change', () => { sync(); applyConditionals(); });
+    sync();
+  });
+
+  // ── Conditional sections ────────────────────────────────────────────────
+  function applyConditionals() {
+    const scope = document.querySelector('input[name=event_scope]:checked')?.value;
+    const delivery = document.querySelector('input[name=event_delivery]:checked')?.value;
+    document.querySelectorAll('.conditional').forEach(el => {
+      const when = el.dataset.when;
+      if (!when) return;
+      const [field, values] = when.split(':');
+      const vals = values.split(',');
+      let actual;
+      if (field === 'scope') actual = scope;
+      else if (field === 'delivery') actual = delivery;
+      const show = vals.includes(actual);
+      el.classList.toggle('visible', show);
+      // Required-attr toggling for date fields when scope changes
+      if (field === 'scope' && el.querySelectorAll('input[type=date]').length) {
+        el.querySelectorAll('input[type=date]').forEach(i => { i.required = show; });
+      }
+    });
+  }
+  applyConditionals();
+
+  // ── Chips (multi-select) ────────────────────────────────────────────────
+  document.querySelectorAll('.chips').forEach(group => {
+    group.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => chip.classList.toggle('active'));
+    });
+  });
+
+  // ── Submit ──────────────────────────────────────────────────────────────
+  const form = document.getElementById('requestForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const submitStatus = document.getElementById('submitStatus');
+  const successScreen = document.getElementById('successScreen');
+  const successId = document.getElementById('successId');
+
+  function getChips(name) {
+    return Array.from(document.querySelector(`[data-chips="${name}"]`).querySelectorAll('.chip.active'))
+      .map(c => c.dataset.value).join(',');
+  }
+  function getRadio(name) {
+    return document.querySelector(`input[name="${name}"]:checked`)?.value || '';
+  }
+  function val(id) {
+    return document.getElementById(id)?.value?.trim() || '';
+  }
+
+  function setStatus(state, msgKey) {
+    submitStatus.dataset.state = state;
+    submitStatus.textContent = msgKey ? I18N[lang][msgKey] : '';
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    setStatus('checking', 'submit.checking');
+
+    const payload = {
+      action: 'submitEventRequest',
+      hp: val('hp'),
+      organizer_name: val('organizer_name'),
+      organizer_email: val('organizer_email'),
+      organizer_institution: val('organizer_institution'),
+      organizer_country: val('organizer_country'),
+      organizer_role: val('organizer_role'),
+      event_name: val('event_name'),
+      event_scope: getRadio('event_scope'),
+      event_delivery: getRadio('event_delivery'),
+      event_access: getRadio('event_access'),
+      start_date: val('start_date'),
+      end_date: val('end_date'),
+      venue: val('venue'),
+      audience: val('audience'),
+      languages: getChips('languages'),
+      missions: getChips('missions'),
+      working_format: val('working_format'),
+      devices: val('devices'),
+      connectivity: val('connectivity'),
+      pedagogy_context: val('pedagogy_context'),
+      agenda_url: val('agenda_url'),
+      metrics_interest: getChips('metrics_interest'),
+      invite_erika: getRadio('invite_erika'),
+      notes: val('notes'),
+      consent_data: document.getElementById('consent_data').checked,
+      consent_report: document.getElementById('consent_report').checked,
+      consent_institution: document.getElementById('consent_institution').checked,
+      lang: lang,
+      origin: location.origin,
+    };
+
+    // Client-side required-field check (the backend also enforces).
+    const required = ['organizer_name', 'organizer_email', 'organizer_institution',
+                      'organizer_country', 'event_name', 'audience'];
+    for (const f of required) {
+      if (!payload[f]) { setStatus('bad', 'submit.bad'); submitBtn.disabled = false; return; }
+    }
+    if (!payload.languages) { setStatus('bad', 'submit.bad'); submitBtn.disabled = false; return; }
+    if (!payload.consent_data || !payload.consent_institution) {
+      setStatus('bad', 'submit.bad'); submitBtn.disabled = false; return;
+    }
+
+    try {
+      const res = await fetch(TOURNAMENT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload),
+        redirect: 'follow',
+      });
+      const data = await res.json();
+      if (data && data.status === 'ok' && data.request_id) {
+        // Success — show success screen with the request ID.
+        form.style.display = 'none';
+        successScreen.classList.add('visible');
+        successId.innerHTML = (I18N[lang]['success.id'] || 'Reference:') + ' <strong>' + data.request_id + '</strong>';
+      } else {
+        // Tarpit response — backend silently rejected. Show generic error.
+        setStatus('bad', 'submit.bad');
+        submitBtn.disabled = false;
+      }
+    } catch (err) {
+      setStatus('bad', 'submit.network');
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
