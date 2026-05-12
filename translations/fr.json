@@ -122,14 +122,14 @@
     "solvedCelebration": "🎉 Résolu en {n} coups !",
     "solvedCelebrationWithName": "🎉 Bravo {name}, résolu en {n} coups !",
     "submitResults": "Soumettre mes résultats",
-    "submitTitle": "Tes résultats du tournoi",
+    "submitTitle": "Tes résultats",
     "submitCopy": "📋 Copier",
     "submitMail": "✉️ Envoyer par email",
     "submitDownload": "⬇️ Télécharger",
     "submitHint": "Ajoute un commentaire si tu veux, puis envoie via une des trois options.",
     "resetRecords": "Réinitialiser les records de cette mission",
     "resetConfirm": "Réinitialiser TOUS les records de cette mission ? Cette action est définitive.",
-    "submitToSheet": "🏆 Soumettre au tournoi",
+    "submitToSheet": "🏆 Soumettre les résultats",
     "submitLoading": "⏳ Envoi en cours…",
     "submitSent": "✓ Soumis — merci !",
     "submitRetry": "↻ Réessayer",
@@ -142,7 +142,13 @@
     "submitErrGeneric": "Échec.",
     "submitErrAuth": "Session VIP invalide — vérifie ton URL d'accès.",
     "submitNoNewRows": "rien de nouveau",
-    "launchTraining": "Lancer l'Entraînement"
+    "launchTraining": "Lancer l'Entraînement",
+    "submitNamePrompt": "Ton nom ou nom d'équipe",
+    "submitNamePlaceholder": "ex. Équipe Marmottes",
+    "submitEventPrompt": "Code événement",
+    "submitEventPlaceholder": "ex. DMVM26",
+    "submitErrNoName": "Ajoute ton nom ou nom d'équipe.",
+    "submitErrNoEvent": "Identifie un événement valide pour soumettre."
   },
   "glossary": {
     "cardTitle": "Glossaire — termes Q-learning",
@@ -547,16 +553,13 @@
     "facKeywordChecking": "Vérification…",
     "facKeywordOk": "✓ Mode animatrice activé",
     "facKeywordBad": "✗ Mot-clé invalide",
-    "eventPrompt": "Tu es à un événement ? Code",
-    "eventPlaceholder": "ex. DMVM26",
     "eventChecking": "Vérification…",
     "eventOk": "✓ Événement reconnu : {name}",
     "eventBad": "✗ Code événement inconnu",
     "facLink": "Animatrice / Facilitateur·trice →",
     "facBackLink": "← Retour",
     "facTitle": "Mode animatrice",
-    "facContinueBtn": "Entrer",
-    "facEventPrompt": "Événement (optionnel)"
+    "facContinueBtn": "Entrer"
   },
   "hud": {
     "navLabel": "navigation"

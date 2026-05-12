@@ -121,15 +121,15 @@
     "recordsQShort": "Q-Agent",
     "solvedCelebration": "🎉 Gelöst in {n} Zügen !",
     "solvedCelebrationWithName": "🎉 Gut gemacht {name}, gelöst in {n} Zügen !",
-    "submitResults": "Ergebnisse einreichen",
-    "submitTitle": "Deine Turnierergebnisse",
+    "submitResults": "Meine Ergebnisse senden",
+    "submitTitle": "Deine Ergebnisse",
     "submitCopy": "📋 Kopieren",
     "submitMail": "✉️ Per E-Mail senden",
     "submitDownload": "⬇️ Herunterladen",
     "submitHint": "Füge optional einen Kommentar hinzu und sende über eine der drei Optionen.",
     "resetRecords": "Rekorde dieser Mission zurücksetzen",
     "resetConfirm": "ALLE Rekorde dieser Mission zurücksetzen? Diese Aktion ist endgültig.",
-    "submitToSheet": "🏆 Zum Turnier senden",
+    "submitToSheet": "🏆 Ergebnisse senden",
     "submitLoading": "⏳ Wird gesendet…",
     "submitSent": "✓ Gesendet — danke!",
     "submitRetry": "↻ Erneut versuchen",
@@ -142,7 +142,13 @@
     "submitErrGeneric": "Fehler.",
     "submitErrAuth": "Ungültige VIP-Sitzung — prüfe deine Zugangs-URL.",
     "submitNoNewRows": "nichts Neues",
-    "launchTraining": "Training starten"
+    "launchTraining": "Training starten",
+    "submitNamePrompt": "Dein Name oder Teamname",
+    "submitNamePlaceholder": "z. B. Team Murmeltiere",
+    "submitEventPrompt": "Veranstaltungscode",
+    "submitEventPlaceholder": "z. B. DMVM26",
+    "submitErrNoName": "Trage deinen Namen oder Teamnamen ein.",
+    "submitErrNoEvent": "Identifiziere eine gültige Veranstaltung zum Senden."
   },
   "glossary": {
     "cardTitle": "Glossar — Q-Learning-Begriffe",
@@ -547,16 +553,13 @@
     "facKeywordChecking": "Überprüfung…",
     "facKeywordOk": "✓ Animatrice-Modus aktiviert",
     "facKeywordBad": "✗ Ungültiges Schlüsselwort",
-    "eventPrompt": "Bei einer Veranstaltung? Code",
-    "eventPlaceholder": "z. B. DMVM26",
     "eventChecking": "Wird überprüft…",
     "eventOk": "✓ Veranstaltung erkannt: {name}",
     "eventBad": "✗ Unbekannter Veranstaltungscode",
     "facLink": "Moderator·in →",
     "facBackLink": "← Zurück",
     "facTitle": "Moderator-Modus",
-    "facContinueBtn": "Eintreten",
-    "facEventPrompt": "Veranstaltung (optional)"
+    "facContinueBtn": "Eintreten"
   },
   "hud": {
     "navLabel": "Navigation"

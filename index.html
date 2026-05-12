@@ -125,12 +125,6 @@ body:not([data-role="facilitator"]) #roleCard {
           <input id="personaInput" class="gatePersonaInput" type="text" maxlength="30" autocomplete="off"
                  data-i18n-placeholder="gate.personaPlaceholder" placeholder="ex. Équipe Marmottes" />
         </div>
-        <div class="gatePersona" style="margin-top:12px;">
-          <label for="eventCodeInput" class="gatePersonaLabel" data-i18n="gate.eventPrompt">Tu es à un événement ? Code</label>
-          <input id="eventCodeInput" class="gatePersonaInput" type="text" maxlength="20" autocomplete="off"
-                 data-i18n-placeholder="gate.eventPlaceholder" placeholder="ex. DMVM26" />
-          <div id="eventCodeStatus" class="facKeywordStatus" aria-live="polite"></div>
-        </div>
       </div>
 
       <div class="modalActions" id="participantActions">
@@ -147,16 +141,10 @@ body:not([data-role="facilitator"]) #roleCard {
       <div class="gateBody" id="animatricePane" style="display:none;">
         <div class="gateLead mono" data-i18n="gate.facTitle">Mode animatrice</div>
         <div class="gatePersona" style="margin-top:12px;">
-          <label for="facKeywordInput" class="gatePersonaLabel" data-i18n="gate.facKeywordPrompt">Mot-clé animatrice (facultatif)</label>
+          <label for="facKeywordInput" class="gatePersonaLabel" data-i18n="gate.facKeywordPrompt">Mot-clé animatrice</label>
           <input id="facKeywordInput" class="gatePersonaInput" type="password" maxlength="40" autocomplete="off"
                  data-i18n-placeholder="gate.facKeywordPlaceholder" placeholder="par événement — fourni par Erika" />
           <div id="facKeywordStatus" class="facKeywordStatus" aria-live="polite"></div>
-        </div>
-        <div class="gatePersona" style="margin-top:12px;">
-          <label for="facEventCodeInput" class="gatePersonaLabel" data-i18n="gate.facEventPrompt">Événement (optionnel)</label>
-          <input id="facEventCodeInput" class="gatePersonaInput" type="text" maxlength="20" autocomplete="off"
-                 data-i18n-placeholder="gate.eventPlaceholder" placeholder="ex. DMVM26" />
-          <div id="facEventCodeStatus" class="facKeywordStatus" aria-live="polite"></div>
         </div>
       </div>
 
@@ -522,13 +510,9 @@ body:not([data-role="facilitator"]) #roleCard {
   window.AI_EXHIBITS_GET_PERSONA = getPersona;
   window.AI_EXHIBITS_REFRESH_PERSONA = refreshPersonaLabels;
 
-  // Event code (optional tag for both participants and animatrices).
-  // Stored separately from animatrice VIP credentials so an anonymous
-  // participant at a workshop can be tagged to the event WITHOUT being VIP.
-  const eventCodeInput   = document.getElementById('eventCodeInput');
-  const eventCodeStatus  = document.getElementById('eventCodeStatus');
-  const facEventCodeInput  = document.getElementById('facEventCodeInput');
-  const facEventCodeStatus = document.getElementById('facEventCodeStatus');
+  // Event attribution — set only when the user submits results (event code
+  // is asked in the submit modal, exactly when it's needed). Persisted so a
+  // returning user doesn't have to re-validate every submit on the same device.
   function getEventCode(){ return (localStorage.getItem(EVENT_CODE_KEY) || "").trim(); }
   function getEventName(){ return (localStorage.getItem(EVENT_NAME_KEY) || "").trim(); }
   function setEvent(code, name){
@@ -540,13 +524,13 @@ body:not([data-role="facilitator"]) #roleCard {
       localStorage.removeItem(EVENT_NAME_KEY);
     }
   }
-  function syncEventCodeInputFromStorage(){
-    if (eventCodeInput) eventCodeInput.value = getEventCode();
-    if (facEventCodeInput) facEventCodeInput.value = getEventCode();
-  }
-  // Expose for components that need to tag data with the event.
+  // Expose for the submit modal (which lives in a separate IIFE) and any
+  // other components that need to attach event_code to outgoing data.
   window.AI_EXHIBITS_GET_EVENT_CODE = getEventCode;
   window.AI_EXHIBITS_GET_EVENT_NAME = getEventName;
+  window.AI_EXHIBITS_SET_EVENT = setEvent;
+  // Function the submit modal calls to validate an event code at submit time.
+  window.AI_EXHIBITS_VALIDATE_EVENT = validateEventCode;
 
   // Tournament API endpoint (same one used for keyword validation).
   const TOURNAMENT_VALIDATE_URL = 'https://script.google.com/macros/s/AKfycbxR84v8EDB4bV5icuTFLuRPZn5g0fwYmQd9fm0vPKkOGERLzldZwkV0JTup3UxFX5g/exec';
@@ -605,32 +589,25 @@ body:not([data-role="facilitator"]) #roleCard {
   }
 
   // ============ PARTICIPANT CONTINUE ============
+  // Welcome path is intentionally minimal: save the optional name and let
+  // the user in. Event identification is asked at submit time, not here.
   if (participantContBtn) {
-    participantContBtn.addEventListener("click", async () => {
+    participantContBtn.addEventListener("click", () => {
       if (personaInput) setPersona(personaInput.value);
-      const ec = (eventCodeInput && eventCodeInput.value || "").trim();
-      if (ec) {
-        setStatusPill(eventCodeStatus, 'gate.eventChecking', 'Vérification…', 'checking');
-        const r = await validateEventCode(ec);
-        if (r.ok) {
-          setEvent(r.event_code, r.event_name);
-          setEventOkPill(eventCodeStatus, r.event_name);
-        } else {
-          setStatusPill(eventCodeStatus, 'gate.eventBad', '✗ Code événement inconnu', 'bad');
-          // Refuse to proceed on a typed-but-rejected event code: user can clear or fix.
-          return;
-        }
-      } else {
-        // No event code entered → clear any previously stored event.
-        setEvent(null, null);
-      }
-      // Participant role stays 'agent' (never elevated by this pane).
-      try { localStorage.setItem(ROLE_KEY, 'agent'); } catch (e) {}
+      // A returning VIP keeps facilitator status; non-VIP stays 'agent'.
+      const stillVip = (function(){
+        try {
+          return localStorage.getItem('ai_exhibits.tournament_vip') === '1'
+              && !!localStorage.getItem('ai_exhibits.tournament_workshop')
+              && !!localStorage.getItem('ai_exhibits.tournament_token')
+              && localStorage.getItem('ai_exhibits.tournament_disabled') !== '1';
+        } catch (e) { return false; }
+      })();
+      const newRole = stillVip ? 'facilitator' : 'agent';
+      try { localStorage.setItem(ROLE_KEY, newRole); } catch (e) {}
       refreshPersonaLabels();
-      setPill('agent');
-      // Tiny pause if we showed an OK pill, so the user sees confirmation.
-      const delay = (eventCodeStatus && eventCodeStatus.dataset.state === 'ok') ? 500 : 0;
-      setTimeout(() => closeGate(), delay);
+      setPill(newRole);
+      closeGate();
     });
   }
 
@@ -646,14 +623,11 @@ body:not([data-role="facilitator"]) #roleCard {
         setStatusPill(kwStatus, 'gate.facKeywordBad', '✗ Mot-clé invalide', 'bad');
         return;
       }
-      const ec = (facEventCodeInput && facEventCodeInput.value || "").trim();
-      // Validate keyword (and event_code if provided) — single call.
+      // Validate keyword only — event code is asked at submit time.
       setStatusPill(kwStatus, 'gate.facKeywordChecking', 'Vérification…', 'checking');
-      if (ec) setStatusPill(facEventCodeStatus, 'gate.eventChecking', 'Vérification…', 'checking');
-      const r = await validateFacilitatorKeyword(kw, ec || null);
+      const r = await validateFacilitatorKeyword(kw, null);
       if (!r.ok) {
         setStatusPill(kwStatus, 'gate.facKeywordBad', '✗ Mot-clé invalide', 'bad');
-        if (ec) setStatusPill(facEventCodeStatus, '', '', '');
         return;
       }
       // Keyword OK → store VIP credentials.
@@ -664,21 +638,6 @@ body:not([data-role="facilitator"]) #roleCard {
         localStorage.setItem(ROLE_KEY, 'facilitator');
       } catch (e) {}
       setStatusPill(kwStatus, 'gate.facKeywordOk', '✓ Mode animatrice activé', 'ok');
-      // If event code was given AND the backend returned a name, mark event OK.
-      // (validateToken honors event_code → echoes event_name on success.)
-      if (ec) {
-        if (r.event_name) {
-          setEvent(ec, r.event_name);
-          setEventOkPill(facEventCodeStatus, r.event_name);
-        } else {
-          // Keyword accepted but event code unknown — let user fix or remove.
-          setStatusPill(facEventCodeStatus, 'gate.eventBad', '✗ Code événement inconnu', 'bad');
-          // Don't close yet; keep mode-activation visible but ask user.
-          // (Most facilitators want both to work; revert VIP would surprise.)
-        }
-      } else {
-        setEvent(null, null);
-      }
       refreshPersonaLabels();
       setPill('facilitator');
       setTimeout(() => closeGate(), 700);
@@ -982,6 +941,9 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
   const TOKEN_KEY = 'ai_exhibits.tournament_token';
   const DISABLED_KEY = 'ai_exhibits.tournament_disabled';
   const PENDING_KEY = 'ai_exhibits.tournament_pending';
+  // Event attribution — set by the role gate's event-code path. Submit
+  // requires this so untagged data never reaches the dataset.
+  const EVENT_CODE_KEY = 'ai_exhibits.event_code';
 
   (function captureUrlParams(){
     try {
@@ -1210,12 +1172,15 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
     const refreshSubmitBtn = () => {
       if (!submitBtn) return;
       const offline = (typeof navigator !== 'undefined' && navigator.onLine === false);
-      const dis = (submitState === 'loading' || submitState === 'success' || offline);
+      const nameOk = !!(nameInput && nameInput.value.trim().length > 0);
+      // gate submit on name + event both valid
+      const formReady = nameOk && eventValid;
+      const dis = (submitState === 'loading' || submitState === 'success' || offline || !formReady);
       submitBtn.disabled = dis;
       submitBtn.style.opacity = dis ? '0.6' : '1';
       submitBtn.style.cursor = dis ? 'not-allowed' : 'pointer';
       const labels = {
-        idle: tr('hub.submitToSheet', '🏆 Soumettre au tournoi'),
+        idle: tr('hub.submitToSheet', '🏆 Soumettre les résultats'),
         loading: tr('hub.submitLoading', '⏳ Envoi en cours…'),
         success: tr('hub.submitSent', '✓ Soumis — merci !'),
         error: tr('hub.submitRetry', '↻ Réessayer'),
@@ -1225,11 +1190,26 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
 
     async function doSubmit(){
       if (submitState === 'loading' || submitState === 'success') return;
+      // Pre-flight guards (also belt+suspenders for the button-disabled state).
+      const name = (nameInput && nameInput.value.trim()) || '';
+      if (!name) {
+        setStatus('error', tr('hub.submitErrNoName', 'Ajoute ton nom ou nom d\'équipe.'));
+        return;
+      }
+      if (!eventValid) {
+        setStatus('error', tr('hub.submitErrNoEvent', 'Identifie un événement valide pour soumettre.'));
+        return;
+      }
+      // Persist the (possibly edited) name so future submits pre-fill it.
+      try { localStorage.setItem('ai_exhibits_persona', name.slice(0, 30)); } catch (e) {}
       submitState = 'loading';
       refreshSubmitBtn();
       setStatus('loading', tr('hub.submitLoading', '⏳ Envoi en cours…'));
-      // Build payload + include any user-edited note
+      // Build payload + include any user-edited note + override event_code
+      // with the freshly validated value (in case the user edited it here).
       const payload = buildSubmitPayload();
+      payload.persona = name;
+      payload.event_code = validatedEventCode;
       const userNote = ta.value !== buildResultsText() ? ta.value : '';
       if (userNote) payload.note = userNote.slice(0, 500);
       const r = await submitToAppsScript(payload);
@@ -1274,7 +1254,126 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
       refreshSubmitBtn();
     }
 
+    // VIP-only: show the name+event-code form and submit button.
+    let nameInput = null, eventInput = null, eventStatus = null;
+    let eventValid = false;       // becomes true after backend validates event_code
+    let validatedEventCode = '';  // canonical (uppercase) code from backend
+    let validatedEventName = '';
     if (isTournamentEnabled()) {
+      // ── Identifier row: name (required) ────────────────────────────────
+      const nameRow = document.createElement('div');
+      Object.assign(nameRow.style, { marginBottom: '10px' });
+      const nameLab = document.createElement('label');
+      nameLab.textContent = tr('hub.submitNamePrompt', 'Ton nom ou nom d\'équipe');
+      Object.assign(nameLab.style, {
+        display: 'block', fontSize: '11px',
+        color: 'rgba(255,255,255,0.65)', marginBottom: '4px',
+        fontFamily: 'ui-monospace, monospace', letterSpacing: '0.3px',
+      });
+      nameRow.appendChild(nameLab);
+      nameInput = document.createElement('input');
+      nameInput.type = 'text';
+      nameInput.maxLength = 30;
+      nameInput.autocomplete = 'off';
+      const storedPersona = (typeof window.AI_EXHIBITS_GET_PERSONA === 'function')
+        ? window.AI_EXHIBITS_GET_PERSONA() : '';
+      nameInput.value = storedPersona;
+      nameInput.placeholder = tr('hub.submitNamePlaceholder', 'ex. Équipe Marmottes');
+      const inputStyles = {
+        width: '100%', padding: '8px 10px', borderRadius: '8px',
+        border: '1px solid rgba(255,255,255,0.16)',
+        background: 'rgba(7, 6, 10, 0.85)', color: 'rgba(255,255,255,0.92)',
+        fontSize: '13px', fontFamily: 'ui-sans-serif, system-ui, sans-serif',
+        outline: 'none', boxSizing: 'border-box',
+      };
+      Object.assign(nameInput.style, inputStyles);
+      nameInput.addEventListener('input', () => { refreshSubmitBtn(); });
+      nameRow.appendChild(nameInput);
+      card.appendChild(nameRow);
+
+      // ── Event code row: required, validated against backend ──────────
+      const evRow = document.createElement('div');
+      Object.assign(evRow.style, { marginBottom: '14px' });
+      const evLab = document.createElement('label');
+      evLab.textContent = tr('hub.submitEventPrompt', 'Code événement');
+      Object.assign(evLab.style, {
+        display: 'block', fontSize: '11px',
+        color: 'rgba(255,255,255,0.65)', marginBottom: '4px',
+        fontFamily: 'ui-monospace, monospace', letterSpacing: '0.3px',
+      });
+      evRow.appendChild(evLab);
+      eventInput = document.createElement('input');
+      eventInput.type = 'text';
+      eventInput.maxLength = 20;
+      eventInput.autocomplete = 'off';
+      const storedEventCode = (typeof window.AI_EXHIBITS_GET_EVENT_CODE === 'function')
+        ? window.AI_EXHIBITS_GET_EVENT_CODE() : '';
+      const storedEventName = (typeof window.AI_EXHIBITS_GET_EVENT_NAME === 'function')
+        ? window.AI_EXHIBITS_GET_EVENT_NAME() : '';
+      eventInput.value = storedEventCode;
+      eventInput.placeholder = tr('hub.submitEventPlaceholder', 'ex. DMVM26');
+      Object.assign(eventInput.style, inputStyles);
+      evRow.appendChild(eventInput);
+      eventStatus = document.createElement('div');
+      eventStatus.className = 'facKeywordStatus';
+      Object.assign(eventStatus.style, { marginTop: '4px', fontSize: '11px', minHeight: '14px' });
+      evRow.appendChild(eventStatus);
+      card.appendChild(evRow);
+
+      // If we already have a stored validated event, mark it OK pre-emptively
+      // (the next submit will re-validate anyway).
+      if (storedEventCode && storedEventName) {
+        eventValid = true;
+        validatedEventCode = storedEventCode;
+        validatedEventName = storedEventName;
+        const tmpl = tr('gate.eventOk', '✓ Événement reconnu : {name}');
+        eventStatus.textContent = tmpl.replace('{name}', storedEventName);
+        eventStatus.dataset.state = 'ok';
+      }
+
+      // Validate event on change (blur or 600ms idle after typing).
+      let evTimer = null;
+      const triggerEventValidate = async () => {
+        const raw = (eventInput.value || '').trim();
+        if (!raw) {
+          eventValid = false;
+          eventStatus.textContent = '';
+          eventStatus.dataset.state = '';
+          refreshSubmitBtn();
+          return;
+        }
+        if (raw.toUpperCase() === validatedEventCode && eventValid) {
+          refreshSubmitBtn(); return;
+        }
+        eventValid = false;
+        eventStatus.textContent = tr('gate.eventChecking', 'Vérification…');
+        eventStatus.dataset.state = 'checking';
+        refreshSubmitBtn();
+        const r = (typeof window.AI_EXHIBITS_VALIDATE_EVENT === 'function')
+          ? await window.AI_EXHIBITS_VALIDATE_EVENT(raw) : { ok: false };
+        if (r && r.ok) {
+          eventValid = true;
+          validatedEventCode = r.event_code;
+          validatedEventName = r.event_name || r.event_code;
+          if (typeof window.AI_EXHIBITS_SET_EVENT === 'function')
+            window.AI_EXHIBITS_SET_EVENT(validatedEventCode, validatedEventName);
+          const tmpl = tr('gate.eventOk', '✓ Événement reconnu : {name}');
+          eventStatus.textContent = tmpl.replace('{name}', validatedEventName);
+          eventStatus.dataset.state = 'ok';
+        } else {
+          eventValid = false;
+          eventStatus.textContent = tr('gate.eventBad', '✗ Code événement inconnu');
+          eventStatus.dataset.state = 'bad';
+        }
+        refreshSubmitBtn();
+      };
+      eventInput.addEventListener('blur', triggerEventValidate);
+      eventInput.addEventListener('input', () => {
+        if (evTimer) clearTimeout(evTimer);
+        evTimer = setTimeout(triggerEventValidate, 600);
+      });
+
+      // ── Submit button ──────────────────────────────────────────────────
       submitBtn = document.createElement('button');
       submitBtn.type = 'button';
       submitBtn.id = 'submitToSheetBtn';
@@ -1299,7 +1398,6 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
           doSubmit().catch(() => {});
         }
       });
-      // React to network state.
       const onLine = () => refreshSubmitBtn();
       window.addEventListener('online', onLine);
       window.addEventListener('offline', onLine);
