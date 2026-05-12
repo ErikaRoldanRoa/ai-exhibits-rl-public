@@ -52,7 +52,7 @@
         "b5Tooltip": "⭐⭐⭐⭐⭐ 5 Züge",
         "b6Tooltip": "🏆 6 Züge — Gottes Zahl!"
       },
-      "subtitle": "12 Zustände · die ganze Welt auf einer Seite · Q-Tabelle von Hand bauen"
+      "subtitle": "12 Zustände · die ganze Welt auf einer Serviette · Q-Tabelle von Hand bauen"
     },
     "mission2": {
       "title": "Mission II: Ausbreitung",
@@ -63,7 +63,7 @@
         "b4Tooltip": "⭐⭐⭐⭐ 9 Züge",
         "b5Tooltip": "🏆 21 Züge — Gottes Zahl!"
       },
-      "subtitle": "360 Zustände · zu groß zum Zeichnen · sieh Q vom Ziel zurückwandern"
+      "subtitle": "360 Zustände · zu groß für eine Serviette · sieh Q vom Ziel zurückwandern"
     },
     "mission3": {
       "title": "Mission III: Skalierung",
@@ -97,7 +97,7 @@
     "facTools": {
       "tag": "MODERATION",
       "title": "Animatrice-Dashboard",
-      "desc": "Ein druckbares Kit pro Mission: Glossar, Referenzen, Versuchstabelle, Notizen für die Leitung. Ein Team-Bewertungsbogen fasst die drei Missionen auf einer Seite zusammen.",
+      "desc": "Ein druckbares Kit pro Mission: Glossar, Referenzen, Versuchstabelle, Notizen für die Leitung. Ein Team-Bewertungsbogen fasst die drei Missionen auf einer Serviette zusammen.",
       "kit1": "Kit Mission I · 20 min",
       "kit2": "Kit Mission II · 25 min",
       "kit3": "Kit Mission III · 20 min",
@@ -187,7 +187,7 @@
       "h2x3": "Mission II — Puzzle 2×3 (360 Zustände)",
       "h3x3": "Mission III — Puzzle 3×3 (181.440 Zustände)",
       "tip": "🏆 <strong>Gottes Zahl</strong> = Durchmesser des Graphen der erreichbaren Zustände: die Anzahl Züge, um den <em>schwierigsten</em> Startzustand bei perfektem Spiel zu lösen.",
-      "hook2x2": "Die ganze Welt auf einer Seite · Q-Tabelle von Hand bauen.",
+      "hook2x2": "Die ganze Welt auf einer Serviette · Q-Tabelle von Hand bauen.",
       "hook2x3": "360 Zustände · 30× mehr als Mission I · den Raum zu durchqueren beginnt zu kosten.",
       "hook3x3": "181.440 Zustände · 504× Mission II, 15.000× Mission I · gleicher Algorithmus, Raum zu weit.",
       "benchHeader": "Benchmark Bk = ein Startzustand k Züge vom Ziel entfernt."
@@ -475,6 +475,13 @@
         "term": "Konvergenz",
         "def": "Wenn sich Q-Werte zwischen Episoden nicht mehr nennenswert ändern. Die Agent*in hat das Puzzle „gelernt\". Auf 360 Zuständen passiert das in wenigen Tausend Episoden; bei größerem Maßstab ist es eine andere Geschichte."
       }
+    },
+    "params": {
+      "episodesTip": "Episoden = Anzahl der Trainingsversuche.\nVersuche 1000–3000, um Q vom Ziel ausbreiten zu sehen.\nBei höherem ε E erhöhen.",
+      "maxStepsTip": "Max. Schritte = Zugbudget pro Episode.\nMuss G = 21 (Gottes Zahl) übersteigen.\nVersuche 45–90 für 2×3.",
+      "alphaTip": "α steuert, wie stark neue Belege Q aktualisieren.\nQ ← Q + α(Ziel−Q).\n0,05–0,2: stabil, aber langsam.\n0,2–0,4: ausgewogen bei 360 Zuständen.\n>0,6: Werte oszillieren.",
+      "gammaTip": "γ steuert, wie stark zukünftige Belohnungen zählen.\nBei 21 Zügen Tiefe γ ≈ 0,95–0,99.\nγ < 0,9 → Belohnung erreicht nicht weit genug.",
+      "epsilonTip": "ε = Wahrscheinlichkeit eines zufälligen legalen Zugs.\nVersuche 0,1–0,3, um 360 Zustände zu erkunden.\nε = 0 zu früh → ganze Regionen bleiben bei Q = 0."
     }
   },
   "ex3x3": {
@@ -511,6 +518,13 @@
     "economy": {
       "title": "Trainingsökonomie",
       "titleTip": "Drei Blickwinkel: was du ausgegeben hast, was du budgetiert hast, was es bräuchte, um B5 zu lösen."
+    },
+    "params": {
+      "episodesTip": "Episoden = Anzahl der Trainingsversuche.\nVersuche 5000–20000, um die Abdeckung wachsen zu lassen.\n181.440 Zustände: Abdeckung steigt langsam.",
+      "maxStepsTip": "Max. Schritte = Zugbudget pro Episode.\nMuss G = 31 (Gottes Zahl) übersteigen.\nVersuche 60–150 für 3×3.",
+      "alphaTip": "α steuert, wie stark neue Belege Q aktualisieren.\nQ ← Q + α(Ziel−Q).\n0,05–0,2: stabil. Seltene Besuche → kleines α dämpft Rauschen.\n0,2–0,4: schneller, aber oszillierend.\n>0,5: bei dieser Größe nicht empfohlen.",
+      "gammaTip": "γ steuert, wie stark zukünftige Belohnungen zählen.\nBei 31 Zügen Tiefe γ ≈ 0,95–0,99.\nγ zu niedrig → Zielwert erreicht entfernte Zustände nicht.",
+      "epsilonTip": "ε = Wahrscheinlichkeit eines zufälligen legalen Zugs.\nVersuche 0,1–0,3.\n181.440 Zustände abzudecken: ε zu niedrig → ganze Regionen nie besucht."
     }
   },
   "gate": {
@@ -599,8 +613,8 @@
       "attempt3": "Versuch 3",
       "best": "Bestes",
       "moves": "Züge",
-      "scoresheetNote": "→ Trage das Ergebnis auch auf den konsolidierten Team-Bewertungsbogen ein (3 Missionen auf einer Seite).",
-      "scoresheetLink": "Team-Bewertungsbogen öffnen (3 Missionen auf einer Seite)",
+      "scoresheetNote": "→ Trage das Ergebnis auch auf den konsolidierten Team-Bewertungsbogen ein (3 Missionen auf einer Serviette).",
+      "scoresheetLink": "Team-Bewertungsbogen öffnen (3 Missionen auf einer Serviette)",
       "body": "Jedes Team wählt (α, γ, ε) dreimal mit derselben Episodenzahl. Die Tabelle führt das Protokoll."
     },
     "notes": {

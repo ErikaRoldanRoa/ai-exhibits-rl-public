@@ -63,7 +63,7 @@
         "b4Tooltip": "⭐⭐⭐⭐ 9 mosse",
         "b5Tooltip": "🏆 21 mosse — Numero di Dio!"
       },
-      "subtitle": "360 stati · troppi da disegnare · guarda Q risalire dall'obiettivo"
+      "subtitle": "360 stati · troppi per un tovagliolo · guarda Q risalire dall'obiettivo"
     },
     "mission3": {
       "title": "Missione III: Scalabilità",
@@ -475,6 +475,13 @@
         "term": "Convergenza",
         "def": "Quando i valori Q smettono di cambiare significativamente tra episodi. L'agente ha «imparato» il puzzle. Su 360 stati, ci si arriva in qualche migliaio di episodi; a scala maggiore è un'altra storia."
       }
+    },
+    "params": {
+      "episodesTip": "Episodi = numero di tentativi di addestramento.\nProva 1000–3000 per vedere Q propagarsi dall'obiettivo.\nCon ε più alto, aumenta E.",
+      "maxStepsTip": "Passi max = budget di mosse per episodio.\nDeve superare G = 21 (Numero di Dio).\nProva 45–90 per 2×3.",
+      "alphaTip": "α controlla quanto le nuove prove aggiornano Q.\nQ ← Q + α(obiettivo−Q).\n0,05–0,2: stabile ma lento.\n0,2–0,4: equilibrato su 360 stati.\n>0,6: valori che oscillano.",
+      "gammaTip": "γ controlla l'importanza delle ricompense future.\nA 21 mosse di profondità, γ ≈ 0,95–0,99.\nγ < 0,9 → la ricompensa non risale abbastanza lontano.",
+      "epsilonTip": "ε = probabilità di una mossa legale casuale.\nProva 0,1–0,3 per esplorare 360 stati.\nε = 0 troppo presto → intere regioni restano a Q = 0."
     }
   },
   "ex3x3": {
@@ -511,6 +518,13 @@
     "economy": {
       "title": "Economia dell'addestramento",
       "titleTip": "Tre angolazioni: quanto hai speso, quanto hai destinato, quanto servirebbe per risolvere B5."
+    },
+    "params": {
+      "episodesTip": "Episodi = numero di tentativi di addestramento.\nProva 5000–20000 per far crescere la copertura.\n181.440 stati: la copertura cresce lentamente.",
+      "maxStepsTip": "Passi max = budget di mosse per episodio.\nDeve superare G = 31 (Numero di Dio).\nProva 60–150 per 3×3.",
+      "alphaTip": "α controlla quanto le nuove prove aggiornano Q.\nQ ← Q + α(obiettivo−Q).\n0,05–0,2: stabile. Visite rare → α piccolo smorza il rumore.\n0,2–0,4: più veloce ma oscillante.\n>0,5: sconsigliato a questa scala.",
+      "gammaTip": "γ controlla l'importanza delle ricompense future.\nA 31 mosse di profondità, γ ≈ 0,95–0,99.\nγ troppo basso → il valore obiettivo non raggiunge gli stati distanti.",
+      "epsilonTip": "ε = probabilità di una mossa legale casuale.\nProva 0,1–0,3.\n181.440 stati da coprire: ε troppo basso → intere regioni mai visitate."
     }
   },
   "gate": {
@@ -557,7 +571,7 @@
       "chip": "Missione II · Kit del laboratorio",
       "title": "Propagazione · 2×3",
       "algoTitle": "L'algoritmo prende il suo posto.",
-      "algoBody": " Con 360 stati la tabella non sta più su una pagina. Lancia l'addestramento e osserva Q risalire dall'obiettivo, episodio dopo episodio.",
+      "algoBody": " Con 360 stati la tabella non sta più su un tovagliolo. Lancia l'addestramento e osserva Q risalire dall'obiettivo, episodio dopo episodio.",
       "notes": {
         "1": "3 min · transizione · aprire Missione II; indicare l'indicatore di copertura su 360 stati.",
         "2": "5 min · osserva · allena e guarda l'indicatore salire, Q propagarsi backward dall'obiettivo.",
@@ -599,8 +613,8 @@
       "attempt3": "Tentativo 3",
       "best": "Migliore",
       "moves": "Mosse",
-      "scoresheetNote": "→ Annota anche il risultato sulla scheda di squadra consolidata (3 missioni su una pagina).",
-      "scoresheetLink": "Apri la scheda di squadra (3 missioni su una pagina)",
+      "scoresheetNote": "→ Annota anche il risultato sulla scheda di squadra consolidata (3 missioni su un tovagliolo).",
+      "scoresheetLink": "Apri la scheda di squadra (3 missioni su un tovagliolo)",
       "body": "Ogni squadra sceglie (α, γ, ε) tre volte con lo stesso numero di episodi. La tabella tiene traccia."
     },
     "notes": {

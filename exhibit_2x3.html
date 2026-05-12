@@ -499,23 +499,35 @@
         <h2 data-i18n="ex.panel.trainingParams">Paramètres d'entraînement</h2>
         <div class="kv">
           <div class="field">
-            <div class="lab"><span data-i18n="ex.params.episodes">Épisodes</span><span class="i" data-tip="Nombre d'épisodes d'entraînement à exécuter.\nChaque épisode commence depuis un état mélangé." data-i18n-data-tip="ex.params.episodesTip">i</span></div>
+            <div class="lab"><span data-i18n="ex.params.episodes">Épisodes</span><span class="i" data-tip="Épisodes = nombre de tentatives d'entraînement.
+Essayez 1000–3000 pour voir Q se propager depuis l'objectif.
+Avec ε plus élevé, augmentez E." data-i18n-data-tip="ex2x3.params.episodesTip">i</span></div>
             <input id="episodes" type="number" min="1" step="1" max="20000" value="2000"/>
           </div>
           <div class="field">
-            <div class="lab"><span data-i18n="ex.params.maxSteps">Étapes max / épisode</span><span class="i" data-tip="Plafond de sécurité : arrêter un épisode s'il a pris trop de coups.\nPlus d'étapes permet à l'agente d'explorer des trajectoires plus longues." data-i18n-data-tip="ex.params.maxStepsTip">i</span></div>
+            <div class="lab"><span data-i18n="ex.params.maxSteps">Étapes max / épisode</span><span class="i" data-tip="Étapes max = budget de coups par épisode.
+Doit dépasser G = 21 (Nombre de Dieu).
+Essayez 45–90 pour 2×3." data-i18n-data-tip="ex2x3.params.maxStepsTip">i</span></div>
             <input id="maxSteps" type="number" min="1" step="1" max="300" value="60"/>
           </div>
           <div class="field">
-            <div class="lab"><span data-i18n="ex.params.learningRate"><span class="sym-alpha">α</span> (taux d'apprentissage)</span><span class="i" data-tip="À quel point on remplace l'ancien Q par de nouvelles informations.\nα=1 signifie remplacer ; un α plus petit signifie moyenner lentement." data-i18n-data-tip="ex.params.learningRateTip">i</span></div>
+            <div class="lab"><span data-i18n="ex.params.learningRate"><span class="sym-alpha">α</span> (taux d'apprentissage)</span><span class="i" data-tip="α contrôle à quel point les nouvelles preuves mettent à jour Q.
+Q ← Q + α(cible−Q).
+0,05–0,2 : stable mais lent.
+0,2–0,4 : équilibré sur 360 états.
+>0,6 : valeurs qui oscillent." data-i18n-data-tip="ex2x3.params.alphaTip">i</span></div>
             <input id="alpha" type="number" min="0" max="1" step="0.05" value="0.3"/>
           </div>
           <div class="field">
-            <div class="lab"><span data-i18n="ex.params.discount"><span class="sym-gamma">γ</span> (escompte)</span><span class="i" data-tip="L'importance des récompenses futures.\nγ proche de 1 valorise le succès à long terme." data-i18n-data-tip="ex.params.discountTip">i</span></div>
+            <div class="lab"><span data-i18n="ex.params.discount"><span class="sym-gamma">γ</span> (escompte)</span><span class="i" data-tip="γ contrôle l'importance des récompenses futures.
+À 21 coups de profondeur, γ ≈ 0,95–0,99.
+γ < 0,9 → la récompense ne remonte pas assez loin." data-i18n-data-tip="ex2x3.params.gammaTip">i</span></div>
             <input id="gamma" type="number" min="0" max="0.999" step="0.05" value="0.95"/>
           </div>
           <div class="field">
-            <div class="lab"><span data-i18n="ex.params.epsilon"><span class="sym-epsilon">ε</span> (exploration)</span><span class="i" data-tip="Probabilité d'exploration en ε-glouton.\nAvec la probabilité ε, choisir une action au hasard." data-i18n-data-tip="ex.params.epsilonTip">i</span></div>
+            <div class="lab"><span data-i18n="ex.params.epsilon"><span class="sym-epsilon">ε</span> (exploration)</span><span class="i" data-tip="ε = probabilité d'un coup légal aléatoire.
+Essayez 0,1–0,3 pour explorer 360 états.
+ε = 0 trop tôt → des régions entières restent à Q = 0." data-i18n-data-tip="ex2x3.params.epsilonTip">i</span></div>
             <input id="eps" type="number" min="0" max="1" step="0.05" value="0.4"/>
           </div>
           <div class="field">

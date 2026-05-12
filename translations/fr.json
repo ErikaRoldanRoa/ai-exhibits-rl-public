@@ -52,7 +52,7 @@
         "b5Tooltip": "⭐⭐⭐⭐⭐ 5 mouvements",
         "b6Tooltip": "🏆 6 mouvements — Nombre de Dieu !"
       },
-      "subtitle": "12 états · le monde entier tient sur une page · construis la table Q à la main"
+      "subtitle": "12 états · le monde entier tient sur une serviette · construis la table Q à la main"
     },
     "mission2": {
       "title": "Mission II : Propagation",
@@ -63,7 +63,7 @@
         "b4Tooltip": "⭐⭐⭐⭐ 9 mouvements",
         "b5Tooltip": "🏆 21 mouvements — Nombre de Dieu !"
       },
-      "subtitle": "360 états · trop pour tout dessiner · regarde Q remonter depuis l'objectif"
+      "subtitle": "360 états · trop pour la serviette · regarde Q remonter depuis l'objectif"
     },
     "mission3": {
       "title": "Mission III : Mise à l'échelle",
@@ -187,7 +187,7 @@
       "h2x3": "Mission II — Puzzle 2×3 (360 états)",
       "h3x3": "Mission III — Puzzle 3×3 (181 440 états)",
       "tip": "🏆 <strong>Nombre de Dieu</strong> = diamètre du graphe des états accessibles : nombre de coups pour résoudre le <em>pire</em> état de départ si l'on joue parfaitement.",
-      "hook2x2": "Le monde entier tient sur une page · construis la table Q à la main.",
+      "hook2x2": "Le monde entier tient sur une serviette · construis la table Q à la main.",
       "hook2x3": "360 états · 30× plus que la Mission I · couvrir l'espace commence à coûter.",
       "hook3x3": "181 440 états · 504× la Mission II, 15 000× la Mission I · même algorithme, espace trop vaste.",
       "benchHeader": "Référence Bk = un état de départ à k coups de l'objectif."
@@ -475,6 +475,13 @@
         "term": "Convergence",
         "def": "Quand les valeurs Q cessent de bouger significativement entre épisodes. L'agente a « appris » le puzzle. Sur 360 états, on y arrive en quelques milliers d'épisodes ; à plus grande échelle, c'est une autre histoire."
       }
+    },
+    "params": {
+      "episodesTip": "Épisodes = nombre de tentatives d'entraînement.\nEssayez 1000–3000 pour voir Q se propager depuis l'objectif.\nAvec ε plus élevé, augmentez E.",
+      "maxStepsTip": "Étapes max = budget de coups par épisode.\nDoit dépasser G = 21 (Nombre de Dieu).\nEssayez 45–90 pour 2×3.",
+      "alphaTip": "α contrôle à quel point les nouvelles preuves mettent à jour Q.\nQ ← Q + α(cible−Q).\n0,05–0,2 : stable mais lent.\n0,2–0,4 : équilibré sur 360 états.\n>0,6 : valeurs qui oscillent.",
+      "gammaTip": "γ contrôle l'importance des récompenses futures.\nÀ 21 coups de profondeur, γ ≈ 0,95–0,99.\nγ < 0,9 → la récompense ne remonte pas assez loin.",
+      "epsilonTip": "ε = probabilité d'un coup légal aléatoire.\nEssayez 0,1–0,3 pour explorer 360 états.\nε = 0 trop tôt → des régions entières restent à Q = 0."
     }
   },
   "ex3x3": {
@@ -511,6 +518,13 @@
     "economy": {
       "title": "Économie de l'entraînement",
       "titleTip": "Trois angles : ce que tu as dépensé, ce que tu as alloué, ce qu'il faudrait pour résoudre B5."
+    },
+    "params": {
+      "episodesTip": "Épisodes = nombre de tentatives d'entraînement.\nEssayez 5000–20000 pour faire monter la couverture.\n181 440 états : la couverture grimpe lentement.",
+      "maxStepsTip": "Étapes max = budget de coups par épisode.\nDoit dépasser G = 31 (Nombre de Dieu).\nEssayez 60–150 pour 3×3.",
+      "alphaTip": "α contrôle à quel point les nouvelles preuves mettent à jour Q.\nQ ← Q + α(cible−Q).\n0,05–0,2 : stable. Visite rare → α faible amortit le bruit.\n0,2–0,4 : plus rapide mais oscillant.\n>0,5 : déconseillé à cette échelle.",
+      "gammaTip": "γ contrôle l'importance des récompenses futures.\nÀ 31 coups de profondeur, γ ≈ 0,95–0,99.\nγ trop bas → la valeur de l'objectif ne se propage pas aux états distants.",
+      "epsilonTip": "ε = probabilité d'un coup légal aléatoire.\nEssayez 0,1–0,3.\n181 440 états à couvrir : ε trop bas → des régions entières jamais visitées."
     }
   },
   "gate": {
@@ -557,7 +571,7 @@
       "chip": "Mission II · Kit atelier",
       "title": "Propagation · 2×3",
       "algoTitle": "L'algorithme prend sa place.",
-      "algoBody": " Avec 360 états, la table ne tient plus sur une page. Lance l'entraînement et regarde Q remonter depuis l'objectif, épisode après épisode.",
+      "algoBody": " Avec 360 états, la table ne tient plus sur une serviette. Lance l'entraînement et regarde Q remonter depuis l'objectif, épisode après épisode.",
       "notes": {
         "1": "3 min · transition · ouvrir Mission II ; pointer la jauge de couverture sur 360 états.",
         "2": "5 min · observation · entraîner et regarder la jauge monter, Q se propager backward depuis l'objectif.",
@@ -599,8 +613,8 @@
       "attempt3": "Essai 3",
       "best": "Meilleur",
       "moves": "Mvts",
-      "scoresheetNote": "→ Note aussi le résultat sur la fiche d'équipe consolidée (3 missions sur une page).",
-      "scoresheetLink": "Ouvrir la fiche d'équipe (3 missions sur une page)",
+      "scoresheetNote": "→ Note aussi le résultat sur la fiche d'équipe consolidée (3 missions sur une serviette).",
+      "scoresheetLink": "Ouvrir la fiche d'équipe (3 missions sur une serviette)",
       "body": "Chaque équipe choisit (α, γ, ε) trois fois avec le même nombre d'épisodes. Le tableau garde la trace."
     },
     "notes": {

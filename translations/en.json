@@ -52,7 +52,7 @@
         "b5Tooltip": "⭐⭐⭐⭐⭐ 5 moves",
         "b6Tooltip": "🏆 6 moves — God's Number!"
       },
-      "subtitle": "12 states · the whole world fits on one page · build a Q-table by hand"
+      "subtitle": "12 states · the whole world fits on a napkin · build a Q-table by hand"
     },
     "mission2": {
       "title": "Mission II: Propagation",
@@ -63,7 +63,7 @@
         "b4Tooltip": "⭐⭐⭐⭐ 9 moves",
         "b5Tooltip": "🏆 21 moves — God's Number!"
       },
-      "subtitle": "360 states · too big to draw · watch Q propagate from the goal"
+      "subtitle": "360 states · too many for one napkin · watch Q propagate from the goal"
     },
     "mission3": {
       "title": "Mission III: Scaling",
@@ -97,7 +97,7 @@
     "facTools": {
       "tag": "FACILITATOR",
       "title": "Facilitator dashboard",
-      "desc": "One printable kit per mission: glossary, references, race table, facilitator notes. A team scoresheet consolidates the three missions on one page.",
+      "desc": "One printable kit per mission: glossary, references, race table, facilitator notes. A team scoresheet consolidates the three missions on a napkin.",
       "kit1": "Kit Mission I · 20 min",
       "kit2": "Kit Mission II · 25 min",
       "kit3": "Kit Mission III · 20 min",
@@ -187,7 +187,7 @@
       "h2x3": "Mission II — 2×3 puzzle (360 states)",
       "h3x3": "Mission III — 3×3 puzzle (181,440 states)",
       "tip": "🏆 <strong>God's Number</strong> = diameter of the reachable-state graph: the number of moves to solve the <em>worst</em> starting state if you play perfectly.",
-      "hook2x2": "The whole world fits on one page · build a Q-table by hand.",
+      "hook2x2": "The whole world fits on a napkin · build a Q-table by hand.",
       "hook2x3": "360 states · 30× more than Mission I · covering the space starts to cost.",
       "hook3x3": "181,440 states · 504× Mission II, 15,000× Mission I · same algorithm, space too vast.",
       "benchHeader": "Benchmark Bk = a starting state k moves from the goal."
@@ -475,6 +475,13 @@
         "term": "Convergence",
         "def": "When Q-values stop changing meaningfully between episodes. The agent has \"learned\" the puzzle. On 360 states, this happens within a few thousand episodes; at larger scale, it is another story."
       }
+    },
+    "params": {
+      "episodesTip": "Episodes = number of training attempts.\nTry 1000–3000 to see Q propagate from the goal.\nWith higher ε, increase E.",
+      "maxStepsTip": "Max steps = move budget per episode.\nMust exceed G = 21 (God's Number).\nTry 45–90 for 2×3.",
+      "alphaTip": "α controls how much new evidence updates Q.\nQ ← Q + α(target−Q).\n0.05–0.2: stable but slow.\n0.2–0.4: balanced on 360 states.\n>0.6: noisy, values oscillate.",
+      "gammaTip": "γ controls how much future rewards matter.\nAt 21-move depth, γ ≈ 0.95–0.99.\nγ < 0.9 → reward doesn't propagate far enough.",
+      "epsilonTip": "ε = probability of a random legal move.\nTry 0.1–0.3 to explore 360 states.\nε = 0 too early → entire regions stay at Q = 0."
     }
   },
   "ex3x3": {
@@ -511,6 +518,13 @@
     "economy": {
       "title": "Training economy",
       "titleTip": "Three angles: what you've spent, what you've allocated, what it would take to solve B5."
+    },
+    "params": {
+      "episodesTip": "Episodes = number of training attempts.\nTry 5000–20000 to grow coverage.\n181,440 states: coverage rises slowly.",
+      "maxStepsTip": "Max steps = move budget per episode.\nMust exceed G = 31 (God's Number).\nTry 60–150 for 3×3.",
+      "alphaTip": "α controls how much new evidence updates Q.\nQ ← Q + α(target−Q).\n0.05–0.2: stable. Rare visits → small α damps noise.\n0.2–0.4: faster but oscillates.\n>0.5: not recommended at this scale.",
+      "gammaTip": "γ controls how much future rewards matter.\nAt 31-move depth, γ ≈ 0.95–0.99.\nγ too low → goal value won't reach distant states.",
+      "epsilonTip": "ε = probability of a random legal move.\nTry 0.1–0.3.\n181,440 states to cover: ε too low → entire regions never visited."
     }
   },
   "gate": {
@@ -599,8 +613,8 @@
       "attempt3": "Attempt 3",
       "best": "Best",
       "moves": "Moves",
-      "scoresheetNote": "→ Also note the result on the consolidated team scoresheet (3 missions on one page).",
-      "scoresheetLink": "Open the team scoresheet (3 missions on one page)",
+      "scoresheetNote": "→ Also note the result on the consolidated team scoresheet (3 missions on a napkin).",
+      "scoresheetLink": "Open the team scoresheet (3 missions on a napkin)",
       "body": "Each team picks (α, γ, ε) three times with the same number of episodes. The table keeps the record."
     },
     "notes": {
