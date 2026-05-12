@@ -546,7 +546,17 @@
     "facKeywordPlaceholder": "pro Event — von Erika bereitgestellt",
     "facKeywordChecking": "Überprüfung…",
     "facKeywordOk": "✓ Animatrice-Modus aktiviert",
-    "facKeywordBad": "✗ Ungültiges Schlüsselwort"
+    "facKeywordBad": "✗ Ungültiges Schlüsselwort",
+    "eventPrompt": "Bei einer Veranstaltung? Code",
+    "eventPlaceholder": "z. B. DMVM26",
+    "eventChecking": "Wird überprüft…",
+    "eventOk": "✓ Veranstaltung erkannt: {name}",
+    "eventBad": "✗ Unbekannter Veranstaltungscode",
+    "facLink": "Moderator·in →",
+    "facBackLink": "← Zurück",
+    "facTitle": "Moderator-Modus",
+    "facContinueBtn": "Eintreten",
+    "facEventPrompt": "Veranstaltung (optional)"
   },
   "hud": {
     "navLabel": "Navigation"

@@ -2465,6 +2465,31 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
 .facKeywordStatus[data-state="ok"]       { color: rgba(112,255,138,0.95); }
 .facKeywordStatus[data-state="bad"]      { color: rgba(255,138,138,0.95); }
 
+/* Role-gate discrete swap link (participant ⇄ animatrice).
+   Sits as a small low-key link beneath the main action button. */
+.gateFacLinkRow {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+}
+.gateFacLink {
+  font-size: 11px;
+  font-family: var(--mono, ui-monospace, monospace);
+  letter-spacing: 0.3px;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 8px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.gateFacLink:hover,
+.gateFacLink:focus-visible {
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.05);
+  outline: none;
+}
+
 /* Trainer-page bench row — keep B1..B6 on a single line. The hub's mini-game
    benches fit one row because the buttons are smaller; the trainer card is
    wider so 6 buttons fit naturally when we just nowrap. Min-width:0 lets them

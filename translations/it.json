@@ -546,7 +546,17 @@
     "facKeywordPlaceholder": "per evento — fornita da Erika",
     "facKeywordChecking": "Verifica…",
     "facKeywordOk": "✓ Modalità animatrice attivata",
-    "facKeywordBad": "✗ Parola chiave non valida"
+    "facKeywordBad": "✗ Parola chiave non valida",
+    "eventPrompt": "Sei a un evento? Codice",
+    "eventPlaceholder": "es. DMVM26",
+    "eventChecking": "Verifica in corso…",
+    "eventOk": "✓ Evento riconosciuto: {name}",
+    "eventBad": "✗ Codice evento sconosciuto",
+    "facLink": "Facilitatrice / Facilitatore →",
+    "facBackLink": "← Indietro",
+    "facTitle": "Modalità facilitatrice",
+    "facContinueBtn": "Entra",
+    "facEventPrompt": "Evento (facoltativo)"
   },
   "hud": {
     "navLabel": "navigazione"

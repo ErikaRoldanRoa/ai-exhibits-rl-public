@@ -118,34 +118,58 @@ body:not([data-role="facilitator"]) #roleCard {
 <h2 id="roleGateTitle" data-i18n="gate.title">Entraîne ton IA&#8239;!</h2>
 <div class="modalSub" data-i18n="gate.subtitle">Puzzles coulissants. Trois tailles. Trois joueuses.</div>
 </div>
-      <div class="gateBody">
-        <div class="gateLead mono" id="gateSelected" data-i18n="gate.mode">Mode&#8239;: Agente</div>
-
-        <div class="gatePrompt">
-          <div class="gateQ" data-i18n="gate.question"></div>
-          <div class="gateP" data-i18n="gate.prompt">Tu compares trois résolveuses&#8239;: une agente aléatoire, toi, et une agente Q-learning que tu entraînes. Trois tailles de puzzle, trois missions.</div>
-        </div>
-
+      <!-- ============ PARTICIPANT PANE (default) ============ -->
+      <div class="gateBody" id="participantPane">
         <div class="gatePersona">
           <label for="personaInput" class="gatePersonaLabel" data-i18n="gate.personaPrompt">Ton nom ou nom d'équipe (facultatif)</label>
           <input id="personaInput" class="gatePersonaInput" type="text" maxlength="30" autocomplete="off"
                  data-i18n-placeholder="gate.personaPlaceholder" placeholder="ex. Équipe Marmottes" />
         </div>
+        <div class="gatePersona" style="margin-top:12px;">
+          <label for="eventCodeInput" class="gatePersonaLabel" data-i18n="gate.eventPrompt">Tu es à un événement ? Code</label>
+          <input id="eventCodeInput" class="gatePersonaInput" type="text" maxlength="20" autocomplete="off"
+                 data-i18n-placeholder="gate.eventPlaceholder" placeholder="ex. DMVM26" />
+          <div id="eventCodeStatus" class="facKeywordStatus" aria-live="polite"></div>
+        </div>
+      </div>
 
+      <div class="modalActions" id="participantActions">
+        <div class="modalBtns">
+          <button id="participantContinue" class="primaryBtn" type="button" data-i18n="gate.continueBtn">Commencer</button>
+        </div>
+      </div>
+
+      <div class="gateFacLinkRow" id="gateFacLinkRow">
+        <a href="#" id="gateFacLink" class="gateFacLink" data-i18n="gate.facLink">Animatrice / Facilitateur·trice →</a>
+      </div>
+
+      <!-- ============ ANIMATRICE PANE (hidden by default) ============ -->
+      <div class="gateBody" id="animatricePane" style="display:none;">
+        <div class="gateLead mono" data-i18n="gate.facTitle">Mode animatrice</div>
         <div class="gatePersona" style="margin-top:12px;">
           <label for="facKeywordInput" class="gatePersonaLabel" data-i18n="gate.facKeywordPrompt">Mot-clé animatrice (facultatif)</label>
           <input id="facKeywordInput" class="gatePersonaInput" type="password" maxlength="40" autocomplete="off"
                  data-i18n-placeholder="gate.facKeywordPlaceholder" placeholder="par événement — fourni par Erika" />
           <div id="facKeywordStatus" class="facKeywordStatus" aria-live="polite"></div>
         </div>
-      </div>
-
-      <div class="modalActions">
-        <div class="modalBtns">
-          <button class="roleBtn roleChip" type="button" data-role="facilitator" aria-checked="false" data-i18n="gate.facilitatorBtn">Mode animatrice</button>
-          <button id="roleContinue" class="primaryBtn" type="button" data-i18n="gate.continueBtn">Commencer</button>
+        <div class="gatePersona" style="margin-top:12px;">
+          <label for="facEventCodeInput" class="gatePersonaLabel" data-i18n="gate.facEventPrompt">Événement (optionnel)</label>
+          <input id="facEventCodeInput" class="gatePersonaInput" type="text" maxlength="20" autocomplete="off"
+                 data-i18n-placeholder="gate.eventPlaceholder" placeholder="ex. DMVM26" />
+          <div id="facEventCodeStatus" class="facKeywordStatus" aria-live="polite"></div>
         </div>
       </div>
+
+      <div class="modalActions" id="animatriceActions" style="display:none;">
+        <div class="modalBtns">
+          <button id="animatriceEnter" class="primaryBtn" type="button" data-i18n="gate.facContinueBtn">Entrer</button>
+        </div>
+      </div>
+
+      <div class="gateFacLinkRow" id="gateBackLinkRow" style="display:none;">
+        <a href="#" id="gateBackLink" class="gateFacLink" data-i18n="gate.facBackLink">← Retour</a>
+      </div>
+
       <div class="gateAuthor mono" data-i18n="gate.author">Conçu et développé par <strong>D<sup>r</sup> Erika Roldán Roa</strong></div>
 </div>
 </div>
@@ -304,15 +328,24 @@ body:not([data-role="facilitator"]) #roleCard {
 (function(){
   const ROLE_KEY = "ai_exhibits_role";              // facilitator vs agent
   const DMVM_KEY = "ai_exhibits_dmvm_reader";       // permanent: "true" if arrived via ?ref=dmvm
+  const EVENT_CODE_KEY = "ai_exhibits.event_code";
+  const EVENT_NAME_KEY = "ai_exhibits.event_name";
   const gate = document.getElementById("roleGate");
   const switchLink = document.getElementById("switchRoleLink");
-  const contBtn = document.getElementById("roleContinue");
-  const gateSelected = document.getElementById("gateSelected");
   const facToolsEl = document.getElementById("facTools");
-  const roleBtns = gate ? Array.from(gate.querySelectorAll(".roleBtn")) : [];
   const dmvmBanner = document.getElementById("dmvmBanner");
   const dmvmCloseBtn = document.getElementById("dmvmClose");
-  let selected = null;
+  // Two-pane gate: participant (default) and animatrice (swap on link).
+  const participantPane = document.getElementById("participantPane");
+  const participantActions = document.getElementById("participantActions");
+  const gateFacLinkRow = document.getElementById("gateFacLinkRow");
+  const animatricePane = document.getElementById("animatricePane");
+  const animatriceActions = document.getElementById("animatriceActions");
+  const gateBackLinkRow = document.getElementById("gateBackLinkRow");
+  const participantContBtn = document.getElementById("participantContinue");
+  const animatriceEnterBtn = document.getElementById("animatriceEnter");
+  const facLinkEl = document.getElementById("gateFacLink");
+  const backLinkEl = document.getElementById("gateBackLink");
 
   // ---------- DMVM portal: URL flag → permanent recognition ----------
   // Reads ?ref=dmvm once, persists to localStorage forever (no expiry —
@@ -362,8 +395,11 @@ body:not([data-role="facilitator"]) #roleCard {
     } catch (e) { return false; }
   }
   function applyFacilitatorButtonVisibility(){
+    // The old "Mode animatrice" chip has been removed from the gate
+    // (replaced by the discrete swap link). Kept as a no-op for any
+    // residual callers and as a safety net for old cached DOM.
     const btn = document.querySelector('.roleBtn[data-role="facilitator"]');
-    if (btn) btn.style.display = isVipFacilitatorEligible() ? '' : 'none';
+    if (btn) btn.style.display = 'none';
   }
   function setPill(role){
     // Defensive: if non-VIP somehow stored facilitator (e.g. from before this
@@ -380,33 +416,39 @@ body:not([data-role="facilitator"]) #roleCard {
     }
   }
 
-  function applySelection(role){
-    selected = role;
-    roleBtns.forEach(b=>{
-      const on = (b.dataset.role === role);
-      b.classList.toggle("active", on);
-      b.setAttribute("aria-selected", on ? "true" : "false");
-    });
-    if(gateSelected){
-      const tr = (window.i18n && window.i18n.t) ? window.i18n.t : (k, f) => f;
-      const label = (role === "facilitator")
-        ? tr("gate.modeFacilitator", "Animatrice")
-        : tr("gate.modeAgent", "Agente");
-      gateSelected.textContent = tr("gate.modePrefix", "Mode") + "\u202F: " + label;
-    }
+  // ---------- Gate pane swap (participant \u2194 animatrice) ----------
+  function showParticipantPane(){
+    if (participantPane) participantPane.style.display = "";
+    if (participantActions) participantActions.style.display = "";
+    if (gateFacLinkRow) gateFacLinkRow.style.display = "";
+    if (animatricePane) animatricePane.style.display = "none";
+    if (animatriceActions) animatriceActions.style.display = "none";
+    if (gateBackLinkRow) gateBackLinkRow.style.display = "none";
+  }
+  function showAnimatricePane(){
+    if (participantPane) participantPane.style.display = "none";
+    if (participantActions) participantActions.style.display = "none";
+    if (gateFacLinkRow) gateFacLinkRow.style.display = "none";
+    if (animatricePane) animatricePane.style.display = "";
+    if (animatriceActions) animatriceActions.style.display = "";
+    if (gateBackLinkRow) gateBackLinkRow.style.display = "";
+    // Focus the keyword input for keyboard users.
+    setTimeout(() => {
+      const kw = document.getElementById('facKeywordInput');
+      if (kw) try { kw.focus(); } catch(e){}
+    }, 100);
   }
 
   function openGate(){
     if(!gate) return;
     gate.style.display = "flex";
     gate.setAttribute("aria-hidden","false");
-    // Default to stored role if any, else student
-    const stored = localStorage.getItem(ROLE_KEY) || "agent";
-    applySelection(stored);
+    // Always reset to the participant pane on open \u2014 animatrice is opt-in.
+    showParticipantPane();
     // Pre-fill persona input from storage so the user can edit it.
     if (typeof syncPersonaInputFromStorage === 'function') syncPersonaInputFromStorage();
-    // Hide "Mode animatrice" button unless VIP is active.
-    applyFacilitatorButtonVisibility();
+    // Pre-fill event code if previously entered.
+    if (typeof syncEventCodeInputFromStorage === 'function') syncEventCodeInputFromStorage();
   }
   // Auto-elevate to facilitator on first arrival via a VIP URL.
   // Runs once on script load (after the URL-param-capture IIFE in the
@@ -431,7 +473,7 @@ body:not([data-role="facilitator"]) #roleCard {
     if(!gate) return;
     gate.style.display = "none";
     gate.setAttribute("aria-hidden","true");
-    const role = selected || localStorage.getItem(ROLE_KEY) || "agent";
+    const role = localStorage.getItem(ROLE_KEY) || "agent";
     setPill(role);
   }
 
@@ -439,22 +481,13 @@ body:not([data-role="facilitator"]) #roleCard {
     return localStorage.getItem(ROLE_KEY) || "agent";
   }
 
-  // Role button selection
-  roleBtns.forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      
-      const role = btn.dataset.role;
-      // Toggle: clicking Facilitator mode again returns to Agent
-      if (role === "facilitator" && selected === "facilitator") {
-        applySelection("agent");
-        localStorage.setItem(ROLE_KEY, "agent");
-      } else {
-        applySelection(role);
-        localStorage.setItem(ROLE_KEY, role);
-      }
-
-    });
-  });
+  // Wire the swap link (participant → animatrice) and the back link.
+  if (facLinkEl) {
+    facLinkEl.addEventListener("click", (e) => { e.preventDefault(); showAnimatricePane(); });
+  }
+  if (backLinkEl) {
+    backLinkEl.addEventListener("click", (e) => { e.preventDefault(); showParticipantPane(); });
+  }
 
   // Persona (name / team name) — replaces 'Vous'/'You' in stats and records.
   const PERSONA_KEY = "ai_exhibits_persona";
@@ -489,81 +522,166 @@ body:not([data-role="facilitator"]) #roleCard {
   window.AI_EXHIBITS_GET_PERSONA = getPersona;
   window.AI_EXHIBITS_REFRESH_PERSONA = refreshPersonaLabels;
 
-  // Facilitator-keyword validation. If the user typed a keyword in the gate,
-  // POST it to the tournament API's `validateToken` action. On match, store
-  // the workshop+token in localStorage (same shape the URL-grant path uses)
-  // → user is auto-elevated to facilitator + 🚀 unlocked + 📤 visible.
+  // Event code (optional tag for both participants and animatrices).
+  // Stored separately from animatrice VIP credentials so an anonymous
+  // participant at a workshop can be tagged to the event WITHOUT being VIP.
+  const eventCodeInput   = document.getElementById('eventCodeInput');
+  const eventCodeStatus  = document.getElementById('eventCodeStatus');
+  const facEventCodeInput  = document.getElementById('facEventCodeInput');
+  const facEventCodeStatus = document.getElementById('facEventCodeStatus');
+  function getEventCode(){ return (localStorage.getItem(EVENT_CODE_KEY) || "").trim(); }
+  function getEventName(){ return (localStorage.getItem(EVENT_NAME_KEY) || "").trim(); }
+  function setEvent(code, name){
+    if (code) {
+      localStorage.setItem(EVENT_CODE_KEY, code);
+      if (name) localStorage.setItem(EVENT_NAME_KEY, name);
+    } else {
+      localStorage.removeItem(EVENT_CODE_KEY);
+      localStorage.removeItem(EVENT_NAME_KEY);
+    }
+  }
+  function syncEventCodeInputFromStorage(){
+    if (eventCodeInput) eventCodeInput.value = getEventCode();
+    if (facEventCodeInput) facEventCodeInput.value = getEventCode();
+  }
+  // Expose for components that need to tag data with the event.
+  window.AI_EXHIBITS_GET_EVENT_CODE = getEventCode;
+  window.AI_EXHIBITS_GET_EVENT_NAME = getEventName;
+
+  // Tournament API endpoint (same one used for keyword validation).
   const TOURNAMENT_VALIDATE_URL = 'https://script.google.com/macros/s/AKfycbxR84v8EDB4bV5icuTFLuRPZn5g0fwYmQd9fm0vPKkOGERLzldZwkV0JTup3UxFX5g/exec';
-  async function validateFacilitatorKeyword(keyword){
+
+  // Validate a facilitator keyword. On match, returns {ok, workshop, event_name?}.
+  async function validateFacilitatorKeyword(keyword, eventCode){
     if (!keyword || keyword.length < 4) return { ok: false, msg: 'empty' };
     try {
+      const body = { action: 'validateToken', token: keyword };
+      if (eventCode) body.event_code = eventCode;
       const res = await fetch(TOURNAMENT_VALIDATE_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({ action: 'validateToken', token: keyword }),
+        body: JSON.stringify(body),
         redirect: 'follow',
       });
       const data = await res.json();
       if (data && data.status === 'ok' && data.workshop) {
-        return { ok: true, workshop: data.workshop };
+        return { ok: true, workshop: data.workshop, event_name: data.event_name || null };
       }
       return { ok: false, msg: 'invalid' };
-    } catch (e) {
-      return { ok: false, msg: 'network' };
-    }
+    } catch (e) { return { ok: false, msg: 'network' }; }
   }
 
-  // Continue button: persona save + (optional) facilitator-keyword validation.
-  if (contBtn){
-    contBtn.addEventListener("click", async ()=>{
-      const role = selected || "agent";
+  // Validate an event code (participant tagging). On match, returns {ok, event_code, event_name}.
+  async function validateEventCode(code){
+    if (!code || code.length < 3) return { ok: false, msg: 'empty' };
+    try {
+      const res = await fetch(TOURNAMENT_VALIDATE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ action: 'validateEventCode', event_code: code }),
+        redirect: 'follow',
+      });
+      const data = await res.json();
+      if (data && data.status === 'ok' && data.event_code) {
+        return { ok: true, event_code: data.event_code, event_name: data.event_name || code };
+      }
+      return { ok: false, msg: 'invalid' };
+    } catch (e) { return { ok: false, msg: 'network' }; }
+  }
+
+  // Helper for status pill updates.
+  function setStatusPill(el, key, fallback, state){
+    if (!el) return;
+    const tr = (window.i18n && window.i18n.t) ? window.i18n.t : (k, f) => f;
+    el.textContent = tr(key, fallback);
+    el.dataset.state = state;
+  }
+  function setEventOkPill(el, name){
+    if (!el) return;
+    const tr = (window.i18n && window.i18n.t) ? window.i18n.t : (k, f) => f;
+    const tmpl = tr('gate.eventOk', '✓ Événement reconnu : {name}');
+    el.textContent = tmpl.replace('{name}', name || '');
+    el.dataset.state = 'ok';
+  }
+
+  // ============ PARTICIPANT CONTINUE ============
+  if (participantContBtn) {
+    participantContBtn.addEventListener("click", async () => {
       if (personaInput) setPersona(personaInput.value);
-      // Check facilitator keyword (async; non-blocking on empty)
+      const ec = (eventCodeInput && eventCodeInput.value || "").trim();
+      if (ec) {
+        setStatusPill(eventCodeStatus, 'gate.eventChecking', 'Vérification…', 'checking');
+        const r = await validateEventCode(ec);
+        if (r.ok) {
+          setEvent(r.event_code, r.event_name);
+          setEventOkPill(eventCodeStatus, r.event_name);
+        } else {
+          setStatusPill(eventCodeStatus, 'gate.eventBad', '✗ Code événement inconnu', 'bad');
+          // Refuse to proceed on a typed-but-rejected event code: user can clear or fix.
+          return;
+        }
+      } else {
+        // No event code entered → clear any previously stored event.
+        setEvent(null, null);
+      }
+      // Participant role stays 'agent' (never elevated by this pane).
+      try { localStorage.setItem(ROLE_KEY, 'agent'); } catch (e) {}
+      refreshPersonaLabels();
+      setPill('agent');
+      // Tiny pause if we showed an OK pill, so the user sees confirmation.
+      const delay = (eventCodeStatus && eventCodeStatus.dataset.state === 'ok') ? 500 : 0;
+      setTimeout(() => closeGate(), delay);
+    });
+  }
+
+  // ============ ANIMATRICE ENTER ============
+  if (animatriceEnterBtn) {
+    animatriceEnterBtn.addEventListener("click", async () => {
+      // Persist name if entered on participant pane earlier (we keep the same persona input).
+      if (personaInput) setPersona(personaInput.value);
       const kwInput = document.getElementById('facKeywordInput');
       const kwStatus = document.getElementById('facKeywordStatus');
-      const kw = kwInput && kwInput.value.trim();
-      if (kw) {
-        if (kwStatus) {
-          kwStatus.textContent = (window.i18n && window.i18n.t)
-            ? window.i18n.t('gate.facKeywordChecking', 'Vérification…')
-            : 'Vérification…';
-          kwStatus.dataset.state = 'checking';
-        }
-        const r = await validateFacilitatorKeyword(kw);
-        if (r.ok) {
-          try {
-            localStorage.setItem('ai_exhibits.tournament_workshop', r.workshop);
-            localStorage.setItem('ai_exhibits.tournament_token', kw);
-            localStorage.setItem('ai_exhibits.tournament_vip', '1');
-            localStorage.setItem(ROLE_KEY, 'facilitator');
-          } catch (e) {}
-          if (kwStatus) {
-            kwStatus.textContent = (window.i18n && window.i18n.t)
-              ? window.i18n.t('gate.facKeywordOk', '✓ Mode animatrice activé')
-              : '✓ Mode animatrice activé';
-            kwStatus.dataset.state = 'ok';
-          }
-          refreshPersonaLabels();
-          // setPill('facilitator') will re-trigger lock refresh + facTools visibility
-          setPill('facilitator');
-          // Brief pause so the user sees the success state
-          setTimeout(() => closeGate(), 700);
-          return;
-        } else {
-          if (kwStatus) {
-            kwStatus.textContent = (window.i18n && window.i18n.t)
-              ? window.i18n.t('gate.facKeywordBad', '✗ Mot-clé invalide')
-              : '✗ Mot-clé invalide';
-            kwStatus.dataset.state = 'bad';
-          }
-          // Don't proceed if keyword was typed but rejected — user can clear and retry
-          return;
-        }
+      const kw = (kwInput && kwInput.value || "").trim();
+      if (!kw) {
+        setStatusPill(kwStatus, 'gate.facKeywordBad', '✗ Mot-clé invalide', 'bad');
+        return;
       }
-      // No keyword path: normal student flow
-      localStorage.setItem(ROLE_KEY, role);
+      const ec = (facEventCodeInput && facEventCodeInput.value || "").trim();
+      // Validate keyword (and event_code if provided) — single call.
+      setStatusPill(kwStatus, 'gate.facKeywordChecking', 'Vérification…', 'checking');
+      if (ec) setStatusPill(facEventCodeStatus, 'gate.eventChecking', 'Vérification…', 'checking');
+      const r = await validateFacilitatorKeyword(kw, ec || null);
+      if (!r.ok) {
+        setStatusPill(kwStatus, 'gate.facKeywordBad', '✗ Mot-clé invalide', 'bad');
+        if (ec) setStatusPill(facEventCodeStatus, '', '', '');
+        return;
+      }
+      // Keyword OK → store VIP credentials.
+      try {
+        localStorage.setItem('ai_exhibits.tournament_workshop', r.workshop);
+        localStorage.setItem('ai_exhibits.tournament_token', kw);
+        localStorage.setItem('ai_exhibits.tournament_vip', '1');
+        localStorage.setItem(ROLE_KEY, 'facilitator');
+      } catch (e) {}
+      setStatusPill(kwStatus, 'gate.facKeywordOk', '✓ Mode animatrice activé', 'ok');
+      // If event code was given AND the backend returned a name, mark event OK.
+      // (validateToken honors event_code → echoes event_name on success.)
+      if (ec) {
+        if (r.event_name) {
+          setEvent(ec, r.event_name);
+          setEventOkPill(facEventCodeStatus, r.event_name);
+        } else {
+          // Keyword accepted but event code unknown — let user fix or remove.
+          setStatusPill(facEventCodeStatus, 'gate.eventBad', '✗ Code événement inconnu', 'bad');
+          // Don't close yet; keep mode-activation visible but ask user.
+          // (Most facilitators want both to work; revert VIP would surprise.)
+        }
+      } else {
+        setEvent(null, null);
+      }
       refreshPersonaLabels();
-      closeGate();
+      setPill('facilitator');
+      setTimeout(() => closeGate(), 700);
     });
   }
 

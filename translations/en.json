@@ -546,7 +546,17 @@
     "facKeywordPlaceholder": "per event — provided by Erika",
     "facKeywordChecking": "Checking…",
     "facKeywordOk": "✓ Facilitator mode activated",
-    "facKeywordBad": "✗ Invalid keyword"
+    "facKeywordBad": "✗ Invalid keyword",
+    "eventPrompt": "Are you at an event? Code",
+    "eventPlaceholder": "e.g. DMVM26",
+    "eventChecking": "Checking…",
+    "eventOk": "✓ Event recognized: {name}",
+    "eventBad": "✗ Unknown event code",
+    "facLink": "Facilitator →",
+    "facBackLink": "← Back",
+    "facTitle": "Facilitator mode",
+    "facContinueBtn": "Enter",
+    "facEventPrompt": "Event (optional)"
   },
   "hud": {
     "navLabel": "navigation"
