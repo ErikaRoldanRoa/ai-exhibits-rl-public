@@ -139,7 +139,7 @@
     "submitErrHttp": "Server error. Queued.",
     "submitErrApi": "Failed — copy or email instead.",
     "submitErrGeneric": "Failed.",
-    "submitErrAuth": "Invalid VIP session — check your access URL.",
+    "submitErrAuth": "Invalid access link isn't valid — check your access URL.",
     "submitNoNewRows": "nothing new",
     "launchTraining": "Launch Training",
     "submitNamePrompt": "Your name or team name",
@@ -191,7 +191,7 @@
       "h2x2": "Mission I — 2×2 puzzle (12 states)",
       "h2x3": "Mission II — 2×3 puzzle (360 states)",
       "h3x3": "Mission III — 3×3 puzzle (181,440 states)",
-      "tip": "🏆 <strong>God's Number</strong> = diameter of the reachable-state graph: the number of moves to solve the <em>worst</em> starting state if you play perfectly.",
+      "tip": "🏆 <strong>God's Number</strong> = the optimal number of moves to solve the <em>worst</em> starting state — the eccentricity of the goal in the reachable-state graph. On these highly regular graphs, it coincides with the diameter.",
       "hook2x2": "The whole world fits on a napkin · build a Q-table by hand.",
       "hook2x3": "360 states · 30× more than Mission I · covering the space starts to cost.",
       "hook3x3": "181,440 states · 504× Mission II, 15,000× Mission I · same algorithm, space too vast.",
@@ -292,7 +292,7 @@
       "movesLastSolve": "Moves (last solve)",
       "qUpdates": "Q updates",
       "coverage": "Q-agent coverage",
-      "coverageTip": "The Q-table is a dictionary — one entry per state visited. At 12 states it covers everything. At 181,440 it barely reaches a few percent: there are simply too many states to visit.",
+      "coverageTip": "The Q-table is a lookup — one row for every state seen. At 12 states it covers everything. At 181,440 it barely reaches a few percent: there are simply too many states to visit.",
       "cost": "Training cost",
       "costTip": "On a laptop, one Q update costs about 10⁻¹¹ CHF (mostly hardware amortization, not electricity). A full Mission III comes to a fraction of a cent. Yet this tiny tariff becomes unreachable once the state space explodes: the same rule, at another scale, changes everything.",
       "budget": "Total budget",
@@ -302,7 +302,7 @@
       "b5costDemo": "Demo: ~0.0001 CHF",
       "b5costReliable": "Reliable: ~0.01 CHF",
       "b5costProven": "Guaranteed: ~700 CHF",
-      "b5costTip": "Three levels of demand for solving B5 (the state farthest from the goal, 31 moves away):\n• Demo (the agent often gets there): ~10⁷ steps ≈ 0.0001 CHF.\n• Reliable (≥95% of runs succeed near the optimum): ~10⁹–10¹⁰ steps ≈ 0.01–0.1 CHF.\n• Guaranteed (the agent plays near-perfectly everywhere): ~7×10¹³ steps ≈ 700 CHF.\nBetween 'reliable' and 'guaranteed', five orders of magnitude: that's where real RL practice lives."
+      "b5costTip": "Three levels of demand for solving B5 (the state farthest from the goal, 31 moves away):\n• Demo (the agent often gets there): ~10⁶ steps ≈ 0.00001 CHF.\n• Reliable (≥95% of runs succeed near the optimum): ~10⁹–10¹⁰ steps ≈ 0.01–0.1 CHF.\n• Guaranteed (the agent plays near-perfectly everywhere): ~7×10¹³ steps ≈ 700 CHF.\nBetween 'reliable' and 'guaranteed', five orders of magnitude: that's where real RL practice lives."
     },
     "btn": {
       "stepOnce": "Step (one update)",

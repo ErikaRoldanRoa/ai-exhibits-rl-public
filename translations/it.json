@@ -191,7 +191,7 @@
       "h2x2": "Missione I — Puzzle 2×2 (12 stati)",
       "h2x3": "Missione II — Puzzle 2×3 (360 stati)",
       "h3x3": "Missione III — Puzzle 3×3 (181.440 stati)",
-      "tip": "🏆 <strong>Numero di Dio</strong> = diametro del grafo degli stati raggiungibili: numero di mosse per risolvere lo stato di partenza <em>peggiore</em> giocando in modo perfetto.",
+      "tip": "🏆 <strong>Numero di Dio</strong> = il numero ottimo di mosse per risolvere il <em>peggior</em> stato iniziale — l'eccentricità dell'obiettivo nel grafo degli stati raggiungibili. Su questi grafi molto regolari, coincide con il diametro.",
       "hook2x2": "L'intero mondo entra in una pagina · costruisci la tabella Q a mano.",
       "hook2x3": "360 stati · 30× più della Missione I · coprire lo spazio comincia a costare.",
       "hook3x3": "181.440 stati · 504× la Missione II, 15 000× la Missione I · stesso algoritmo, spazio troppo vasto.",
@@ -234,7 +234,7 @@
       "2": "<strong>00:15–00:35</strong> — Fase 1 · Missione I (2×2, 12 stati): mappare lo spazio delle configurazioni e l'orbita di parità, costruire una tabella Q a mano su carta.",
       "3": "<strong>00:35–01:05</strong> — Fase 2 · Missione II (2×3, 360 stati, Numero di Dio=21): allenare l'agente; osservare episodi, decrescita di ε e propagazione dei valori Q dall'obiettivo.",
       "4": "<strong>01:05–01:15</strong> — Pausa.",
-      "5": "<strong>01:15–01:45</strong> — Missione III — 3×3, il torneo · nominare la maledizione della dimensione: stesso algoritmo, lo spazio è semplicemente diventato troppo vasto per essere visitato.",
+      "5": "<strong>01:15–01:45</strong> — Missione III — 3×3, la sfida finale · nominare la maledizione della dimensione: stesso algoritmo, lo spazio è semplicemente diventato troppo vasto per essere visitato.",
       "6": "<strong>01:45–02:00</strong> — Riflessione &amp; collegamenti con il mondo reale."
     },
     "params": {
@@ -302,7 +302,7 @@
       "b5costDemo": "Demo: ~0,0001 CHF",
       "b5costReliable": "Affidabile: ~0,01 CHF",
       "b5costProven": "Garantito: ~700 CHF",
-      "b5costTip": "Tre livelli di esigenza per risolvere B5 (lo stato più lontano dall'obiettivo, a 31 mosse):\n• Demo (l'agente ci arriva spesso): ~10⁷ passi ≈ 0,0001 CHF.\n• Affidabile (≥95% delle prove riesce vicino all'ottimo): ~10⁹–10¹⁰ passi ≈ 0,01–0,1 CHF.\n• Garantita (l'agente gioca quasi perfettamente ovunque): ~7×10¹³ passi ≈ 700 CHF.\nTra «affidabile» e «garantita», cinque ordini di grandezza: è lì che vive la pratica reale del RL."
+      "b5costTip": "Tre livelli di esigenza per risolvere B5 (lo stato più lontano dall'obiettivo, a 31 mosse):\n• Demo (l'agente ci arriva spesso): ~10⁶ passi ≈ 0,00001 CHF.\n• Affidabile (≥95% delle prove riesce vicino all'ottimo): ~10⁹–10¹⁰ passi ≈ 0,01–0,1 CHF.\n• Garantita (l'agente gioca quasi perfettamente ovunque): ~7×10¹³ passi ≈ 700 CHF.\nTra «affidabile» e «garantito», cinque ordini di grandezza: è lì che vive la pratica reale del RL."
     },
     "btn": {
       "stepOnce": "Passo (un aggiornamento)",
@@ -588,11 +588,11 @@
       "algoBody": " Con 360 stati la tabella non sta più su un tovagliolo. Lancia l'addestramento e osserva Q risalire dall'obiettivo, episodio dopo episodio.",
       "notes": {
         "1": "3 min · transizione · aprire Missione II; indicare l'indicatore di copertura su 360 stati.",
-        "2": "5 min · osserva · allena e guarda l'indicatore salire, Q propagarsi backward dall'obiettivo.",
+        "2": "5 min · osserva · allena e guarda l'indicatore salire, Q propagarsi all'indietro dall'obiettivo.",
         "3": "14 min · 3 tentativi · α≈0,3 · γ≈0,95 · ε≈0,4 · 2 000 episodi; benchmarkare B1→B5.",
         "4": "3 min · debriefing · ε > 0 mantiene viva l'esplorazione; γ vicino a 1 trasporta la ricompensa lontano."
       },
-      "bridge": "Da Missione I · La tabella Q non sta più su un tovagliolo. 360 stati: osserva la propagazione backward episodio dopo episodio."
+      "bridge": "Da Missione I · La tabella Q non sta più su un tovagliolo. 360 stati: osserva la propagazione all'indietro episodio dopo episodio."
     },
     "m3": {
       "chip": "Missione III · Kit del laboratorio",

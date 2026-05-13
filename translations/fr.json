@@ -191,7 +191,7 @@
       "h2x2": "Mission I — Puzzle 2×2 (12 états)",
       "h2x3": "Mission II — Puzzle 2×3 (360 états)",
       "h3x3": "Mission III — Puzzle 3×3 (181 440 états)",
-      "tip": "🏆 <strong>Nombre de Dieu</strong> = diamètre du graphe des états accessibles : nombre de coups pour résoudre le <em>pire</em> état de départ si l'on joue parfaitement.",
+      "tip": "🏆 <strong>Nombre de Dieu</strong> = nombre de coups optimaux pour résoudre le <em>pire</em> état de départ — l'excentricité de l'objectif dans le graphe des états accessibles. Sur ces graphes très réguliers, cela coïncide avec le diamètre.",
       "hook2x2": "Le monde entier tient sur une serviette · construis la table Q à la main.",
       "hook2x3": "360 états · 30× plus que la Mission I · couvrir l'espace commence à coûter.",
       "hook3x3": "181 440 états · 504× la Mission II, 15 000× la Mission I · même algorithme, espace trop vaste.",
@@ -216,7 +216,7 @@
     "footer": "AI-Exhibits · D<sup>r</sup> Erika Roldán · 2026"
   },
   "quickstart": {
-    "title": "🎓 Démarrage rapide — Facilitatrice",
+    "title": "🎓 Démarrage rapide — Animatrice",
     "intro": "Atelier de 2 h sur l'apprentissage par renforcement avec des taquins. Ce guide condense l'essentiel.",
     "h": {
       "before": "Avant l'atelier",
@@ -302,7 +302,7 @@
       "b5costDemo": "Démo : ~0,0001 CHF",
       "b5costReliable": "Fiable : ~0,01 CHF",
       "b5costProven": "Garantie : ~700 CHF",
-      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ 0,0001 CHF.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF.\nEntre « fiable » et « garantie », cinq ordres de grandeur : c'est là que vit la pratique réelle du RL."
+      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁶ pas ≈ 0,00001 CHF.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF.\nEntre « fiable » et « garantie », cinq ordres de grandeur : c'est là que vit la pratique réelle du RL."
     },
     "btn": {
       "stepOnce": "Pas (une mise à jour)",
@@ -588,11 +588,11 @@
       "algoBody": " Avec 360 états, la table ne tient plus sur une serviette. Lance l'entraînement et regarde Q remonter depuis l'objectif, épisode après épisode.",
       "notes": {
         "1": "3 min · transition · ouvrir Mission II ; pointer la jauge de couverture sur 360 états.",
-        "2": "5 min · observation · entraîner et regarder la jauge monter, Q se propager backward depuis l'objectif.",
+        "2": "5 min · observation · entraîner et regarder la jauge monter, Q se propager à rebours depuis l'objectif.",
         "3": "14 min · 3 essais · α≈0,3 · γ≈0,95 · ε≈0,4 · 2 000 épisodes ; benchmarker B1→B5.",
         "4": "3 min · débrief · ε > 0 maintient l'exploration ; γ proche de 1 propage la récompense loin."
       },
-      "bridge": "Depuis Mission I · La table Q ne tient plus sur une serviette. 360 états : tu vois la propagation backward agir épisode après épisode."
+      "bridge": "Depuis Mission I · La table Q ne tient plus sur une serviette. 360 états : tu vois la propagation à rebours agir épisode après épisode."
     },
     "m3": {
       "chip": "Mission III · Kit atelier",
@@ -640,7 +640,7 @@
     "tune": {
       "title": "Régler les trois boutons",
       "alpha": "élevé : apprend vite mais peut osciller · faible : stable mais lent",
-      "gamma": "élevé : planifie loin (plus de propagation backward) · faible : myope",
+      "gamma": "élevé : planifie loin (plus de propagation à rebours) · faible : myope",
       "epsilon": "élevé : explore davantage · trop bas trop tôt : se fige sur un choix initial"
     },
     "strip": {
@@ -667,8 +667,8 @@
     "troubleshooting": {
       "title": "Si ça coince",
       "coverage": "Couverture stagne · ε trop bas, ou pas assez d'épisodes. Augmente ε vers 0,4–0,5 et relance.",
-      "greedy": "Greedy échoue · ε figé à 0 trop tôt, ou Q n'a pas convergé. Réinitialiser Q, repartir avec plus d'épisodes.",
-      "runaway": "Entraînement runaway · vérifie le maximum d'épisodes (M1 = 2 000, M2 = 20 000, M3 = 50 000)."
+      "greedy": "Le mode glouton échoue · ε figé à 0 trop tôt, ou Q n'a pas convergé. Réinitialiser Q, repartir avec plus d'épisodes.",
+      "runaway": "Entraînement qui s'emballe · vérifie le maximum d'épisodes (M1 = 2 000, M2 = 20 000, M3 = 50 000)."
     }
   },
   "fe": {

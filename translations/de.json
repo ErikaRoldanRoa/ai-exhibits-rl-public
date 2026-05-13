@@ -50,7 +50,7 @@
         "b3Tooltip": "⭐⭐⭐ 3 Züge",
         "b4Tooltip": "⭐⭐⭐⭐ 4 Züge",
         "b5Tooltip": "⭐⭐⭐⭐⭐ 5 Züge",
-        "b6Tooltip": "🏆 6 Züge — Gottes Zahl!"
+        "b6Tooltip": "🏆 6 Züge — Gottes-Zahl!"
       },
       "subtitle": "12 Zustände · die ganze Welt auf einer Serviette · Q-Tabelle von Hand bauen"
     },
@@ -61,7 +61,7 @@
         "b2Tooltip": "⭐⭐ 3 Züge",
         "b3Tooltip": "⭐⭐⭐ 6 Züge",
         "b4Tooltip": "⭐⭐⭐⭐ 9 Züge",
-        "b5Tooltip": "🏆 21 Züge — Gottes Zahl!"
+        "b5Tooltip": "🏆 21 Züge — Gottes-Zahl!"
       },
       "subtitle": "360 Zustände · zu groß für eine Serviette · sieh Q vom Ziel zurückwandern"
     },
@@ -72,7 +72,7 @@
         "b2Tooltip": "⭐⭐ 10 Züge",
         "b3Tooltip": "⭐⭐⭐ 18 Züge",
         "b4Tooltip": "⭐⭐⭐⭐ 26 Züge",
-        "b5Tooltip": "🏆 31 Züge — Gottes Zahl!"
+        "b5Tooltip": "🏆 31 Züge — Gottes-Zahl!"
       },
       "subtitle": "181.440 Zustände · eine Q-Lernende, ein Fluch · der Algorithmus trifft auf die Dimensionalität"
     },
@@ -96,7 +96,7 @@
     },
     "facTools": {
       "tag": "MODERATION",
-      "title": "Animatrice-Dashboard",
+      "title": "Moderationswerkzeuge",
       "desc": "Ein druckbares Kit pro Mission: Glossar, Referenzen, Versuchstabelle, Notizen für die Leitung. Ein Team-Bewertungsbogen fasst die drei Missionen auf einer Serviette zusammen.",
       "kit1": "Kit Mission I · 20 min",
       "kit2": "Kit Mission II · 25 min",
@@ -187,11 +187,11 @@
       "tip4": "<strong>Zum Testen</strong>: <span class=\"sym-epsilon\">ε</span> = 0 setzen (rein greedy — die Agent*in exploriert nicht mehr)"
     },
     "card3": {
-      "title": "🏆 Benchmarks & Gottes Zahl",
+      "title": "🏆 Benchmarks & Gottes-Zahl",
       "h2x2": "Mission I — Puzzle 2×2 (12 Zustände)",
       "h2x3": "Mission II — Puzzle 2×3 (360 Zustände)",
       "h3x3": "Mission III — Puzzle 3×3 (181.440 Zustände)",
-      "tip": "🏆 <strong>Gottes Zahl</strong> = Durchmesser des Graphen der erreichbaren Zustände: die Anzahl Züge, um den <em>schwierigsten</em> Startzustand bei perfektem Spiel zu lösen.",
+      "tip": "🏆 <strong>Gottes-Zahl</strong> = die optimale Zugzahl, um den <em>schlimmsten</em> Startzustand zu lösen — die Exzentrizität des Ziels im Graphen der erreichbaren Zustände. Auf diesen regelmäßigen Graphen entspricht sie dem Durchmesser.",
       "hook2x2": "Die ganze Welt auf einer Serviette · Q-Tabelle von Hand bauen.",
       "hook2x3": "360 Zustände · 30× mehr als Mission I · den Raum zu durchqueren beginnt zu kosten.",
       "hook3x3": "181.440 Zustände · 504× Mission II, 15.000× Mission I · gleicher Algorithmus, Raum zu weit.",
@@ -207,7 +207,7 @@
       "step5": "<strong>Testen</strong>: auf „Lösen (greedy)\" klicken",
       "step6": "<strong>Vergleichen</strong>: Züge gegen theoretisches Minimum",
       "step7": "<strong>Feintunen</strong>: Parameter anpassen, weiter trainieren",
-      "step8": "<strong>Herausforderung</strong>: Schaffst du Gottes Zahl?",
+      "step8": "<strong>Herausforderung</strong>: Schaffst du Gottes-Zahl?",
       "troubleshoot": "Bei Problemen",
       "t1": "<strong>Agent*in findet die Lösung nicht?</strong> Mehr trainieren (1000+ Episoden)",
       "t2": "<strong>Q-Tabelle leer?</strong> Prüfen, dass <span class=\"sym-alpha\">α</span> ≠ 0",
@@ -232,7 +232,7 @@
     "flow": {
       "1": "<strong>00:00–00:15</strong> — Einstieg &amp; Rahmen: trainiere eine KI, der du beim Lernen zuschaust.",
       "2": "<strong>00:15–00:35</strong> — Phase 1 · Mission I (2×2, 12 Zustände): den Konfigurationsraum und die Paritätsbahn kartieren, eine Q-Tabelle von Hand auf Papier bauen.",
-      "3": "<strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 Zustände, Gottes Zahl=21): Agent*in trainieren; Episoden, ε-Abnahme und die Rückwanderung der Q-Werte vom Ziel beobachten.",
+      "3": "<strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 Zustände, Gottes-Zahl=21): Agent*in trainieren; Episoden, ε-Abnahme und die Rückwanderung der Q-Werte vom Ziel beobachten.",
       "4": "<strong>01:05–01:15</strong> — Pause.",
       "5": "<strong>01:15–01:45</strong> — Mission III — 3×3, das Turnier · den Fluch der Dimension benennen: gleicher Algorithmus, der Raum ist nur zu weit geworden, um ihn zu durchwandern.",
       "6": "<strong>01:45–02:00</strong> — Reflexion &amp; Alltagsbezug."
@@ -301,8 +301,8 @@
       "b5cost": "Kosten bis B5",
       "b5costDemo": "Demo: ~0,0001 CHF",
       "b5costReliable": "Verlässlich: ~0,01 CHF",
-      "b5costProven": "Garantie: ~700 CHF",
-      "b5costTip": "Drei Anspruchsstufen, um B5 zu lösen (der Zustand am weitesten vom Ziel, 31 Züge entfernt):\n• Demo (die Agentin schafft es oft): ~10⁷ Schritte ≈ 0,0001 CHF.\n• Zuverlässig (≥95 % der Läufe gelingen nahe am Optimum): ~10⁹–10¹⁰ Schritte ≈ 0,01–0,1 CHF.\n• Garantiert (die Agentin spielt überall fast perfekt): ~7×10¹³ Schritte ≈ 700 CHF.\nZwischen „zuverlässig“ und „garantiert“ liegen fünf Größenordnungen: dort spielt sich die reale RL-Praxis ab."
+      "b5costProven": "Garantiert: ~700 CHF",
+      "b5costTip": "Drei Anspruchsstufen, um B5 zu lösen (der Zustand am weitesten vom Ziel, 31 Züge entfernt):\n• Demo (die Agentin schafft es oft): ~10⁶ Schritte ≈ 0,00001 CHF.\n• Zuverlässig (≥95 % der Läufe gelingen nahe am Optimum): ~10⁹–10¹⁰ Schritte ≈ 0,01–0,1 CHF.\n• Garantiert (die Agentin spielt überall fast perfekt): ~7×10¹³ Schritte ≈ 700 CHF.\nZwischen „zuverlässig“ und „garantiert“ liegen fünf Größenordnungen: dort spielt sich die reale RL-Praxis ab."
     },
     "btn": {
       "stepOnce": "Schritt (ein Update)",
@@ -391,7 +391,7 @@
     "puzzleAria": "2×2-Schiebepuzzle",
     "inspect": {
       "title": "Untersuchen",
-      "subtitle": "Fahren Sie mit der Maus über die Kanten des Graphen, um Übergangsdetails zu sehen."
+      "subtitle": "Fahre mit der Maus über die Kanten des Graphen, um die Übergänge zu sehen."
     },
     "view": {
       "selectorAria": "Ansichts-Auswahl im rechten Panel",
@@ -437,8 +437,8 @@
       "b3Tip": "⭐⭐⭐ Schwer: Ecken-Herausforderung (3 Züge)",
       "b4Tip": "⭐⭐⭐⭐ Sehr schwer: Tiefe Planung (4 Züge)",
       "b5Tip": "⭐⭐⭐⭐⭐ Expert*in: Maximale Suche (5 Züge)",
-      "b6Tip": "🏆 Gottes Zahl! Ultimative Herausforderung (6 Züge)",
-      "titleTip": "Lade einen festen Startzustand und lass die aktuelle Agent*in darauf laufen (greedy, ohne Lernen). Der beste Score pro Benchmark wird in diesem Browser gespeichert.\nTheoretisches Minimum an Zügen: B1: 1 | B2: 2 | B3: 3 | B4: 4 | B5: 5 | B6: 6 (Gottes Zahl)."
+      "b6Tip": "🏆 Gottes-Zahl! Ultimative Herausforderung (6 Züge)",
+      "titleTip": "Lade einen festen Startzustand und lass die aktuelle Agent*in darauf laufen (greedy, ohne Lernen). Der beste Score pro Benchmark wird in diesem Browser gespeichert.\nTheoretisches Minimum an Zügen: B1: 1 | B2: 2 | B3: 3 | B4: 4 | B5: 5 | B6: 6 (Gottes-Zahl)."
     },
     "reachableStatesCount": "12",
     "godsNumber": "6",
@@ -461,8 +461,8 @@
       "b2Tip": "⭐⭐ Mittel: Wert-Ausbreitung (3 Züge)",
       "b3Tip": "⭐⭐⭐ Schwer: Mehrschritt-Planung (6 Züge)",
       "b4Tip": "⭐⭐⭐⭐ Sehr schwer: Tiefe Suche (9 Züge)",
-      "b5Tip": "🏆 Gottes Zahl! Ultimative Herausforderung (21 Züge)",
-      "titleTip": "Lade einen festen Startzustand und lass die aktuelle Agent*in darauf laufen (greedy, ohne Lernen). Der beste Score pro Benchmark wird in diesem Browser gespeichert.\nTheoretisches Minimum an Zügen: B1: 1 | B2: 3 | B3: 6 | B4: 9 | B5: 21 (Gottes Zahl)."
+      "b5Tip": "🏆 Gottes-Zahl! Ultimative Herausforderung (21 Züge)",
+      "titleTip": "Lade einen festen Startzustand und lass die aktuelle Agent*in darauf laufen (greedy, ohne Lernen). Der beste Score pro Benchmark wird in diesem Browser gespeichert.\nTheoretisches Minimum an Zügen: B1: 1 | B2: 3 | B3: 6 | B4: 9 | B5: 21 (Gottes-Zahl)."
     },
     "reachableStatesCount": "360",
     "godsNumber": "21",
@@ -483,7 +483,7 @@
     },
     "params": {
       "episodesTip": "Episoden = Anzahl der Trainingsversuche.\nVersuche 1000–3000, um Q vom Ziel ausbreiten zu sehen.\nBei höherem ε E erhöhen.",
-      "maxStepsTip": "Max. Schritte = Zugbudget pro Episode.\nMuss G = 21 (Gottes Zahl) übersteigen.\nVersuche 45–90 für 2×3.",
+      "maxStepsTip": "Max. Schritte = Zugbudget pro Episode.\nMuss G = 21 (Gottes-Zahl) übersteigen.\nVersuche 45–90 für 2×3.",
       "alphaTip": "α steuert, wie stark neue Belege Q aktualisieren.\nQ ← Q + α(Ziel−Q).\n0,05–0,2: stabil, aber langsam.\n0,2–0,4: ausgewogen bei 360 Zuständen.\n>0,6: Werte oszillieren.",
       "gammaTip": "γ steuert, wie stark zukünftige Belohnungen zählen.\nBei 21 Zügen Tiefe γ ≈ 0,95–0,99.\nγ < 0,9 → Belohnung erreicht nicht weit genug.",
       "epsilonTip": "ε = Wahrscheinlichkeit eines zufälligen legalen Zugs.\nVersuche 0,1–0,3, um 360 Zustände zu erkunden.\nε = 0 zu früh → ganze Regionen bleiben bei Q = 0."
@@ -499,8 +499,8 @@
       "b2Tip": "⭐⭐ Mittel: Wachsende Herausforderung (10 Züge)",
       "b3Tip": "⭐⭐⭐ Schwer: Tiefe Planung (18 Züge)",
       "b4Tip": "⭐⭐⭐⭐ Sehr schwer: Expert*innen-Niveau (26 Züge)",
-      "b5Tip": "🏆 Gottes Zahl! Ultimative Herausforderung (31 Züge)",
-      "titleTip": "Lade einen festen Startzustand und lass die aktuelle Agent*in darauf laufen (greedy, ohne Lernen). Der beste Score pro Benchmark wird in diesem Browser gespeichert.\nTheoretisches Minimum an Zügen: B1: 1 | B2: 10 | B3: 18 | B4: 26 | B5: 31 (Gottes Zahl)."
+      "b5Tip": "🏆 Gottes-Zahl! Ultimative Herausforderung (31 Züge)",
+      "titleTip": "Lade einen festen Startzustand und lass die aktuelle Agent*in darauf laufen (greedy, ohne Lernen). Der beste Score pro Benchmark wird in diesem Browser gespeichert.\nTheoretisches Minimum an Zügen: B1: 1 | B2: 10 | B3: 18 | B4: 26 | B5: 31 (Gottes-Zahl)."
     },
     "reachableStatesCount": "181.440",
     "godsNumber": "31",
@@ -526,7 +526,7 @@
     },
     "params": {
       "episodesTip": "Episoden = Anzahl der Trainingsversuche.\nVersuche 5000–20000, um die Abdeckung wachsen zu lassen.\n181.440 Zustände: Abdeckung steigt langsam.",
-      "maxStepsTip": "Max. Schritte = Zugbudget pro Episode.\nMuss G = 31 (Gottes Zahl) übersteigen.\nVersuche 60–150 für 3×3.",
+      "maxStepsTip": "Max. Schritte = Zugbudget pro Episode.\nMuss G = 31 (Gottes-Zahl) übersteigen.\nVersuche 60–150 für 3×3.",
       "alphaTip": "α steuert, wie stark neue Belege Q aktualisieren.\nQ ← Q + α(Ziel−Q).\n0,05–0,2: stabil. Seltene Besuche → kleines α dämpft Rauschen.\n0,2–0,4: schneller, aber oszillierend.\n>0,5: bei dieser Größe nicht empfohlen.",
       "gammaTip": "γ steuert, wie stark zukünftige Belohnungen zählen.\nBei 31 Zügen Tiefe γ ≈ 0,95–0,99.\nγ zu niedrig → Zielwert erreicht entfernte Zustände nicht.",
       "epsilonTip": "ε = Wahrscheinlichkeit eines zufälligen legalen Zugs.\nVersuche 0,1–0,3.\n181.440 Zustände abzudecken: ε zu niedrig → ganze Regionen nie besucht."
@@ -550,12 +550,12 @@
     "facKeywordPrompt": "Moderator-Schlüsselwort",
     "facKeywordPlaceholder": "pro Event — von Erika bereitgestellt",
     "facKeywordChecking": "Überprüfung…",
-    "facKeywordOk": "✓ Animatrice-Modus aktiviert",
+    "facKeywordOk": "✓ Moderationsmodus aktiviert",
     "facKeywordBad": "✗ Ungültiges Schlüsselwort",
     "eventChecking": "Wird überprüft…",
     "eventOk": "✓ Veranstaltung erkannt: {name}",
     "eventBad": "✗ Unbekannter Veranstaltungscode",
-    "facLink": "Moderator·in →",
+    "facLink": "Moderator*in →",
     "facBackLink": "← Zurück",
     "facTitle": "Moderator-Modus",
     "facContinueBtn": "Eintreten",
@@ -577,7 +577,7 @@
       "notes": {
         "1": "5 min · Aufhänger · 🎲 auf der 2×2-Mini-Karte zeigen. Vergleich Du · Zufall — das ist das Warum.",
         "2": "5 min · Kartierung · 12 erreichbare Zustände, Q-Tabelle auf Serviette (12 × 2 = 24 Zeilen max).",
-        "3": "8 min · trainieren · α≈0,5 · γ≈0,9 · ε≈0,3 · 300 Episoden; B6 anvisieren (Gottes Zahl, 6 Züge).",
+        "3": "8 min · trainieren · α≈0,5 · γ≈0,9 · ε≈0,3 · 300 Episoden; B6 anvisieren (Gottes-Zahl, 6 Züge).",
         "4": "2 min · Nachbesprechung · der Agent hat eine optimale Politik auf einer winzigen Welt gelernt. Brücke zu Mission II."
       }
     },
@@ -610,13 +610,13 @@
     "facts": {
       "title": "Die Welt dieser Mission",
       "states": "Erreichbare Zustände",
-      "gods": "Gottes Zahl",
+      "gods": "Gottes-Zahl",
       "qsize": "Q-Tabelle"
     },
     "bench": {
       "title": "Referenzen",
       "hint": "B<em>k</em> = ein Startzustand mit <em>k</em> Zügen vom Ziel entfernt. Der optimale Abstand ist die Länge der kürzesten Lösung.",
-      "godsLabel": "Gottes Zahl"
+      "godsLabel": "Gottes-Zahl"
     },
     "race": {
       "title": "Das verborgene Rennen · 3 Versuche bei festem Budget",
@@ -685,15 +685,15 @@
     "total": "GESAMT",
     "m1": {
       "title": "Mission I · 2×2",
-      "gods": "Gottes Zahl: 6 · 6 Referenzen"
+      "gods": "Gottes-Zahl: 6 · 6 Referenzen"
     },
     "m2": {
       "title": "Mission II · 2×3",
-      "gods": "Gottes Zahl: 21 · 5 Referenzen"
+      "gods": "Gottes-Zahl: 21 · 5 Referenzen"
     },
     "m3": {
       "title": "Mission III · 3×3",
-      "gods": "Gottes Zahl: 31 · 5 Referenzen"
+      "gods": "Gottes-Zahl: 31 · 5 Referenzen"
     }
   },
   "feedback": {
