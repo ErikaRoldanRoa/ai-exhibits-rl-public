@@ -560,8 +560,8 @@
   </select>
   <button type="button" class="tutorialReplay" data-tooltip="Voir le tutoriel" data-i18n-data-tooltip="hub.tutorialReplay" data-tooltip-style="info" aria-label="Voir le tutoriel" data-i18n-aria-label="hub.tutorialReplay"
     onclick="try{const d=JSON.parse(localStorage.getItem('ai-exhibits-tutorial-completed')||'{}');delete d['2x2'];localStorage.setItem('ai-exhibits-tutorial-completed', JSON.stringify(d));localStorage.removeItem('ai-exhibits-tutorial-skip');}catch(e){}location.reload();">🎓</button>
+  <button type="button" id="fbBtn" class="tutorialReplay" data-tooltip="Suggérer une correction" data-i18n-data-tooltip="feedback.tooltip" data-tooltip-style="info" aria-label="Suggérer une correction" data-i18n-aria-label="feedback.tooltip">🔧</button>
   <a href="index.html" class="tutorialReplay" data-tooltip="Retour à l'accueil" data-i18n-data-tooltip="nav.backHome" data-tooltip-style="info" aria-label="Retour à l'accueil" data-i18n-aria-label="nav.backHome">🏠</a>
-  <button type="button" id="fbBtn" class="tutorialReplay" data-tooltip="Suggérer une correction" data-i18n-data-tooltip="feedback.suggestCorrection" data-tooltip-style="info" aria-label="Suggérer une correction" data-i18n-aria-label="feedback.suggestCorrection">🔧</button>
 </div>
 
 
@@ -2081,7 +2081,6 @@ const rline = document.createElement('div');
 </script>
 <script src="app/learn-cards-translations.js"></script>
 <script src="app/i18n.js"></script>
-<script src="app/feedback.js"></script>
 <script src="app/tooltips.js"></script>
 <script>
 
@@ -2146,5 +2145,6 @@ const rline = document.createElement('div');
   })();
 
 </script>
+<script src="app/feedback.js"></script>
 </body>
 </html>

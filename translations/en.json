@@ -697,6 +697,27 @@
     }
   },
   "feedback": {
-    "suggestCorrection": "Suggest a correction"
+    "tooltip": "Suggest a correction",
+    "title": "Suggest a correction",
+    "subtitle": "Spotted a typo or error? Tell us where and what — Dr. Roldán reviews every suggestion.",
+    "context": "Page:",
+    "langLabel": "Language:",
+    "type": "Issue type",
+    "type.translation": "Translation",
+    "type.factual": "Factual error",
+    "type.a11y": "Accessibility",
+    "type.brokenLink": "Broken link",
+    "type.other": "Other",
+    "issue": "What's wrong? *",
+    "fix": "Suggested fix",
+    "name": "Your name (optional)",
+    "email": "Your email (optional)",
+    "cancel": "Cancel",
+    "send": "Send",
+    "sending": "Sending…",
+    "thanks": "Thanks. Your suggestion has been recorded.",
+    "errEmpty": "Describe the issue in a few words.",
+    "errGeneric": "Failed. Try again later.",
+    "errNetwork": "Network error. Try again later."
   }
 }

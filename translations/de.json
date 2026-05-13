@@ -697,6 +697,27 @@
     }
   },
   "feedback": {
-    "suggestCorrection": "Korrektur vorschlagen"
+    "tooltip": "Korrektur vorschlagen",
+    "title": "Korrektur vorschlagen",
+    "subtitle": "Tippfehler oder Fehler entdeckt? Sag uns wo und was — Dr. Roldán prüft jeden Vorschlag.",
+    "context": "Seite:",
+    "langLabel": "Sprache:",
+    "type": "Fehlerart",
+    "type.translation": "Übersetzung",
+    "type.factual": "Sachfehler",
+    "type.a11y": "Barrierefreiheit",
+    "type.brokenLink": "Defekter Link",
+    "type.other": "Sonstiges",
+    "issue": "Was stimmt nicht? *",
+    "fix": "Vorgeschlagene Korrektur",
+    "name": "Dein Name (optional)",
+    "email": "Deine E-Mail (optional)",
+    "cancel": "Abbrechen",
+    "send": "Senden",
+    "sending": "Wird gesendet…",
+    "thanks": "Danke. Dein Vorschlag wurde gespeichert.",
+    "errEmpty": "Beschreibe den Fehler kurz.",
+    "errGeneric": "Fehlgeschlagen. Versuche es später erneut.",
+    "errNetwork": "Netzwerkfehler. Versuche es später erneut."
   }
 }

@@ -1,182 +1,233 @@
-/* ============================================================================
- * AI-Exhibits · Reinforcement Learning & Sliding Puzzles
- * Translation-feedback widget — suggests corrections via the user's mail client (no backend, no tracking).
- *
- * © 2026 Dr. Erika Roldán Roa. All rights reserved by the author.
- * Licensed: CC BY-NC-ND 4.0. See LICENSE.
- * ============================================================================ */
+/* =============================================================================
+   AI-Exhibits · Reinforcement Learning & Sliding Puzzles
 
-(function () {
-  'use strict';
+   🔧 Suggest a correction — backend-routed form.
 
-  const MAINTAINER = '[redacted]';
+   POSTs to the AI-Exhibits backend's `submitCorrection` action, which writes
+   a row to the Corrections Sheet tab. No mailto, no participant emails
+   exposed; reporter email is optional and only used if Dr. Roldán needs
+   clarification.
 
-  // The button is added once the DOM is ready.
+   © 2026 Dr. Erika Roldán Roa. CC BY-NC-ND 4.0.
+   ============================================================================= */
+(function(){
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxR84v8EDB4bV5icuTFLuRPZn5g0fwYmQd9fm0vPKkOGERLzldZwkV0JTup3UxFX5g/exec';
+
   function init() {
-    // The #fbBtn now lives in the HTML (inside langSelectorWrap top-left
-    // cluster with the other icon nav buttons). Just attach the click
-    // handler. Do nothing if the button isn't present (e.g. a future page
-    // that opts out).
     const btn = document.getElementById('fbBtn');
     if (!btn) return;
-    if (btn.dataset.fbWired === '1') return; // idempotent
-    btn.dataset.fbWired = '1';
     btn.addEventListener('click', openModal);
+  }
+
+  function tr(key, fallback) {
+    return (window.i18n && window.i18n.t) ? window.i18n.t(key, fallback) : fallback;
+  }
+  function currentLang() {
+    return (document.documentElement.lang || 'fr').slice(0, 2).toLowerCase();
   }
 
   function openModal() {
     if (document.getElementById('fbOverlay')) return;
-    const lang = (document.documentElement.lang || 'fr').toUpperCase();
-    const pageUrl = location.href;
-    const pageTitle = document.title || '(untitled)';
+    const lang = currentLang();
 
     const overlay = document.createElement('div');
     overlay.id = 'fbOverlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-labelledby', 'fbTitle');
     Object.assign(overlay.style, {
-      position: 'fixed',
-      inset: '0',
-      background: 'rgba(0,0,0,0.75)',
-      zIndex: '10000',
-      display: 'grid',
-      placeItems: 'center',
-      padding: '20px',
-      overflowY: 'auto'
+      position: 'fixed', inset: '0', zIndex: '99999',
+      background: 'rgba(0,0,0,0.78)', backdropFilter: 'blur(4px)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      padding: '24px',
+    });
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+
+    const card = document.createElement('div');
+    Object.assign(card.style, {
+      background: 'rgba(14, 11, 22, 0.98)',
+      border: '1px solid rgba(47, 243, 255, 0.35)',
+      borderRadius: '14px',
+      maxWidth: '560px', width: '100%',
+      maxHeight: '90vh', overflowY: 'auto',
+      padding: '22px 26px',
+      boxShadow: '0 20px 60px rgba(0,0,0,0.65)',
+      color: 'rgba(255,255,255,0.92)',
+      fontFamily: 'ui-sans-serif, system-ui, sans-serif',
     });
 
-    overlay.innerHTML = `
-      <div role="dialog" aria-modal="true" aria-labelledby="fbTitle"
-        style="background:#0b0714; color:rgba(255,255,255,0.92); padding:26px 28px; border-radius:18px;
-               max-width:560px; width:100%; box-shadow: 0 24px 64px rgba(0,0,0,0.6);
-               font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-               border:1px solid rgba(47,243,255,0.25);">
-        <h3 id="fbTitle" style="margin:0 0 6px; font-size:20px; font-weight:900;">
-          🔧 Suggest a correction
-        </h3>
-        <p style="margin:0 0 16px; font-size:13px; color:rgba(255,255,255,0.65); line-height:1.45;">
-          Help us improve the <strong>${lang}</strong> content. Fill the fields below — clicking "Send" opens your
-          email client with a prepared message. Dr. Roldán reviews every suggestion and applies
-          approved changes to the repo.
-        </p>
-        <label style="display:block;margin:12px 0 4px;font-size:12px;font-weight:700;letter-spacing:0.3px;color:rgba(47,243,255,0.9);">
-          Current text · what you see on the page
-        </label>
-        <textarea id="fbOrig" rows="2" style="${inputStyle()}"></textarea>
+    const title = document.createElement('h3');
+    title.id = 'fbTitle';
+    title.textContent = '🔧 ' + tr('feedback.title', 'Suggérer une correction');
+    Object.assign(title.style, { margin: '0 0 6px 0', fontSize: '18px', fontWeight: '700', color: 'rgba(47,243,255,0.95)' });
+    card.appendChild(title);
 
-        <label style="display:block;margin:12px 0 4px;font-size:12px;font-weight:700;letter-spacing:0.3px;color:rgba(112,255,122,0.9);">
-          Proposed text ·  what it should say
-        </label>
-        <textarea id="fbProp" rows="2" style="${inputStyle()}" required></textarea>
+    const sub = document.createElement('div');
+    sub.textContent = tr('feedback.subtitle',
+      "Repérez une coquille ou une erreur ? Dites-nous où et quoi — Dr. Roldán examine chaque suggestion.");
+    Object.assign(sub.style, { fontSize: '12px', color: 'rgba(255,255,255,0.65)', marginBottom: '14px', lineHeight: '1.5' });
+    card.appendChild(sub);
 
-        <label style="display:block;margin:12px 0 4px;font-size:12px;font-weight:700;letter-spacing:0.3px;color:rgba(255,255,255,0.7);">
-          Your name (optional) ·  for attribution in the commit
-        </label>
-        <input id="fbName" type="text" style="${inputStyle()}" placeholder="First name · Institution" />
+    const mkLabel = (txt) => {
+      const l = document.createElement('label');
+      l.textContent = txt;
+      Object.assign(l.style, { display: 'block', fontSize: '11px', color: 'rgba(255,255,255,0.7)', marginBottom: '4px', marginTop: '12px', letterSpacing: '0.3px' });
+      return l;
+    };
+    const mkInputStyles = {
+      width: '100%', padding: '9px 11px',
+      background: 'rgba(7,6,10,0.85)',
+      border: '1px solid rgba(255,255,255,0.16)',
+      borderRadius: '8px',
+      color: 'rgba(255,255,255,0.92)',
+      fontSize: '13px', fontFamily: 'inherit',
+      outline: 'none', boxSizing: 'border-box',
+    };
 
-        <label style="display:block;margin:12px 0 4px;font-size:12px;font-weight:700;letter-spacing:0.3px;color:rgba(255,255,255,0.7);">
-          Note (optional) ·  dialect, register, technical precision
-        </label>
-        <textarea id="fbNote" rows="2" style="${inputStyle()}"></textarea>
+    // Context — auto-filled, not editable
+    const ctx = document.createElement('div');
+    ctx.textContent = tr('feedback.context', 'Page :') + ' ' + location.pathname + '  ·  ' + tr('feedback.langLabel', 'Langue :') + ' ' + lang.toUpperCase();
+    Object.assign(ctx.style, { fontFamily: 'ui-monospace, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.55)', padding: '6px 10px', background: 'rgba(0,0,0,0.3)', borderRadius: '6px', marginBottom: '4px' });
+    card.appendChild(ctx);
 
-        <div style="display:flex;justify-content:space-between;margin-top:20px;gap:12px;">
-          <button id="fbCancel" type="button" style="${cancelStyle()}">Cancel</button>
-          <button id="fbSend" type="button" style="${sendStyle()}">Open email →</button>
-        </div>
-      </div>
-    `;
+    // Issue type
+    card.appendChild(mkLabel(tr('feedback.type', "Type d'erreur")));
+    const typeSel = document.createElement('select');
+    Object.assign(typeSel.style, mkInputStyles);
+    typeSel.style.appearance = 'none';
+    typeSel.innerHTML =
+      '<option value="translation">' + tr('feedback.type.translation', 'Traduction') + '</option>' +
+      '<option value="factual">' + tr('feedback.type.factual', 'Erreur factuelle') + '</option>' +
+      '<option value="accessibility">' + tr('feedback.type.a11y', 'Accessibilité') + '</option>' +
+      '<option value="broken-link">' + tr('feedback.type.brokenLink', 'Lien cassé') + '</option>' +
+      '<option value="other">' + tr('feedback.type.other', 'Autre') + '</option>';
+    card.appendChild(typeSel);
 
-    document.body.appendChild(overlay);
-    document.getElementById('fbOrig').focus();
+    // What's wrong
+    card.appendChild(mkLabel(tr('feedback.issue', "Qu'est-ce qui ne va pas ? *")));
+    const issueText = document.createElement('textarea');
+    Object.assign(issueText.style, mkInputStyles, { minHeight: '70px', resize: 'vertical' });
+    issueText.maxLength = 1000;
+    card.appendChild(issueText);
 
-    document.getElementById('fbCancel').addEventListener('click', close);
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
-    document.addEventListener('keydown', escClose);
+    // Suggested fix
+    card.appendChild(mkLabel(tr('feedback.fix', 'Suggestion de correction')));
+    const fixText = document.createElement('textarea');
+    Object.assign(fixText.style, mkInputStyles, { minHeight: '70px', resize: 'vertical' });
+    fixText.maxLength = 1000;
+    card.appendChild(fixText);
 
-    document.getElementById('fbSend').addEventListener('click', () => {
-      const orig = document.getElementById('fbOrig').value.trim();
-      const prop = document.getElementById('fbProp').value.trim();
-      const name = document.getElementById('fbName').value.trim();
-      const note = document.getElementById('fbNote').value.trim();
-      if (!prop) {
-        alert('Please enter the proposed text.');
-        document.getElementById('fbProp').focus();
+    // Optional reporter
+    const reporterRow = document.createElement('div');
+    Object.assign(reporterRow.style, { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginTop: '4px' });
+    const nameWrap = document.createElement('div');
+    nameWrap.appendChild(mkLabel(tr('feedback.name', 'Votre nom (optionnel)')));
+    const nameInp = document.createElement('input');
+    nameInp.type = 'text'; nameInp.maxLength = 100;
+    Object.assign(nameInp.style, mkInputStyles);
+    nameWrap.appendChild(nameInp);
+    const emailWrap = document.createElement('div');
+    emailWrap.appendChild(mkLabel(tr('feedback.email', 'Votre email (optionnel)')));
+    const emailInp = document.createElement('input');
+    emailInp.type = 'email'; emailInp.maxLength = 120;
+    Object.assign(emailInp.style, mkInputStyles);
+    emailWrap.appendChild(emailInp);
+    reporterRow.appendChild(nameWrap);
+    reporterRow.appendChild(emailWrap);
+    card.appendChild(reporterRow);
+
+    // Honeypot
+    const hp = document.createElement('input');
+    hp.type = 'text'; hp.name = 'hp';
+    Object.assign(hp.style, { position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: '0', pointerEvents: 'none' });
+    hp.setAttribute('tabindex', '-1');
+    hp.setAttribute('aria-hidden', 'true');
+    card.appendChild(hp);
+
+    // Status pill
+    const status = document.createElement('div');
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    Object.assign(status.style, { fontSize: '12px', minHeight: '18px', margin: '12px 0 4px', textAlign: 'center', fontWeight: '600' });
+    card.appendChild(status);
+    const setStatus = (state, text) => {
+      status.textContent = text || '';
+      const colors = { ok: 'rgba(112,255,138,0.95)', bad: 'rgba(255,138,138,0.95)', checking: 'rgba(255,255,255,0.7)' };
+      status.style.color = colors[state] || '';
+    };
+
+    // Actions
+    const actions = document.createElement('div');
+    Object.assign(actions.style, { display: 'flex', justifyContent: 'flex-end', gap: '8px', marginTop: '12px' });
+    const cancelBtn = document.createElement('button');
+    cancelBtn.type = 'button';
+    cancelBtn.textContent = tr('feedback.cancel', 'Annuler');
+    Object.assign(cancelBtn.style, { padding: '10px 18px', borderRadius: '999px', border: '1px solid rgba(255,255,255,0.18)', background: 'transparent', color: 'rgba(255,255,255,0.85)', cursor: 'pointer', fontSize: '13px' });
+    cancelBtn.addEventListener('click', close);
+
+    const sendBtn = document.createElement('button');
+    sendBtn.type = 'button';
+    sendBtn.textContent = tr('feedback.send', 'Envoyer');
+    Object.assign(sendBtn.style, { padding: '10px 22px', borderRadius: '999px', border: '1px solid rgba(47,243,255,0.7)', background: 'linear-gradient(135deg, rgba(47,243,255,0.18), rgba(255,59,212,0.12))', color: 'rgba(255,255,255,0.98)', cursor: 'pointer', fontSize: '13px', fontWeight: '700', letterSpacing: '0.2px' });
+    sendBtn.addEventListener('click', async () => {
+      const txt = (issueText.value || '').trim();
+      if (txt.length < 3) {
+        setStatus('bad', tr('feedback.errEmpty', "Décrivez l'erreur en quelques mots."));
         return;
       }
-      const subject = `[AI-Exhibits RL · ${lang}] Translation correction`;
-      const body =
-        `Language: ${lang}\n` +
-        `Page:     ${pageTitle}\n` +
-        `URL:      ${pageUrl}\n\n` +
-        `---\nCurrent text:\n${orig || '(not provided)'}\n\n` +
-        `Proposed text:\n${prop}\n\n` +
-        `Reviewer: ${name || '(anonymous)'}\n\n` +
-        `Note:\n${note || '(none)'}\n`;
-      const href = 'mailto:' + MAINTAINER +
-        '?subject=' + encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent(body);
-      // Try to open the mail client AND show a copy-paste fallback in-place,
-      // so kiosk / Chromebook / no-mail-handler devices don't lose the user's input.
-      try { window.location.href = href; } catch (_) {}
-      showMailFallback(href, subject, body);
+      sendBtn.disabled = true;
+      setStatus('checking', tr('feedback.sending', 'Envoi en cours…'));
+      try {
+        const res = await fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'submitCorrection',
+            url: location.pathname,
+            lang: lang,
+            issue_type: typeSel.value,
+            issue_text: txt,
+            suggested_fix: fixText.value,
+            reporter_name: nameInp.value,
+            reporter_email: emailInp.value,
+            hp: hp.value,
+            origin: location.origin,
+          }),
+          redirect: 'follow',
+        });
+        const data = await res.json();
+        if (data && data.status === 'ok' && data.correction_id) {
+          setStatus('ok', tr('feedback.thanks', 'Merci. Votre suggestion a été enregistrée.'));
+          setTimeout(close, 1500);
+        } else {
+          setStatus('bad', tr('feedback.errGeneric', 'Échec. Réessayez plus tard.'));
+          sendBtn.disabled = false;
+        }
+      } catch (err) {
+        setStatus('bad', tr('feedback.errNetwork', 'Erreur réseau. Réessayez plus tard.'));
+        sendBtn.disabled = false;
+      }
     });
+    actions.appendChild(cancelBtn);
+    actions.appendChild(sendBtn);
+    card.appendChild(actions);
 
-    function showMailFallback(href, subject, body) {
-      const dialog = overlay.querySelector('[role="dialog"]');
-      if (!dialog) return;
-      if (dialog.querySelector('#fbFallback')) return;
-      // Hide the form fields and action buttons; replace with fallback panel.
-      Array.from(dialog.children).forEach((el) => {
-        if (el.tagName !== 'H3') el.style.display = 'none';
-      });
-      const fallback = document.createElement('div');
-      fallback.id = 'fbFallback';
-      fallback.style.cssText = 'margin-top:16px;padding:14px;border-radius:10px;background:rgba(112,255,122,0.06);border:1px solid rgba(112,255,122,0.35);font-size:13px;line-height:1.5;';
-      fallback.innerHTML =
-        '<div style="font-weight:700;margin-bottom:8px;color:rgba(112,255,160,0.95);">Message prepared ✓</div>' +
-        '<div style="margin-bottom:10px;">If your mail client just opened, you can close this. Otherwise, <strong>copy the text below</strong> and email it to <code style="background:rgba(255,255,255,0.08);padding:1px 5px;border-radius:4px;">' + MAINTAINER + '</code>.</div>' +
-        '<textarea readonly id="fbFallbackText" style="width:100%;box-sizing:border-box;height:130px;padding:8px;border-radius:8px;background:rgba(0,0,0,0.4);color:#fff;border:1px solid rgba(255,255,255,0.2);font-family:ui-monospace,monospace;font-size:11px;"></textarea>' +
-        '<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">' +
-        '  <button id="fbCopyBtn" type="button" style="padding:8px 16px;border-radius:999px;background:rgba(47,243,255,0.18);color:rgba(47,243,255,0.95);border:1px solid rgba(47,243,255,0.4);font-weight:600;cursor:pointer;font-size:12px;">Copy to clipboard</button>' +
-        '  <a id="fbOpenAnchor" href="' + href + '" style="padding:8px 16px;border-radius:999px;background:transparent;color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.25);font-weight:600;text-decoration:none;font-size:12px;">Try mail again</a>' +
-        '  <button id="fbDoneBtn" type="button" style="margin-left:auto;padding:8px 16px;border-radius:999px;background:linear-gradient(110deg,#ff3bd4,#2ff3ff);color:#07060a;border:none;font-weight:900;cursor:pointer;font-size:12px;">Done</button>' +
-        '</div>';
-      dialog.appendChild(fallback);
-      const ta = fallback.querySelector('#fbFallbackText');
-      ta.value = 'To: ' + MAINTAINER + '\nSubject: ' + subject + '\n\n' + body;
-      fallback.querySelector('#fbCopyBtn').addEventListener('click', () => {
-        ta.select();
-        const btn = fallback.querySelector('#fbCopyBtn');
-        const done = () => { btn.textContent = 'Copied ✓'; };
-        try {
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(ta.value).then(done).catch(() => { document.execCommand('copy'); done(); });
-          } else {
-            document.execCommand('copy'); done();
-          }
-        } catch (_) { /* ignore */ }
-      });
-      fallback.querySelector('#fbDoneBtn').addEventListener('click', close);
+    // Escape to close
+    const escHandler = (e) => { if (e.key === 'Escape') close(); };
+    document.addEventListener('keydown', escHandler);
+    overlay._escHandler = escHandler;
+
+    overlay.appendChild(card);
+    document.body.appendChild(overlay);
+    setTimeout(() => { try { issueText.focus(); } catch(e){} }, 60);
+  }
+
+  function close() {
+    const ov = document.getElementById('fbOverlay');
+    if (ov) {
+      if (ov._escHandler) document.removeEventListener('keydown', ov._escHandler);
+      ov.remove();
     }
-
-    function close() {
-      overlay.remove();
-      document.removeEventListener('keydown', escClose);
-    }
-    function escClose(e) { if (e.key === 'Escape') close(); }
-  }
-
-  function inputStyle() {
-    return 'width:100%;box-sizing:border-box;padding:10px 12px;border-radius:10px;' +
-           'background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.14);' +
-           'color:#fff;font-family:inherit;font-size:13px;line-height:1.4;resize:vertical;';
-  }
-  function cancelStyle() {
-    return 'padding:10px 18px;border-radius:999px;background:transparent;color:rgba(255,255,255,0.7);' +
-           'border:1px solid rgba(255,255,255,0.2);font-weight:600;cursor:pointer;font-family:inherit;font-size:13px;';
-  }
-  function sendStyle() {
-    return 'padding:10px 22px;border-radius:999px;background:linear-gradient(110deg,#ff3bd4,#2ff3ff);' +
-           'color:#07060a;border:none;font-weight:900;letter-spacing:0.5px;cursor:pointer;font-family:inherit;font-size:13px;' +
-           'box-shadow:0 0 20px rgba(255,59,212,0.35);';
   }
 
   if (document.readyState === 'loading') {

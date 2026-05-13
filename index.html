@@ -102,7 +102,7 @@ body:not([data-role="facilitator"]) #roleCard {
     onclick="try{if(window.AI_EXHIBITS&&window.AI_EXHIBITS.openGate){window.AI_EXHIBITS.openGate();}else{const g=document.getElementById('roleGate');if(g){g.style.display='flex';g.setAttribute('aria-hidden','false');}}}catch(e){}">🎓</button>
   <a class="tutorialReplay" href="#role" id="switchRoleLink" data-tooltip="Retour au départ" data-i18n-data-tooltip="common.returnToStart" data-tooltip-style="info" aria-label="Retour au départ" data-i18n-aria-label="common.returnToStart">⏮</a>
   <button type="button" id="submitResultsBtn" class="tutorialReplay" data-tooltip="Soumettre mes résultats" data-i18n-data-tooltip="hub.submitResults" data-tooltip-style="gods" aria-label="Soumettre mes résultats" data-i18n-aria-label="hub.submitResults">📤</button>
-  <button type="button" id="fbBtn" class="tutorialReplay" data-tooltip="Suggérer une correction" data-i18n-data-tooltip="feedback.suggestCorrection" data-tooltip-style="info" aria-label="Suggérer une correction" data-i18n-aria-label="feedback.suggestCorrection">🔧</button>
+  <button type="button" id="fbBtn" class="tutorialReplay" data-tooltip="Suggérer une correction" data-i18n-data-tooltip="feedback.tooltip" data-tooltip-style="info" aria-label="Suggérer une correction" data-i18n-aria-label="feedback.tooltip">🔧</button>
 </div>
 <!-- Role gate (shown on every load; supports shared devices) -->
 <div aria-labelledby="roleGateTitle" aria-modal="true" class="modalOverlay" id="roleGate" role="dialog"><a id="role" aria-hidden="true"></a>
@@ -925,9 +925,9 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
   });
 
   // 📤 Submit results — generates a plain-text summary of the persona's
-  // best scores across all 3 missions and offers three submit paths:
-  // copy-to-clipboard, mailto, JSON download. No backend involved; the
-  // facilitator collects the output via whichever channel works for them.
+  // best scores across all 3 missions. The primary path POSTs to the
+  // backend (VIP + valid event code required); copy-to-clipboard and JSON
+  // download remain as offline fallbacks.
   function buildResultsText(){
     const persona = (typeof window.AI_EXHIBITS_GET_PERSONA === 'function')
       ? window.AI_EXHIBITS_GET_PERSONA() : '';
@@ -1866,7 +1866,7 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 <script src="app/i18n.js"></script>
-<script src="app/feedback.js"></script>
 <script src="app/tooltips.js"></script>
+<script src="app/feedback.js"></script>
 </body>
 </html>

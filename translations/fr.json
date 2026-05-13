@@ -697,6 +697,27 @@
     }
   },
   "feedback": {
-    "suggestCorrection": "Suggérer une correction"
+    "tooltip": "Suggérer une correction",
+    "title": "Suggérer une correction",
+    "subtitle": "Repérez une coquille ou une erreur ? Dites-nous où et quoi — Dr. Roldán examine chaque suggestion.",
+    "context": "Page :",
+    "langLabel": "Langue :",
+    "type": "Type d'erreur",
+    "type.translation": "Traduction",
+    "type.factual": "Erreur factuelle",
+    "type.a11y": "Accessibilité",
+    "type.brokenLink": "Lien cassé",
+    "type.other": "Autre",
+    "issue": "Qu'est-ce qui ne va pas ? *",
+    "fix": "Suggestion de correction",
+    "name": "Votre nom (optionnel)",
+    "email": "Votre email (optionnel)",
+    "cancel": "Annuler",
+    "send": "Envoyer",
+    "sending": "Envoi en cours…",
+    "thanks": "Merci. Votre suggestion a été enregistrée.",
+    "errEmpty": "Décrivez l'erreur en quelques mots.",
+    "errGeneric": "Échec. Réessayez plus tard.",
+    "errNetwork": "Erreur réseau. Réessayez plus tard."
   }
 }
