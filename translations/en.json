@@ -302,7 +302,7 @@
       "b5costDemo": "Demo: ~0.0001 CHF",
       "b5costReliable": "Reliable: ~0.01 CHF",
       "b5costProven": "Guaranteed: ~700 CHF",
-      "b5costTip": "Three levels of demand for solving B5 (the state farthest from the goal, 31 moves away):\n• Demo (the agent often gets there): ~10⁶ steps ≈ 0.00001 CHF.\n• Reliable (≥95% of runs succeed near the optimum): ~10⁹–10¹⁰ steps ≈ 0.01–0.1 CHF.\n• Guaranteed (the agent plays near-perfectly everywhere): ~7×10¹³ steps ≈ 700 CHF.\nBetween 'reliable' and 'guaranteed', five orders of magnitude: that's where real RL practice lives."
+      "b5costTip": "Three levels of demand for solving B5 (the state farthest from the goal, 31 moves away):\n• Demo (the agent often gets there): ~10⁷ steps ≈ 0.0001 CHF.\n• Reliable (≥95% of runs succeed near the optimum): ~10⁹–10¹⁰ steps ≈ 0.01–0.1 CHF.\n• Guaranteed (the agent plays near-perfectly everywhere): ~7×10¹³ steps ≈ 700 CHF.\nBetween 'reliable' and 'guaranteed', five orders of magnitude: that's where real RL practice lives."
     },
     "btn": {
       "stepOnce": "Step (one update)",

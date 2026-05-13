@@ -302,7 +302,7 @@
       "b5costDemo": "Démo : ~0,0001 CHF",
       "b5costReliable": "Fiable : ~0,01 CHF",
       "b5costProven": "Garantie : ~700 CHF",
-      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁶ pas ≈ 0,00001 CHF.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF.\nEntre « fiable » et « garantie », cinq ordres de grandeur : c'est là que vit la pratique réelle du RL."
+      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ 0,0001 CHF.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF.\nEntre « fiable » et « garantie », cinq ordres de grandeur : c'est là que vit la pratique réelle du RL."
     },
     "btn": {
       "stepOnce": "Pas (une mise à jour)",

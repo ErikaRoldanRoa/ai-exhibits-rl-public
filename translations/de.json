@@ -302,7 +302,7 @@
       "b5costDemo": "Demo: ~0,0001 CHF",
       "b5costReliable": "Verlässlich: ~0,01 CHF",
       "b5costProven": "Garantiert: ~700 CHF",
-      "b5costTip": "Drei Anspruchsstufen, um B5 zu lösen (der Zustand am weitesten vom Ziel, 31 Züge entfernt):\n• Demo (die Agentin schafft es oft): ~10⁶ Schritte ≈ 0,00001 CHF.\n• Zuverlässig (≥95 % der Läufe gelingen nahe am Optimum): ~10⁹–10¹⁰ Schritte ≈ 0,01–0,1 CHF.\n• Garantiert (die Agentin spielt überall fast perfekt): ~7×10¹³ Schritte ≈ 700 CHF.\nZwischen „zuverlässig“ und „garantiert“ liegen fünf Größenordnungen: dort spielt sich die reale RL-Praxis ab."
+      "b5costTip": "Drei Anspruchsstufen, um B5 zu lösen (der Zustand am weitesten vom Ziel, 31 Züge entfernt):\n• Demo (die Agentin schafft es oft): ~10⁷ Schritte ≈ 0,0001 CHF.\n• Zuverlässig (≥95 % der Läufe gelingen nahe am Optimum): ~10⁹–10¹⁰ Schritte ≈ 0,01–0,1 CHF.\n• Garantiert (die Agentin spielt überall fast perfekt): ~7×10¹³ Schritte ≈ 700 CHF.\nZwischen „zuverlässig“ und „garantiert“ liegen fünf Größenordnungen: dort spielt sich die reale RL-Praxis ab."
     },
     "btn": {
       "stepOnce": "Schritt (ein Update)",

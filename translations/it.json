@@ -302,7 +302,7 @@
       "b5costDemo": "Demo: ~0,0001 CHF",
       "b5costReliable": "Affidabile: ~0,01 CHF",
       "b5costProven": "Garantito: ~700 CHF",
-      "b5costTip": "Tre livelli di esigenza per risolvere B5 (lo stato più lontano dall'obiettivo, a 31 mosse):\n• Demo (l'agente ci arriva spesso): ~10⁶ passi ≈ 0,00001 CHF.\n• Affidabile (≥95% delle prove riesce vicino all'ottimo): ~10⁹–10¹⁰ passi ≈ 0,01–0,1 CHF.\n• Garantita (l'agente gioca quasi perfettamente ovunque): ~7×10¹³ passi ≈ 700 CHF.\nTra «affidabile» e «garantito», cinque ordini di grandezza: è lì che vive la pratica reale del RL."
+      "b5costTip": "Tre livelli di esigenza per risolvere B5 (lo stato più lontano dall'obiettivo, a 31 mosse):\n• Demo (l'agente ci arriva spesso): ~10⁷ passi ≈ 0,0001 CHF.\n• Affidabile (≥95% delle prove riesce vicino all'ottimo): ~10⁹–10¹⁰ passi ≈ 0,01–0,1 CHF.\n• Garantita (l'agente gioca quasi perfettamente ovunque): ~7×10¹³ passi ≈ 700 CHF.\nTra «affidabile» e «garantito», cinque ordini di grandezza: è lì che vive la pratica reale del RL."
     },
     "btn": {
       "stepOnce": "Passo (un aggiornamento)",
