@@ -580,7 +580,73 @@
         "3": "8 min · trainieren · α≈0,5 · γ≈0,9 · ε≈0,3 · 300 Episoden; B6 anvisieren (Gottes-Zahl, 6 Züge).",
         "4": "2 min · Nachbesprechung · der Agent hat eine optimale Politik auf einer winzigen Welt gelernt. Brücke zu Mission II."
       },
-      "studentSheetLink": "📄 Arbeitsblatt →"
+      "studentSheetLink": "📄 Arbeitsblatt →",
+      "cheat": {
+        "title": "Spickzettel · für die Moderation",
+        "vocab": {
+          "title": "Wortschatz auf Klartext",
+          "agent": {
+            "term": "Agent*in",
+            "def": " · das Programm, das lernt."
+          },
+          "state": {
+            "term": "Zustand",
+            "def": " · eine mögliche Puzzle-Anordnung."
+          },
+          "action": {
+            "term": "Aktion",
+            "def": " · ein legaler Zug (die Leerzelle verschieben)."
+          },
+          "episode": {
+            "term": "Episode",
+            "def": " · ein vollständiger Versuch (mischen → lösen oder aufgeben)."
+          },
+          "qtable": {
+            "term": "Q-Tabelle",
+            "def": " · das Gedächtnis der Agent*in (ein Wert pro Zustand+Aktion)."
+          },
+          "qvalue": {
+            "term": "Q-Wert",
+            "def": " · „führt diese Aktion aus diesem Zustand zum Ziel?\"."
+          },
+          "alpha": {
+            "def": " · Lernrate."
+          },
+          "gamma": {
+            "def": " · wie weit die Agent*in in die Zukunft schaut."
+          },
+          "epsilon": {
+            "def": " · Neugier (Wahrscheinlichkeit, einen zufälligen Zug zu versuchen)."
+          },
+          "gods": {
+            "term": "Gottes-Zahl",
+            "def": " · 6 für 2×2 — der schlimmste Start ist in 6 Zügen lösbar."
+          }
+        },
+        "stuck": {
+          "title": "Wenn Schüler*innen stecken bleiben",
+          "parity": {
+            "q": "„Warum 12, nicht 24?\"",
+            "a": "Zeige zwei Zustände mit der Leerzelle rechts unten (Ziel) und links unten: ein legaler Zug kippt zwei Dinge gleichzeitig (Kachel-Reihenfolge UND Leerzellen-Position). Die halbe Welt ist verschlossen."
+          },
+          "eps0": {
+            "q": "„Wenn ich ε = 0 setze, wird es schneller?\"",
+            "a": "Gemeinsam testen. Mit ε = 0 nutzt die Agent*in nur die bereits gelernte Q-Tabelle und entdeckt nichts Neues — bleibt stecken, wenn sie B6 nie gesehen hat."
+          },
+          "qtable": {
+            "q": "„Ist die Q-Tabelle kompliziert?\"",
+            "a": "12 Zustände × 2 Aktionen = 24 Zeilen. Eine 24-Zellen-Karte. Das Arbeitsblatt hat das Gitter — sollen sie nach ein paar Episoden ausprobieren."
+          }
+        },
+        "ans": {
+          "title": "Erwartete Antworten",
+          "benchTitle": "Mindestzüge (Bk):",
+          "qTitle": "Schüler*innen-Fragen:",
+          "q1": "Q1: es ist der Graphdurchmesser — der längste „kürzeste Pfad\" zwischen zwei Zuständen.",
+          "q2": "Q2: wenn Q überall 0 ist, fixiert ε = 0 die Agent*in in der Ecke, wo argmax landet (erster Index).",
+          "q3": "Q3: 360 Zustände × 4 Aktionen max = 1.440 Zeilen max (oft weniger, Ecken haben 2 Aktionen, Kanten 3)."
+        }
+      }
     },
     "m2": {
       "chip": "Mission II · Workshop-Kit",

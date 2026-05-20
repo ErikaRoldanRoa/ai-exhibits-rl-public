@@ -580,7 +580,73 @@
         "3": "8 min · entraîner avec α≈0,5 · γ≈0,9 · ε≈0,3 · 300 épisodes ; viser B6 (Nombre de Dieu, 6 coups).",
         "4": "2 min · débrief · l'agent a appris une politique optimale sur un monde minuscule. Bridge vers Mission II."
       },
-      "studentSheetLink": "📄 Fiche élève →"
+      "studentSheetLink": "📄 Fiche élève →",
+      "cheat": {
+        "title": "Antisèche · pour l'animatrice",
+        "vocab": {
+          "title": "Vocabulaire en clair",
+          "agent": {
+            "term": "Agente",
+            "def": " · le programme qui apprend."
+          },
+          "state": {
+            "term": "État",
+            "def": " · une disposition possible du puzzle."
+          },
+          "action": {
+            "term": "Action",
+            "def": " · un coup légal (déplacer la case vide)."
+          },
+          "episode": {
+            "term": "Épisode",
+            "def": " · une tentative complète (mélanger → résoudre ou abandonner)."
+          },
+          "qtable": {
+            "term": "Table Q",
+            "def": " · la mémoire de l'agente (une valeur par état+action)."
+          },
+          "qvalue": {
+            "term": "Valeur Q",
+            "def": " · « cette action depuis cet état mène-t-elle au but ? »."
+          },
+          "alpha": {
+            "def": " · vitesse d'apprentissage."
+          },
+          "gamma": {
+            "def": " · à quel point l'agente regarde loin dans le futur."
+          },
+          "epsilon": {
+            "def": " · curiosité (probabilité de tenter un coup au hasard)."
+          },
+          "gods": {
+            "term": "Nombre de Dieu",
+            "def": " · 6 pour le 2×2 — le pire départ se résout en 6 coups."
+          }
+        },
+        "stuck": {
+          "title": "Si l'élève bloque",
+          "parity": {
+            "q": "« Pourquoi 12, pas 24 ? »",
+            "a": "Montrer deux états avec la case vide en bas-droite (objectif) puis en bas-gauche : un coup légal change deux choses à la fois (l'ordre des tuiles ET la position du vide). Demi du monde est verrouillée."
+          },
+          "eps0": {
+            "q": "« Si je mets ε = 0, ça va être plus rapide ? »",
+            "a": "Tester ensemble. Avec ε = 0, l'agente exploite la table Q déjà apprise et ne découvre plus rien — elle reste bloquée si elle n'a pas vu B6."
+          },
+          "qtable": {
+            "q": "« La table Q, c'est compliqué ? »",
+            "a": "12 états × 2 actions = 24 lignes. Une carte 24 cases. La fiche élève a la grille à remplir — qu'elles essaient après quelques épisodes."
+          }
+        },
+        "ans": {
+          "title": "Réponses attendues",
+          "benchTitle": "Coups minimum (Bk) :",
+          "qTitle": "Questions élève :",
+          "q1": "Q1 : c'est le diamètre du graphe — le plus long « chemin le plus court » entre deux états.",
+          "q2": "Q2 : si Q est à 0 partout, ε = 0 fige l'agente dans le coin où argmax tombe (premier index).",
+          "q3": "Q3 : 360 états × 4 actions max = 1 440 lignes max (souvent moins, les coins ont 2 actions, les bords 3)."
+        }
+      }
     },
     "m2": {
       "chip": "Mission II · Kit atelier",

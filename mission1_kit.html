@@ -137,6 +137,64 @@
     </section>
 
   </div>
+
+  <!-- Full-width facilitator cheat-sheet: vocab + student stuck-points + answer key.
+       Designed for facilitators arriving cold without RL background. -->
+  <section class="kit-card" style="margin: 0 14px 14px 14px;">
+    <h2 data-i18n="kit.m1.cheat.title">Antisèche · pour l'animatrice</h2>
+
+    <div style="display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 14px; margin-top: 8px;">
+
+      <!-- Vocab block: 10 plain-language definitions -->
+      <div>
+        <h3 style="font-size: 11px; letter-spacing: 0.4px; text-transform: uppercase; color: var(--muted2, #888); margin-bottom: 6px;" data-i18n="kit.m1.cheat.vocab.title">Vocabulaire en clair</h3>
+        <dl style="font-size: 11px; line-height: 1.5; margin: 0;">
+          <dt style="font-weight: 700; display: inline;" data-i18n="kit.m1.cheat.vocab.agent.term">Agente</dt><dd style="display: inline; margin: 0 0 0 4px;" data-i18n="kit.m1.cheat.vocab.agent.def"> · le programme qui apprend.</dd><br>
+          <dt style="font-weight: 700; display: inline;" data-i18n="kit.m1.cheat.vocab.state.term">État</dt><dd style="display: inline; margin: 0 0 0 4px;" data-i18n="kit.m1.cheat.vocab.state.def"> · une disposition possible du puzzle.</dd><br>
+          <dt style="font-weight: 700; display: inline;" data-i18n="kit.m1.cheat.vocab.action.term">Action</dt><dd style="display: inline; margin: 0 0 0 4px;" data-i18n="kit.m1.cheat.vocab.action.def"> · un coup légal (déplacer la case vide).</dd><br>
+          <dt style="font-weight: 700; display: inline;" data-i18n="kit.m1.cheat.vocab.episode.term">Épisode</dt><dd style="display: inline; margin: 0 0 0 4px;" data-i18n="kit.m1.cheat.vocab.episode.def"> · une tentative complète (mélanger → résoudre ou abandonner).</dd><br>
+          <dt style="font-weight: 700; display: inline;" data-i18n="kit.m1.cheat.vocab.qtable.term">Table Q</dt><dd style="display: inline; margin: 0 0 0 4px;" data-i18n="kit.m1.cheat.vocab.qtable.def"> · la mémoire de l'agente (une valeur par état+action).</dd><br>
+          <dt style="font-weight: 700; display: inline;" data-i18n="kit.m1.cheat.vocab.qvalue.term">Valeur Q</dt><dd style="display: inline; margin: 0 0 0 4px;" data-i18n="kit.m1.cheat.vocab.qvalue.def"> · « cette action depuis cet état mène-t-elle au but ? ».</dd><br>
+          <dt style="font-weight: 700; display: inline;">α</dt><dd style="display: inline; margin: 0 0 0 4px;" data-i18n="kit.m1.cheat.vocab.alpha.def"> · vitesse d'apprentissage.</dd><br>
+          <dt style="font-weight: 700; display: inline;">γ</dt><dd style="display: inline; margin: 0 0 0 4px;" data-i18n="kit.m1.cheat.vocab.gamma.def"> · à quel point l'agente regarde loin dans le futur.</dd><br>
+          <dt style="font-weight: 700; display: inline;">ε</dt><dd style="display: inline; margin: 0 0 0 4px;" data-i18n="kit.m1.cheat.vocab.epsilon.def"> · curiosité (probabilité de tenter un coup au hasard).</dd><br>
+          <dt style="font-weight: 700; display: inline;" data-i18n="kit.m1.cheat.vocab.gods.term">Nombre de Dieu</dt><dd style="display: inline; margin: 0 0 0 4px;" data-i18n="kit.m1.cheat.vocab.gods.def"> · 6 pour le 2×2 — le pire départ se résout en 6 coups.</dd>
+        </dl>
+      </div>
+
+      <!-- Student stuck-points block -->
+      <div>
+        <h3 style="font-size: 11px; letter-spacing: 0.4px; text-transform: uppercase; color: var(--muted2, #888); margin-bottom: 6px;" data-i18n="kit.m1.cheat.stuck.title">Si l'élève bloque</h3>
+        <ol style="font-size: 11px; line-height: 1.5; padding-left: 18px; margin: 0;">
+          <li style="margin-bottom: 8px;"><strong data-i18n="kit.m1.cheat.stuck.parity.q">« Pourquoi 12, pas 24 ? »</strong><br><span data-i18n="kit.m1.cheat.stuck.parity.a">Montrer deux états avec la case vide en bas-droite (objectif) puis en bas-gauche : un coup légal change deux choses à la fois (l'ordre des tuiles ET la position du vide). Demi du monde est verrouillée.</span></li>
+          <li style="margin-bottom: 8px;"><strong data-i18n="kit.m1.cheat.stuck.eps0.q">« Si je mets ε = 0, ça va être plus rapide ? »</strong><br><span data-i18n="kit.m1.cheat.stuck.eps0.a">Tester ensemble. Avec ε = 0, l'agente exploite la table Q déjà apprise et ne découvre plus rien — elle reste bloquée si elle n'a pas vu B6.</span></li>
+          <li><strong data-i18n="kit.m1.cheat.stuck.qtable.q">« La table Q, c'est compliqué ? »</strong><br><span data-i18n="kit.m1.cheat.stuck.qtable.a">12 états × 2 actions = 24 lignes. Une carte 24 cases. La fiche élève a la grille à remplir — qu'elles essaient après quelques épisodes.</span></li>
+        </ol>
+      </div>
+
+      <!-- Answer-key block -->
+      <div>
+        <h3 style="font-size: 11px; letter-spacing: 0.4px; text-transform: uppercase; color: var(--muted2, #888); margin-bottom: 6px;" data-i18n="kit.m1.cheat.ans.title">Réponses attendues</h3>
+        <div style="font-size: 11px; line-height: 1.5;">
+          <p style="margin: 0 0 8px 0;"><strong data-i18n="kit.m1.cheat.ans.benchTitle">Coups minimum (Bk) :</strong></p>
+          <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 3px; font-family: ui-monospace, monospace; font-size: 10px; text-align: center; margin-bottom: 10px;">
+            <div style="border: 1px solid #999; padding: 3px 0;"><strong>B1</strong><br>1</div>
+            <div style="border: 1px solid #999; padding: 3px 0;"><strong>B2</strong><br>2</div>
+            <div style="border: 1px solid #999; padding: 3px 0;"><strong>B3</strong><br>3</div>
+            <div style="border: 1px solid #999; padding: 3px 0;"><strong>B4</strong><br>4</div>
+            <div style="border: 1px solid #999; padding: 3px 0;"><strong>B5</strong><br>5</div>
+            <div style="border: 2px solid #000; padding: 3px 0; background: #fff8e0;"><strong>B6</strong> ★<br>6</div>
+          </div>
+          <p style="margin: 0 0 4px 0;"><strong data-i18n="kit.m1.cheat.ans.qTitle">Questions élève :</strong></p>
+          <ol style="font-size: 10.5px; padding-left: 18px; margin: 0;">
+            <li><span data-i18n="kit.m1.cheat.ans.q1">Q1 : c'est le diamètre du graphe — le plus long « chemin le plus court » entre deux états.</span></li>
+            <li><span data-i18n="kit.m1.cheat.ans.q2">Q2 : si Q est à 0 partout, ε = 0 fige l'agente dans le coin où argmax tombe (premier index).</span></li>
+            <li><span data-i18n="kit.m1.cheat.ans.q3">Q3 : 360 états × 4 actions max = 1 440 lignes max (souvent moins, les coins ont 2 actions, les bords 3).</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <script src="app/i18n.js"></script>
