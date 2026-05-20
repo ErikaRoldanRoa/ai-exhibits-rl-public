@@ -101,7 +101,8 @@
       "kit1": "Kit Mission I · 20 min",
       "kit2": "Kit Mission II · 25 min",
       "kit3": "Kit Mission III · 20 min",
-      "scoresheet": "Team-Bewertungsbogen"
+      "scoresheet": "Team-Bewertungsbogen",
+      "student1": "📄 Schülerblatt · Mission I"
     },
     "glossary": {
       "agent": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">AGENT*IN</div>\n        <div>\n          Eine <strong>Agent*in</strong> ist die Instanz, die Entscheidungen trifft: eine Person oder ein System, das in jedem <strong>Zustand</strong> eine <strong>Aktion</strong> wählt.\n        </div>\n        <div style=\"margin-top:8px;\">\n          In dieser Ausstellung vergleichst du drei Agent*innen:<br>\n          • eine <strong>menschliche Agent*in</strong> (du)<br>\n          • eine <strong>untrainierte (zufällige) Agent*in</strong> (gleichverteilt gezogene legale Züge)<br>\n          • eine <strong>Q-Learning-Agent*in</strong> (gelernte Q-Werte → Strategie → Aktionen)\n        </div>\n        <div style=\"margin-top:8px;\">\n          Alle drei sind Agent*innen. Der einzige Unterschied ist die <strong>Art</strong>, wie sie ihre Aktionen in jedem Zustand wählen.\n        </div>\n      ",
@@ -585,29 +586,9 @@
         "title": "Spickzettel · für die Moderation",
         "vocab": {
           "title": "Wortschatz auf Klartext",
-          "agent": {
-            "term": "Agent*in",
-            "def": " · das Programm, das lernt."
-          },
-          "state": {
-            "term": "Zustand",
-            "def": " · eine mögliche Puzzle-Anordnung."
-          },
-          "action": {
-            "term": "Aktion",
-            "def": " · ein legaler Zug (die Leerzelle verschieben)."
-          },
           "episode": {
             "term": "Episode",
             "def": " · ein vollständiger Versuch (mischen → lösen oder aufgeben)."
-          },
-          "qtable": {
-            "term": "Q-Tabelle",
-            "def": " · das Gedächtnis der Agent*in (ein Wert pro Zustand+Aktion)."
-          },
-          "qvalue": {
-            "term": "Q-Wert",
-            "def": " · „führt diese Aktion aus diesem Zustand zum Ziel?\"."
           },
           "alpha": {
             "def": " · Lernrate."
@@ -643,8 +624,8 @@
           "benchTitle": "Mindestzüge (Bk):",
           "qTitle": "Schüler*innen-Fragen:",
           "q1": "Q1: es ist der Graphdurchmesser — der längste „kürzeste Pfad\" zwischen zwei Zuständen.",
-          "q2": "Q2: wenn Q überall 0 ist, fixiert ε = 0 die Agent*in in der Ecke, wo argmax landet (erster Index).",
-          "q3": "Q3: 360 Zustände × 4 Aktionen max = 1.440 Zeilen max (oft weniger, Ecken haben 2 Aktionen, Kanten 3)."
+          "q2": "Q2: bei Q = 0 überall wählt argmax gleichverteilt unter den legalen Aktionen → Zufallsbewegung. Die Agent*in erkundet ohne es zu wissen, lernt aber nicht zum Ziel, wenn sie es nie erreicht.",
+          "q3": "Q3: 360 Zustände × 4 Aktionen max = 1.440 Zeilen — auf einer XL-Serviette gerade noch, aber 60× mehr als die 24 beim 2×2. Die Grenze fällt beim 3×3 (725.760 Zeilen)."
         }
       }
     },
@@ -818,7 +799,13 @@
       "bench": {
         "kicker": "deine Versuche",
         "title": "Benchmarks B1 → B6",
-        "hint": "B<em>k</em> = ein Startzustand <em>k</em> Züge vom Ziel entfernt. <strong>B6</strong> = der schlimmste Start, in genau 6 Zügen lösbar (Gottes-Zahl). Notiere dein bestes Ergebnis unter jeder Referenz."
+        "hint": "B<em>k</em> = ein Startzustand <em>k</em> Züge vom Ziel entfernt. <strong>B6</strong> = der schlimmste Start, in genau 6 Zügen lösbar (Gottes-Zahl). Notiere dein bestes Ergebnis unter jeder Referenz.",
+        "b1Label": "1 Zug",
+        "b2Label": "2 Züge",
+        "b3Label": "3 Züge",
+        "b4Label": "4 Züge",
+        "b5Label": "5 Züge",
+        "b6Label": "6 Züge"
       },
       "q": {
         "kicker": "zum Diskutieren",
@@ -826,7 +813,7 @@
       },
       "q1": "Warum ist die Gottes-Zahl 6, und nicht mehr?",
       "q2": "Was passiert, wenn du ε = 0 von Anfang an setzt?",
-      "q3": "Wenn du zu 2×3 (360 Zustände) wechselst, wie viele Zeilen hat die Q-Tabelle maximal?"
+      "q3": "Bevor du auf 2×3 klickst: schätze, ob die Q-Tabelle noch auf eine Serviette passt. Warum / warum nicht?"
     },
     "footer": {
       "left": "AI-Exhibits · Verstärkendes Lernen · Dr. Erika Roldán Roa",

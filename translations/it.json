@@ -101,7 +101,8 @@
       "kit1": "Kit Missione I · 20 min",
       "kit2": "Kit Missione II · 25 min",
       "kit3": "Kit Missione III · 20 min",
-      "scoresheet": "Scheda di squadra"
+      "scoresheet": "Scheda di squadra",
+      "student1": "📄 Scheda studente · Missione I"
     },
     "glossary": {
       "agent": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">AGENTE</div>\n        <div>\n          Un'<strong>agente</strong> è l'entità che prende le decisioni: una persona o un sistema che sceglie un'<strong>azione</strong> in ogni <strong>stato</strong>.\n        </div>\n        <div style=\"margin-top:8px;\">\n          In questa mostra confronterai tre agenti:<br>\n          • un'<strong>agente umana</strong> (tu)<br>\n          • un'<strong>agente non addestrata (casuale)</strong> (mosse legali estratte uniformemente a caso)<br>\n          • un'<strong>agente Q-learning</strong> (valori Q appresi → politica → azioni)\n        </div>\n        <div style=\"margin-top:8px;\">\n          Tutte sono agenti. L'unica differenza sta nel <strong>modo</strong> in cui scelgono le loro azioni in ogni stato.\n        </div>\n      ",
@@ -585,29 +586,9 @@
         "title": "Bigliettino · per il·la facilitatore·trice",
         "vocab": {
           "title": "Vocabolario chiaro",
-          "agent": {
-            "term": "Agente",
-            "def": " · il programma che impara."
-          },
-          "state": {
-            "term": "Stato",
-            "def": " · una disposizione possibile del puzzle."
-          },
-          "action": {
-            "term": "Azione",
-            "def": " · una mossa legale (spostare la cella vuota)."
-          },
           "episode": {
             "term": "Episodio",
             "def": " · un tentativo completo (mescolare → risolvere o arrendersi)."
-          },
-          "qtable": {
-            "term": "Tabella Q",
-            "def": " · la memoria dell'agente (un valore per stato+azione)."
-          },
-          "qvalue": {
-            "term": "Valore Q",
-            "def": " · « questa mossa da questo stato porta all'obiettivo? »."
           },
           "alpha": {
             "def": " · velocità di apprendimento."
@@ -643,8 +624,8 @@
           "benchTitle": "Mosse minime (Bk):",
           "qTitle": "Domande studenti:",
           "q1": "Q1: è il diametro del grafo — il « cammino più corto » più lungo tra due stati qualsiasi.",
-          "q2": "Q2: se Q è 0 ovunque, ε = 0 blocca l'agente nell'angolo dove cade argmax (primo indice).",
-          "q3": "Q3: 360 stati × 4 azioni max = 1.440 righe max (spesso meno, gli angoli hanno 2 azioni, i bordi 3)."
+          "q2": "Q2: con Q = 0 ovunque, argmax sceglie uniformemente tra le azioni legali → cammino casuale. L'agente esplora senza saperlo, ma non impara verso l'obiettivo se non lo raggiunge mai.",
+          "q3": "Q3: 360 stati × 4 azioni max = 1.440 righe — ancora segnabili su un tovagliolo XL, ma 60× più delle 24 del 2×2. La soglia arriva al 3×3 (725.760 righe)."
         }
       }
     },
@@ -818,7 +799,13 @@
       "bench": {
         "kicker": "le tue prove",
         "title": "Benchmark B1 → B6",
-        "hint": "B<em>k</em> = uno stato di partenza a <em>k</em> mosse dall'obiettivo. <strong>B6</strong> = la partenza peggiore, risolvibile in esattamente 6 mosse (Numero di Dio). Annota il tuo miglior punteggio sotto ogni riferimento."
+        "hint": "B<em>k</em> = uno stato di partenza a <em>k</em> mosse dall'obiettivo. <strong>B6</strong> = la partenza peggiore, risolvibile in esattamente 6 mosse (Numero di Dio). Annota il tuo miglior punteggio sotto ogni riferimento.",
+        "b1Label": "1 mossa",
+        "b2Label": "2 mosse",
+        "b3Label": "3 mosse",
+        "b4Label": "4 mosse",
+        "b5Label": "5 mosse",
+        "b6Label": "6 mosse"
       },
       "q": {
         "kicker": "da discutere",
@@ -826,7 +813,7 @@
       },
       "q1": "Perché il Numero di Dio è 6, e non di più?",
       "q2": "Cosa succede se imposti ε = 0 fin dall'inizio?",
-      "q3": "Passando a 2×3 (360 stati), quante righe avrà al massimo la tabella Q?"
+      "q3": "Prima di cliccare su 2×3: indovina se la tabella Q sta ancora su un tovagliolo. Perché / perché no?"
     },
     "footer": {
       "left": "AI-Exhibits · Apprendimento per Rinforzo · Dr. Erika Roldán Roa",

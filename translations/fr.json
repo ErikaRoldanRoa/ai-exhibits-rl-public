@@ -101,7 +101,8 @@
       "kit1": "Kit Mission I · 20 min",
       "kit2": "Kit Mission II · 25 min",
       "kit3": "Kit Mission III · 20 min",
-      "scoresheet": "Fiche d'équipe"
+      "scoresheet": "Fiche d'équipe",
+      "student1": "📄 Fiche élève · Mission I"
     },
     "glossary": {
       "agent": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">AGENTE</div>\n        <div>\n          Une <strong>agente</strong> est l'entité qui prend les décisions&#8239;: une personne ou un système qui choisit une <strong>action</strong> dans chaque <strong>état</strong>.\n        </div>\n        <div style=\"margin-top:8px;\">\n          Dans cette exposition, vous comparerez trois agentes&#8239;:<br>\n          • une <strong>agente humaine</strong> (vous)<br>\n          • une <strong>agente non entraînée (aléatoire)</strong> (mouvements légaux tirés uniformément au hasard)<br>\n          • une <strong>agente Q-learning</strong> (valeurs Q apprises → politique → actions)\n        </div>\n        <div style=\"margin-top:8px;\">\n          Toutes sont des agentes. La seule différence réside dans la <strong>manière</strong> dont elles choisissent leurs actions dans chaque état.\n        </div>\n      ",
@@ -585,29 +586,9 @@
         "title": "Antisèche · pour l'animatrice",
         "vocab": {
           "title": "Vocabulaire en clair",
-          "agent": {
-            "term": "Agente",
-            "def": " · le programme qui apprend."
-          },
-          "state": {
-            "term": "État",
-            "def": " · une disposition possible du puzzle."
-          },
-          "action": {
-            "term": "Action",
-            "def": " · un coup légal (déplacer la case vide)."
-          },
           "episode": {
             "term": "Épisode",
             "def": " · une tentative complète (mélanger → résoudre ou abandonner)."
-          },
-          "qtable": {
-            "term": "Table Q",
-            "def": " · la mémoire de l'agente (une valeur par état+action)."
-          },
-          "qvalue": {
-            "term": "Valeur Q",
-            "def": " · « cette action depuis cet état mène-t-elle au but ? »."
           },
           "alpha": {
             "def": " · vitesse d'apprentissage."
@@ -627,7 +608,7 @@
           "title": "Si l'élève bloque",
           "parity": {
             "q": "« Pourquoi 12, pas 24 ? »",
-            "a": "Montrer deux états avec la case vide en bas-droite (objectif) puis en bas-gauche : un coup légal change deux choses à la fois (l'ordre des tuiles ET la position du vide). Demi du monde est verrouillée."
+            "a": "Montrer deux états avec la case vide en bas-droite (objectif) puis en bas-gauche : un coup légal change deux choses à la fois (l'ordre des tuiles ET la position du vide). La moitié du monde est verrouillée."
           },
           "eps0": {
             "q": "« Si je mets ε = 0, ça va être plus rapide ? »",
@@ -643,8 +624,8 @@
           "benchTitle": "Coups minimum (Bk) :",
           "qTitle": "Questions élève :",
           "q1": "Q1 : c'est le diamètre du graphe — le plus long « chemin le plus court » entre deux états.",
-          "q2": "Q2 : si Q est à 0 partout, ε = 0 fige l'agente dans le coin où argmax tombe (premier index).",
-          "q3": "Q3 : 360 états × 4 actions max = 1 440 lignes max (souvent moins, les coins ont 2 actions, les bords 3)."
+          "q2": "Q2 : avec Q = 0 partout, argmax pioche uniformément parmi les actions légales → marche aléatoire. L'agente explore sans le savoir, mais n'apprend pas vers le but si elle ne tombe jamais dessus.",
+          "q3": "Q3 : 360 états × 4 actions max = 1 440 lignes — toujours notable sur une serviette XL, mais 60× plus que les 24 du 2×2. Le seuil arrive au 3×3 (725 760 lignes)."
         }
       }
     },
@@ -665,7 +646,7 @@
       "chip": "Mission III · Kit atelier",
       "title": "Mise à l'Échelle · 3×3",
       "curseTitle": "Le fléau se fait sentir.",
-      "curseBody": " Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Dans Mission III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût en CHF : Démo 0,0001 · Fiable 0,01 · Garantie 700. Cinq ordres de grandeur de Démo à Garanti.",
+      "curseBody": " Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Dans Mission III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût en CHF : Démo 0,0001 · Fiable 0,01 · Garantie 700. Cinq ordres de grandeur de Démo à Garantie.",
       "notes": {
         "1": "3 min · transition · ouvrir Mission III ; pointer la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> (Démo / Fiable / Garantie, 5 ordres de grandeur).",
         "2": "5 min · observation · 181 440 états ; la jauge plafonne sous 100 % — montrer.",
@@ -818,7 +799,13 @@
       "bench": {
         "kicker": "tes essais",
         "title": "Benchmarks B1 → B6",
-        "hint": "B<em>k</em> = un état de départ à <em>k</em> coups de l'objectif. <strong>B6</strong> = le pire départ, soluble en exactement 6 coups (Nombre de Dieu). Note ton meilleur score sous chaque référence."
+        "hint": "B<em>k</em> = un état de départ à <em>k</em> coups de l'objectif. <strong>B6</strong> = le pire départ, soluble en exactement 6 coups (Nombre de Dieu). Note ton meilleur score sous chaque référence.",
+        "b1Label": "1 coup",
+        "b2Label": "2 coups",
+        "b3Label": "3 coups",
+        "b4Label": "4 coups",
+        "b5Label": "5 coups",
+        "b6Label": "6 coups"
       },
       "q": {
         "kicker": "à creuser",
@@ -826,7 +813,7 @@
       },
       "q1": "Pourquoi le Nombre de Dieu est-il 6, et pas plus ?",
       "q2": "Que se passe-t-il si tu poses ε = 0 dès le début ?",
-      "q3": "Si tu passes au 2×3 (360 états), combien de lignes aura la table Q maximum ?"
+      "q3": "Avant de cliquer sur 2×3 : devine si la table Q tient encore sur une serviette. Pourquoi / pourquoi pas ?"
     },
     "footer": {
       "left": "AI-Exhibits · Apprentissage par Renforcement · Dr. Erika Roldán Roa",

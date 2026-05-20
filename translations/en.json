@@ -101,7 +101,8 @@
       "kit1": "Kit Mission I · 20 min",
       "kit2": "Kit Mission II · 25 min",
       "kit3": "Kit Mission III · 20 min",
-      "scoresheet": "Team scoresheet"
+      "scoresheet": "Team scoresheet",
+      "student1": "📄 Student sheet · Mission I"
     },
     "glossary": {
       "agent": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">AGENT</div>\n        <div>\n          An <strong>agent</strong> is the entity making decisions: a person or a system that chooses an <strong>action</strong> in each <strong>state</strong>.\n        </div>\n        <div style=\"margin-top:8px;\">\n          In this exhibit, you will compare three agents:<br>\n          • a <strong>human agent</strong> (you)<br>\n          • an <strong>untrained (random) agent</strong> (legal moves drawn uniformly at random)<br>\n          • a <strong>Q-learning agent</strong> (learned Q-values → policy → actions)\n        </div>\n        <div style=\"margin-top:8px;\">\n          All three are agents. The only difference is <strong>how</strong> they choose their actions in each state.\n        </div>\n      ",
@@ -585,29 +586,9 @@
         "title": "Cheat-sheet · for the facilitator",
         "vocab": {
           "title": "Plain-language vocabulary",
-          "agent": {
-            "term": "Agent",
-            "def": " · the program that learns."
-          },
-          "state": {
-            "term": "State",
-            "def": " · one possible arrangement of the puzzle."
-          },
-          "action": {
-            "term": "Action",
-            "def": " · a legal move (slide the blank cell)."
-          },
           "episode": {
             "term": "Episode",
             "def": " · one full attempt (scramble → solve or give up)."
-          },
-          "qtable": {
-            "term": "Q-table",
-            "def": " · the agent's memory (one value per state+action)."
-          },
-          "qvalue": {
-            "term": "Q-value",
-            "def": " · \"does this move from this state lead to the goal?\""
           },
           "alpha": {
             "def": " · learning rate."
@@ -643,8 +624,8 @@
           "benchTitle": "Minimum moves (Bk):",
           "qTitle": "Student questions:",
           "q1": "Q1: it's the graph diameter — the longest \"shortest path\" between any two states.",
-          "q2": "Q2: if Q is 0 everywhere, ε = 0 locks the agent into the corner where argmax falls (first index).",
-          "q3": "Q3: 360 states × 4 actions max = 1,440 rows max (often less, corners have 2 actions, edges 3)."
+          "q2": "Q2: with Q = 0 everywhere, argmax picks uniformly among legal actions → random walk. The agent explores without knowing it, but doesn't learn toward the goal if it never reaches it.",
+          "q3": "Q3: 360 states × 4 actions max = 1,440 rows — still notable on an XL napkin, but 60× more than the 24 of the 2×2. The threshold is reached at 3×3 (725,760 rows)."
         }
       }
     },
@@ -818,7 +799,13 @@
       "bench": {
         "kicker": "your runs",
         "title": "Benchmarks B1 → B6",
-        "hint": "B<em>k</em> = a starting state <em>k</em> moves from the goal. <strong>B6</strong> = the worst start, solvable in exactly 6 moves (God's Number). Record your best score under each benchmark."
+        "hint": "B<em>k</em> = a starting state <em>k</em> moves from the goal. <strong>B6</strong> = the worst start, solvable in exactly 6 moves (God's Number). Record your best score under each benchmark.",
+        "b1Label": "1 move",
+        "b2Label": "2 moves",
+        "b3Label": "3 moves",
+        "b4Label": "4 moves",
+        "b5Label": "5 moves",
+        "b6Label": "6 moves"
       },
       "q": {
         "kicker": "to discuss",
@@ -826,7 +813,7 @@
       },
       "q1": "Why is God's Number 6, and not more?",
       "q2": "What happens if you set ε = 0 from the start?",
-      "q3": "If you move to 2×3 (360 states), how many rows max in the Q-table?"
+      "q3": "Before clicking 2×3: guess whether the Q-table still fits on a napkin. Why / why not?"
     },
     "footer": {
       "left": "AI-Exhibits · Reinforcement Learning · Dr. Erika Roldán Roa",
