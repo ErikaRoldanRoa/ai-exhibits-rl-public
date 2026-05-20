@@ -216,6 +216,14 @@
     .swatch{ width:10px;height:10px;border-radius:999px; }
     .sw-pink{ background: var(--pink); box-shadow: 0 0 18px rgba(255,59,212,0.35); }
     .sw-lime{ background: var(--lime); box-shadow: 0 0 18px rgba(112,255,122,0.35); }
+    /* A11y: when a swatch carries a ★ marker (goal indicator), grow it
+       slightly so the glyph is legible, and center the character. The
+       ★ provides a non-color cue for red-green colorblind students. */
+    .sw-pink:not(:empty){
+      width:14px; height:14px; display:inline-flex; align-items:center;
+      justify-content:center; font-size:9px; color: rgba(255,255,255,0.95);
+      text-shadow: 0 0 2px rgba(0,0,0,0.6);
+    }
 
     .edgeTip{
       position:absolute; left: 12px; top: 12px;
@@ -787,7 +795,7 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
               </div>
               <div class="legend">
                 <span class="lg"><span class="swatch sw-lime"></span><span data-i18n="ex.graph.legendCurrent">actuel</span></span>
-                <span class="lg"><span class="swatch sw-pink"></span><span data-i18n="ex.graph.legendGoal">objectif</span></span>
+                <span class="lg"><span class="swatch sw-pink" aria-hidden="true">★</span><span data-i18n="ex.graph.legendGoal">objectif</span></span>
                 <span class="lg"><span class="swatch swatch" style="background:var(--lime)"></span><span data-i18n="ex.graph.legendEdgeQ">largeur d'arête ∝ Q</span></span>
               </div>
             </div>
@@ -1396,6 +1404,13 @@ return { x: p.x, y: p.y };
 
       let g = `<g ${glow}>`;
       g += `<rect x="${xs.toFixed(1)}" y="${ys.toFixed(1)}" width="${size}" height="${size}" rx="16" ry="16" fill="${outerFill}" stroke="${outerStroke}" stroke-width="3.2"/>`;
+      // A11y: non-color cue for the goal — a ★ in the top-right corner.
+      // Survives red-green colorblindness; the legend includes the same glyph.
+      if (isGoal) {
+        const sx = xs + size - 6;
+        const sy = ys + 12;
+        g += `<text x="${sx.toFixed(1)}" y="${sy.toFixed(1)}" text-anchor="end" font-size="${(size*0.28).toFixed(1)}" fill="rgba(255,255,255,0.95)" stroke="rgba(0,0,0,0.55)" stroke-width="0.6" paint-order="stroke">★</text>`;
+      }
 
       for (let i=0;i<4;i++){
         const r = Math.floor(i/2), c=i%2;

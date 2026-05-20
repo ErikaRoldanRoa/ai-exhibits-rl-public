@@ -579,7 +579,8 @@
         "2": "5 min · map · 12 reachable states, Q-table on a napkin (12 × 2 = 24 rows max).",
         "3": "8 min · train · α≈0.5 · γ≈0.9 · ε≈0.3 · 300 episodes; aim for B6 (God's number, 6 moves).",
         "4": "2 min · debrief · the agent learned an optimal policy on a tiny world. Bridge to Mission II."
-      }
+      },
+      "studentSheetLink": "📄 Student worksheet →"
     },
     "m2": {
       "chip": "Mission II · Workshop kit",
@@ -719,5 +720,51 @@
     "errEmpty": "Describe the issue in a few words.",
     "errGeneric": "Failed. Try again later.",
     "errNetwork": "Network error. Try again later."
+  },
+  "ms": {
+    "kicker": "Workshop · Mission I · 2×2",
+    "title": "Student worksheet · Mission I — Q-learning on 2×2",
+    "teamLabel": "Team:",
+    "dateLabel": "Date:",
+    "s1": {
+      "kicker": "1 · the world",
+      "title": "The 12 reachable states",
+      "intro": "The 2×2 puzzle has <strong>4! = 24</strong> possible arrangements, but <strong>only 12 are reachable</strong> from the goal. Every legal move flips <em>two parities at once</em> — half the world is invisible to the agent.",
+      "cap": "Distance d = the minimum number of moves to the goal. The worst start is <strong>6 moves</strong> away — this is the <strong>God's Number</strong>.",
+      "unreach": "<strong>The 12 missing states</strong> exist on paper (e.g. <code>1 3 / 2 _</code>) but are never reachable: every move flips <em>simultaneously</em> the sign of the permutation and the parity of the blank cell — their product is invariant. Wilson 1974 generalises: for any rectangle r×c with r,c ≥ 2, |R| = (rc)!/2."
+    },
+    "s2": {
+      "kicker": "2 · the memory",
+      "title": "The Q-table (24 rows)",
+      "intro": "For each <strong>state</strong> and each <strong>legal action</strong>, the agent stores a Q-value. The 2×2 has <strong>12 states × 2 actions = exactly 24 rows</strong>. The blank cell sits in a corner of every reachable state → 2 legal actions per state.",
+      "colState": "State",
+      "colAct1": "Action 1",
+      "colAct2": "Action 2",
+      "hint": "You can fill the table by hand after a short training (50–100 episodes is enough) by reading values from the software's \"List of states\" view."
+    },
+    "s3": {
+      "kicker": "3 · the rule",
+      "title": "The algorithm + your runs",
+      "formulaLabel": "Q update:",
+      "alpha": "<strong>learning rate</strong> · fast (0.5) or slow (0.1)",
+      "gamma": "<strong>future weight</strong> · long-term (0.9) or present (0.5)",
+      "epsilon": "<strong>exploration</strong> · curious (0.3) or greedy (0.05)",
+      "bench": {
+        "kicker": "your runs",
+        "title": "Benchmarks B1 → B6",
+        "hint": "B<em>k</em> = a starting state <em>k</em> moves from the goal. <strong>B6</strong> = the worst start, solvable in exactly 6 moves (God's Number). Record your best score under each benchmark."
+      },
+      "q": {
+        "kicker": "to discuss",
+        "title": "Questions to think about"
+      },
+      "q1": "Why is God's Number 6, and not more?",
+      "q2": "What happens if you set ε = 0 from the start?",
+      "q3": "If you move to 2×3 (360 states), how many rows max in the Q-table?"
+    },
+    "footer": {
+      "left": "AI-Exhibits · Reinforcement Learning · Dr. Erika Roldán Roa",
+      "right": "Worksheet · CC BY-NC-ND 4.0"
+    }
   }
 }

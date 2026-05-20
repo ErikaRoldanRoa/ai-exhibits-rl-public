@@ -579,7 +579,8 @@
         "2": "5 min · Kartierung · 12 erreichbare Zustände, Q-Tabelle auf Serviette (12 × 2 = 24 Zeilen max).",
         "3": "8 min · trainieren · α≈0,5 · γ≈0,9 · ε≈0,3 · 300 Episoden; B6 anvisieren (Gottes-Zahl, 6 Züge).",
         "4": "2 min · Nachbesprechung · der Agent hat eine optimale Politik auf einer winzigen Welt gelernt. Brücke zu Mission II."
-      }
+      },
+      "studentSheetLink": "📄 Arbeitsblatt →"
     },
     "m2": {
       "chip": "Mission II · Workshop-Kit",
@@ -719,5 +720,51 @@
     "errEmpty": "Beschreibe den Fehler kurz.",
     "errGeneric": "Fehlgeschlagen. Versuche es später erneut.",
     "errNetwork": "Netzwerkfehler. Versuche es später erneut."
+  },
+  "ms": {
+    "kicker": "Workshop · Mission I · 2×2",
+    "title": "Schüler*innen-Arbeitsblatt · Mission I — Q-Learning auf 2×2",
+    "teamLabel": "Team:",
+    "dateLabel": "Datum:",
+    "s1": {
+      "kicker": "1 · die Welt",
+      "title": "Die 12 erreichbaren Zustände",
+      "intro": "Das 2×2-Puzzle hat <strong>4! = 24</strong> mögliche Anordnungen, aber <strong>nur 12 sind erreichbar</strong> vom Ziel aus. Jeder legale Zug kippt <em>zwei Paritäten gleichzeitig</em> — die halbe Welt ist für die Agent*in unsichtbar.",
+      "cap": "Abstand d = minimale Zugzahl bis zum Ziel. Der schlimmste Start ist <strong>6 Züge</strong> entfernt — das ist die <strong>Gottes-Zahl</strong>.",
+      "unreach": "<strong>Die 12 fehlenden Zustände</strong> existieren auf dem Papier (z. B. <code>1 3 / 2 _</code>), sind aber nie erreichbar: jeder Zug kippt <em>gleichzeitig</em> die Signatur der Permutation und die Parität der Leerzelle — ihr Produkt ist invariant. Wilson 1974 verallgemeinert: für jedes Rechteck r×c mit r,c ≥ 2 gilt |R| = (rc)!/2."
+    },
+    "s2": {
+      "kicker": "2 · das Gedächtnis",
+      "title": "Die Q-Tabelle (24 Zeilen)",
+      "intro": "Für jeden <strong>Zustand</strong> und jede <strong>legale Aktion</strong> speichert die Agent*in einen Q-Wert. Das 2×2 hat <strong>12 Zustände × 2 Aktionen = genau 24 Zeilen</strong>. Die Leerzelle sitzt in einer Ecke jedes erreichbaren Zustands → 2 legale Aktionen pro Zustand.",
+      "colState": "Zustand",
+      "colAct1": "Aktion 1",
+      "colAct2": "Aktion 2",
+      "hint": "Du kannst die Tabelle von Hand ausfüllen, nachdem ein kurzes Training (50 bis 100 Episoden reichen) gelaufen ist, indem du Werte aus der Zustandsliste der Software ausliest."
+    },
+    "s3": {
+      "kicker": "3 · die Regel",
+      "title": "Der Algorithmus + deine Versuche",
+      "formulaLabel": "Q-Aktualisierung:",
+      "alpha": "<strong>Lernrate</strong> · schnell (0,5) oder langsam (0,1)",
+      "gamma": "<strong>Zukunftsgewicht</strong> · langfristig (0,9) oder Gegenwart (0,5)",
+      "epsilon": "<strong>Exploration</strong> · neugierig (0,3) oder greedy (0,05)",
+      "bench": {
+        "kicker": "deine Versuche",
+        "title": "Benchmarks B1 → B6",
+        "hint": "B<em>k</em> = ein Startzustand <em>k</em> Züge vom Ziel entfernt. <strong>B6</strong> = der schlimmste Start, in genau 6 Zügen lösbar (Gottes-Zahl). Notiere dein bestes Ergebnis unter jeder Referenz."
+      },
+      "q": {
+        "kicker": "zum Diskutieren",
+        "title": "Fragen zum Nachdenken"
+      },
+      "q1": "Warum ist die Gottes-Zahl 6, und nicht mehr?",
+      "q2": "Was passiert, wenn du ε = 0 von Anfang an setzt?",
+      "q3": "Wenn du zu 2×3 (360 Zustände) wechselst, wie viele Zeilen hat die Q-Tabelle maximal?"
+    },
+    "footer": {
+      "left": "AI-Exhibits · Verstärkendes Lernen · Dr. Erika Roldán Roa",
+      "right": "Arbeitsblatt · CC BY-NC-ND 4.0"
+    }
   }
 }

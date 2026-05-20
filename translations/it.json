@@ -579,7 +579,8 @@
         "2": "5 min · mappa · 12 stati raggiungibili, tabella Q su tovagliolo (12 × 2 = 24 righe max).",
         "3": "8 min · allena · α≈0,5 · γ≈0,9 · ε≈0,3 · 300 episodi; punta B6 (Numero di Dio, 6 mosse).",
         "4": "2 min · debriefing · l'agente ha imparato una politica ottimale su un mondo minuscolo. Ponte verso Missione II."
-      }
+      },
+      "studentSheetLink": "📄 Scheda studente →"
     },
     "m2": {
       "chip": "Missione II · Kit del laboratorio",
@@ -719,5 +720,51 @@
     "errEmpty": "Descrivi l'errore in poche parole.",
     "errGeneric": "Errore. Riprova più tardi.",
     "errNetwork": "Errore di rete. Riprova più tardi."
+  },
+  "ms": {
+    "kicker": "Laboratorio · Missione I · 2×2",
+    "title": "Scheda studente · Missione I — Q-learning su 2×2",
+    "teamLabel": "Squadra:",
+    "dateLabel": "Data:",
+    "s1": {
+      "kicker": "1 · il mondo",
+      "title": "I 12 stati raggiungibili",
+      "intro": "Il puzzle 2×2 ha <strong>4! = 24</strong> disposizioni possibili, ma <strong>solo 12 sono raggiungibili</strong> dall'obiettivo. Ogni mossa legale inverte <em>due parità contemporaneamente</em> — metà del mondo è invisibile per l'agente.",
+      "cap": "Distanza d = numero minimo di mosse fino all'obiettivo. La partenza peggiore è a <strong>6 mosse</strong> — questo è il <strong>Numero di Dio</strong>.",
+      "unreach": "<strong>I 12 stati mancanti</strong> esistono sulla carta (es. <code>1 3 / 2 _</code>) ma non sono mai raggiungibili: ogni mossa inverte <em>contemporaneamente</em> il segno della permutazione e la parità della cella vuota — il loro prodotto è invariante. Wilson 1974 generalizza: per ogni rettangolo r×c con r,c ≥ 2, |R| = (rc)!/2."
+    },
+    "s2": {
+      "kicker": "2 · la memoria",
+      "title": "La tabella Q (24 righe)",
+      "intro": "Per ogni <strong>stato</strong> e ogni <strong>azione legale</strong>, l'agente conserva un valore Q. Il 2×2 ha <strong>12 stati × 2 azioni = esattamente 24 righe</strong>. La cella vuota si trova in un angolo di ogni stato raggiungibile → 2 azioni legali per stato.",
+      "colState": "Stato",
+      "colAct1": "Azione 1",
+      "colAct2": "Azione 2",
+      "hint": "Puoi compilare la tabella a mano dopo un breve addestramento (50–100 episodi bastano) leggendo i valori dalla vista « Elenco degli stati » del software."
+    },
+    "s3": {
+      "kicker": "3 · la regola",
+      "title": "L'algoritmo + le tue prove",
+      "formulaLabel": "Aggiornamento Q:",
+      "alpha": "<strong>velocità di apprendimento</strong> · veloce (0,5) o lenta (0,1)",
+      "gamma": "<strong>peso del futuro</strong> · lungo termine (0,9) o presente (0,5)",
+      "epsilon": "<strong>esplorazione</strong> · curiosa (0,3) o greedy (0,05)",
+      "bench": {
+        "kicker": "le tue prove",
+        "title": "Benchmark B1 → B6",
+        "hint": "B<em>k</em> = uno stato di partenza a <em>k</em> mosse dall'obiettivo. <strong>B6</strong> = la partenza peggiore, risolvibile in esattamente 6 mosse (Numero di Dio). Annota il tuo miglior punteggio sotto ogni riferimento."
+      },
+      "q": {
+        "kicker": "da discutere",
+        "title": "Domande per riflettere"
+      },
+      "q1": "Perché il Numero di Dio è 6, e non di più?",
+      "q2": "Cosa succede se imposti ε = 0 fin dall'inizio?",
+      "q3": "Passando a 2×3 (360 stati), quante righe avrà al massimo la tabella Q?"
+    },
+    "footer": {
+      "left": "AI-Exhibits · Apprendimento per Rinforzo · Dr. Erika Roldán Roa",
+      "right": "Scheda · CC BY-NC-ND 4.0"
+    }
   }
 }

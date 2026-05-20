@@ -579,7 +579,8 @@
         "2": "5 min · cartographie · les 12 états accessibles, table Q sur serviette (12 × 2 = 24 lignes max).",
         "3": "8 min · entraîner avec α≈0,5 · γ≈0,9 · ε≈0,3 · 300 épisodes ; viser B6 (Nombre de Dieu, 6 coups).",
         "4": "2 min · débrief · l'agent a appris une politique optimale sur un monde minuscule. Bridge vers Mission II."
-      }
+      },
+      "studentSheetLink": "📄 Fiche élève →"
     },
     "m2": {
       "chip": "Mission II · Kit atelier",
@@ -719,5 +720,51 @@
     "errEmpty": "Décrivez l'erreur en quelques mots.",
     "errGeneric": "Échec. Réessayez plus tard.",
     "errNetwork": "Erreur réseau. Réessayez plus tard."
+  },
+  "ms": {
+    "kicker": "Atelier · Mission I · 2×2",
+    "title": "Fiche élève · Mission I — Q-learning sur 2×2",
+    "teamLabel": "Équipe :",
+    "dateLabel": "Date :",
+    "s1": {
+      "kicker": "1 · le monde",
+      "title": "Les 12 états atteignables",
+      "intro": "Le puzzle 2×2 a <strong>4! = 24</strong> arrangements possibles, mais <strong>seuls 12 sont atteignables</strong> depuis l'objectif. Chaque coup légal inverse <em>deux parités à la fois</em> — la moitié du monde est invisible pour l'agente.",
+      "cap": "Distance d = nombre minimum de coups jusqu'à l'objectif. Le pire départ est à <strong>6 coups</strong> — c'est le <strong>Nombre de Dieu</strong>.",
+      "unreach": "<strong>Les 12 états manquants</strong> existent sur le papier (par ex. <code>1 3 / 2 _</code>) mais ne sont jamais atteignables : chaque coup permute <em>simultanément</em> la signature de la permutation et la parité de la case vide — leur produit est invariant. Wilson 1974 généralise : pour tout rectangle r×c avec r,c ≥ 2, |R| = (rc)!/2."
+    },
+    "s2": {
+      "kicker": "2 · la mémoire",
+      "title": "La table Q (24 lignes)",
+      "intro": "Pour chaque <strong>état</strong> et chaque <strong>action légale</strong>, l'agente garde une valeur Q. Le 2×2 a <strong>12 états × 2 actions = exactement 24 lignes</strong>. La case vide est dans un coin sur chaque état atteignable → 2 actions légales par état.",
+      "colState": "État",
+      "colAct1": "Action 1",
+      "colAct2": "Action 2",
+      "hint": "Tu peux remplir la table à la main après un court entraînement (50–100 épisodes suffisent) en lisant les valeurs depuis la vue « Liste des états » du logiciel."
+    },
+    "s3": {
+      "kicker": "3 · la règle",
+      "title": "L'algorithme + tes essais",
+      "formulaLabel": "Mise à jour Q :",
+      "alpha": "<strong>vitesse d'apprentissage</strong> · vite (0,5) ou lent (0,1)",
+      "gamma": "<strong>importance du futur</strong> · proche (0,9) ou présent (0,5)",
+      "epsilon": "<strong>exploration</strong> · curieux (0,3) ou glouton (0,05)",
+      "bench": {
+        "kicker": "tes essais",
+        "title": "Benchmarks B1 → B6",
+        "hint": "B<em>k</em> = un état de départ à <em>k</em> coups de l'objectif. <strong>B6</strong> = le pire départ, soluble en exactement 6 coups (Nombre de Dieu). Note ton meilleur score sous chaque référence."
+      },
+      "q": {
+        "kicker": "à creuser",
+        "title": "Questions à débattre"
+      },
+      "q1": "Pourquoi le Nombre de Dieu est-il 6, et pas plus ?",
+      "q2": "Que se passe-t-il si tu poses ε = 0 dès le début ?",
+      "q3": "Si tu passes au 2×3 (360 états), combien de lignes aura la table Q maximum ?"
+    },
+    "footer": {
+      "left": "AI-Exhibits · Apprentissage par Renforcement · Dr. Erika Roldán Roa",
+      "right": "Fiche · CC BY-NC-ND 4.0"
+    }
   }
 }
