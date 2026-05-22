@@ -81,7 +81,7 @@
       "randomAgent": "Random agent"
     },
     "intel": {
-      "title": "Q-learning glossary — four terms to start",
+      "title": "Q-learning glossary",
       "showBtn": "Show",
       "hideBtn": "Hide",
       "termsLabel": "Glossary terms",
@@ -648,7 +648,7 @@
       "curseTitle": "The curse begins to bite.",
       "curseBody": " On 181,440 states, the coverage gauge plateaus below 100%. Inside Mission III, the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a> translates cost into CHF: Demo 0.0001 · Reliable 0.01 · Proven 700. Five orders of magnitude from Demo to Proven.",
       "notes": {
-        "1": "3 min · transition · open Mission III; point at the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a> (Demo / Reliable / Proven, 5 orders of magnitude).",
+        "1": "3 min · transition · open Mission III; point at the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a>.",
         "2": "5 min · observe · 181,440 states; the gauge plateaus below 100% — show it.",
         "3": "10 min · train · α≈0.3 · γ≈0.99 · ε≈0.5 · 10 000 episodes; aim for B5 (31 moves, antipode).",
         "4": "2 min · debrief · the curse of dimensionality. Same algorithm, same method — the space wins. Entry to DQN / AlphaZero."
@@ -663,7 +663,7 @@
     },
     "bench": {
       "title": "References",
-      "hint": "B<em>k</em> = a starting state at <em>k</em> moves from the goal. The optimal distance is the length of the shortest solution.",
+      "hint": "B<em>k</em> = a starting state at <em>k</em> moves from the goal.",
       "godsLabel": "God's Number"
     },
     "race": {
@@ -677,7 +677,7 @@
       "moves": "Moves",
       "scoresheetNote": "→ Also note the result on the consolidated team scoresheet (3 missions on a napkin).",
       "scoresheetLink": "Open the team scoresheet (3 missions on a napkin)",
-      "body": "Each team picks (α, γ, ε) three times with the same number of episodes. The table keeps the record."
+      "body": "Each team picks (α, γ, ε) with the same number of episodes. The table keeps the record."
     },
     "notes": {
       "facilitatorTitle": "Notes for the facilitator"
@@ -703,7 +703,7 @@
       "m3": "Mission III",
       "debrief": "Debrief",
       "totalSuffix": "min",
-      "budgetHint": "Default budget. Compress to 60 min or expand to 90 min keeping the proportions.",
+      "budgetHint": "Default budget. Compress to 60 min or expand to 90 min.",
       "min": {
         "accueil": "5 min",
         "m1": "20 min",
@@ -787,7 +787,7 @@
       "colState": "State",
       "colAct1": "Action 1",
       "colAct2": "Action 2",
-      "hint": "You can fill the table by hand after a short training (50–100 episodes is enough) by reading values from the software's \"List of states\" view."
+      "hint": "Fill the table by hand after a short training (50–100 episodes is enough) by reading values from the software's \"List of states\" view."
     },
     "s3": {
       "kicker": "3 · the rule",

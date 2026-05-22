@@ -81,7 +81,7 @@
       "randomAgent": "Agente casuale"
     },
     "intel": {
-      "title": "Glossario Q-learning — quattro termini per iniziare",
+      "title": "Glossario Q-learning",
       "showBtn": "Mostra",
       "hideBtn": "Nascondi",
       "termsLabel": "Termini del glossario",
@@ -648,7 +648,7 @@
       "curseTitle": "La maledizione si fa sentire.",
       "curseBody": " Su 181 440 stati, l'indicatore di copertura si stabilizza sotto il 100%. In Missione III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a> traduce il costo in CHF: Demo 0,0001 · Affidabile 0,01 · Garantito 700. Cinque ordini di grandezza da Demo a Garantito.",
       "notes": {
-        "1": "3 min · transizione · aprire Missione III; indicare la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a> (Demo / Affidabile / Garantito, 5 ordini di grandezza).",
+        "1": "3 min · transizione · aprire Missione III; indicare la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a>.",
         "2": "5 min · osserva · 181 440 stati; l'indicatore si stabilizza sotto il 100% — mostrare.",
         "3": "10 min · allena · α≈0,3 · γ≈0,99 · ε≈0,5 · 10 000 episodi; puntare B5 (31 mosse, antipode).",
         "4": "2 min · debriefing · la maledizione della dimensione. Stesso algoritmo, stesso metodo — lo spazio vince. Porta verso DQN / AlphaZero."
@@ -663,7 +663,7 @@
     },
     "bench": {
       "title": "Riferimenti",
-      "hint": "B<em>k</em> = uno stato iniziale a <em>k</em> mosse dall'obiettivo. La distanza ottimale è la lunghezza della soluzione più breve.",
+      "hint": "B<em>k</em> = uno stato iniziale a <em>k</em> mosse dall'obiettivo.",
       "godsLabel": "Numero di Dio"
     },
     "race": {
@@ -677,7 +677,7 @@
       "moves": "Mosse",
       "scoresheetNote": "→ Annota anche il risultato sulla scheda di squadra consolidata (3 missioni su un tovagliolo).",
       "scoresheetLink": "Apri la scheda di squadra (3 missioni su un tovagliolo)",
-      "body": "Ogni squadra sceglie (α, γ, ε) tre volte con lo stesso numero di episodi. La tabella tiene traccia."
+      "body": "Ogni squadra sceglie (α, γ, ε) con lo stesso numero di episodi. La tabella tiene traccia."
     },
     "notes": {
       "facilitatorTitle": "Note per l'animatrice"
@@ -703,7 +703,7 @@
       "m3": "Missione III",
       "debrief": "Debriefing",
       "totalSuffix": "min",
-      "budgetHint": "Budget predefinito. Comprimi in 60 min o espandi in 90 min mantenendo le proporzioni.",
+      "budgetHint": "Budget predefinito. Comprimi in 60 min o espandi in 90 min.",
       "min": {
         "accueil": "5 min",
         "m1": "20 min",
@@ -787,7 +787,7 @@
       "colState": "Stato",
       "colAct1": "Azione 1",
       "colAct2": "Azione 2",
-      "hint": "Puoi compilare la tabella a mano dopo un breve addestramento (50–100 episodi bastano) leggendo i valori dalla vista « Elenco degli stati » del software."
+      "hint": "Compila la tabella a mano dopo un breve addestramento (50–100 episodi bastano) leggendo i valori dalla vista « Elenco degli stati » del software."
     },
     "s3": {
       "kicker": "3 · la regola",

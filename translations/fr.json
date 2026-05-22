@@ -81,7 +81,7 @@
       "randomAgent": "Agente aléatoire"
     },
     "intel": {
-      "title": "Glossaire Q-learning — quatre termes pour démarrer",
+      "title": "Glossaire Q-learning",
       "showBtn": "Afficher",
       "hideBtn": "Masquer",
       "termsLabel": "Termes du glossaire",
@@ -648,7 +648,7 @@
       "curseTitle": "Le fléau se fait sentir.",
       "curseBody": " Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Dans Mission III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût en CHF : Démo 0,0001 · Fiable 0,01 · Garantie 700. Cinq ordres de grandeur de Démo à Garantie.",
       "notes": {
-        "1": "3 min · transition · ouvrir Mission III ; pointer la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> (Démo / Fiable / Garantie, 5 ordres de grandeur).",
+        "1": "3 min · transition · ouvrir Mission III ; pointer la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a>.",
         "2": "5 min · observation · 181 440 états ; la jauge plafonne sous 100 % — montrer.",
         "3": "10 min · entraîner avec α≈0,3 · γ≈0,99 · ε≈0,5 · 10 000 épisodes ; viser B5 (31 coups, antipode).",
         "4": "2 min · débrief · le fléau de la dimension. Même algo, même méthode — l'espace gagne. Porte d'entrée vers DQN / AlphaZero."
@@ -663,7 +663,7 @@
     },
     "bench": {
       "title": "Références",
-      "hint": "B<em>k</em> = un état de départ à <em>k</em> coups de l'objectif. La distance optimale est la longueur de la solution la plus courte.",
+      "hint": "B<em>k</em> = un état de départ à <em>k</em> coups de l'objectif.",
       "godsLabel": "Nombre de Dieu"
     },
     "race": {
@@ -677,7 +677,7 @@
       "moves": "Mvts",
       "scoresheetNote": "→ Note aussi le résultat sur la fiche d'équipe consolidée (3 missions sur une serviette).",
       "scoresheetLink": "Ouvrir la fiche d'équipe (3 missions sur une serviette)",
-      "body": "Chaque équipe choisit (α, γ, ε) trois fois avec le même nombre d'épisodes. Le tableau garde la trace."
+      "body": "Chaque équipe choisit (α, γ, ε) avec le même nombre d'épisodes. Le tableau garde la trace."
     },
     "notes": {
       "facilitatorTitle": "Notes pour l'animatrice"
@@ -703,7 +703,7 @@
       "m3": "Mission III",
       "debrief": "Débrief",
       "totalSuffix": "min",
-      "budgetHint": "Budget par défaut. Compresse en 60 min ou détend en 90 min en gardant les proportions.",
+      "budgetHint": "Budget par défaut. Compresse en 60 min ou détend en 90 min.",
       "min": {
         "accueil": "5 min",
         "m1": "20 min",
@@ -787,7 +787,7 @@
       "colState": "État",
       "colAct1": "Action 1",
       "colAct2": "Action 2",
-      "hint": "Tu peux remplir la table à la main après un court entraînement (50–100 épisodes suffisent) en lisant les valeurs depuis la vue « Liste des états » du logiciel."
+      "hint": "Remplis la table à la main après un court entraînement (50–100 épisodes suffisent) en lisant les valeurs depuis la vue « Liste des états » du logiciel."
     },
     "s3": {
       "kicker": "3 · la règle",

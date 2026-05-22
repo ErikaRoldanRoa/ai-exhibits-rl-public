@@ -77,13 +77,6 @@
         Q(s,a) ← Q(s,a) + α [ r + γ · max<sub>a'</sub> Q(s',a') − Q(s,a) ]
       </div>
 
-      <h2 style="margin-top:14px;" data-i18n="kit.tune.title">Régler les trois boutons</h2>
-      <ul style="margin:6px 0 0 0; padding-left:18px; font-size:12px; color:var(--text); line-height:1.6;">
-        <li><strong style="color:var(--text);">α</strong> · <span data-i18n="kit.tune.alpha">élevé : apprend vite mais peut osciller · faible : stable mais lent</span></li>
-        <li><strong style="color:var(--text);">γ</strong> · <span data-i18n="kit.tune.gamma">élevé : planifie loin (plus de propagation backward) · faible : myope</span></li>
-        <li><strong style="color:var(--text);">ε</strong> · <span data-i18n="kit.tune.epsilon">élevé : explore davantage · trop bas trop tôt : se fige sur un choix initial</span></li>
-      </ul>
-
       <!-- Glossary chips for THIS mission — shared widget, M1+M2 chips -->
       <div class="glossary card" id="kitGlossary" style="margin-top:14px;"></div>
       <script src="app/glossary.js"></script>
