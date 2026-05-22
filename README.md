@@ -57,7 +57,7 @@ Each mission follows the same arc: read the world → play by hand → train the
 | Student does | Hub shows |
 |---|---|
 | Trains 10 000 episodes on the same algorithm | Coverage gauge plateaus far below 100% |
-| Reads the Économie card | **Démo** (~10⁻⁵ CHF, seconds) → **Fiable** (~10⁻³ CHF, minutes) → **Garanti** (~10² CHF, hours) |
+| Reads the Économie card | **Démo** 0,0001 CHF (seconds) → **Fiable** 0,01 CHF (minutes) → **Garantie** 700 CHF (hours) — five orders of magnitude |
 | Tries to push coverage higher | Gauge climbs ~1% per minute |
 | Closes the laptop and asks "what could fix this?" | An on-screen card pointing at function approximation |
 
@@ -74,7 +74,7 @@ Each mission follows the same arc: read the world → play by hand → train the
 | Devices | One browser per pair, group, or workstation |
 | Install / accounts | None |
 | Time | 2 hours for all three missions; 30 min for Mission I alone |
-| Print | `mission{1,2,3}_kit.html` (A4 landscape) per team + `print/fiche_equipe.html` team scoresheet |
+| Print | `mission{1,2,3}_kit.html` per team (A4 landscape, facilitator runbook + cheat-sheet) + `mission1_student.html` per student (A4 landscape worksheet: 12-state orbit, 24-row Q-table grid, benchmarks) + `print/fiche_equipe.html` team scoresheet |
 | Project on screen | The hub (`index.html`) — so the room sees the coverage gauge climb together |
 
 Anonymous play sends nothing. The hub is fully usable with no contact, no keyword, no setup beyond opening the URL.
@@ -120,6 +120,7 @@ ai-exhibits-rl-public/
 ├── index.html                       Hub: 3 mission cards, role gate, language switcher.
 ├── exhibit_2x2.html  ·  exhibit_2x3.html  ·  exhibit_3x3.html   Mission I/II/III trainers.
 ├── mission1_kit.html  ·  mission2_kit.html  ·  mission3_kit.html   Printable workshop kits (A4 landscape).
+├── mission1_student.html               Printable student worksheet for Mission I (A4 landscape, 4 langs).
 ├── request.html                     Event-request form (gated until 2026-06-01).
 ├── service-worker.js · LICENSE · README.md
 │
@@ -135,11 +136,11 @@ ai-exhibits-rl-public/
 
 **Backend.** The hub posts to a backend for three flows (submit results, request event, suggest correction) and works fully standalone if you strip those features. Implementation lives outside this public deliverable.
 
-**i18n.** URL override `?lang=fr|en|de|it`; preference persists in `localStorage`. Files in subfolders opt in with `<script>window.__i18nBase = '../';</script>`. All translation files are at key-set parity (516 keys each).
+**i18n.** URL override `?lang=fr|en|de|it`; preference persists in `localStorage`. Files in subfolders opt in with `<script>window.__i18nBase = '../';</script>`. All translation files are at key-set parity (578 keys each, enforced by `tools/i18n_parity_test.py`).
 
-**Tests.** Four suites in the parent project's `tools/`: `usability_harness.py` (functional + visual, 85 checks), `gate_carryover_test.py` (non-empty pre-state, 19 checks), `request_form_test.py` (event form, 31 checks), `feedback_test.py` (🔧 widget, 32 checks). The parent project also contains `tools/verify_gods_numbers.py` — BFS verifier behind the state-graph and benchmark-distance claims.
+**Tests.** Five suites in the parent project's `tools/`: `i18n_parity_test.py` (4-lang key + reference parity, 0 tolerance), `usability_harness.py` (functional + visual, 85 checks), `gate_carryover_test.py` (non-empty pre-state, 19 checks), `request_form_test.py` (event form, 31 checks), `feedback_test.py` (🔧 widget, 32 checks). The parent project also contains `tools/verify_gods_numbers.py` — BFS verifier behind the state-graph and benchmark-distance claims.
 
-**Translating.** Read the license first. Adaptations require permission; [contact](https://erikaroldan.net) before starting. The workflow once approved: copy `translations/fr.json` (canonical) → translate every value, keep every key → add to the language switcher in `index.html` and `app/i18n.js` → test the trainers, kits, scoresheet, role gate, request form, and feedback widget.
+**Translating.** Read the license first. Adaptations require permission; [contact](https://erikaroldan.net) before starting. The workflow once approved: copy `translations/fr.json` (canonical) → translate every value, keep every key → add to the language switcher in `index.html` and `app/i18n.js` → run `tools/i18n_parity_test.py` (must PASS) → test the trainers, kits, student worksheet, scoresheet, role gate, request form, and feedback widget.
 
 ---
 
