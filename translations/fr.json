@@ -717,6 +717,11 @@
       "coverage": "Couverture stagne · ε trop bas, ou pas assez d'épisodes. Augmente ε vers 0,4–0,5 et relance.",
       "greedy": "Le mode glouton échoue · ε figé à 0 trop tôt, ou Q n'a pas convergé. Réinitialiser Q, repartir avec plus d'épisodes.",
       "runaway": "Entraînement qui s'emballe · vérifie le maximum d'épisodes (M1 = 2 000, M2 = 20 000, M3 = 50 000)."
+    },
+    "transfer": {
+      "title": "Avant de cliquer la suite",
+      "m1to2": "Tu vas voir 360 états dans Mission II (30× plus qu'ici). Devine si la table Q tiendra encore sur une serviette. Pourquoi / pourquoi pas ?",
+      "m2to3": "Tu vas voir 181 440 états dans Mission III (504× plus qu'ici). Devine si la jauge de couverture atteindra 100 %. Pourquoi / pourquoi pas ?"
     }
   },
   "fe": {

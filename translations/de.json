@@ -717,6 +717,11 @@
       "coverage": "Abdeckung stagniert · ε zu niedrig oder zu wenige Episoden. ε auf 0,4–0,5 erhöhen und neu starten.",
       "greedy": "Greedy scheitert · ε zu früh auf 0 fixiert, oder Q nicht konvergiert. Q zurücksetzen, mit mehr Episoden neu starten.",
       "runaway": "Training läuft aus dem Ruder · prüfe Episodengrenze (M1 = 2 000, M2 = 20 000, M3 = 50 000)."
+    },
+    "transfer": {
+      "title": "Bevor du auf die nächste Mission klickst",
+      "m1to2": "Du wirst 360 Zustände in Mission II sehen (30× mehr als hier). Schätze, ob die Q-Tabelle noch auf eine Serviette passt. Warum / warum nicht?",
+      "m2to3": "Du wirst 181 440 Zustände in Mission III sehen (504× mehr als hier). Schätze, ob die Abdeckungsanzeige 100% erreicht. Warum / warum nicht?"
     }
   },
   "fe": {

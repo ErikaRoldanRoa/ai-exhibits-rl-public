@@ -717,6 +717,11 @@
       "coverage": "Coverage stalls · ε too low or not enough episodes. Raise ε toward 0.4–0.5 and re-run.",
       "greedy": "Greedy fails · ε locked at 0 too early, or Q hasn't converged. Reset Q, run more episodes.",
       "runaway": "Runaway training · check the episodes ceiling (M1 = 2 000, M2 = 20 000, M3 = 50 000)."
+    },
+    "transfer": {
+      "title": "Before clicking the next mission",
+      "m1to2": "You'll see 360 states in Mission II (30× more than here). Guess whether the Q-table still fits on a napkin. Why / why not?",
+      "m2to3": "You'll see 181,440 states in Mission III (504× more than here). Guess whether the coverage gauge will reach 100%. Why / why not?"
     }
   },
   "fe": {

@@ -717,6 +717,11 @@
       "coverage": "Copertura ferma · ε troppo basso o pochi episodi. Alza ε verso 0,4–0,5 e riavvia.",
       "greedy": "Greedy fallisce · ε bloccato a 0 troppo presto, o Q non convergente. Reset Q, ripartire con più episodi.",
       "runaway": "Training fuori controllo · verifica il limite di episodi (M1 = 2 000, M2 = 20 000, M3 = 50 000)."
+    },
+    "transfer": {
+      "title": "Prima di cliccare la prossima missione",
+      "m1to2": "Vedrai 360 stati in Missione II (30× più di qui). Indovina se la tabella Q sta ancora su un tovagliolo. Perché / perché no?",
+      "m2to3": "Vedrai 181 440 stati in Missione III (504× più di qui). Indovina se l'indicatore di copertura raggiungerà il 100%. Perché / perché no?"
     }
   },
   "fe": {
