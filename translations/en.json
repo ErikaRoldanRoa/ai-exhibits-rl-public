@@ -636,7 +636,7 @@
       "algoBody": " With 360 states the table no longer fits on a page. Start training and watch Q propagate backward from the goal, episode after episode.",
       "notes": {
         "1": "3 min · transition · open Mission II; point at the coverage gauge over 360 states.",
-        "2": "5 min · observe · train and watch the gauge climb, Q propagating backward from the goal.",
+        "2": "5 min · observation · train and watch the gauge climb; during the first 5 episodes, follow the colour wave starting from the goal and propagating backward in the State-list view.",
         "3": "14 min · 3 attempts · α≈0.3 · γ≈0.95 · ε≈0.4 · 2 000 episodes; benchmark B1→B5.",
         "4": "3 min · debrief · ε > 0 keeps exploration alive; γ close to 1 carries reward far back."
       },
@@ -783,7 +783,19 @@
       "title": "The 12 reachable states",
       "intro": "The 2×2 puzzle has <strong>4! = 24</strong> possible arrangements, but <strong>only 12 are reachable</strong> from the goal. Every legal move flips <em>two parities at once</em> — half the world is invisible to the agent.",
       "cap": "Distance d = the minimum number of moves to the goal. The worst start is <strong>6 moves</strong> away — this is the <strong>God's Number</strong>.",
-      "unreach": "<strong>The 12 missing states</strong> exist on paper (e.g. <code>1 3 / 2 _</code>) but are never reachable: every move flips <em>simultaneously</em> the sign of the permutation and the parity of the blank cell — their product is invariant. Wilson 1974 generalises: for any rectangle r×c with r,c ≥ 2, |R| = (rc)!/2."
+      "unreach": "<strong>The 12 missing states</strong> exist on paper (e.g. <code>1 3 / 2 _</code>) but are never reachable: every move flips <em>simultaneously</em> the sign of the permutation and the parity of the blank cell — their product is invariant. Wilson 1974 generalises: for any rectangle r×c with r,c ≥ 2, |R| = (rc)!/2.",
+      "flip": {
+        "title": "The move that flips two things at once",
+        "before": "Before — goal",
+        "after": "After ↑",
+        "tilesLabel": "Tile order",
+        "tilesBefore": "identity (even)",
+        "tilesAfter": "transposition (odd)",
+        "blankLabel": "Blank position",
+        "blankBefore": "row+col = 1+1 (even)",
+        "blankAfter": "row+col = 0+1 (odd)",
+        "invariant": "Both parities flip together → their <strong>product</strong> stays unchanged. That is the invariant. Half of the 24 arrangements is locked."
+      }
     },
     "s2": {
       "kicker": "2 · the memory",
@@ -818,7 +830,16 @@
       },
       "q1": "Why is God's Number 6, and not more?",
       "q2": "What happens if you set ε = 0 from the start?",
-      "q3": "Before clicking 2×3: guess whether the Q-table still fits on a napkin. Why / why not?"
+      "q3": "Before clicking 2×3: guess whether the Q-table still fits on a napkin. Why / why not?",
+      "worked": {
+        "title": "A numeric example",
+        "setup": "α = 0.5 · γ = 0.9 · reward r = 1 when reaching the goal, 0 otherwise. Initially, all Q-values are 0.",
+        "step1Label": "Episode 1 — goal-neighbour (d=1), action ↓ toward the goal:",
+        "step1Calc": "Q ← 0 + 0.5 · (1 + 0.9 · 0 − 0) = <strong>0.5</strong>",
+        "step2Label": "Episode 2 — state d=2 arrives on this neighbour:",
+        "step2Calc": "Q ← 0 + 0.5 · (0 + 0.9 · 0.5 − 0) = <strong>0.45</strong>",
+        "punch": "At each episode, the information \"the goal is over there\" climbs one step further. That is <em>backward propagation</em>."
+      }
     },
     "footer": {
       "left": "AI-Exhibits · Reinforcement Learning · Dr. Erika Roldán Roa",

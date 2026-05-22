@@ -636,7 +636,7 @@
       "algoBody": " Bei 360 Zuständen passt die Tabelle nicht mehr auf eine Seite. Starte das Training und beobachte, wie Q vom Ziel rückwärts wandert, Episode für Episode.",
       "notes": {
         "1": "3 min · Übergang · Mission II öffnen; auf die Abdeckungsanzeige über 360 Zustände zeigen.",
-        "2": "5 min · beobachten · trainieren und beobachten, wie die Anzeige steigt, Q rückwärts vom Ziel propagiert.",
+        "2": "5 min · Beobachtung · trainieren und die Anzeige steigen lassen; verfolge in den ersten 5 Episoden die Farbwelle, die vom Ziel ausgeht und sich rückwärts in der Zustandsliste-Ansicht ausbreitet.",
         "3": "14 min · 3 Versuche · α≈0,3 · γ≈0,95 · ε≈0,4 · 2 000 Episoden; B1→B5 benchmarken.",
         "4": "3 min · Nachbesprechung · ε > 0 hält die Exploration; γ nahe 1 trägt die Belohnung weit zurück."
       },
@@ -783,7 +783,19 @@
       "title": "Die 12 erreichbaren Zustände",
       "intro": "Das 2×2-Puzzle hat <strong>4! = 24</strong> mögliche Anordnungen, aber <strong>nur 12 sind erreichbar</strong> vom Ziel aus. Jeder legale Zug kippt <em>zwei Paritäten gleichzeitig</em> — die halbe Welt ist für die Agent*in unsichtbar.",
       "cap": "Abstand d = minimale Zugzahl bis zum Ziel. Der schlimmste Start ist <strong>6 Züge</strong> entfernt — das ist die <strong>Gottes-Zahl</strong>.",
-      "unreach": "<strong>Die 12 fehlenden Zustände</strong> existieren auf dem Papier (z. B. <code>1 3 / 2 _</code>), sind aber nie erreichbar: jeder Zug kippt <em>gleichzeitig</em> die Signatur der Permutation und die Parität der Leerzelle — ihr Produkt ist invariant. Wilson 1974 verallgemeinert: für jedes Rechteck r×c mit r,c ≥ 2 gilt |R| = (rc)!/2."
+      "unreach": "<strong>Die 12 fehlenden Zustände</strong> existieren auf dem Papier (z. B. <code>1 3 / 2 _</code>), sind aber nie erreichbar: jeder Zug kippt <em>gleichzeitig</em> die Signatur der Permutation und die Parität der Leerzelle — ihr Produkt ist invariant. Wilson 1974 verallgemeinert: für jedes Rechteck r×c mit r,c ≥ 2 gilt |R| = (rc)!/2.",
+      "flip": {
+        "title": "Der Zug, der zwei Dinge gleichzeitig kippt",
+        "before": "Vorher — Ziel",
+        "after": "Nachher ↑",
+        "tilesLabel": "Kachelreihenfolge",
+        "tilesBefore": "Identität (gerade)",
+        "tilesAfter": "Transposition (ungerade)",
+        "blankLabel": "Leerzellen-Position",
+        "blankBefore": "Zeile+Spalte = 1+1 (gerade)",
+        "blankAfter": "Zeile+Spalte = 0+1 (ungerade)",
+        "invariant": "Beide Paritäten kippen gleichzeitig → ihr <strong>Produkt</strong> bleibt unverändert. Das ist die Invariante. Die Hälfte der 24 Anordnungen ist verschlossen."
+      }
     },
     "s2": {
       "kicker": "2 · das Gedächtnis",
@@ -818,7 +830,16 @@
       },
       "q1": "Warum ist die Gottes-Zahl 6, und nicht mehr?",
       "q2": "Was passiert, wenn du ε = 0 von Anfang an setzt?",
-      "q3": "Bevor du auf 2×3 klickst: schätze, ob die Q-Tabelle noch auf eine Serviette passt. Warum / warum nicht?"
+      "q3": "Bevor du auf 2×3 klickst: schätze, ob die Q-Tabelle noch auf eine Serviette passt. Warum / warum nicht?",
+      "worked": {
+        "title": "Ein konkretes Beispiel",
+        "setup": "α = 0,5 · γ = 0,9 · Belohnung r = 1 beim Erreichen des Ziels, sonst 0. Anfangs sind alle Q-Werte 0.",
+        "step1Label": "Episode 1 — Zielnachbar (d=1), Aktion ↓ zum Ziel:",
+        "step1Calc": "Q ← 0 + 0,5 · (1 + 0,9 · 0 − 0) = <strong>0,5</strong>",
+        "step2Label": "Episode 2 — Zustand d=2 trifft auf diesen Nachbarn:",
+        "step2Calc": "Q ← 0 + 0,5 · (0 + 0,9 · 0,5 − 0) = <strong>0,45</strong>",
+        "punch": "Bei jeder Episode steigt die Information „das Ziel liegt dort\" eine Stufe weiter. Das ist <em>Rückwärtspropagation</em>."
+      }
     },
     "footer": {
       "left": "AI-Exhibits · Verstärkendes Lernen · Dr. Erika Roldán Roa",

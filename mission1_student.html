@@ -78,6 +78,45 @@
     font-size: 9px; line-height: 1.4;
   }
 
+  /* Parity-flip micro-figure: 2 mini-grids side-by-side with annotations */
+  .flip-figure {
+    margin-top: 8px;
+    padding: 6px 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 8.5px; line-height: 1.4;
+  }
+  .flip-figure .flip-title {
+    font-weight: 700; font-size: 9.5px; text-align: center;
+    margin-bottom: 4px;
+  }
+  .flip-row {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; margin: 4px 0;
+  }
+  .flip-grid {
+    display: grid; grid-template-columns: repeat(2, 16px);
+    grid-template-rows: repeat(2, 16px);
+    gap: 1px; background: #888; padding: 1px;
+  }
+  .flip-grid .flip-cell {
+    background: #fff; display: flex; align-items: center; justify-content: center;
+    font-family: ui-monospace, monospace; font-weight: 700; font-size: 9px;
+  }
+  .flip-grid .flip-cell.blank { background: #eee; }
+  .flip-label { font-size: 8px; color: #444; text-align: center; min-width: 70px; }
+  .flip-arrow { font-size: 14px; color: #888; font-weight: 700; }
+  .flip-table {
+    width: 100%; font-size: 8px; margin-top: 4px; border-collapse: collapse;
+  }
+  .flip-table td { padding: 1px 3px; vertical-align: top; }
+  .flip-table td.flip-th { color: #555; font-weight: 600; width: 38%; }
+  .flip-figure .flip-invariant {
+    margin-top: 5px; padding: 3px 5px;
+    background: #fff8e0; border-left: 2px solid #b89000;
+    font-size: 8.5px; line-height: 1.4;
+  }
+
   /* Column 2: Q-table grid */
   table.qtable {
     width: 100%; border-collapse: collapse;
@@ -187,6 +226,41 @@
     <div class="orbit-cap" data-i18n="ms.s1.cap">Distance d = nombre minimum de coups jusqu'à l'objectif. Le pire départ est à <strong>6 coups</strong> — c'est le <strong>Nombre de Dieu</strong>.</div>
 
     <div class="orbit-unreach" data-i18n="ms.s1.unreach"><strong>Les 12 états manquants</strong> existent sur le papier (par ex. <code>1 3 / 2 _</code>) mais ne sont jamais atteignables : chaque coup permute <em>simultanément</em> la signature de la permutation et la parité de la case vide — leur produit est invariant. Wilson 1974 généralise : pour tout rectangle r×c avec r,c ≥ 2, |R| = (rc)!/2.</div>
+
+    <!-- Parity-flip micro-figure: shows the simultaneous flip in 2 mini-grids. -->
+    <div class="flip-figure">
+      <div class="flip-title" data-i18n="ms.s1.flip.title">Le coup qui inverse deux choses à la fois</div>
+      <div class="flip-row">
+        <div>
+          <div class="flip-grid">
+            <div class="flip-cell">1</div><div class="flip-cell">2</div>
+            <div class="flip-cell">3</div><div class="flip-cell blank">·</div>
+          </div>
+          <div class="flip-label" data-i18n="ms.s1.flip.before">Avant — objectif</div>
+        </div>
+        <div class="flip-arrow" aria-hidden="true">→</div>
+        <div>
+          <div class="flip-grid">
+            <div class="flip-cell">1</div><div class="flip-cell blank">·</div>
+            <div class="flip-cell">3</div><div class="flip-cell">2</div>
+          </div>
+          <div class="flip-label" data-i18n="ms.s1.flip.after">Après ↑</div>
+        </div>
+      </div>
+      <table class="flip-table">
+        <tr>
+          <td class="flip-th" data-i18n="ms.s1.flip.tilesLabel">Ordre des tuiles</td>
+          <td data-i18n="ms.s1.flip.tilesBefore">identité (paire)</td>
+          <td data-i18n="ms.s1.flip.tilesAfter">transposition (impaire)</td>
+        </tr>
+        <tr>
+          <td class="flip-th" data-i18n="ms.s1.flip.blankLabel">Position du vide</td>
+          <td data-i18n="ms.s1.flip.blankBefore">ligne+col = 1+1 (paire)</td>
+          <td data-i18n="ms.s1.flip.blankAfter">ligne+col = 0+1 (impaire)</td>
+        </tr>
+      </table>
+      <div class="flip-invariant" data-i18n="ms.s1.flip.invariant">Les deux parités basculent en même temps → leur <strong>produit</strong> reste inchangé. C'est l'invariant. Donc moitié des 24 arrangements est verrouillée.</div>
+    </div>
   </div>
 
   <!-- ─────────── Column 2 : the Q-table grid ─────────── -->
@@ -236,6 +310,20 @@
       <dt>γ</dt><dd data-i18n="ms.s3.gamma"><strong>importance du futur</strong> · proche (0,9) ou présent (0,5)</dd><br>
       <dt>ε</dt><dd data-i18n="ms.s3.epsilon"><strong>exploration</strong> · curieux (0,3) ou glouton (0,05)</dd>
     </dl>
+
+    <div class="worked" style="margin-top:8px; padding:6px 8px; border-left:2px solid var(--accent,#444); background:rgba(0,0,0,0.025); font-size:9.5px; line-height:1.5;">
+      <strong data-i18n="ms.s3.worked.title">Un exemple chiffré</strong><br>
+      <span data-i18n="ms.s3.worked.setup">α = 0,5 · γ = 0,9 · récompense r = 1 quand on atteint l'objectif, 0 sinon. Au départ, toutes les valeurs Q sont à 0.</span>
+      <div style="margin-top:4px;">
+        <em data-i18n="ms.s3.worked.step1Label">Épisode 1 — voisin du but (d=1), action ↓ vers le but :</em><br>
+        <span style="font-family:ui-monospace,monospace;" data-i18n="ms.s3.worked.step1Calc">Q ← 0 + 0,5 · (1 + 0,9 · 0 − 0) = <strong>0,5</strong></span>
+      </div>
+      <div style="margin-top:3px;">
+        <em data-i18n="ms.s3.worked.step2Label">Épisode 2 — état d=2 vient sur ce voisin :</em><br>
+        <span style="font-family:ui-monospace,monospace;" data-i18n="ms.s3.worked.step2Calc">Q ← 0 + 0,5 · (0 + 0,9 · 0,5 − 0) = <strong>0,45</strong></span>
+      </div>
+      <div style="margin-top:4px;" data-i18n="ms.s3.worked.punch">À chaque épisode, l'information « le but est par là » remonte d'un cran. C'est la <em>propagation à rebours</em>.</div>
+    </div>
 
     <h2 style="margin-top:8px;">
       <span class="kicker" data-i18n="ms.s3.bench.kicker">tes essais</span>

@@ -636,7 +636,7 @@
       "algoBody": " Con 360 stati la tabella non sta più su un tovagliolo. Lancia l'addestramento e osserva Q risalire dall'obiettivo, episodio dopo episodio.",
       "notes": {
         "1": "3 min · transizione · aprire Missione II; indicare l'indicatore di copertura su 360 stati.",
-        "2": "5 min · osserva · allena e guarda l'indicatore salire, Q propagarsi all'indietro dall'obiettivo.",
+        "2": "5 min · osservazione · addestrare e guardare l'indicatore salire; durante i primi 5 episodi, seguire l'onda colorata che parte dall'obiettivo e si propaga all'indietro nella vista Elenco degli stati.",
         "3": "14 min · 3 tentativi · α≈0,3 · γ≈0,95 · ε≈0,4 · 2 000 episodi; benchmarkare B1→B5.",
         "4": "3 min · debriefing · ε > 0 mantiene viva l'esplorazione; γ vicino a 1 trasporta la ricompensa lontano."
       },
@@ -783,7 +783,19 @@
       "title": "I 12 stati raggiungibili",
       "intro": "Il puzzle 2×2 ha <strong>4! = 24</strong> disposizioni possibili, ma <strong>solo 12 sono raggiungibili</strong> dall'obiettivo. Ogni mossa legale inverte <em>due parità contemporaneamente</em> — metà del mondo è invisibile per l'agente.",
       "cap": "Distanza d = numero minimo di mosse fino all'obiettivo. La partenza peggiore è a <strong>6 mosse</strong> — questo è il <strong>Numero di Dio</strong>.",
-      "unreach": "<strong>I 12 stati mancanti</strong> esistono sulla carta (es. <code>1 3 / 2 _</code>) ma non sono mai raggiungibili: ogni mossa inverte <em>contemporaneamente</em> il segno della permutazione e la parità della cella vuota — il loro prodotto è invariante. Wilson 1974 generalizza: per ogni rettangolo r×c con r,c ≥ 2, |R| = (rc)!/2."
+      "unreach": "<strong>I 12 stati mancanti</strong> esistono sulla carta (es. <code>1 3 / 2 _</code>) ma non sono mai raggiungibili: ogni mossa inverte <em>contemporaneamente</em> il segno della permutazione e la parità della cella vuota — il loro prodotto è invariante. Wilson 1974 generalizza: per ogni rettangolo r×c con r,c ≥ 2, |R| = (rc)!/2.",
+      "flip": {
+        "title": "La mossa che cambia due cose contemporaneamente",
+        "before": "Prima — obiettivo",
+        "after": "Dopo ↑",
+        "tilesLabel": "Ordine delle tessere",
+        "tilesBefore": "identità (pari)",
+        "tilesAfter": "trasposizione (dispari)",
+        "blankLabel": "Posizione del vuoto",
+        "blankBefore": "riga+col = 1+1 (pari)",
+        "blankAfter": "riga+col = 0+1 (dispari)",
+        "invariant": "Entrambe le parità cambiano insieme → il loro <strong>prodotto</strong> resta invariato. È l'invariante. Metà dei 24 arrangiamenti è bloccata."
+      }
     },
     "s2": {
       "kicker": "2 · la memoria",
@@ -818,7 +830,16 @@
       },
       "q1": "Perché il Numero di Dio è 6, e non di più?",
       "q2": "Cosa succede se imposti ε = 0 fin dall'inizio?",
-      "q3": "Prima di cliccare su 2×3: indovina se la tabella Q sta ancora su un tovagliolo. Perché / perché no?"
+      "q3": "Prima di cliccare su 2×3: indovina se la tabella Q sta ancora su un tovagliolo. Perché / perché no?",
+      "worked": {
+        "title": "Un esempio numerico",
+        "setup": "α = 0,5 · γ = 0,9 · ricompensa r = 1 al raggiungimento dell'obiettivo, 0 altrimenti. Inizialmente, tutti i valori Q sono 0.",
+        "step1Label": "Episodio 1 — vicino dell'obiettivo (d=1), azione ↓ verso l'obiettivo:",
+        "step1Calc": "Q ← 0 + 0,5 · (1 + 0,9 · 0 − 0) = <strong>0,5</strong>",
+        "step2Label": "Episodio 2 — lo stato d=2 arriva su questo vicino:",
+        "step2Calc": "Q ← 0 + 0,5 · (0 + 0,9 · 0,5 − 0) = <strong>0,45</strong>",
+        "punch": "Ad ogni episodio, l'informazione « l'obiettivo è da quella parte » sale di un gradino. È la <em>propagazione all'indietro</em>."
+      }
     },
     "footer": {
       "left": "AI-Exhibits · Apprendimento per Rinforzo · Dr. Erika Roldán Roa",
