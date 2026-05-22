@@ -8,7 +8,7 @@ window.LEARN_TRANSLATIONS = {
       id: "state",
       title: "State (s): what the puzzle looks like right now",
       tags: "state encoding configuration",
-      public: "A **state** is simply the current arrangement of the tiles. It's the snapshot the agent looks at before choosing its next move.",
+      public: "A **state** is the current arrangement of the tiles. It's the snapshot the agent looks at before choosing its next move.",
       math: "A **state** is an element s ∈ S. Here S is the finite set of all 2×2 tile configurations reachable by legal moves. We represent s as a 4-tuple (row by row) with 0 = empty.",
       sentence: "\"The state is the current snapshot of the puzzle: the position of every tile right now.\""
     },
@@ -114,7 +114,7 @@ window.LEARN_TRANSLATIONS = {
       id: "state",
       title: "Zustand (s): wie das Puzzle gerade aussieht",
       tags: "Zustand Kodierung Konfiguration state",
-      public: "Ein **Zustand** ist einfach die aktuelle Anordnung der Kacheln. Es ist die Momentaufnahme, die die Agent*in sich ansieht, bevor sie ihren nächsten Zug entscheidet.",
+      public: "Ein **Zustand** ist die aktuelle Anordnung der Kacheln. Es ist die Momentaufnahme, die die Agent*in sich ansieht, bevor sie ihren nächsten Zug entscheidet.",
       math: "Ein **Zustand** ist ein Element s ∈ S. Hier ist S die endliche Menge aller 2×2-Kachelkonfigurationen, die durch legale Züge erreichbar sind. Wir stellen s als 4-Tupel (Zeile für Zeile) dar, mit 0 = leer.",
       sentence: "„Der Zustand ist die aktuelle Momentaufnahme des Puzzles: die Position jeder Kachel jetzt.\""
     },
@@ -194,7 +194,7 @@ window.LEARN_TRANSLATIONS = {
       id: "update",
       title: "Lernupdate: wie sich Q nach einer Erfahrung ändert",
       tags: "Update Bellman Q-Learning Aktualisierung",
-      public: "Nach jedem Zug revidiert die Agent*in ihren Q-Wert leicht anhand dessen, was gerade passiert ist: die aktuelle Belohnung plus eine Schätzung der besten zukünftigen Belohnung.",
+      public: "Nach jedem Zug justiert die Agent*in ihren Q-Wert anhand dessen, was gerade passiert ist: die aktuelle Belohnung plus eine Schätzung der besten zukünftigen Belohnung.",
       math: "Q-Learning-Update (off-policy): Q(s,a) ← Q(s,a) + α[r + γ max_{a'} Q(s',a') − Q(s,a)]. Dies geschieht bei jedem Schritt, auch wenn r=0.",
       sentence: "„Ich passe meinen Q-Wert an, indem ich das, was ich jetzt bekomme, mit dem verbinde, was ich glaube, später bekommen zu können.\""
     },
@@ -220,7 +220,7 @@ window.LEARN_TRANSLATIONS = {
       id: "state",
       title: "Stato (s): com'è il puzzle in questo momento",
       tags: "stato codifica configurazione state",
-      public: "Uno **stato** è semplicemente la disposizione attuale delle tessere. È l'istantanea che l'agente guarda prima di decidere la sua prossima mossa.",
+      public: "Uno **stato** è la disposizione attuale delle tessere. È l'istantanea che l'agente guarda prima di decidere la sua prossima mossa.",
       math: "Uno **stato** è un elemento s ∈ S. Qui S è l'insieme finito di tutte le configurazioni di tessere 2×2 raggiungibili con mosse legali. Rappresentiamo s come una 4-upla (riga per riga) con 0 = vuoto.",
       sentence: "«Lo stato è l'istantanea attuale del puzzle: la posizione di ogni tessera adesso.»"
     },
@@ -300,7 +300,7 @@ window.LEARN_TRANSLATIONS = {
       id: "update",
       title: "Aggiornamento dell'apprendimento: come Q cambia dopo un'esperienza",
       tags: "aggiornamento Bellman Q-learning update",
-      public: "Dopo ogni mossa, l'agente rivede leggermente il suo punteggio Q usando ciò che è appena successo: la ricompensa attuale più una stima della migliore ricompensa futura.",
+      public: "Dopo ogni mossa, l'agente aggiusta il suo punteggio Q usando ciò che è appena successo: la ricompensa attuale più una stima della migliore ricompensa futura.",
       math: "Aggiornamento Q-learning (off-policy): Q(s,a) ← Q(s,a) + α[r + γ max_{a'} Q(s',a') − Q(s,a)]. Questo avviene a ogni passo, anche se r=0.",
       sentence: "«Aggiusto il mio punteggio Q usando ciò che ricevo ora più ciò che penso di poter ottenere dopo.»"
     },

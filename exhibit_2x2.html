@@ -684,7 +684,7 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
           <div class="form">
             <div class="field">
               <div class="fieldTop"><label data-i18n="ex2x2.params.episodesPerRun">Épisodes / exécution</label>
-                <span class="qmark" data-tip="Épisodes = nombre de tentatives d'entraînement.\nEssayez 50–300 pour voir l'apprentissage.\nSi ε est plus élevé, il faut généralement plus d'épisodes." data-i18n-data-tip="ex2x2.params.episodesTip" tabindex="0" aria-label="Plus d'infos sur les épisodes">ⓘ</span>
+                <span class="qmark" data-tip="Épisodes = nombre de tentatives d'entraînement.\nEssayez 50–300 pour voir l'apprentissage.\nSi ε est plus élevé, il faut plus d'épisodes." data-i18n-data-tip="ex2x2.params.episodesTip" tabindex="0" aria-label="Plus d'infos sur les épisodes">ⓘ</span>
               </div>
               <input id="episodesInp" type="number" min="1" step="1" max="2000" value="300"/>
             </div>
@@ -1733,7 +1733,7 @@ const rline = document.createElement('div');
         id:"state",
         title:"État (s) : à quoi ressemble le puzzle en ce moment",
         tags:"état encoding configuration state",
-        public:"Un **état** est simplement l'arrangement actuel des tuiles. C'est l'instantané que l'agent regarde avant de décider de son prochain coup.",
+        public:"Un **état** est l'arrangement actuel des tuiles. C'est l'instantané que l'agent regarde avant de décider de son prochain coup.",
         math:"Un **état** est un élément s ∈ S. Ici S est l'ensemble fini de toutes les configurations de tuiles 2×2 atteignables par des coups légaux. On représente s comme un 4-uplet (ligne par ligne) avec 0 = vide.",
         sentence:"« L'état est l'instantané actuel du puzzle : la position de chaque tuile maintenant. »"
       },
@@ -1813,7 +1813,7 @@ const rline = document.createElement('div');
         id:"update",
         title:"Mise à jour de l'apprentissage : comment Q change après une expérience",
         tags:"update Bellman Q-learning mise à jour",
-        public:"Après chaque coup, l'agent révise légèrement son score Q en utilisant ce qui s'est passé : la récompense actuelle plus une estimation de la meilleure récompense future.",
+        public:"Après chaque coup, l'agent ajuste son score Q en utilisant ce qui s'est passé : la récompense actuelle plus une estimation de la meilleure récompense future.",
         math:"Mise à jour Q-learning (hors politique) : Q(s,a) ← Q(s,a) + α[r + γ max_{a'} Q(s',a') − Q(s,a)]. Ceci arrive à chaque pas, même si r=0.",
         sentence:"« J'ajuste mon score Q en utilisant ce que je reçois maintenant plus ce que je pense pouvoir obtenir plus tard. »"
       },

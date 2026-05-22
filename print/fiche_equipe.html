@@ -52,21 +52,24 @@
   .fe-totals .tbox.total{border-color:var(--pink,#ff2fd6);}
   /* Print CSS — A4 landscape */
   @media print{
-    @page{size:A4 landscape;margin:8mm 10mm;}
+    @page{size:A4 landscape;margin:7mm 9mm;}
     body{background:#fff;color:#111;}
-    .fe-wrap{background:none;border:1px solid #888;box-shadow:none;max-width:none;margin:0;padding:6px;}
-    .fe-title{color:#a01480;}
-    .mission-block{background:#fafafa;border-color:#999;}
-    .mission-head h2{color:#a01480;}
+    .fe-wrap{background:none;border:1px solid #888;box-shadow:none;max-width:none;margin:0;padding:5px;}
+    .fe-title{color:#a01480;font-size:14px;margin-bottom:4px;}
+    .mission-block{background:#fafafa;border-color:#999;margin-top:6px;padding:5px 8px;}
+    .mission-head h2{color:#a01480;font-size:12px;margin:0;}
     .mission-head .gods, table.fe-table th{color:#333;}
+    table.fe-table{margin-top:3px;font-size:10px;}
     table.fe-table th{background:#eee;}
+    table.fe-table th, table.fe-table td{padding:2px 4px;height:18px;}
     table.fe-table .bench-col{color:#111;background:#f0f0f0;}
     table.fe-table .opt-col{color:#0a4d6b;}
     table.fe-table .best-col{color:#1a7a30;background:#f0fff0;}
     table.fe-table .gods-row{background:#fff0fa;}
     table.fe-table .gods-row .bench-col{color:#a01480;}
     table.fe-table input{color:#111;}
-    .fe-totals .tbox{background:#fafafa;border-color:#999;}
+    .fe-totals{margin-top:8px;gap:6px;}
+    .fe-totals .tbox{background:#fafafa;border-color:#999;padding:6px 8px;}
     .fe-totals .tbox.total{border-color:#a01480;}
     .fe-back{display:none;}
   }

@@ -218,7 +218,7 @@
   },
   "quickstart": {
     "title": "🎓 Démarrage rapide — Animatrice",
-    "intro": "Atelier de 2 h sur l'apprentissage par renforcement avec des taquins. Ce guide condense l'essentiel.",
+    "intro": "Atelier de 2 h sur l'apprentissage par renforcement avec des taquins.",
     "h": {
       "before": "Avant l'atelier",
       "flow": "Déroulé (2 h)",
@@ -303,7 +303,7 @@
       "b5costDemo": "Démo : ~0,0001 CHF",
       "b5costReliable": "Fiable : ~0,01 CHF",
       "b5costProven": "Garantie : ~700 CHF",
-      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ 0,0001 CHF.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF.\nEntre « fiable » et « garantie », cinq ordres de grandeur : c'est là que vit la pratique réelle du RL."
+      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ 0,0001 CHF.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF.\nEntre « fiable » et « garantie », cinq ordres de grandeur."
     },
     "btn": {
       "stepOnce": "Pas (une mise à jour)",
@@ -415,7 +415,7 @@
     },
     "params": {
       "episodesPerRun": "Épisodes / exécution",
-      "episodesTip": "Épisodes = nombre de tentatives d'entraînement.\nEssayez 50–300 pour voir l'apprentissage.\nSi ε est plus élevé, il faut généralement plus d'épisodes.",
+      "episodesTip": "Épisodes = nombre de tentatives d'entraînement.\nEssayez 50–300 pour voir l'apprentissage.\nSi ε est plus élevé, il faut plus d'épisodes.",
       "maxStepsTip": "Étapes max = budget de coups par épisode.\nTrop petit → jamais de récompense.\nEssayez 15–40 pour 2×2.",
       "alphaTip": "α contrôle à quel point les nouvelles preuves mettent à jour Q.\nQ ← Q + α(cible−Q).\n0,05–0,2 : stable mais lent.\n0,3–0,6 : rapide pour ce modèle-jouet.\n>0,8 : bruyant.",
       "gammaTip": "γ contrôle l'importance des récompenses futures.\nPour des puzzles à récompense différée : γ≈0,9–0,99.\nUn γ faible rend la propagation des récompenses faible.",
@@ -573,7 +573,7 @@
       "chip": "Mission I · Kit atelier",
       "title": "Rendre l'apprentissage visible · 2×2",
       "napkinTitle": "La table Q tient sur une serviette.",
-      "napkinBody": " 12 états × 2 actions par état = au plus 24 lignes. Construis-la à la main pendant que l'agente s'entraîne.",
+      "napkinBody": "12 états × 2 actions par état = au plus 24 lignes. Construis-la à la main pendant que l'agente s'entraîne.",
       "benchHint": "Chaque référence est un état de départ à distance fixe du but. La distance optimale est la longueur de la solution la plus courte.",
       "notes": {
         "1": "5 min · accroche · démontre 🎲 sur la mini-carte 2×2 du Hub. La comparaison Vous · Aléatoire montre le pourquoi.",
@@ -633,7 +633,7 @@
       "chip": "Mission II · Kit atelier",
       "title": "Propagation · 2×3",
       "algoTitle": "L'algorithme prend sa place.",
-      "algoBody": " Avec 360 états, la table ne tient plus sur une serviette. Lance l'entraînement et regarde Q remonter depuis l'objectif, épisode après épisode.",
+      "algoBody": "Avec 360 états, la table ne tient plus sur une serviette. Lance l'entraînement et regarde Q remonter depuis l'objectif, épisode après épisode.",
       "notes": {
         "1": "3 min · transition · ouvrir Mission II ; pointer la jauge de couverture sur 360 états.",
         "2": "5 min · observation · entraîner et regarder la jauge monter ; pendant les 5 premiers épisodes, suivre la vague colorée qui part de l'objectif et se propage à rebours dans la vue Liste des états.",
@@ -646,7 +646,7 @@
       "chip": "Mission III · Kit atelier",
       "title": "Mise à l'Échelle · 3×3",
       "curseTitle": "Le fléau se fait sentir.",
-      "curseBody": " Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Dans Mission III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût en CHF : Démo 0,0001 · Fiable 0,01 · Garantie 700. Cinq ordres de grandeur de Démo à Garantie.",
+      "curseBody": "Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Dans Mission III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût en CHF : Démo 0,0001 · Fiable 0,01 · Garantie 700. Cinq ordres de grandeur de Démo à Garantie.",
       "notes": {
         "1": "3 min · transition · ouvrir Mission III ; pointer la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a>.",
         "2": "5 min · observation · 181 440 états ; la jauge plafonne sous 100 % — montrer.",
@@ -794,7 +794,7 @@
         "blankLabel": "Position du vide",
         "blankBefore": "ligne+col = 1+1 (paire)",
         "blankAfter": "ligne+col = 0+1 (impaire)",
-        "invariant": "Les deux parités basculent en même temps → leur <strong>produit</strong> reste inchangé. C'est l'invariant. Donc moitié des 24 arrangements est verrouillée."
+        "invariant": "Les deux parités basculent ensemble → leur produit reste <strong>invariant</strong>. La moitié des 24 arrangements est donc verrouillée."
       }
     },
     "s2": {
@@ -833,7 +833,7 @@
       "q3": "Avant de cliquer sur 2×3 : devine si la table Q tient encore sur une serviette. Pourquoi / pourquoi pas ?",
       "worked": {
         "title": "Un exemple chiffré",
-        "setup": "α = 0,5 · γ = 0,9 · récompense r = 1 quand on atteint l'objectif, 0 sinon. Au départ, toutes les valeurs Q sont à 0.",
+        "setup": "α = 0,5 · γ = 0,9 · récompense r = 1 au but, 0 sinon. Toutes les valeurs Q démarrent à 0.",
         "step1Label": "Épisode 1 — voisin du but (d=1), action ↓ vers le but :",
         "step1Calc": "Q ← 0 + 0,5 · (1 + 0,9 · 0 − 0) = <strong>0,5</strong>",
         "step2Label": "Épisode 2 — état d=2 vient sur ce voisin :",

@@ -120,8 +120,8 @@
     "recordsBenchHeader": "Bench",
     "recordsRandomShort": "Random",
     "recordsQShort": "Q-agent",
-    "solvedCelebration": "🎉 Solved in {n} moves !",
-    "solvedCelebrationWithName": "🎉 Well done {name}, solved in {n} moves !",
+    "solvedCelebration": "🎉 Solved in {n} moves!",
+    "solvedCelebrationWithName": "🎉 Well done {name}, solved in {n} moves!",
     "submitResults": "Submit my results",
     "submitTitle": "Your results",
     "submitCopy": "📋 Copy",
@@ -218,7 +218,7 @@
   },
   "quickstart": {
     "title": "🎓 Facilitator Quickstart",
-    "intro": "2-hour workshop on reinforcement learning with sliding puzzles. This guide is the essential summary.",
+    "intro": "2-hour workshop on reinforcement learning with sliding puzzles.",
     "h": {
       "before": "Before the workshop",
       "flow": "Flow (2 h)",
@@ -303,7 +303,7 @@
       "b5costDemo": "Demo: ~0.0001 CHF",
       "b5costReliable": "Reliable: ~0.01 CHF",
       "b5costProven": "Guaranteed: ~700 CHF",
-      "b5costTip": "Three levels of demand for solving B5 (the state farthest from the goal, 31 moves away):\n• Demo (the agent often gets there): ~10⁷ steps ≈ 0.0001 CHF.\n• Reliable (≥95% of runs succeed near the optimum): ~10⁹–10¹⁰ steps ≈ 0.01–0.1 CHF.\n• Guaranteed (the agent plays near-perfectly everywhere): ~7×10¹³ steps ≈ 700 CHF.\nBetween 'reliable' and 'guaranteed', five orders of magnitude: that's where real RL practice lives."
+      "b5costTip": "Three levels of demand for solving B5 (the state farthest from the goal, 31 moves away):\n• Demo (the agent often gets there): ~10⁷ steps ≈ 0.0001 CHF.\n• Reliable (≥95% of runs succeed near the optimum): ~10⁹–10¹⁰ steps ≈ 0.01–0.1 CHF.\n• Guaranteed (the agent plays near-perfectly everywhere): ~7×10¹³ steps ≈ 700 CHF.\nBetween 'reliable' and 'guaranteed', five orders of magnitude."
     },
     "btn": {
       "stepOnce": "Step (one update)",
@@ -415,7 +415,7 @@
     },
     "params": {
       "episodesPerRun": "Episodes / run",
-      "episodesTip": "Episodes = number of training attempts.\nTry 50–300 to see learning.\nIf ε is higher, you typically need more episodes.",
+      "episodesTip": "Episodes = number of training attempts.\nTry 50–300 to see learning.\nIf ε is higher, you need more episodes.",
       "maxStepsTip": "Max steps = move budget per episode.\nToo small → never reach reward.\nTry 15–40 for 2×2.",
       "alphaTip": "α controls how strongly new evidence updates Q.\nQ ← Q + α(target−Q).\n0.05–0.2: stable but slow.\n0.3–0.6: fast for this toy.\n>0.8: noisy.",
       "gammaTip": "γ controls how much future reward matters.\nFor delayed reward puzzles: γ≈0.9–0.99.\nLow γ makes reward propagation weak.",
@@ -573,7 +573,7 @@
       "chip": "Mission I · Workshop kit",
       "title": "Make learning visible · 2×2",
       "napkinTitle": "The Q-table fits on a napkin.",
-      "napkinBody": " 12 states × 2 actions per state = at most 24 rows. Build it by hand while the agent trains.",
+      "napkinBody": "12 states × 2 actions per state = at most 24 rows. Build it by hand while the agent trains.",
       "benchHint": "Each reference is a starting state at a fixed distance from the goal. The optimal distance is the length of the shortest solution.",
       "notes": {
         "1": "5 min · hook · demo 🎲 on the hub's 2×2 mini. Compare You · Random — that's the why.",
@@ -633,7 +633,7 @@
       "chip": "Mission II · Workshop kit",
       "title": "Propagation · 2×3",
       "algoTitle": "The algorithm earns its place.",
-      "algoBody": " With 360 states the table no longer fits on a page. Start training and watch Q propagate backward from the goal, episode after episode.",
+      "algoBody": "With 360 states the table no longer fits on a page. Start training and watch Q propagate backward from the goal, episode after episode.",
       "notes": {
         "1": "3 min · transition · open Mission II; point at the coverage gauge over 360 states.",
         "2": "5 min · observation · train and watch the gauge climb; during the first 5 episodes, follow the colour wave starting from the goal and propagating backward in the State-list view.",
@@ -646,7 +646,7 @@
       "chip": "Mission III · Workshop kit",
       "title": "Scaling · 3×3",
       "curseTitle": "The curse begins to bite.",
-      "curseBody": " On 181,440 states, the coverage gauge plateaus below 100%. Inside Mission III, the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a> translates cost into CHF: Demo 0.0001 · Reliable 0.01 · Proven 700. Five orders of magnitude from Demo to Proven.",
+      "curseBody": "On 181,440 states, the coverage gauge plateaus below 100%. Inside Mission III, the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a> translates cost into CHF: Demo 0.0001 · Reliable 0.01 · Proven 700. Five orders of magnitude from Demo to Proven.",
       "notes": {
         "1": "3 min · transition · open Mission III; point at the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a>.",
         "2": "5 min · observe · 181,440 states; the gauge plateaus below 100% — show it.",
@@ -794,7 +794,7 @@
         "blankLabel": "Blank position",
         "blankBefore": "row+col = 1+1 (even)",
         "blankAfter": "row+col = 0+1 (odd)",
-        "invariant": "Both parities flip together → their <strong>product</strong> stays unchanged. That is the invariant. Half of the 24 arrangements is locked."
+        "invariant": "Both parities flip together → their product stays <strong>invariant</strong>. Half of the 24 arrangements is therefore locked."
       }
     },
     "s2": {
@@ -833,7 +833,7 @@
       "q3": "Before clicking 2×3: guess whether the Q-table still fits on a napkin. Why / why not?",
       "worked": {
         "title": "A numeric example",
-        "setup": "α = 0.5 · γ = 0.9 · reward r = 1 when reaching the goal, 0 otherwise. Initially, all Q-values are 0.",
+        "setup": "α = 0.5 · γ = 0.9 · reward r = 1 at goal, 0 otherwise. All Q-values start at 0.",
         "step1Label": "Episode 1 — goal-neighbour (d=1), action ↓ toward the goal:",
         "step1Calc": "Q ← 0 + 0.5 · (1 + 0.9 · 0 − 0) = <strong>0.5</strong>",
         "step2Label": "Episode 2 — state d=2 arrives on this neighbour:",

@@ -120,8 +120,8 @@
     "recordsBenchHeader": "Bench",
     "recordsRandomShort": "Casuale",
     "recordsQShort": "Q-agente",
-    "solvedCelebration": "🎉 Risolto in {n} mosse !",
-    "solvedCelebrationWithName": "🎉 Bravo {name}, risolto in {n} mosse !",
+    "solvedCelebration": "🎉 Risolto in {n} mosse!",
+    "solvedCelebrationWithName": "🎉 Bravo {name}, risolto in {n} mosse!",
     "submitResults": "Invia i miei risultati",
     "submitTitle": "I tuoi risultati",
     "submitCopy": "📋 Copia",
@@ -218,7 +218,7 @@
   },
   "quickstart": {
     "title": "🎓 Avvio rapido — Facilitatrice",
-    "intro": "Laboratorio di 2 ore sull'apprendimento per rinforzo con puzzle a scorrimento. Questa guida condensa l'essenziale.",
+    "intro": "Laboratorio di 2 ore sull'apprendimento per rinforzo con puzzle a scorrimento.",
     "h": {
       "before": "Prima del laboratorio",
       "flow": "Svolgimento (2 h)",
@@ -303,7 +303,7 @@
       "b5costDemo": "Demo: ~0,0001 CHF",
       "b5costReliable": "Affidabile: ~0,01 CHF",
       "b5costProven": "Garantito: ~700 CHF",
-      "b5costTip": "Tre livelli di esigenza per risolvere B5 (lo stato più lontano dall'obiettivo, a 31 mosse):\n• Demo (l'agente ci arriva spesso): ~10⁷ passi ≈ 0,0001 CHF.\n• Affidabile (≥95% delle prove riesce vicino all'ottimo): ~10⁹–10¹⁰ passi ≈ 0,01–0,1 CHF.\n• Garantita (l'agente gioca quasi perfettamente ovunque): ~7×10¹³ passi ≈ 700 CHF.\nTra «affidabile» e «garantito», cinque ordini di grandezza: è lì che vive la pratica reale del RL."
+      "b5costTip": "Tre livelli di esigenza per risolvere B5 (lo stato più lontano dall'obiettivo, a 31 mosse):\n• Demo (l'agente ci arriva spesso): ~10⁷ passi ≈ 0,0001 CHF.\n• Affidabile (≥95% delle prove riesce vicino all'ottimo): ~10⁹–10¹⁰ passi ≈ 0,01–0,1 CHF.\n• Garantita (l'agente gioca quasi perfettamente ovunque): ~7×10¹³ passi ≈ 700 CHF.\nTra «affidabile» e «garantito», cinque ordini di grandezza."
     },
     "btn": {
       "stepOnce": "Passo (un aggiornamento)",
@@ -573,7 +573,7 @@
       "chip": "Missione I · Kit del laboratorio",
       "title": "Rendere visibile l'apprendimento · 2×2",
       "napkinTitle": "La tabella Q sta su un tovagliolo.",
-      "napkinBody": " 12 stati × 2 azioni per stato = al massimo 24 righe. Costruiscila a mano mentre l'agente si addestra.",
+      "napkinBody": "12 stati × 2 azioni per stato = al massimo 24 righe. Costruiscila a mano mentre l'agente si addestra.",
       "benchHint": "Ogni riferimento è uno stato iniziale a distanza fissa dall'obiettivo. La distanza ottimale è la lunghezza della soluzione più breve.",
       "notes": {
         "1": "5 min · aggancio · dimostra 🎲 sulla mini-mappa 2×2 dell'hub. Confronto Tu · Casuale — è il perché.",
@@ -633,7 +633,7 @@
       "chip": "Missione II · Kit del laboratorio",
       "title": "Propagazione · 2×3",
       "algoTitle": "L'algoritmo prende il suo posto.",
-      "algoBody": " Con 360 stati la tabella non sta più su un tovagliolo. Lancia l'addestramento e osserva Q risalire dall'obiettivo, episodio dopo episodio.",
+      "algoBody": "Con 360 stati la tabella non sta più su un tovagliolo. Lancia l'addestramento e osserva Q risalire dall'obiettivo, episodio dopo episodio.",
       "notes": {
         "1": "3 min · transizione · aprire Missione II; indicare l'indicatore di copertura su 360 stati.",
         "2": "5 min · osservazione · addestrare e guardare l'indicatore salire; durante i primi 5 episodi, seguire l'onda colorata che parte dall'obiettivo e si propaga all'indietro nella vista Elenco degli stati.",
@@ -646,10 +646,10 @@
       "chip": "Missione III · Kit del laboratorio",
       "title": "Scala · 3×3",
       "curseTitle": "La maledizione si fa sentire.",
-      "curseBody": " Su 181 440 stati, l'indicatore di copertura si stabilizza sotto il 100%. In Missione III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a> traduce il costo in CHF: Demo 0,0001 · Affidabile 0,01 · Garantito 700. Cinque ordini di grandezza da Demo a Garantito.",
+      "curseBody": "Su 181.440 stati, l'indicatore di copertura si stabilizza sotto il 100%. In Missione III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a> traduce il costo in CHF: Demo 0,0001 · Affidabile 0,01 · Garantito 700. Cinque ordini di grandezza da Demo a Garantito.",
       "notes": {
         "1": "3 min · transizione · aprire Missione III; indicare la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a>.",
-        "2": "5 min · osserva · 181 440 stati; l'indicatore si stabilizza sotto il 100% — mostrare.",
+        "2": "5 min · osserva · 181.440 stati; l'indicatore si stabilizza sotto il 100% — mostrare.",
         "3": "10 min · allena · α≈0,3 · γ≈0,99 · ε≈0,5 · 10 000 episodi; puntare B5 (31 mosse, antipode).",
         "4": "2 min · debriefing · la maledizione della dimensione. Stesso algoritmo, stesso metodo — lo spazio vince. Porta verso DQN / AlphaZero."
       },
@@ -721,7 +721,7 @@
     "transfer": {
       "title": "Prima di cliccare la prossima missione",
       "m1to2": "Vedrai 360 stati in Missione II (30× più di qui). Indovina se la tabella Q sta ancora su un tovagliolo. Perché / perché no?",
-      "m2to3": "Vedrai 181 440 stati in Missione III (504× più di qui). Indovina se l'indicatore di copertura raggiungerà il 100%. Perché / perché no?"
+      "m2to3": "Vedrai 181.440 stati in Missione III (504× più di qui). Indovina se l'indicatore di copertura raggiungerà il 100%. Perché / perché no?"
     }
   },
   "fe": {
@@ -794,7 +794,7 @@
         "blankLabel": "Posizione del vuoto",
         "blankBefore": "riga+col = 1+1 (pari)",
         "blankAfter": "riga+col = 0+1 (dispari)",
-        "invariant": "Entrambe le parità cambiano insieme → il loro <strong>prodotto</strong> resta invariato. È l'invariante. Metà dei 24 arrangiamenti è bloccata."
+        "invariant": "Entrambe le parità cambiano insieme → il loro prodotto resta <strong>invariante</strong>. Metà dei 24 arrangiamenti è quindi bloccata."
       }
     },
     "s2": {
@@ -833,7 +833,7 @@
       "q3": "Prima di cliccare su 2×3: indovina se la tabella Q sta ancora su un tovagliolo. Perché / perché no?",
       "worked": {
         "title": "Un esempio numerico",
-        "setup": "α = 0,5 · γ = 0,9 · ricompensa r = 1 al raggiungimento dell'obiettivo, 0 altrimenti. Inizialmente, tutti i valori Q sono 0.",
+        "setup": "α = 0,5 · γ = 0,9 · ricompensa r = 1 all'obiettivo, 0 altrimenti. Tutti i valori Q partono da 0.",
         "step1Label": "Episodio 1 — vicino dell'obiettivo (d=1), azione ↓ verso l'obiettivo:",
         "step1Calc": "Q ← 0 + 0,5 · (1 + 0,9 · 0 − 0) = <strong>0,5</strong>",
         "step2Label": "Episodio 2 — lo stato d=2 arriva su questo vicino:",
