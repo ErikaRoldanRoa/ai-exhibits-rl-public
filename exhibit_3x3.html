@@ -367,8 +367,9 @@
 }
 
 /* B5 cost staircase — three pill-tiers (Démo / Fiable / Garantie) of growing
-   color intensity so the 0,0001 → 0,01 → 700 CHF / 0,0001 → 0,01 → 730 € reads as a staircase, not a
-   comma-separated string. The brain locates this as "the money story". */
+   color intensity so the cost climb (e.g. 0,0001 € → 0,01 € → 730 €, or
+   0,0001 CHF → 0,01 CHF → 700 CHF) reads as a staircase, not a comma-separated
+   string. One currency at a time. The brain locates this as "the money story". */
 .b5-staircase { display: flex; flex-direction: column; gap: 5px; margin-top: 4px; }
 .b5-tier {
   display: flex; justify-content: space-between; align-items: center;
@@ -556,7 +557,7 @@
           <div class="stat">
             <div class="k" style="display:flex; align-items:center; gap:6px;">
               <span data-i18n="ex.stats.cost">Coût d'entraînement</span>
-              <span class="qmark" data-tip="Sur un laptop, une mise à jour Q coûte environ 10⁻¹¹ CHF / 10⁻¹¹ € (surtout l'amortissement, pas l'électricité). Une Mission III entière revient à une fraction de centime. Mais ce tarif minuscule devient inaccessible dès que l'espace d'états explose : la même règle, à une autre échelle, change tout." data-i18n-data-tip="ex.stats.costTip" tabindex="0" aria-label="À propos du coût">ⓘ</span>
+              <span class="qmark" data-tip="Sur un laptop, une mise à jour Q coûte environ 10⁻¹¹ {cur} (surtout l'amortissement, pas l'électricité). Une Mission III entière revient à une fraction de centime. Mais ce tarif minuscule devient inaccessible dès que l'espace d'états explose : la même règle, à une autre échelle, change tout." data-i18n-data-tip="ex.stats.costTip" data-currency-attr="data-tip" tabindex="0" aria-label="À propos du coût">ⓘ</span>
             </div>
             <div class="v" id="costTxt">—</div>
           </div>
@@ -570,7 +571,7 @@
           <div class="stat">
             <div class="k" style="display:flex; align-items:center; gap:6px;">
               <span data-i18n="ex.stats.b5cost">Coût pour atteindre B5</span>
-              <span class="qmark" data-tip="Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :&#10;• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ 0,0001 CHF / 0,0001 €.&#10;• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF / 0,01–0,1 €.&#10;• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF / 730 €.&#10;Entre « fiable » et « garantie », cinq ordres de grandeur." data-i18n-data-tip="ex.stats.b5costTip" tabindex="0" aria-label="À propos du coût pour B5">ⓘ</span>
+              <span class="qmark" data-tip="Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :&#10;• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ {vDemo}.&#10;• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ {vReliable}.&#10;• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ {vProven}.&#10;Entre « fiable » et « garantie », cinq ordres de grandeur." data-i18n-data-tip="ex.stats.b5costTip" data-currency-attr="data-tip" tabindex="0" aria-label="À propos du coût pour B5">ⓘ</span>
             </div>
             <div class="v" id="b5costTxt">—</div>
           </div>
@@ -837,27 +838,30 @@ Essayez 0,1–0,3.
       return (lang === 'en') ? s : s.replace('.', decSep);
     };
     updatesEl.textContent = String(updates);
-    // Training cost — realistic CPU step cost on a laptop ≈ 10⁻⁹ CHF / 10⁻⁹ €.
+    // Training cost — realistic CPU step cost on a laptop ≈ 10⁻¹¹ CHF/step.
     // Total = updates × COST_PER_STEP. The point is not the absolute number
     // (it's pennies on YOUR laptop) but the *scaling* — at chess-size MDPs
-    // (10⁴⁶ states) even 10⁻⁹ CHF / 10⁻⁹ € per step is unaffordable.
+    // (10⁴⁶ states) even that tiny per-step cost is unaffordable.
     const costEl = document.getElementById('costTxt');
     if (costEl){
       const COST_PER_STEP = 1e-11; // CHF on a CPU laptop, realistic — dominated by amortised hardware (~10⁻¹² CHF/step) rather than electricity (~10⁻¹⁸ CHF/step). At ~10⁷ Q-updates/sec single-threaded JS.
-      const CHF_TO_EUR = 1.04; // order-of-magnitude compute-cost conversion, matches the Économie tiers
-      // Avoid scientific notation; use plain decimal with up to 9 digits.
-      const fmtCost = (amount) => {
+      const total = updates * COST_PER_STEP; // base amount in CHF
+      // Show ONE currency at a time (EUR default), correctly converted. The
+      // shared currency module converts CHF→selected and formats with the
+      // active locale separator + symbol-after-number ("0,01 €" / "0,01 CHF").
+      if (window.currency) {
+        costEl.textContent = window.currency.format(total);
+      } else {
+        // Fallback if the module hasn't loaded: plain CHF (no false pairing).
         let s;
-        if (amount === 0)            s = '0';
-        else if (amount < 0.000001)  s = amount.toFixed(9).replace(/\.?0+$/, '');
-        else if (amount < 0.001)     s = amount.toFixed(6);
-        else if (amount < 1)         s = amount.toFixed(4);
-        else                         s = amount.toFixed(2);
+        if (total === 0)            s = '0';
+        else if (total < 0.000001)  s = total.toFixed(9).replace(/\.?0+$/, '');
+        else if (total < 0.001)     s = total.toFixed(6);
+        else if (total < 1)         s = total.toFixed(4);
+        else                        s = total.toFixed(2);
         if (lang !== 'en') s = s.replace('.', decSep);
-        return s;
-      };
-      const total = updates * COST_PER_STEP;
-      costEl.textContent = `${fmtCost(total)} CHF / ${fmtCost(total * CHF_TO_EUR)} €`;
+        costEl.textContent = `${s} CHF`;
+      }
     }
     // Coverage chart — live M3 bar
     const m3FillEl = document.getElementById('covM3Fill');
@@ -880,22 +884,33 @@ Essayez 0,1–0,3.
     // Cost to reach B5 — three pedagogical tiers shown compactly.
     // Numbers come from order-of-magnitude estimates: demo ~10⁷ steps,
     // reliable ~10⁹–10¹⁰, "convergence guarantee" ~7×10¹³ (the
-    // classical asymptotic bound). At 10⁻¹¹ CHF / 10⁻¹¹ €/step that's
-    // ~10⁻⁴ / ~10⁻²–10⁻¹ / ~700 CHF (≈ 730 €) respectively.
+    // classical asymptotic bound). At 10⁻¹¹ CHF/step that's ~10⁻⁴ /
+    // ~10⁻²–10⁻¹ / ~700 CHF respectively (≈ 0,0001 € / 0,01 € / 730 € in EUR).
     const b5El = document.getElementById('b5costTxt');
     if (b5El){
       const tr = window.i18n && window.i18n.t ? window.i18n.t : (k, f) => f;
-      // Each tier: a label + a value, separated visually by tier styling.
-      // Locale rule: split on " : " (FR-style label : value) so the rendered
-      // pill shows the LABEL on the left and the VALUE on the right.
-      const splitTier = (raw, fallbackLabel, fallbackValue) => {
+      // Each tier: a label (from i18n) + a value (computed from the shared
+      // currency module so only the SELECTED currency shows, correctly
+      // converted + rounded). The i18n string carries a {vXxx} token for the
+      // value; we strip everything from the label side and render the value
+      // ourselves so a single currency appears at a time.
+      const labelOf = (raw, fallbackLabel) => {
         const parts = raw.split(/\s*:\s*/);
-        if (parts.length >= 2) return { label: parts[0], value: parts.slice(1).join(' : ') };
-        return { label: fallbackLabel, value: fallbackValue };
+        return (parts.length >= 2) ? parts[0] : fallbackLabel;
       };
-      const demo     = splitTier(tr('ex.stats.b5costDemo',     'Démo : ~0,0001 CHF / 0,0001 €'),     'Démo',     '~0,0001 CHF / 0,0001 €');
-      const reliable = splitTier(tr('ex.stats.b5costReliable', 'Fiable : ~0,01 CHF / 0,01 €'),     'Fiable',   '~0,01 CHF / 0,01 €');
-      const proven   = splitTier(tr('ex.stats.b5costProven',   'Garantie : ~700 CHF / 730 €'),    'Garantie', '~700 CHF / 730 €');
+      const cur = window.currency;
+      const demo = {
+        label: labelOf(tr('ex.stats.b5costDemo', 'Démo : ~{vDemo}'), 'Démo'),
+        value: '~' + (cur ? cur.tierValue('demo') : '0,0001 €'),
+      };
+      const reliable = {
+        label: labelOf(tr('ex.stats.b5costReliable', 'Fiable : ~{vReliable}'), 'Fiable'),
+        value: '~' + (cur ? cur.tierValue('reliable') : '0,01 €'),
+      };
+      const proven = {
+        label: labelOf(tr('ex.stats.b5costProven', 'Garantie : ~{vProven}'), 'Garantie'),
+        value: '~' + (cur ? cur.tierValue('proven') : '730 €'),
+      };
       const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
       b5El.innerHTML =
         `<div class="b5-staircase">
@@ -1128,6 +1143,10 @@ Essayez 0,1–0,3.
     // Re-render coverage counter so number formatting follows the new lang.
     try { renderStats(); } catch(e){}
   });
+  // Re-render cost figures when the currency toggle changes (EUR ⇄ CHF).
+  document.addEventListener('currency:applied', () => {
+    try { renderStats(); } catch(e){}
+  });
   log(window.i18n ? window.i18n.t('ex.msg.ready', 'Prêt. Cliquez sur les tuiles pour jouer ; ou Entraîner → Résoudre.') : 'Prêt. Cliquez sur les tuiles pour jouer ; ou Entraîner → Résoudre.');
 })();
 </script>
@@ -1148,6 +1167,20 @@ Essayez 0,1–0,3.
 })();
 </script>
 <script src="app/i18n.js"></script>
+<script src="app/currency.js"></script>
+<script>
+  // Mount the EUR/CHF currency toggle next to the language switcher and fill
+  // any currency tokens i18n has already written into tooltips/prose.
+  (function(){
+    function init(){
+      if (!window.currency) return;
+      window.currency.mountToggle();
+      window.currency.applyTokens(document);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+  })();
+</script>
 <script src="app/tooltips.js"></script>
 <script>
 

@@ -37,6 +37,7 @@
     "newBest": "Neuer Rekord!",
     "facilitatorMode": "Moderations-Modus",
     "langSelectorLabel": "Sprache",
+    "currencyToggleLabel": "Währung (€ Standard, CHF optional)",
     "skipToContent": "Zum Inhalt springen"
   },
   "hub": {
@@ -298,18 +299,18 @@
       "currentState": "Aktueller Zustand",
       "movesLastSolve": "Züge (letzte Lösung)",
       "qUpdates": "Q-Updates",
-      "coverage": "Abdeckung der Q-Agent*in",
-      "coverageTip": "Die Q-Tabelle ist ein Wörterbuch — ein Eintrag pro besuchtem Zustand. Bei 12 Zuständen erfasst sie alles. Bei 181.440 kommt sie kaum über wenige Prozent hinaus: es gibt schlicht zu viele Zustände zum Besuchen.",
+      "coverage": "Erkundete Zustände",
+      "coverageTip": "Der Anteil der erreichbaren Zustände des Puzzles, die die Agentin tatsächlich besucht hat. Die Q-Tabelle ist ein Wörterbuch — ein Eintrag pro besuchtem Zustand. Bei 12 Zuständen erkundet sie alle. Bei 181.440 kommt sie kaum über wenige Prozent hinaus: es gibt schlicht zu viele Zustände zum Besuchen.",
       "cost": "Trainingskosten",
-      "costTip": "Auf einem Laptop kostet ein Q-Update etwa 10⁻¹¹ CHF / 10⁻¹¹ € (vor allem Hardware-Amortisation, kaum Strom). Eine ganze Mission III kommt auf einen Bruchteil eines Rappens. Doch dieser winzige Tarif wird unerreichbar, sobald der Zustandsraum explodiert: dieselbe Regel, in einem anderen Maßstab, ändert alles.",
+      "costTip": "Auf einem Laptop kostet ein Q-Update etwa 10⁻¹¹ {cur} (vor allem Hardware-Amortisation, kaum Strom). Eine ganze Mission III kommt auf einen Bruchteil eines Rappens. Doch dieser winzige Tarif wird unerreichbar, sobald der Zustandsraum explodiert: dieselbe Regel, in einem anderen Maßstab, ändert alles.",
       "budget": "Gesamtbudget",
       "budgetUnit": "Schritte",
       "budgetTip": "Budget = Episoden × Max-Schritte-pro-Episode. Die Gesamtzahl der Q-Updates, die dieser Trainingsdurchlauf durchführen wird. Größeres Budget kann die Abdeckung wachsen lassen — aber auf 181.440 Zuständen bleibt selbst ein riesiges Budget weit von Konvergenzgarantien entfernt.",
       "b5cost": "Kosten bis B5",
-      "b5costDemo": "Demo: ~0,0001 CHF / 0,0001 €",
-      "b5costReliable": "Zuverlässig: ~0,01 CHF / 0,01 €",
-      "b5costProven": "Garantiert: ~700 CHF / 730 €",
-      "b5costTip": "Drei Anspruchsstufen, um B5 zu lösen (der Zustand am weitesten vom Ziel, 31 Züge entfernt):\n• Demo (die Agentin schafft es oft): ~10⁷ Schritte ≈ 0,0001 CHF / 0,0001 €.\n• Zuverlässig (≥95 % der Läufe gelingen nahe am Optimum): ~10⁹–10¹⁰ Schritte ≈ 0,01–0,1 CHF / 0,01–0,1 €.\n• Garantiert (die Agentin spielt überall fast perfekt): ~7×10¹³ Schritte ≈ 700 CHF / 730 €.\nZwischen „zuverlässig“ und „garantiert“ liegen fünf Größenordnungen."
+      "b5costDemo": "Demo: ~{vDemo}",
+      "b5costReliable": "Zuverlässig: ~{vReliable}",
+      "b5costProven": "Garantiert: ~{vProven}",
+      "b5costTip": "Drei Anspruchsstufen, um B5 zu lösen (der Zustand am weitesten vom Ziel, 31 Züge entfernt):\n• Demo (die Agentin schafft es oft): ~10⁷ Schritte ≈ {vDemo}.\n• Zuverlässig (≥95 % der Läufe gelingen nahe am Optimum): ~10⁹–10¹⁰ Schritte ≈ {vReliable}.\n• Garantiert (die Agentin spielt überall fast perfekt): ~7×10¹³ Schritte ≈ {vProven}.\nZwischen „zuverlässig“ und „garantiert“ liegen fünf Größenordnungen."
     },
     "btn": {
       "stepOnce": "Schritt (ein Update)",
@@ -370,7 +371,7 @@
       "moreLink": "Mehr Konzepte im vollständigen Glossar von Mission I →"
     },
     "coverage": {
-      "title": "Abdeckung der Q-Agentin",
+      "title": "Erkundete Zustände",
       "bar": {
         "m1": "Mission I · 12 Zustände",
         "m2": "Mission II · 360 Zustände",
@@ -529,7 +530,7 @@
       },
       "budget": {
         "term": "Stichprobenbudget",
-        "def": "Gesamt-Compute = Episoden × Max-Schritte-pro-Episode. Selbst bei 10⁻¹¹ CHF / 10⁻¹¹ € pro Q-Update liegt das für Mission-III-Konvergenz nötige Budget viele Größenordnungen über dem, was ein Samstagnachmittag-Laptop liefert."
+        "def": "Gesamt-Compute = Episoden × Max-Schritte-pro-Episode. Selbst bei 10⁻¹¹ {cur} pro Q-Update liegt das für Mission-III-Konvergenz nötige Budget viele Größenordnungen über dem, was ein Samstagnachmittag-Laptop liefert."
       }
     },
     "economy": {
@@ -647,7 +648,7 @@
       "algoTitle": "Der Algorithmus findet seinen Platz.",
       "algoBody": "Bei 360 Zuständen passt die Tabelle nicht mehr auf eine Seite. Starte das Training und beobachte, wie Q vom Ziel rückwärts wandert, Episode für Episode.",
       "notes": {
-        "1": "3 min · Übergang · Mission II öffnen; auf die Abdeckungsanzeige über 360 Zustände zeigen.",
+        "1": "3 min · Übergang · Mission II öffnen; auf den Balken der erkundeten Zustände über 360 Zustände zeigen.",
         "2": "5 min · Beobachtung · trainieren und die Anzeige steigen lassen; verfolge in den ersten 5 Episoden die Farbwelle, die vom Ziel ausgeht und sich rückwärts in der Zustandsliste-Ansicht ausbreitet.",
         "3": "14 min · 3 Versuche · α≈0,3 · γ≈0,95 · ε≈0,4 · 2 000 Episoden; B1→B5 benchmarken.",
         "4": "3 min · Nachbesprechung · ε > 0 hält die Exploration; γ nahe 1 trägt die Belohnung weit zurück."
@@ -658,7 +659,7 @@
       "chip": "Mission III · Workshop-Kit",
       "title": "Skalierung · 3×3",
       "curseTitle": "Der Fluch macht sich bemerkbar.",
-      "curseBody": "Auf 181.440 Zuständen erreicht die Abdeckungsanzeige unter 100% ein Plateau. In Mission III übersetzt die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Wirtschafts-Karte</a> die Kosten in CHF: Demo 0,0001 / 0,0001 € · Zuverlässig 0,01 / 0,01 € · Garantiert 700 / 730 €. Zwischen Zuverlässig und Garantiert, fünf Größenordnungen.",
+      "curseBody": "Auf 181.440 Zuständen erreicht der Anteil erkundeter Zustände unter 100% ein Plateau. In Mission III übersetzt die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Wirtschafts-Karte</a> die Kosten: Demo {vDemo} · Zuverlässig {vReliable} · Garantiert {vProven}. Zwischen Zuverlässig und Garantiert, fünf Größenordnungen.",
       "notes": {
         "1": "3 min · Übergang · Mission III öffnen; auf die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Wirtschafts-Karte</a> zeigen.",
         "2": "5 min · beobachten · 181.440 Zustände; die Anzeige erreicht unter 100% ein Plateau — zeigen.",
@@ -733,7 +734,7 @@
     "transfer": {
       "title": "Bevor du auf die nächste Mission klickst",
       "m1to2": "Du wirst 360 Zustände in Mission II sehen (30× mehr als hier). Schätze, ob die Q-Tabelle noch auf eine Serviette passt. Warum / warum nicht?",
-      "m2to3": "Du wirst 181.440 Zustände in Mission III sehen (504× mehr als hier). Schätze, ob die Abdeckungsanzeige 100% erreicht. Warum / warum nicht?"
+      "m2to3": "Du wirst 181.440 Zustände in Mission III sehen (504× mehr als hier). Schätze, ob der Balken der erkundeten Zustände 100% erreicht. Warum / warum nicht?"
     }
   },
   "fe": {

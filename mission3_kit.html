@@ -59,7 +59,7 @@
 
       <div class="kit-tip">
         <strong data-i18n="kit.m3.curseTitle">Le fléau se fait sentir.</strong>
-        <span data-i18n="kit.m3.curseBody">Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Dans Mission III, la carte Économie traduit le coût en CHF : Démo 0,0001 / 0,0001 € · Fiable 0,01 / 0,01 € · Garantie 700 / 730 €. Entre Fiable et Garantie, cinq ordres de grandeur.</span>
+        <span data-i18n="kit.m3.curseBody" data-currency-tpl>Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Dans Mission III, la carte Économie traduit le coût : Démo 0,0001 € · Fiable 0,01 € · Garantie 730 € (CHF dans le hub). Entre Fiable et Garantie, cinq ordres de grandeur.</span>
       </div>
 
       <h2 style="margin-top:14px;" data-i18n="kit.bench.title">Références (B1 → B5)</h2>
@@ -133,6 +133,10 @@
 </div>
 
 <script src="app/i18n.js"></script>
+<!-- Currency module: no toggle here (static print kit) — it only fills the
+     {vDemo}/{vReliable}/{vProven} cost tokens in kit.m3.curseBody with the
+     EUR default after i18n applies. -->
+<script src="app/currency.js"></script>
 <script src="app/tooltips.js"></script>
 </body>
 </html>

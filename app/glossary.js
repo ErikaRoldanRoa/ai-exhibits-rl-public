@@ -42,7 +42,10 @@
     const labelKey = REGISTRY[key].label;
     const bodyKey  = REGISTRY[key].body;
     const labelText = tr(labelKey, key);
-    const bodyText  = tr(bodyKey, '');
+    // Fill any currency tokens ({cur}/{vXxx}) so cost figures in glossary defs
+    // (e.g. budget.def) show the SELECTED currency, EUR by default.
+    const rawBody   = tr(bodyKey, '');
+    const bodyText  = (window.currency && window.currency.fill) ? window.currency.fill(rawBody) : rawBody;
     // Hub bodies are already rich HTML with a `<div class="mono">HEADER</div>`;
     // detect that and pass through. Mission `def` strings are plain prose — wrap them.
     if (/<div\s+class=["']mono["']/.test(bodyText)) return bodyText;
@@ -127,6 +130,13 @@
         if (reg) b.textContent = tr(reg.label, b.dataset.term);
       });
       // Re-render active body
+      if (term) panel.innerHTML = bodyHtml(term);
+    });
+    // Re-render the active body when the currency toggle changes (EUR ⇄ CHF)
+    // so cost figures inside defs (e.g. budget.def) follow the selection.
+    document.addEventListener('currency:applied', () => {
+      const active = chipsBox.querySelector('.chip.active');
+      const term = active ? active.dataset.term : defaultActive;
       if (term) panel.innerHTML = bodyHtml(term);
     });
 

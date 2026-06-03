@@ -37,6 +37,7 @@
     "newBest": "Nouveau record !",
     "facilitatorMode": "Mode animatrice",
     "langSelectorLabel": "Langue",
+    "currencyToggleLabel": "Devise (€ par défaut, CHF optionnel)",
     "skipToContent": "Aller au contenu"
   },
   "hub": {
@@ -298,18 +299,18 @@
       "currentState": "État actuel",
       "movesLastSolve": "Coups (dernière résolution)",
       "qUpdates": "Mises à jour Q",
-      "coverage": "Couverture de l'agente Q",
-      "coverageTip": "La table Q est un dictionnaire — une entrée par état rencontré. À 12 états, elle couvre tout. À 181 440, elle peine à dépasser quelques pour cent : il y a simplement trop d'états pour les visiter.",
+      "coverage": "États explorés",
+      "coverageTip": "La proportion d'états explorés que l'agente a réellement visités. La table Q est un dictionnaire — une entrée par état rencontré. À 12 états, elle les explore tous. À 181 440, elle peine à dépasser quelques pour cent : il y a simplement trop d'états pour les visiter.",
       "cost": "Coût d'entraînement",
-      "costTip": "Sur un laptop, une mise à jour Q coûte environ 10⁻¹¹ CHF / 10⁻¹¹ € (surtout l'amortissement, pas l'électricité). Une Mission III entière revient à une fraction de centime. Mais ce tarif minuscule devient inaccessible dès que l'espace d'états explose : la même règle, à une autre échelle, change tout.",
+      "costTip": "Sur un laptop, une mise à jour Q coûte environ 10⁻¹¹ {cur} (surtout l'amortissement, pas l'électricité). Une Mission III entière revient à une fraction de centime. Mais ce tarif minuscule devient inaccessible dès que l'espace d'états explose : la même règle, à une autre échelle, change tout.",
       "budget": "Budget total",
       "budgetUnit": "pas",
       "budgetTip": "Budget = épisodes × pas-max-par-épisode. C'est le nombre total de mises à jour Q que l'entraînement va effectuer. Plus le budget est grand, plus la couverture peut grandir — mais sur 181 440 états, même un budget énorme reste loin de la convergence garantie.",
       "b5cost": "Coût pour atteindre B5",
-      "b5costDemo": "Démo : ~0,0001 CHF / 0,0001 €",
-      "b5costReliable": "Fiable : ~0,01 CHF / 0,01 €",
-      "b5costProven": "Garantie : ~700 CHF / 730 €",
-      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ 0,0001 CHF / 0,0001 €.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF / 0,01–0,1 €.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF / 730 €.\nEntre « fiable » et « garantie », cinq ordres de grandeur."
+      "b5costDemo": "Démo : ~{vDemo}",
+      "b5costReliable": "Fiable : ~{vReliable}",
+      "b5costProven": "Garantie : ~{vProven}",
+      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ {vDemo}.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ {vReliable}.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ {vProven}.\nEntre « fiable » et « garantie », cinq ordres de grandeur."
     },
     "btn": {
       "stepOnce": "Pas (une mise à jour)",
@@ -370,7 +371,7 @@
       "moreLink": "Plus de concepts dans le glossaire complet de Mission I →"
     },
     "coverage": {
-      "title": "Couverture de l'agente Q",
+      "title": "États explorés",
       "bar": {
         "m1": "Mission I · 12 états",
         "m2": "Mission II · 360 états",
@@ -529,7 +530,7 @@
       },
       "budget": {
         "term": "Budget d'échantillons",
-        "def": "Compute total = épisodes × pas-max-par-épisode. Même à 10⁻¹¹ CHF / 10⁻¹¹ € par mise à jour Q, le budget nécessaire pour atteindre la convergence garantie sur Mission III est de plusieurs ordres de grandeur au-delà de ce qu'un samedi après-midi sur un laptop peut produire."
+        "def": "Compute total = épisodes × pas-max-par-épisode. Même à 10⁻¹¹ {cur} par mise à jour Q, le budget nécessaire pour atteindre la convergence garantie sur Mission III est de plusieurs ordres de grandeur au-delà de ce qu'un samedi après-midi sur un laptop peut produire."
       }
     },
     "economy": {
@@ -647,8 +648,8 @@
       "algoTitle": "L'algorithme prend sa place.",
       "algoBody": "Avec 360 états, la table ne tient plus sur une serviette. Lance l'entraînement et regarde Q remonter depuis l'objectif, épisode après épisode.",
       "notes": {
-        "1": "3 min · transition · ouvrir Mission II ; pointer la jauge de couverture sur 360 états.",
-        "2": "5 min · observation · entraîner et regarder la jauge monter ; pendant les 5 premiers épisodes, suivre la vague colorée qui part de l'objectif et se propage à rebours dans la vue Liste des états.",
+        "1": "3 min · transition · ouvrir Mission II ; pointer la barre des états explorés sur 360 états.",
+        "2": "5 min · observation · entraîner et regarder la barre des états explorés monter ; pendant les 5 premiers épisodes, suivre la vague colorée qui part de l'objectif et se propage à rebours dans la vue Liste des états.",
         "3": "14 min · 3 essais · α≈0,3 · γ≈0,95 · ε≈0,4 · 2 000 épisodes ; benchmarker B1→B5.",
         "4": "3 min · débrief · ε > 0 maintient l'exploration ; γ proche de 1 propage la récompense loin."
       },
@@ -658,10 +659,10 @@
       "chip": "Mission III · Kit atelier",
       "title": "Mise à l'Échelle · 3×3",
       "curseTitle": "Le fléau se fait sentir.",
-      "curseBody": "Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Dans Mission III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût en CHF : Démo 0,0001 / 0,0001 € · Fiable 0,01 / 0,01 € · Garantie 700 / 730 €. Entre Fiable et Garantie, cinq ordres de grandeur.",
+      "curseBody": "Sur 181 440 états, la proportion d'états explorés plafonne sous 100 %. Dans Mission III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût : Démo {vDemo} · Fiable {vReliable} · Garantie {vProven}. Entre Fiable et Garantie, cinq ordres de grandeur.",
       "notes": {
         "1": "3 min · transition · ouvrir Mission III ; pointer la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a>.",
-        "2": "5 min · observation · 181 440 états ; la jauge plafonne sous 100 % — montrer.",
+        "2": "5 min · observation · 181 440 états ; la barre des états explorés plafonne sous 100 % — montrer.",
         "3": "10 min · entraîner avec α≈0,3 · γ≈0,99 · ε≈0,5 · 10 000 épisodes ; viser B5 (31 coups, antipode).",
         "4": "2 min · débrief · le fléau de la dimension. Même algo, même méthode — l'espace gagne. Porte d'entrée vers DQN / AlphaZero."
       },
@@ -733,7 +734,7 @@
     "transfer": {
       "title": "Avant de cliquer la suite",
       "m1to2": "Tu vas voir 360 états dans Mission II (30× plus qu'ici). Devine si la table Q tiendra encore sur une serviette. Pourquoi / pourquoi pas ?",
-      "m2to3": "Tu vas voir 181 440 états dans Mission III (504× plus qu'ici). Devine si la jauge de couverture atteindra 100 %. Pourquoi / pourquoi pas ?"
+      "m2to3": "Tu vas voir 181 440 états dans Mission III (504× plus qu'ici). Devine si la barre des états explorés atteindra 100 %. Pourquoi / pourquoi pas ?"
     }
   },
   "fe": {

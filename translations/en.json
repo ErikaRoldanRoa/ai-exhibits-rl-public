@@ -37,6 +37,7 @@
     "newBest": "New best!",
     "facilitatorMode": "Facilitator mode",
     "langSelectorLabel": "Language",
+    "currencyToggleLabel": "Currency (€ default, CHF optional)",
     "skipToContent": "Skip to content"
   },
   "hub": {
@@ -298,18 +299,18 @@
       "currentState": "Current state",
       "movesLastSolve": "Moves (last solve)",
       "qUpdates": "Q updates",
-      "coverage": "Q-agent coverage",
-      "coverageTip": "The Q-table is a lookup — one row for every state seen. At 12 states it covers everything. At 181,440 it barely reaches a few percent: there are simply too many states to visit.",
+      "coverage": "States explored",
+      "coverageTip": "The share of the puzzle's reachable states the agent has actually visited. The Q-table is a lookup — one row for every state seen. At 12 states the agent explores everything. At 181,440 it barely reaches a few percent: there are simply too many states to visit.",
       "cost": "Training cost",
-      "costTip": "On a laptop, one Q update costs about 10⁻¹¹ CHF / 10⁻¹¹ € (mostly hardware amortization, not electricity). A full Mission III comes to a fraction of a cent. Yet this tiny tariff becomes unreachable once the state space explodes: the same rule, at another scale, changes everything.",
+      "costTip": "On a laptop, one Q update costs about 10⁻¹¹ {cur} (mostly hardware amortization, not electricity). A full Mission III comes to a fraction of a cent. Yet this tiny tariff becomes unreachable once the state space explodes: the same rule, at another scale, changes everything.",
       "budget": "Total budget",
       "budgetUnit": "steps",
       "budgetTip": "Budget = episodes × max-steps-per-episode. The total number of Q-updates this training pass will perform. Larger budget can grow coverage — but on 181,440 states even a huge budget stays far from convergence guarantees.",
       "b5cost": "Cost to reach B5",
-      "b5costDemo": "Demo: ~0.0001 CHF / 0.0001 €",
-      "b5costReliable": "Reliable: ~0.01 CHF / 0.01 €",
-      "b5costProven": "Guaranteed: ~700 CHF / 730 €",
-      "b5costTip": "Three levels of demand for solving B5 (the state farthest from the goal, 31 moves away):\n• Demo (the agent often gets there): ~10⁷ steps ≈ 0.0001 CHF / 0.0001 €.\n• Reliable (≥95% of runs succeed near the optimum): ~10⁹–10¹⁰ steps ≈ 0.01–0.1 CHF / 0.01–0.1 €.\n• Guaranteed (the agent plays near-perfectly everywhere): ~7×10¹³ steps ≈ 700 CHF / 730 €.\nBetween 'reliable' and 'guaranteed', five orders of magnitude."
+      "b5costDemo": "Demo: ~{vDemo}",
+      "b5costReliable": "Reliable: ~{vReliable}",
+      "b5costProven": "Guaranteed: ~{vProven}",
+      "b5costTip": "Three levels of demand for solving B5 (the state farthest from the goal, 31 moves away):\n• Demo (the agent often gets there): ~10⁷ steps ≈ {vDemo}.\n• Reliable (≥95% of runs succeed near the optimum): ~10⁹–10¹⁰ steps ≈ {vReliable}.\n• Guaranteed (the agent plays near-perfectly everywhere): ~7×10¹³ steps ≈ {vProven}.\nBetween 'reliable' and 'guaranteed', five orders of magnitude."
     },
     "btn": {
       "stepOnce": "Step (one update)",
@@ -370,7 +371,7 @@
       "moreLink": "More concepts in the full Mission I glossary →"
     },
     "coverage": {
-      "title": "Q-agent coverage",
+      "title": "States explored",
       "bar": {
         "m1": "Mission I · 12 states",
         "m2": "Mission II · 360 states",
@@ -529,7 +530,7 @@
       },
       "budget": {
         "term": "Sample budget",
-        "def": "Total compute = episodes × max-steps-per-episode. Even at 10⁻¹¹ CHF / 10⁻¹¹ € per Q-update, the budget needed for guaranteed convergence on Mission III is many orders of magnitude beyond what a Saturday-afternoon laptop session produces."
+        "def": "Total compute = episodes × max-steps-per-episode. Even at 10⁻¹¹ {cur} per Q-update, the budget needed for guaranteed convergence on Mission III is many orders of magnitude beyond what a Saturday-afternoon laptop session produces."
       }
     },
     "economy": {
@@ -647,8 +648,8 @@
       "algoTitle": "The algorithm earns its place.",
       "algoBody": "With 360 states the table no longer fits on a page. Start training and watch Q propagate backward from the goal, episode after episode.",
       "notes": {
-        "1": "3 min · transition · open Mission II; point at the coverage gauge over 360 states.",
-        "2": "5 min · observation · train and watch the gauge climb; during the first 5 episodes, follow the colour wave starting from the goal and propagating backward in the State-list view.",
+        "1": "3 min · transition · open Mission II; point at the explored-states bar over 360 states.",
+        "2": "5 min · observation · train and watch the explored-states bar climb; during the first 5 episodes, follow the colour wave starting from the goal and propagating backward in the State-list view.",
         "3": "14 min · 3 attempts · α≈0.3 · γ≈0.95 · ε≈0.4 · 2 000 episodes; benchmark B1→B5.",
         "4": "3 min · debrief · ε > 0 keeps exploration alive; γ close to 1 carries reward far back."
       },
@@ -658,10 +659,10 @@
       "chip": "Mission III · Workshop kit",
       "title": "Scaling · 3×3",
       "curseTitle": "The curse begins to bite.",
-      "curseBody": "On 181,440 states, the coverage gauge plateaus below 100%. Inside Mission III, the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a> translates cost into CHF: Demo 0.0001 / 0.0001 € · Reliable 0.01 / 0.01 € · Proven 700 / 730 €. Between Reliable and Proven, five orders of magnitude.",
+      "curseBody": "On 181,440 states, the share of explored states plateaus below 100%. Inside Mission III, the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a> translates cost: Demo {vDemo} · Reliable {vReliable} · Proven {vProven}. Between Reliable and Proven, five orders of magnitude.",
       "notes": {
         "1": "3 min · transition · open Mission III; point at the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a>.",
-        "2": "5 min · observe · 181,440 states; the gauge plateaus below 100% — show it.",
+        "2": "5 min · observe · 181,440 states; the explored-states bar plateaus below 100% — show it.",
         "3": "10 min · train · α≈0.3 · γ≈0.99 · ε≈0.5 · 10 000 episodes; aim for B5 (31 moves, antipode).",
         "4": "2 min · debrief · the curse of dimensionality. Same algorithm, same method — the space wins. Entry to DQN / AlphaZero."
       },
@@ -733,7 +734,7 @@
     "transfer": {
       "title": "Before clicking the next mission",
       "m1to2": "You'll see 360 states in Mission II (30× more than here). Guess whether the Q-table still fits on a napkin. Why / why not?",
-      "m2to3": "You'll see 181,440 states in Mission III (504× more than here). Guess whether the coverage gauge will reach 100%. Why / why not?"
+      "m2to3": "You'll see 181,440 states in Mission III (504× more than here). Guess whether the explored-states bar will reach 100%. Why / why not?"
     }
   },
   "fe": {

@@ -1767,8 +1767,8 @@ const rline = document.createElement('div');
         id:"cost-curse",
         title:"Le fléau a un prix",
         tags:"coût AlphaZero MuZero deep RL généralisation",
-        public:"Sur ton laptop, un pas de Q-learning coûte ≈ **10⁻¹¹ CHF**. Un Mission III complet par défaut : une fraction de centime. Mais le coût total dépend du **nombre de pas** dont l'algorithme a besoin — et ce nombre explose avec l'espace d'états.",
-        math:"Coût marginal par pas Q-learning ≈ 10⁻¹¹ CHF (dominé par l'amortissement matériel, pas l'électricité). Mission III par défaut : ~10⁶ pas → ~10⁻⁵ CHF. Pour les échecs (~10⁴⁴ positions légales), même à 10⁻¹¹ CHF/pas une Q tabulaire est inaccessible : il faudrait des ordres de grandeur plus de pas que ce qu'aucune machine ne pourrait faire. **Au-delà du Q tabulaire :** plusieurs familles d'algorithmes contournent l'énumération. DQN (Mnih et al. 2015) remplace la table Q par un réseau f_θ(s,a) ≈ Q*(s,a) — c'EST toujours du Q-learning, simplement avec approximation fonctionnelle. AlphaZero (Silver et al. 2018) est différent : il combine recherche arborescente (MCTS) avec un réseau qui apprend simultanément une politique π_θ(a|s) et une valeur v_θ(s) — ce n'est pas du Q-learning. Avantages : (1) la mémoire est constante en θ, indépendamment de |S| ; (2) la fonction généralise — un état proche d'un état visité hérite d'une valeur raisonnable. Coût d'entraînement d'AlphaZero : non divulgué par DeepMind ; estimations externes : millions à dizaines de millions de dollars en compute TPU.",
+        public:"Sur ton laptop, un pas de Q-learning coûte ≈ **10⁻¹¹ {cur}**. Un Mission III complet par défaut : une fraction de centime. Mais le coût total dépend du **nombre de pas** dont l'algorithme a besoin — et ce nombre explose avec l'espace d'états.",
+        math:"Coût marginal par pas Q-learning ≈ 10⁻¹¹ {cur} (dominé par l'amortissement matériel, pas l'électricité). Mission III par défaut : ~10⁶ pas → ~10⁻⁵ {cur}. Pour les échecs (~10⁴⁴ positions légales), même à 10⁻¹¹ {cur}/pas une Q tabulaire est inaccessible : il faudrait des ordres de grandeur plus de pas que ce qu'aucune machine ne pourrait faire. **Au-delà du Q tabulaire :** plusieurs familles d'algorithmes contournent l'énumération. DQN (Mnih et al. 2015) remplace la table Q par un réseau f_θ(s,a) ≈ Q*(s,a) — c'EST toujours du Q-learning, simplement avec approximation fonctionnelle. AlphaZero (Silver et al. 2018) est différent : il combine recherche arborescente (MCTS) avec un réseau qui apprend simultanément une politique π_θ(a|s) et une valeur v_θ(s) — ce n'est pas du Q-learning. Avantages : (1) la mémoire est constante en θ, indépendamment de |S| ; (2) la fonction généralise — un état proche d'un état visité hérite d'une valeur raisonnable. Coût d'entraînement d'AlphaZero : non divulgué par DeepMind ; estimations externes : millions à dizaines de millions de dollars en compute TPU.",
         sentence:"« Au-delà de quelques milliers d'états, la table Q n'est plus apprenable. C'est pour ça qu'on a inventé les réseaux de neurones. »"
       },
       {
@@ -1862,10 +1862,16 @@ const rline = document.createElement('div');
 
       const pick = (x) => (mode==="math" ? x.math : (mode==="sentence" ? x.sentence : x.public));
       const esc = (s)=>escapeXml(String(s||""));
+      // Currency symbol for the cost-curse card. {cur} resolves to the selected
+      // currency (EUR default) so the M1 micro-cost shows "10⁻¹¹ €" by default,
+      // "10⁻¹¹ CHF" when toggled. At this exponent the value is identical; only
+      // the symbol changes — and only ONE currency shows at a time.
+      const curSym = (window.currency ? window.currency.symbol() : '€');
 
       // minimal “markdown”: **bold** and inline code `like this`
       const fmt = (s)=>{
         let t = esc(s);
+        t = t.split('{cur}').join(curSym);
         t = t.replace(/\*\*(.+?)\*\*/g, '<span style="color:var(--text);font-weight:950;">$1</span>');
         t = t.replace(/`(.+?)`/g, '<span style="font-family:var(--mono);color:rgba(255,255,255,0.92);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);padding:1px 6px;border-radius:10px;">$1</span>');
         return t;
@@ -2050,6 +2056,11 @@ const rline = document.createElement('div');
       try { if (viewSel && viewSel.value === "learn") renderLearn(); } catch(e){}
       try { renderAll(); } catch(e){}
     });
+    // Re-render the M1 cost-curse learn card when the currency toggle changes
+    // (EUR ⇄ CHF) so its micro-cost symbol follows the selection.
+    document.addEventListener('currency:applied', () => {
+      try { if (viewSel && viewSel.value === "learn") renderLearn(); } catch(e){}
+    });
 
   }catch(e){
     showError((window.i18n ? window.i18n.t('ex.msg.jsError', 'Erreur JavaScript') : 'Erreur JavaScript') + ' :\n' + (e && e.stack ? e.stack : String(e)));
@@ -2098,6 +2109,21 @@ const rline = document.createElement('div');
 </script>
 <script src="app/learn-cards-translations.js"></script>
 <script src="app/i18n.js"></script>
+<script src="app/currency.js"></script>
+<script>
+  // Mount the EUR/CHF currency toggle next to the language switcher and fill
+  // any currency tokens already written into tooltips/prose. The M1 cost-curse
+  // learn card re-renders on currency:applied from inside the main IIFE.
+  (function(){
+    function init(){
+      if (!window.currency) return;
+      window.currency.mountToggle();
+      window.currency.applyTokens(document);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+  })();
+</script>
 <script src="app/tooltips.js"></script>
 <script>
 

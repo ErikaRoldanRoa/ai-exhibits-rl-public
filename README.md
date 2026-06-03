@@ -38,7 +38,7 @@ Each mission follows the same arc: read the world → play by hand → train the
 |---|---|
 | Plays the 2×2 puzzle by hand | The 12-state graph, goal highlighted |
 | Trains a Q-learning agent (300 episodes) | Q-values cascade backward, edge by edge |
-| Fills in the 24-row Q-table on the printed kit | Coverage gauge reaches 100% in seconds |
+| Fills in the 24-row Q-table on the printed kit | States explored reaches 100% in seconds |
 | Traces the longest shortest path | Agent solves benchmark B6 in 6 moves |
 
 **By the end: a student can explain a Q-table in their own words and why optimal 2×2 play takes at most 6 moves.**
@@ -49,7 +49,7 @@ Each mission follows the same arc: read the world → play by hand → train the
 |---|---|
 | Trains the agent (2 000 episodes) | Q-values propagate further with each episode |
 | Sets γ from 0.5 to 0.99 and re-trains | Reward reaches deeper as γ → 1 |
-| Raises ε from 0 to 0.5 and re-trains | Coverage gauge fills at very different rates |
+| Raises ε from 0 to 0.5 and re-trains | The explored-states bar fills at very different rates |
 
 **By the end: a student can explain why γ controls how far reward propagates, and why ε > 0 keeps exploration alive.**
 
@@ -57,10 +57,10 @@ Each mission follows the same arc: read the world → play by hand → train the
 
 | Student does | Hub shows |
 |---|---|
-| Trains 10 000 episodes on the same algorithm | Coverage gauge plateaus far below 100% |
-| Reads the Économie card | **Démo** ≈ 0,0001 CHF / 0,0001 € → **Fiable** ≈ 0,01 CHF / 0,01 € → **Garantie** ≈ 700 CHF / 730 € — five orders of magnitude between *Fiable* and *Garantie* |
-| Tries to push coverage higher | Gauge climbs ~1% per minute |
-| Asks "what could fix this?" | The gauge can't fill — the lookup table has hit its ceiling. (What comes next — function approximation, neural Q and policy networks — is introduced back in Mission I.) |
+| Trains 10 000 episodes on the same algorithm | Explored states plateau far below 100% |
+| Reads the Économie card | **Démo** ~0,0001 € → **Fiable** ~0,01 € → **Garantie** ~730 € — five orders of magnitude between *Fiable* and *Garantie* (switch to CHF in the hub) |
+| Tries to push coverage higher | The bar climbs ~1% per minute |
+| Asks "what could fix this?" | The bar can't fill — the lookup table has hit its ceiling. (What comes next — function approximation, neural Q and policy networks — is introduced back in Mission I.) |
 
 **By the end: a student can explain why tabular Q-learning fails on 3×3 — and why neural Q and policy networks exist.**
 
@@ -76,7 +76,7 @@ Each mission follows the same arc: read the world → play by hand → train the
 | Install / accounts | None |
 | Time | 2 hours for all three missions; 30 min for Mission I alone |
 | Print | `mission{1,2,3}_kit.html` per team (A4 landscape, facilitator runbook + cheat-sheet) + `mission1_student.html` per student (A4 landscape worksheet: 12-state orbit, 24-row Q-table grid, benchmarks) + `print/fiche_equipe.html` team scoresheet |
-| Project on screen | The hub (`index.html`) — so the room sees the coverage gauge climb together |
+| Project on screen | The hub (`index.html`) — so the room sees the explored-states bar climb together |
 
 Anonymous play sends nothing. The hub is fully usable with no contact, no keyword, no setup beyond opening the URL.
 
@@ -101,4 +101,4 @@ The 🔧 button on every page lets anyone send general feedback — a translatio
 
 ---
 
-Developed in the **AI-Exhibits** Erasmus+ partnership: **IMAGINARY gGmbH** (Berlin) · **Institut Henri Poincaré** (Paris) · **Max Planck Institute for Mathematics in the Sciences** (Leipzig) · **Citizens in Power** (Nicosia) · **ITT Giordani Striano** (Naples).
+Developed in the **AI-Exhibits** Erasmus+ partnership: **Max Planck Institute for Mathematics in the Sciences** (Leipzig) · **IMAGINARY gGmbH** (Berlin) · **Institut Henri Poincaré** (Paris) · **Citizens in Power** (Nicosia) · **ITT Giordani Striano** (Naples).

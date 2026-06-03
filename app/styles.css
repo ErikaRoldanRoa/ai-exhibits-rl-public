@@ -1431,6 +1431,46 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
   outline-offset: 2px;
 }
 .langSelector option { background: #0b0714; color: var(--text); padding: 6px; }
+
+/* ===== CURRENCY TOGGLE (EUR default / CHF optional) =====
+   Sits inside .langSelectorWrap, just below the language switcher. Two pill
+   buttons; the active currency is highlighted. Dark-theme, matches the
+   cyan-accent langSelector. */
+.currencyToggle {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
+  border: 1px solid rgba(47, 243, 255, 0.35);
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(7, 6, 10, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.currencyToggle button {
+  font: 700 12px/1 var(--sans);
+  color: rgba(255, 255, 255, 0.65);
+  background: transparent;
+  border: 0;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.currencyToggle button + button {
+  border-left: 1px solid rgba(47, 243, 255, 0.22);
+}
+.currencyToggle button:hover { color: var(--text); }
+.currencyToggle button.active {
+  color: #07060a;
+  background: rgba(47, 243, 255, 0.82);
+  font-weight: 900;
+}
+.currencyToggle button:focus-visible {
+  outline: 2px solid rgba(47, 243, 255, 0.8);
+  outline-offset: -2px;
+}
+
 @media (max-width: 640px) {
   .langSelectorWrap { top: 10px; left: 10px; }
 }
