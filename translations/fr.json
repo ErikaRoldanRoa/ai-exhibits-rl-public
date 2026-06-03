@@ -301,15 +301,15 @@
       "coverage": "Couverture de l'agente Q",
       "coverageTip": "La table Q est un dictionnaire — une entrée par état rencontré. À 12 états, elle couvre tout. À 181 440, elle peine à dépasser quelques pour cent : il y a simplement trop d'états pour les visiter.",
       "cost": "Coût d'entraînement",
-      "costTip": "Sur un laptop, une mise à jour Q coûte environ 10⁻¹¹ CHF (surtout l'amortissement, pas l'électricité). Une Mission III entière revient à une fraction de centime. Mais ce tarif minuscule devient inaccessible dès que l'espace d'états explose : la même règle, à une autre échelle, change tout.",
+      "costTip": "Sur un laptop, une mise à jour Q coûte environ 10⁻¹¹ CHF / 10⁻¹¹ € (surtout l'amortissement, pas l'électricité). Une Mission III entière revient à une fraction de centime. Mais ce tarif minuscule devient inaccessible dès que l'espace d'états explose : la même règle, à une autre échelle, change tout.",
       "budget": "Budget total",
       "budgetUnit": "pas",
       "budgetTip": "Budget = épisodes × pas-max-par-épisode. C'est le nombre total de mises à jour Q que l'entraînement va effectuer. Plus le budget est grand, plus la couverture peut grandir — mais sur 181 440 états, même un budget énorme reste loin de la convergence garantie.",
       "b5cost": "Coût pour atteindre B5",
-      "b5costDemo": "Démo : ~0,0001 CHF",
-      "b5costReliable": "Fiable : ~0,01 CHF",
-      "b5costProven": "Garantie : ~700 CHF",
-      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ 0,0001 CHF.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF.\nEntre « fiable » et « garantie », cinq ordres de grandeur."
+      "b5costDemo": "Démo : ~0,0001 CHF / 0,0001 €",
+      "b5costReliable": "Fiable : ~0,01 CHF / 0,01 €",
+      "b5costProven": "Garantie : ~700 CHF / 730 €",
+      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ 0,0001 CHF / 0,0001 €.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF / 0,01–0,1 €.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF / 730 €.\nEntre « fiable » et « garantie », cinq ordres de grandeur."
     },
     "btn": {
       "stepOnce": "Pas (une mise à jour)",
@@ -529,7 +529,7 @@
       },
       "budget": {
         "term": "Budget d'échantillons",
-        "def": "Compute total = épisodes × pas-max-par-épisode. Même à 10⁻¹¹ CHF par mise à jour Q, le budget nécessaire pour atteindre la convergence garantie sur Mission III est de plusieurs ordres de grandeur au-delà de ce qu'un samedi après-midi sur un laptop peut produire."
+        "def": "Compute total = épisodes × pas-max-par-épisode. Même à 10⁻¹¹ CHF / 10⁻¹¹ € par mise à jour Q, le budget nécessaire pour atteindre la convergence garantie sur Mission III est de plusieurs ordres de grandeur au-delà de ce qu'un samedi après-midi sur un laptop peut produire."
       }
     },
     "economy": {
@@ -658,7 +658,7 @@
       "chip": "Mission III · Kit atelier",
       "title": "Mise à l'Échelle · 3×3",
       "curseTitle": "Le fléau se fait sentir.",
-      "curseBody": "Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Dans Mission III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût en CHF : Démo 0,0001 · Fiable 0,01 · Garantie 700. Entre Fiable et Garantie, cinq ordres de grandeur.",
+      "curseBody": "Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Dans Mission III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût en CHF : Démo 0,0001 / 0,0001 € · Fiable 0,01 / 0,01 € · Garantie 700 / 730 €. Entre Fiable et Garantie, cinq ordres de grandeur.",
       "notes": {
         "1": "3 min · transition · ouvrir Mission III ; pointer la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a>.",
         "2": "5 min · observation · 181 440 états ; la jauge plafonne sous 100 % — montrer.",

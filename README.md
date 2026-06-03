@@ -6,7 +6,6 @@ Train a Q-learning agent on three sliding puzzles — watch it learn, then watch
 
 - 🔗 **Live:** https://erikaroldanroa.github.io/ai-exhibits-rl-public/
 - 🌐 **Languages:** FR · EN · DE · IT — no install, runs in any browser
-- ✋ **Privacy:** nothing is sent unless you explicitly submit
 - ⚠️ **License:** CC BY-NC-ND 4.0 — translations and adaptations require [written permission](#license)
 
 ---
@@ -49,8 +48,8 @@ Each mission follows the same arc: read the world → play by hand → train the
 | Student does | Hub shows |
 |---|---|
 | Trains the agent (2 000 episodes) | Q-values propagate further with each episode |
-| Drags γ from 0.5 to 0.99 and re-trains | Reward reaches deeper as γ → 1 |
-| Drags ε from 0 to 0.5 and re-trains | Coverage gauge fills at very different rates |
+| Sets γ from 0.5 to 0.99 and re-trains | Reward reaches deeper as γ → 1 |
+| Raises ε from 0 to 0.5 and re-trains | Coverage gauge fills at very different rates |
 
 **By the end: a student can explain why γ controls how far reward propagates, and why ε > 0 keeps exploration alive.**
 
@@ -59,9 +58,9 @@ Each mission follows the same arc: read the world → play by hand → train the
 | Student does | Hub shows |
 |---|---|
 | Trains 10 000 episodes on the same algorithm | Coverage gauge plateaus far below 100% |
-| Reads the Économie card | **Démo** 0,0001 CHF (seconds) → **Fiable** 0,01 CHF (minutes) → **Garantie** 700 CHF (hours) — five orders of magnitude |
+| Reads the Économie card | **Démo** ≈ 0,0001 CHF / 0,0001 € → **Fiable** ≈ 0,01 CHF / 0,01 € → **Garantie** ≈ 700 CHF / 730 € — five orders of magnitude between *Fiable* and *Garantie* |
 | Tries to push coverage higher | Gauge climbs ~1% per minute |
-| Closes the laptop and asks "what could fix this?" | An on-screen card pointing at function approximation |
+| Asks "what could fix this?" | The gauge can't fill — the lookup table has hit its ceiling. (What comes next — function approximation, neural Q and policy networks — is introduced back in Mission I.) |
 
 **By the end: a student can explain why tabular Q-learning fails on 3×3 — and why neural Q and policy networks exist.**
 
@@ -85,11 +84,11 @@ Anonymous play sends nothing. The hub is fully usable with no contact, no keywor
 
 ## Running a workshop · tournament · permanent installation
 
-If you'd like to collect data across teams or run a tournament tied to a paper, [request an event](request.html) *(form opens June 1, 2026)*. Approval takes 1–2 weeks. Time-bounded workshops get credentials that auto-expire; permanent events (paper tournaments, museum installations) get open credentials.
+If you'd like to collect data across teams or run a tournament tied to a paper, [request an event](request.html) *(form opens July 2026)*. Approval takes 1–2 weeks. Time-bounded workshops get credentials that auto-expire; permanent events (paper tournaments, museum installations) get open credentials.
 
 When approved, the 📤 button in the hub becomes active for facilitators and submissions get tagged to your event for later analysis.
 
-The 🔧 button on every page lets anyone suggest a translation or content correction — open to all, no account needed.
+The 🔧 button on every page lets anyone send general feedback — a translation suggestion, a bug report, a comment, or any suggestion — open to all, no account needed.
 
 ---
 

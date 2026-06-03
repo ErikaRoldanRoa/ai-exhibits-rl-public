@@ -301,15 +301,15 @@
       "coverage": "Copertura dell'agente Q",
       "coverageTip": "La tabella Q è un dizionario — una voce per ogni stato incontrato. A 12 stati copre tutto. A 181.440 supera a stento qualche percento: ci sono semplicemente troppi stati da visitare.",
       "cost": "Costo di addestramento",
-      "costTip": "Su un laptop, un aggiornamento Q costa circa 10⁻¹¹ CHF (soprattutto ammortamento hardware, non elettricità). Un'intera Mission III si paga con una frazione di centesimo. Ma questa tariffa minuscola diventa inaccessibile quando lo spazio degli stati esplode: la stessa regola, a un'altra scala, cambia tutto.",
+      "costTip": "Su un laptop, un aggiornamento Q costa circa 10⁻¹¹ CHF / 10⁻¹¹ € (soprattutto ammortamento hardware, non elettricità). Un'intera Mission III si paga con una frazione di centesimo. Ma questa tariffa minuscola diventa inaccessibile quando lo spazio degli stati esplode: la stessa regola, a un'altra scala, cambia tutto.",
       "budget": "Budget totale",
       "budgetUnit": "passi",
       "budgetTip": "Budget = episodi × passi-max-per-episodio. Il numero totale di aggiornamenti Q che questa sessione eseguirà. Un budget maggiore può far crescere la copertura — ma su 181.440 stati anche un budget enorme rimane lontano dalle garanzie di convergenza.",
       "b5cost": "Costo per raggiungere B5",
-      "b5costDemo": "Demo: ~0,0001 CHF",
-      "b5costReliable": "Affidabile: ~0,01 CHF",
-      "b5costProven": "Garantito: ~700 CHF",
-      "b5costTip": "Tre livelli di esigenza per risolvere B5 (lo stato più lontano dall'obiettivo, a 31 mosse):\n• Demo (l'agente ci arriva spesso): ~10⁷ passi ≈ 0,0001 CHF.\n• Affidabile (≥95% delle prove riesce vicino all'ottimo): ~10⁹–10¹⁰ passi ≈ 0,01–0,1 CHF.\n• Garantita (l'agente gioca quasi perfettamente ovunque): ~7×10¹³ passi ≈ 700 CHF.\nTra «affidabile» e «garantito», cinque ordini di grandezza."
+      "b5costDemo": "Demo: ~0,0001 CHF / 0,0001 €",
+      "b5costReliable": "Affidabile: ~0,01 CHF / 0,01 €",
+      "b5costProven": "Garantito: ~700 CHF / 730 €",
+      "b5costTip": "Tre livelli di esigenza per risolvere B5 (lo stato più lontano dall'obiettivo, a 31 mosse):\n• Demo (l'agente ci arriva spesso): ~10⁷ passi ≈ 0,0001 CHF / 0,0001 €.\n• Affidabile (≥95% delle prove riesce vicino all'ottimo): ~10⁹–10¹⁰ passi ≈ 0,01–0,1 CHF / 0,01–0,1 €.\n• Garantita (l'agente gioca quasi perfettamente ovunque): ~7×10¹³ passi ≈ 700 CHF / 730 €.\nTra «affidabile» e «garantito», cinque ordini di grandezza."
     },
     "btn": {
       "stepOnce": "Passo (un aggiornamento)",
@@ -529,7 +529,7 @@
       },
       "budget": {
         "term": "Budget di campioni",
-        "def": "Calcolo totale = episodi × passi-max-per-episodio. Anche a 10⁻¹¹ CHF per aggiornamento Q, il budget necessario per la convergenza garantita su Missione III è di molti ordini di grandezza oltre ciò che un sabato pomeriggio su un laptop può produrre."
+        "def": "Calcolo totale = episodi × passi-max-per-episodio. Anche a 10⁻¹¹ CHF / 10⁻¹¹ € per aggiornamento Q, il budget necessario per la convergenza garantita su Missione III è di molti ordini di grandezza oltre ciò che un sabato pomeriggio su un laptop può produrre."
       }
     },
     "economy": {
@@ -658,7 +658,7 @@
       "chip": "Missione III · Kit del laboratorio",
       "title": "Scala · 3×3",
       "curseTitle": "La maledizione si fa sentire.",
-      "curseBody": "Su 181.440 stati, l'indicatore di copertura si stabilizza sotto il 100%. In Missione III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a> traduce il costo in CHF: Demo 0,0001 · Affidabile 0,01 · Garantito 700. Tra Affidabile e Garantito, cinque ordini di grandezza.",
+      "curseBody": "Su 181.440 stati, l'indicatore di copertura si stabilizza sotto il 100%. In Missione III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a> traduce il costo in CHF: Demo 0,0001 / 0,0001 € · Affidabile 0,01 / 0,01 € · Garantito 700 / 730 €. Tra Affidabile e Garantito, cinque ordini di grandezza.",
       "notes": {
         "1": "3 min · transizione · aprire Missione III; indicare la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a>.",
         "2": "5 min · osserva · 181.440 stati; l'indicatore si stabilizza sotto il 100% — mostrare.",

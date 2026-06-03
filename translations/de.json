@@ -301,15 +301,15 @@
       "coverage": "Abdeckung der Q-Agent*in",
       "coverageTip": "Die Q-Tabelle ist ein Wörterbuch — ein Eintrag pro besuchtem Zustand. Bei 12 Zuständen erfasst sie alles. Bei 181.440 kommt sie kaum über wenige Prozent hinaus: es gibt schlicht zu viele Zustände zum Besuchen.",
       "cost": "Trainingskosten",
-      "costTip": "Auf einem Laptop kostet ein Q-Update etwa 10⁻¹¹ CHF (vor allem Hardware-Amortisation, kaum Strom). Eine ganze Mission III kommt auf einen Bruchteil eines Rappens. Doch dieser winzige Tarif wird unerreichbar, sobald der Zustandsraum explodiert: dieselbe Regel, in einem anderen Maßstab, ändert alles.",
+      "costTip": "Auf einem Laptop kostet ein Q-Update etwa 10⁻¹¹ CHF / 10⁻¹¹ € (vor allem Hardware-Amortisation, kaum Strom). Eine ganze Mission III kommt auf einen Bruchteil eines Rappens. Doch dieser winzige Tarif wird unerreichbar, sobald der Zustandsraum explodiert: dieselbe Regel, in einem anderen Maßstab, ändert alles.",
       "budget": "Gesamtbudget",
       "budgetUnit": "Schritte",
       "budgetTip": "Budget = Episoden × Max-Schritte-pro-Episode. Die Gesamtzahl der Q-Updates, die dieser Trainingsdurchlauf durchführen wird. Größeres Budget kann die Abdeckung wachsen lassen — aber auf 181.440 Zuständen bleibt selbst ein riesiges Budget weit von Konvergenzgarantien entfernt.",
       "b5cost": "Kosten bis B5",
-      "b5costDemo": "Demo: ~0,0001 CHF",
-      "b5costReliable": "Zuverlässig: ~0,01 CHF",
-      "b5costProven": "Garantiert: ~700 CHF",
-      "b5costTip": "Drei Anspruchsstufen, um B5 zu lösen (der Zustand am weitesten vom Ziel, 31 Züge entfernt):\n• Demo (die Agentin schafft es oft): ~10⁷ Schritte ≈ 0,0001 CHF.\n• Zuverlässig (≥95 % der Läufe gelingen nahe am Optimum): ~10⁹–10¹⁰ Schritte ≈ 0,01–0,1 CHF.\n• Garantiert (die Agentin spielt überall fast perfekt): ~7×10¹³ Schritte ≈ 700 CHF.\nZwischen „zuverlässig“ und „garantiert“ liegen fünf Größenordnungen."
+      "b5costDemo": "Demo: ~0,0001 CHF / 0,0001 €",
+      "b5costReliable": "Zuverlässig: ~0,01 CHF / 0,01 €",
+      "b5costProven": "Garantiert: ~700 CHF / 730 €",
+      "b5costTip": "Drei Anspruchsstufen, um B5 zu lösen (der Zustand am weitesten vom Ziel, 31 Züge entfernt):\n• Demo (die Agentin schafft es oft): ~10⁷ Schritte ≈ 0,0001 CHF / 0,0001 €.\n• Zuverlässig (≥95 % der Läufe gelingen nahe am Optimum): ~10⁹–10¹⁰ Schritte ≈ 0,01–0,1 CHF / 0,01–0,1 €.\n• Garantiert (die Agentin spielt überall fast perfekt): ~7×10¹³ Schritte ≈ 700 CHF / 730 €.\nZwischen „zuverlässig“ und „garantiert“ liegen fünf Größenordnungen."
     },
     "btn": {
       "stepOnce": "Schritt (ein Update)",
@@ -529,7 +529,7 @@
       },
       "budget": {
         "term": "Stichprobenbudget",
-        "def": "Gesamt-Compute = Episoden × Max-Schritte-pro-Episode. Selbst bei 10⁻¹¹ CHF pro Q-Update liegt das für Mission-III-Konvergenz nötige Budget viele Größenordnungen über dem, was ein Samstagnachmittag-Laptop liefert."
+        "def": "Gesamt-Compute = Episoden × Max-Schritte-pro-Episode. Selbst bei 10⁻¹¹ CHF / 10⁻¹¹ € pro Q-Update liegt das für Mission-III-Konvergenz nötige Budget viele Größenordnungen über dem, was ein Samstagnachmittag-Laptop liefert."
       }
     },
     "economy": {
@@ -658,7 +658,7 @@
       "chip": "Mission III · Workshop-Kit",
       "title": "Skalierung · 3×3",
       "curseTitle": "Der Fluch macht sich bemerkbar.",
-      "curseBody": "Auf 181.440 Zuständen erreicht die Abdeckungsanzeige unter 100% ein Plateau. In Mission III übersetzt die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Wirtschafts-Karte</a> die Kosten in CHF: Demo 0,0001 · Zuverlässig 0,01 · Garantiert 700. Zwischen Zuverlässig und Garantiert, fünf Größenordnungen.",
+      "curseBody": "Auf 181.440 Zuständen erreicht die Abdeckungsanzeige unter 100% ein Plateau. In Mission III übersetzt die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Wirtschafts-Karte</a> die Kosten in CHF: Demo 0,0001 / 0,0001 € · Zuverlässig 0,01 / 0,01 € · Garantiert 700 / 730 €. Zwischen Zuverlässig und Garantiert, fünf Größenordnungen.",
       "notes": {
         "1": "3 min · Übergang · Mission III öffnen; auf die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Wirtschafts-Karte</a> zeigen.",
         "2": "5 min · beobachten · 181.440 Zustände; die Anzeige erreicht unter 100% ein Plateau — zeigen.",
