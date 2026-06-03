@@ -221,7 +221,7 @@
       "t2": "<strong>Q-table empty?</strong> Check learning rate isn't 0",
       "t3": "<strong>Too slow?</strong> Reduce epsilon after training"
     },
-    "footer": "AI-Exhibits · Dr. Erika Roldán · 2026"
+    "footer": "AI-Exhibits · Dr. Erika Roldán Roa · 2026"
   },
   "quickstart": {
     "title": "🎓 Facilitator Quickstart",
@@ -561,7 +561,7 @@
     "personaPrompt": "Your name or team name (optional)",
     "personaPlaceholder": "e.g. Team Marmottes",
     "facKeywordPrompt": "Facilitator keyword",
-    "facKeywordPlaceholder": "per event — provided by Erika",
+    "facKeywordPlaceholder": "per event — provided by Dr. Erika Roldán Roa",
     "facKeywordChecking": "Checking…",
     "facKeywordOk": "✓ Facilitator mode activated",
     "facKeywordBad": "✗ Invalid keyword",
@@ -574,7 +574,7 @@
     "facContinueBtn": "Enter",
     "facKeywordNetwork": "↻ Network unavailable — try again",
     "requestEvent": "📅 Host an AI-Exhibits event →",
-    "authorFooter": "Designed and developed by Dr Erika Roldán Roa · 2026"
+    "authorFooter": "Designed and developed by Dr. Erika Roldán Roa · 2026"
   },
   "hud": {
     "navLabel": "navigation"

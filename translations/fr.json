@@ -221,7 +221,7 @@
       "t2": "<strong>Table Q vide ?</strong> Vérifier que <span class=\"sym-alpha\">α</span> ≠ 0",
       "t3": "<strong>Trop lent ?</strong> Réduire <span class=\"sym-epsilon\">ε</span> après l'entraînement"
     },
-    "footer": "AI-Exhibits · D<sup>r</sup> Erika Roldán · 2026"
+    "footer": "AI-Exhibits · D<sup>r</sup> Erika Roldán Roa · 2026"
   },
   "quickstart": {
     "title": "🎓 Démarrage rapide — Animatrice",
@@ -561,7 +561,7 @@
     "personaPrompt": "Ton nom ou nom d'équipe (facultatif)",
     "personaPlaceholder": "ex. Équipe Marmottes",
     "facKeywordPrompt": "Mot-clé animatrice",
-    "facKeywordPlaceholder": "par événement — fourni par Erika",
+    "facKeywordPlaceholder": "par événement — fourni par Dʳ Erika Roldán Roa",
     "facKeywordChecking": "Vérification…",
     "facKeywordOk": "✓ Mode animatrice activé",
     "facKeywordBad": "✗ Mot-clé invalide",

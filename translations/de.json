@@ -221,7 +221,7 @@
       "t2": "<strong>Q-Tabelle leer?</strong> Prüfen, dass <span class=\"sym-alpha\">α</span> ≠ 0",
       "t3": "<strong>Zu langsam?</strong> <span class=\"sym-epsilon\">ε</span> nach dem Training verkleinern"
     },
-    "footer": "AI-Exhibits · Dr. Erika Roldán · 2026"
+    "footer": "AI-Exhibits · Dr. Erika Roldán Roa · 2026"
   },
   "quickstart": {
     "title": "🎓 Schnellstart — Moderator*in",
@@ -561,7 +561,7 @@
     "personaPrompt": "Dein Name oder Teamname (optional)",
     "personaPlaceholder": "z. B. Team Murmeltiere",
     "facKeywordPrompt": "Moderator-Schlüsselwort",
-    "facKeywordPlaceholder": "pro Event — von Erika bereitgestellt",
+    "facKeywordPlaceholder": "pro Event — von Dr. Erika Roldán Roa bereitgestellt",
     "facKeywordChecking": "Überprüfung…",
     "facKeywordOk": "✓ Moderationsmodus aktiviert",
     "facKeywordBad": "✗ Ungültiges Schlüsselwort",

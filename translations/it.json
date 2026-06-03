@@ -221,7 +221,7 @@
       "t2": "<strong>Tabella Q vuota?</strong> Verifica che <span class=\"sym-alpha\">α</span> ≠ 0",
       "t3": "<strong>Troppo lento?</strong> Riduci <span class=\"sym-epsilon\">ε</span> dopo l'addestramento"
     },
-    "footer": "AI-Exhibits · D<sup>ssa</sup> Erika Roldán · 2026"
+    "footer": "AI-Exhibits · D<sup>ssa</sup> Erika Roldán Roa · 2026"
   },
   "quickstart": {
     "title": "🎓 Avvio rapido — Facilitatrice",
@@ -561,7 +561,7 @@
     "personaPrompt": "Il tuo nome o nome del team (facoltativo)",
     "personaPlaceholder": "es. Squadra Marmotte",
     "facKeywordPrompt": "Parola chiave facilitatrice",
-    "facKeywordPlaceholder": "per evento — fornita da Erika",
+    "facKeywordPlaceholder": "per evento — fornita da Dr.ssa Erika Roldán Roa",
     "facKeywordChecking": "Verifica…",
     "facKeywordOk": "✓ Modalità facilitatrice attivata",
     "facKeywordBad": "✗ Parola chiave non valida",
@@ -574,7 +574,7 @@
     "facContinueBtn": "Entra",
     "facKeywordNetwork": "↻ Rete non disponibile — riprova",
     "requestEvent": "📅 Organizzare un evento AI-Exhibits →",
-    "authorFooter": "Ideato e sviluppato da Dr Erika Roldán Roa · 2026"
+    "authorFooter": "Ideato e sviluppato da Dr.ssa Erika Roldán Roa · 2026"
   },
   "hud": {
     "navLabel": "navigazione"
