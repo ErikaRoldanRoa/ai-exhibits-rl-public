@@ -34,45 +34,50 @@
     "goAhead": "Commencer",
     "yes": "Oui",
     "no": "Non",
-    "newBest": "Nouveau record !",
-    "facilitatorMode": "Mode animatrice"
+    "newBest": "Nouveau record !",
+    "facilitatorMode": "Mode animatrice",
+    "langSelectorLabel": "Langue",
+    "skipToContent": "Aller au contenu"
   },
   "hub": {
     "header": {
-      "title": "AI-Exhibits : Apprentissage par Renforcement · Hub",
-      "h1": "AI-Exhibits : Apprentissage par Renforcement · Hub"
+      "title": "AI-Exhibits : Apprentissage par Renforcement · Hub",
+      "h1": "AI-Exhibits : Apprentissage par Renforcement · Hub",
+      "lede": "Un seul algorithme, trois échelles. Regarde-le apprendre — puis regarde le fléau de la dimension le rattraper."
     },
     "mission1": {
-      "title": "Mission I : Rendre l'apprentissage visible",
+      "title": "Mission I : Rendre l'apprentissage visible",
       "bench": {
         "b1Tooltip": "⭐ 1 mouvement",
         "b2Tooltip": "⭐⭐ 2 mouvements",
         "b3Tooltip": "⭐⭐⭐ 3 mouvements",
         "b4Tooltip": "⭐⭐⭐⭐ 4 mouvements",
         "b5Tooltip": "⭐⭐⭐⭐⭐ 5 mouvements",
-        "b6Tooltip": "🏆 6 mouvements — Nombre de Dieu !"
+        "b6Tooltip": "🏆 6 mouvements — Nombre de Dieu !"
       },
-      "subtitle": "12 états · le monde entier tient sur une serviette · construis la table Q à la main"
+      "subtitle": "12 états · le monde entier tient sur une serviette · construis la table Q à la main",
+      "worksheetTip": "📄 Fiche élève — à imprimer ou à remplir à l'écran",
+      "worksheetAria": "Ouvrir la fiche élève"
     },
     "mission2": {
-      "title": "Mission II : Propagation",
+      "title": "Mission II : Propagation",
       "bench": {
         "b1Tooltip": "⭐ 1 mouvement",
         "b2Tooltip": "⭐⭐ 3 mouvements",
         "b3Tooltip": "⭐⭐⭐ 6 mouvements",
         "b4Tooltip": "⭐⭐⭐⭐ 9 mouvements",
-        "b5Tooltip": "🏆 21 mouvements — Nombre de Dieu !"
+        "b5Tooltip": "🏆 21 mouvements — Nombre de Dieu !"
       },
       "subtitle": "360 états · trop pour la serviette · regarde Q remonter depuis l'objectif"
     },
     "mission3": {
-      "title": "Mission III : Mise à l'échelle",
+      "title": "Mission III : Mise à l'échelle",
       "bench": {
         "b1Tooltip": "⭐ 1 mouvement",
         "b2Tooltip": "⭐⭐ 10 mouvements",
         "b3Tooltip": "⭐⭐⭐ 18 mouvements",
         "b4Tooltip": "⭐⭐⭐⭐ 26 mouvements",
-        "b5Tooltip": "🏆 31 mouvements — Nombre de Dieu !"
+        "b5Tooltip": "🏆 31 mouvements — Nombre de Dieu !"
       },
       "subtitle": "181 440 états · une Q-apprenante, un fléau · l'algorithme rencontre la dimension"
     },
@@ -97,7 +102,7 @@
     "facTools": {
       "tag": "ANIMATRICE",
       "title": "Tableau de bord animatrice",
-      "desc": "Un kit imprimable par mission : glossaire, références, tableau de course, notes pour l'animatrice. Une fiche d'équipe consolide les trois missions en une page.",
+      "desc": "Un kit imprimable par mission : glossaire, références, tableau de course, notes pour l'animatrice. Une fiche d'équipe consolide les trois missions en une page.",
       "kit1": "Kit Mission I · 20 min",
       "kit2": "Kit Mission II · 25 min",
       "kit3": "Kit Mission III · 20 min",
@@ -120,18 +125,18 @@
     "recordsBenchHeader": "Repère",
     "recordsRandomShort": "Aléat.",
     "recordsQShort": "Q-agente",
-    "solvedCelebration": "🎉 Résolu en {n} coups !",
-    "solvedCelebrationWithName": "🎉 Bravo {name}, résolu en {n} coups !",
+    "solvedCelebration": "🎉 Résolu en {n} coups !",
+    "solvedCelebrationWithName": "🎉 Bravo {name}, résolu en {n} coups !",
     "submitResults": "Soumettre mes résultats",
     "submitTitle": "Tes résultats",
     "submitCopy": "📋 Copier",
     "submitDownload": "⬇️ Télécharger",
     "submitHint": "Ajoute un commentaire si tu veux, puis envoie via une des trois options.",
     "resetRecords": "Réinitialiser les records de cette mission",
-    "resetConfirm": "Réinitialiser TOUS les records de cette mission ? Cette action est définitive.",
+    "resetConfirm": "Réinitialiser TOUS les records de cette mission ? Cette action est définitive.",
     "submitToSheet": "🏆 Soumettre les résultats",
     "submitLoading": "⏳ Envoi en cours…",
-    "submitSent": "✓ Soumis — merci !",
+    "submitSent": "✓ Soumis — merci !",
     "submitRetry": "↻ Réessayer",
     "submitOffline": "Hors-ligne",
     "submitRows": "lignes",
@@ -148,7 +153,8 @@
     "submitEventPrompt": "Code événement",
     "submitEventPlaceholder": "ex. DMVM26",
     "submitErrNoName": "Ajoute ton nom ou nom d'équipe.",
-    "submitErrNoEvent": "Identifie un événement valide pour soumettre."
+    "submitErrNoEvent": "Identifie un événement valide pour soumettre.",
+    "tileLabel": "tuile"
   },
   "glossary": {
     "cardTitle": "Glossaire — termes Q-learning",
@@ -167,11 +173,11 @@
       "colMeaning": "Signification",
       "state": "Configuration actuelle du puzzle (position des tuiles)",
       "action": "Un mouvement — glisser une tuile dans la case vide",
-      "reward": "Retour : <span class=\"highlight\">+1</span> quand l'état suivant est l'objectif, <span class=\"warning\">0</span> sinon (pénalité par pas optionnelle)",
+      "reward": "Retour : <span class=\"highlight\">+1</span> quand l'état suivant est l'objectif, <span class=\"warning\">0</span> sinon (pénalité par pas optionnelle)",
       "qvalue": "Qualité estimée d'une action depuis un état (apprise)",
       "episode": "Une tentative complète de résolution",
-      "policy": "La stratégie de l'agente : quelle action choisir dans chaque état",
-      "formulaLabel": "💡 Formule du Q-learning :"
+      "policy": "La stratégie de l'agente : quelle action choisir dans chaque état",
+      "formulaLabel": "💡 Formule du Q-learning :"
     },
     "card2": {
       "title": "⚙️ Paramètres d'Entraînement",
@@ -182,10 +188,10 @@
       "gammaDesc": "Importance des récompenses futures vs immédiates",
       "epsilonDesc": "Probabilité d'exploration aléatoire",
       "tipsTitle": "Conseils sur les paramètres",
-      "tip1": "<strong><span class=\"sym-alpha\">α</span> élevé</strong> : apprend vite mais peut être instable",
-      "tip2": "<strong><span class=\"sym-gamma\">γ</span> élevé</strong> : planifie à long terme (idéal pour les puzzles !)",
-      "tip3": "<strong><span class=\"sym-epsilon\">ε</span> élevé</strong> : plus d'exploration, convergence plus lente",
-      "tip4": "<strong>Pour tester</strong> : régler <span class=\"sym-epsilon\">ε</span> = 0 (stratégie purement gloutonne — l'agente n'explore plus)"
+      "tip1": "<strong><span class=\"sym-alpha\">α</span> élevé</strong> : apprend vite mais peut être instable",
+      "tip2": "<strong><span class=\"sym-gamma\">γ</span> élevé</strong> : planifie à long terme (idéal pour les puzzles !)",
+      "tip3": "<strong><span class=\"sym-epsilon\">ε</span> élevé</strong> : plus d'exploration, convergence plus lente",
+      "tip4": "<strong>Pour tester</strong> : régler <span class=\"sym-epsilon\">ε</span> = 0 (stratégie purement gloutonne — l'agente n'explore plus)"
     },
     "card3": {
       "title": "🏆 Références & Nombre de Dieu",
@@ -208,11 +214,11 @@
       "step5": "<strong>Tester</strong> : cliquer « Résoudre (glouton) »",
       "step6": "<strong>Comparer</strong> : mouvements vs minimum théorique",
       "step7": "<strong>Ajuster</strong> : modifier les paramètres, entraîner davantage",
-      "step8": "<strong>Défi</strong> : atteindrez-vous le Nombre de Dieu ?",
+      "step8": "<strong>Défi</strong> : atteindrez-vous le Nombre de Dieu ?",
       "troubleshoot": "En cas de problème",
-      "t1": "<strong>L'agente ne trouve pas la solution ?</strong> Entraîner davantage (1000+ épisodes)",
-      "t2": "<strong>Table Q vide ?</strong> Vérifier que <span class=\"sym-alpha\">α</span> ≠ 0",
-      "t3": "<strong>Trop lent ?</strong> Réduire <span class=\"sym-epsilon\">ε</span> après l'entraînement"
+      "t1": "<strong>L'agente ne trouve pas la solution ?</strong> Entraîner davantage (1000+ épisodes)",
+      "t2": "<strong>Table Q vide ?</strong> Vérifier que <span class=\"sym-alpha\">α</span> ≠ 0",
+      "t3": "<strong>Trop lent ?</strong> Réduire <span class=\"sym-epsilon\">ε</span> après l'entraînement"
     },
     "footer": "AI-Exhibits · D<sup>r</sup> Erika Roldán · 2026"
   },
@@ -226,8 +232,8 @@
       "trouble": "Si ça coince"
     },
     "before": {
-      "1": "Tester le Hub sur le matériel qui sera utilisé (tablettes, ordinateurs). Installation : aucune.",
-      "2": "Imprimer si besoin : <a href=\"print/fiche_equipe_fr.html\">fiche d'équipe</a>, <a href=\"print/dictionnaire_fr.html\">dictionnaire</a>.",
+      "1": "Tester le Hub sur le matériel qui sera utilisé (tablettes, ordinateurs). Installation : aucune.",
+      "2": "Imprimer si besoin : <a href=\"print/fiche_equipe_fr.html\">fiche d'équipe</a>, <a href=\"print/dictionnaire_fr.html\">dictionnaire</a>.",
       "3": "Prévoir un grand écran pour l'introduction collective."
     },
     "flow": {
@@ -235,13 +241,13 @@
       "2": "<strong>00:15–00:35</strong> — Phase 1 · Mission I (2×2, 12 états)&#8239;: cartographier l'espace des configurations et l'orbite de parité, construire une table Q à la main sur papier.",
       "3": "<strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 états, Nombre de Dieu=21)&#8239;: entraîner l'agente&#8239;; observer les épisodes, la décroissance d'ε et la propagation des valeurs Q depuis l'objectif.",
       "4": "<strong>01:05–01:15</strong> — Pause.",
-      "5": "<strong>01:15–01:45</strong> — Mission III — 3×3, le tournoi · nommer le fléau de la dimension : même algorithme, l'espace est devenu trop vaste pour qu'on le visite.",
+      "5": "<strong>01:15–01:45</strong> — Mission III — 3×3, le tournoi · nommer le fléau de la dimension : même algorithme, l'espace est devenu trop vaste pour qu'on le visite.",
       "6": "<strong>01:45–02:00</strong> — Réflexion &amp; liens réels."
     },
     "params": {
-      "2x2": "<strong>2×2</strong> (12 états) : <span class=\"sym-alpha\">α</span>=0,5, <span class=\"sym-gamma\">γ</span>=0,9, <span class=\"sym-epsilon\">ε</span>=0,3 · 500–2000 épisodes",
-      "2x3": "<strong>2×3</strong> (360 états) : <span class=\"sym-alpha\">α</span>=0,3, <span class=\"sym-gamma\">γ</span>=0,95, <span class=\"sym-epsilon\">ε</span>=0,4 · 2 000–10 000 épisodes",
-      "3x3": "<strong>3×3</strong> (181 440 états) : <span class=\"sym-alpha\">α</span>=0,3, <span class=\"sym-gamma\">γ</span>=0,99, <span class=\"sym-epsilon\">ε</span>=0,5 · 50 000+ épisodes"
+      "2x2": "<strong>2×2</strong> (12 états) : <span class=\"sym-alpha\">α</span>=0,5, <span class=\"sym-gamma\">γ</span>=0,9, <span class=\"sym-epsilon\">ε</span>=0,3 · 500–2000 épisodes",
+      "2x3": "<strong>2×3</strong> (360 états) : <span class=\"sym-alpha\">α</span>=0,3, <span class=\"sym-gamma\">γ</span>=0,95, <span class=\"sym-epsilon\">ε</span>=0,4 · 2 000–10 000 épisodes",
+      "3x3": "<strong>3×3</strong> (181 440 états) : <span class=\"sym-alpha\">α</span>=0,3, <span class=\"sym-gamma\">γ</span>=0,99, <span class=\"sym-epsilon\">ε</span>=0,5 · 50 000+ épisodes"
     },
     "trouble": {
       "1": "L'agente ne trouve pas la solution → augmenter les épisodes ou le facteur <span class=\"sym-gamma\">γ</span>",
@@ -258,7 +264,7 @@
   },
   "ex": {
     "brand": {
-      "title": "AI-Exhibits : Apprentissage par Renforcement (Q-learning)"
+      "title": "AI-Exhibits : Apprentissage par Renforcement (Q-learning)"
     },
     "panel": {
       "currentPuzzle": "Puzzle actuel",
@@ -267,24 +273,24 @@
     "bench": {
       "title": "Références",
       "active": "Active",
-      "activeNone": "Active : —",
+      "activeNone": "Active : —",
       "description": "Chargez un état de départ fixe, puis cliquez sur <b>Résoudre (glouton)</b>. Nous enregistrons votre meilleur nombre de coups par référence dans ce navigateur."
     },
     "params": {
       "episodes": "Épisodes",
       "episodesTip": "Nombre d'épisodes d'entraînement à exécuter.\nChaque épisode commence depuis un état mélangé.",
       "maxSteps": "Étapes max / épisode",
-      "maxStepsTip": "Plafond de sécurité : arrêter un épisode s'il a pris trop de coups.\nPlus d'étapes permet à l'agente d'explorer des trajectoires plus longues.",
+      "maxStepsTip": "Plafond de sécurité : arrêter un épisode s'il a pris trop de coups.\nPlus d'étapes permet à l'agente d'explorer des trajectoires plus longues.",
       "learningRate": "<span class=\"sym-alpha\">α</span> (taux d'apprentissage)",
-      "learningRateTip": "À quel point on remplace l'ancien Q par de nouvelles informations.\nα=1 signifie remplacer ; un α plus petit signifie moyenner lentement.",
+      "learningRateTip": "À quel point on remplace l'ancien Q par de nouvelles informations.\nα=1 signifie remplacer ; un α plus petit signifie moyenner lentement.",
       "discount": "<span class=\"sym-gamma\">γ</span> (escompte)",
       "discountTip": "L'importance des récompenses futures.\nγ proche de 1 valorise le succès à long terme.",
       "epsilon": "<span class=\"sym-epsilon\">ε</span> (exploration)",
       "epsilonTip": "Probabilité d'exploration en ε-glouton.\nAvec la probabilité ε, choisir une action au hasard.",
       "stepPenalty": "Pénalité par pas",
-      "stepPenaltyTip": "Modelage optionnel : une petite récompense négative à chaque coup.\nEncourage des solutions plus courtes.",
+      "stepPenaltyTip": "Modelage optionnel : une petite récompense négative à chaque coup.\nEncourage des solutions plus courtes.",
       "goalReward": "Récompense objectif",
-      "goalRewardTip": "Récompense lorsque l'agente atteint le puzzle résolu.\nValeur par défaut : 1.",
+      "goalRewardTip": "Récompense lorsque l'agente atteint le puzzle résolu.\nValeur par défaut : 1.",
       "animSpeed": "Vitesse d'animation (ms)",
       "animSpeedTip": "À quelle vitesse afficher les coups pendant la résolution.\nAugmentez pour avoir plus de temps à observer."
     },
@@ -293,17 +299,17 @@
       "movesLastSolve": "Coups (dernière résolution)",
       "qUpdates": "Mises à jour Q",
       "coverage": "Couverture de l'agente Q",
-      "coverageTip": "La table Q est un dictionnaire — une entrée par état rencontré. À 12 états, elle couvre tout. À 181 440, elle peine à dépasser quelques pour cent : il y a simplement trop d'états pour les visiter.",
+      "coverageTip": "La table Q est un dictionnaire — une entrée par état rencontré. À 12 états, elle couvre tout. À 181 440, elle peine à dépasser quelques pour cent : il y a simplement trop d'états pour les visiter.",
       "cost": "Coût d'entraînement",
-      "costTip": "Sur un laptop, une mise à jour Q coûte environ 10⁻¹¹ CHF (surtout l'amortissement, pas l'électricité). Une Mission III entière revient à une fraction de centime. Mais ce tarif minuscule devient inaccessible dès que l'espace d'états explose : la même règle, à une autre échelle, change tout.",
+      "costTip": "Sur un laptop, une mise à jour Q coûte environ 10⁻¹¹ CHF (surtout l'amortissement, pas l'électricité). Une Mission III entière revient à une fraction de centime. Mais ce tarif minuscule devient inaccessible dès que l'espace d'états explose : la même règle, à une autre échelle, change tout.",
       "budget": "Budget total",
       "budgetUnit": "pas",
       "budgetTip": "Budget = épisodes × pas-max-par-épisode. C'est le nombre total de mises à jour Q que l'entraînement va effectuer. Plus le budget est grand, plus la couverture peut grandir — mais sur 181 440 états, même un budget énorme reste loin de la convergence garantie.",
       "b5cost": "Coût pour atteindre B5",
-      "b5costDemo": "Démo : ~0,0001 CHF",
-      "b5costReliable": "Fiable : ~0,01 CHF",
-      "b5costProven": "Garantie : ~700 CHF",
-      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ 0,0001 CHF.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF.\nEntre « fiable » et « garantie », cinq ordres de grandeur."
+      "b5costDemo": "Démo : ~0,0001 CHF",
+      "b5costReliable": "Fiable : ~0,01 CHF",
+      "b5costProven": "Garantie : ~700 CHF",
+      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ 0,0001 CHF.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ 0,01–0,1 CHF.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ 700 CHF.\nEntre « fiable » et « garantie », cinq ordres de grandeur."
     },
     "btn": {
       "stepOnce": "Pas (une mise à jour)",
@@ -339,14 +345,14 @@
       "steps": "étapes.",
       "loaded": "B{n} chargé.",
       "newBestFor": "Nouveau record pour B{n} : {mv} coups.",
-      "ready": "Prêt. Cliquez sur les tuiles pour jouer ; ou Entraîner → Résoudre.",
+      "ready": "Prêt. Cliquez sur les tuiles pour jouer ; ou Entraîner → Résoudre.",
       "movesShort": "coups",
       "jsError": "Erreur JavaScript"
     },
     "graph": {
       "hoverEdges": "Graphe (survolez les arêtes pour les détails)",
-      "goalLabel": "objectif :",
-      "statesLabel": "états :",
+      "goalLabel": "objectif :",
+      "statesLabel": "états :",
       "zoom": "Zoom",
       "layout": "Disposition",
       "layoutAria": "Disposition du graphe",
@@ -371,9 +377,9 @@
         "m3": "Mission III · 181 440 états"
       },
       "caption": {
-        "m1": "12 états seulement : la barre arrive à 100 % en une poignée de pas. Garde-la en tête — sur Mission II (360 états) puis Mission III (181 440), la même barre se comportera très différemment.",
-        "m2": "360 états : 30× plus que la Mission I. La barre monte encore pendant l'entraînement, mais elle ne se remplit plus toute seule — couvrir l'espace commence à coûter.",
-        "m3": "181 440 états : 504× la Mission II, 15 000× la Mission I. Même algorithme, même méthode — l'espace est devenu trop vaste pour qu'on le visite. La barre plafonne, et la malédiction se fait sentir."
+        "m1": "12 états seulement : la barre arrive à 100 % en une poignée de pas. Garde-la en tête — sur Mission II (360 états) puis Mission III (181 440), la même barre se comportera très différemment.",
+        "m2": "360 états : 30× plus que la Mission I. La barre monte encore pendant l'entraînement, mais elle ne se remplit plus toute seule — couvrir l'espace commence à coûter.",
+        "m3": "181 440 états : 504× la Mission II, 15 000× la Mission I. Même algorithme, même méthode — l'espace est devenu trop vaste pour qu'on le visite. La barre plafonne, et la malédiction se fait sentir."
       }
     },
     "viewer": {
@@ -383,6 +389,11 @@
     },
     "header": {
       "goalLabel": "Objectif"
+    },
+    "identity": {
+      "m1": "Mission I · la serviette",
+      "m2": "Mission II · la vague",
+      "m3": "Mission III · le fléau"
     }
   },
   "ex2x2": {
@@ -403,7 +414,7 @@
     },
     "rewards": {
       "title": "Superposition des récompenses",
-      "intro": "La récompense <span class=\"sym-reward\">r</span> est définie sur l'<span class=\"sym-reward\">état d'arrivée</span> <span style=\"font-family:var(--mono)\">s'</span>. Par défaut : seul l'objectif a <span class=\"sym-reward\">r = +1</span>. Modifie les valeurs ci-dessous pour explorer le modelage.",
+      "intro": "La récompense <span class=\"sym-reward\">r</span> est définie sur l'<span class=\"sym-reward\">état d'arrivée</span> <span style=\"font-family:var(--mono)\">s'</span>. Par défaut : seul l'objectif a <span class=\"sym-reward\">r = +1</span>. Modifie les valeurs ci-dessous pour explorer le modelage.",
       "qUpdate": "Mise à jour Q-learning"
     },
     "explain": {
@@ -417,9 +428,9 @@
       "episodesPerRun": "Épisodes / exécution",
       "episodesTip": "Épisodes = nombre de tentatives d'entraînement.\nEssayez 50–300 pour voir l'apprentissage.\nSi ε est plus élevé, il faut plus d'épisodes.",
       "maxStepsTip": "Étapes max = budget de coups par épisode.\nTrop petit → jamais de récompense.\nEssayez 15–40 pour 2×2.",
-      "alphaTip": "α contrôle à quel point les nouvelles preuves mettent à jour Q.\nQ ← Q + α(cible−Q).\n0,05–0,2 : stable mais lent.\n0,3–0,6 : rapide pour ce modèle-jouet.\n>0,8 : bruyant.",
-      "gammaTip": "γ contrôle l'importance des récompenses futures.\nPour des puzzles à récompense différée : γ≈0,9–0,99.\nUn γ faible rend la propagation des récompenses faible.",
-      "epsilonTip": "ε = probabilité d'un coup légal aléatoire.\nEssayez 0,05–0,25.\nε=0 trop tôt peut figer de fausses croyances.",
+      "alphaTip": "α contrôle à quel point les nouvelles preuves mettent à jour Q.\nQ ← Q + α(cible−Q).\n0,05–0,2 : stable mais lent.\n0,3–0,6 : rapide pour ce modèle-jouet.\n>0,8 : bruyant.",
+      "gammaTip": "γ contrôle l'importance des récompenses futures.\nPour des puzzles à récompense différée : γ≈0,9–0,99.\nUn γ faible rend la propagation des récompenses faible.",
+      "epsilonTip": "ε = probabilité d'un coup légal aléatoire.\nEssayez 0,05–0,3.\nε=0 trop tôt peut figer de fausses croyances.",
       "speed": "Vitesse (ms/tic)",
       "speedTip": "L'entraînement s'exécute par tics.\n0 = très rapide.\nEssayez 10–40 pour voir Q se propager."
     },
@@ -433,37 +444,37 @@
       "toggle": "Détails de l'agente (cliquer pour afficher)"
     },
     "bench": {
-      "b1Tip": "⭐ Facile : À Un Pas (1 coup)",
-      "b2Tip": "⭐⭐ Moyen : Propagation de Valeur (2 coups)",
-      "b3Tip": "⭐⭐⭐ Difficile : Défi du Coin (3 coups)",
-      "b4Tip": "⭐⭐⭐⭐ Très Difficile : Planification Profonde (4 coups)",
-      "b5Tip": "⭐⭐⭐⭐⭐ Expert : Recherche Maximale (5 coups)",
-      "b6Tip": "🏆 Nombre de Dieu ! Défi Ultime (6 coups)",
-      "titleTip": "Charge un état de départ fixe puis lance l'agente actuelle dessus (glouton, sans apprentissage). Le meilleur score par référence est enregistré dans ce navigateur.\nCoups minimum théoriques : B1 : 1 | B2 : 2 | B3 : 3 | B4 : 4 | B5 : 5 | B6 : 6 (Nombre de Dieu)."
+      "b1Tip": "⭐ Facile : À Un Pas (1 coup)",
+      "b2Tip": "⭐⭐ Moyen : Propagation de Valeur (2 coups)",
+      "b3Tip": "⭐⭐⭐ Difficile : Défi du Coin (3 coups)",
+      "b4Tip": "⭐⭐⭐⭐ Très Difficile : Planification Profonde (4 coups)",
+      "b5Tip": "⭐⭐⭐⭐⭐ Expert : Recherche Maximale (5 coups)",
+      "b6Tip": "🏆 Nombre de Dieu ! Défi Ultime (6 coups)",
+      "titleTip": "Charge un état de départ fixe puis lance l'agente actuelle dessus (glouton, sans apprentissage). Le meilleur score par référence est enregistré dans ce navigateur.\nCoups minimum théoriques : B1 : 1 | B2 : 2 | B3 : 3 | B4 : 4 | B5 : 5 | B6 : 6 (Nombre de Dieu)."
     },
     "reachableStatesCount": "12",
     "godsNumber": "6",
     "nodeEdit": {
       "title": "Modifier la récompense pour cet état",
       "stateLabel": "État",
-      "note": "La récompense est appliquée à l'arrivée : lorsque vous entrez dans cet état, vous recevez"
+      "note": "La récompense est appliquée à l'arrivée : lorsque vous entrez dans cet état, vous recevez"
     },
     "header": {
-      "goal": "Objectif : [1 2 / 3 _]"
+      "goal": "Objectif : [1 2 / 3 _]"
     }
   },
   "ex2x3": {
     "brand": {},
     "header": {
-      "goal": "Objectif : [1 2 3 / 4 5 _]"
+      "goal": "Objectif : [1 2 3 / 4 5 _]"
     },
     "bench": {
-      "b1Tip": "⭐ Facile : Victoire Rapide (1 coup)",
-      "b2Tip": "⭐⭐ Moyen : Propagation de Valeur (3 coups)",
-      "b3Tip": "⭐⭐⭐ Difficile : Planification Multi-Étapes (6 coups)",
-      "b4Tip": "⭐⭐⭐⭐ Très Difficile : Recherche Profonde (9 coups)",
-      "b5Tip": "🏆 Nombre de Dieu ! Défi Ultime (21 coups)",
-      "titleTip": "Charge un état de départ fixe puis lance l'agente actuelle dessus (glouton, sans apprentissage). Le meilleur score par référence est enregistré dans ce navigateur.\nCoups minimum théoriques : B1 : 1 | B2 : 3 | B3 : 6 | B4 : 9 | B5 : 21 (Nombre de Dieu)."
+      "b1Tip": "⭐ Facile : Victoire Rapide (1 coup)",
+      "b2Tip": "⭐⭐ Moyen : Propagation de Valeur (3 coups)",
+      "b3Tip": "⭐⭐⭐ Difficile : Planification Multi-Étapes (6 coups)",
+      "b4Tip": "⭐⭐⭐⭐ Très Difficile : Recherche Profonde (9 coups)",
+      "b5Tip": "🏆 Nombre de Dieu ! Défi Ultime (21 coups)",
+      "titleTip": "Charge un état de départ fixe puis lance l'agente actuelle dessus (glouton, sans apprentissage). Le meilleur score par référence est enregistré dans ce navigateur.\nCoups minimum théoriques : B1 : 1 | B2 : 3 | B3 : 6 | B4 : 9 | B5 : 21 (Nombre de Dieu)."
     },
     "reachableStatesCount": "360",
     "godsNumber": "21",
@@ -471,7 +482,7 @@
     "glossary": {
       "episode": {
         "term": "Épisode",
-        "def": "Une seule tentative : on mélange le puzzle, on essaie de le résoudre, on s'arrête au succès ou après le nombre maximum de coups, puis on recommence avec un nouveau mélange. Plus d'épisodes = plus d'expériences indépendantes."
+        "def": "Une seule tentative : on mélange le puzzle, on essaie de le résoudre, on s'arrête au succès ou après le nombre maximum de coups, puis on recommence avec un nouveau mélange. Plus d'épisodes = plus d'expériences indépendantes."
       },
       "propagation": {
         "term": "Propagation",
@@ -479,29 +490,29 @@
       },
       "convergence": {
         "term": "Convergence",
-        "def": "Quand les valeurs Q cessent de bouger significativement entre épisodes. L'agente a « appris » le puzzle. Sur 360 états, on y arrive en quelques milliers d'épisodes ; à plus grande échelle, c'est une autre histoire."
+        "def": "Quand les valeurs Q cessent de bouger significativement entre épisodes. L'agente a « appris » le puzzle. Sur 360 états, on y arrive en quelques milliers d'épisodes ; à plus grande échelle, c'est une autre histoire."
       }
     },
     "params": {
       "episodesTip": "Épisodes = nombre de tentatives d'entraînement.\nEssayez 1000–3000 pour voir Q se propager depuis l'objectif.\nAvec ε plus élevé, augmentez E.",
       "maxStepsTip": "Étapes max = budget de coups par épisode.\nDoit dépasser G = 21 (Nombre de Dieu).\nEssayez 45–90 pour 2×3.",
-      "alphaTip": "α contrôle à quel point les nouvelles preuves mettent à jour Q.\nQ ← Q + α(cible−Q).\n0,05–0,2 : stable mais lent.\n0,2–0,4 : équilibré sur 360 états.\n>0,6 : valeurs qui oscillent.",
+      "alphaTip": "α contrôle à quel point les nouvelles preuves mettent à jour Q.\nQ ← Q + α(cible−Q).\n0,05–0,2 : stable mais lent.\n0,2–0,4 : équilibré sur 360 états.\n>0,6 : valeurs qui oscillent.",
       "gammaTip": "γ contrôle l'importance des récompenses futures.\nÀ 21 coups de profondeur, γ ≈ 0,95–0,99.\nγ < 0,9 → la récompense ne remonte pas assez loin.",
-      "epsilonTip": "ε = probabilité d'un coup légal aléatoire.\nEssayez 0,1–0,3 pour explorer 360 états.\nε = 0 trop tôt → des régions entières restent à Q = 0."
+      "epsilonTip": "ε = probabilité d'un coup légal aléatoire.\nEssayez 0,1–0,4 pour explorer 360 états.\nε = 0 trop tôt → des régions entières restent à Q = 0."
     }
   },
   "ex3x3": {
     "brand": {},
     "header": {
-      "goal": "Objectif : [1 2 3 / 4 5 6 / 7 8 _]"
+      "goal": "Objectif : [1 2 3 / 4 5 6 / 7 8 _]"
     },
     "bench": {
-      "b1Tip": "⭐ Facile : Échauffement (1 coup)",
-      "b2Tip": "⭐⭐ Moyen : Défi Grandissant (10 coups)",
-      "b3Tip": "⭐⭐⭐ Difficile : Planification Profonde (18 coups)",
-      "b4Tip": "⭐⭐⭐⭐ Très Difficile : Niveau Expert (26 coups)",
-      "b5Tip": "🏆 Nombre de Dieu ! Défi Ultime (31 coups)",
-      "titleTip": "Charge un état de départ fixe puis lance l'agente actuelle dessus (glouton, sans apprentissage). Le meilleur score par référence est enregistré dans ce navigateur.\nCoups minimum théoriques : B1 : 1 | B2 : 10 | B3 : 18 | B4 : 26 | B5 : 31 (Nombre de Dieu)."
+      "b1Tip": "⭐ Facile : Échauffement (1 coup)",
+      "b2Tip": "⭐⭐ Moyen : Défi Grandissant (10 coups)",
+      "b3Tip": "⭐⭐⭐ Difficile : Planification Profonde (18 coups)",
+      "b4Tip": "⭐⭐⭐⭐ Très Difficile : Niveau Expert (26 coups)",
+      "b5Tip": "🏆 Nombre de Dieu ! Défi Ultime (31 coups)",
+      "titleTip": "Charge un état de départ fixe puis lance l'agente actuelle dessus (glouton, sans apprentissage). Le meilleur score par référence est enregistré dans ce navigateur.\nCoups minimum théoriques : B1 : 1 | B2 : 10 | B3 : 18 | B4 : 26 | B5 : 31 (Nombre de Dieu)."
     },
     "reachableStatesCount": "181 440",
     "godsNumber": "31",
@@ -510,7 +521,7 @@
     "glossary": {
       "curse": {
         "term": "Fléau de la dimension",
-        "def": "Quand l'espace d'états grandit, on ne peut plus visiter toutes les situations : il y en a tout simplement trop. De M1 à M2 à M3, on passe de 12 à 360 à 181 440 configurations. À l'échelle des échecs (~10⁴⁴ positions), même un ordinateur de la taille d'une planète n'y arriverait pas. Une table Q devient inaccessible (Bellman, 1957)."
+        "def": "Quand l'espace d'états grandit, on ne peut plus visiter toutes les situations : il y en a tout simplement trop. De M1 à M2 à M3, on passe de 12 à 360 à 181 440 configurations. À l'échelle des échecs (~10⁴⁴ positions), même un ordinateur de la taille d'une planète n'y arriverait pas. Une table Q devient inaccessible (Bellman, 1957)."
       },
       "generalisation": {
         "term": "Généralisation",
@@ -523,26 +534,26 @@
     },
     "economy": {
       "title": "Économie de l'entraînement",
-      "titleTip": "Trois angles : ce que tu as dépensé, ce que tu as alloué, ce qu'il faudrait pour résoudre B5."
+      "titleTip": "Trois angles : ce que tu as dépensé, ce que tu as alloué, ce qu'il faudrait pour résoudre B5."
     },
     "params": {
-      "episodesTip": "Épisodes = nombre de tentatives d'entraînement.\nEssayez 5000–20000 pour faire monter la couverture.\n181 440 états : la couverture grimpe lentement.",
+      "episodesTip": "Épisodes = nombre de tentatives d'entraînement.\nEssayez 5000–20000 pour faire monter la couverture.\n181 440 états : la couverture grimpe lentement.",
       "maxStepsTip": "Étapes max = budget de coups par épisode.\nDoit dépasser G = 31 (Nombre de Dieu).\nEssayez 60–150 pour 3×3.",
-      "alphaTip": "α contrôle à quel point les nouvelles preuves mettent à jour Q.\nQ ← Q + α(cible−Q).\n0,05–0,2 : stable. Visite rare → α faible amortit le bruit.\n0,2–0,4 : plus rapide mais oscillant.\n>0,5 : déconseillé à cette échelle.",
+      "alphaTip": "α contrôle à quel point les nouvelles preuves mettent à jour Q.\nQ ← Q + α(cible−Q).\n0,05–0,2 : stable. Visite rare → α faible amortit le bruit.\n0,2–0,4 : plus rapide mais oscillant.\n>0,5 : déconseillé à cette échelle.",
       "gammaTip": "γ contrôle l'importance des récompenses futures.\nÀ 31 coups de profondeur, γ ≈ 0,95–0,99.\nγ trop bas → la valeur de l'objectif ne se propage pas aux états distants.",
-      "epsilonTip": "ε = probabilité d'un coup légal aléatoire.\nEssayez 0,1–0,3.\n181 440 états à couvrir : ε trop bas → des régions entières jamais visitées."
+      "epsilonTip": "ε = probabilité d'un coup légal aléatoire.\nEssayez 0,1–0,5.\n181 440 états à couvrir : ε trop bas → des régions entières jamais visitées."
     }
   },
   "gate": {
     "brand": "AI-Exhibits",
-    "title": "Entraîne ton IA !",
+    "title": "Entraîne ton IA !",
     "subtitle": "Puzzles coulissants. Trois tailles. Trois joueuses.",
-    "mode": "Mode : Agente",
+    "mode": "Mode : Agente",
     "modePrefix": "Mode",
     "modeAgent": "Agente",
     "modeFacilitator": "Animatrice",
     "question": "",
-    "prompt": "Tu compares trois résolveuses : une agente aléatoire, toi, et une agente Q-learning que tu entraînes. Trois tailles de puzzle, trois missions.",
+    "prompt": "Tu compares trois résolveuses : une agente aléatoire, toi, et une agente Q-learning que tu entraînes. Trois tailles de puzzle, trois missions.",
     "facilitatorBtn": "Mode animatrice",
     "continueBtn": "Commencer",
     "author": "Conçu et développé par <strong>D<sup>r</sup> Erika Roldán Roa</strong>",
@@ -554,14 +565,15 @@
     "facKeywordOk": "✓ Mode animatrice activé",
     "facKeywordBad": "✗ Mot-clé invalide",
     "eventChecking": "Vérification…",
-    "eventOk": "✓ Événement reconnu : {name}",
+    "eventOk": "✓ Événement reconnu : {name}",
     "eventBad": "✗ Code événement inconnu",
     "facLink": "Animatrice / Facilitateur·trice →",
     "facBackLink": "← Retour",
     "facTitle": "Mode animatrice",
     "facContinueBtn": "Entrer",
     "facKeywordNetwork": "↻ Réseau indisponible — réessaye",
-    "requestEvent": "📅 Organiser un événement avec AI-Exhibits →"
+    "requestEvent": "📅 Organiser un événement avec AI-Exhibits →",
+    "authorFooter": "Conçu et développé par Dʳ Erika Roldán Roa · 2026"
   },
   "hud": {
     "navLabel": "navigation"
@@ -578,8 +590,8 @@
       "notes": {
         "1": "5 min · accroche · démontre 🎲 sur la mini-carte 2×2 du Hub. La comparaison Vous · Aléatoire montre le pourquoi.",
         "2": "5 min · cartographie · les 12 états accessibles, table Q sur serviette (12 × 2 = 24 lignes max).",
-        "3": "8 min · entraîner avec α≈0,5 · γ≈0,9 · ε≈0,3 · 300 épisodes ; viser B6 (Nombre de Dieu, 6 coups).",
-        "4": "2 min · débrief · l'agent a appris une politique optimale sur un monde minuscule. Bridge vers Mission II."
+        "3": "8 min · entraîner avec α≈0,5 · γ≈0,9 · ε≈0,3 · 300 épisodes ; viser B6 (Nombre de Dieu, 6 coups).",
+        "4": "2 min · débrief · l'agente a appris une politique optimale sur un monde minuscule. Bridge vers Mission II."
       },
       "studentSheetLink": "📄 Fiche élève →",
       "cheat": {
@@ -607,25 +619,25 @@
         "stuck": {
           "title": "Si l'élève bloque",
           "parity": {
-            "q": "« Pourquoi 12, pas 24 ? »",
-            "a": "Montrer deux états avec la case vide en bas-droite (objectif) puis en bas-gauche : un coup légal change deux choses à la fois (l'ordre des tuiles ET la position du vide). La moitié du monde est verrouillée."
+            "q": "« Pourquoi 12, pas 24 ? »",
+            "a": "Montrer deux états avec la case vide en bas-droite (objectif) puis en bas-gauche : un coup légal change deux choses à la fois (l'ordre des tuiles ET la position du vide). La moitié du monde est verrouillée."
           },
           "eps0": {
-            "q": "« Si je mets ε = 0, ça va être plus rapide ? »",
+            "q": "« Si je mets ε = 0, ça va être plus rapide ? »",
             "a": "Tester ensemble. Avec ε = 0, l'agente exploite la table Q déjà apprise et ne découvre plus rien — elle reste bloquée si elle n'a pas vu B6."
           },
           "qtable": {
-            "q": "« La table Q, c'est compliqué ? »",
+            "q": "« La table Q, c'est compliqué ? »",
             "a": "12 états × 2 actions = 24 lignes. Une carte 24 cases. La fiche élève a la grille à remplir — qu'elles essaient après quelques épisodes."
           }
         },
         "ans": {
           "title": "Réponses attendues",
-          "benchTitle": "Coups minimum (Bk) :",
-          "qTitle": "Questions élève :",
-          "q1": "Q1 : c'est le diamètre du graphe — le plus long « chemin le plus court » entre deux états.",
-          "q2": "Q2 : avec Q = 0 partout, argmax pioche uniformément parmi les actions légales → marche aléatoire. L'agente explore sans le savoir, mais n'apprend pas vers le but si elle ne tombe jamais dessus.",
-          "q3": "Q3 : 360 états × 4 actions max = 1 440 lignes — toujours notable sur une serviette XL, mais 60× plus que les 24 du 2×2. Le seuil arrive au 3×3 (725 760 lignes)."
+          "benchTitle": "Coups minimum (Bk) :",
+          "qTitle": "Questions élève :",
+          "q1": "Q1 : c'est le diamètre du graphe — le plus long « chemin le plus court » entre deux états.",
+          "q2": "Q2 : avec Q = 0 partout, argmax pioche uniformément parmi les actions légales → marche aléatoire. L'agente explore sans le savoir, mais n'apprend pas vers le but si elle ne tombe jamais dessus.",
+          "q3": "Q3 : 360 états × 3 actions max = 1 080 lignes — toujours notable sur une serviette XL, mais 45× plus que les 24 du 2×2. Le seuil arrive au 3×3 (725 760 lignes)."
         }
       }
     },
@@ -635,22 +647,22 @@
       "algoTitle": "L'algorithme prend sa place.",
       "algoBody": "Avec 360 états, la table ne tient plus sur une serviette. Lance l'entraînement et regarde Q remonter depuis l'objectif, épisode après épisode.",
       "notes": {
-        "1": "3 min · transition · ouvrir Mission II ; pointer la jauge de couverture sur 360 états.",
-        "2": "5 min · observation · entraîner et regarder la jauge monter ; pendant les 5 premiers épisodes, suivre la vague colorée qui part de l'objectif et se propage à rebours dans la vue Liste des états.",
-        "3": "14 min · 3 essais · α≈0,3 · γ≈0,95 · ε≈0,4 · 2 000 épisodes ; benchmarker B1→B5.",
-        "4": "3 min · débrief · ε > 0 maintient l'exploration ; γ proche de 1 propage la récompense loin."
+        "1": "3 min · transition · ouvrir Mission II ; pointer la jauge de couverture sur 360 états.",
+        "2": "5 min · observation · entraîner et regarder la jauge monter ; pendant les 5 premiers épisodes, suivre la vague colorée qui part de l'objectif et se propage à rebours dans la vue Liste des états.",
+        "3": "14 min · 3 essais · α≈0,3 · γ≈0,95 · ε≈0,4 · 2 000 épisodes ; benchmarker B1→B5.",
+        "4": "3 min · débrief · ε > 0 maintient l'exploration ; γ proche de 1 propage la récompense loin."
       },
-      "bridge": "Depuis Mission I · La table Q ne tient plus sur une serviette. 360 états : tu vois la propagation à rebours agir épisode après épisode."
+      "bridge": "Depuis Mission I · La table Q ne tient plus sur une serviette. 360 états : tu vois la propagation à rebours agir épisode après épisode."
     },
     "m3": {
       "chip": "Mission III · Kit atelier",
       "title": "Mise à l'Échelle · 3×3",
       "curseTitle": "Le fléau se fait sentir.",
-      "curseBody": "Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Dans Mission III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût en CHF : Démo 0,0001 · Fiable 0,01 · Garantie 700. Cinq ordres de grandeur de Démo à Garantie.",
+      "curseBody": "Sur 181 440 états, la jauge de couverture plafonne sous 100 %. Dans Mission III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût en CHF : Démo 0,0001 · Fiable 0,01 · Garantie 700. Entre Fiable et Garantie, cinq ordres de grandeur.",
       "notes": {
-        "1": "3 min · transition · ouvrir Mission III ; pointer la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a>.",
-        "2": "5 min · observation · 181 440 états ; la jauge plafonne sous 100 % — montrer.",
-        "3": "10 min · entraîner avec α≈0,3 · γ≈0,99 · ε≈0,5 · 10 000 épisodes ; viser B5 (31 coups, antipode).",
+        "1": "3 min · transition · ouvrir Mission III ; pointer la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a>.",
+        "2": "5 min · observation · 181 440 états ; la jauge plafonne sous 100 % — montrer.",
+        "3": "10 min · entraîner avec α≈0,3 · γ≈0,99 · ε≈0,5 · 10 000 épisodes ; viser B5 (31 coups, antipode).",
         "4": "2 min · débrief · le fléau de la dimension. Même algo, même méthode — l'espace gagne. Porte d'entrée vers DQN / AlphaZero."
       },
       "bridge": "Depuis Mission II · 504× plus d'états. La couverture plafonne. C'est ici que le même algorithme touche le mur — entrée vers les réseaux de neurones."
@@ -687,9 +699,9 @@
     },
     "tune": {
       "title": "Régler les trois boutons",
-      "alpha": "élevé : apprend vite mais peut osciller · faible : stable mais lent",
-      "gamma": "élevé : planifie loin (plus de propagation à rebours) · faible : myope",
-      "epsilon": "élevé : explore davantage · trop bas trop tôt : se fige sur un choix initial"
+      "alpha": "élevé : apprend vite mais peut osciller · faible : stable mais lent",
+      "gamma": "élevé : planifie loin (plus de propagation à rebours) · faible : myope",
+      "epsilon": "élevé : explore davantage · trop bas trop tôt : se fige sur un choix initial"
     },
     "strip": {
       "bench": "Bench",
@@ -720,14 +732,14 @@
     },
     "transfer": {
       "title": "Avant de cliquer la suite",
-      "m1to2": "Tu vas voir 360 états dans Mission II (30× plus qu'ici). Devine si la table Q tiendra encore sur une serviette. Pourquoi / pourquoi pas ?",
-      "m2to3": "Tu vas voir 181 440 états dans Mission III (504× plus qu'ici). Devine si la jauge de couverture atteindra 100 %. Pourquoi / pourquoi pas ?"
+      "m1to2": "Tu vas voir 360 états dans Mission II (30× plus qu'ici). Devine si la table Q tiendra encore sur une serviette. Pourquoi / pourquoi pas ?",
+      "m2to3": "Tu vas voir 181 440 états dans Mission III (504× plus qu'ici). Devine si la jauge de couverture atteindra 100 %. Pourquoi / pourquoi pas ?"
     }
   },
   "fe": {
     "title": "🏆 Fiche d'équipe — toutes missions",
-    "teamLabel": "Équipe :",
-    "intro": "Chaque essai : choisis (α, γ, ε), entraîne, teste les références, note les coups. La meilleure colonne par référence donne le score.",
+    "teamLabel": "Équipe :",
+    "intro": "Chaque essai : choisis (α, γ, ε), entraîne, teste les références, note les coups. La meilleure colonne par référence donne le score.",
     "bench": "Bench",
     "opt": "Opt.",
     "best": "Meilleur",
@@ -738,30 +750,32 @@
     "total": "TOTAL",
     "m1": {
       "title": "Mission I · 2×2",
-      "gods": "Nombre de Dieu : 6 · 6 références"
+      "gods": "Nombre de Dieu : 6 · 6 références"
     },
     "m2": {
       "title": "Mission II · 2×3",
-      "gods": "Nombre de Dieu : 21 · 5 références"
+      "gods": "Nombre de Dieu : 21 · 5 références"
     },
     "m3": {
       "title": "Mission III · 3×3",
-      "gods": "Nombre de Dieu : 31 · 5 références"
+      "gods": "Nombre de Dieu : 31 · 5 références"
     }
   },
   "feedback": {
-    "tooltip": "Suggérer une correction",
-    "title": "Suggérer une correction",
-    "subtitle": "Repérez une coquille ou une erreur ? Dites-nous où et quoi — Dr. Roldán examine chaque suggestion.",
-    "context": "Page :",
-    "langLabel": "Langue :",
-    "type": "Type d'erreur",
+    "tooltip": "Envoyer un retour",
+    "title": "Envoyer un retour",
+    "subtitle": "Traduction, bug, commentaire ou suggestion — tout aide.",
+    "context": "Page :",
+    "langLabel": "Langue :",
+    "type": "Type",
     "type.translation": "Traduction",
     "type.factual": "Erreur factuelle",
     "type.a11y": "Accessibilité",
     "type.brokenLink": "Lien cassé",
     "type.other": "Autre",
-    "issue": "Qu'est-ce qui ne va pas ? *",
+    "type.comment": "Commentaire",
+    "type.suggestion": "Suggestion",
+    "issue": "Qu'est-ce qui ne va pas ? *",
     "fix": "Suggestion de correction",
     "name": "Votre nom (optionnel)",
     "email": "Votre email (optionnel)",
@@ -776,14 +790,14 @@
   "ms": {
     "kicker": "Atelier · Mission I · 2×2",
     "title": "Fiche élève · Mission I — Q-learning sur 2×2",
-    "teamLabel": "Équipe :",
-    "dateLabel": "Date :",
+    "teamLabel": "Équipe :",
+    "dateLabel": "Date :",
     "s1": {
       "kicker": "1 · le monde",
       "title": "Les 12 états atteignables",
       "intro": "Le puzzle 2×2 a <strong>4! = 24</strong> arrangements possibles, mais <strong>seuls 12 sont atteignables</strong> depuis l'objectif. Chaque coup légal inverse <em>deux parités à la fois</em> — la moitié du monde est invisible pour l'agente.",
       "cap": "Distance d = nombre minimum de coups jusqu'à l'objectif. Le pire départ est à <strong>6 coups</strong> — c'est le <strong>Nombre de Dieu</strong>.",
-      "unreach": "<strong>Les 12 états manquants</strong> existent sur le papier (par ex. <code>1 3 / 2 _</code>) mais ne sont jamais atteignables : chaque coup permute <em>simultanément</em> la signature de la permutation et la parité de la case vide — leur produit est invariant. Wilson 1974 généralise : pour tout rectangle r×c avec r,c ≥ 2, |R| = (rc)!/2.",
+      "unreach": "<strong>Les 12 états manquants</strong> existent sur le papier (par ex. <code>1 3 / 2 _</code>) mais ne sont jamais atteignables : chaque coup permute <em>simultanément</em> la signature de la permutation et la parité de la case vide — leur produit est invariant. Wilson 1974 généralise : pour tout rectangle r×c avec r,c ≥ 2, |R| = (rc)!/2.",
       "flip": {
         "title": "Le coup qui inverse deux choses à la fois",
         "before": "Avant — objectif",
@@ -809,7 +823,7 @@
     "s3": {
       "kicker": "3 · la règle",
       "title": "L'algorithme + tes essais",
-      "formulaLabel": "Mise à jour Q :",
+      "formulaLabel": "Mise à jour Q :",
       "alpha": "<strong>vitesse d'apprentissage</strong> · vite (0,5) ou lent (0,1)",
       "gamma": "<strong>importance du futur</strong> · proche (0,9) ou présent (0,5)",
       "epsilon": "<strong>exploration</strong> · curieux (0,3) ou glouton (0,05)",
@@ -828,16 +842,16 @@
         "kicker": "à creuser",
         "title": "Questions à débattre"
       },
-      "q1": "Pourquoi le Nombre de Dieu est-il 6, et pas plus ?",
-      "q2": "Que se passe-t-il si tu poses ε = 0 dès le début ?",
-      "q3": "Avant de cliquer sur 2×3 : devine si la table Q tient encore sur une serviette. Pourquoi / pourquoi pas ?",
+      "q1": "Pourquoi le Nombre de Dieu est-il 6, et pas plus ?",
+      "q2": "Que se passe-t-il si tu poses ε = 0 dès le début ?",
+      "q3": "Avant de cliquer sur 2×3 : devine si la table Q tient encore sur une serviette. Pourquoi / pourquoi pas ?",
       "worked": {
         "title": "Un exemple chiffré",
         "setup": "α = 0,5 · γ = 0,9 · récompense r = 1 au but, 0 sinon. Toutes les valeurs Q démarrent à 0.",
-        "step1Label": "Épisode 1 — voisin du but (d=1), action ↓ vers le but :",
+        "step1Label": "Épisode 1 — voisin du but (d=1), action ↓ vers le but :",
         "step1Calc": "Q ← 0 + 0,5 · (1 + 0,9 · 0 − 0) = <strong>0,5</strong>",
-        "step2Label": "Épisode 2 — état d=2 vient sur ce voisin :",
-        "step2Calc": "Q ← 0 + 0,5 · (0 + 0,9 · 0,5 − 0) = <strong>0,45</strong>",
+        "step2Label": "Épisode 2 — état d=2 vient sur ce voisin :",
+        "step2Calc": "Q ← 0 + 0,5 · (0 + 0,9 · 0,5 − 0) = <strong>0,225</strong>",
         "punch": "À chaque épisode, l'information « le but est par là » remonte d'un cran. C'est la <em>propagation à rebours</em>."
       }
     },

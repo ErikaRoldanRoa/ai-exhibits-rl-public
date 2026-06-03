@@ -374,6 +374,7 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main" data-i18n="common.skipToContent">Aller au contenu</a>
 <script>
   // Mirror the hub's role state on this page so .trainerFacOnly CSS works.
   // Demotes a stale 'facilitator' role to 'agent' if VIP is no longer active.
@@ -395,7 +396,7 @@
 <!-- Tutorial System (Auto-loads on first visit) -->
 <script src="app/tutorial.js"></script>
 <div class="langSelectorWrap" role="region" aria-label="Langue / Language">
-  <select id="langSelector" class="langSelector" onchange="window.i18n.setLang(this.value)">
+  <select id="langSelector" class="langSelector" aria-label="Langue" data-i18n-aria-label="common.langSelectorLabel" onchange="window.i18n.setLang(this.value)">
     <option value="fr">🇫🇷 FR</option>
     <option value="en">🇬🇧 EN</option>
     <option value="de">🇩🇪 DE</option>
@@ -443,8 +444,9 @@
   <h1 class="brand-title" data-i18n="ex.brand.title">AI-Exhibits :
     Apprentissage par Renforcement (Q-learning)
   </h1>
+  <div class="trainer-identity" data-i18n="ex.identity.m2" style="text-align:center;font-size:13px;color:rgba(255,255,255,0.6);margin-top:2px;letter-spacing:0.3px;">Mission II · la vague</div>
 </div>
-<div class="wrap">
+<div class="wrap" id="main">
   <div class="panel">
     <header class="mission-header" style="display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:14px;">
     <div class="header-goal" style="display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted); font-family:var(--mono);"><span data-i18n="ex.header.goalLabel">Objectif</span><span class="goal-mini goal-2x3" aria-label="puzzle goal"><span class="gm-cell">1</span><span class="gm-cell">2</span><span class="gm-cell">3</span><span class="gm-cell">4</span><span class="gm-cell">5</span><span class="gm-cell gm-empty"></span></span></div>

@@ -35,12 +35,15 @@
     "yes": "Sì",
     "no": "No",
     "newBest": "Nuovo record!",
-    "facilitatorMode": "Modalità facilitatrice"
+    "facilitatorMode": "Modalità facilitatrice",
+    "langSelectorLabel": "Lingua",
+    "skipToContent": "Vai al contenuto"
   },
   "hub": {
     "header": {
       "title": "AI-Exhibits: Apprendimento per Rinforzo · Hub",
-      "h1": "AI-Exhibits: Apprendimento per Rinforzo · Hub"
+      "h1": "AI-Exhibits: Apprendimento per Rinforzo · Hub",
+      "lede": "Un solo algoritmo, tre scale. Guardalo imparare — poi guarda la maledizione della dimensionalità raggiungerlo."
     },
     "mission1": {
       "title": "Missione I: Rendere visibile l'apprendimento",
@@ -52,7 +55,9 @@
         "b5Tooltip": "⭐⭐⭐⭐⭐ 5 mosse",
         "b6Tooltip": "🏆 6 mosse — Numero di Dio!"
       },
-      "subtitle": "12 stati · l'intero mondo entra in una pagina · costruisci la tabella Q a mano"
+      "subtitle": "12 stati · l'intero mondo entra in un tovagliolo · costruisci la tabella Q a mano",
+      "worksheetTip": "📄 Scheda studente — da stampare o compilare a schermo",
+      "worksheetAria": "Apri la scheda studente"
     },
     "mission2": {
       "title": "Missione II: Propagazione",
@@ -96,8 +101,8 @@
     },
     "facTools": {
       "tag": "FACILITATRICE",
-      "title": "Dashboard animatrice",
-      "desc": "Un kit stampabile per missione: glossario, riferimenti, tabella di gara, note per l'animatrice. Una scheda di squadra raccoglie le tre missioni in una pagina.",
+      "title": "Dashboard facilitatrice",
+      "desc": "Un kit stampabile per missione: glossario, riferimenti, tabella di gara, note per la facilitatrice. Una scheda di squadra raccoglie le tre missioni in una pagina.",
       "kit1": "Kit Missione I · 20 min",
       "kit2": "Kit Missione II · 25 min",
       "kit3": "Kit Missione III · 20 min",
@@ -148,7 +153,8 @@
     "submitEventPrompt": "Codice evento",
     "submitEventPlaceholder": "es. DMVM26",
     "submitErrNoName": "Aggiungi il tuo nome o nome del team.",
-    "submitErrNoEvent": "Identifica un evento valido per inviare."
+    "submitErrNoEvent": "Identifica un evento valido per inviare.",
+    "tileLabel": "tassello"
   },
   "glossary": {
     "cardTitle": "Glossario — termini Q-learning",
@@ -193,9 +199,9 @@
       "h2x3": "Missione II — Puzzle 2×3 (360 stati)",
       "h3x3": "Missione III — Puzzle 3×3 (181.440 stati)",
       "tip": "🏆 <strong>Numero di Dio</strong> = il numero ottimo di mosse per risolvere il <em>peggior</em> stato iniziale — l'eccentricità dell'obiettivo nel grafo degli stati raggiungibili. Su questi grafi molto regolari, coincide con il diametro.",
-      "hook2x2": "L'intero mondo entra in una pagina · costruisci la tabella Q a mano.",
+      "hook2x2": "L'intero mondo entra in un tovagliolo · costruisci la tabella Q a mano.",
       "hook2x3": "360 stati · 30× più della Missione I · coprire lo spazio comincia a costare.",
-      "hook3x3": "181.440 stati · 504× la Missione II, 15 000× la Missione I · stesso algoritmo, spazio troppo vasto.",
+      "hook3x3": "181.440 stati · 504× la Missione II, 15.000× la Missione I · stesso algoritmo, spazio troppo vasto.",
       "benchHeader": "Riferimento Bk = uno stato di partenza a k mosse dall'obiettivo."
     },
     "card4": {
@@ -383,6 +389,11 @@
     },
     "header": {
       "goalLabel": "Obiettivo"
+    },
+    "identity": {
+      "m1": "Missione I · il tovagliolo",
+      "m2": "Missione II · l’onda",
+      "m3": "Missione III · la maledizione"
     }
   },
   "ex2x2": {
@@ -419,7 +430,7 @@
       "maxStepsTip": "Passi max = budget di mosse per episodio.\nTroppo piccolo → mai ricompensa.\nProva 15–40 per 2×2.",
       "alphaTip": "α controlla quanto fortemente le nuove prove aggiornano Q.\nQ ← Q + α(target−Q).\n0,05–0,2: stabile ma lento.\n0,3–0,6: veloce per questo modello-giocattolo.\n>0,8: rumoroso.",
       "gammaTip": "γ controlla quanto contano le ricompense future.\nPer puzzle a ricompensa differita: γ≈0,9–0,99.\nUn γ basso rende la propagazione della ricompensa debole.",
-      "epsilonTip": "ε = probabilità di una mossa legale casuale.\nProva 0,05–0,25.\nε=0 troppo presto può fissare convinzioni sbagliate.",
+      "epsilonTip": "ε = probabilità di una mossa legale casuale.\nProva 0,05–0,3.\nε=0 troppo presto può fissare convinzioni sbagliate.",
       "speed": "Velocità (ms/tic)",
       "speedTip": "L'addestramento procede per tic.\n0 = molto veloce.\nProva 10–40 per vedere Q propagarsi."
     },
@@ -487,7 +498,7 @@
       "maxStepsTip": "Passi max = budget di mosse per episodio.\nDeve superare G = 21 (Numero di Dio).\nProva 45–90 per 2×3.",
       "alphaTip": "α controlla quanto le nuove prove aggiornano Q.\nQ ← Q + α(obiettivo−Q).\n0,05–0,2: stabile ma lento.\n0,2–0,4: equilibrato su 360 stati.\n>0,6: valori che oscillano.",
       "gammaTip": "γ controlla l'importanza delle ricompense future.\nA 21 mosse di profondità, γ ≈ 0,95–0,99.\nγ < 0,9 → la ricompensa non risale abbastanza lontano.",
-      "epsilonTip": "ε = probabilità di una mossa legale casuale.\nProva 0,1–0,3 per esplorare 360 stati.\nε = 0 troppo presto → intere regioni restano a Q = 0."
+      "epsilonTip": "ε = probabilità di una mossa legale casuale.\nProva 0,1–0,4 per esplorare 360 stati.\nε = 0 troppo presto → intere regioni restano a Q = 0."
     }
   },
   "ex3x3": {
@@ -530,7 +541,7 @@
       "maxStepsTip": "Passi max = budget di mosse per episodio.\nDeve superare G = 31 (Numero di Dio).\nProva 60–150 per 3×3.",
       "alphaTip": "α controlla quanto le nuove prove aggiornano Q.\nQ ← Q + α(obiettivo−Q).\n0,05–0,2: stabile. Visite rare → α piccolo smorza il rumore.\n0,2–0,4: più veloce ma oscillante.\n>0,5: sconsigliato a questa scala.",
       "gammaTip": "γ controlla l'importanza delle ricompense future.\nA 31 mosse di profondità, γ ≈ 0,95–0,99.\nγ troppo basso → il valore obiettivo non raggiunge gli stati distanti.",
-      "epsilonTip": "ε = probabilità di una mossa legale casuale.\nProva 0,1–0,3.\n181.440 stati da coprire: ε troppo basso → intere regioni mai visitate."
+      "epsilonTip": "ε = probabilità di una mossa legale casuale.\nProva 0,1–0,5.\n181.440 stati da coprire: ε troppo basso → intere regioni mai visitate."
     }
   },
   "gate": {
@@ -551,7 +562,7 @@
     "facKeywordPrompt": "Parola chiave facilitatrice",
     "facKeywordPlaceholder": "per evento — fornita da Erika",
     "facKeywordChecking": "Verifica…",
-    "facKeywordOk": "✓ Modalità animatrice attivata",
+    "facKeywordOk": "✓ Modalità facilitatrice attivata",
     "facKeywordBad": "✗ Parola chiave non valida",
     "eventChecking": "Verifica in corso…",
     "eventOk": "✓ Evento riconosciuto: {name}",
@@ -561,7 +572,8 @@
     "facTitle": "Modalità facilitatrice",
     "facContinueBtn": "Entra",
     "facKeywordNetwork": "↻ Rete non disponibile — riprova",
-    "requestEvent": "📅 Organizzare un evento AI-Exhibits →"
+    "requestEvent": "📅 Organizzare un evento AI-Exhibits →",
+    "authorFooter": "Ideato e sviluppato da Dr Erika Roldán Roa · 2026"
   },
   "hud": {
     "navLabel": "navigazione"
@@ -625,7 +637,7 @@
           "qTitle": "Domande studenti:",
           "q1": "Q1: è il diametro del grafo — il « cammino più corto » più lungo tra due stati qualsiasi.",
           "q2": "Q2: con Q = 0 ovunque, argmax sceglie uniformemente tra le azioni legali → cammino casuale. L'agente esplora senza saperlo, ma non impara verso l'obiettivo se non lo raggiunge mai.",
-          "q3": "Q3: 360 stati × 4 azioni max = 1.440 righe — ancora segnabili su un tovagliolo XL, ma 60× più delle 24 del 2×2. La soglia arriva al 3×3 (725.760 righe)."
+          "q3": "Q3: 360 stati × 3 azioni max = 1.080 righe — ancora segnabili su un tovagliolo XL, ma 45× più delle 24 del 2×2. La soglia arriva al 3×3 (725.760 righe)."
         }
       }
     },
@@ -646,7 +658,7 @@
       "chip": "Missione III · Kit del laboratorio",
       "title": "Scala · 3×3",
       "curseTitle": "La maledizione si fa sentire.",
-      "curseBody": "Su 181.440 stati, l'indicatore di copertura si stabilizza sotto il 100%. In Missione III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a> traduce il costo in CHF: Demo 0,0001 · Affidabile 0,01 · Garantito 700. Cinque ordini di grandezza da Demo a Garantito.",
+      "curseBody": "Su 181.440 stati, l'indicatore di copertura si stabilizza sotto il 100%. In Missione III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a> traduce il costo in CHF: Demo 0,0001 · Affidabile 0,01 · Garantito 700. Tra Affidabile e Garantito, cinque ordini di grandezza.",
       "notes": {
         "1": "3 min · transizione · aprire Missione III; indicare la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a>.",
         "2": "5 min · osserva · 181.440 stati; l'indicatore si stabilizza sotto il 100% — mostrare.",
@@ -680,7 +692,7 @@
       "body": "Ogni squadra sceglie (α, γ, ε) con lo stesso numero di episodi. La tabella tiene traccia."
     },
     "notes": {
-      "facilitatorTitle": "Note per l'animatrice"
+      "facilitatorTitle": "Note per la facilitatrice"
     },
     "formula": {
       "title": "Formula Q-learning"
@@ -750,17 +762,19 @@
     }
   },
   "feedback": {
-    "tooltip": "Suggerire una correzione",
-    "title": "Suggerire una correzione",
-    "subtitle": "Hai notato un refuso o un errore? Dicci dove e cosa — Dr. Roldán esamina ogni suggerimento.",
+    "tooltip": "Invia un feedback",
+    "title": "Invia un feedback",
+    "subtitle": "Traduzione, bug, commento o suggerimento — tutto aiuta.",
     "context": "Pagina:",
     "langLabel": "Lingua:",
-    "type": "Tipo d'errore",
+    "type": "Tipo",
     "type.translation": "Traduzione",
     "type.factual": "Errore fattuale",
     "type.a11y": "Accessibilità",
     "type.brokenLink": "Link rotto",
     "type.other": "Altro",
+    "type.comment": "Commento",
+    "type.suggestion": "Suggerimento",
     "issue": "Cosa non va? *",
     "fix": "Correzione suggerita",
     "name": "Il tuo nome (opzionale)",
@@ -837,7 +851,7 @@
         "step1Label": "Episodio 1 — vicino dell'obiettivo (d=1), azione ↓ verso l'obiettivo:",
         "step1Calc": "Q ← 0 + 0,5 · (1 + 0,9 · 0 − 0) = <strong>0,5</strong>",
         "step2Label": "Episodio 2 — lo stato d=2 arriva su questo vicino:",
-        "step2Calc": "Q ← 0 + 0,5 · (0 + 0,9 · 0,5 − 0) = <strong>0,45</strong>",
+        "step2Calc": "Q ← 0 + 0,5 · (0 + 0,9 · 0,5 − 0) = <strong>0,225</strong>",
         "punch": "Ad ogni episodio, l'informazione « l'obiettivo è da quella parte » sale di un gradino. È la <em>propagazione all'indietro</em>."
       }
     },

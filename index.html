@@ -91,8 +91,9 @@ body:not([data-role="facilitator"]) #roleCard {
 </style>
 </head>
 <body data-role="agent">
+<a class="skip-link" href="#missions" data-i18n="common.skipToContent">Aller au contenu</a>
 <div class="langSelectorWrap" role="region" aria-label="Langue / Language">
-  <select id="langSelector" class="langSelector" onchange="window.i18n.setLang(this.value)">
+  <select id="langSelector" class="langSelector" aria-label="Langue" data-i18n-aria-label="common.langSelectorLabel" onchange="window.i18n.setLang(this.value)">
     <option value="fr">🇫🇷 FR</option>
     <option value="en">🇬🇧 EN</option>
     <option value="de">🇩🇪 DE</option>
@@ -102,7 +103,7 @@ body:not([data-role="facilitator"]) #roleCard {
     onclick="try{if(window.AI_EXHIBITS&&window.AI_EXHIBITS.openGate){window.AI_EXHIBITS.openGate();}else{const g=document.getElementById('roleGate');if(g){g.style.display='flex';g.setAttribute('aria-hidden','false');}}}catch(e){}">🎓</button>
   <a class="tutorialReplay" href="#role" id="switchRoleLink" data-tooltip="Retour au départ" data-i18n-data-tooltip="common.returnToStart" data-tooltip-style="info" aria-label="Retour au départ" data-i18n-aria-label="common.returnToStart">⏮</a>
   <button type="button" id="submitResultsBtn" class="tutorialReplay" data-tooltip="Soumettre mes résultats" data-i18n-data-tooltip="hub.submitResults" data-tooltip-style="gods" aria-label="Soumettre mes résultats" data-i18n-aria-label="hub.submitResults">📤</button>
-  <button type="button" id="fbBtn" class="tutorialReplay" data-tooltip="Suggérer une correction" data-i18n-data-tooltip="feedback.tooltip" data-tooltip-style="info" aria-label="Suggérer une correction" data-i18n-aria-label="feedback.tooltip">🔧</button>
+  <button type="button" id="fbBtn" class="tutorialReplay" data-tooltip="Envoyer un retour" data-i18n-data-tooltip="feedback.tooltip" data-tooltip-style="info" aria-label="Envoyer un retour" data-i18n-aria-label="feedback.tooltip">🔧</button>
 </div>
 <!-- Role gate (shown on every load; supports shared devices) -->
 <div aria-labelledby="roleGateTitle" aria-modal="true" class="modalOverlay" id="roleGate" role="dialog"><a id="role" aria-hidden="true"></a>
@@ -169,6 +170,7 @@ body:not([data-role="facilitator"]) #roleCard {
 <div class="panel">
 <div class="hd">
 <h1 class="brand-title" data-i18n="hub.header.h1">AI-Exhibits&#8239;: Apprentissage par Renforcement · Hub</h1>
+<p class="hub-lede" data-i18n="hub.header.lede">Un seul algorithme, trois échelles. Regarde-le apprendre — puis regarde le fléau de la dimension le rattraper.</p>
 <div class="bd">
 <div class="missionsArea">
 <!-- DMVM-reader banner: appears above mission cards when arrived via ?ref=dmvm. -->
@@ -186,7 +188,8 @@ body:not([data-role="facilitator"]) #roleCard {
       <span class="recordsIcon" data-mini="mini-2x2" data-tooltip="—" data-tooltip-style="records" tabindex="0" aria-label="Records de cette mission" data-i18n-aria-label="hub.recordsLabel">🏆</span>
       <button type="button" class="resetIcon trainerFacOnly" data-mini="mini-2x2" data-tooltip="Réinitialiser les records de cette mission" data-i18n-data-tooltip="hub.resetRecords" data-tooltip-style="info" aria-label="Réinitialiser les records de cette mission" data-i18n-aria-label="hub.resetRecords">⟲</button>
       <span class="pIconSpacer" aria-hidden="true"></span>
-      <span class="qmark" data-tip="12 états · le monde entier tient sur une page · construis la table Q à la main" data-i18n-data-tip="hub.mission1.subtitle" tabindex="0" aria-label="Mission I&#8239;: Rendre l'apprentissage visible">ⓘ</span>
+      <span class="qmark" data-tip="12 états · le monde entier tient sur une serviette · construis la table Q à la main" data-i18n-data-tip="hub.mission1.subtitle" tabindex="0" aria-label="Mission I&#8239;: Rendre l'apprentissage visible">ⓘ</span>
+      <a class="worksheetIcon" href="mission1_student.html" data-tooltip="📄 Fiche élève — à imprimer ou à remplir à l'écran" data-i18n-data-tooltip="hub.mission1.worksheetTip" data-tooltip-style="info" aria-label="Ouvrir la fiche élève" data-i18n-aria-label="hub.mission1.worksheetAria">📄</a>
       <a class="trainIcon locked" data-mini="mini-2x2" href="exhibit_2x2.html" data-tooltip="🔒 Résoudre les benchmarks pour débloquer" data-i18n-data-tooltip="hub.trainLocked" data-tooltip-style="bench" aria-label="Lancer l'entraînement" data-i18n-aria-label="hub.launchTraining">🚀</a>
     </div>
   </div>
@@ -220,7 +223,7 @@ body:not([data-role="facilitator"]) #roleCard {
       <span class="recordsIcon" data-mini="mini-2x3" data-tooltip="—" data-tooltip-style="records" tabindex="0" aria-label="Records de cette mission" data-i18n-aria-label="hub.recordsLabel">🏆</span>
       <button type="button" class="resetIcon trainerFacOnly" data-mini="mini-2x3" data-tooltip="Réinitialiser les records de cette mission" data-i18n-data-tooltip="hub.resetRecords" data-tooltip-style="info" aria-label="Réinitialiser les records de cette mission" data-i18n-aria-label="hub.resetRecords">⟲</button>
       <span class="pIconSpacer" aria-hidden="true"></span>
-      <span class="qmark" data-tip="360 états · trop pour tout dessiner · regarde Q remonter depuis l'objectif" data-i18n-data-tip="hub.mission2.subtitle" tabindex="0" aria-label="Mission II&#8239;: Propagation">ⓘ</span>
+      <span class="qmark" data-tip="360 états · trop pour la serviette · regarde Q remonter depuis l'objectif" data-i18n-data-tip="hub.mission2.subtitle" tabindex="0" aria-label="Mission II&#8239;: Propagation">ⓘ</span>
       <a class="trainIcon locked" data-mini="mini-2x3" href="exhibit_2x3.html" data-tooltip="🔒 Résoudre les benchmarks pour débloquer" data-i18n-data-tooltip="hub.trainLocked" data-tooltip-style="bench" aria-label="Lancer l'entraînement" data-i18n-aria-label="hub.launchTraining">🚀</a>
     </div>
   </div>
@@ -293,7 +296,7 @@ body:not([data-role="facilitator"]) #roleCard {
     <div class="kit-session-cell"><div class="kit-session-name" data-i18n="kit.session.m3">Mission III</div><div class="kit-session-min" data-i18n="kit.session.min.m3">20 min</div></div>
     <div class="kit-session-cell"><div class="kit-session-name" data-i18n="kit.session.debrief">Débrief</div><div class="kit-session-min" data-i18n="kit.session.min.debrief">5 min</div></div>
   </div>
-  <div class="kit-session-hint" data-i18n="kit.session.budgetHint">Budget par défaut. Compresse en 60 min ou détend en 90 min en gardant les proportions.</div>
+  <div class="kit-session-hint" data-i18n="kit.session.budgetHint">Budget par défaut. Compresse en 60 min ou détend en 90 min.</div>
 </nav>
 
 <div class="btnRow" style="flex-wrap:wrap; gap:8px;">
@@ -308,8 +311,8 @@ body:not([data-role="facilitator"]) #roleCard {
   <h3 data-i18n="kit.troubleshooting.title">Si ça coince</h3>
   <ul>
     <li data-i18n="kit.troubleshooting.coverage">Couverture stagne · ε trop bas, ou pas assez d'épisodes. Augmente ε vers 0,4–0,5 et relance.</li>
-    <li data-i18n="kit.troubleshooting.greedy">Greedy échoue · ε figé à 0 trop tôt, ou Q n'a pas convergé. Réinitialiser Q, repartir avec plus d'épisodes.</li>
-    <li data-i18n="kit.troubleshooting.runaway">Entraînement runaway · vérifie le maximum d'épisodes (M1 = 2 000, M2 = 20 000, M3 = 50 000).</li>
+    <li data-i18n="kit.troubleshooting.greedy">Le mode glouton échoue · ε figé à 0 trop tôt, ou Q n'a pas convergé. Réinitialiser Q, repartir avec plus d'épisodes.</li>
+    <li data-i18n="kit.troubleshooting.runaway">Entraînement qui s'emballe · vérifie le maximum d'épisodes (M1 = 2 000, M2 = 20 000, M3 = 50 000).</li>
   </ul>
 </div>
 </div></div>
@@ -431,6 +434,41 @@ body:not([data-role="facilitator"]) #roleCard {
     }, 100);
   }
 
+  // ---------- Focus management for the role-gate dialog ----------
+  // The gate is aria-modal; give it real focus trapping + Esc-to-close,
+  // and make the background inert while it's open. Only the *visible* pane
+  // (participant or animatrice) participates \u2014 the hidden pane is display:none
+  // so querySelectorAll naturally skips it, but we further scope to the gate.
+  const FOCUSABLE_SEL = 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  function gateFocusables(){
+    if (!gate) return [];
+    return Array.from(gate.querySelectorAll(FOCUSABLE_SEL))
+      .filter(el => el.offsetParent !== null || el === document.activeElement);
+  }
+  function setBackgroundInert(on){
+    // .wrap is the main content behind the gate overlay.
+    const bg = document.querySelector('.wrap');
+    if (!bg) return;
+    if (on) { try { bg.setAttribute('inert',''); } catch(e){} bg.setAttribute('aria-hidden','true'); }
+    else { try { bg.removeAttribute('inert'); } catch(e){} bg.removeAttribute('aria-hidden'); }
+  }
+  function gateKeydown(e){
+    if (e.key === 'Escape') { e.preventDefault(); closeGate(); return; }
+    if (e.key !== 'Tab') return;
+    const f = gateFocusables();
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first || !gate.contains(document.activeElement)) {
+        e.preventDefault(); last.focus();
+      }
+    } else {
+      if (document.activeElement === last || !gate.contains(document.activeElement)) {
+        e.preventDefault(); first.focus();
+      }
+    }
+  }
+
   function openGate(){
     if(!gate) return;
     gate.style.display = "flex";
@@ -441,6 +479,13 @@ body:not([data-role="facilitator"]) #roleCard {
     if (typeof syncPersonaInputFromStorage === 'function') syncPersonaInputFromStorage();
     // Pre-fill event code if previously entered.
     if (typeof syncEventCodeInputFromStorage === 'function') syncEventCodeInputFromStorage();
+    // Focus management: trap Tab, Esc closes, background inert.
+    setBackgroundInert(true);
+    document.addEventListener('keydown', gateKeydown);
+    setTimeout(() => {
+      const f = gateFocusables();
+      if (f.length) try { f[0].focus(); } catch(e){}
+    }, 60);
   }
   // Auto-elevate to facilitator on first arrival via a VIP URL.
   // Runs once on script load (after the URL-param-capture IIFE in the
@@ -465,6 +510,9 @@ body:not([data-role="facilitator"]) #roleCard {
     if(!gate) return;
     gate.style.display = "none";
     gate.setAttribute("aria-hidden","true");
+    // Tear down focus management.
+    document.removeEventListener('keydown', gateKeydown);
+    setBackgroundInert(false);
     const role = localStorage.getItem(ROLE_KEY) || "agent";
     setPill(role);
   }
@@ -1516,11 +1564,35 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
     card.appendChild(actions);
     overlay.appendChild(card);
     document.body.appendChild(overlay);
+
+    // Focus trap + background inert (Esc + click-outside already wired above).
+    const trapSel = 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const trapHandler = (e) => {
+      if (e.key !== 'Tab') return;
+      const f = Array.from(overlay.querySelectorAll(trapSel)).filter(el => el.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first || !overlay.contains(document.activeElement)) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last || !overlay.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+      }
+    };
+    document.addEventListener('keydown', trapHandler);
+    overlay._trapHandler = trapHandler;
+    const bg = document.querySelector('.wrap');
+    if (bg) { try { bg.setAttribute('inert',''); } catch(e){} bg.setAttribute('aria-hidden','true'); overlay._inertBg = bg; }
+    setTimeout(() => {
+      const f = Array.from(overlay.querySelectorAll(trapSel)).filter(el => el.offsetParent !== null);
+      if (f.length) try { f[0].focus(); } catch(e){}
+    }, 60);
   }
   function closeResultsModal(){
     const o = document.getElementById('resultsOverlay');
     if (o) {
       if (o._escHandler) document.removeEventListener('keydown', o._escHandler);
+      if (o._trapHandler) document.removeEventListener('keydown', o._trapHandler);
+      if (o._inertBg) { try { o._inertBg.removeAttribute('inert'); } catch(e){} o._inertBg.removeAttribute('aria-hidden'); }
       o.remove();
     }
   }
@@ -1582,7 +1654,7 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
         b.type = "button";
         b.className = "miniTile";
         b.textContent = String(v);
-        b.setAttribute("aria-label", "tile " + v);
+        b.setAttribute("aria-label", ((window.i18n && window.i18n.t) ? window.i18n.t("hub.tileLabel", "tile") : "tile") + " " + v);
         b.addEventListener("click", ()=> moveHuman(inst, i));
       }
       el.appendChild(b);
@@ -1679,8 +1751,8 @@ window.AI_EXHIBITS = window.AI_EXHIBITS || {};
         if (act === "shuffle") doShuffle(inst);
         else if (act === "reset") reset(inst);
         else if (act === "random") runRandom(inst);
-        else if (act === "bench") loadBenchmark(inst, btn.dataset.bench);
-
+        // bench clicks are handled by the document-level delegated handler below
+        // (single source of truth — avoids double-firing loadBenchmark).
       });
     });
   }
@@ -1812,20 +1884,6 @@ document.addEventListener("click", (e)=>{
 });
 
 
-/* OPTIONAL (recommended while you curate benchmarks):
-   Quick helper: print the current state array in the console so you can copy-paste it into BENCHMARKS.
-
-   Usage:
-   - Open Hub, shuffle to a state you like
-   - In console run: dumpState("mini-2x2")  (or "mini-2x3", "mini-3x3")
-*/
-function dumpState(puzzleId) {
-  const inst = window.MINI && window.MINI[puzzleId];
-  if (!inst) return console.warn("No inst found for", puzzleId);
-  console.log(puzzleId, "state =", JSON.stringify(inst.state));
-}
-
-
 </script>
 <div id="aiExhibitsBrand" style="
   position:fixed;
@@ -1853,7 +1911,7 @@ function dumpState(puzzleId) {
   opacity:0.95;
   white-space:nowrap;
 ">
-  Designed and developed by Dr. Erika Roldán Roa · 2026
+  <span data-i18n="gate.authorFooter">Designed and developed by Dr Erika Roldán Roa · 2026</span>
 </div>
 
 <!-- PWA Service Worker Registration -->

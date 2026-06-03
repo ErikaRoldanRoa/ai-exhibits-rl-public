@@ -705,7 +705,8 @@ select:focus-visible {
   top: -40px;
   left: 0;
   background: var(--pink);
-  color: white;
+  color: #0b0714;        /* dark text on pink → 6.47:1, passes WCAG AA */
+  font-weight: 700;
   padding: 8px;
   text-decoration: none;
   z-index: 100;
@@ -713,6 +714,22 @@ select:focus-visible {
 
 .skip-link:focus {
   top: 0;
+}
+
+/* Visible focus ring for focusable spans (qmark, records icons, etc.) */
+[tabindex="0"]:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+/* Hub arc-thesis lede — muted, centered, constrained */
+.hub-lede {
+  max-width: 60ch;
+  margin: 8px auto 4px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: var(--text-base, 15px);
+  line-height: 1.5;
 }
 
 /* =============================================================================
@@ -1309,6 +1326,28 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
 .pHead .trainIcon.locked:hover {
   opacity: 0.78;
   border-color: rgba(255, 255, 255, 0.42);
+}
+
+/* Worksheet icon — same chip dimensions as .trainIcon, never locked.
+   Cyan tint to distinguish from the pink launch (🚀) — also signals
+   "auxiliary resource" rather than "primary action". */
+.pHead .worksheetIcon {
+  width: 36px; height: 36px;
+  border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  font-size: 17px;
+  line-height: 1;
+  border: 1px solid rgba(106, 215, 255, 0.40);
+  background: rgba(106, 215, 255, 0.08);
+  opacity: 0.92;
+  transition: opacity 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+.pHead .worksheetIcon:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+  border-color: rgba(106, 215, 255, 0.85);
+  background: rgba(106, 215, 255, 0.16);
 }
 
 /* Inline 🎲 sits next to the "Random agent" stats label — small (24×24)

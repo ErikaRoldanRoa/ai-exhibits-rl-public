@@ -35,12 +35,15 @@
     "yes": "Yes",
     "no": "No",
     "newBest": "New best!",
-    "facilitatorMode": "Facilitator mode"
+    "facilitatorMode": "Facilitator mode",
+    "langSelectorLabel": "Language",
+    "skipToContent": "Skip to content"
   },
   "hub": {
     "header": {
       "title": "AI-Exhibits: Reinforcement Learning · Hub",
-      "h1": "AI-Exhibits: Reinforcement Learning · Hub"
+      "h1": "AI-Exhibits: Reinforcement Learning · Hub",
+      "lede": "One algorithm, three scales. Watch it learn — then watch the curse of dimensionality catch up."
     },
     "mission1": {
       "title": "Mission I: Making learning visible",
@@ -52,7 +55,9 @@
         "b5Tooltip": "⭐⭐⭐⭐⭐ 5 moves",
         "b6Tooltip": "🏆 6 moves — God's Number!"
       },
-      "subtitle": "12 states · the whole world fits on a napkin · build a Q-table by hand"
+      "subtitle": "12 states · the whole world fits on a napkin · build a Q-table by hand",
+      "worksheetTip": "📄 Student worksheet — print or fill on screen",
+      "worksheetAria": "Open the student worksheet"
     },
     "mission2": {
       "title": "Mission II: Propagation",
@@ -140,7 +145,7 @@
     "submitErrHttp": "Server error. Queued.",
     "submitErrApi": "Failed — copy or email instead.",
     "submitErrGeneric": "Failed.",
-    "submitErrAuth": "Invalid access link isn't valid — check your access URL.",
+    "submitErrAuth": "Invalid VIP session — check your access URL.",
     "submitNoNewRows": "nothing new",
     "launchTraining": "Launch Training",
     "submitNamePrompt": "Your name or team name",
@@ -148,7 +153,8 @@
     "submitEventPrompt": "Event code",
     "submitEventPlaceholder": "e.g. DMVM26",
     "submitErrNoName": "Add your name or team name.",
-    "submitErrNoEvent": "Identify a valid event to submit."
+    "submitErrNoEvent": "Identify a valid event to submit.",
+    "tileLabel": "tile"
   },
   "glossary": {
     "cardTitle": "Glossary — Q-learning terms",
@@ -383,6 +389,11 @@
     },
     "header": {
       "goalLabel": "Goal"
+    },
+    "identity": {
+      "m1": "Mission I · the napkin",
+      "m2": "Mission II · the wave",
+      "m3": "Mission III · the curse"
     }
   },
   "ex2x2": {
@@ -419,7 +430,7 @@
       "maxStepsTip": "Max steps = move budget per episode.\nToo small → never reach reward.\nTry 15–40 for 2×2.",
       "alphaTip": "α controls how strongly new evidence updates Q.\nQ ← Q + α(target−Q).\n0.05–0.2: stable but slow.\n0.3–0.6: fast for this toy.\n>0.8: noisy.",
       "gammaTip": "γ controls how much future reward matters.\nFor delayed reward puzzles: γ≈0.9–0.99.\nLow γ makes reward propagation weak.",
-      "epsilonTip": "ε = probability of a random legal move.\nTry 0.05–0.25.\nε=0 early can lock in wrong beliefs.",
+      "epsilonTip": "ε = probability of a random legal move.\nTry 0.05–0.3.\nε=0 early can lock in wrong beliefs.",
       "speed": "Speed (ms/tick)",
       "speedTip": "Training runs in ticks.\n0 = very fast.\nTry 10–40 to watch Q propagate."
     },
@@ -487,7 +498,7 @@
       "maxStepsTip": "Max steps = move budget per episode.\nMust exceed G = 21 (God's Number).\nTry 45–90 for 2×3.",
       "alphaTip": "α controls how much new evidence updates Q.\nQ ← Q + α(target−Q).\n0.05–0.2: stable but slow.\n0.2–0.4: balanced on 360 states.\n>0.6: noisy, values oscillate.",
       "gammaTip": "γ controls how much future rewards matter.\nAt 21-move depth, γ ≈ 0.95–0.99.\nγ < 0.9 → reward doesn't propagate far enough.",
-      "epsilonTip": "ε = probability of a random legal move.\nTry 0.1–0.3 to explore 360 states.\nε = 0 too early → entire regions stay at Q = 0."
+      "epsilonTip": "ε = probability of a random legal move.\nTry 0.1–0.4 to explore 360 states.\nε = 0 too early → entire regions stay at Q = 0."
     }
   },
   "ex3x3": {
@@ -530,7 +541,7 @@
       "maxStepsTip": "Max steps = move budget per episode.\nMust exceed G = 31 (God's Number).\nTry 60–150 for 3×3.",
       "alphaTip": "α controls how much new evidence updates Q.\nQ ← Q + α(target−Q).\n0.05–0.2: stable. Rare visits → small α damps noise.\n0.2–0.4: faster but oscillates.\n>0.5: not recommended at this scale.",
       "gammaTip": "γ controls how much future rewards matter.\nAt 31-move depth, γ ≈ 0.95–0.99.\nγ too low → goal value won't reach distant states.",
-      "epsilonTip": "ε = probability of a random legal move.\nTry 0.1–0.3.\n181,440 states to cover: ε too low → entire regions never visited."
+      "epsilonTip": "ε = probability of a random legal move.\nTry 0.1–0.5.\n181,440 states to cover: ε too low → entire regions never visited."
     }
   },
   "gate": {
@@ -561,7 +572,8 @@
     "facTitle": "Facilitator mode",
     "facContinueBtn": "Enter",
     "facKeywordNetwork": "↻ Network unavailable — try again",
-    "requestEvent": "📅 Host an AI-Exhibits event →"
+    "requestEvent": "📅 Host an AI-Exhibits event →",
+    "authorFooter": "Designed and developed by Dr Erika Roldán Roa · 2026"
   },
   "hud": {
     "navLabel": "navigation"
@@ -625,7 +637,7 @@
           "qTitle": "Student questions:",
           "q1": "Q1: it's the graph diameter — the longest \"shortest path\" between any two states.",
           "q2": "Q2: with Q = 0 everywhere, argmax picks uniformly among legal actions → random walk. The agent explores without knowing it, but doesn't learn toward the goal if it never reaches it.",
-          "q3": "Q3: 360 states × 4 actions max = 1,440 rows — still notable on an XL napkin, but 60× more than the 24 of the 2×2. The threshold is reached at 3×3 (725,760 rows)."
+          "q3": "Q3: 360 states × 3 actions max = 1,080 rows — still notable on an XL napkin, but 45× more than the 24 of the 2×2. The threshold is reached at 3×3 (725,760 rows)."
         }
       }
     },
@@ -646,7 +658,7 @@
       "chip": "Mission III · Workshop kit",
       "title": "Scaling · 3×3",
       "curseTitle": "The curse begins to bite.",
-      "curseBody": "On 181,440 states, the coverage gauge plateaus below 100%. Inside Mission III, the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a> translates cost into CHF: Demo 0.0001 · Reliable 0.01 · Proven 700. Five orders of magnitude from Demo to Proven.",
+      "curseBody": "On 181,440 states, the coverage gauge plateaus below 100%. Inside Mission III, the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a> translates cost into CHF: Demo 0.0001 · Reliable 0.01 · Proven 700. Between Reliable and Proven, five orders of magnitude.",
       "notes": {
         "1": "3 min · transition · open Mission III; point at the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a>.",
         "2": "5 min · observe · 181,440 states; the gauge plateaus below 100% — show it.",
@@ -750,17 +762,19 @@
     }
   },
   "feedback": {
-    "tooltip": "Suggest a correction",
-    "title": "Suggest a correction",
-    "subtitle": "Spotted a typo or error? Tell us where and what — Dr. Roldán reviews every suggestion.",
+    "tooltip": "Send feedback",
+    "title": "Send feedback",
+    "subtitle": "Translation, bug, comment, or suggestion — anything helps.",
     "context": "Page:",
     "langLabel": "Language:",
-    "type": "Issue type",
+    "type": "Type",
     "type.translation": "Translation",
     "type.factual": "Factual error",
     "type.a11y": "Accessibility",
     "type.brokenLink": "Broken link",
     "type.other": "Other",
+    "type.comment": "Comment",
+    "type.suggestion": "Suggestion",
     "issue": "What's wrong? *",
     "fix": "Suggested fix",
     "name": "Your name (optional)",
@@ -837,7 +851,7 @@
         "step1Label": "Episode 1 — goal-neighbour (d=1), action ↓ toward the goal:",
         "step1Calc": "Q ← 0 + 0.5 · (1 + 0.9 · 0 − 0) = <strong>0.5</strong>",
         "step2Label": "Episode 2 — state d=2 arrives on this neighbour:",
-        "step2Calc": "Q ← 0 + 0.5 · (0 + 0.9 · 0.5 − 0) = <strong>0.45</strong>",
+        "step2Calc": "Q ← 0 + 0.5 · (0 + 0.9 · 0.5 − 0) = <strong>0.225</strong>",
         "punch": "At each episode, the information \"the goal is over there\" climbs one step further. That is <em>backward propagation</em>."
       }
     },

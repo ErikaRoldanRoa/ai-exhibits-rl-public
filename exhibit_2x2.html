@@ -539,6 +539,7 @@
 </head>
 
 <body>
+<a class="skip-link" href="#main" data-i18n="common.skipToContent">Aller au contenu</a>
 <script>
   // Mirror the hub's role state on this page so .trainerFacOnly CSS works.
   // Demotes a stale 'facilitator' role to 'agent' if VIP is no longer active.
@@ -560,7 +561,7 @@
 <!-- Tutorial System (Auto-loads on first visit) -->
 <script src="app/tutorial.js"></script>
 <div class="langSelectorWrap" role="region" aria-label="Langue / Language">
-  <select id="langSelector" class="langSelector" onchange="window.i18n.setLang(this.value)">
+  <select id="langSelector" class="langSelector" aria-label="Langue" data-i18n-aria-label="common.langSelectorLabel" onchange="window.i18n.setLang(this.value)">
     <option value="fr">🇫🇷 FR</option>
     <option value="en">🇬🇧 EN</option>
     <option value="de">🇩🇪 DE</option>
@@ -617,9 +618,10 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
   <h1 class="brand-title" data-i18n="ex.brand.title">AI-Exhibits :
     Apprentissage par Renforcement (Q-learning)
   </h1>
+  <div class="trainer-identity" data-i18n="ex.identity.m1" style="text-align:center;font-size:13px;color:rgba(255,255,255,0.6);margin-top:2px;letter-spacing:0.3px;">Mission I · la serviette</div>
 </div>
 
-<div class="wrap">
+<div class="wrap" id="main">
   <div id="paramTip" class="paramTip"></div>
 
   <header class="mission-header" style="display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:14px;">
@@ -1219,7 +1221,7 @@ document.addEventListener('click', (e)=>{
       const episodes = Math.max(1, Number(episodesInp.value||250));
       const maxSteps = Math.max(1, Number(maxStepsInp.value||30));
       const alpha = clamp01(Number(alphaInp.value||0.45));
-      const gamma = clamp01(Number(gammaInp.value||0.95));
+      const gamma = clamp01(Number(gammaInp.value||0.9));
       const eps = clamp01(Number(epsInp.value||0.15));
       const speed = Math.max(0, Number(speedInp.value||20));
 
@@ -1248,7 +1250,7 @@ document.addEventListener('click', (e)=>{
     }
     function stepOnce(){
       const alpha = clamp01(Number(alphaInp.value||0.45));
-      const gamma = clamp01(Number(gammaInp.value||0.95));
+      const gamma = clamp01(Number(gammaInp.value||0.9));
       const eps = clamp01(Number(epsInp.value||0.15));
       const s = clone(current);
       const a = sampleAction(s, eps);

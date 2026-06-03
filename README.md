@@ -2,10 +2,12 @@
 
 Train a Q-learning agent on three sliding puzzles — watch it learn, then watch the curse of dimensionality bite. Browser-native, offline after first visit, four languages.
 
-🔗 **Live:** https://erikaroldanroa.github.io/ai-exhibits-rl-public/
-🌐 **FR · EN · DE · IT** · 📱 **No install** · ✋ **No data sent unless you explicitly submit**
-📐 **Built by** [Dr. Erika Roldán Roa](https://erikaroldan.net) (Max Planck Institute MiS, Leipzig)
-⚠️ **License: CC BY-NC-ND 4.0** — translations and adaptations require [written permission](#license) before you start
+**Created by [Dr. Erika Roldán Roa](https://erikaroldan.net)** — Max Planck Institute for Mathematics in the Sciences (MPI MiS), Leipzig.
+
+- 🔗 **Live:** https://erikaroldanroa.github.io/ai-exhibits-rl-public/
+- 🌐 **Languages:** FR · EN · DE · IT — no install, runs in any browser
+- ✋ **Privacy:** nothing is sent unless you explicitly submit
+- ⚠️ **License:** CC BY-NC-ND 4.0 — translations and adaptations require [written permission](#license)
 
 ---
 
@@ -88,59 +90,6 @@ If you'd like to collect data across teams or run a tournament tied to a paper, 
 When approved, the 📤 button in the hub becomes active for facilitators and submissions get tagged to your event for later analysis.
 
 The 🔧 button on every page lets anyone suggest a translation or content correction — open to all, no account needed.
-
----
-
-## Workshops delivered
-
-- **Maison Poincaré** (Paris) — n = 51, January 2026
-- **Marmottes UNIGE** (Geneva) — n = 29, April 2026
-- **Bilingual DE/FR session** — February 2026
-- **Pi Day workshop** — March 2026
-
----
-
-## For developers · forkers · translators
-
-**Run locally.** Static site; any HTTP server works.
-
-```bash
-git clone https://github.com/ErikaRoldanRoa/ai-exhibits-rl-public.git
-cd ai-exhibits-rl-public
-python3 -m http.server 8000     # or: npx serve .
-# open http://localhost:8000
-```
-
-`file://` works for content but disables the service worker — use a local server to test offline-after-first-visit.
-
-**Repo layout.**
-
-```
-ai-exhibits-rl-public/
-├── index.html                       Hub: 3 mission cards, role gate, language switcher.
-├── exhibit_2x2.html  ·  exhibit_2x3.html  ·  exhibit_3x3.html   Mission I/II/III trainers.
-├── mission1_kit.html  ·  mission2_kit.html  ·  mission3_kit.html   Printable workshop kits (A4 landscape).
-├── mission1_student.html               Printable student worksheet for Mission I (A4 landscape, 4 langs).
-├── request.html                     Event-request form (gated until 2026-06-01).
-├── service-worker.js · LICENSE · README.md
-│
-├── app/                             Shared code: styles.css, kit-shared.css, i18n.js,
-│                                    tutorial.js, tooltips.js, glossary.js, feedback.js,
-│                                    learn-cards-translations.js, manifest.json.
-│
-├── translations/                    fr.json (canonical) · en.json · de.json · it.json — full parity.
-│
-└── print/
-    └── fiche_equipe.html            Team scoresheet, 3 missions on one A4 landscape.
-```
-
-**Backend.** The hub posts to a backend for three flows (submit results, request event, suggest correction) and works fully standalone if you strip those features. Implementation lives outside this public deliverable.
-
-**i18n.** URL override `?lang=fr|en|de|it`; preference persists in `localStorage`. Files in subfolders opt in with `<script>window.__i18nBase = '../';</script>`. All translation files are at key-set parity (578 keys each, enforced by `tools/i18n_parity_test.py`).
-
-**Tests.** Five suites in the parent project's `tools/`: `i18n_parity_test.py` (4-lang key + reference parity, 0 tolerance), `usability_harness.py` (functional + visual, 85 checks), `gate_carryover_test.py` (non-empty pre-state, 19 checks), `request_form_test.py` (event form, 31 checks), `feedback_test.py` (🔧 widget, 32 checks). The parent project also contains `tools/verify_gods_numbers.py` — BFS verifier behind the state-graph and benchmark-distance claims.
-
-**Translating.** Read the license first. Adaptations require permission; [contact](https://erikaroldan.net) before starting. The workflow once approved: copy `translations/fr.json` (canonical) → translate every value, keep every key → add to the language switcher in `index.html` and `app/i18n.js` → run `tools/i18n_parity_test.py` (must PASS) → test the trainers, kits, student worksheet, scoresheet, role gate, request form, and feedback widget.
 
 ---
 

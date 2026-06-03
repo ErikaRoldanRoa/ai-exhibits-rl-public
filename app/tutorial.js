@@ -545,6 +545,8 @@
       }, 400);
     }
     removeHighlight();
+    // Tear down the keyboard listener so it doesn't leak across opens.
+    document.removeEventListener('keydown', keyboardHandler);
     if (completed) markCompleted();
   }
   function skip() {
@@ -555,17 +557,22 @@
   }
 
   // ------- Keyboard -------------------------------------------------------
+  // Named, module-level handler so setupKeyboardControls can attach it and
+  // closeTutorial/skip can remove it (no listener leak across re-opens).
+  function keyboardHandler(e) {
+    if (!overlay || !overlay.classList.contains('active')) return;
+    switch (e.key) {
+      case 'Escape': skip(); break;
+      case 'Enter':
+      case ' ':
+      case 'ArrowRight': e.preventDefault(); nextStep(); break;
+      case 'ArrowLeft':  e.preventDefault(); prevStep(); break;
+    }
+  }
   function setupKeyboardControls() {
-    document.addEventListener('keydown', (e) => {
-      if (!overlay || !overlay.classList.contains('active')) return;
-      switch (e.key) {
-        case 'Escape': skip(); break;
-        case 'Enter':
-        case ' ':
-        case 'ArrowRight': e.preventDefault(); nextStep(); break;
-        case 'ArrowLeft':  e.preventDefault(); prevStep(); break;
-      }
-    });
+    // Guard against double-binding if setup runs more than once.
+    document.removeEventListener('keydown', keyboardHandler);
+    document.addEventListener('keydown', keyboardHandler);
   }
 
   function reset() {

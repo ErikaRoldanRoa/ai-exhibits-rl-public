@@ -58,13 +58,13 @@
 
     const title = document.createElement('h3');
     title.id = 'fbTitle';
-    title.textContent = '🔧 ' + tr('feedback.title', 'Suggérer une correction');
+    title.textContent = '🔧 ' + tr('feedback.title', 'Envoyer un retour');
     Object.assign(title.style, { margin: '0 0 6px 0', fontSize: '18px', fontWeight: '700', color: 'rgba(47,243,255,0.95)' });
     card.appendChild(title);
 
     const sub = document.createElement('div');
     sub.textContent = tr('feedback.subtitle',
-      "Repérez une coquille ou une erreur ? Dites-nous où et quoi — Dr. Roldán examine chaque suggestion.");
+      "Traduction, bug, commentaire ou suggestion — tout aide.");
     Object.assign(sub.style, { fontSize: '12px', color: 'rgba(255,255,255,0.65)', marginBottom: '14px', lineHeight: '1.5' });
     card.appendChild(sub);
 
@@ -91,7 +91,7 @@
     card.appendChild(ctx);
 
     // Issue type
-    card.appendChild(mkLabel(tr('feedback.type', "Type d'erreur")));
+    card.appendChild(mkLabel(tr('feedback.type', "Type")));
     const typeSel = document.createElement('select');
     Object.assign(typeSel.style, mkInputStyles);
     typeSel.style.appearance = 'none';
@@ -100,6 +100,8 @@
       '<option value="factual">' + tr('feedback.type.factual', 'Erreur factuelle') + '</option>' +
       '<option value="accessibility">' + tr('feedback.type.a11y', 'Accessibilité') + '</option>' +
       '<option value="broken-link">' + tr('feedback.type.brokenLink', 'Lien cassé') + '</option>' +
+      '<option value="comment">' + tr('feedback.type.comment', 'Commentaire') + '</option>' +
+      '<option value="suggestion">' + tr('feedback.type.suggestion', 'Suggestion') + '</option>' +
       '<option value="other">' + tr('feedback.type.other', 'Autre') + '</option>';
     card.appendChild(typeSel);
 

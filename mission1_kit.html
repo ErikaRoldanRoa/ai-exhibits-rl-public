@@ -189,8 +189,8 @@
           <p style="margin: 0 0 4px 0;"><strong data-i18n="kit.m1.cheat.ans.qTitle">Questions élève :</strong></p>
           <ol style="font-size: 10.5px; padding-left: 18px; margin: 0;">
             <li><span data-i18n="kit.m1.cheat.ans.q1">Q1 : c'est le diamètre du graphe — le plus long « chemin le plus court » entre deux états.</span></li>
-            <li><span data-i18n="kit.m1.cheat.ans.q2">Q2 : si Q est à 0 partout, ε = 0 fige l'agente dans le coin où argmax tombe (premier index).</span></li>
-            <li><span data-i18n="kit.m1.cheat.ans.q3">Q3 : 360 états × 4 actions max = 1 440 lignes max (souvent moins, les coins ont 2 actions, les bords 3).</span></li>
+            <li><span data-i18n="kit.m1.cheat.ans.q2">Q2 : avec Q = 0 partout, argmax pioche uniformément parmi les actions légales → marche aléatoire. L'agente explore sans le savoir, mais n'apprend pas vers le but si elle ne tombe jamais dessus.</span></li>
+            <li><span data-i18n="kit.m1.cheat.ans.q3">Q3 : 360 états × 3 actions max = 1 080 lignes — toujours notable sur une serviette XL, mais 45× plus que les 24 du 2×2. Le seuil arrive au 3×3 (725 760 lignes).</span></li>
           </ol>
         </div>
       </div>
