@@ -92,6 +92,23 @@ The 🔧 button on every page lets anyone send general feedback — a translatio
 
 ---
 
+## 📄 Official documentation — Erasmus+ deliverables
+
+Teacher-facing handbook entries (exhibit documentation) and the exploitation plan, in the partnership's four languages. Each document includes screenshots of the hub in that language and direct links to the printable classroom kits.
+
+| Language | Handbook entry |
+|---|---|
+| EN | [DOCX](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20handbook%20entry_EN.docx) · [PDF](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20handbook%20entry_EN.pdf) |
+| FR | [DOCX](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20handbook%20entry_FR.docx) · [PDF](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20handbook%20entry_FR.pdf) |
+| DE | [DOCX](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20handbook%20entry_DE.docx) · [PDF](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20handbook%20entry_DE.pdf) |
+| IT | [DOCX](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20handbook%20entry_IT.docx) · [PDF](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20handbook%20entry_IT.pdf) |
+
+**Exploitation plan (EN):** [DOCX](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20exploitation%20plan_EN.docx) · [PDF](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20exploitation%20plan_EN.pdf)
+
+🇪🇺 *Co-funded by the European Union.*
+
+---
+
 ## License
 
 **CC BY-NC-ND 4.0** (Attribution-NonCommercial-NoDerivatives) — see [`LICENSE`](LICENSE).
