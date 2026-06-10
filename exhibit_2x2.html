@@ -1188,7 +1188,9 @@ document.addEventListener('click', (e)=>{
       const sk = key(s);
       const old = getQ(sk, a);
       const r = getReward(sp);
-      const boot = maxQ(sp);
+      // Episodic task: the goal is terminal — never bootstrap from it
+      // (otherwise Q drifts toward the continuing-task fixed point 1/(1−γ²)).
+      const boot = eq(sp, goal) ? 0 : maxQ(sp);
       const target = r + gamma * boot;
       const neu = old + alpha * (target - old);
       setQ(sk, a, neu);
@@ -1198,6 +1200,7 @@ document.addEventListener('click', (e)=>{
 
     function runEpisode(startState, maxSteps, alpha, gamma, eps){
       let s = clone(startState);
+      if (eq(s, goal)) return; // episode starting at the terminal state: nothing to learn
       for (let t=0; t<maxSteps; t++){
         const a = sampleAction(s, eps);
         const sp = step(s, a);
@@ -1776,7 +1779,7 @@ const rline = document.createElement('div');
         title:"Épisode et horizon — deux boutons, un budget",
         tags:"épisode horizon pas-max budget reset biais variance",
         public:"Le Q-learning tourne par **épisodes** : mélanger le puzzle, essayer de le résoudre, s'arrêter au succès ou après **pas-max** coups, puis recommencer avec un nouveau mélange. Deux boutons : combien d'épisodes E et la longueur H de chacun. Le budget total est B = E × H. Mais B seul ne suffit pas — la *répartition* compte : le reset entre épisodes est un levier structurel sur ce que l'agente voit.",
-        math:"Budget total de pas B = E × H. Les deux extrêmes :\n• Grand E, petit H (beaucoup d'épisodes courts) — explore le voisinage des états de départ ; estimations à faible variance.\n• Petit E, grand H (peu d'épisodes longs) — pénètre loin dans le graphe d'états ; propagation de récompense plus riche par épisode.\n\n**Seuil** : H ≥ G (Nombre de Dieu) est obligatoire. Si H < G, le pire état de départ est inatteignable en un épisode → sous la récompense par défaut (uniquement à l'objectif), aucun signal n'atteint l'agente → aucun apprentissage vers le but, peu importe la taille de B. (Avec du modelage des récompenses, des transitions isolées peuvent toujours mettre Q à jour.) M1 : G=6, H=30 (5×). M2 : G=21, H=60 (~3×). M3 : G=31, H=120 (~4×).",
+        math:"Budget total de pas B = E × H. Les deux extrêmes :\n• Grand E, petit H (beaucoup d'épisodes courts) — explore le voisinage des états de départ ; estimations à faible variance.\n• Petit E, grand H (peu d'épisodes longs) — pénètre loin dans le graphe d'états ; propagation de récompense plus riche par épisode.\n\n**Seuil** : H ≥ G (Nombre de Dieu) est recommandé. Avec H < G, les épisodes qui démarrent à plus de H coups de l'objectif ne peuvent pas aboutir — mais les départs mélangés tombent à toutes les distances, et le Q-learning transmet la valeur d'un épisode à l'autre par bootstrap : elle se propage quand même vers l'extérieur. L'apprentissage devient plus lent, pas impossible ; H ≥ G garantit surtout que l'évaluation gloutonne de la référence la plus difficile puisse réussir en une seule tentative. M1 : G=6, H=30 (5×). M2 : G=21, H=60 (~3×). M3 : G=31, H=120 (~4×).",
         sentence:"« Les épisodes sont les expériences ; pas-max est la patience par expérience. Même calcul total, politiques différentes. »"
       },
       {

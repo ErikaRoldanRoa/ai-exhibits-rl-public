@@ -202,7 +202,7 @@
       "tip": "🏆 <strong>God's Number</strong> = the optimal number of moves to solve the <em>worst</em> starting state — the eccentricity of the goal in the reachable-state graph. On these highly regular graphs, it coincides with the diameter.",
       "hook2x2": "The whole world fits on a napkin · build a Q-table by hand.",
       "hook2x3": "360 states · 30× more than Mission I · covering the space starts to cost.",
-      "hook3x3": "181,440 states · 504× Mission II, 15,000× Mission I · same algorithm, space too vast.",
+      "hook3x3": "181,440 states · 504× Mission II, 15,120× Mission I · same algorithm, space too vast.",
       "benchHeader": "Benchmark Bk = a starting state k moves from the goal."
     },
     "card4": {
@@ -240,7 +240,7 @@
     "flow": {
       "1": "<strong>00:00–00:15</strong> — Hook &amp; framing: train an AI you can watch.",
       "2": "<strong>00:15–00:35</strong> — Phase 1 · Mission I (2×2, 12 states): map the configuration space and the parity orbit, build a Q-table by hand on paper.",
-      "3": "<strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 states, God=21): train the agent; watch episodes, ε-decay, and Q-values propagate back from the goal.",
+      "3": "<strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 states, God=21): train the agent; watch episodes and Q-values propagate back from the goal.",
       "4": "<strong>01:05–01:15</strong> — Break.",
       "5": "<strong>01:15–01:45</strong> — Mission III — 3×3, the tournament · name the curse of dimensionality: same algorithm, the space has simply grown too vast to visit.",
       "6": "<strong>01:45–02:00</strong> — Reflection &amp; real-world connections."
@@ -380,7 +380,7 @@
       "caption": {
         "m1": "Only 12 states: the bar reaches 100% in a handful of steps. Keep it in mind — on Mission II (360 states) and then Mission III (181,440), the same bar will behave very differently.",
         "m2": "360 states: 30× more than Mission I. The bar still climbs as training runs, but it no longer fills on its own — covering the space starts to cost.",
-        "m3": "181,440 states: 504× Mission II, 15,000× Mission I. Same algorithm, same method — the space has simply grown too vast to visit. The bar plateaus, and the curse makes itself felt."
+        "m3": "181,440 states: 504× Mission II, 15,120× Mission I. Same algorithm, same method — the space has simply grown too vast to visit. The bar plateaus, and the curse makes itself felt."
       }
     },
     "viewer": {
@@ -496,7 +496,7 @@
     },
     "params": {
       "episodesTip": "Episodes = number of training attempts.\nTry 1000–3000 to see Q propagate from the goal.\nWith higher ε, increase E.",
-      "maxStepsTip": "Max steps = move budget per episode.\nMust exceed G = 21 (God's Number).\nTry 45–90 for 2×3.",
+      "maxStepsTip": "Max steps = move budget per episode.\nRecommended: exceed G = 21 (God's Number).\nTry 45–90 for 2×3.",
       "alphaTip": "α controls how much new evidence updates Q.\nQ ← Q + α(target−Q).\n0.05–0.2: stable but slow.\n0.2–0.4: balanced on 360 states.\n>0.6: noisy, values oscillate.",
       "gammaTip": "γ controls how much future rewards matter.\nAt 21-move depth, γ ≈ 0.95–0.99.\nγ < 0.9 → reward doesn't propagate far enough.",
       "epsilonTip": "ε = probability of a random legal move.\nTry 0.1–0.4 to explore 360 states.\nε = 0 too early → entire regions stay at Q = 0."
@@ -539,7 +539,7 @@
     },
     "params": {
       "episodesTip": "Episodes = number of training attempts.\nTry 5000–20000 to grow coverage.\n181,440 states: coverage rises slowly.",
-      "maxStepsTip": "Max steps = move budget per episode.\nMust exceed G = 31 (God's Number).\nTry 60–150 for 3×3.",
+      "maxStepsTip": "Max steps = move budget per episode.\nRecommended: exceed G = 31 (God's Number).\nTry 60–150 for 3×3.",
       "alphaTip": "α controls how much new evidence updates Q.\nQ ← Q + α(target−Q).\n0.05–0.2: stable. Rare visits → small α damps noise.\n0.2–0.4: faster but oscillates.\n>0.5: not recommended at this scale.",
       "gammaTip": "γ controls how much future rewards matter.\nAt 31-move depth, γ ≈ 0.95–0.99.\nγ too low → goal value won't reach distant states.",
       "epsilonTip": "ε = probability of a random legal move.\nTry 0.1–0.5.\n181,440 states to cover: ε too low → entire regions never visited."
@@ -638,7 +638,7 @@
           "qTitle": "Student questions:",
           "q1": "Q1: it's the graph diameter — the longest \"shortest path\" between any two states.",
           "q2": "Q2: with Q = 0 everywhere, argmax picks uniformly among legal actions → random walk. The agent explores without knowing it, but doesn't learn toward the goal if it never reaches it.",
-          "q3": "Q3: 360 states × 3 actions max = 1,080 rows — still notable on an XL napkin, but 45× more than the 24 of the 2×2. The threshold is reached at 3×3 (725,760 rows)."
+          "q3": "Q3: 360 states × 3 actions max ≤ 1,080 rows — still notable on an XL napkin, but ≈35× more than the 24 of the 2×2. The threshold is reached at 3×3 (≤ 725,760 rows)."
         }
       }
     },

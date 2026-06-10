@@ -3,8 +3,8 @@
     "language": "de",
     "label": "Deutsch",
     "flag": "🇩🇪",
-    "status": "draft",
-    "version": "0.1.0"
+    "status": "final",
+    "version": "0.2.0"
   },
   "common": {
     "backToHub": "← Zurück zum Hub",
@@ -202,7 +202,7 @@
       "tip": "🏆 <strong>Gottes-Zahl</strong> = die optimale Zugzahl, um den <em>schlimmsten</em> Startzustand zu lösen — die Exzentrizität des Ziels im Graphen der erreichbaren Zustände. Auf diesen regelmäßigen Graphen entspricht sie dem Durchmesser.",
       "hook2x2": "Die ganze Welt auf einer Serviette · Q-Tabelle von Hand bauen.",
       "hook2x3": "360 Zustände · 30× mehr als Mission I · den Raum zu durchqueren beginnt zu kosten.",
-      "hook3x3": "181.440 Zustände · 504× Mission II, 15.000× Mission I · gleicher Algorithmus, Raum zu weit.",
+      "hook3x3": "181.440 Zustände · 504× Mission II, 15.120× Mission I · gleicher Algorithmus, Raum zu weit.",
       "benchHeader": "Benchmark Bk = ein Startzustand k Züge vom Ziel entfernt."
     },
     "card4": {
@@ -240,7 +240,7 @@
     "flow": {
       "1": "<strong>00:00–00:15</strong> — Einstieg &amp; Rahmen: trainiere eine KI, der du beim Lernen zuschaust.",
       "2": "<strong>00:15–00:35</strong> — Phase 1 · Mission I (2×2, 12 Zustände): den Konfigurationsraum und die Paritätsbahn kartieren, eine Q-Tabelle von Hand auf Papier bauen.",
-      "3": "<strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 Zustände, Gottes-Zahl=21): Agent*in trainieren; Episoden, ε-Abnahme und die Rückwanderung der Q-Werte vom Ziel beobachten.",
+      "3": "<strong>00:35–01:05</strong> — Phase 2 · Mission II (2×3, 360 Zustände, Gottes-Zahl=21): Agent*in trainieren; Episoden und die Rückwanderung der Q-Werte vom Ziel beobachten.",
       "4": "<strong>01:05–01:15</strong> — Pause.",
       "5": "<strong>01:15–01:45</strong> — Mission III — 3×3, das Turnier · den Fluch der Dimension benennen: gleicher Algorithmus, der Raum ist nur zu weit geworden, um ihn zu durchwandern.",
       "6": "<strong>01:45–02:00</strong> — Reflexion &amp; Alltagsbezug."
@@ -380,7 +380,7 @@
       "caption": {
         "m1": "Nur 12 Zustände: Der Balken erreicht 100% in wenigen Schritten. Behalte ihn im Kopf — in Mission II (360 Zustände) und dann Mission III (181.440) wird sich derselbe Balken ganz anders verhalten.",
         "m2": "360 Zustände: 30× mehr als Mission I. Der Balken steigt im Training noch, aber er füllt sich nicht mehr von selbst — den Raum zu durchqueren beginnt zu kosten.",
-        "m3": "181.440 Zustände: 504× Mission II, 15.000× Mission I. Gleicher Algorithmus, gleiche Methode — der Raum ist nur zu weit geworden, um ihn zu durchwandern. Der Balken bleibt stehen, und der Fluch wird spürbar."
+        "m3": "181.440 Zustände: 504× Mission II, 15.120× Mission I. Gleicher Algorithmus, gleiche Methode — der Raum ist nur zu weit geworden, um ihn zu durchwandern. Der Balken bleibt stehen, und der Fluch wird spürbar."
       }
     },
     "viewer": {
@@ -496,7 +496,7 @@
     },
     "params": {
       "episodesTip": "Episoden = Anzahl der Trainingsversuche.\nVersuche 1000–3000, um Q vom Ziel ausbreiten zu sehen.\nBei höherem ε E erhöhen.",
-      "maxStepsTip": "Max. Schritte = Zugbudget pro Episode.\nMuss G = 21 (Gottes-Zahl) übersteigen.\nVersuche 45–90 für 2×3.",
+      "maxStepsTip": "Max. Schritte = Zugbudget pro Episode.\nEmpfohlen: G = 21 (Gottes-Zahl) übersteigen.\nVersuche 45–90 für 2×3.",
       "alphaTip": "α steuert, wie stark neue Belege Q aktualisieren.\nQ ← Q + α(Ziel−Q).\n0,05–0,2: stabil, aber langsam.\n0,2–0,4: ausgewogen bei 360 Zuständen.\n>0,6: Werte oszillieren.",
       "gammaTip": "γ steuert, wie stark zukünftige Belohnungen zählen.\nBei 21 Zügen Tiefe γ ≈ 0,95–0,99.\nγ < 0,9 → Belohnung erreicht nicht weit genug.",
       "epsilonTip": "ε = Wahrscheinlichkeit eines zufälligen legalen Zugs.\nVersuche 0,1–0,4, um 360 Zustände zu erkunden.\nε = 0 zu früh → ganze Regionen bleiben bei Q = 0."
@@ -539,7 +539,7 @@
     },
     "params": {
       "episodesTip": "Episoden = Anzahl der Trainingsversuche.\nVersuche 5000–20000, um die Abdeckung wachsen zu lassen.\n181.440 Zustände: Abdeckung steigt langsam.",
-      "maxStepsTip": "Max. Schritte = Zugbudget pro Episode.\nMuss G = 31 (Gottes-Zahl) übersteigen.\nVersuche 60–150 für 3×3.",
+      "maxStepsTip": "Max. Schritte = Zugbudget pro Episode.\nEmpfohlen: G = 31 (Gottes-Zahl) übersteigen.\nVersuche 60–150 für 3×3.",
       "alphaTip": "α steuert, wie stark neue Belege Q aktualisieren.\nQ ← Q + α(Ziel−Q).\n0,05–0,2: stabil. Seltene Besuche → kleines α dämpft Rauschen.\n0,2–0,4: schneller, aber oszillierend.\n>0,5: bei dieser Größe nicht empfohlen.",
       "gammaTip": "γ steuert, wie stark zukünftige Belohnungen zählen.\nBei 31 Zügen Tiefe γ ≈ 0,95–0,99.\nγ zu niedrig → Zielwert erreicht entfernte Zustände nicht.",
       "epsilonTip": "ε = Wahrscheinlichkeit eines zufälligen legalen Zugs.\nVersuche 0,1–0,5.\n181.440 Zustände abzudecken: ε zu niedrig → ganze Regionen nie besucht."
@@ -638,7 +638,7 @@
           "qTitle": "Schüler*innen-Fragen:",
           "q1": "Q1: es ist der Graphdurchmesser — der längste „kürzeste Pfad\" zwischen zwei Zuständen.",
           "q2": "Q2: bei Q = 0 überall wählt argmax gleichverteilt unter den legalen Aktionen → Zufallsbewegung. Die Agent*in erkundet ohne es zu wissen, lernt aber nicht zum Ziel, wenn sie es nie erreicht.",
-          "q3": "Q3: 360 Zustände × 3 Aktionen max = 1.080 Zeilen — auf einer XL-Serviette gerade noch, aber 45× mehr als die 24 beim 2×2. Die Grenze fällt beim 3×3 (725.760 Zeilen)."
+          "q3": "Q3: 360 Zustände × 3 Aktionen max ≤ 1.080 Zeilen — auf einer XL-Serviette gerade noch, aber ≈35× mehr als die 24 beim 2×2. Die Grenze fällt beim 3×3 (≤ 725.760 Zeilen)."
         }
       }
     },

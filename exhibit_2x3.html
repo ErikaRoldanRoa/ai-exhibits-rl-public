@@ -695,10 +695,14 @@ Essayez 0,1–0,3 pour explorer 360 états.
     const gamma = clamp01(Number(gammaEl.value));
     const sk = key(s), spk = key(sp);
     const old = getQ(sk,a);
-    const acts2 = legalActions(sp);
+    // Episodic task: the goal is terminal — never bootstrap from it
+    // (otherwise Q drifts toward the continuing-task fixed point 1/(1−γ)·r).
     let maxNext = 0;
-    if(acts2.length){
-      maxNext = Math.max(...acts2.map(a2 => getQ(spk,a2)));
+    if(!eq(sp, goal)){
+      const acts2 = legalActions(sp);
+      if(acts2.length){
+        maxNext = Math.max(...acts2.map(a2 => getQ(spk,a2)));
+      }
     }
     const tdTarget = r + gamma*maxNext;
     setQ(sk, a, old + alpha*(tdTarget - old));
@@ -806,6 +810,7 @@ Essayez 0,1–0,3 pour explorer 360 états.
         const acts = legalActions(s);
         s = step(s, acts[Math.floor(Math.random()*acts.length)]);
       }
+      if(eq(s, goal)) continue; // terminal start: nothing to learn this episode
       visited.add(key(s));
       for(let t=0;t<maxSteps;t++){
         const a = sampleEpsGreedy(s, eps);
