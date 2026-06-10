@@ -103,8 +103,6 @@ Teacher-facing handbook entries (exhibit documentation) and the exploitation pla
 | DE | [DOCX](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20handbook%20entry_DE.docx) · [PDF](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20handbook%20entry_DE.pdf) |
 | IT | [DOCX](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20handbook%20entry_IT.docx) · [PDF](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20handbook%20entry_IT.pdf) |
 
-**Exploitation plan (EN):** [DOCX](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20exploitation%20plan_EN.docx) · [PDF](documentation/AI-Exhibits%20-%20Sliding%20Puzzle%20-%20exploitation%20plan_EN.pdf)
-
 🇪🇺 *Co-funded by the European Union.*
 
 ---
