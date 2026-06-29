@@ -44,7 +44,7 @@
     "header": {
       "title": "AI-Exhibits : Apprentissage par Renforcement · Hub",
       "h1": "AI-Exhibits : Apprentissage par Renforcement · Hub",
-      "lede": "Un seul algorithme, trois échelles. Regarde-le apprendre — puis regarde le fléau de la dimension le rattraper."
+      "lede": "Un seul algorithme, trois échelles. Regarde-le apprendre — puis vois jusqu'où il va."
     },
     "mission1": {
       "title": "Mission I : Rendre l'apprentissage visible",
@@ -657,7 +657,7 @@
     },
     "m3": {
       "chip": "Mission III · Kit atelier",
-      "title": "Mise à l'Échelle · 3×3",
+      "title": "Mise à l'échelle · 3×3",
       "curseTitle": "Le fléau se fait sentir.",
       "curseBody": "Sur 181 440 états, la proportion d'états explorés plafonne sous 100 %. Dans Mission III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût : Démo {vDemo} · Fiable {vReliable} · Garantie {vProven}. Entre Fiable et Garantie, cinq ordres de grandeur.",
       "notes": {

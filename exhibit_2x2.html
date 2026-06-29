@@ -127,18 +127,18 @@
     .field input{ width:100%; border:none; outline:none; background: transparent; color: var(--text); font-family: var(--mono); font-size:13px; }
 
     .puzzle{
-      display:grid; grid-template-columns: repeat(2, 1fr); gap:10px; padding:12px;
+      display:grid; grid-template-columns: repeat(2, 92px); justify-content:center; gap:10px; padding:12px;
       border-radius:18px; border:1px solid rgba(255,255,255,0.14); background: rgba(0,0,0,0.22);
     }
     .tile{
-      height:90px; display:grid; place-items:center; border-radius:16px;
-      font-family: var(--mono); font-size:32px; font-weight:950; letter-spacing:0.5px;
-      border:1px solid rgba(255,255,255,0.14);
-      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
+      height:92px; display:grid; place-items:center; border-radius:18px;
+      font-family: var(--mono); font-size:28px; font-weight:900; letter-spacing:0.5px;
+      border:1px solid rgba(255,47,214,0.26);
+      background: radial-gradient(120px 120px at 30% 25%, rgba(255,47,214,0.22), rgba(255,47,214,0.10));
       box-shadow: 0 10px 22px rgba(0,0,0,0.35);
       user-select:none; cursor:pointer; position:relative;
     }
-    .tile.empty{ background: rgba(255,59,212,0.08); border-style:dashed; cursor: default; }
+    .tile.empty{ background: rgba(0,0,0,0.25); border:1px dashed rgba(255,255,255,0.18); cursor: default; }
     .tile .hint{ position:absolute; bottom:8px; font-size:11px; color: var(--muted2); letter-spacing:0.3px; }
 
     .status{ margin-top:12px; display:grid; gap:10px; }
@@ -2120,7 +2120,8 @@ const rline = document.createElement('div');
   (function(){
     function init(){
       if (!window.currency) return;
-      window.currency.mountToggle();
+      // Mission I shows no €/CHF toggle — currency lives in Mission III. We only
+      // fill static currency tokens so the cost foreshadow still renders (EUR).
       window.currency.applyTokens(document);
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
