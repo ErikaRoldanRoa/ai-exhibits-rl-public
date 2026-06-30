@@ -20,21 +20,30 @@
        i18n wrote into the DOM (tooltips, prose).
    ============================================================================ */
 (function () {
-  const SUPPORTED = ['EUR', 'CHF'];
+  const SUPPORTED = ['EUR'];
   const DEFAULT = 'EUR';
   const STORAGE_KEY = 'rl-hub-currency';
-  const CHF_TO_EUR = 1.04; // order-of-magnitude compute-cost conversion
+  // Costs are ORDER-OF-MAGNITUDE estimates (shown with a leading "~"), EUR only.
+  //   cost = (Q-updates) x (~1e-11 EUR per update)
+  //   per-update: 1000 EUR laptop / (3 yr ~ 1e8 s) / (1e6 updates.s^-1) ~ 1e-11
+  //               (hardware-amortised ~1e-12 dominates electricity ~1e-18; the
+  //                same figure falls out of AWS t3.medium pricing per update)
+  //   step-budgets: Demo ~1e7, Reliable ~1e9-1e10, Guaranteed ~7e13 updates --
+  //     the last is a convergence-guarantee budget, conservative against the
+  //     worst-case asynchronous-Q sample complexity ~1e15 (Li-Wei-Cai-Chi-Wei
+  //     2024, the bound already cited in the paper).
+  //   => Demo ~1e-4, Reliable ~1e-2, Guaranteed ~7e2 EUR.
+  // Each factor is uncertain by ~10x, so each figure is good to ONE order of
+  // magnitude. The lesson is the five-order gap from Demo to Guaranteed.
+  const CHF_TO_EUR = 1.0; // identity: EUR-only, kept for the convert() signature
 
-  // Canonical CHF base amounts for the three Économie tiers (solving B5, the
-  // 31-move antipode). EUR is derived (× CHF_TO_EUR) and re-rounded per tier.
-  // Each tier carries a hand-tuned display rounding so the figure reads clean
-  // in BOTH currencies — and since only ONE shows at a time, no false pairing.
+  // Tier step-budgets (formula-derived, order-of-magnitude) x ~1e-11 per update:
   const TIERS = {
-    // Démo ≈ 0,0001 CHF → 0,0001 € (4 decimals)
+    // Demo: ~1e7 updates (~1 s of training) -> ~0,0001
     demo:     { chf: 0.0001, decimals: 4 },
-    // Fiable ≈ 0,01 CHF (range 0,01–0,1) → 0,01 € (2 decimals)
+    // Reliable: ~1e9-1e10 updates (minutes) -> ~0,01
     reliable: { chf: 0.01,   decimals: 2 },
-    // Garantie ≈ 700 CHF → 730 € (integer, rounded to nearest 10)
+    // Guaranteed: ~7e13 updates (convergence-guarantee budget, ~81 days) -> ~700
     proven:   { chf: 700,    round10: true },
   };
 

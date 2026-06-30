@@ -310,7 +310,7 @@
       "b5costDemo": "Demo: ~{vDemo}",
       "b5costReliable": "Affidabile: ~{vReliable}",
       "b5costProven": "Garantito: ~{vProven}",
-      "b5costTip": "Tre livelli di esigenza per risolvere B5 (lo stato più lontano dall'obiettivo, a 31 mosse):\n• Demo (l'agente ci arriva spesso): ~10⁷ passi ≈ {vDemo}.\n• Affidabile (≥95% delle prove riesce vicino all'ottimo): ~10⁹–10¹⁰ passi ≈ {vReliable}.\n• Garantita (l'agente gioca quasi perfettamente ovunque): ~7×10¹³ passi ≈ {vProven}.\nTra «affidabile» e «garantito», cinque ordini di grandezza."
+      "b5costTip": "Tre livelli di esigenza per risolvere B5 (lo stato più lontano dall'obiettivo, a 31 mosse):\n• Demo (l'agente ci arriva spesso): ~10⁷ passi ≈ {vDemo}.\n• Affidabile (≥95% delle prove riesce vicino all'ottimo): ~10⁹–10¹⁰ passi ≈ {vReliable}.\n• Garantita (l'agente gioca quasi perfettamente ovunque): ~7×10¹³ passi ≈ {vProven}.\nTra «affidabile» e «garantito», quasi cinque ordini di grandezza."
     },
     "btn": {
       "stepOnce": "Passo (un aggiornamento)",
@@ -659,7 +659,7 @@
       "chip": "Missione III · Kit del laboratorio",
       "title": "Scala · 3×3",
       "curseTitle": "La maledizione si fa sentire.",
-      "curseBody": "Su 181.440 stati, la quota di stati esplorati si stabilizza sotto il 100%. In Missione III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a> traduce il costo: Demo {vDemo} · Affidabile {vReliable} · Garantito {vProven}. Tra Affidabile e Garantito, cinque ordini di grandezza.",
+      "curseBody": "Su 181.440 stati, la quota di stati esplorati si stabilizza sotto il 100%. In Missione III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a> traduce il costo: Demo {vDemo} · Affidabile {vReliable} · Garantito {vProven}. Tra Affidabile e Garantito, quasi cinque ordini di grandezza.",
       "notes": {
         "1": "3 min · transizione · aprire Missione III; indicare la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">scheda Economia</a>.",
         "2": "5 min · osserva · 181.440 stati; l'indicatore si stabilizza sotto il 100% — mostrare.",

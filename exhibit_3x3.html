@@ -570,7 +570,7 @@
           <div class="stat">
             <div class="k" style="display:flex; align-items:center; gap:6px;">
               <span data-i18n="ex.stats.b5cost">Coût pour atteindre B5</span>
-              <span class="qmark" data-tip="Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :&#10;• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ {vDemo}.&#10;• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ {vReliable}.&#10;• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ {vProven}.&#10;Entre « fiable » et « garantie », cinq ordres de grandeur." data-i18n-data-tip="ex.stats.b5costTip" data-currency-attr="data-tip" tabindex="0" aria-label="À propos du coût pour B5">ⓘ</span>
+              <span class="qmark" data-tip="Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :&#10;• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ {vDemo}.&#10;• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ {vReliable}.&#10;• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ {vProven}.&#10;Entre « fiable » et « garantie », presque cinq ordres de grandeur." data-i18n-data-tip="ex.stats.b5costTip" data-currency-attr="data-tip" tabindex="0" aria-label="À propos du coût pour B5">ⓘ</span>
             </div>
             <div class="v" id="b5costTxt">—</div>
           </div>
@@ -841,21 +841,21 @@ Essayez 0,1–0,3.
       return (lang === 'en') ? s : s.replace('.', decSep);
     };
     updatesEl.textContent = String(updates);
-    // Training cost — realistic CPU step cost on a laptop ≈ 10⁻¹¹ CHF/step.
+    // Training cost — realistic CPU step cost on a laptop ≈ 10⁻¹¹ €/step.
     // Total = updates × COST_PER_STEP. The point is not the absolute number
     // (it's pennies on YOUR laptop) but the *scaling* — at chess-size MDPs
     // (10⁴⁶ states) even that tiny per-step cost is unaffordable.
     const costEl = document.getElementById('costTxt');
     if (costEl){
-      const COST_PER_STEP = 1e-11; // CHF on a CPU laptop, realistic — dominated by amortised hardware (~10⁻¹² CHF/step) rather than electricity (~10⁻¹⁸ CHF/step). At ~10⁷ Q-updates/sec single-threaded JS.
-      const total = updates * COST_PER_STEP; // base amount in CHF
+      const COST_PER_STEP = 1e-11; // EUR per update on a CPU laptop — dominated by amortised hardware (~10⁻¹² €) over electricity (~10⁻¹⁸ €). At ~10⁷ Q-updates/sec single-threaded JS.
+      const total = updates * COST_PER_STEP; // base amount in EUR
       // Show ONE currency at a time (EUR default), correctly converted. The
       // shared currency module converts CHF→selected and formats with the
       // active locale separator + symbol-after-number ("0,01 €" / "0,01 CHF").
       if (window.currency) {
         costEl.textContent = window.currency.format(total);
       } else {
-        // Fallback if the module hasn't loaded: plain CHF (no false pairing).
+        // Fallback if the module hasn't loaded: plain EUR.
         let s;
         if (total === 0)            s = '0';
         else if (total < 0.000001)  s = total.toFixed(9).replace(/\.?0+$/, '');
@@ -863,7 +863,7 @@ Essayez 0,1–0,3.
         else if (total < 1)         s = total.toFixed(4);
         else                        s = total.toFixed(2);
         if (lang !== 'en') s = s.replace('.', decSep);
-        costEl.textContent = `${s} CHF`;
+        costEl.textContent = `${s} €`;
       }
     }
     // Coverage chart — live M3 bar
@@ -884,11 +884,12 @@ Essayez 0,1–0,3.
       const stepsLabel = (window.i18n ? window.i18n.t('ex.stats.budgetUnit', 'pas') : 'pas');
       budgetEl.textContent = `${fmtInt(E)} × ${fmtInt(H)} = ${fmtInt(B)} ${stepsLabel}`;
     }
-    // Cost to reach B5 — three pedagogical tiers shown compactly.
-    // Numbers come from order-of-magnitude estimates: demo ~10⁷ steps,
-    // reliable ~10⁹–10¹⁰, "convergence guarantee" ~7×10¹³ (the
-    // classical asymptotic bound). At 10⁻¹¹ CHF/step that's ~10⁻⁴ /
-    // ~10⁻²–10⁻¹ / ~700 CHF respectively (≈ 0,0001 € / 0,01 € / 730 € in EUR).
+    // Cost to reach B5 — three pedagogical tiers shown compactly (EUR only).
+    // Order-of-magnitude estimates: demo ~10⁷ updates, reliable ~10⁹–10¹⁰,
+    // "convergence guarantee" ~7×10¹³ updates (a sample-complexity budget,
+    // conservative vs the worst-case asynchronous-Q bound ~10¹⁵; see
+    // Li-Wei-Cai-Chi-Wei 2024). At ~10⁻¹¹ €/update that's ~0,0001 /
+    // ~0,01 / ~700 € respectively — good to one order of magnitude.
     const b5El = document.getElementById('b5costTxt');
     if (b5El){
       const tr = window.i18n && window.i18n.t ? window.i18n.t : (k, f) => f;
@@ -1173,12 +1174,11 @@ Essayez 0,1–0,3.
 <script src="app/i18n.js"></script>
 <script src="app/currency.js"></script>
 <script>
-  // Mount the EUR/CHF currency toggle next to the language switcher and fill
-  // any currency tokens i18n has already written into tooltips/prose.
+  // Costs are EUR-only (no currency toggle). Just fill any currency tokens
+  // i18n has already written into tooltips/prose.
   (function(){
     function init(){
       if (!window.currency) return;
-      window.currency.mountToggle();
       window.currency.applyTokens(document);
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

@@ -310,7 +310,7 @@
       "b5costDemo": "Démo : ~{vDemo}",
       "b5costReliable": "Fiable : ~{vReliable}",
       "b5costProven": "Garantie : ~{vProven}",
-      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ {vDemo}.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ {vReliable}.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ {vProven}.\nEntre « fiable » et « garantie », cinq ordres de grandeur."
+      "b5costTip": "Trois niveaux d'exigence pour résoudre B5 (l'état le plus loin du but, à 31 coups) :\n• Démo (l'agente y arrive souvent) : ~10⁷ pas ≈ {vDemo}.\n• Fiable (≥95 % des essais réussissent près de l'optimum) : ~10⁹–10¹⁰ pas ≈ {vReliable}.\n• Garantie (l'agente joue presque parfaitement partout) : ~7×10¹³ pas ≈ {vProven}.\nEntre « fiable » et « garantie », presque cinq ordres de grandeur."
     },
     "btn": {
       "stepOnce": "Pas (une mise à jour)",
@@ -659,7 +659,7 @@
       "chip": "Mission III · Kit atelier",
       "title": "Mise à l'échelle · 3×3",
       "curseTitle": "Le fléau se fait sentir.",
-      "curseBody": "Sur 181 440 états, la proportion d'états explorés plafonne sous 100 %. Dans Mission III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût : Démo {vDemo} · Fiable {vReliable} · Garantie {vProven}. Entre Fiable et Garantie, cinq ordres de grandeur.",
+      "curseBody": "Sur 181 440 états, la proportion d'états explorés plafonne sous 100 %. Dans Mission III, la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a> traduit le coût : Démo {vDemo} · Fiable {vReliable} · Garantie {vProven}. Entre Fiable et Garantie, presque cinq ordres de grandeur.",
       "notes": {
         "1": "3 min · transition · ouvrir Mission III ; pointer la <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">carte Économie</a>.",
         "2": "5 min · observation · 181 440 états ; la barre des états explorés plafonne sous 100 % — montrer.",

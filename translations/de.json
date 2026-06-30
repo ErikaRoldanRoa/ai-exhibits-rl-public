@@ -310,7 +310,7 @@
       "b5costDemo": "Demo: ~{vDemo}",
       "b5costReliable": "Zuverlässig: ~{vReliable}",
       "b5costProven": "Garantiert: ~{vProven}",
-      "b5costTip": "Drei Anspruchsstufen, um B5 zu lösen (der Zustand am weitesten vom Ziel, 31 Züge entfernt):\n• Demo (die Agentin schafft es oft): ~10⁷ Schritte ≈ {vDemo}.\n• Zuverlässig (≥95 % der Läufe gelingen nahe am Optimum): ~10⁹–10¹⁰ Schritte ≈ {vReliable}.\n• Garantiert (die Agentin spielt überall fast perfekt): ~7×10¹³ Schritte ≈ {vProven}.\nZwischen „zuverlässig“ und „garantiert“ liegen fünf Größenordnungen."
+      "b5costTip": "Drei Anspruchsstufen, um B5 zu lösen (der Zustand am weitesten vom Ziel, 31 Züge entfernt):\n• Demo (die Agentin schafft es oft): ~10⁷ Schritte ≈ {vDemo}.\n• Zuverlässig (≥95 % der Läufe gelingen nahe am Optimum): ~10⁹–10¹⁰ Schritte ≈ {vReliable}.\n• Garantiert (die Agentin spielt überall fast perfekt): ~7×10¹³ Schritte ≈ {vProven}.\nZwischen „zuverlässig“ und „garantiert“ liegen fast fünf Größenordnungen."
     },
     "btn": {
       "stepOnce": "Schritt (ein Update)",
@@ -659,7 +659,7 @@
       "chip": "Mission III · Workshop-Kit",
       "title": "Skalierung · 3×3",
       "curseTitle": "Der Fluch macht sich bemerkbar.",
-      "curseBody": "Auf 181.440 Zuständen erreicht der Anteil erkundeter Zustände unter 100% ein Plateau. In Mission III übersetzt die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Wirtschafts-Karte</a> die Kosten: Demo {vDemo} · Zuverlässig {vReliable} · Garantiert {vProven}. Zwischen Zuverlässig und Garantiert, fünf Größenordnungen.",
+      "curseBody": "Auf 181.440 Zuständen erreicht der Anteil erkundeter Zustände unter 100% ein Plateau. In Mission III übersetzt die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Wirtschafts-Karte</a> die Kosten: Demo {vDemo} · Zuverlässig {vReliable} · Garantiert {vProven}. Zwischen Zuverlässig und Garantiert, fast fünf Größenordnungen.",
       "notes": {
         "1": "3 min · Übergang · Mission III öffnen; auf die <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Wirtschafts-Karte</a> zeigen.",
         "2": "5 min · beobachten · 181.440 Zustände; die Anzeige erreicht unter 100% ein Plateau — zeigen.",

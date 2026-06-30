@@ -310,7 +310,7 @@
       "b5costDemo": "Demo: ~{vDemo}",
       "b5costReliable": "Reliable: ~{vReliable}",
       "b5costProven": "Guaranteed: ~{vProven}",
-      "b5costTip": "Three levels of demand for solving B5 (the state farthest from the goal, 31 moves away):\n• Demo (the agent often gets there): ~10⁷ steps ≈ {vDemo}.\n• Reliable (≥95% of runs succeed near the optimum): ~10⁹–10¹⁰ steps ≈ {vReliable}.\n• Guaranteed (the agent plays near-perfectly everywhere): ~7×10¹³ steps ≈ {vProven}.\nBetween 'reliable' and 'guaranteed', five orders of magnitude."
+      "b5costTip": "Three levels of demand for solving B5 (the state farthest from the goal, 31 moves away):\n• Demo (the agent often gets there): ~10⁷ steps ≈ {vDemo}.\n• Reliable (≥95% of runs succeed near the optimum): ~10⁹–10¹⁰ steps ≈ {vReliable}.\n• Guaranteed (the agent plays near-perfectly everywhere): ~7×10¹³ steps ≈ {vProven}.\nBetween 'reliable' and 'guaranteed', almost five orders of magnitude."
     },
     "btn": {
       "stepOnce": "Step (one update)",
@@ -659,7 +659,7 @@
       "chip": "Mission III · Workshop kit",
       "title": "Scaling · 3×3",
       "curseTitle": "The curse begins to bite.",
-      "curseBody": "On 181,440 states, the share of explored states plateaus below 100%. Inside Mission III, the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a> translates cost: Demo {vDemo} · Reliable {vReliable} · Proven {vProven}. Between Reliable and Proven, five orders of magnitude.",
+      "curseBody": "On 181,440 states, the share of explored states plateaus below 100%. Inside Mission III, the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a> translates cost: Demo {vDemo} · Reliable {vReliable} · Proven {vProven}. Between Reliable and Proven, almost five orders of magnitude.",
       "notes": {
         "1": "3 min · transition · open Mission III; point at the <a href=\"exhibit_3x3.html#economyCard\" target=\"_blank\" rel=\"noopener\">Economy card</a>.",
         "2": "5 min · observe · 181,440 states; the explored-states bar plateaus below 100% — show it.",
