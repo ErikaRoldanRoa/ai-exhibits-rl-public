@@ -1552,19 +1552,10 @@ body:has(#roleGate[aria-hidden="false"]) .langSelectorWrap { display: none; }
 /* === MINI PUZZLE WIDGET === */
 .miniWrap {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   padding: 10px 0 8px;
   align-items: center;
-  gap: 8px;
   height: 260px;
-}
-.miniGoal {
-  font-size: 11px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: var(--muted2);
-  opacity: 0.85;
 }
 
 .miniPuzzle {
