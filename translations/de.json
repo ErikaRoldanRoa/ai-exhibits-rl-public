@@ -118,7 +118,7 @@
       "rl": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">VERSTÄRKENDES LERNEN</div>\n        <div>\n          <strong>Verstärkendes Lernen</strong> (Reinforcement Learning) ist ein <strong>Rahmenwerk</strong>, um eine Agent*in durch Interaktion zu trainieren:\n          die Agent*in probiert Aktionen aus, erhält Rückmeldung (Belohnungen) und verbessert ihr Verhalten mit der Zeit.\n          Es ist <strong>kein</strong> einzelner Algorithmus, sondern eine Familie. Fortgeschrittenere Beispiele: DQN auf Atari (2015), AlphaZero für Go (2017).\n        </div>\n        <div style=\"margin-top:8px;\">\n          Bei unseren Puzzles ist die Belohnung einfach: <strong>+1, wenn der nächste Zustand das Ziel ist, sonst 0</strong> (eine Schritt-Strafe ist optional).\n        </div>\n      ",
       "q": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">Q-LEARNING</div>\n        <div>\n          <strong>Q-Learning</strong> ist ein Algorithmus des verstärkenden Lernens.\n          Er lernt Werte <span class=\"mono\">Q(Zustand, Aktion)</span>, die einschätzen, wie gut jede Aktion in jedem Zustand ist.\n          Die Agent*in nutzt diese Q-Werte dann, um ihre Aktionen zu wählen (ihre Strategie).\n        </div>\n      "
     },
-    "dmvmBanner": "Du liest den DMVM-Artikel. Beginne mit dem 2×2 — zwölf Zustände, die ganze Welt auf einer Serviette.",
+    "dmvmBanner": "Du liest den DMVM-Artikel. Beginne mit dem 2×2 — die ganze Welt auf einer Serviette.",
     "dmvmBannerClose": "DMVM-Banner schließen",
     "tutorialReplay": "Tutorial ansehen",
     "trainLocked": "Löse {solved}/{need} Benchmarks zum Freischalten",

@@ -176,7 +176,7 @@ body:not([data-role="facilitator"]) #roleCard {
 <!-- Permanent flag (no expiry); manual close-X clears localStorage flag. -->
 <div class="dmvm-banner" id="dmvmBanner" style="display:none;" aria-live="polite">
   <span class="dmvm-bookmark" aria-hidden="true">📖</span>
-  <span class="dmvm-text" data-i18n="hub.dmvmBanner">Tu lis l'article DMVM. Commence par le 2×2 — douze états, le monde entier tient sur une serviette.</span>
+  <span class="dmvm-text" data-i18n="hub.dmvmBanner">Tu lis l'article DMVM. Commence par le 2×2 — le monde entier tient sur une serviette.</span>
   <button type="button" class="dmvm-close" id="dmvmClose" aria-label="Close DMVM banner" data-i18n-aria-label="hub.dmvmBannerClose">×</button>
 </div>
 <div class="puzzleGrid" id="missions">
@@ -321,7 +321,8 @@ body:not([data-role="facilitator"]) #roleCard {
 <script>
 (function(){
   const ROLE_KEY = "ai_exhibits_role";              // facilitator vs agent
-  const DMVM_KEY = "ai_exhibits_dmvm_reader";       // permanent: "true" if arrived via ?ref=dmvm
+  const DMVM_KEY = "ai_exhibits_dmvm_reader";       // permanent flag (analytics / landing recognition)
+  const DMVM_SESSION_KEY = "ai_exhibits_dmvm_session"; // per-tab: banner shows only during the reading session
   const EVENT_CODE_KEY = "ai_exhibits.event_code";
   const EVENT_NAME_KEY = "ai_exhibits.event_name";
   const gate = document.getElementById("roleGate");
@@ -341,15 +342,18 @@ body:not([data-role="facilitator"]) #roleCard {
   const facLinkEl = document.getElementById("gateFacLink");
   const backLinkEl = document.getElementById("gateBackLink");
 
-  // ---------- DMVM portal: URL flag → permanent recognition ----------
-  // Reads ?ref=dmvm once, persists to localStorage forever (no expiry —
-  // a reader may come back two years later and still be a DMVM reader).
+  // ---------- DMVM portal: URL flag → reading-session banner ----------
+  // Reads ?ref=dmvm once and sets TWO flags: a permanent localStorage flag
+  // (analytics / landing recognition) AND a per-tab sessionStorage flag that
+  // drives the banner. The banner belongs to the DMVM reading session only —
+  // it shows while the reader is here from the article (survives refresh /
+  // navigation in this tab) but does NOT persist into later normal visits.
   // Cleans the param from the address bar so back/share are tidy.
-  // Manual close-X on the banner is the only way to clear the flag.
   try {
     const params = new URLSearchParams(location.search);
     if (params.get("ref") === "dmvm") {
       localStorage.setItem(DMVM_KEY, "true");
+      try { sessionStorage.setItem(DMVM_SESSION_KEY, "true"); } catch (se) { /* private mode */ }
       // Anonymous landing beacon — DMVM readers ONLY. No personal data:
       // just a random per-device id (created once, key ai_exhibits_anon_id)
       // so the server can count distinct devices and visits-per-device.
@@ -385,16 +389,16 @@ body:not([data-role="facilitator"]) #roleCard {
 
   function showDmvmBanner(){
     if (!dmvmBanner) return;
-    if (isDmvmReader()) {
-      dmvmBanner.style.display = "";
-    } else {
-      dmvmBanner.style.display = "none";
-    }
+    // Session-scoped, NOT the permanent flag: the banner belongs to the DMVM
+    // reading session (arrived via ?ref=dmvm), never to normal later visits.
+    let inSession = false;
+    try { inSession = sessionStorage.getItem(DMVM_SESSION_KEY) === "true"; } catch (e) {}
+    dmvmBanner.style.display = inSession ? "" : "none";
   }
 
   if (dmvmCloseBtn) {
     dmvmCloseBtn.addEventListener("click", ()=>{
-      localStorage.removeItem(DMVM_KEY);
+      try { sessionStorage.removeItem(DMVM_SESSION_KEY); } catch (e) {}
       if (dmvmBanner) dmvmBanner.style.display = "none";
     });
   }

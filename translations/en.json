@@ -118,7 +118,7 @@
       "rl": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">REINFORCEMENT LEARNING</div>\n        <div>\n          <strong>Reinforcement Learning</strong> is a <strong>framework</strong> for training an agent through interaction:\n          the agent tries actions, receives feedback (rewards), and improves its behaviour over time.\n          It is <strong>not</strong> a single algorithm but a family. More advanced examples: DQN on Atari (2015), AlphaZero for Go (2017).\n        </div>\n        <div style=\"margin-top:8px;\">\n          In our puzzles, the reward is simple: <strong>+1 when the next state is the goal, 0 otherwise</strong> (an optional step penalty is available).\n        </div>\n      ",
       "q": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">Q-LEARNING</div>\n        <div>\n          <strong>Q-learning</strong> is a reinforcement-learning algorithm.\n          It learns values <span class=\"mono\">Q(state, action)</span> that estimate how good each action is in each state.\n          The agent then uses these Q-values to choose its actions (its policy).\n        </div>\n      "
     },
-    "dmvmBanner": "You're reading the DMVM article. Start with the 2×2 — twelve states, the whole world fits on a napkin.",
+    "dmvmBanner": "You're reading the DMVM article. Start with the 2×2 — the whole world fits on a napkin.",
     "dmvmBannerClose": "Close DMVM banner",
     "tutorialReplay": "See the tutorial",
     "trainLocked": "Solve {solved}/{need} benchmarks to unlock",

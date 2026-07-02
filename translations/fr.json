@@ -118,7 +118,7 @@
       "rl": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">APPRENTISSAGE PAR RENFORCEMENT</div>\n        <div>\n          L'<strong>Apprentissage par Renforcement</strong> est un <strong>cadre</strong> pour entraîner une agente par interaction&#8239;:\n          l'agente essaie des actions, reçoit un retour (des récompenses), et améliore son comportement au fil du temps.\n          Ce n'est <strong>pas</strong> un algorithme unique, mais une famille d'algorithmes. Parmi les exemples plus avancés&#8239;: DQN sur Atari (2015), AlphaZero pour le Go (2017).\n        </div>\n        <div style=\"margin-top:8px;\">\n          Dans nos puzzles, la récompense est simple&#8239;: <strong>+1 lorsque l'état suivant est l'objectif, 0 sinon</strong> (une pénalité par pas est optionnelle).\n        </div>\n      ",
       "q": "\n        <div class=\"mono\" style=\"opacity:.9; margin-bottom:6px;\">Q-LEARNING</div>\n        <div>\n          Le <strong>Q-learning</strong> est un algorithme d'Apprentissage par Renforcement.\n          Il apprend des valeurs <span class=\"mono\">Q(état, action)</span> qui estiment la qualité de chaque action dans chaque état.\n          L'agente utilise ensuite ces valeurs Q pour choisir ses actions (sa politique).\n        </div>\n      "
     },
-    "dmvmBanner": "Tu lis l'article DMVM. Commence par le 2×2 — douze états, le monde entier tient sur une serviette.",
+    "dmvmBanner": "Tu lis l'article DMVM. Commence par le 2×2 — le monde entier tient sur une serviette.",
     "dmvmBannerClose": "Fermer le bandeau DMVM",
     "tutorialReplay": "Voir le tutoriel",
     "trainLocked": "Résoudre {solved}/{need} benchmarks pour débloquer",
