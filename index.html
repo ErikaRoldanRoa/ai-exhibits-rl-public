@@ -350,6 +350,30 @@ body:not([data-role="facilitator"]) #roleCard {
     const params = new URLSearchParams(location.search);
     if (params.get("ref") === "dmvm") {
       localStorage.setItem(DMVM_KEY, "true");
+      // Anonymous landing beacon — DMVM readers ONLY. No personal data:
+      // just a random per-device id (created once, key ai_exhibits_anon_id)
+      // so the server can count distinct devices and visits-per-device.
+      // Fire-and-forget via sendBeacon so it survives the replaceState below.
+      // Guarded so old browsers never throw and general public is never touched.
+      try {
+        if (typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") {
+          let anonId = localStorage.getItem("ai_exhibits_anon_id");
+          if (!anonId) {
+            anonId = (typeof crypto !== "undefined" && crypto.randomUUID)
+              ? crypto.randomUUID()
+              : "a-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 12);
+            localStorage.setItem("ai_exhibits_anon_id", anonId);
+          }
+          const lang = (document.documentElement.lang || "fr").slice(0, 2).toLowerCase();
+          const beaconPayload = JSON.stringify({
+            action: "logLanding", ref: "dmvm", anonId: anonId, ts: Date.now(), lang: lang,
+          });
+          navigator.sendBeacon(
+            "https://script.google.com/macros/s/AKfycbxR84v8EDB4bV5icuTFLuRPZn5g0fwYmQd9fm0vPKkOGERLzldZwkV0JTup3UxFX5g/exec",
+            new Blob([beaconPayload], { type: "text/plain;charset=utf-8" })
+          );
+        }
+      } catch (be) { /* beacon best-effort: never block the portal */ }
       params.delete("ref");
       const qs = params.toString();
       const newUrl = location.pathname + (qs ? "?" + qs : "") + location.hash;
