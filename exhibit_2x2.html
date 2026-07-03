@@ -36,7 +36,7 @@
        frame so M1 reads as a sibling of M2/M3 visually. Inner .grid + .panel
        cards stack inside this. */
     .wrap{
-      width:min(1320px, calc(100vw - 36px));
+      width:min(1080px, calc(100vw - 36px));
       margin: 8px auto 32px;
       background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
       border: 1px solid rgba(255,255,255,0.14);
@@ -778,7 +778,7 @@ Created, designed, and authored by Dr. Erika Roldán Roa.
               <div class="graphCtl">
                 <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
                   <span data-i18n="ex.graph.zoom">Zoom</span>
-                  <input id="zoomRange" type="range" min="40" max="220" value="140"/>
+                  <input id="zoomRange" type="range" min="20" max="220" value="140"/>
                   <span id="zoomLbl">140%</span>
                   <span style="margin-left:10px;" data-i18n="ex.graph.layout">Disposition</span>
                   <select id="layoutSel" class="sel" aria-label="Disposition du graphe" style="min-width:160px;" data-i18n-aria-label="ex.graph.layoutAria">
@@ -1617,7 +1617,21 @@ R(s')=${rArr.toFixed(3)}`;
     function applyZoom(){
       const z = Number(zoomRange.value||140);
       zoomLbl.textContent = `${z}%`;
-      graphInner.style.transform = `scale(${z/100})`;
+      // Center the graph in the viewport when it fits (spare room); anchor top-left
+      // and let it scroll when zoomed in past the viewport. Kills the "tiny in the
+      // corner" look at fit while keeping pan-by-scroll when exploring.
+      const vp = graphInner.parentElement;
+      const svg = graphInner.querySelector('svg');
+      const vb = svg && svg.viewBox && svg.viewBox.baseVal;
+      let tx = 0, ty = 0;
+      if (vp && vb && vb.width && vb.height){
+        const scale = z/100;
+        const contentW = (vb.width + 56) * scale;
+        const contentH = (vb.height + 56) * scale;
+        tx = Math.max(0, (vp.clientWidth  - contentW) / 2);
+        ty = Math.max(0, (vp.clientHeight - contentH) / 2);
+      }
+      graphInner.style.transform = `translate(${tx.toFixed(1)}px, ${ty.toFixed(1)}px) scale(${z/100})`;
     }
     function renderGraph(){
       graphInner.innerHTML = renderGraphSvg();
@@ -1625,12 +1639,54 @@ R(s')=${rArr.toFixed(3)}`;
       hookEdgeHover();
     }
     function zoomFit(){
-      const vp = graphInner.parentElement;
+      const vp = graphInner.parentElement;   // .graphViewport (the visible area)
       if (!vp) return;
-      const w = vp.clientWidth || 800;
-      const z = Math.max(80, Math.min(220, Math.round((w/1400)*140)));
+      const svg = graphInner.querySelector('svg');
+      const vb = svg && svg.viewBox && svg.viewBox.baseVal;
+      if (!vb || !vb.width || !vb.height){
+        // fallback: width-only heuristic if the SVG isn't measurable yet
+        const w = vp.clientWidth || 800;
+        zoomRange.value = String(Math.max(40, Math.min(220, Math.round((w/1400)*140))));
+        applyZoom(); return;
+      }
+      // TRUE fit: largest zoom that shows the WHOLE graph in BOTH dimensions.
+      // graphInner adds 28px padding each side (scaled with the content).
+      const padTotal = 56;
+      const availW = Math.max(60, (vp.clientWidth  || 800) - 6);
+      const availH = Math.max(60, (vp.clientHeight || 460) - 6);
+      const fit = Math.min(availW / (vb.width + padTotal), availH / (vb.height + padTotal));
+      let z = Math.floor(fit * 100 * 0.96);   // 4% breathing room
+      const zmin = Number(zoomRange.min || 20), zmax = Number(zoomRange.max || 220);
+      z = Math.max(zmin, Math.min(zmax, z));
       zoomRange.value = String(z);
       applyZoom();
+    }
+
+    // Orientation-aware default layout: a landscape viewport reads the chain
+    // left->right (rot90); a portrait/phone viewport reads it top->down (default).
+    // Re-picks only when the orientation actually flips, so a manual dropdown
+    // choice isn't overridden on every minor resize.
+    let _lastOrientWide = null;
+    function autoOrientLayout(){
+      const vp = graphInner.parentElement;
+      if (!vp || !layoutSel) return false;
+      const wide = (vp.clientWidth || 800) >= (vp.clientHeight || 460);
+      if (wide === _lastOrientWide) return false;
+      _lastOrientWide = wide;
+      const want = wide ? 'rot90' : 'default';
+      if (layoutSel.value !== want){ layoutSel.value = want; applyLayout(); return true; }
+      return false;
+    }
+    // Re-orient (on flip) + re-fit on viewport resize / device rotation.
+    let _refitRAF = 0;
+    function refitGraph(){
+      if (_refitRAF) cancelAnimationFrame(_refitRAF);
+      _refitRAF = requestAnimationFrame(() => {
+        _refitRAF = 0;
+        if (!viewSel || viewSel.value !== 'graph') return;
+        if (autoOrientLayout()) renderGraph();   // layout flipped -> redraw first
+        zoomFit();
+      });
     }
 
     function hookEdgeHover(){
@@ -2013,7 +2069,7 @@ const rline = document.createElement('div');
     stepBtn.addEventListener('click', stepOnce);
     solveBtn.addEventListener('click', solveGreedy);
 
-    viewSel.addEventListener('change', () => renderAll());
+    viewSel.addEventListener('change', () => { renderAll(); refitGraph(); });
     const explainModeSel = document.getElementById('explainMode');
     if (explainModeSel){
       explainModeSel.addEventListener('change', () => { if (viewSel.value==="learn") renderLearn(); });
@@ -2024,6 +2080,13 @@ const rline = document.createElement('div');
     layoutSel && layoutSel.addEventListener('change', () => { applyLayout(); zoomFit(); renderAll(); });
     zoomFitBtn.addEventListener('click', () => { zoomFit(); renderAll(); });
     zoom100Btn.addEventListener('click', () => { zoomRange.value="100"; applyZoom(); });
+    window.addEventListener('resize', refitGraph);
+    // Observe the graph viewport itself so the initial layout-settle (and any panel
+    // resize) triggers a re-fit — fixes a first-paint height that isn't final yet.
+    if (typeof ResizeObserver !== 'undefined' && graphViewport){
+      const _ro = new ResizeObserver(() => refitGraph());
+      _ro.observe(graphViewport);
+    }
 
     buildGraph();
 
@@ -2048,6 +2111,7 @@ const rline = document.createElement('div');
     loadBenchBest();
     renderBenchUI();
 
+    autoOrientLayout();
     renderAll();
     zoomFit();
     stopTraining();
