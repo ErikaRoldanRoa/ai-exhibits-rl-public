@@ -369,13 +369,7 @@ body:not([data-role="facilitator"]) #roleCard {
             localStorage.setItem("ai_exhibits_anon_id", anonId);
           }
           const lang = (document.documentElement.lang || "fr").slice(0, 2).toLowerCase();
-          const beaconPayload = JSON.stringify({
-            action: "logLanding", ref: "dmvm", anonId: anonId, ts: Date.now(), lang: lang,
-          });
-          navigator.sendBeacon(
-            "https://script.google.com/macros/s/AKfycbxR84v8EDB4bV5icuTFLuRPZn5g0fwYmQd9fm0vPKkOGERLzldZwkV0JTup3UxFX5g/exec",
-            new Blob([beaconPayload], { type: "text/plain;charset=utf-8" })
-          );
+          sendLandingBeacon("dmvm", anonId, lang);
         }
       } catch (be) { /* beacon best-effort: never block the portal */ }
       params.delete("ref");
@@ -384,6 +378,52 @@ body:not([data-role="facilitator"]) #roleCard {
       history.replaceState(null, "", newUrl);
     }
   } catch (e) { /* old browser: silently degrade */ }
+
+  // ---------- Anonymous landing beacon, all visitors ----------
+  // One row per tab-session: timestamp + random per-device id + coarse
+  // geography (country; Swiss visitors by canton, ISO 3166-2 e.g. CH-GE).
+  // Never an IP, never a city. Resolved client-side with a 2.5s timeout —
+  // failure or slowness logs the visit without geography. DMVM arrivals are
+  // logged by their own beacon above and skipped here (no double counting).
+  function sendLandingBeacon(ref, anonId, lang) {
+    const EP = "https://script.google.com/macros/s/AKfycbxR84v8EDB4bV5icuTFLuRPZn5g0fwYmQd9fm0vPKkOGERLzldZwkV0JTup3UxFX5g/exec";
+    let sent = false;
+    const fire = (geo) => {
+      if (sent) return;
+      sent = true;
+      try {
+        navigator.sendBeacon(EP, new Blob([JSON.stringify({
+          action: "logLanding", ref: ref, anonId: anonId, ts: Date.now(), lang: lang, geo: geo || "",
+        })], { type: "text/plain;charset=utf-8" }));
+      } catch (e2) { /* best effort */ }
+    };
+    setTimeout(() => fire(""), 2500);
+    try {
+      fetch("https://ipapi.co/json/", { mode: "cors" })
+        .then((r) => r.json())
+        .then((j) => {
+          const c = String(j.country || "").slice(0, 2).toUpperCase();
+          const rc = String(j.region_code || "").slice(0, 3).toUpperCase();
+          fire(c === "CH" && rc ? "CH-" + rc : c);
+        })
+        .catch(() => fire(""));
+    } catch (e3) { fire(""); }
+  }
+  try {
+    if (typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function" &&
+        !sessionStorage.getItem(DMVM_SESSION_KEY) && !sessionStorage.getItem("aiex_landed")) {
+      sessionStorage.setItem("aiex_landed", "1");
+      let anonIdG = localStorage.getItem("ai_exhibits_anon_id");
+      if (!anonIdG) {
+        anonIdG = (typeof crypto !== "undefined" && crypto.randomUUID)
+          ? crypto.randomUUID()
+          : "a-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 12);
+        localStorage.setItem("ai_exhibits_anon_id", anonIdG);
+      }
+      const langG = (document.documentElement.lang || "fr").slice(0, 2).toLowerCase();
+      sendLandingBeacon("aiex-public", anonIdG, langG);
+    }
+  } catch (e) { /* analytics must never block the hub */ }
 
   function isDmvmReader(){ return localStorage.getItem(DMVM_KEY) === "true"; }
 
