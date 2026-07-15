@@ -776,6 +776,7 @@
     "type.other": "Sonstiges",
     "type.comment": "Kommentar",
     "type.suggestion": "Vorschlag",
+    "type.design": "Design / Layout",
     "issue": "Was stimmt nicht? *",
     "fix": "Vorgeschlagene Korrektur",
     "name": "Dein Name (optional)",
@@ -786,7 +787,14 @@
     "thanks": "Danke. Dein Vorschlag wurde gespeichert.",
     "errEmpty": "Beschreibe den Fehler kurz.",
     "errGeneric": "Fehlgeschlagen. Versuche es später erneut.",
-    "errNetwork": "Netzwerkfehler. Versuche es später erneut."
+    "errNetwork": "Netzwerkfehler. Versuche es später erneut.",
+    "busy": "Zu viele Rückmeldungen gerade — bitte gleich erneut versuchen.",
+    "fabLabel": "Feedback?",
+    "errEmail": "Bitte E-Mail-Adresse prüfen oder leer lassen.",
+    "errUnsaved": "Ihr Feedback konnte noch nicht gespeichert werden. Bitte gleich erneut versuchen oder Ihren Text kopieren, damit er nicht verloren geht.",
+    "confirmDiscard": "Diesen Kommentar verwerfen? Er wird nicht gesendet.",
+    "copyText": "Meinen Text kopieren",
+    "copied": "Text kopiert!"
   },
   "ms": {
     "kicker": "Workshop · Mission I · 2×2",

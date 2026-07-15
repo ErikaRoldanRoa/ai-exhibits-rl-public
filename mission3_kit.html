@@ -138,5 +138,19 @@
      EUR default after i18n applies. -->
 <script src="app/currency.js"></script>
 <script src="app/tooltips.js"></script>
+<!-- Feedback widget (🔧 send a correction) -->
+<button type="button" id="fbBtn" aria-label="Envoyer un retour" title="Envoyer un retour"><span class="fbBtnIcon" aria-hidden="true">🔧</span><span class="fbBtnLabel" data-i18n="feedback.fabLabel">Un retour&#8239;?</span></button>
+<style>
+  #fbBtn{position:fixed;bottom:16px;right:16px;z-index:9998;
+    display:inline-flex;align-items:center;gap:7px;padding:11px 16px;
+    border-radius:999px;border:1px solid rgba(47,243,255,0.55);background:rgba(14,11,22,0.94);
+    color:#faf9f0;font-size:14px;font-weight:600;line-height:1;cursor:pointer;
+    box-shadow:0 6px 20px rgba(0,0,0,0.5);transition:transform .15s ease;}
+  #fbBtn .fbBtnIcon{font-size:18px;}
+  #fbBtn:hover{transform:scale(1.06);}
+  #fbBtn:focus-visible{outline:3px solid rgba(47,243,255,0.9);outline-offset:3px;}
+  @media print{#fbBtn{display:none !important;}}
+</style>
+<script src="app/feedback.js"></script>
 </body>
 </html>

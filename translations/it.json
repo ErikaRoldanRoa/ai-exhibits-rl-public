@@ -776,6 +776,7 @@
     "type.other": "Altro",
     "type.comment": "Commento",
     "type.suggestion": "Suggerimento",
+    "type.design": "Design / impaginazione",
     "issue": "Cosa non va? *",
     "fix": "Correzione suggerita",
     "name": "Il tuo nome (opzionale)",
@@ -786,7 +787,14 @@
     "thanks": "Grazie. Il tuo suggerimento è stato registrato.",
     "errEmpty": "Descrivi l'errore in poche parole.",
     "errGeneric": "Errore. Riprova più tardi.",
-    "errNetwork": "Errore di rete. Riprova più tardi."
+    "errNetwork": "Errore di rete. Riprova più tardi.",
+    "busy": "Troppi riscontri al momento — riprova tra un istante.",
+    "fabLabel": "Un riscontro?",
+    "errEmail": "Controlla il tuo indirizzo email o lascialo vuoto.",
+    "errUnsaved": "Il tuo feedback non è ancora stato salvato. Riprova tra un istante o copia il tuo testo per non perderlo.",
+    "confirmDiscard": "Scartare questo commento? Non verrà inviato.",
+    "copyText": "Copia il mio testo",
+    "copied": "Testo copiato!"
   },
   "ms": {
     "kicker": "Laboratorio · Missione I · 2×2",

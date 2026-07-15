@@ -776,6 +776,7 @@
     "type.other": "Autre",
     "type.comment": "Commentaire",
     "type.suggestion": "Suggestion",
+    "type.design": "Design / mise en page",
     "issue": "Qu'est-ce qui ne va pas ? *",
     "fix": "Suggestion de correction",
     "name": "Votre nom (optionnel)",
@@ -786,7 +787,14 @@
     "thanks": "Merci. Votre suggestion a été enregistrée.",
     "errEmpty": "Décrivez l'erreur en quelques mots.",
     "errGeneric": "Échec. Réessayez plus tard.",
-    "errNetwork": "Erreur réseau. Réessayez plus tard."
+    "errNetwork": "Erreur réseau. Réessayez plus tard.",
+    "busy": "Trop de retours pour le moment — réessayez dans un instant.",
+    "fabLabel": "Un retour ?",
+    "errEmail": "Vérifiez votre email ou laissez-le vide.",
+    "errUnsaved": "Votre retour n'a pas encore pu être enregistré. Réessayez dans un moment, ou copiez votre texte pour ne pas le perdre.",
+    "confirmDiscard": "Abandonner ce commentaire ? Il ne sera pas envoyé.",
+    "copyText": "Copier mon texte",
+    "copied": "Texte copié !"
   },
   "ms": {
     "kicker": "Atelier · Mission I · 2×2",
