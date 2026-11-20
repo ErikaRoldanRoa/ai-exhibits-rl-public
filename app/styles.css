@@ -119,9 +119,8 @@ body {
   font-size: 16px; /* Base size increased from 14px for better readability */
   min-height: 100vh;
   /* Single solid background — matches Marmottes hub finish.
-     Replaced the 4-layer multi-radial gradient on 2026-04-30 (Erika: "I do
-     not like that it does not have only one color in the back, the hub
-     that is degradeted that I hate"). The pink/cyan/lime accents that the
+     Replaced the 4-layer multi-radial gradient on 2026-04-30: one colour
+     in the background, never a gradient. The pink/cyan/lime accents that the
      wash carried now live on the panels themselves where they earn their
      space — body stays calm, panel surfaces pop. */
   background: var(--bg0);
