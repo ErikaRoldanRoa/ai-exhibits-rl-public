@@ -999,7 +999,10 @@
         // Success — show success screen with the request ID.
         form.style.display = 'none';
         successScreen.classList.add('visible');
-        successId.innerHTML = (I18N[lang]['success.id'] || 'Reference:') + ' <strong>' + data.request_id + '</strong>';
+        const strong = document.createElement('strong');
+        strong.textContent = data.request_id;
+        successId.textContent = (I18N[lang]['success.id'] || 'Reference:') + ' ';
+        successId.appendChild(strong);
       } else {
         // Tarpit response — backend silently rejected. Show generic error.
         setStatus('bad', 'submit.bad');
